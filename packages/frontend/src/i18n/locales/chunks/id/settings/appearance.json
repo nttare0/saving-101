@@ -1,0 +1,31 @@
+{
+  "settings": {
+    "appearance": {
+      "title": "Tampilan",
+      "description": "Sesuaikan tampilan aplikasi dan bagian mana yang muncul di sidebar.",
+      "theme": {
+        "title": "Tema",
+        "description": "Pilih tampilan aplikasi. Sistem mengikuti pengaturan perangkat Anda."
+      },
+      "sidebar": {
+        "title": "Bagian sidebar",
+        "description": "Pilih bagian mana yang muncul di sidebar.",
+        "alwaysVisibleTooltip": "Bagian ini selalu terlihat."
+      },
+      "sidebarNav": {
+        "title": "Sidebar navigation",
+        "description": "Pick which pages appear under Accounts in the sidebar navigation."
+      },
+      "header": {
+        "title": "Header",
+        "description": "Pilih tindakan header mana yang terlihat.",
+        "supportButton": "Tombol dukungan"
+      },
+      "currency": {
+        "title": "Simbol mata uang",
+        "description": "Cara jumlah menampilkan mata uangnya. Simbol singkat terlihat seperti Rp, ₴ atau zł, bukan IDR, UAH atau PLN, tetapi mata uang yang berbagi simbol yang sama (USD, CAD, AUD, SGD) semuanya menjadi $.",
+        "narrowSymbol": "Gunakan simbol mata uang singkat"
+      }
+    }
+  }
+}

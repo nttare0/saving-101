@@ -1,0 +1,104 @@
+name: Build frontend Docker image
+description: Build and optionally push the frontend Docker image
+
+# Deployment configuration (API origin, analytics keys, CSP hosts) is NOT a
+# build input: the image reads it from runtime env at container start. Inputs
+# here cover only build identity and the Sentry source-map upload.
+inputs:
+  sentry-auth-token:
+    description: 'SENTRY_AUTH_TOKEN - Sentry auth token for source map upload'
+    required: false
+    default: ''
+  sentry-org:
+    description: 'SENTRY_ORG - Sentry organization slug'
+    required: false
+    default: ''
+  sentry-project:
+    description: 'SENTRY_PROJECT - Sentry project slug'
+    required: false
+    default: ''
+  sentry-release:
+    description: 'VITE_SENTRY_RELEASE - Release version (git SHA) for Sentry'
+    required: false
+    default: ''
+  app-commit-hash:
+    description: 'VITE_APP_COMMIT_HASH - Git SHA baked into the bundle for stale-version detection (polled against /version.json)'
+    required: false
+    default: ''
+  docker-hub-username:
+    description: 'DOCKER_HUB_USERNAME'
+    required: false
+    default: 'local'
+  docker-hub-access-token:
+    description: 'DOCKER_HUB_ACCESS_TOKEN'
+    required: false
+  image-tag:
+    description: 'Docker image tag(s). Comma/space-separated for multiple (e.g. "latest,sha-abc1234"); each becomes a full ref on the fe repo.'
+    required: false
+    default: 'latest'
+  platforms:
+    description: 'Target platforms for the build (e.g. "linux/amd64" or "linux/amd64,linux/arm64"). Multi-arch requires push=true.'
+    required: false
+    default: 'linux/amd64'
+  push:
+    description: Specifies if docker result should be pushed
+    required: false
+    default: 'false'
+outputs:
+  docker-build-digest:
+    description: Docker build digest
+    value: ${{ steps.docker-build.outputs.digest }}
+runs:
+  using: composite
+  steps:
+    - name: Login to Docker Hub
+      if: inputs.push == 'true'
+      uses: docker/login-action@81c6f93d4bc991e510b342a00b419b3bb4efc5c6 # v4.7.0
+      with:
+        username: ${{ inputs.docker-hub-username }}
+        password: ${{ inputs.docker-hub-access-token }}
+
+    # QEMU registers binfmt handlers so buildx can emulate foreign
+    # architectures. Only needed when building for an arch other than the
+    # amd64 runner (i.e. multi-arch pushes).
+    - name: Set up QEMU
+      if: inputs.platforms != 'linux/amd64'
+      uses: docker/setup-qemu-action@c7c53464625b32c7a7e944ae62b3e17d2b600130 # v3.7.0
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4.4.1
+
+    # Expand the comma/space-separated image-tag list into one full ref per
+    # line for build-push-action's multiline tags input.
+    - name: Compose image tags
+      id: tags
+      shell: bash
+      env:
+        IMAGE: ${{ inputs.docker-hub-username }}/budget-tracker-fe
+        TAG_LIST: ${{ inputs.image-tag }}
+      run: |
+        {
+          echo "refs<<EOF"
+          IFS=', ' read -ra parts <<< "$TAG_LIST"
+          for tag in "${parts[@]}"; do
+            [ -n "$tag" ] && echo "${IMAGE}:${tag}"
+          done
+          echo "EOF"
+        } >> "$GITHUB_OUTPUT"
+
+    - name: Build
+      id: docker-build
+      uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
+      with:
+        context: ./
+        file: ./self-hosting/frontend/Dockerfile
+        push: ${{ inputs.push == 'true' }}
+        load: ${{ inputs.push != 'true' }}
+        platforms: ${{ inputs.platforms }}
+        tags: ${{ steps.tags.outputs.refs }}
+        build-args: |
+          VITE_SENTRY_RELEASE=${{ inputs.sentry-release }}
+          VITE_APP_COMMIT_HASH=${{ inputs.app-commit-hash }}
+          SENTRY_AUTH_TOKEN=${{ inputs.sentry-auth-token }}
+          SENTRY_ORG=${{ inputs.sentry-org }}
+          SENTRY_PROJECT=${{ inputs.sentry-project }}

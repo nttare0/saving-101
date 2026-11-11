@@ -1,0 +1,296 @@
+{
+  "optimizations": {
+    "title": "Optimasi",
+    "landingDescription": "Alat untuk membantu Anda mengatur dan membersihkan data keuangan.",
+    "backToOptimizations": "Kembali ke optimasi",
+    "cards": {
+      "transfers": {
+        "title": "Pencocokan transfer",
+        "description": "Temukan pasangan pengeluaran-pemasukan yang mungkin merupakan transfer antar akun Anda dan hubungkan secara otomatis."
+      },
+      "aiCategorization": {
+        "title": "Kategorisasi AI",
+        "description": "Biarkan AI mengurutkan transaksi yang belum dikategorikan dan tinjau proses sebelumnya."
+      },
+      "applyRules": {
+        "title": "Apply a rule to past transactions",
+        "description": "Pick one of your automations and run it over transactions you already have."
+      },
+      "reconciliation": {
+        "title": "Reconciliation",
+        "description": "Merge duplicate bank transactions, remove wrong ones, and resolve pending transactions the bank never booked."
+      }
+    },
+    "aiCategorization": {
+      "title": "Kategorisasi AI",
+      "description": "Jalankan AI pada transaksi yang masih berada di kategori bawaan Anda dan biarkan AI memilih kategori yang lebih sesuai. Anda selalu dapat mengubah kategori setelahnya.",
+      "tabs": {
+        "categorize": "Kategorikan",
+        "history": "Riwayat"
+      },
+      "count": {
+        "capNote": "Satu proses mencakup {limit} transaksi terbaru. Jalankan lagi untuk memproses sisanya.",
+        "allDoneTitle": "Semua sudah dikategorikan",
+        "allDoneDescription": "Tidak ada transaksi yang berada di kategori bawaan Anda saat ini."
+      },
+      "bar": {
+        "uncategorizedCount": "{count} belum dikategorikan",
+        "capChip": "{limit} per proses"
+      },
+      "table": {
+        "selectionHint": "Pilih baris untuk hanya mengkategorikan baris tersebut.",
+        "loadError": "Tidak dapat memuat transaksi yang menunggu kategorisasi."
+      },
+      "history": {
+        "emptyTitle": "Belum ada proses kategorisasi AI",
+        "emptyDescription": "Setelah Anda menjalankan kategorisasi AI, setiap proses akan muncul di sini agar Anda dapat meninjau perubahannya.",
+        "loadError": "Tidak dapat memuat riwayat proses.",
+        "runLoadError": "Tidak dapat memuat transaksi dari proses ini.",
+        "backToRuns": "Kembali ke semua proses",
+        "runEmptyTitle": "Tidak ada yang tersisa dari proses ini",
+        "runEmptyDescription": "Setiap transaksi yang dikategorikan oleh proses ini telah dikategorikan ulang atau dihapus.",
+        "transactionCount": "{count} transaksi",
+        "trigger": {
+          "manual": "Manual",
+          "import": "Impor data",
+          "sync": "Sinkronisasi bank",
+          "unknown": "Tidak diketahui"
+        },
+        "triggerTooltip": {
+          "manual": "Anda memulai proses ini secara manual",
+          "import": "Dimulai secara otomatis setelah impor data",
+          "sync": "Dimulai secara otomatis setelah sinkronisasi bank",
+          "unknown": "Asal proses ini tidak tercatat"
+        }
+      },
+      "setup": {
+        "title": "Pengaturan proses",
+        "model": "Model",
+        "notConfigured": "Belum dikonfigurasi",
+        "connection": "AI model",
+        "limits": "Batas",
+        "limitsSharedKey": "3 proses per jam",
+        "limitsOwnCredentials": "Tidak terbatas — berjalan dengan kunci Anda sendiri",
+        "changeModel": "Ubah di pengaturan AI",
+        "errorChip": "Masalah pengaturan AI",
+        "loadError": "Tidak dapat memuat pengaturan AI Anda."
+      },
+      "run": {
+        "button": "Kategorikan dengan AI (semua)",
+        "categorizeSelected": "Kategorikan {count} yang dipilih",
+        "inProgress": "Mengkategorikan…",
+        "progressLabel": "Progres kategorisasi AI",
+        "processed": "{processed} dari {total} transaksi diproses"
+      },
+      "confirm": {
+        "title": "Kategorikan semua transaksi yang belum dikategorikan?",
+        "description": "AI akan memeriksa {count} transaksi yang masih berada di kategori bawaan Anda dan memilih kategori untuk masing-masing. Anda dapat mengubahnya kapan saja setelahnya.",
+        "action": "Kategorikan semua"
+      },
+      "notifications": {
+        "started": "Mengkategorikan {count} transaksi dengan AI",
+        "nothingToCategorize": "Semua sudah dikategorikan — tidak ada lagi yang perlu dilakukan AI",
+        "alreadyRunning": "Kategorisasi AI sedang berjalan",
+        "rateLimited": "Anda telah mencapai batas kategorisasi manual. Coba lagi dalam {time}.",
+        "failed": "Tidak dapat memulai kategorisasi AI"
+      }
+    },
+    "transferSuggestions": {
+      "description": "Temukan transaksi yang harus dihubungkan sebagai transfer antar akun Anda",
+      "suggestionsFor": "Saran untuk",
+      "selectExpense": "Pilih transaksi untuk melihat saran",
+      "potentialTransfersFound": "potensi transfer ditemukan",
+      "empty": {
+        "title": "Tidak ada saran transfer ditemukan",
+        "description": "Coba sesuaikan rentang tanggal"
+      },
+      "initial": {
+        "title": "Temukan saran transfer",
+        "description": "Pindai transaksi Anda untuk menemukan pasangan pemasukan dan pengeluaran yang harus dihubungkan sebagai transfer antar akun"
+      },
+      "scanning": "Memindai transaksi...",
+      "confirmLink": {
+        "title": "Hubungkan sebagai transfer?",
+        "description": "Kedua transaksi akan dihubungkan sebagai transfer antar akun. Ini akan memperbaiki statistik dan analitik Anda dengan mengecualikannya dari total pemasukan dan pengeluaran."
+      },
+      "presets": {
+        "last3Months": "3 bulan terakhir",
+        "last6Months": "6 bulan terakhir",
+        "lastYear": "Tahun lalu",
+        "thisYear": "Tahun ini",
+        "previousYear": "Tahun sebelumnya"
+      },
+      "includeOutOfWallet": "Sertakan transfer di luar dompet",
+      "outOfWalletSwitch": "Transfer di luar dompet",
+      "skip": {
+        "action": "Lewati",
+        "title": "Lewati saran ini?",
+        "description": "Pasangan ini akan disembunyikan dari hasil pemindaian di masa depan. Transaksi itu sendiri tidak akan diubah.",
+        "dontShowAgain": "Jangan tampilkan konfirmasi ini lagi"
+      },
+      "notifications": {
+        "loadError": "Gagal memuat lebih banyak saran",
+        "scanError": "Gagal memindai saran transfer",
+        "linkSuccess": "Transaksi dihubungkan sebagai transfer",
+        "linkError": "Gagal menghubungkan transaksi",
+        "skipSuccess": "Saran diabaikan",
+        "skipError": "Gagal mengabaikan saran"
+      },
+      "aiReview": {
+        "label": "AI review",
+        "about": "About AI review",
+        "plusBadge": "Plus",
+        "description": "AI checks each match and shows only the ones that look like real transfers between your accounts.",
+        "cost": "Each scan uses your monthly AI allowance. With your own AI provider, the provider bills it. Choose the model in {link}.",
+        "aiSettingsLink": "Pengaturan AI",
+        "openAiSettings": "Open AI settings",
+        "blocked": {
+          "plan": {
+            "title": "AI review is part of Plus",
+            "body": "Or connect your own AI provider in AI settings to use it on any plan."
+          },
+          "allowance": {
+            "pill": "Until {date}",
+            "title": "Monthly AI allowance used",
+            "body": "It resets on {date}. Connect your own AI provider to keep using it now."
+          },
+          "setup": {
+            "pill": "Set up",
+            "title": "No AI model is answering",
+            "body": "Check your AI provider or pick a model for transfer matching."
+          }
+        },
+        "connectOwnModel": "Connect your own model",
+        "reviewing": "AI is checking matches…",
+        "verdict": {
+          "likely": "Likely",
+          "possible": "Possible"
+        },
+        "nudge": "Cut false matches with AI review",
+        "rescanHint": "Review with AI",
+        "rescanHintTooltip": "Many pairs scored below 70%. Scan again with AI review to hide the ones that aren't transfers. Uses your AI allowance.",
+        "rescanBanner": {
+          "title": "Many pairs scored below 70%",
+          "body": "AI review can hide the ones that aren't transfers. Uses your AI allowance."
+        }
+      }
+    },
+    "reconciliation": {
+      "title": "Transactions reconciliation",
+      "tabs": {
+        "transactions": "Transaksi",
+        "stuckPending": "Stuck pending",
+        "history": "Riwayat"
+      },
+      "table": {
+        "hint": "Select bank transactions to merge duplicates or remove extras"
+      },
+      "actions": {
+        "merge": "Gabungkan",
+        "remove": "Remove"
+      },
+      "blockReasons": {
+        "header": {
+          "merge": "Can't merge for {count} reasons:",
+          "remove": "Can't remove for {count} reasons:"
+        },
+        "notBankConnected": "Only bank-connected transactions can be reconciled.",
+        "planned": "Planned transactions can't be reconciled.",
+        "linkedTransfer": "Linked transfers can't be reconciled. Unlink the transfer first.",
+        "refundLinked": "Refund-linked transactions can't be reconciled. Unlink the refund first.",
+        "tooFew": "Select at least 2 transactions to merge.",
+        "tooMany": "Too many transactions selected (merge: up to {mergeMax}, remove: up to {removeMax}).",
+        "differentAccounts": "All transactions must belong to the same account."
+      },
+      "merge": {
+        "title": "Merge transactions",
+        "description": "Pick the transaction to keep. The others are removed and can be restored from History.",
+        "fields": {
+          "payee": "Penerima",
+          "status": "Status",
+          "time": "Time"
+        },
+        "status": {
+          "pending": "Tertunda",
+          "booked": "Booked"
+        },
+        "keep": "Keep",
+        "remove": "Remove",
+        "sameInAll": "Same in all:",
+        "confirm": "Merge and remove {count} | Merge and remove {count}"
+      },
+      "remove": {
+        "title": "Remove {count} transaction? | Remove {count} transactions?",
+        "description": "Removed transactions stop counting toward balances and stats. Tracker, group and subscription links are detached. You can restore them from History, but the links won't come back.",
+        "confirm": "Remove"
+      },
+      "restoreDialog": {
+        "title": "Restore {count} transaction? | Restore {count} transactions?",
+        "description": "Restored transactions count toward balances and stats again. If they were merged, the kept transaction stays, so you may see duplicates again. Tracker, group and subscription links detached on removal don't come back.",
+        "confirm": "Pulihkan"
+      },
+      "notifications": {
+        "removed": "Removed {count} transaction | Removed {count} transactions",
+        "merged": "Merged, removed {count} duplicate | Merged, removed {count} duplicates",
+        "restored": "Restored {count} transaction | Restored {count} transactions",
+        "keptAsBooked": "Marked as booked",
+        "checkedWithBank": "Checked with bank",
+        "unexpectedError": "Terjadi kesalahan. Silakan coba lagi.",
+        "bankCheck": {
+          "allBooked": "Your bank booked the transaction | Your bank booked all {count} transactions",
+          "someBooked": "Your bank booked {count} transaction | Your bank booked {count} transactions",
+          "noneBooked": "Your bank hasn't booked any of them yet",
+          "stillPending": "{count} is still pending. | {count} are still pending.",
+          "someFailed": "Couldn't reach the bank for {count} account. | Couldn't reach the bank for {count} accounts."
+        }
+      },
+      "stuckPending": {
+        "loadError": "Couldn't load stuck pending transactions.",
+        "emptyTitle": "No stuck pending transactions",
+        "emptyDescription": "Pending transactions older than 7 days show up here so you can resolve them.",
+        "checkWithBank": "Check with bank",
+        "summaryTooOld": "{count} row is still pending after a week. It's too old to check with your bank. | {count} rows are still pending after a week. They're too old to check with your bank.",
+        "checking": "Checking with bank…",
+        "checkAgain": "Check again",
+        "keepAsBooked": "Keep as booked",
+        "header": {
+          "title": "{count} transaction stuck in pending | {count} transactions stuck in pending",
+          "description": "Pending for more than a week in {count} account. | Pending for more than a week in {count} accounts.",
+          "titleChecked": "{count} transaction still pending | {count} transactions still pending",
+          "descriptionChecked": "Checked with your bank. Decide what to do with each one."
+        },
+        "checkFirstHint": "Check with your bank first. Transactions it has booked since then disappear from this list.",
+        "columns": {
+          "account": "Akun",
+          "date": "Tanggal",
+          "category": "Kategori",
+          "pendingFor": "Pending for",
+          "amount": "Jumlah",
+          "status": "Status",
+          "actions": "Tindakan"
+        },
+        "pendingDaysShort": "{count}d",
+        "status": {
+          "tooOld": "Too old to check",
+          "tooOldHint": "Your bank only shares about 90 days of history, so this transaction can't be checked. Keep it if the charge happened, remove it if it didn't.",
+          "duplicate": "Kemungkinan duplikat",
+          "duplicateHint": "A booked transaction from the same payee on {date} looks like the same payment. Merge them to keep one.",
+          "notFound": "Not found at bank",
+          "notFoundHint": "Your bank has no booked copy of this transaction, so it may be a released hold. Keep it if the charge happened, remove it if it didn't."
+        }
+      },
+      "history": {
+        "loadError": "Couldn't load reconciliation history.",
+        "emptyTitle": "No reconciliation history yet",
+        "emptyDescription": "Merged and removed transactions appear here so you can restore them.",
+        "type": {
+          "merge": "Merged",
+          "remove": "Removed"
+        },
+        "restore": "Pulihkan",
+        "kept": "Kept",
+        "removedRows": "{count} removed transaction | {count} removed transactions"
+      }
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "accounts": {
+    "title": "Tài khoản",
+    "createAccount": "Tạo tài khoản",
+    "createVehicle": "Thêm phương tiện",
+    "actionsMenu": "Thao tác tài khoản",
+    "sections": {
+      "archived": "Đã lưu trữ",
+      "manual": "Tài khoản thủ công",
+      "sharedWithMe": "Được chia sẻ với tôi",
+      "vehicles": "Phương tiện",
+      "bankConnections": "Kết nối ngân hàng"
+    },
+    "empty": {
+      "title": "Chưa có tài khoản nào",
+      "description": "Kết nối ngân hàng hoặc tạo tài khoản thủ công để bắt đầu theo dõi tài chính, số dư và giao dịch của bạn.",
+      "connectBank": "Kết nối tài khoản ngân hàng",
+      "createManual": "Tạo tài khoản thủ công"
+    },
+    "overview": {
+      "totalBalance": "Tổng số dư",
+      "assets": "Tài sản",
+      "liabilities": "Nợ phải trả",
+      "vehicles": "Phương tiện",
+      "projected": "Dự kiến {amount} · {count} giao dịch đến hết {date} | Dự kiến {amount} · {count} giao dịch đến hết {date}"
+    },
+    "sharedBy": "Được chia sẻ bởi {handle}",
+    "viaHousehold": "Được chia sẻ qua hộ gia đình của {handle}",
+    "connect": "Kết nối",
+    "connectBank": "Kết nối ngân hàng",
+    "noBanksConnected": "Chưa kết nối ngân hàng nào — hãy kết nối một ngân hàng để tự động đồng bộ số dư.",
+    "reconnect": "Kết nối lại",
+    "manageConnection": "Quản lý kết nối",
+    "accountsCount": "{count} tài khoản | {count} tài khoản",
+    "inGroupSubtitle": "trong {name}",
+    "sort": {
+      "auto": "Tự động",
+      "name": "Tên",
+      "balance": "Số dư",
+      "ariaLabel": "Sắp xếp tài khoản"
+    },
+    "status": {
+      "active": "Đang hoạt động",
+      "expiringSoon": "Sắp hết hạn",
+      "expired": "Đã hết hạn"
+    }
+  }
+}

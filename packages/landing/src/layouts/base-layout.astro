@@ -1,0 +1,114 @@
+---
+// Font CSS must be imported here rather than from global.css: the Tailwind Vite
+// plugin inlines @import-ed CSS but never emits the referenced woff2 assets.
+import '@fontsource/montserrat/latin-400.css';
+import '@fontsource/montserrat/latin-500.css';
+import '@fontsource/montserrat/latin-600.css';
+import '@fontsource/montserrat/latin-700.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+  canonicalUrl?: string;
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description = 'Open-source budget tracking app. Connect your banks, track expenses, set budgets, and monitor investments. Self-host with Docker or use our cloud. Your data stays yours.',
+  ogImage = '/img/og-image.jpg',
+  noindex = false,
+} = Astro.props;
+
+const siteUrl = Astro.site?.origin || 'https://moneymatter.app';
+const canonicalUrl = Astro.props.canonicalUrl ?? new URL(Astro.url.pathname, siteUrl).href;
+const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
+---
+
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={fullOgImage} />
+    <meta property="og:site_name" content="MoneyMatter" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalUrl} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={fullOgImage} />
+
+    <link rel="canonical" href={canonicalUrl} />
+
+    <link rel="icon" type="image/svg+xml" href="/img/logo.svg" />
+
+    <!-- Runtime config shim, assigning window.__APP_CONFIG__. In production the
+         container entrypoint writes it and nginx serves it from an exact-match
+         `/config.js` location shared with the SPA; a public/ placeholder covers
+         `astro dev`. `is:inline` keeps Astro from bundling it into a hashed
+         module, which would defer it past island hydration and lose the
+         per-container rewrite. -->
+    <script is:inline src="/config.js"></script>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<script>
+  // Expose landing-page actions to browser-based AI agents via WebMCP
+  // (draft API). Safe no-op where unsupported.
+  import { initPostHog, trackAnalyticsEvent } from '@/lib/posthog';
+  import { initWebMcp } from '@/lib/webmcp';
+
+  initPostHog();
+  initWebMcp();
+
+  // Attach click tracking to all [data-track] elements
+  document.querySelectorAll('[data-track]').forEach((el) => {
+    el.addEventListener('click', () => {
+      const event = el.getAttribute('data-track');
+      const location = el.getAttribute('data-track-location');
+
+      if (event === 'landing_cta_clicked' && location) {
+        trackAnalyticsEvent({
+          event: 'landing_cta_clicked',
+          properties: { location: location as 'header' | 'hero' | 'cta_section' | 'self_host' | 'pricing', action: 'sign_up' },
+        });
+      } else if (event === 'landing_roadmap_clicked' && location) {
+        trackAnalyticsEvent({
+          event: 'landing_roadmap_clicked',
+          properties: { location: location as 'hero' | 'community' },
+        });
+      } else if (event === 'landing_testflight_clicked' && location) {
+        trackAnalyticsEvent({
+          event: 'landing_testflight_clicked',
+          properties: { location: location as 'hero' },
+        });
+      } else if (event === 'landing_github_clicked' && location) {
+        trackAnalyticsEvent({
+          event: 'landing_github_clicked',
+          properties: { location: location as 'header_nav' | 'header_star' | 'hero' | 'self_host' | 'cta_section' | 'footer' | 'community' },
+        });
+      }
+    });
+  });
+</script>
+
+<style is:global>
+  @import '../styles/global.css';
+</style>

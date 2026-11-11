@@ -1,0 +1,48 @@
+{
+  "accounts": {
+    "title": "Рахунки",
+    "createAccount": "Створити рахунок",
+    "createVehicle": "Додати транспортний засіб",
+    "actionsMenu": "Дії з рахунком",
+    "sections": {
+      "archived": "Архівовані",
+      "manual": "Ручні рахунки",
+      "sharedWithMe": "Поділилися зі мною",
+      "vehicles": "Транспорт",
+      "bankConnections": "Банківські підключення"
+    },
+    "empty": {
+      "title": "Рахунків ще немає",
+      "description": "Підключіть свій банк або створіть ручний рахунок, щоб почати відстежувати свої фінанси, баланси та транзакції.",
+      "connectBank": "Підключити банківський рахунок",
+      "createManual": "Створити ручний рахунок"
+    },
+    "overview": {
+      "totalBalance": "Загальний баланс",
+      "assets": "Активи",
+      "liabilities": "Зобов'язання",
+      "vehicles": "Транспорт",
+      "projected": "Прогноз {amount} · {count} запланований запис до {date} | Прогноз {amount} · {count} заплановані записи до {date} | Прогноз {amount} · {count} запланованих записів до {date}"
+    },
+    "sharedBy": "Ділиться: {handle}",
+    "viaHousehold": "Через сім'ю {handle}",
+    "connect": "Підключити",
+    "connectBank": "Підключити банк",
+    "noBanksConnected": "Банки ще не підключено — підключіть один, щоб автоматично синхронізувати баланси.",
+    "reconnect": "Перепідключити",
+    "manageConnection": "Керувати підключенням",
+    "accountsCount": "{count} рахунок | {count} рахунки | {count} рахунків",
+    "inGroupSubtitle": "у {name}",
+    "sort": {
+      "auto": "Авто",
+      "name": "Назва",
+      "balance": "Баланс",
+      "ariaLabel": "Сортувати рахунки"
+    },
+    "status": {
+      "active": "Активний",
+      "expiringSoon": "Скоро закінчиться",
+      "expired": "Закінчився"
+    }
+  }
+}

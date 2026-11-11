@@ -1,0 +1,125 @@
+{
+  "pages": {
+    "importExport": {
+      "ofxImport": {
+        "pageTitle": "Importa un file OFX o QFX",
+        "pageDescription": "Importare transazioni bancarie e della carta di credito da un file OFX o QFX.",
+        "stepper": {
+          "steps": {
+            "upload": "Caricamento",
+            "resolve": "Mappatura conti",
+            "review": "Revisiona",
+            "results": "Fatto"
+          }
+        },
+        "fileUpload": {
+          "stepTitle": "Carica il file OFX o QFX",
+          "description": "Selezionare un estratto conto scaricato dalla banca o dall'emittente della carta di credito.",
+          "maxSize": "File .ofx o .qfx, fino a 10 MB",
+          "parsing": "Lettura del file…",
+          "continue": "Continua",
+          "errors": {
+            "invalidFormatNamed": "\"{name}\" non è un file OFX o QFX."
+          }
+        },
+        "errors": {
+          "uploadUnavailable": "Il file caricato non è più disponibile. Caricare di nuovo il file OFX o QFX."
+        },
+        "resolve": {
+          "accounts": {
+            "sectionTitle": "Conti",
+            "nameLabel": "Nome del conto",
+            "namePlaceholder": "Inserire un nome per il conto",
+            "currentBalanceLabel": "Saldo attuale",
+            "currentBalancePlaceholder": "Lascia vuoto per iniziare dalla somma delle transazioni importate",
+            "ledgerBalanceHint": "Saldo dell'estratto conto: {balance} al {date}",
+            "transactionCount": "{count} transazione | {count} transazioni",
+            "skippedNote": "{count} conto verrà saltato. Le sue transazioni non verranno importate. | {count} conti verranno saltati. Le relative transazioni non verranno importate.",
+            "statementType": {
+              "bank": "Conto bancario",
+              "credit-card": "Carta di credito"
+            }
+          },
+          "quickActions": {
+            "mapExactMatches": "Mappa corrispondenze esatte",
+            "createNewForUnmatched": "Crea nuovi per i non abbinati",
+            "reset": "Reimposta",
+            "tooltips": {
+              "mapExactMatches": "Collega ogni conto a un conto esistente con lo stesso nome e la stessa valuta.",
+              "createNewForUnmatched": "Imposta la creazione di un nuovo conto per ogni conto non collegato a uno esistente.",
+              "reset": "Cancella tutte le scelte ed esegue di nuovo l'abbinamento."
+            }
+          },
+          "footer": {
+            "back": "Indietro",
+            "continue": "Continua"
+          }
+        },
+        "review": {
+          "transactions": "Transazioni",
+          "accountsSkipped": "Conti omessi",
+          "duplicatesSkipped": "Duplicati saltati",
+          "willImport": "Da importare",
+          "dateRange": "Intervallo di date: {from} — {to}",
+          "warningsTitle": "Verificare questi dettagli del file",
+          "warningsHint": "L'importazione può proseguire, ma alcune transazioni richiedono una gestione particolare.",
+          "warnings": {
+            "dateUserFallback": "{count} transazione ha usato il fuso orario di riserva del file | {count} transazioni hanno usato il fuso orario di riserva del file",
+            "fitidMissing": "{count} transazione non aveva un ID di transazione bancaria | {count} transazioni non avevano un ID di transazione bancaria",
+            "fitidDuplicate": "Nel file è stato trovato {count} ID di transazione bancaria duplicato | Nel file sono stati trovati {count} ID di transazione bancaria duplicati"
+          },
+          "duplicatesTitle": "{count} possibile duplicato | {count} possibili duplicati",
+          "duplicatesHint": "Queste transazioni sembrano già presenti. Selezionare una riga per importarla comunque; i duplicati non selezionati vengono saltati.",
+          "back": "Indietro",
+          "importing": "Avvio dell'importazione…",
+          "importButton": "Importa {count} transazione | Importa {count} transazioni"
+        },
+        "execute": {
+          "starting": "Avvio dell'importazione…",
+          "progressCount": "{processed} di {total}",
+          "failed": "Importazione non riuscita.",
+          "partialImportNote": "Alcune transazioni potrebbero essere già state importate.",
+          "statusQueued": "In coda",
+          "statusRunning": "Importazione",
+          "statusCompleted": "Completato",
+          "statusFailed": "Non riuscita"
+        },
+        "done": {
+          "successTitle": "Importazione terminata",
+          "successDescription": "Le transazioni OFX o QFX sono ora nel profilo.",
+          "partialTitle": "Importazione con {count} problema | Importazione con {count} problemi",
+          "partialDescription": "La maggior parte delle transazioni è stata importata. L'elenco qui sotto mostra quelle non importate.",
+          "emptyTitle": "Nulla di nuovo da importare",
+          "emptyDescription": "Ogni transazione è stata saltata o era già nel registro.",
+          "failedTitle": "Non è stato importato nulla",
+          "failedDescription": "Non è stato possibile creare alcuna transazione. Rivedere gli errori qui sotto.",
+          "accountsCreated": "Conti creati",
+          "accountsLinked": "Conti collegati",
+          "accountsSkipped": "Conti omessi",
+          "payeesCreated": "Beneficiari creati",
+          "transactionsImported": "Transazioni importate",
+          "duplicatesSkipped": "Duplicati saltati",
+          "mergedIntoPlanned": "Unite alle pianificate",
+          "balanceWarningTitle": "Alcuni saldi potrebbero essere errati",
+          "balanceWarningBody": "Non è stato possibile impostare il saldo finale su ogni conto. Controllare questi conti e rettificarne i saldi se necessario.",
+          "errorsTitle": "Impossibile importare {count} transazione | Impossibile importare {count} transazioni",
+          "errorsOverflow": "…e altre {count}",
+          "errors": {
+            "rowImportFailed": "Impossibile importare questa riga.",
+            "accountBalanceDesync": "Il saldo di un conto non è stato aggiornato dopo l'importazione.",
+            "rowsSuppressed": "Importazione non riuscita per {count} altra riga da questa in poi. Sono elencati solo i primi {listed} errori. | Importazione non riuscita per altre {count} righe da questa in poi. Sono elencati solo i primi {listed} errori."
+          },
+          "rowPrefix": "Riga {rowIndex}:",
+          "viewTransactions": "Visualizza transazioni",
+          "importAnother": "Importa un altro file"
+        },
+        "leaseExpired": {
+          "title": "Il file caricato non è più disponibile",
+          "description": "La copia analizzata del file OFX o QFX è stata rilasciata dopo un periodo di inattività. Non è stato possibile conservare le scelte di mappatura. Avviare di nuovo l'importazione.",
+          "action": "Ricomincia"
+        },
+        "leaseResourceLabel": "File caricato"
+      }
+    }
+  }
+}

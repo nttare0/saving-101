@@ -1,0 +1,80 @@
+{
+  "pages": {
+    "importExport": {
+      "ynabImport": {
+        "pageTitle": "Impor dari YNAB",
+        "pageDescription": "Upload ekspor Register.csv YNAB Anda untuk membawa akun, transaksi, kategori, penerima, dan tag ke MoneyMatter.",
+        "stepper": {
+          "steps": {
+            "upload": "Unggah",
+            "preview": "Tinjau",
+            "results": "Selesai"
+          }
+        },
+        "fileUpload": {
+          "stepTitle": "Letakkan Register.csv Anda di sini",
+          "description": "YNAB → Budget → Export budget → unzip → gunakan file Register.csv.",
+          "maxSize": "Hingga 10 MB.",
+          "parsing": "Mengurai...",
+          "continueToPreview": "Lanjutkan",
+          "errors": {
+            "invalidFormat": "Harap upload file .csv."
+          }
+        },
+        "preview": {
+          "emptyList": "Tidak ada yang diimpor di sini.",
+          "accounts": "Akun",
+          "categories": "Kategori",
+          "payees": "Penerima",
+          "tags": "Tag",
+          "transactions": "Transaksi",
+          "transfers": "Transfer",
+          "dateRange": "Rentang: {from} → {to}",
+          "accountsHelper": "Untuk setiap akun YNAB, konfirmasi mata uangnya.",
+          "skippedNote": "{count} akun akan dilewati. Transaksinya — dan transfer apa pun ke atau darinya — tidak akan diimpor.",
+          "warningsTitle": "Peringatan",
+          "rowPrefix": "Baris {rowIndex}:",
+          "startOver": "Mulai ulang",
+          "continueToImport": "Mulai impor"
+        },
+        "accountRow": {
+          "transactionsCount": "{count} transaksi",
+          "startingBalance": "Saldo awal",
+          "currencyPlaceholder": "USD",
+          "currencyLabel": "Mata Uang",
+          "currencyInvalid": "Masukkan kode mata uang 3 huruf (mis: USD)",
+          "autoDetected": "terdeteksi otomatis: {code}",
+          "undoSkip": "Sertakan dalam impor"
+        },
+        "execute": {
+          "starting": "Memulai impor...",
+          "progressCount": "{processed} / {total}",
+          "statusQueued": "Antrean",
+          "statusRunning": "Mengimpor...",
+          "statusCompleted": "Selesai",
+          "statusFailed": "Gagal",
+          "failed": "Impor tidak dapat diselesaikan."
+        },
+        "done": {
+          "successTitle": "Impor selesai",
+          "successDescription": "Data YNAB Anda sekarang ada di MoneyMatter.",
+          "accountsCreated": "Akun dibuat",
+          "accountsSkipped": "Akun dilewati",
+          "categoriesCreated": "Kategori dibuat",
+          "payeesCreated": "Penerima dibuat",
+          "tagsCreated": "Tag dibuat",
+          "transactionsImported": "Transaksi diimpor",
+          "transfersImported": "Transfer diimpor",
+          "splitsDetected": "Grup split terdeteksi",
+          "errorsTitle": "{count} baris gagal diimpor",
+          "errors": {
+            "payeeCreateFailed": "Could not create payee \"{payeeName}\". Its transactions were imported without a payee.",
+            "rowImportFailed": "This row could not be imported."
+          },
+          "viewTransactions": "Lihat transaksi",
+          "importAnother": "Impor file lain"
+        }
+      }
+    }
+  }
+}

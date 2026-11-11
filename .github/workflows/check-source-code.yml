@@ -1,0 +1,299 @@
+name: Lint, Test and Build
+
+on:
+  push:
+    # Post-merge run on main only. dev is intentionally excluded: it is a PR head
+    # branch (dev -> main release PRs), so listing it here would fire push AND
+    # pull_request on the same head SHA, double-running every check on the PR.
+    # Commits reaching dev already passed the unfiltered pull_request trigger below.
+    branches: [main]
+  pull_request:
+  # enable manual triggers
+  workflow_dispatch:
+
+env:
+  # Total number of backend e2e shards. Must stay in sync with the
+  # backend-e2e job's matrix.shardIndex list (a matrix cannot read env vars).
+  BACKEND_E2E_SHARD_TOTAL: 4
+
+jobs:
+  prepare-dependencies:
+    name: Prepare local deps
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - id: prepare-env
+        uses: ./.github/actions/prepare-local-env
+      - name: Install dependencies
+        if: steps.prepare-env.outputs.cache-hit != 'true'
+        run: npm ci
+
+  detect-changes:
+    name: Detect code changes
+    runs-on: ubuntu-latest
+    outputs:
+      frontend-only: ${{ steps.detect.outputs.frontend_only }}
+      backend-only: ${{ steps.detect.outputs.backend_only }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0 # Fetch all history for file changes
+      - id: detect
+        uses: ./.github/actions/detect-changes
+
+  frontend:
+    name: Frontend tasks
+    needs: [prepare-dependencies, detect-changes]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        task: [lint, test, build, knip]
+    steps:
+      - name: Skip – no frontend changes
+        if: needs.detect-changes.outputs.backend-only == 'true'
+        run: echo "No frontend changes detected. Skipping."
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        if: needs.detect-changes.outputs.backend-only != 'true'
+      - uses: ./.github/actions/prepare-local-env
+        if: needs.detect-changes.outputs.backend-only != 'true'
+      - name: Run ${{ matrix.task }}
+        if: needs.detect-changes.outputs.backend-only != 'true'
+        run: npm run ${{ matrix.task }} -w packages/frontend
+
+  frontend-docker-build:
+    name: Build frontend Docker image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Free Disk Space (Ubuntu)
+        uses: jlumbroso/free-disk-space@ceedf095f4ec1a097402bc6bd80831f2e1a6fde6 # v2.0.0
+        with:
+          tool-cache: false
+          android: true
+          dotnet: true
+          haskell: true
+          large-packages: true
+          docker-images: true
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - id: frontend-docker-build
+        uses: ./.github/actions/frontend-docker-build
+      - name: Image digest
+        run: echo ${{ steps.frontend-docker-build.outputs.docker-build-digest }}
+      - name: Smoke test
+        run: ./self-hosting/frontend/smoke-test.sh local/budget-tracker-fe:latest
+
+  backend:
+    name: Backend tasks
+    needs: [prepare-dependencies, detect-changes]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        # typecheck is the only type-check gate for backend code: the e2e/unit
+        # jest transform runs ts-jest with isolatedModules (transpile-only).
+        task: [lint, 'test:unit', 'test:lint-rules', knip, typecheck]
+    steps:
+      - name: Skip – no backend changes
+        if: needs.detect-changes.outputs.frontend-only == 'true'
+        run: echo "No backend changes detected. Skipping."
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        if: needs.detect-changes.outputs.frontend-only != 'true'
+      - uses: ./.github/actions/prepare-local-env
+        if: needs.detect-changes.outputs.frontend-only != 'true'
+      - name: Make backend env file
+        if: needs.detect-changes.outputs.frontend-only != 'true'
+        uses: SpicyPizza/create-envfile@ace6d4f5d7802b600276c23ca417e669f1a06f6f # v2.0.3
+        with:
+          envkey_APPLICATION_HOST: 127.0.0.1
+          envkey_APPLICATION_PORT: 8081
+          envkey_APPLICATION_JWT_SECRET: test-jwt
+          # docker/test/backend/docker-compose.yml DB's service name
+          envkey_APPLICATION_DB_HOST: test-db
+          envkey_APPLICATION_DB_USERNAME: test
+          envkey_APPLICATION_DB_PASSWORD: test
+          envkey_APPLICATION_DB_DATABASE: budget-tracker_test
+          envkey_APPLICATION_DB_PORT: 5432
+          envkey_APPLICATION_DB_DIALECT: postgres
+          # docker/test/backend/docker-compose.yml redis' service name
+          envkey_APPLICATION_REDIS_HOST: test-redis
+          # GitHub runner has 4 CPU
+          # https://docs.github.com/en/actions/reference/runners/github-hosted-runners#standard-github-hosted-runners-for-public-repositories
+          envkey_JEST_WORKERS_AMOUNT: 4
+          envkey_SHOW_LOGS_IN_TESTS: false
+          envkey_POLYGON_API_KEY: test
+          envkey_ALPHA_VANTAGE_API_KEY: test
+          envkey_API_LAYER_API_KEYS: test,test
+          envkey_FMP_API_KEY: test
+          envkey_COINGECKO_API_KEY: test
+          envkey_LOGO_DEV_SECRET_KEY: test
+          envkey_ADMIN_USERS: test1
+          file_name: .env.test
+          fail_on_empty: true # fail if any env variable is empty
+      # The .mny parser suites self-skip when these sample databases are absent, so a
+      # failed download must fail the job — otherwise their tests silently disappear
+      # behind a green check. Only test:unit reads them; lint and knip do not.
+      - name: Cache MS Money fixtures
+        if: needs.detect-changes.outputs.frontend-only != 'true' && matrix.task == 'test:unit'
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: packages/backend/src/tests/fixtures/ms-money-import
+          key: ms-money-fixtures-${{ hashFiles('packages/backend/src/tests/fixtures/ms-money-fixtures.ts') }}
+          restore-keys: ms-money-fixtures-
+      - name: Download MS Money fixtures
+        if: needs.detect-changes.outputs.frontend-only != 'true' && matrix.task == 'test:unit'
+        run: |
+          for attempt in 1 2 3; do
+            echo "=== Attempt $attempt of 3 ==="
+            if npm run fixtures:ms-money -w packages/backend; then
+              exit 0
+            fi
+            if [ $attempt -lt 3 ]; then
+              echo "Download failed. Retrying in 10s..."
+              sleep 10
+            fi
+          done
+          echo "MS Money fixtures could not be downloaded after 3 attempts"
+          exit 1
+      - name: Run ${{ matrix.task }}
+        if: needs.detect-changes.outputs.frontend-only != 'true'
+        run: npm run ${{ matrix.task }} -w packages/backend
+
+  backend-e2e:
+    name: Backend e2e tests (shard ${{ matrix.shardIndex }})
+    needs: [prepare-dependencies, detect-changes]
+    runs-on: ubuntu-latest
+    strategy:
+      # A failing shard must not cancel the others – each covers different tests
+      fail-fast: false
+      matrix:
+        # Keep in sync with BACKEND_E2E_SHARD_TOTAL above
+        shardIndex: [1, 2, 3, 4]
+    steps:
+      - name: Skip – no backend changes
+        if: needs.detect-changes.outputs.frontend-only == 'true'
+        run: echo "No backend changes detected. Skipping."
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        if: needs.detect-changes.outputs.frontend-only != 'true'
+      - uses: ./.github/actions/prepare-local-env
+        if: needs.detect-changes.outputs.frontend-only != 'true'
+      - name: Make backend env file
+        if: needs.detect-changes.outputs.frontend-only != 'true'
+        uses: SpicyPizza/create-envfile@ace6d4f5d7802b600276c23ca417e669f1a06f6f # v2.0.3
+        with:
+          envkey_APPLICATION_HOST: 127.0.0.1
+          envkey_APPLICATION_PORT: 8081
+          envkey_APPLICATION_JWT_SECRET: test-jwt
+          # docker/test/backend/docker-compose.yml DB's service name
+          envkey_APPLICATION_DB_HOST: test-db
+          envkey_APPLICATION_DB_USERNAME: test
+          envkey_APPLICATION_DB_PASSWORD: test
+          envkey_APPLICATION_DB_DATABASE: budget-tracker_test
+          envkey_APPLICATION_DB_PORT: 5432
+          envkey_APPLICATION_DB_DIALECT: postgres
+          # docker/test/backend/docker-compose.yml redis' service name
+          envkey_APPLICATION_REDIS_HOST: test-redis
+          # GitHub runner has 4 CPU
+          # https://docs.github.com/en/actions/reference/runners/github-hosted-runners#standard-github-hosted-runners-for-public-repositories
+          envkey_JEST_WORKERS_AMOUNT: 4
+          envkey_SHOW_LOGS_IN_TESTS: false
+          envkey_POLYGON_API_KEY: test
+          envkey_ALPHA_VANTAGE_API_KEY: test
+          envkey_API_LAYER_API_KEYS: test,test
+          envkey_FMP_API_KEY: test
+          envkey_COINGECKO_API_KEY: test
+          envkey_LOGO_DEV_SECRET_KEY: test
+          envkey_ADMIN_USERS: test1
+          file_name: .env.test
+          fail_on_empty: true # fail if any env variable is empty
+      # The .mny import suites self-skip when these sample databases are absent, so a
+      # failed download must fail the job rather than silently drop their tests. The
+      # image build context is the repo root, so fixtures fetched here get copied in.
+      - name: Cache MS Money fixtures
+        if: needs.detect-changes.outputs.frontend-only != 'true'
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: packages/backend/src/tests/fixtures/ms-money-import
+          key: ms-money-fixtures-${{ hashFiles('packages/backend/src/tests/fixtures/ms-money-fixtures.ts') }}
+          restore-keys: ms-money-fixtures-
+      - name: Download MS Money fixtures
+        if: needs.detect-changes.outputs.frontend-only != 'true'
+        run: |
+          for attempt in 1 2 3; do
+            echo "=== Attempt $attempt of 3 ==="
+            if npm run fixtures:ms-money -w packages/backend; then
+              exit 0
+            fi
+            if [ $attempt -lt 3 ]; then
+              echo "Download failed. Retrying in 10s..."
+              sleep 10
+            fi
+          done
+          echo "MS Money fixtures could not be downloaded after 3 attempts"
+          exit 1
+      # Restores a pg_dump of the fully-migrated template DB so setup-e2e-tests.sh
+      # can pg_restore it instead of running every migration (~75s per shard). The
+      # key hashes the migrations plus the data files they seed from; on a miss the
+      # script runs migrations and writes the dump for this step to save. All
+      # shards share the key: on a miss every green shard tries to save, the first
+      # wins and the rest log a harmless "unable to reserve cache" warning.
+      - name: Cache migrated template DB dump
+        if: needs.detect-changes.outputs.frontend-only != 'true'
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: packages/backend/.e2e-template-cache
+          key: template-db-pg16-${{ hashFiles('packages/backend/src/migrations/**', 'packages/backend/src/tests/test-exchange-rates.json', 'packages/backend/src/resources/mcc-codes.json') }}
+      # Prebuild the compose test-runner image with GHA layer caching — compose's
+      # own `up --build` cannot use the buildx cache. Must run after the fixtures
+      # download: the image COPYs packages/backend, fixtures included. When
+      # TEST_RUNNER_IMAGE is set, setup-e2e-tests.sh starts compose with
+      # --no-build and this prebuilt image.
+      - name: Set up Docker Buildx
+        if: needs.detect-changes.outputs.frontend-only != 'true'
+        uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4.4.1
+      - name: Build test-runner image
+        if: needs.detect-changes.outputs.frontend-only != 'true'
+        uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
+        with:
+          context: .
+          file: docker/test/backend/Dockerfile
+          load: true
+          tags: bt-e2e-test-runner:ci
+          cache-from: type=gha
+          # Only one shard uploads the layer cache; the other three would race to
+          # write identical content.
+          cache-to: ${{ matrix.shardIndex == 1 && 'type=gha,mode=max' || '' }}
+      # The shard arg is forwarded by setup-e2e-tests.sh ("$@") into the jest
+      # call, so each shard boots its own Docker env but runs only its slice
+      # of the e2e suite. Flake protection lives in-process: setupIntegrationTests.ts
+      # sets jest.retryTimes(2) on CI, so a red step here already failed 3 times.
+      - name: Run e2e tests
+        if: needs.detect-changes.outputs.frontend-only != 'true'
+        env:
+          TEST_RUNNER_IMAGE: bt-e2e-test-runner:ci
+        run: npm run test:e2e -w packages/backend -- --shard=${{ matrix.shardIndex }}/${{ env.BACKEND_E2E_SHARD_TOTAL }}
+
+  backend-docker-build:
+    name: Build backend Docker image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Free Disk Space (Ubuntu)
+        uses: jlumbroso/free-disk-space@ceedf095f4ec1a097402bc6bd80831f2e1a6fde6 # v2.0.0
+        with:
+          # this might remove tools that are actually needed,
+          # if set to "true" but frees about 6 GB
+          tool-cache: false
+
+          # all of these default to true, but feel free to set to
+          # "false" if necessary
+          android: true
+          dotnet: true
+          haskell: true
+          large-packages: true
+          docker-images: true
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - id: backend-docker-build
+        uses: ./.github/actions/backend-docker-build
+      - name: Image digest
+        run: echo ${{ steps.backend-docker-build.outputs.docker-build-digest }}

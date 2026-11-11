@@ -1,0 +1,25 @@
+{
+  "settings": {
+    "navigation": {
+      "currencies": "Валюти",
+      "categories": "Категорії",
+      "tags": "Теги",
+      "accountsGroups": "Групи рахунків",
+      "importData": "Імпорт/Експорт",
+      "ai": "AI",
+      "security": "Безпека",
+      "admin": "Адміністратор",
+      "sharedWithMe": "Поділилися зі мною",
+      "household": "Сім'я",
+      "personalGroup": "Особисте",
+      "workspaceGroup": "Робочий простір",
+      "appearance": "Зовнішній вигляд",
+      "language": "Мова",
+      "general": "Загальні",
+      "payees": "Отримувачі",
+      "planBilling": "План і оплата",
+      "collapse": "Згорнути"
+    },
+    "backToSettings": "Назад до налаштувань"
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "settings": {
+    "tags": {
+      "title": "Étiquettes",
+      "addButton": "Ajouter une étiquette",
+      "empty": "Aucune étiquette pour l'instant. Créez votre première étiquette pour organiser vos opérations.",
+      "tabs": {
+        "details": "Détails",
+        "reminders": "Rappels"
+      },
+      "form": {
+        "createTitle": "Créer une étiquette",
+        "editTitle": "Modifier l'étiquette",
+        "name": "Nom",
+        "namePlaceholder": "Nom de l'étiquette",
+        "color": "Couleur",
+        "icon": "Icône",
+        "iconPlaceholder": "Sélectionner une icône",
+        "description": "Description",
+        "descriptionPlaceholder": "Description facultative",
+        "saveButton": "Enregistrer",
+        "previewPlaceholder": "Nom de l'étiquette"
+      },
+      "delete": {
+        "title": "Supprimer l'étiquette ?",
+        "description": "Cette action supprimera définitivement « {name} » et la retirera de toutes les opérations. Cette action est irréversible.",
+        "deleteButton": "Supprimer",
+        "cancelButton": "Annuler"
+      },
+      "notifications": {
+        "createSuccess": "Étiquette créée",
+        "createFailed": "Échec de la création de l'étiquette",
+        "updateSuccess": "Étiquette mise à jour",
+        "updateFailed": "Échec de la mise à jour de l'étiquette",
+        "deleteSuccess": "Étiquette supprimée",
+        "deleteFailed": "Échec de la suppression de l'étiquette"
+      },
+      "reminders": {
+        "addButton": "Ajouter un rappel",
+        "empty": "Aucun rappel pour l'instant. Créez un rappel pour recevoir des alertes sur l'activité de cette étiquette.",
+        "enabled": "Activé",
+        "disabled": "Désactivé",
+        "form": {
+          "createTitle": "Créer un rappel",
+          "editTitle": "Modifier le rappel",
+          "type": "Type de rappel",
+          "typePlaceholder": "Sélectionner un type",
+          "amountThreshold": "Seuil de montant",
+          "amountThresholdPlaceholder": "Saisir le montant seuil",
+          "amountThresholdHint": "Recevoir une notification lorsque les dépenses avec cette étiquette dépassent ce montant",
+          "frequency": "Fréquence",
+          "frequencyPlaceholder": "Sélectionner la fréquence",
+          "dayOfMonth": "Jour du mois",
+          "dayOfMonthPlaceholder": "Sélectionner le jour",
+          "dayOfMonthHint": "Pour les mois comptant moins de jours, le dernier jour sera utilisé",
+          "isEnabled": "Activé",
+          "saveButton": "Enregistrer"
+        },
+        "types": {
+          "amountThreshold": "Seuil de montant",
+          "amountThresholdDescription": "Alerter lorsque les dépenses dépassent un certain montant",
+          "existenceCheck": "Contrôle d'activité",
+          "existenceCheckDescription": "Alerter lorsque des opérations portent cette étiquette"
+        },
+        "frequencies": {
+          "immediate": "Immédiate",
+          "immediateDescription": "Se déclenche dès qu'une opération est étiquetée (délai d'attente de 24 h)",
+          "daily": "Quotidienne",
+          "dailyDescription": "Vérifier chaque jour",
+          "weekly": "Hebdomadaire",
+          "weeklyDescription": "Vérifier chaque lundi",
+          "monthly": "Mensuelle",
+          "monthlyDescription": "Vérifier un jour précis chaque mois",
+          "quarterly": "Trimestrielle",
+          "quarterlyDescription": "Vérifier tous les 3 mois (janv., avr., juil., oct.)",
+          "yearly": "Annuelle",
+          "yearlyDescription": "Vérifier une fois par an en janvier"
+        },
+        "delete": {
+          "title": "Supprimer le rappel ?",
+          "description": "Cette action supprimera définitivement ce rappel et ne peut pas être annulée.",
+          "deleteButton": "Supprimer",
+          "cancelButton": "Annuler"
+        },
+        "notifications": {
+          "createSuccess": "Rappel créé",
+          "createFailed": "Échec de la création du rappel",
+          "updateSuccess": "Rappel mis à jour",
+          "updateFailed": "Échec de la mise à jour du rappel",
+          "deleteSuccess": "Rappel supprimé",
+          "deleteFailed": "Échec de la suppression du rappel"
+        }
+      }
+    }
+  }
+}

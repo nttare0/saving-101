@@ -1,0 +1,136 @@
+import { t } from '@i18n/index';
+import { ValidationError } from '@js/errors';
+import PayeeAliases from '@models/payee-aliases.model';
+import PayeeIgnoredNames from '@models/payee-ignored-names.model';
+import Payees from '@models/payees.model';
+
+import { insertOrAdopt } from '../common/run-in-savepoint';
+import { normalizePayeeName } from './normalize-name';
+
+/**
+ * The user's payee name namespace.
+ *
+ * Invariant: a normalizedName — canonical Payee name or alias — resolves to at
+ * most ONE Payee per user. The extraction pipeline's exact-match step
+ * (`resolvePayeeForRawMerchant` → `resolveNormalizedName`) relies on this to
+ * link incoming transactions deterministically. Every write path that
+ * introduces a new normalizedName into the namespace (payee create, rename,
+ * user-curated alias, merge) must consult this module before inserting.
+ */
+
+interface PayeeNamespaceHit {
+  payeeId: string;
+  name: string;
+  /** Whether the normalizedName matched the Payee's canonical name or one of its aliases. */
+  via: 'canonical' | 'alias';
+}
+
+/**
+ * Resolve a normalizedName within one user's namespace. Canonical names win
+ * over aliases (a canonical hit never needs an alias row to be addressable).
+ *
+ * `PayeeAliases` rows carry no `userId` — scoping happens through the required
+ * join to the owning Payee. A bare `findOne({ normalizedName })` would match an
+ * arbitrary user's alias row and shadow this user's own rows, producing false
+ * negatives in conflict checks and cross-tenant-dependent behavior.
+ */
+export async function resolveNormalizedName({
+  userId,
+  normalized,
+}: {
+  userId: number;
+  normalized: string;
+}): Promise<PayeeNamespaceHit | null> {
+  const canonical = await Payees.findOne({
+    where: { userId, normalizedName: normalized },
+    attributes: ['id', 'name'],
+  });
+  if (canonical) {
+    return { payeeId: canonical.id, name: canonical.name, via: 'canonical' };
+  }
+
+  const aliasHit = await PayeeAliases.findOne({
+    where: { normalizedName: normalized },
+    include: [
+      {
+        model: Payees,
+        as: 'payee',
+        required: true,
+        where: { userId },
+        attributes: ['id', 'name'],
+      },
+    ],
+  });
+  if (aliasHit) {
+    return { payeeId: aliasHit.payeeId, name: aliasHit.payee.name, via: 'alias' };
+  }
+
+  return null;
+}
+
+/**
+ * Blocklist gate for every machine-driven link into the namespace (fuzzy
+ * match, auto-written alias, occurrence promotion). Exact canonical/alias hits
+ * deliberately skip it: a Payee or alias the user created under an ignored
+ * name is their explicit override of the block.
+ */
+export async function isPayeeNameIgnored({
+  userId,
+  normalizedName,
+}: {
+  userId: number;
+  normalizedName: string;
+}): Promise<boolean> {
+  const row = await PayeeIgnoredNames.findOne({ where: { userId, normalizedName }, attributes: ['id'] });
+  return row !== null;
+}
+
+/**
+ * Trim + normalize a user-provided payee/alias name, rejecting input that
+ * normalizes to nothing (whitespace, punctuation-only strings). `display` is
+ * what gets stored as the human-readable form; `normalized` is the namespace
+ * key. `emptyMessageKey` lets each endpoint keep its own ValidationError copy.
+ */
+export function parsePayeeName({ raw, emptyMessageKey }: { raw: string; emptyMessageKey: string }): {
+  display: string;
+  normalized: string;
+} {
+  const display = raw.trim();
+  if (!display) {
+    throw new ValidationError({ message: t({ key: emptyMessageKey }) });
+  }
+  const normalized = normalizePayeeName({ raw: display });
+  if (!normalized) {
+    throw new ValidationError({ message: t({ key: emptyMessageKey }) });
+  }
+  return { display, normalized };
+}
+
+/**
+ * Idempotent alias insert. Callers run inside a shared transaction, so the
+ * insert is isolated in a savepoint via `insertOrAdopt`: a concurrent sync
+ * hitting the same merchant loses the race on UNIQUE (payeeId, normalizedName),
+ * rolls back only the savepoint, and adopts the existing row — the enclosing
+ * transaction stays usable. A plain `findOrCreate` would recover its
+ * uniqueness conflict by re-reading inside the now-aborted transaction, which
+ * fails with "current transaction is aborted".
+ *
+ * Deliberately does NOT consult `resolveNormalizedName`: callers (extraction
+ * fuzzy-link, rename, merge) attach an alias to a Payee the name already
+ * resolves to, so the namespace invariant holds by construction. Conflict
+ * checking belongs to the user-facing write paths.
+ */
+export async function ensureAliasExists({
+  payeeId,
+  rawName,
+  normalizedName,
+}: {
+  payeeId: string;
+  rawName: string;
+  normalizedName: string;
+}): Promise<void> {
+  await insertOrAdopt({
+    insert: () => PayeeAliases.create({ payeeId, rawName, normalizedName }),
+    adopt: () => PayeeAliases.findOne({ where: { payeeId, normalizedName } }),
+  });
+}

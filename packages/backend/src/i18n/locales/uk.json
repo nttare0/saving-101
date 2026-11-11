@@ -1,0 +1,909 @@
+{
+  "common": {
+    "processAlreadyLocked": "Процес синхронізації для «{{lockKey}}» вже заблоковано.",
+    "serviceTemporarilyUnavailable": "Сервіс тимчасово недоступний. Спробуйте ще раз.",
+    "jobInterruptedByServerUpdate": "Оновлення сервера перервало цю операцію до завершення, тому нічого не було змінено."
+  },
+  "accounts": {
+    "groupNotFound": "Групу або рахунок не знайдено",
+    "accountNotFound": "Рахунок не знайдено!",
+    "accountUpdateFailed": "Оновлення рахунку не вдалося",
+    "accountNoExternalId": "Рахунок не має зовнішнього ID",
+    "accountNoExternalIdMonobank": "Рахунок не має зовнішнього ID від Monobank",
+    "accountNoExternalIdEnableBanking": "Рахунок не має зовнішнього ID від Enable Banking",
+    "accountNotFoundForTransaction": "Рахунок для цієї транзакції не знайдено",
+    "deleteBlockedByLoanPayments": "Цей рахунок має платежі за кредитами. Видаліть або перепризначте їх перед видаленням рахунку.",
+    "deleteBlockedByTrashedLoanPayments": "Цей рахунок має платежі за кредитами у смітнику. Остаточно видаліть їх зі смітника перед видаленням рахунку.",
+    "loanBalanceUseUpdateLoan": "Змінюйте залишок боргу на сторінці кредиту, а не в налаштуваннях рахунку.",
+    "loanCategoryImmutable": "Категорію кредитного рахунку не можна змінити.",
+    "dedicatedFlowCategoryNotAllowed": "Рахунки кредитів та транспортних засобів мають бути створені через їх спеціальні точки входу, а не через загальну точку входу рахунків.",
+    "initialBalanceOnlySystem": "Початковий баланс можна змінити тільки для ручних рахунків",
+    "initialAndCurrentBalanceTogether": "Початковий баланс та поточний баланс не можна змінювати в одному запиті"
+  },
+  "balanceAdjustment": {
+    "defaultNote": "Коригування балансу",
+    "accountNotFound": "Рахунок з id «{{accountId}}» не знайдено.",
+    "vehicleUseOverride": "Вартість транспортного засобу можна змінити лише на його сторінці.",
+    "vehicleNegativeValue": "Вартість транспортного засобу не може бути від'ємною."
+  },
+  "accountGroups": {
+    "groupNotFound": "Групу не знайдено",
+    "groupUpdateFailed": "Не вдалося оновити групу",
+    "parentGroupNotExist": "Батьківська група з таким id не існує.",
+    "parentGroupCycle": "Групу не можна вкласти в саму себе чи в одну з її власних підгруп.",
+    "parentGroupDoesNotExist": "Батьківська група не існує.",
+    "accountNotFound": "Рахунок з таким id не знайдено.",
+    "accountGroupNotFound": "Групу рахунків з таким id не знайдено."
+  },
+  "categories": {
+    "notFound": "Категорія з наданим id не існує.",
+    "systemCannotBeMoved": "Системні категорії не можна переміщати.",
+    "parentNotFound": "Категорія з таким parentId не існує.",
+    "systemParentForbidden": "Системні категорії не можна використовувати як батьківські.",
+    "ownParent": "Категорія не може бути батьківською для самої себе.",
+    "underOwnSubcategory": "Категорію не можна перемістити під власну підкатегорію.",
+    "nestingTooDeep": "Категорії не можна вкладати глибше ніж на {{max}} рівнів."
+  },
+  "transactions": {
+    "notFound": "Транзакція не знайдена",
+    "missingRequiredFields": "Одне з обов'язкових полів відсутнє: destinationAmount, destinationAccountId.",
+    "destinationAmountRequiredCrossCurrency": "destinationAmount є обов'язковим при зміні amount для міжвалютного переказу.",
+    "refundAndTransferNotAllowed": "Не дозволено створювати транзакцію, яка є одночасно поверненням і переказом",
+    "notOwnTransaction": "Ви можете редагувати або видаляти лише транзакції, створені вами на цьому спільному рахунку.",
+    "sharedAccountChangeNotSupported": "Переміщення транзакції до іншого рахунку дозволено лише власнику рахунку.",
+    "sharedTransfersNotSupported": "Перекази на спільному рахунку поки що не підтримуються.",
+    "sharedRefundsNotSupported": "Прив'язка повернень на спільному рахунку поки що не підтримується.",
+    "cannotCreateWithParams": "Не вдалося створити транзакцію з наданими параметрами",
+    "idCannotBeChanged": "id не можна змінити",
+    "editReadonlyFields": "Спроба редагувати поля зовнішнього рахунку, які доступні лише для читання",
+    "changeTypeNotAllowed": "Заборонено змінювати \"transactionType\" для рахунку, синхронізованого з банком",
+    "bothRefundFieldsNotAllowed": "Не можна використовувати одночасно \"refundedByTxIds\" і \"refundsTargets\". Будь ласка, виберіть щось одне.",
+    "oppositeTransactionNotFound": "Не вдалося знайти протилежну транзакцію для оновлення",
+    "transactionIdNotExist": "Транзакція з наданим `id` не існує!",
+    "notAuthorizedToEdit": "У вас немає прав редагувати цю транзакцію.",
+    "cannotDeleteExternal": "Не дозволено вручну видаляти зовнішні транзакції",
+    "bulkDeleteLimitExceeded": "За один раз можна видалити не більше 500 транзакцій. Звузьте вибір і спробуйте ще раз.",
+    "unexpectedDeleteIssue": "Неочікувана помилка при спробі видалити транзакцію",
+    "linkSelfNotAllowed": "Спроба прив'язати транзакцію саму до себе.",
+    "linkSameTypeNotAllowed": "Спроба прив'язати до транзакції, яка має той самий \"transactionType\".",
+    "linkSameAccountNotAllowed": "Спроба прив'язати до транзакції в межах того самого рахунку. Дозволено прив'язувати лише транзакції з різних рахунків",
+    "linkAlreadyTransferNotAllowed": "Спроба прив'язати транзакцію, яка вже є переказом.",
+    "linkUnexpectedError": "Неочікувана помилка. Не вдалося прив'язати вказані транзакції.",
+    "linkCannotFind": "Не вдалося знайти базову або протилежну транзакцію",
+    "linkPlannedNotAllowed": "Заплановану транзакцію не можна прив'язати як переказ.",
+    "linkSplitTransactionNotAllowed": "Транзакцію з розподілом не можна прив'язати як переказ.",
+    "invalidTagIds": "Один або декілька ID тегів недійсні або не належать цьому користувачу",
+    "cannotEditPortfolioLinkedTransaction": "Неможливо редагувати транзакцію, прив'язану до портфеля. Спочатку відв'яжіть її.",
+    "refFieldsRequiredForTransferToPortfolio": "Для транзакцій переказу портфеля необхідно задати базову валюту та базову суму.",
+    "vehicleAccountReadonly": "Цей рахунок відстежує транспортний засіб. Його вартість можна змінити лише на сторінці транспортного засобу.",
+    "transferNatureChangeNotAllowed": "Не можна змінити тип переказу для існуючого переказу. Спочатку відв'яжіть переказ, а потім позначте транзакцію знову.",
+    "transferToLoanRequiresLoanDestination": "Платіж за кредитом вимагає, щоб цільовий рахунок був рахунком кредиту.",
+    "transferToLoanRelinkRequired": "Цільовий рахунок цього переказу — рахунок кредиту. Спочатку відв'яжіть переказ, а потім позначте витрату як платіж за кредитом.",
+    "loanPaymentOverpay": "Платіж перевищує залишок боргу.",
+    "loanAccountReadonly": "Кредитні рахунки можна змінювати лише через запис платежу. Перейдіть на сторінку кредиту, щоб записати його.",
+    "loanPaymentMustBeExpense": "Платіж за кредитом має бути витратою — дохідні транзакції не можна переказувати на кредит.",
+    "plannedMustBeStandalone": "Запланована транзакція має бути звичайним доходом або витратою — перекази, повернення та імпортовані записи не підтримуються.",
+    "plannedAmountMustBePositive": "Запланована транзакція повинна мати суму більшу за нуль.",
+    "plannedAccountNotSupported": "Заплановані транзакції недоступні для рахунків кредитів і транспортних засобів.",
+    "plannedOwnerOnly": "Лише власник рахунку може створювати заплановані транзакції.",
+    "plannedFlipNotAllowed": "Цю транзакцію не можна перетворити на заплановану.",
+    "plannedCreatorOnly": "Лише автор запланованої транзакції може редагувати або видаляти її.",
+    "manualOnConnectedAccount": "На рахунок, підключений до банку, можна додавати лише заплановані транзакції. Реальні транзакції надходять із вашого банку.",
+    "plannedUnflipOnConnectedAccount": "Цей план на рахунку, підключеному до банку, тому ваш банк підтверджує його автоматично. Видаліть його, якщо він більше не очікується.",
+    "plannedCannotConfirmPayment": "Запланована транзакція не може підтвердити платіж. Дочекайтеся її підтвердження, а потім прив'яжіть її.",
+    "plannedCannotBeRefundLinked": "Запланована транзакція не може бути частиною прив'язки повернення.",
+    "paymentLegsNotAllowed": "Розподілити між кількома рахунками можна лише звичайний дохід або звичайну витрату на вашому власному рахунку. Перекази, повернення, заплановані та розділені за категоріями транзакції розподіляти не можна.",
+    "inPaymentNotAllowed": "Ця транзакція є частиною платежу з кількох рахунків. Спершу вилучіть її з платежу.",
+    "paymentLegInvalidAccount": "Кожна нова частина має бути на одному з ваших інших рахунків із ручним керуванням.",
+    "paymentLegDuplicateAccount": "Кожна нова частина має бути на окремому рахунку.",
+    "paymentLegEditThroughMain": "Це частина платежу з кількох рахунків. Натомість відредагуйте основну транзакцію.",
+    "paymentAmountRequired": "Вкажіть суму у валюті основної транзакції для кожної частини в іншій валюті.",
+    "paymentLinkNotAllowed": "Цю транзакцію не можна прив'язати до платежу. Прив'язати можна лише ваш власний дохід або витрату того самого типу – не переказ, не повернення, не розділену, не очікувану транзакцію і не частину іншого платежу.",
+    "paymentLinkedAmountFixed": "Суму прив'язаної транзакції змінити не можна.",
+    "paymentLinkedTypeMismatch": "Прив'язані транзакції мають бути того самого типу, що й платіж. Спершу відв'яжіть їх.",
+    "refunds": {
+      "wholeLinkWithPartials": "Прив'язку повернення на всю суму не можна поєднувати з прив'язками на частину суми",
+      "externalLinkWithOthers": "Повернення за покупку поза застосунком не можна поєднувати з іншими прив'язками повернення",
+      "externalLinkWithAmount": "Повернення за транзакцію поза застосунком не може мати часткову суму; воно завжди покриває все повернення.",
+      "totalExceedsRefund": "Загальна сума прив'язок повернення не може перевищувати суму транзакції повернення",
+      "totalExceedsSplit": "Загальна сума повернення не може перевищувати суму частини розділеної транзакції",
+      "totalExceedsOriginal": "Загальна сума повернення не може перевищувати суму оригінальної транзакції",
+      "refundOfRefund": "Не можна повернути транзакцію «повернення»",
+      "duplicateLink": "Це повернення вже прив'язане до цієї транзакції"
+    },
+    "splits": {
+      "splitsOnTransfer": "Не можна додавати розподіл до транзакцій-переказів",
+      "splitLimitExceeded": "Максимальна кількість частин розподілу на транзакцію: {{max}}",
+      "missingCategory": "Категорія обов'язкова для кожної частини розподілу",
+      "missingAmount": "Сума обов'язкова для кожної частини розподілу",
+      "amountNegative": "Сума частини розподілу не може бути від'ємною",
+      "amountTooSmall": "Сума частини розподілу повинна бути не менше {{min}} (системний мінімум)",
+      "noteTooLong": "Примітка частини розподілу не може перевищувати {{max}} символів",
+      "invalidCategory": "Категорію з id {{categoryId}} не знайдено або вона не належить користувачу",
+      "duplicateCategory": "Кожна частина розподілу повинна використовувати іншу категорію",
+      "exceedTotal": "Загальна сума розподілу ({{total}}) перевищує суму транзакції ({{transactionAmount}})",
+      "invalidData": "Неправильні дані розподілу",
+      "splitNotFound": "Частину розподілу не знайдено",
+      "cannotDeleteWithRefunds": "Не можна видалити частину розподілу, на яку є повернення"
+    },
+    "reconciliation": {
+      "systemNotAllowed": "Об'єднувати або видаляти можна лише транзакції з рахунків, підключених до банку.",
+      "plannedNotAllowed": "Заплановані транзакції не можна об'єднувати або видаляти.",
+      "transferNotAllowed": "Прив'язані перекази не можна об'єднувати або видаляти. Спочатку відв'яжіть переказ.",
+      "refundNotAllowed": "Транзакції, прив'язані до повернення, не можна об'єднувати або видаляти. Спочатку відв'яжіть повернення.",
+      "survivorPending": "Залиште проведену транзакцію. Якщо залишити транзакцію в обробці, вона так і лишиться завислою.",
+      "survivorNotSelected": "Транзакція, яку потрібно залишити, має бути однією з вибраних транзакцій.",
+      "differentAccounts": "Об'єднувати можна лише транзакції з одного рахунку.",
+      "budgetConflict": "Вибрані транзакції належать до різних трекерів. Узгодьте їхні трекери перед об'єднанням.",
+      "groupConflict": "Вибрані транзакції належать до різних груп транзакцій. Узгодьте їхні групи перед об'єднанням.",
+      "subscriptionConflict": "Вибрані транзакції прив'язані до різних підписок. Узгодьте їхні підписки перед об'єднанням.",
+      "accountDisconnected": "Неможливо відновити: рахунок більше не підключений до банку.",
+      "bankCheckUnsupported": "Перевірка з банком доступна лише для рахунків Enable Banking.",
+      "notPending": "Лише транзакції в обробці можна залишити як проведені.",
+      "stuckPendingNotification": {
+        "title": "Деякі платежі карткою не проведено",
+        "message_one": "{{count}} транзакція понад тиждень перебуває в обробці. Перевірте її в банку, щоб баланс залишався точним.",
+        "message_few": "{{count}} транзакції понад тиждень перебувають в обробці. Перевірте їх у банку, щоб баланс залишався точним.",
+        "message_many": "{{count}} транзакцій понад тиждень перебувають в обробці. Перевірте їх у банку, щоб баланс залишався точним.",
+        "message_other": "{{count}} транзакції понад тиждень перебувають в обробці. Перевірте їх у банку, щоб баланс залишався точним."
+      }
+    },
+    "trash": {
+      "paymentNotTrashable": "Щоб видалити транзакцію, спершу вилучіть її з платежу.",
+      "portfolioNotTrashable": "Щоб видалити транзакцію, спершу відв'яжіть її від портфеля.",
+      "ventureNotTrashable": "Щоб видалити транзакцію, спершу відв'яжіть її від венчурної угоди.",
+      "accountTypeChanged": "Цю транзакцію не можна відновити, бо тип її рахунку змінився.",
+      "loanPaymentLegMissing": "Цей платіж за кредитом не можна відновити, бо його другу сторону видалено."
+    }
+  },
+  "budgets": {
+    "budgetNotFound": "Трекер не знайдено",
+    "lineNotFound": "Рядок трекера не знайдено",
+    "onlyOwnerCanDuplicate": "Дублювати трекер може лише власник",
+    "someTransactionIdsInvalid": "Деякі ID транзакцій недійсні",
+    "transactionsAddedSuccessfully": "Транзакції успішно додано",
+    "someCategoryIdsInvalid": "Деякі ID категорій недійсні або не існують",
+    "startDateAfterEndDate": "Дата початку має бути не пізніше дати завершення",
+    "rulesNeedCategoryOrTag": "Виберіть принаймні одну категорію або тег, щоб додавати транзакції автоматично.",
+    "smartTracking": {
+      "ownerOnly": "Змінювати розумне відстеження може лише власник трекера.",
+      "descriptionRequired": "Опишіть, для чого цей трекер, щоб увімкнути розумне відстеження.",
+      "startDateRequired": "Вкажіть дату початку, щоб увімкнути розумне відстеження.",
+      "scanRunning": "Для цього трекера виконується зіставлення. Спробуйте ще раз, коли воно завершиться.",
+      "suggestionNotFound": "Пропозицію не знайдено.",
+      "suggestionAlreadyResolved": "Ця пропозиція вже має статус: {{status}}."
+    }
+  },
+  "budgetPlans": {
+    "planNotFound": "Бюджетний план не знайдено.",
+    "activePlanExists": "У вас уже є активний бюджетний план.",
+    "baseCurrencyChanged": "Поки цей бюджетний план був видалений, ваша базова валюта змінилася, тому відновити його більше не можна.",
+    "epochInFuture": "Бюджетний план не може починатися в майбутньому.",
+    "epochTooFarBack": "Бюджетний план не може починатися раніше, ніж за {{max}} періодів до сьогодні.",
+    "intervalOutOfRange": "Цей інтервал занадто великий для цієї періодичності.",
+    "secondAnchorDayRequired": "Для плану з періодичністю двічі на місяць потрібен другий день місяця.",
+    "secondAnchorDayNotAllowed": "Другий день місяця застосовується лише до планів із періодичністю двічі на місяць.",
+    "semiMonthlyDaysTooClose": "Обидва дні плану з періодичністю двічі на місяць мають бути на відстані щонайменше 10 днів один від одного.",
+    "accountNotFound": "Один із вибраних рахунків не знайдено.",
+    "lineNotFound": "Рядок бюджету не знайдено.",
+    "goalNotFound": "Ціль бюджету не знайдено.",
+    "lineAlreadyArchived": "Цей рядок бюджету вже заархівовано.",
+    "lineNotArchived": "Цей рядок бюджету не заархівовано.",
+    "activeFromNotPeriodStart": "Дата початку має збігатися з початком минулого або поточного періоду цього плану.",
+    "effectiveFromOutsideLifetime": "Дата набуття чинності має бути початком минулого або поточного періоду в межах строку дії цього рядка.",
+    "categoryNotFound": "Однієї з категорій не існує.",
+    "lineCategoriesOverlap": "Інший рядок цього плану вже охоплює одну з цих категорій у цьому періоді.",
+    "periodNotFound": "Період бюджету не знайдено.",
+    "periodOutsideLifetime": "Цей період виходить за межі строку дії рядка бюджету.",
+    "groupNotFound": "Групу рядків не знайдено.",
+    "groupNotEmpty": "Перемістіть або заархівуйте рядки цієї групи перед її видаленням.",
+    "layoutInvalid": "Макет повинен містити кожну групу плану один раз, а кожен рядок плану — не більше одного разу.",
+    "openEndedGoalCannotSnooze": "Ціль без терміну не можна відкласти.",
+    "zeroSumNeedsPool": "Щоб тримати «Готово до розподілу» на нулі, план має фінансуватися з пулу.",
+    "suggestedGroups": {
+      "bills": "Обов'язкові платежі",
+      "everyday": "Щоденні витрати",
+      "life": "Життя"
+    }
+  },
+  "tags": {
+    "tagNotFound": "Тег не знайдено",
+    "tagNameAlreadyExists": "Тег з такою назвою вже існує",
+    "someTransactionIdsInvalid": "Деякі ID транзакцій недійсні",
+    "transactionsAddedSuccessfully": "Транзакції успішно додано до тегу",
+    "transactionsRemovedSuccessfully": "Транзакції успішно видалено з тегу"
+  },
+  "tagReminders": {
+    "reminderNotFound": "Нагадування для тегу не знайдено",
+    "reminderAlreadyExists": "Ідентичне нагадування вже існує для цього тегу",
+    "amountThresholdRequired": "Порогова сума обов'язкова для нагадувань про перевищення суми",
+    "maxRemindersReached": "Досягнуто максимальну кількість нагадувань (50)",
+    "notifications": {
+      "thresholdExceeded": {
+        "title": "Сповіщення про витрати по тегу",
+        "message": "Ваші витрати на «{{tagName}}» ({{actualAmount}}) перевищили встановлений поріг {{thresholdAmount}}"
+      },
+      "existenceCheck": {
+        "title": "Підсумок активності тегу",
+        "message": "У вас транзакцій з тегом «{{tagName}}»: {{count}}"
+      }
+    }
+  },
+  "defaultTags": {
+    "want": {
+      "name": "Хочу",
+      "description": "Бажані покупки та необов'язкові витрати"
+    },
+    "need": {
+      "name": "Потрібно",
+      "description": "Важливі, але не термінові витрати"
+    },
+    "must": {
+      "name": "Обов'язково",
+      "description": "Необхідні витрати, яких не уникнути"
+    }
+  },
+  "investments": {
+    "portfolioNotFound": "Портфель не знайдено",
+    "portfolioIdRequired": "ID портфеля обов'язковий.",
+    "holdingNotFound": "Актив не знайдено",
+    "holdingNotFoundAddSecurity": "Актив не знайдено. Будь ласка, спочатку додайте цінний папір до портфеля.",
+    "holdingNotFoundForRecalculation": "Актив для перерахунку не знайдено.",
+    "securityAlreadyInPortfolio": "Цей цінний папір вже є в портфелі.",
+    "securityNotFound": "Цінний папір не знайдено.",
+    "securitySearchResultNotRecognized": "Результат пошуку цінного папера не розпізнано або він застарів. Виконайте пошук цінного папера ще раз.",
+    "currencyForSecurityNotFound": "Валюту для цінного папера не знайдено.",
+    "currencyNotFound": "Валюту не знайдено",
+    "transactionNotFound": "Інвестиційну транзакцію не знайдено",
+    "userBaseCurrencyNotFound": "Базову валюту користувача не знайдено",
+    "insufficientSharesToSell": "Недостатня кількість для продажу. Після цього оновлення кількість становитиме {{adjustedQuantity}}, а кількість для продажу — {{sellQuantity}}.",
+    "sourceAndDestinationMustDiffer": "Вихідний і цільовий портфелі повинні бути різними",
+    "transferAmountMustBePositive": "Сума переказу повинна бути більше нуля",
+    "sourcePortfolioNotFound": "Вихідний портфель не знайдено",
+    "destinationPortfolioNotFound": "Цільовий портфель не знайдено",
+    "sourceAccountNotFound": "Вихідний рахунок не знайдено",
+    "destinationAccountNotFound": "Цільовий рахунок не знайдено",
+    "cannotDeleteHoldingWithActivePosition": "Не можна видалити актив з активною позицією. Будь ласка, спочатку продайте або перекажіть усі одиниці активу.",
+    "transactionAlreadyTransfer": "Транзакція вже позначена як переказ і не може бути прив'язана до портфеля.",
+    "transactionAlreadyLinkedToPortfolio": "Транзакція вже прив'язана до переказу портфеля.",
+    "linkedTransactionMustBelongToDestinationAccount": "Прив'язана транзакція має належати цільовому рахунку.",
+    "transactionAlreadyLinkedToVenture": "Транзакція вже прив'язана до венчурної угоди",
+    "portfolioTransferNotFound": "Переказ портфеля не знайдено",
+    "exchangeCurrenciesMustDiffer": "Валюти обміну мають бути різними",
+    "importNoTransactionsFound": "У файлі не знайдено транзакцій.",
+    "import": {
+      "tokenLimitExceededSuggestion": "Розділіть завантаження на менші файли або виберіть модель із більшим контекстним вікном.",
+      "extractFailed": "Не вдалося вилучити інвестиційні транзакції з цього файлу. Спробуйте ще раз.",
+      "csvColumnNotFound": "Стовпець «{{column}}» не знайдено в заголовках CSV."
+    },
+    "unrealizedLossAlert": {
+      "title_one": "{{count}} актив перетнув поріг вашого сповіщення про збиток",
+      "title_few": "{{count}} активи перетнули поріг вашого сповіщення про збиток",
+      "title_many": "{{count}} активів перетнули поріг вашого сповіщення про збиток",
+      "title_other": "{{count}} активу перетнули поріг вашого сповіщення про збиток"
+    }
+  },
+  "landingFaq": {
+    "unavailable": "Помічник недоступний прямо зараз. Спробуйте ще раз пізніше або напишіть на support@moneymatter.app."
+  },
+  "loans": {
+    "loanNotFound": "Кредит не знайдено.",
+    "createAccountFailed": "Не вдалося створити рахунок кредиту",
+    "deleteBlockedByPayments": "Цей кредит має записані платежі. Видаліть платежі перед видаленням кредиту.",
+    "linkPaymentsInvalidSelection": "Деякі вибрані транзакції не можна прив'язати до цього кредиту.",
+    "linkPaymentsOverpayConfirmation": "Ці платежі перевищують залишок боргу. Підтвердження погасить кредит; надлишок не буде повернено.",
+    "unlinkPaymentNotFound": "Платіж за кредитом не знайдено.",
+    "unlinkPaymentInvalidSelection": "Ця транзакція не є платежем за цим кредитом.",
+    "correctionAsOfBeforeStartDate": "currentBalanceAsOf не може бути раніше за дату початку кредиту",
+    "correctionOverpay": "Скоригований залишок боргу призвів би до переплати кредиту на {{overpayAmount}}: платежі на загальну суму {{paymentsTotal}} датовані на дату {{asOfDate}} або пізніше"
+  },
+  "errors": {
+    "connectionNotFound": "Підключення не знайдено",
+    "connectionNotFoundOrNotYours": "Підключення не знайдено або не належить вам",
+    "providerNoReauthorization": "Провайдер {{providerType}} не підтримує повторну авторизацію",
+    "providerNotFoundInRegistry": "Провайдер {{providerType}} не знайдено в реєстрі",
+    "connectionIdNotFound": "Підключення банківського провайдера {{connectionId}} не знайдено",
+    "accountIdNotFound": "Рахунок {{accountId}} не знайдено",
+    "providerTypeMismatch": "Підключення {{connectionId}} призначене для провайдера {{actualType}}, а не {{expectedType}}",
+    "providerAlreadyRegistered": "Провайдер {{providerType}} вже зареєстрований. Не можна реєструвати дублікати провайдерів.",
+    "providerNotRegistered": "Провайдер {{providerType}} не зареєстрований. Доступні провайдери: {{available}}",
+    "unexpected": "Неочікувана помилка."
+  },
+  "validation": {
+    "dateInvalid": "\"date\" є неправильною датою."
+  },
+  "urlGuard": {
+    "invalidUrl": "Це недійсна URL-адреса.",
+    "unsupportedProtocol": "Дозволені лише URL-адреси http:// та https://.",
+    "credentialsInUrlNotAllowed": "URL-адреса не повинна містити ім'я користувача або пароль. Використайте поле API-ключа замість цього.",
+    "privateAddressBlocked": "{{host}} вказує на приватну або зарезервовану мережеву адресу, що не дозволено.",
+    "hostnameNotResolvable": "Не вдалося визначити {{host}}. Перевірте адресу на наявність помилок.",
+    "redirectNotAllowed": "Ендпоінт відповів переспрямуванням. Введіть кінцеву URL-адресу замість цього.",
+    "hostnameLookupUnavailable": "Зараз не вдалося перевірити {{host}}. Будь ласка, спробуйте ще раз за мить."
+  },
+  "bankDataProviders": {
+    "reauthorizationStarted": "Повторну авторизацію розпочато. Будь ласка, завершіть процес OAuth.",
+    "connectionEstablished": "Підключення встановлено",
+    "failedToFetchBanks": "Не вдалося отримати список банків. Перевірте ваші облікові дані та код країни.",
+    "failedToFetchCountries": "Не вдалося отримати список країн. Перевірте ваші облікові дані.",
+    "accountNotLinkedToConnection": "Рахунок не знайдено або його не прив'язано до цього підключення",
+    "accountAlreadyConnectedToAnotherConnection": "Рахунок «{{account}}» вже підключено через «{{connection}}». Спочатку відв'яжіть його там.",
+    "cannotLoadBeforeLinkDate": "Не можна завантажити транзакції до дати прив'язки рахунку ({{linkedAt}}). Цей рахунок був прив'язаний за стратегією «лише вперед» для запобігання дублюванню даних.",
+    "dateRangeExceedsLimit": "Діапазон дат не може перевищувати 1 рік.",
+    "fromAfterTo": "Дата \"from\" повинна бути раніше дати \"to\"",
+    "fromMustBeValidDate": "\"from\" повинен бути дійсним рядком дати",
+    "toMustBeValidDate": "\"to\" повинен бути дійсним рядком дати",
+    "reconciliationOnlyForEnableBanking": "Узгодження дублікатів доступне лише для підключень Enable Banking",
+    "transactionLoadingQueued": "Завантаження транзакцій додано в чергу. Орієнтовний час: {{minutes}} хв.",
+    "noValidAccountIds": "Жоден з обраних ID рахунків не є дійсним",
+    "accountCurrencyNotSupported": "Валюта рахунку «{{currency}}» не підтримується системою.",
+    "periodLoadNotSupported": "Завантаження транзакцій за довільний період не підтримується цим провайдером.",
+    "transactionsLoadedCount": "Завантажено транзакцій: {{count}}.",
+    "transactionsAllDuplicates": "Знайдено транзакцій за цей період: {{count}} — усі вже були імпортовані.",
+    "transactionsNoneInPeriod": "Провайдер не повернув жодної транзакції за цей період.",
+    "apiError": "Помилка API {{provider}}: {{message}}",
+    "simplefinUnreachable": "SimpleFIN тимчасово недоступний. Спробуйте пізніше.",
+    "currencySelectionRequired": "Рахунок «{{account}}» не має валюти, повідомленої банком — оберіть для нього валюту перед підключенням.",
+    "providerNotAvailable": "Цей провайдер недоступний для нових підключень.",
+    "monobank": {
+      "invalidCredentialsFormat": "Недійсний формат облікових даних для Monobank",
+      "invalidApiToken": "Недійсний API-токен Monobank",
+      "rateLimitExceeded": "Перевищено ліміт запитів до API Monobank. Спробуйте ще раз через хвилину.",
+      "accountNotFound": "Рахунок {{accountExternalId}} не знайдено в Monobank",
+      "accountReconnectRequired": "Цей рахунок більше не доступний у Monobank. Будь ласка, перепідключіть Monobank, щоб відновити синхронізацію.",
+      "webhookNotImplemented": "handleWebhook ще не реалізовано для Monobank",
+      "unknownCurrencyCode": "Невідомий код валюти: {{numericCode}}",
+      "geoBlocked": "Monobank блокує запити з IP-адреси цього сервера. Вимкніть VPN або використайте українську IP-адресу.",
+      "geoBlockedProduction": "Синхронізація Monobank тимчасово недоступна. Ми отримали сповіщення і працюємо над виправленням. Зверніться до підтримки, якщо це терміново."
+    },
+    "enableBanking": {
+      "invalidCredentialsFormat": "Недійсний формат облікових даних для Enable Banking",
+      "invalidRsaKey": "Недійсний формат RSA приватного ключа",
+      "invalidCredentials": "Недійсні облікові дані Enable Banking",
+      "authUrlNotFound": "URL авторизації не знайдено для цього підключення",
+      "invalidOAuthState": "Недійсний параметр стану OAuth",
+      "oAuthStateExpired": "Стан OAuth закінчився або недійсний",
+      "oAuthAuthorizationFailed": "Авторизація OAuth не вдалася: {{error}}",
+      "invalidStoredCredentials": "Недійсні збережені облікові дані",
+      "bankInfoNotFound": "Інформацію про банк не знайдено в метаданих підключення",
+      "noActiveSession": "Немає активної сесії. Спочатку завершіть процес OAuth.",
+      "noActiveSessionGeneric": "Немає активної сесії",
+      "noBalanceInfo": "Інформація про баланс недоступна",
+      "authenticationFailed": "Автентифікація Enable Banking не вдалася: {{message}}",
+      "sessionExpiredReconnect": "Сесія банку закінчилася. Будь ласка, перепідключіть свій банківський рахунок, щоб продовжити синхронізацію.",
+      "apiBadRequestError": "Помилка API Enable Banking: {{message}}",
+      "apiGeneralError": "Помилка API Enable Banking: {{message}}",
+      "rateLimitExceeded": "Досягнуто ліміту запитів банку. Деякі банки дозволяють лише кілька запитів даних на день і скидають ліміт опівночі. Будь ласка, спробуйте пізніше.",
+      "redirectUriNotAllowed": "У вашому застосунку Enable Banking відсутній необхідний URL переадресації. Будь ласка, увійдіть до панелі Enable Banking, відредагуйте свій застосунок і додайте цей URL до дозволених URL переадресації: {{redirectUrl}}"
+    },
+    "lunchflow": {
+      "invalidCredentialsFormat": "Недійсний формат облікових даних Lunch Flow. Будь ласка, надайте дійсний API-ключ.",
+      "invalidApiKey": "Недійсний API-ключ Lunch Flow. Будь ласка, перевірте ваші облікові дані.",
+      "accountNoExternalId": "Рахунок не має зовнішнього ID для синхронізації Lunch Flow.",
+      "accountNotFound": "Рахунок Lunch Flow не знайдено."
+    },
+    "akahu": {
+      "invalidCredentialsFormat": "Недійсний формат облікових даних Akahu. Потрібні User Access Token і App ID Token.",
+      "invalidTokens": "Недійсні токени Akahu. Перевірте User Access Token і App ID Token на сторінці вашого застосунку Akahu.",
+      "accountNoExternalId": "Рахунок не має зовнішнього ID для синхронізації Akahu.",
+      "accountNotFound": "Рахунок Akahu не знайдено.",
+      "rateLimited": "Akahu зараз обмежує кількість запитів. Будь ласка, спробуйте ще раз трохи згодом.",
+      "missingCurrency": "Akahu не повернув валюту для цього рахунку."
+    },
+    "simplefin": {
+      "invalidCredentialsFormat": "Недійсний формат облікових даних SimpleFIN.",
+      "invalidSetupToken": "Недійсний або вже використаний токен налаштування SimpleFIN. Згенеруйте новий у SimpleFIN Bridge і спробуйте знову.",
+      "invalidAccessUrl": "Недійсна або неавторизована URL-адреса доступу SimpleFIN.",
+      "claimFailed": "Не вдалося отримати URL-адресу доступу SimpleFIN із токена налаштування.",
+      "accountNotFound": "Рахунок SimpleFIN не знайдено.",
+      "accountNoExternalId": "Цей рахунок не прив'язаний до рахунку SimpleFIN.",
+      "accountAbsentFromResponse": "SimpleFIN не повернув дані для цього рахунку під час останньої синхронізації. Можливо, рахунок було вимкнено в банку — спробуйте синхронізувати знову або перепідключіть, якщо проблема не зникає.",
+      "rateLimited": "SimpleFIN зараз отримує забагато запитів. Зачекайте трохи і спробуйте ще раз."
+    },
+    "walutomat": {
+      "invalidCredentialsFormat": "Недійсний формат облікових даних Walutomat. Необхідні API-ключ та приватний ключ.",
+      "invalidApiKey": "Недійсний API-ключ або приватний ключ Walutomat.",
+      "accountNoExternalId": "Рахунок Walutomat не має зовнішнього ID.",
+      "walletNotFound": "Гаманець Walutomat не знайдено для валюти: {{currency}}"
+    }
+  },
+  "csvImport": {
+    "headersCannotBeParsed": "Неможливо розпарсити заголовки",
+    "csvFileEmpty": "CSV файл порожній",
+    "csvFileNoHeaders": "CSV файл не містить заголовків",
+    "csvFileMalformed": "Не вдалося розпарсити CSV файл. Перевірте, чи немає незакритих лапок або неочікуваного роздільника, або спробуйте експортувати файл повторно.",
+    "csvFileTooManyRows": "CSV файл перевищує максимально дозволену кількість рядків {{max}}.",
+    "csvFileForbiddenHeader": "CSV файл містить назву заголовку, яка не дозволена.",
+    "invalidDateFormat": "Неправильний формат дати: «{{dateStr}}». Очікується формат ISO (РРРР-ММ-ДД).",
+    "invalidAmount": "Неправильна сума: «{{amountStr}}». Очікується числове значення.",
+    "accountNameEmpty": "Назва рахунку порожня",
+    "currencyCodeEmpty": "Код валюти порожній",
+    "unknownTransactionType": "Невідомий тип транзакції: «{{typeValue}}»",
+    "dateColumnNotFound": "Стовпець дати «{{columnName}}» не знайдено в CSV",
+    "amountColumnNotFound": "Стовпець суми «{{columnName}}» не знайдено в CSV",
+    "invalidDefaultCurrency": "Недійсний код валюти за замовчуванням: «{{defaultCurrency}}»",
+    "payeeColumnNotFound": "Стовпець отримувача «{{column}}» не знайдено в заголовках CSV",
+    "currencyColumnNotFound": "Стовпець валюти «{{columnName}}» не знайдено в CSV",
+    "invalidCurrencyRow": "Рядок {{row}}: недійсна валюта «{{currency}}»",
+    "andMoreRows": "...і ще {{count}}",
+    "invalidCurrencyCodes": "Знайдено недійсні коди валют:\n{{rows}}",
+    "unknownCurrencyCodes": "Невідомі коди валют у CSV: {{codes}}. Ці валюти не підтримуються системою.",
+    "currencyMismatchWarning": "Ваш CSV містить транзакції у валютах {{currencies}}, але вибраний рахунок використовує {{accountCurrency}}. Усі транзакції буде імпортовано у валюті {{accountCurrency}}.",
+    "currencyNotSupported": "Валюта «{{currency}}» не підтримується системою.",
+    "accountColumnNotFound": "Стовпець рахунку «{{columnName}}» не знайдено в CSV",
+    "categoryColumnNotFound": "Стовпець категорії «{{columnName}}» не знайдено в CSV",
+    "tagColumnNotFound": "Стовпець тега «{{columnName}}» не знайдено в CSV",
+    "transactionTypeColumnNotFound": "Стовпець типу транзакції «{{columnName}}» не знайдено в CSV",
+    "accountMultipleCurrencies": "Рахунок «{{accountName}}» має транзакції в кількох валютах: {{currencies}}. Рахунок у системі може мати лише одну валюту.",
+    "transactionTypeValuesNotCovered": "Стовпець типу транзакції містить значення, яких немає у списках доходів і витрат: {{uncovered}}. Знайдені значення: {{found}}",
+    "selectedAccountNotFound": "Вибраний рахунок не знайдено, або він вам не належить.",
+    "selectedCategoryNotFound": "Вибрану категорію не знайдено, або вона вам не належить.",
+    "linkedAccountCurrencyMismatch": "Щоб прив'язати наявний рахунок, валюти мають збігатися: {{mismatches}}. Прив'яжіть рахунок з тією самою валютою або створіть новий."
+  },
+  "ofxImport": {
+    "noFileUploaded": "Файл не завантажено. Надішліть файл OFX або QFX як необроблене тіло запиту.",
+    "errors": {
+      "emptyFile": "Файл OFX порожній.",
+      "xmlDeclarationIncomplete": "XML-оголошення у файлі OFX неповне.",
+      "headerMissing": "Заголовок OFX відсутній або завеликий.",
+      "headerFieldMissing": "У заголовку OFX відсутнє поле {{field}}.",
+      "invalidVersion": "Версія OFX недійсна.",
+      "unsupportedData": "Тип даних OFX «{{data}}» не підтримується.",
+      "compressedFile": "Стиснуті файли OFX не підтримуються.",
+      "prohibitedDeclaration": "Оголошення DTD та сутностей в OFX не підтримуються.",
+      "markupIncomplete": "Розмітка OFX неповна.",
+      "tagsMismatch": "XML-теги в OFX не збігаються.",
+      "unclosedTags": "В XML файлу OFX є незакриті теги.",
+      "missingRoot": "Кореневий елемент OFX відсутній.",
+      "malformedOfx": "Не вдалося розібрати документ OFX.",
+      "unsupportedEncoding": "Кодування OFX {{encoding}}/{{charset}} не підтримується.",
+      "fileTooLarge": "Файл OFX більший за 10 МБ.",
+      "emptyBody": "У файлі OFX немає вмісту.",
+      "invalidDate": "Недійсна дата OFX: {{value}}",
+      "invalidAmount": "Недійсна сума OFX: {{value}}",
+      "textTooLong": "Значення {{field}} в OFX перевищує {{max}} символів.",
+      "unsupportedMessageSet": "У файлі немає підтримуваних банківських виписок або виписок за кредитною карткою.",
+      "missingAccount": "Розділ {{tag}} відсутній.",
+      "missingAccountId": "Ідентифікатор вихідного рахунку відсутній.",
+      "correctionRecord": "Записи виправлень OFX не підтримуються.",
+      "missingAmount": "У транзакції OFX відсутня сума.",
+      "missingDate": "У транзакції OFX відсутня дата.",
+      "invalidCurrency": "Валюта виписки відсутня або недійсна.",
+      "rowLimit": "У файлі OFX більше ніж {{max}} транзакцій.",
+      "conflictingFitid": "Повторюваний FITID має суперечливі дані транзакції."
+    },
+    "uploadUnavailable": "Це завантаження OFX більше недоступне. Завантажте файл ще раз.",
+    "importInProgress": "Імпорт для цього файлу вже виконується.",
+    "missingAccountMapping": "Відсутнє зіставлення рахунків: {{accounts}}",
+    "accountCurrencyMismatch": "Рахунок {{account}} має використовувати валюту {{currency}}.",
+    "linkedAccountNotFound": "Пов'язаний рахунок для {{account}} не знайдено.",
+    "crossCurrencyLink": "Рахунок {{account}} не можна зв'язати з рахунком в іншій валюті."
+  },
+  "importExport": {
+    "batchDeleteBankLinkedAccount": "Цей імпорт більше не можна скасувати, оскільки його рахунок тепер підключено до банку. Видалення цих транзакцій може порушити синхронізований баланс.",
+    "batchDeleteLinkedLoanTransfer": "Цей імпорт прив'язаний до платежу за кредитом і не може бути скасований окремо. Увімкніть опцію «Також видалити прив'язану транзакцію переказу», щоб видалити його.",
+    "batchDeleteInProgress": "Пакет імпорту вже видаляється. Дочекайтеся завершення, перш ніж розпочинати ще одне видалення.",
+    "batchDeleteImportStillRunning": "Цей імпорт ще виконується. Дочекайтеся його завершення, перш ніж скасовувати.",
+    "importIntoBankLinkedAccount": "Рахунок «{{accountName}}» підключено до банку, тому імпортувати в нього транзакції не можна. Виберіть інший рахунок або створіть новий.",
+    "statementImportInProgress": "Імпорт виписки вже виконується. Дочекайтеся завершення, перш ніж розпочинати ще один.",
+    "importInterruptedByServerUpdate": "Оновлення сервера перервало цей імпорт. Уже збережені транзакції залишено. Видаліть цей імпорт в «Історії імпорту», перш ніж імпортувати файл повторно, інакше вони продублюються.",
+    "categoryNameTooLong": "Назва категорії «{{name}}» задовга (символів: {{length}}); максимум — {{max}}.",
+    "payeeNameTooLong": "Назва отримувача «{{name}}» задовга (символів: {{length}}); максимум — {{max}}.",
+    "categoryIdNotFound": "Категорію з ID {{id}} не знайдено",
+    "tagIdNotFound": "Тег з ID {{id}} не знайдено",
+    "accountIdNotFound": "Рахунок з ID {{id}} не знайдено",
+    "newAccountCurrencyUnknown": "Не вдалося визначити валюту для нового рахунку «{{accountName}}»",
+    "accountCreateFailed": "Не вдалося створити рахунок «{{accountName}}».",
+    "accountMappingMissing": "Не знайдено відповідності для рахунку «{{accountName}}»",
+    "aiUnparseableResponse": "Не вдалося розібрати відповідь AI. Результат мав неочікуваний формат.",
+    "aiTemporarilyUnavailable": "Постачальник AI тимчасово недоступний. Спробуйте пізніше.",
+    "aiRateLimited": "Досягнуто ліміту запитів постачальника AI. Спробуйте ще раз за кілька хвилин.",
+    "aiExtractionFailed": "Не вдалося вилучити дані за допомогою AI. Спробуйте ще раз.",
+    "ynab": {
+      "importAlreadyInProgress": "Імпорт YNAB вже виконується. Дочекайтеся завершення, перш ніж розпочинати ще один.",
+      "parse": {
+        "fileEmpty": "Файл YNAB Register.csv порожній.",
+        "unparseable": "Не вдалося розібрати YNAB Register.csv як CSV-файл.",
+        "noTransactions": "YNAB Register.csv не містить транзакцій.",
+        "tooManyRows": "YNAB Register.csv містить рядків: {{rows}}; максимально підтримується {{max}}.",
+        "missingColumns": "У YNAB Register.csv бракує обов'язкових стовпців: {{columns}}. Можливо, формат експорту змінився.",
+        "mixedDateOrders": "Стовпець «Date» у YNAB Register.csv містить суперечливі порядки дня та місяця — частина рядків має сенс лише як DD/MM/YYYY, а решта лише як MM/DD/YYYY. Повторно експортуйте бюджет в одному форматі дати.",
+        "noUsableRows": "У YNAB Register.csv не знайдено придатних рядків (усі рядки пропущено або їх не вдалося розібрати).",
+        "noUsableRowsWithProblem": "У YNAB Register.csv не знайдено придатних рядків (усі рядки пропущено або їх не вдалося розібрати). Перша проблема: {{problem}}"
+      },
+      "warnings": {
+        "ambiguousDateOrder": "Жоден рядок у стовпці «Date» не визначає, чи дати записано у форматі «день-місяць», чи «місяць-день»; дати інтерпретовано як MM/DD/YYYY. Після імпорту перевірте кілька транзакцій.",
+        "noAccount": "У рядку немає значення в стовпці «Account»; пропущено.",
+        "unparseableDate": "Не вдалося розпізнати дату «{{value}}»; рядок пропущено.",
+        "unparseableOutflow": "Не вдалося розпізнати значення «{{value}}» у стовпці «Outflow»; рядок пропущено.",
+        "unparseableInflow": "Не вдалося розпізнати значення «{{value}}» у стовпці «Inflow»; рядок пропущено.",
+        "unknownFlag": "Невідоме значення позначки «{{value}}»; проігноровано.",
+        "transferNoInflow": "Для переказу на рахунок «{{account}}» немає відповідного рядка надходження; його буде імпортовано як звичайну витрату.",
+        "transferNoOutflow": "Для переказу з рахунку «{{account}}» немає відповідного рядка витрати; його буде імпортовано як звичайний дохід.",
+        "currencyUndetected": "Не вдалося визначити валюту рахунку «{{account}}»; виберіть її в попередньому перегляді."
+      }
+    },
+    "budgetBakersWallet": {
+      "parse": {
+        "fileEmpty": "CSV-файл Wallet порожній.",
+        "unparseable": "Не вдалося розібрати CSV-файл Wallet.",
+        "noTransactions": "CSV-файл Wallet не містить транзакцій.",
+        "tooManyRows": "CSV-файл Wallet містить рядків: {{rows}}; максимально підтримується {{max}}.",
+        "missingColumns": "У CSV-файлі Wallet бракує обов'язкових стовпців: {{columns}}. Можливо, формат експорту змінився.",
+        "unsupportedLanguage": "Не вдалося розпізнати значення типу транзакції (дохід/витрата) в цьому експорті Wallet. Наразі підтримуються лише експорти англійською та іспанською мовами. Запросіть іншу мову в дорожній карті: {{url}}",
+        "noUsableRows": "У CSV-файлі Wallet не знайдено придатних рядків (усі рядки пропущено або їх не вдалося розібрати)."
+      },
+      "warnings": {
+        "noAccount": "У рядку немає рахунку; пропущено.",
+        "unparseableDate": "Не вдалося розпізнати дату «{{value}}»; рядок пропущено.",
+        "unparseableAmount": "Не вдалося розпізнати суму «{{value}}»; рядок пропущено.",
+        "unparseableRefAmount": "Не вдалося розпізнати значення «{{value}}» у стовпці ref_currency_amount; рядок пропущено.",
+        "unknownType": "Невідомий тип «{{value}}»; рядок пропущено.",
+        "transferNoIncome": "Для переказу-витрати з рахунку «{{account}}» від {{date}} немає відповідної сторони переказу з доходом; імпортовано як переказ поза гаманцем.",
+        "transferNoExpense": "Для переказу-доходу на рахунок «{{account}}» від {{date}} немає відповідної сторони переказу з витратою; імпортовано як переказ поза гаманцем."
+      }
+    },
+    "msMoney": {
+      "notMsMoneyFile": "Цей файл не є базою даних Microsoft Money. Очікується файл .mny, збережений у Microsoft Money.",
+      "incorrectPassword": "Неправильний пароль для цього файлу Microsoft Money.",
+      "passwordRequired": "Цей файл Microsoft Money захищено паролем. Введіть пароль, щоб продовжити.",
+      "unreadableFile": "Не вдалося прочитати цей файл Microsoft Money — він може бути пошкоджений або збережений непідтримуваною версією.",
+      "missingTables": "У цьому файлі Microsoft Money немає таблиць рахунків або транзакцій — він може бути пошкоджений або збережений непідтримуваною версією.",
+      "noFileUploaded": "Файл не завантажено. Надішліть файл .mny як необроблене тіло запиту.",
+      "invalidPasswordHeader": "Указаний пароль файлу недійсний.",
+      "warnings": {
+        "accountTypeUnsupported": "Інвестиційні та кредитні рахунки пропущено. Інвестиції належать до портфелів, а кредити мають окремий процес, який не приймає імпортовані транзакції.",
+        "accountCurrencyDefaulted": "Деякі рахунки не мають валюти, яку вдалося б визначити з цього файлу, тому для них використано вашу базову валюту. Якщо це неправильно, виберіть іншу на кроці рахунків.",
+        "accountNameMissing": "Деякі рахунки не мають назви в цьому файлі й імпортуються як «Account <number>». Перейменуйте їх після імпорту.",
+        "accountNameDuplicated": "У цьому файлі кілька рахунків мають однакову назву. Повторювані нумеруються — «Savings (2)» тощо, — тому вони залишаються окремими рахунками.",
+        "transferCounterpartNotImported": "Деякі перекази переміщували гроші на рахунок, якого немає в цьому імпорті. Такі рядки імпортуються як перекази з ваших відстежуваних рахунків.",
+        "rowLimitReached": "Цей файл містить понад {{max}} транзакцій. Зайві рядки не імпортовано.",
+        "rowMissingDate": "Деякі рядки не мали придатної для читання дати й були пропущені.",
+        "rowAmountUnreadable": "Деякі рядки не мали придатної для читання суми. Їх пропущено замість імпорту з нульовою сумою, яка створила б транзакцію, що нічого не переміщує.",
+        "orphanRowSkipped": "Деякі транзакції посилалися на рахунок, якого більше немає у файлі, і були пропущені.",
+        "fileSchemaUnexpected": "Деякі частини цього файлу організовано не так, як зазвичай записує Microsoft Money, тому частину даних не вдалося прочитати: {{details}}."
+      },
+      "schemaGapTableMissing": "{{table}} (відсутня)",
+      "schemaGapColumnsMissing": "{{table}} (відсутні стовпці: {{columns}})"
+    }
+  },
+  "statementParser": {
+    "imageTooLarge": "Це зображення більше за 3,75МБ. Завантажте менше зображення або зображення з нижчою роздільною здатністю.",
+    "textExtractionFailed": "Цей PDF не містить тексту, який можна прочитати, найімовірніше, це скан. Завантажте знімки екрана або фотографії його сторінок (JPG, PNG або WebP).",
+    "failedToExtractText": "Не вдалося вилучити текст з файлу.",
+    "fileContentRequired": "Вміст файлу обов'язковий",
+    "pdfPasswordRequired": "Цей PDF захищено паролем. Введіть пароль документа, щоб продовжити.",
+    "pdfPasswordInvalid": "Введений пароль неправильний. Перевірте його та спробуйте ще раз.",
+    "pdfParseFailed": "Не вдалося прочитати цей PDF. Можливо, файл пошкоджено або використано непідтримуваний формат.",
+    "noTransactionsFound": "У файлі не знайдено транзакцій. Можливо, це не банківська виписка, чек або знімок екрана банківського застосунку.",
+    "fileTooLarge": "Файл перевищує максимальний розмір {{maxMb}} МБ.",
+    "fileTooSmall": "Файл замалий, щоб бути коректною випискою.",
+    "unsupportedFileType": "Непідтримуваний тип файлу. Завантажте файл PDF, CSV або TXT.",
+    "unsupportedFileTypeWithImages": "Непідтримуваний тип файлу. Завантажте файл PDF, CSV, TXT, JPG, PNG або WebP.",
+    "aiResponseUnparseable": "Відповідь AI мала неочікуваний формат. Спробуйте вилучити дані ще раз або виберіть іншу модель.",
+    "allRowsDropped_one": "Модель повернула {{count}} рядок, але в ньому немає ні придатної для читання дати, ні додатної суми. Спробуйте вилучити дані ще раз або виберіть іншу модель.",
+    "allRowsDropped_few": "Модель повернула {{count}} рядки, але в жодному з них немає одночасно придатної для читання дати та додатної суми. Спробуйте вилучити дані ще раз або виберіть іншу модель.",
+    "allRowsDropped_many": "Модель повернула {{count}} рядків, але в жодному з них немає одночасно придатної для читання дати та додатної суми. Спробуйте вилучити дані ще раз або виберіть іншу модель.",
+    "allRowsDropped_other": "Модель повернула {{count}} рядка, але в жодному з них немає одночасно придатної для читання дати та додатної суми. Спробуйте вилучити дані ще раз або виберіть іншу модель.",
+    "tokenLimitExceeded": "Файл завеликий для вибраної моделі ({{modelName}}). Орієнтовно {{estimatedTokens, number}} токенів, але ліміт становить {{maxTokens, number}} токенів.",
+    "tokenLimitExceededSuggestion": "Використайте менший файл або розділіть виписку на кілька частин. Рекомендовано: виписки до ~{{maxTransactions, number}} транзакцій."
+  },
+  "currencies": {
+    "notSupportedForBaseCurrency": "Зміна базової валюти на {{currency}} не підтримується. Підтримуються лише такі валюти: {{supportedCurrencies}}.",
+    "listIsEmpty": "Список валют порожній",
+    "noBaseCurrency": "Користувач не має встановленої базової валюти",
+    "alreadyBaseCurrency": "Обрана валюта вже є базовою",
+    "baseCurrencyLockedByShares": "Неможливо змінити базову валюту, поки є активні спільні ресурси. Спочатку відкличте їх або вийдіть з них.",
+    "baseCurrencyLockedByBudgetPlan": "Неможливо змінити базову валюту, поки є активний бюджетний план. Спочатку видаліть план.",
+    "baseCurrencyLockedByHousehold": "Неможливо змінити базову валюту, поки ви є членом активної сім'ї. Спочатку відкличте членство або вийдіть із сім'ї.",
+    "baseCurrencyChangeInProgress": "Зміна базової валюти вже триває. Будь ласка, зачекайте, поки процес завершиться.",
+    "baseCurrencyChangeSyncInProgress": "Синхронізація з банком ще завершується. Спробуйте змінити базову валюту знову за кілька хвилин.",
+    "baseCurrencyChangeDrainCheckFailed": "Не вдалося перевірити, чи завершені банківські синхронізації. Спробуйте ще раз.",
+    "baseCurrencyChangeInProgressOtherUser": "Інший учасник наразі змінює свою базову валюту. Спробуйте ще раз, коли його міграція завершиться.",
+    "cannotFindForRefAmount": "Не вдалося знайти валюту для розрахунку базової суми!",
+    "cannotCalculateRefAmount": "Не вдалося розрахувати базову суму",
+    "currencyNotConnected": "Запитана валюта не підключена",
+    "exchangeRateNotAvailable": "Курс обміну недоступний для {{baseCode}}/{{quoteCode}} на {{date}}"
+  },
+  "userSettings": {
+    "userSettingsNotFound": "Налаштування користувача не знайдено"
+  },
+  "users": {
+    "usernameAlreadyTaken": "Ім'я користувача «{{username}}» вже зайняте"
+  },
+  "userCurrencies": {
+    "baseCurrencyExists": "Базова валюта вже існує!",
+    "currencyCodeNotExist": "Валюта з переданим кодом не існує.",
+    "currencyNotExist": "Валюта з кодом «{{currencyCode}}» не існує.",
+    "cannotDeleteDefaultCurrency": "Не дозволено видаляти валюту за замовчуванням. Спочатку зніміть статус за замовчуванням.",
+    "currencyInUse": "Валюту {{currencyCode}} не можна видалити, оскільки вона все ще використовується."
+  },
+  "ai": {
+    "connectionNotFound": "AI-модель не знайдено.",
+    "connectionNameTaken": "У вас вже є AI-модель з такою назвою.",
+    "connectionLimitReached": "Максимальна кількість AI-моделей: {{max}}.",
+    "connectionNameInvalidLength": "Назва повинна містити від 1 до {{max}} символів.",
+    "connectionModelRequired": "Введіть назву моделі.",
+    "connectionBaseUrlRequired": "Введіть базовий URL вашого сервера, сумісного з OpenAI.",
+    "connectionBaseUrlNotAllowed": "Цей провайдер завжди використовує свою офіційну API-адресу, тому базовий URL для нього не потрібен.",
+    "connectionApiKeyRequired": "Введіть API-ключ.",
+    "connectionProviderMismatch": "Ця AI-модель використовує іншого провайдера.",
+    "connectionKeySourceMissing": "AI-модель, з якої ви копіюєте, не має API-ключа. Введіть його.",
+    "connectionStoredKeyUnreadable": "Збережений API-ключ для цієї AI-моделі більше неможливо прочитати. Введіть його знову.",
+    "connectionKeyRejected": "Провайдер відхилив цей API-ключ. Перевірте, що він правильний, активний і має достатньо кредитів.",
+    "connectionModelNotAvailable": "Цей API-ключ не може використовувати модель «{{model}}». Перевірте назву моделі.",
+    "connectionProviderUnreachable": "Не вдалося з'єднатися з провайдером. Спробуйте ще раз за мить.",
+    "connectionValidationFailed": "Провайдер відхилив тестовий запит: {{reason}}",
+    "serverModelUnavailable": "Модель MoneyMatter AI недоступна на вашому плані.",
+    "connectionKeyNotInBackup": "API-ключ не зберігається в резервних копіях. Відредагуйте цю модель і введіть ключ знову.",
+    "customEndpointUnreachable": "Не вдалося з'єднатися з ендпоінтом. Перевірте базовий URL і переконайтеся, що сервер працює та доступний з інтернету.",
+    "customEndpointAuthFailed": "Ендпоінт відхилив API-ключ. Перевірте, що ключ правильний і має необхідні дозволи.",
+    "customEndpointModelNotFound": "Ендпоінт не надає модель з назвою «{{model}}».",
+    "customEndpointModelNotListed": "Ендпоінт не надає «{{model}}». Доступні моделі: {{available}}.",
+    "customEndpointMoreModels": "та ще {{count}}",
+    "customEndpointNotApiResponse": "Сервер за цією URL-адресою відповів HTTP {{status}} замість відповіді, сумісної з OpenAI. Перевірте, що сервер працює і що базовий URL правильний — зазвичай він закінчується на /v1.",
+    "customEndpointValidationFailed": "Ендпоінт не повернув придатну відповідь. Перевірте базовий URL, назву моделі та API-ключ.",
+    "categorizationAlreadyRunning": "AI-категоризація вже виконується. Зачекайте, поки вона завершиться, перш ніж почати новий запуск.",
+    "categorizationRateLimited": "Ви занадто часто запускали AI-категоризацію нещодавно. Будь ласка, спробуйте пізніше.",
+    "customInstructionsNeedConnection": "Додайте AI-модель у «Налаштування → AI», щоб використовувати власні інструкції."
+  },
+  "middleware": {
+    "tooManyRequests": "Забагато запитів. Будь ласка, спробуйте пізніше."
+  },
+  "defaultCategories": {
+    "main": {
+      "food": "Їжа та напої",
+      "shopping": "Покупки",
+      "housing": "Житло",
+      "transportation": "Транспорт",
+      "vehicle": "Авто",
+      "life": "Життя та розваги",
+      "communication": "Зв'язок, ПК",
+      "financial-expenses": "Фінансові витрати",
+      "investments": "Інвестиції",
+      "income": "Дохід",
+      "other": "Інше"
+    },
+    "subcategories": {
+      "food": {
+        "groceries": "Продукти",
+        "restaurant": "Ресторан, фаст-фуд",
+        "bar-cafe": "Бар, кафе"
+      },
+      "shopping": {
+        "clothes-shoes": "Одяг та взуття",
+        "jewels-accessories": "Прикраси, аксесуари",
+        "health-beauty": "Здоров'я та краса",
+        "kids": "Діти",
+        "home-garden": "Дім, сад",
+        "pets-animals": "Домашні тварини",
+        "electronics-accessories": "Електроніка, аксесуари",
+        "gifts-joy": "Подарунки, радість",
+        "stationery-tools": "Канцелярія, інструменти",
+        "free-time": "Вільний час",
+        "drugstore-chemist": "Аптека, хімія"
+      },
+      "housing": {
+        "rent": "Оренда",
+        "mortgage": "Іпотека",
+        "energy-utilities": "Енергія, комунальні",
+        "services": "Послуги",
+        "maintenance-repairs": "Обслуговування, ремонт",
+        "property-insurance": "Страхування нерухомості"
+      },
+      "transportation": {
+        "public-transport": "Громадський транспорт",
+        "taxi": "Таксі",
+        "long-distance": "Далекі поїздки",
+        "business-trips": "Відрядження"
+      },
+      "vehicle": {
+        "fuel": "Пальне",
+        "parking": "Паркування",
+        "vehicle-maintenance": "Обслуговування авто",
+        "rentals": "Оренда",
+        "vehicle-insurance": "Страхування авто",
+        "leasing": "Лізинг"
+      },
+      "life": {
+        "health-care-doctor": "Медицина, лікар",
+        "wellness-beauty": "Велнес, краса",
+        "active-sport-fitness": "Активний спорт, фітнес",
+        "culture-sport-events": "Культура, спортивні події",
+        "hobbies": "Хобі",
+        "education-development": "Освіта, розвиток",
+        "books-audio-subscriptions": "Книги, аудіо, підписки",
+        "tv-streaming": "ТБ, стрімінг",
+        "holiday-trips-hotels": "Відпустка, подорожі, готелі",
+        "charity-gifts": "Благодійність, подарунки",
+        "alcohol-tobacco": "Алкоголь, тютюн",
+        "lottery-gambling": "Лотерея, азартні ігри"
+      },
+      "communication": {
+        "phone-cell-phone": "Телефон, мобільний",
+        "internet": "Інтернет",
+        "software-apps-games": "Програми, застосунки, ігри",
+        "postal-services": "Поштові послуги"
+      },
+      "financial-expenses": {
+        "taxes": "Податки",
+        "insurances": "Страхування",
+        "loan-interests": "Кредит, відсотки",
+        "fines": "Штрафи",
+        "advisory": "Консультації",
+        "charges-fees": "Збори, комісії",
+        "child-support": "Аліменти"
+      },
+      "investments": {
+        "realty": "Нерухомість",
+        "vehicles-chattels": "Транспорт, майно",
+        "financial-investments": "Фінансові інвестиції",
+        "savings": "Заощадження",
+        "collections": "Колекції"
+      },
+      "income": {
+        "wage-invoices": "Зарплата, рахунки",
+        "interests-dividends": "Відсотки, дивіденди",
+        "sale": "Продаж",
+        "rental-income": "Дохід від оренди",
+        "dues-grants": "Внески та гранти",
+        "lending-renting": "Позики, здача в оренду",
+        "checks-coupons": "Чеки, купони",
+        "lottery-gambling": "Лотерея, азартні ігри",
+        "refunds": "Повернення (податки, покупки)",
+        "freelance": "Фріланс",
+        "gifts": "Подарунки"
+      }
+    }
+  },
+  "subscriptions": {
+    "transactionsNotFoundOrNotBelongToUser": "Одну або кілька транзакцій не знайдено або вони не належать користувачу.",
+    "cannotLinkDifferentTransactionType": "Неможливо прив'язати транзакції з типом, відмінним від типу регулярного платежу",
+    "summaryCurrencyNotConnected": "Неможливо розрахувати підсумок регулярних платежів: валюту {{currencyCodes}} не підключено до вашого облікового запису. Підключіть її в «Налаштування → Валюти».",
+    "summaryBaseCurrencyNotSet": "Базову валюту не встановлено. Встановіть валюту за замовчуванням у ваших налаштуваннях, щоб переглянути підсумок регулярних платежів.",
+    "payeeNotFoundOrNotBelongToUser": "Отримувача платежу не знайдено або він не належить користувачу.",
+    "tagsNotFoundOrNotBelongToUser": "Один або кілька тегів не знайдено або вони не належать користувачу.",
+    "validation": {
+      "autoRecord": {
+        "requiresAccount": "Автозапис потребує рахунку, щоб забезпечити місце для розміщення записаної транзакції.",
+        "requiresAmount": "Автозапис потребує expectedAmount та expectedCurrencyCode для визначення вартості записаної транзакції.",
+        "excludesMatching": "Автозапис та правила зіставлення не можна використовувати разом — обидва позначали б той самий період як сплачений.",
+        "requiresAccountField": "Автозапис потребує рахунку для запису транзакції.",
+        "requiresAmountField": "Автозапис потребує expectedAmount та expectedCurrencyCode.",
+        "excludesMatchingField": "Автозапис та правила зіставлення є взаємовиключними."
+      },
+      "customInterval": {
+        "required": "Для власної частоти потрібні одиниця та кількість інтервалу.",
+        "presetConflict": "Одиницю та кількість інтервалу можна задати лише для власної частоти.",
+        "countOutOfRange": "Кількість інтервалу для цієї одиниці має бути від {{min}} до {{max}}."
+      }
+    }
+  },
+  "transactionTemplates": {
+    "notFound": "Шаблон транзакції не знайдено.",
+    "nameAlreadyExists": "Шаблон транзакції з такою назвою вже існує.",
+    "amountRequiresAccount": "Суму можна зберегти лише разом із рахунком.",
+    "accountNotFound": "Рахунок не знайдено або він не належить користувачу.",
+    "accountMustBeSystem": "У шаблоні транзакції можна використовувати лише рахунки з ручним керуванням.",
+    "accountArchived": "Архівовані рахунки не можна використовувати в шаблоні.",
+    "categoryNotFound": "Категорію не знайдено або вона не належить користувачу.",
+    "payeeNotFound": "Отримувача не знайдено або він не належить користувачу.",
+    "tagsNotFound": "Один або кілька тегів не знайдено або вони не належать користувачу."
+  },
+  "payees": {
+    "aliasNameRequired": "Альтернативна назва обов'язкова",
+    "aliasNotFound": "Альтернативну назву не знайдено",
+    "aliasUsedByOtherPayee": "Ця альтернативна назва вже використовується отримувачем «{{name}}»",
+    "nameUsedByAliasOfOtherPayee": "Ця назва вже використовується як альтернативна назва отримувача «{{name}}»",
+    "cannotDeleteCanonicalAlias": "Неможливо видалити альтернативну назву, яка збігається з канонічною назвою отримувача. Замість цього перейменуйте отримувача, якщо хочете змінити його основну назву.",
+    "defaultCategoryNotOwned": "Обрана категорія за замовчуванням не належить вашому обліковому запису",
+    "defaultTagsNotOwned": "Один або кілька тегів не належать користувачу",
+    "duplicateAlias": "Цю альтернативну назву вже прив'язано до цього отримувача",
+    "duplicateName": "Отримувач з такою назвою вже існує",
+    "ignoredNameCollidesWithPayee": "Отримувач з такою назвою вже існує. Спочатку видаліть отримувача або передайте `force: true`, щоб видалити його як частину цієї операції.",
+    "ignoredNameNotFound": "Проігноровану назву не знайдено.",
+    "mergeSelf": "Не можна об'єднати отримувача із самим собою",
+    "nameRequired": "Назва отримувача обов'язкова",
+    "notFound": "Отримувача не знайдено",
+    "renameCollision": "Інший отримувач уже використовує цю назву – об'єднайте їх замість цього"
+  },
+  "brandLogos": {
+    "colorRequiresInitials": "Колір фону потребує літер або іконки.",
+    "slotsExclusive": "Виберіть один тип логотипа: бренд, літери, іконка або зображення."
+  },
+  "logoImages": {
+    "invalidImage": "Файл не є зображенням PNG, JPEG або WebP.",
+    "tooLarge": "Зображення логотипа має бути не більшим за 50 КБ.",
+    "notFound": "Зображення логотипа не знайдено."
+  },
+  "venture": {
+    "dealNotFound": "Венчурну угоду не знайдено",
+    "eventNotFound": "Венчурну подію не знайдено"
+  },
+  "vehicles": {
+    "notFound": "Транспортний засіб не знайдено"
+  },
+  "stats": {
+    "netWorthHistoryTooManyPoints": "Цей діапазон дат і рівень деталізації дають забагато точок даних. Виберіть нижчий рівень деталізації або коротший діапазон."
+  },
+  "automations": {
+    "automationNotFound": "Автоматизацію не знайдено.",
+    "previewRequiresConditions": "Вкажіть умови або збережену автоматизацію для попереднього перегляду.",
+    "reorderStale": "Список автоматизацій змінився. Оновіть сторінку та спробуйте ще раз.",
+    "ruleLimitReached": "Ви досягли максимальної кількості автоматизацій.",
+    "staleReference": "Ця автоматизація посилається на елемент, якого більше не існує."
+  },
+  "attachments": {
+    "transactionNotFound": "Транзакцію не знайдено.",
+    "attachmentNotFound": "Вкладення не знайдено.",
+    "fileNotFound": "Файл вкладення не знайдено.",
+    "unsupportedFileType": "Непідтримуваний тип файлу. Завантажте файл JPEG, PNG, WebP або PDF.",
+    "tooManyAttachments": "Транзакція може мати не більше {{max}} вкладень.",
+    "quotaExceeded": "Перевищено квоту зберігання вкладень.",
+    "noFileUploaded": "Файл не було завантажено."
+  },
+  "invoiceMatching": {
+    "unsupportedFileType": "Непідтримуваний тип файлу. Завантажте інвойс у форматі JPEG, PNG, WebP або PDF.",
+    "notAnInvoice": "Цей документ не схожий на інвойс або чек.",
+    "incompleteInvoice": "Не вдалося прочитати продавця, загальну суму та дату з цього інвойсу.",
+    "pdfWithoutText": "Власні підключення ШІ не можуть отримувати PDF-файли напряму, а цей файл не вдалося відкрити, щоб перетворити його (наприклад, він захищений паролем). Перетворіть його на зображення (PNG або JPEG), наприклад на знімок екрана з інвойсом, і завантажте його натомість.",
+    "noFileUploaded": "Файл не завантажено."
+  },
+  "auth": {
+    "errors": {
+      "passwordAlreadySet": "Ваш рахунок уже має пароль.",
+      "passwordTooShort": "Пароль закороткий.",
+      "passwordTooLong": "Пароль задовгий.",
+      "reauthenticationRequired": "Для вашої безпеки увійдіть знову, щоб внести цю зміну.",
+      "signupsDisabled": "Адміністратор вимкнув реєстрацію."
+    }
+  },
+  "backup": {
+    "restore": {
+      "errors": {
+        "noUserRecord": "Резервна копія не містить запису користувача, тому ваші наявні дані не було замінено.",
+        "emptyManifest": "Маніфест резервної копії не містить жодного файлу, тому ваші наявні дані не було замінено.",
+        "missingRequiredColumns_one": "У таблиці \"{{table}}\" резервної копії відсутній обов'язковий стовпець: {{columns}}. Резервна копія створена до зміни схеми й не може бути відновлена в цій версії.",
+        "missingRequiredColumns_few": "У таблиці \"{{table}}\" резервної копії відсутні обов'язкові стовпці: {{columns}}. Резервна копія створена до зміни схеми й не може бути відновлена в цій версії.",
+        "missingRequiredColumns_many": "У таблиці \"{{table}}\" резервної копії відсутні обов'язкові стовпці: {{columns}}. Резервна копія створена до зміни схеми й не може бути відновлена в цій версії.",
+        "missingRequiredColumns_other": "У таблиці \"{{table}}\" резервної копії відсутні обов'язкові стовпці: {{columns}}. Резервна копія створена до зміни схеми й не може бути відновлена в цій версії.",
+        "archiveTooLarge": "Архів резервної копії завеликий для відновлення: його розпакований вміст перевищує ліміт розміру.",
+        "archiveCorrupt": "Архів резервної копії пошкоджений або був змінений.",
+        "invalidJson": "Файл резервної копії {{path}} не є коректним JSON.",
+        "rowsNotArray": "Файл резервної копії {{path}} пошкоджений: очікувався JSON-масив рядків.",
+        "rowNotObject": "Файл резервної копії {{path}} пошкоджений: кожен рядок має бути JSON-об'єктом.",
+        "userNotObject": "Файл резервної копії {{path}} пошкоджений: запис користувача має бути JSON-об'єктом.",
+        "notZip": "Завантажений файл резервної копії не є придатним для читання zip-архівом.",
+        "missingManifest": "В архіві резервної копії відсутній manifest.json.",
+        "malformedManifest": "Архів резервної копії містить пошкоджений manifest.json (це не JSON-об'єкт).",
+        "malformedManifestFiles": "Архів резервної копії містить пошкоджений manifest.json (його список файлів не є об'єктом).",
+        "invalidFormatVersion": "Маніфест резервної копії містить недійсну версію формату ({{version}}).",
+        "formatVersionTooNew": "Версія формату резервної копії {{version}} новіша, ніж підтримує цей застосунок (максимум {{max}}). Оновіть застосунок, щоб відновити її.",
+        "malformedManifestEntry": "Архів резервної копії містить пошкоджений запис маніфесту для {{path}}.",
+        "missingFile": "В архіві резервної копії відсутній {{path}}, указаний у маніфесті.",
+        "checksumMismatch": "Файл резервної копії {{path}} не пройшов перевірку цілісності (контрольна сума не збігається).",
+        "differentAccount": "Цю резервну копію експортовано з іншого облікового запису, тому її не можна відновити тут.",
+        "alreadyInProgress": "Відновлення з резервної копії вже виконується. Дочекайтеся його завершення, перш ніж запускати нове.",
+        "failed": "Не вдалося відновити з резервної копії. Ваші наявні дані не змінено."
+      }
+    }
+  },
+  "dataExport": {
+    "tooManyRows": "Експорт міститиме рядків: {{rowCount, number}}, що перевищує ліміт ({{limit, number}})."
+  },
+  "goals": {
+    "goalNotFound": "Ціль не знайдено.",
+    "accountNotFound": "Один із вибраних рахунків не знайдено.",
+    "accountNotEligible": "Рахунок «{{accountName}}» не може враховуватися в цілі. Виберіть готівковий, поточний, накопичувальний, інвестиційний або криптовалютний рахунок.",
+    "shareCapacityExceeded": "На рахунку «{{accountName}}» вільно {{free}}%: ви запросили {{requested}}%, а інші цілі вже використовують {{usedByOtherGoals}}%.",
+    "fixedAmountsBelowTarget": "Фіксовані суми разом становлять {{total}} {{currencyCode}}, що менше за ціль {{target}} {{currencyCode}}. Збільшіть суму або врахуйте рахунок у відсотках.",
+    "currencyRateUnavailable": "Валюту {{currencyCode}} зараз не можна конвертувати у вашу базову валюту. Виберіть іншу валюту або спробуйте пізніше.",
+    "reachedNotification": {
+      "title": "Ціль досягнуто: {{name}}",
+      "message": "Ви заощадили {{amount}} {{currencyCode}}."
+    }
+  },
+  "backgroundJobs": {
+    "notFound": "Це завдання більше не виконується — сервер, можливо, перезапустився. Спробуйте ще раз."
+  }
+}

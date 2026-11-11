@@ -1,0 +1,199 @@
+{
+  "pages": {
+    "statementParser": {
+      "pageTitle": "Analyseur de relevés",
+      "pageDescription": "Importez un relevé bancaire (PDF, CSV ou TXT), une photo de reçu ou une capture d'écran d'application bancaire pour extraire vos opérations grâce à l'IA. Configurez votre propre modèle d'IA dans les paramètres pour un accès illimité.",
+      "stepper": {
+        "steps": {
+          "upload": "Téléverser",
+          "account": "Compte",
+          "review": "Vérifier",
+          "results": "Importer"
+        }
+      },
+      "steps": {
+        "accountTitle": "Sélectionner un compte",
+        "accountDescription": "Choisissez ou créez un compte pour ces opérations"
+      },
+      "selectCurrency": "Sélectionner la devise",
+      "selectExistingAccount": "Sélectionner un compte existant",
+      "accountNamePlaceholder": "ex. Compte courant principal",
+      "selectAccount": "Sélectionner un compte",
+      "searchAccounts": "Rechercher un compte...",
+      "uploadExtract": {
+        "supportedFormats": "Formats acceptés : PDF, CSV, TXT, JPG, PNG, WebP (max. 10 Mo)",
+        "clickOrDragStatements": "Cliquez ou glissez vos relevés ici",
+        "filesLabel": "Fichiers",
+        "analyzingFiles": "Analyse des fichiers...",
+        "totalForFiles": "total pour {count} fichiers",
+        "estimateFailedSome": "{count} fichier(s) sur {total} n'ont pas pu être analysés :",
+        "extractionFailedSome": "{count} fichier(s) sur {total} n'ont pas pu être traités. Le reste est prêt à être importé.",
+        "retryFailed": "Réessayer les fichiers en échec",
+        "progressFile": "Traitement de {name} ({current} sur {total})",
+        "acrossFiles": "sur {count} fichiers",
+        "currencyConflict": "Les relevés sélectionnés indiquent des devises différentes ({currencies}). Ils seront tous importés dans un seul compte, en utilisant la devise de ce compte.",
+        "unsupportedFileNamed": "{name} n'est pas un fichier PDF, CSV, TXT, JPG, PNG ou WebP",
+        "unreadableImageNamed": "{name} n'a pas pu être lu en tant qu'image",
+        "invalidPdfNamed": "{name} ne semble pas être un PDF valide. Le fichier est peut-être corrompu ou renommé.",
+        "invalidImageNamed": "{name} ne semble pas être une image JPG, PNG ou WebP valide. Le fichier est peut-être corrompu ou renommé.",
+        "invalidTextNamed": "{name} ne semble pas être un fichier {ext} valide. Le fichier est peut-être binaire ou renommé.",
+        "unreadableFiles": "Impossible de lire : {files}",
+        "fileStatus": {
+          "pending": "Non analysé",
+          "estimating": "Analyse en cours...",
+          "estimated": "Prêt",
+          "estimateFailed": "Impossible d'analyser",
+          "extracting": "Extraction en cours...",
+          "extracted": "{count} opération | {count} opérations",
+          "failed": "Échec"
+        },
+        "analyzeButton": "Analyser le fichier | Analyser les {count} fichiers",
+        "tryAgain": "Réessayer",
+        "modelLabel": "Modèle",
+        "estimatedCostLabel": "Coût estimé",
+        "estimatedTokensLabel": "Jetons estimés",
+        "extractButton": "Extraire les opérations",
+        "progressMessage": "Cette opération peut prendre de 30 à 60 secondes selon la taille du document",
+        "foundLabel": "Trouvées :",
+        "transactions": "opérations",
+        "fromLabel": "du",
+        "inLabel": "dans",
+        "continueMessage": "Continuez pour sélectionner un compte pour ces opérations.",
+        "continueButton": "Continuer vers le compte",
+        "tokenWarning": {
+          "medium": {
+            "title": "Fichier volumineux détecté",
+            "description": "Le traitement peut prendre 1 à 2 minutes. Veuillez patienter."
+          },
+          "high": {
+            "title": "Fichier très volumineux détecté",
+            "description": "Le traitement peut prendre plusieurs minutes en raison de la taille du fichier."
+          },
+          "extreme": {
+            "title": "Fichier extrêmement volumineux",
+            "description": "Le traitement peut prendre plus de 5 minutes. Pensez à scinder le fichier en plusieurs parties pour un traitement plus rapide."
+          }
+        },
+        "status": {
+          "sendingFile": "Envoi du fichier à l'IA...",
+          "readingDocument": "Lecture du document par l'IA...",
+          "analyzingStructure": "Analyse de la structure du relevé...",
+          "extractingData": "Extraction des données d'opérations...",
+          "processingTransactions": "Traitement des opérations...",
+          "finalizing": "Finalisation de l'extraction...",
+          "almostDone": "Presque terminé..."
+        },
+        "tokenFormat": "{inputTokens} k en entrée, ~{outputTokens} k en sortie",
+        "pdfPasswordLabel": "Mot de passe du PDF",
+        "pdfPasswordPlaceholder": "Saisir le mot de passe du document",
+        "pdfPasswordSubmit": "Déverrouiller et analyser"
+      },
+      "accountSelect": {
+        "newlyCreated": "(nouvellement créé)",
+        "differentCurrency": "Devise différente",
+        "linkedToBanks": "Liés aux banques",
+        "linkedToBanksTooltip": "Pour le moment, l'importation de relevés est limitée aux comptes du système.",
+        "noAccountsFound": "Aucun compte trouvé",
+        "currencyAccounts": "Comptes en {currency}"
+      },
+      "accountSelection": {
+        "transactions": "Opérations :",
+        "files": "Relevés :",
+        "filesList": "Depuis : {files}",
+        "currencyConflict": "Les relevés comportent des devises différentes ({currencies}). Choisissez la devise à utiliser pour le compte :",
+        "bank": "Banque :",
+        "currency": "Devise :",
+        "currencyNotDetected": "Impossible de détecter la devise du relevé. Veuillez sélectionner la devise manuellement :",
+        "currencyMismatch": "La devise du relevé ({statementCurrency}) est différente de celle du compte ({accountCurrency}). Les opérations seront importées avec la devise du compte.",
+        "yourCurrenciesGroup": "Vos devises",
+        "allCurrenciesGroup": "Toutes les devises",
+        "createNew": "Créer un compte",
+        "back": "Retour",
+        "importTransactions": "Importer les opérations",
+        "checkForDuplicates": "Rechercher les doublons"
+      },
+      "createAccountDialog": {
+        "title": "Créer un compte pour l'import",
+        "description": "Créez un nouveau compte pour importer les opérations de votre relevé.",
+        "accountNameLabel": "Nom du compte",
+        "currencyLabel": "Devise",
+        "fromStatement": "(du relevé)",
+        "currencyLocked": "La devise est verrouillée pour correspondre au relevé ({currency}).",
+        "currencyWillBeAdded": "Remarque : {currency} sera ajoutée à vos devises.",
+        "cancel": "Annuler",
+        "creating": "Création...",
+        "createAccount": "Créer un compte",
+        "validation": {
+          "nameRequired": "Le nom du compte est obligatoire",
+          "currencyRequired": "Veuillez sélectionner une devise"
+        },
+        "success": "Compte créé avec succès",
+        "error": "Échec de la création du compte"
+      },
+      "transactionReview": {
+        "checkingDuplicates": "Recherche des doublons...",
+        "extractedLabel": "Extraites :",
+        "fromFiles": "de {count} relevés",
+        "duplicatesLabel": "Doublons potentiels :",
+        "willImportLabel": "À importer :",
+        "alreadyInAccountLabel": "Déjà sur le compte :",
+        "timelineTitle": "Historique des opérations",
+        "legendNew": "Nouvelle",
+        "legendDuplicate": "Doublon",
+        "legendExisting": "Déjà sur le compte",
+        "statusDup": "Doublon",
+        "statusImport": "Importer",
+        "statusExists": "Sur le compte",
+        "duplicateInfoSkipped": "{count} opérations seront ignorées car ce sont des doublons.",
+        "duplicateInfoOverridden": "{count} doublons ont été forcés et seront importés.",
+        "toggleInfo": "Les lignes cochées seront importées. Les doublons sont décochés par défaut – cochez-en un pour l'importer quand même.",
+        "backButton": "Retour",
+        "continueButton": "Continuer l'import",
+        "transactionCount": "({count} opérations)",
+        "duplicateCheckFailed": "Impossible de comparer ce relevé avec vos opérations existantes : le nombre de doublons est indisponible. Vérifiez la liste avant d'importer.",
+        "noDescription": "Sans libellé"
+      },
+      "droppedRowsWarning": "{count} ligne de la réponse de l'IA n'a pas pu être lue et a été ignorée. Le nombre d'opérations importées ci-dessous peut être inférieur à celui de votre fichier. | {count} lignes de la réponse de l'IA n'ont pas pu être lues et ont été ignorées. Le nombre d'opérations importées ci-dessous peut être inférieur à celui de votre fichier.",
+      "errors": {
+        "estimateFailed": "Échec de l'analyse du fichier",
+        "extractFailed": "Échec de l'extraction des opérations",
+        "importFailed": "Impossible de lancer l'import"
+      },
+      "importResults": {
+        "readyTitle": "Prêt à importer",
+        "readyDescription": "Vérifiez le récapitulatif ci-dessous et cliquez sur « Importer les opérations » pour continuer.",
+        "accountLabel": "Compte :",
+        "statementsLabel": "Relevés :",
+        "toImportLabel": "Opérations à importer :",
+        "toSkipLabel": "Opérations à ignorer :",
+        "backButton": "Retour",
+        "importButton": "Importer {count} opérations",
+        "importingTitle": "Import des opérations en cours",
+        "importingDescription": "Veuillez patienter pendant l'import de vos opérations...",
+        "failedTitle": "Échec de l'import",
+        "failedDescription": "Aucune opération n'a été importée. Les détails ci-dessous proviennent du serveur.",
+        "jobFailedDescription": "L'importation s'est arrêtée avant la fin. Certaines opérations ont peut-être déjà été créées. Vérifiez vos opérations avant de réimporter ce relevé.",
+        "tryAgainButton": "Réessayer",
+        "completeTitle": "Importation terminée !",
+        "completeWithIssuesTitle": "Importation terminée avec des erreurs",
+        "successDescription": "Vos opérations ont bien été importées.",
+        "partialDescription": "Certaines opérations n'ont pas pu être importées.",
+        "importedLabel": "Importées :",
+        "skippedLabel": "Ignorées :",
+        "errorsTitle": "Erreurs d'importation",
+        "transactionNumberHeader": "N° d'opération",
+        "errorHeader": "Erreur",
+        "batchIdNote": "Identifiant du lot d'importation : {batchId}. Vous pouvez utiliser cet identifiant pour retrouver et gérer toutes les opérations importées.",
+        "viewTransactionsButton": "Voir les opérations",
+        "startNewImportButton": "Démarrer un nouvel import",
+        "rowErrors": {
+          "invalidDate": "Date non reconnue « {date} »",
+          "futureDate": "La date {date} est située dans le futur",
+          "amountNotPositive": "Le montant doit être supérieur à zéro ({amount} reçu)",
+          "amountTooLarge": "Le montant {amount} dépasse le plafond maximum de {max}",
+          "rowFailed": "Cette opération n'a pas pu être importée"
+        }
+      }
+    }
+  }
+}

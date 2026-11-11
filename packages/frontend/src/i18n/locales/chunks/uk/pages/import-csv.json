@@ -1,0 +1,338 @@
+{
+  "pages": {
+    "importExport": {
+      "csvImport": {
+        "pageTitle": "Імпорт транзакцій з CSV",
+        "pageDescription": "Завантажте CSV експорт вашого банку або файл історії транзакцій для імпорту транзакцій на ваш рахунок.",
+        "stepper": {
+          "stepOf": "Крок {current} з {total}",
+          "steps": {
+            "upload": "Завантажити",
+            "map": "Зіставити стовпці",
+            "resolveAccounts": "Рахунки",
+            "resolveCategories": "Категорії",
+            "review": "Перегляд",
+            "results": "Готово"
+          }
+        },
+        "steps": {
+          "uploadTitle": "Завантажити CSV файл",
+          "uploadDescription": "Виберіть CSV файл для початку",
+          "mappingTitle": "Зіставити стовпці",
+          "mappingDescription": "Зіставте стовпці CSV з полями транзакцій",
+          "reviewTitle": "Перегляд дублікатів",
+          "reviewDescription": "Перевірте наявність дубльованих транзакцій",
+          "completeTitle": "Імпорт завершено",
+          "completeDescription": "Перегляньте результати імпорту"
+        },
+        "fileUpload": {
+          "stepTitle": "Завантажити CSV файл",
+          "description": "Завантажте один або кілька CSV-файлів для імпорту транзакцій. Усі файли повинні мати однакові стовпці.",
+          "dragDrop": "Перетягніть CSV файл сюди",
+          "orBrowse": "або натисніть для вибору",
+          "maxSize": "Максимальний розмір файлу: 50МБ",
+          "removeFile": "Видалити файл",
+          "parsing": "Аналіз...",
+          "continueToMapping": "Перейти до зіставлення",
+          "errors": {
+            "invalidFormat": "Неправильний формат файлу. Завантажте CSV файл.",
+            "invalidFormatNamed": "{name} не є CSV-файлом",
+            "fileTooLarge": "Розмір файлу ({size}) перевищує максимально дозволений (50МБ)",
+            "parseFailed": "Не вдалося розібрати файл. Перевірте формат та спробуйте знову.",
+            "merge": {
+              "emptySelection": "Виберіть принаймні один CSV-файл",
+              "fileReadFailed": "Не вдалося прочитати «{file}»",
+              "fileEmpty": "«{file}» порожній",
+              "fileNoDataRows": "«{file}» не містить рядків даних",
+              "headerMismatch": "Стовпці у «{file}» не збігаються з першим файлом. Усі файли повинні мати однакові стовпці в однаковому порядку.",
+              "forbiddenHeader": "«{file}» використовує зарезервовану назву стовпця",
+              "tooManyRows": "Вибрані файли містять більше {max} рядків. Видаліть деякі файли або рядки та спробуйте знову.",
+              "parseError": "Не вдалося обробити «{file}». Переконайтеся, що це коректний CSV-файл."
+            }
+          }
+        },
+        "columnMapping": {
+          "stepTitle": "Зіставити стовпці",
+          "description": "Зіставте стовпці CSV з обов'язковими полями",
+          "file": "Файл",
+          "filesCount": "{count} файл | {count} файли | {count} файлів",
+          "totalRows": "Всього рядків",
+          "delimiter": "Роздільник",
+          "extracting": "Вилучення...",
+          "detecting": "Виявлення дублікатів…",
+          "nextExtract": "Далі: вилучити значення",
+          "continueToDuplicates": "Перейти до перевірки дублікатів"
+        },
+        "execute": {
+          "starting": "Початок імпорту…",
+          "progressCount": "{processed} / {total}",
+          "statusQueued": "У черзі",
+          "statusRunning": "Імпортування…",
+          "statusCompleted": "Завершено",
+          "statusFailed": "Помилка",
+          "failed": "Помилка імпорту.",
+          "partialImportNote": "Деякі рядки могли бути вже імпортовані до цієї помилки. Повторний імпорт може створити дублікати."
+        },
+        "review": {
+          "stepTitle": "Перегляд імпорту",
+          "description": "Перегляньте дані перед імпортом",
+          "totalRows": "Всього рядків",
+          "validRows": "Дійсних рядків",
+          "invalidRows": "Недійсних рядків",
+          "duplicates": "Дублікати",
+          "invalidRowsTitle": "Недійсні рядки",
+          "rowNumber": "Рядок #",
+          "errors": "Помилки",
+          "rawData": "Необроблені дані",
+          "duplicatesTitle": "Знайдено {count} потенційних дублікатів",
+          "duplicatesHint": "Позначте рядки, які ви все одно хочете імпортувати; непозначені дублікати буде пропущено.",
+          "skip": "Пропустити",
+          "match": "Збіг",
+          "csvTransaction": "Транзакція CSV",
+          "existingTransaction": "Існуюча транзакція",
+          "importSummary": "Підсумок імпорту",
+          "willBeImported": "транзакцій буде імпортовано.",
+          "invalidWillBeSkipped": "недійсних рядків буде пропущено.",
+          "duplicatesWillBeSkipped": "дублікатів буде пропущено.",
+          "backToMapping": "Назад до зіставлення",
+          "importing": "Імпорт...",
+          "importButton": "Імпортувати {count} транзакцій",
+          "unpriceableTitle": "Рядків без курсу обміну: {count}",
+          "unpriceableDescription": "Ці рядки використовують валюту, для якої немає збереженого курсу обміну, і їх неможливо конвертувати у вашу базову валюту. Ви повинні пропустити їх або скасувати імпорт.",
+          "unpriceableWillBeSkipped": "без курсу обміну буде пропущено",
+          "currency": "Валюта",
+          "skipAndImport": "Пропустити та імпортувати",
+          "cancelImport": "Скасувати імпорт",
+          "noInvalidRows": "Немає недійсних рядків",
+          "noDuplicates": "Немає дублікатів",
+          "expand": "Показати повні дані",
+          "collapse": "Сховати повні дані"
+        },
+        "results": {
+          "completeTitle": "Імпорт завершено!",
+          "completeWithIssuesTitle": "Імпорт завершено з проблемами",
+          "successDescription": "Усі транзакції успішно імпортовано.",
+          "partialDescription": "Деякі транзакції не вдалося імпортувати.",
+          "imported": "Імпортовано",
+          "skippedDuplicates": "Пропущено (дублікати)",
+          "accountsCreated": "Створено рахунків",
+          "accountsSkipped": "Пропущено рахунків",
+          "categoriesCreated": "Створено категорій",
+          "tagsCreated": "Створено тегів",
+          "payeesCreated": "Створено отримувачів",
+          "importErrors": "Помилки імпорту",
+          "rowNumber": "Рядок #",
+          "error": "Помилка",
+          "batchIdLabel": "ID пакета",
+          "batchIdDescription": "Використовуйте цей ID для пошуку всіх транзакцій з цього імпорту.",
+          "viewTransactions": "Переглянути транзакції",
+          "startNewImport": "Почати новий імпорт",
+          "skippedUnpriceable": "Пропущено (без курсу обміну)",
+          "importFailed": "Не вдалося імпортувати транзакції. Спробуйте ще раз.",
+          "successCallout": "{count} транзакцій успішно імпортовано",
+          "failed": "Не вдалося",
+          "noErrors": "Немає помилок",
+          "balanceWarningTitle": "Баланси рахунків можуть бути неузгодженими",
+          "balanceWarningBody": "Транзакції імпортовано, але баланси деяких рахунків не вдалося оновити після цього. Перегляньте ці рахунки та за потреби скоригуйте їх баланси вручну."
+        }
+      },
+      "columnMapping": {
+        "stepTitle": "Зіставити стовпці",
+        "description": "Зіставте стовпці CSV з обов'язковими полями",
+        "file": "Файл",
+        "totalRows": "Всього рядків",
+        "delimiter": "Роздільник",
+        "detecting": "Виявлення дублікатів…"
+      },
+      "common": {
+        "selectOption": "Виберіть опцію...",
+        "selectColumn": "Виберіть стовпець...",
+        "noneOptional": "Немає (необов'язково)",
+        "selectAction": "Виберіть дію..."
+      },
+      "transactionTypeMapping": {
+        "columnLabel": "Стовпець типу транзакції",
+        "incomeValuesLabel": "Значення доходу",
+        "expenseValuesLabel": "Значення витрат",
+        "commaSeparatedHint": "Значення, розділені комами",
+        "uncoveredValues": "Ці значення у стовпці типу ще не призначені до Доходу або Витрати: {values}. Додайте кожне до відповідного списку вище, щоб продовжити.",
+        "selectColumn": "Виберіть стовпець...",
+        "incomeValuesPlaceholder": "напр., Credit, Deposit, Income",
+        "expenseValuesPlaceholder": "напр., Debit, Withdrawal, Expense",
+        "methodOptions": {
+          "amountSign": "За знаком суми (від'ємна = витрата, додатня = дохід)",
+          "dataSourceColumn": "Зі стовпця (вкажіть значення)"
+        },
+        "amountSignInfo": "ℹ️ Типи транзакцій визначатимуться автоматично: від'ємні суми = витрати, додатні суми = доходи"
+      },
+      "currencyMapping": {
+        "selectCurrency": "Виберіть валюту...",
+        "methodOptions": {
+          "dataSourceColumn": "Зі стовпця CSV",
+          "existingCurrency": "Використовувати одну валюту для всіх транзакцій"
+        }
+      },
+      "categoryMapping": {
+        "selectCategory": "Виберіть категорію..."
+      },
+      "accountMapping": {
+        "selectAccount": "Виберіть рахунок..."
+      },
+      "accountAssignment": {
+        "title": "Призначення рахунків",
+        "howToAssign": "Як ви хочете призначити рахунки?",
+        "description": "Виберіть, як рахунки повинні бути призначені імпортованим транзакціям",
+        "accountColumn": "Стовпець рахунків",
+        "columnDescription": "Виберіть стовпець CSV, який містить назви рахунків",
+        "accountLabel": "Рахунок",
+        "singleAccountDescription": "Всі імпортовані транзакції будуть призначені цьому рахунку",
+        "mapOnNextStep": "На наступному кроці ви зіставите кожен рахунок CSV з вашими існуючими рахунками",
+        "options": {
+          "mapToExisting": "Зіставити кожен рахунок CSV з існуючими рахунками (на наступному кроці)",
+          "assignToSingle": "Призначити всім один існуючий рахунок"
+        }
+      },
+      "accountMappingTable": {
+        "title": "Зіставлення рахунків",
+        "description": "Зіставте назви рахунків CSV з вашими існуючими рахунками або створіть нові. Показані будуть лише рахунки з відповідною валютою.",
+        "csvAccountName": "Назва рахунку CSV",
+        "currency": "Валюта",
+        "action": "Дія",
+        "targetAccount": "Цільовий рахунок",
+        "actions": {
+          "createNew": "Створити новий рахунок",
+          "mapToExisting": "Зіставити з існуючим рахунком"
+        },
+        "noMatchingCurrency": "Немає доступних рахунків з відповідною валютою ({currency})",
+        "willBeCreated": "Новий рахунок «{name}» буде створений з валютою {currency}",
+        "defaultCurrency": "за замовчуванням",
+        "mappedTo": "зіставлений з «{name}»",
+        "selectAccount": "Виберіть рахунок..."
+      },
+      "categoryMappingTable": {
+        "csvCategoryName": "Назва категорії CSV"
+      },
+      "categoryAssignment": {
+        "options": {
+          "mapToExisting": "Зіставити кожну категорію CSV з існуючими категоріями (на наступному кроці)",
+          "createNew": "Створити нові категорії з значень CSV",
+          "assignToSingle": "Призначити всім одну існуючу категорію"
+        }
+      },
+      "tagMappingTable": {
+        "csvTagName": "Значення тегу CSV"
+      },
+      "resolveValues": {
+        "selectAction": "Виберіть дію",
+        "actions": {
+          "createNew": "Створити новий",
+          "linkExisting": "Зіставити з наявним",
+          "skip": "Пропустити"
+        },
+        "quickActions": {
+          "mapExactMatches": "Зіставити точні збіги",
+          "createNewForUnmatched": "Створити нові для незіставлених",
+          "skipAll": "Пропустити всі",
+          "reset": "Скинути",
+          "tooltips": {
+            "mapExactMatchesAccounts": "Зіставляє кожен рахунок CSV з наявним рахунком з однаковою назвою та валютою. Рахунки без точного збігу залишаються без змін.",
+            "mapExactMatchesCategories": "Зіставляє кожну категорію CSV з наявною категорією з такою ж назвою. Категорії без точного збігу залишаються без змін.",
+            "mapExactMatchesTags": "Зіставляє кожен тег CSV з наявним тегом з такою ж назвою. Теги без точного збігу залишаються без змін.",
+            "createNewForUnmatched": "Встановлює для кожного рядка, не зіставленого з наявним записом, дію «Створити новий». Вже зіставлені рядки залишаються без змін.",
+            "skipAll": "Пропускає всі теги — жоден не імпортується і не створюється.",
+            "reset": "Очищає всі вибори та повторно запускає автоматичне зіставлення."
+          }
+        },
+        "accounts": {
+          "sectionTitle": "Зіставлення рахунків",
+          "resolvedCount": "{resolved} з {total} вирішено",
+          "csvName": "Рахунок CSV",
+          "currency": "Валюта",
+          "action": "Дія",
+          "target": "Цільовий рахунок",
+          "selectTarget": "Виберіть рахунок",
+          "noMatchingCurrency": "Немає рахунків з валютою {currency}",
+          "willCreate": "Буде створено «{name}» ({currency})",
+          "empty": "У CSV не знайдено рахунків",
+          "currentBalanceLabel": "Поточний баланс",
+          "currentBalancePlaceholder": "0.00",
+          "currentBalanceHint": "Баланс, який цей рахунок має зараз — імпорт встановить рахунку саме це значення. Залиште порожнім, щоб використати суму імпортованих транзакцій.",
+          "skippedNote": "{count} рахунків буде пропущено. Їхні транзакції не будуть імпортовані."
+        },
+        "categories": {
+          "sectionTitle": "Зіставлення категорій",
+          "csvName": "Категорія CSV"
+        },
+        "tags": {
+          "sectionTitle": "Зіставлення тегів",
+          "resolvedCount": "{resolved} з {total} вирішено",
+          "csvName": "Тег CSV",
+          "action": "Дія",
+          "target": "Цільовий тег",
+          "selectTarget": "Виберіть тег",
+          "willCreate": "Буде створено «{name}»",
+          "willSkip": "Буде пропущено",
+          "noExistingTags": "Немає існуючих тегів для зіставлення",
+          "loadFailed": "Не вдалося завантажити теги",
+          "empty": "У CSV не знайдено тегів"
+        },
+        "detectError": "Не вдалося продовжити. Спробуйте ще раз.",
+        "extractFailed": "Не вдалося завантажити значення для вирішення. Поверніться назад і спробуйте ще раз.",
+        "retry": "Спробувати ще раз",
+        "footer": {
+          "back": "Назад",
+          "next": "Далі"
+        }
+      },
+      "mapColumns": {
+        "columnsTitle": "Стовпці",
+        "assignmentsTitle": "Призначення",
+        "fieldHeader": "Поле",
+        "csvColumnHeader": "Стовпець CSV",
+        "exampleHeader": "Приклад даних",
+        "howToAssignHeader": "Як призначити",
+        "usingHeader": "Використовуючи",
+        "optionalSuffix": "(необов'язково)",
+        "choosePlaceholder": "Виберіть…",
+        "alreadyMatchedSuffix": "(вже зіставлено)",
+        "amountSignNote": "Визначається за знаком суми",
+        "back": "Назад",
+        "next": "Далі",
+        "missingHint": "Ще потрібні: {fields}",
+        "fields": {
+          "date": "Дата",
+          "amount": "Сума",
+          "description": "Опис",
+          "category": "Категорія",
+          "account": "Рахунок",
+          "currency": "Валюта",
+          "transactionType": "Тип транзакції",
+          "payee": "Отримувач"
+        },
+        "dateFormat": {
+          "label": "Формат дати",
+          "placeholder": "Виберіть формат дати",
+          "dayFirstOption": "Спочатку день — {example}",
+          "monthFirstOption": "Спочатку місяць — {example}",
+          "suggestedBadge": "Запропоновано",
+          "isoDetected": "Виявлено формат дати ISO — дати в цьому стовпці починаються з року, тому вибір дня/місяця не потрібен.",
+          "previewLabel": "Попередній перегляд",
+          "previewUnrecognized": "не розпізнано",
+          "mismatchWarning": "{count} рядок не відповідає цьому формату та буде позначений як недійсний. | {count} рядки не відповідають цьому формату та будуть позначені як недійсні. | {count} рядків не відповідають цьому формату та будуть позначені як недійсні."
+        }
+      },
+      "importResults": {
+        "errorColumns": {
+          "row": "Рядок",
+          "error": "Помилка"
+        },
+        "rowErrors": {
+          "payeeDefaultTagsFailed": "Транзакцію імпортовано, але теги отримувача за замовчуванням застосувати не вдалося.",
+          "accountUnresolved": "Не вдалося визначити рахунок для цього рядка, тому рядок пропущено.",
+          "readBackFailed": "Транзакцію створено, але прочитати її назад не вдалося, тому її немає в лічильнику імпортованих.",
+          "generic": "Не вдалося імпортувати цей рядок."
+        }
+      }
+    }
+  }
+}

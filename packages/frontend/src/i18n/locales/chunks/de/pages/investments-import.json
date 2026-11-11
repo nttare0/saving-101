@@ -1,0 +1,162 @@
+{
+  "investmentsImport": {
+    "title": "Transaktionen importieren",
+    "description": "Lade eine Börsen-CSV, ein Broker-PDF hoch oder füge deinen Transaktionsverlauf ein. Die KI extrahiert Käufe und Verkäufe. Du überprüfst alles, bevor etwas importiert wird.",
+    "backToPortfolio": "Zurück zum Portfolio",
+    "upload": {
+      "fileTab": "Datei",
+      "pasteTab": "Text einfügen",
+      "fileHintFormats": "CSV, TXT oder PDF",
+      "pastePlaceholder": "Füge deine Transaktionsliste hier ein...",
+      "estimatedCost": "Geschätzte Kosten",
+      "model": "Modell",
+      "estimateButton": "Kosten schätzen",
+      "extractButton": "Extrahieren",
+      "extracting": "Extrahiere…",
+      "modeAi": "KI-Import",
+      "modeCsv": "CSV-Import",
+      "modeAiHint": "Lade eine beliebige Datei hoch – die KI extrahiert deine Transaktionen automatisch. Kostet Tokens.",
+      "modeCsvHint": "Lade eine CSV-Datei von deinem Broker hoch und ordne die Spalten manuell zu. Keine KI verwendet.",
+      "csvHintFormats": "Nur CSV-Dateien.",
+      "parsingCsv": "Verarbeite…",
+      "continueToMapping": "Weiter zur Zuordnung"
+    },
+    "review": {
+      "warningsTitle": "Warnungen",
+      "empty": "Die KI hat keine Transaktionen in dieser Datei gefunden.",
+      "pickSecurity": "Wertpapier auswählen...",
+      "pickCurrency": "Währung...",
+      "searchPlaceholder": "Nach Symbol suchen...",
+      "searching": "Suche...",
+      "parsedSymbolHint": "Wir konnten {symbol} nicht automatisch zuordnen – wähle unten das richtige Wertpapier aus.",
+      "startTyping": "Tippen, um zu suchen",
+      "noResults": "Keine Treffer",
+      "alreadyPicked": "bereits ausgewählt",
+      "duplicateSecurity": "Dasselbe Wertpapier ist in einer anderen Zeile ausgewählt",
+      "willMerge": "Wird mit bestehender Position zusammengeführt",
+      "txns": "{count} Transaktion | {count} Transaktionen",
+      "expand": "Ausklappen",
+      "collapse": "Einklappen",
+      "deleteHolding": "Position löschen",
+      "deleteTransaction": "Transaktion löschen",
+      "buy": "Kauf",
+      "sell": "Verkauf",
+      "possibleDup": "Mögliches Duplikat",
+      "skipping": "Wird übersprungen",
+      "duplicateBadgeTooltip": "Dies sieht nach einem möglichen Duplikat einer bestehenden Transaktion aus. Klicke, um sie zu überspringen – andernfalls wird neben der bestehenden eine neue Transaktion erstellt (keine Zusammenführung oder Überschreibung).",
+      "back": "Zurück",
+      "commit": "Importieren",
+      "cols": {
+        "date": "Datum",
+        "side": "Typ",
+        "qty": "Anzahl",
+        "price": "Preis",
+        "fees": "Gebühren",
+        "amount": "Betrag",
+        "security": "Wertpapier",
+        "currency": "Währung",
+        "txCount": "Transaktionen"
+      },
+      "tooltips": {
+        "security": "Wir haben basierend auf dem von der KI extrahierten Ticker automatisch ein Wertpapier ausgewählt. Klicke auf das Feld, um die Zuordnung zu überschreiben, falls sie falsch ist.",
+        "currency": "Währung, in der die Cash-Seite des Trades abgewickelt wurde (z.B. USD, EUR). Es ändert nicht, wie die Position gespeichert wird – Beträge werden mit historischen Wechselkursen am Handelsdatum in deine Basiswährung normalisiert.",
+        "parentRowDuplicates": "{count} mögliches Duplikat in dieser Position wird als neue Transaktion importiert, sofern es nicht übersprungen wird. | {count} mögliche Duplikate in dieser Position werden als neue Transaktionen importiert, sofern sie nicht übersprungen werden."
+      }
+    },
+    "done": {
+      "transactions": "Transaktionen hinzugefügt"
+    },
+    "notifications": {
+      "imported": "{count} Transaktionen importiert",
+      "extractFailed": "Transaktionen konnten nicht aus der Datei extrahiert werden.",
+      "importFailed": "Transaktionen konnten nicht importiert werden.",
+      "skippedHoldings": "Positionen übersprungen: {count}",
+      "failedTransactions": "Fehlgeschlagene Transaktionen: {count}",
+      "estimateFailed": "Schätzung der Importkosten fehlgeschlagen",
+      "csvParseFailed": "CSV konnte nicht verarbeitet werden. Überprüfe das Dateiformat und versuche es erneut."
+    },
+    "errors": {
+      "csv": {
+        "empty": "CSV-Datei ist leer.",
+        "noHeaders": "CSV-Datei hat keine Kopfzeile.",
+        "forbiddenHeader": "CSV-Kopfzeile verwendet einen reservierten Namen (z.B. __proto__).",
+        "tooManyRows": "CSV überschreitet das Limit von {max} Zeilen.",
+        "parseError": "CSV-Datei konnte nicht verarbeitet werden. Überprüfe, ob es sich um eine gültige CSV-Datei handelt."
+      }
+    },
+    "warnings": {
+      "csvRowMissingSymbol": "Zeile {row}: Fehlendes Symbol",
+      "csvRowInvalidDate": "Zeile {row}: Ungültiges Datum \"{value}\"",
+      "csvRowUnmappedSide": "Zeile {row}: Nicht zugewiesener Wert für Transaktionsart \"{value}\"",
+      "csvRowInvalidQuantity": "Zeile {row}: Ungültige Anzahl \"{value}\"",
+      "csvRowInvalidPrice": "Zeile {row}: Ungültiger Preis \"{value}\"",
+      "csvRowInvalidFees": "Zeile {row}: Ungültige Gebühren \"{value}\"",
+      "aiRowsDropped": "Die KI hat {count} Zeile zurückgegeben, die nicht verarbeitet werden konnte (ungültiges Datum, Richtung oder Zahlen), daher wurde sie übersprungen. | Die KI hat {count} Zeilen zurückgegeben, die nicht verarbeitet werden konnten (ungültiges Datum, Richtung oder Zahlen), daher wurden sie übersprungen.",
+      "csvRowsInvalid": "{count} von {total} CSV-Zeilen wurde übersprungen: | {count} von {total} CSV-Zeilen wurden übersprungen:",
+      "csvRowsSkipped": "{count} Zeile wurde übersprungen, da ihr Wert für die Richtung auf \"Überspringen\" zugewiesen ist. | {count} Zeilen wurden übersprungen, da ihr Wert für die Richtung auf \"Überspringen\" zugewiesen ist.",
+      "unsupportedQuoteCurrency": "{symbol}: {count} Zeile hat eine nicht unterstützte Notierungswährung. | {symbol}: {count} Zeilen haben eine nicht unterstützte Notierungswährung.",
+      "duplicateCheckFailed": "Mögliche Duplikate konnten nicht geprüft werden. Überprüfe deine bestehenden Transaktionen manuell.",
+      "providerLookupFailed": "\"{symbol}\" konnte beim Marktdatenanbieter nicht abgerufen werden. Versuche es später erneut.",
+      "noResolvedSecurity": "\"{symbol}\" übersprungen: Kein Wertpapier ausgewählt.",
+      "noCurrency": "\"{symbol}\" übersprungen: Keine Währung ausgewählt.",
+      "portfolioNotFound": "\"{symbol}\" übersprungen: Zielportfolio nicht gefunden.",
+      "holdingSetupFailed": "\"{symbol}\" übersprungen: Die zugehörige Position konnte nicht eingerichtet werden.",
+      "holdingSetupFailedWithReason": "\"{symbol}\" übersprungen: {reason}",
+      "unsupportedCategory": "\"{symbol}\" {side} am {date} übersprungen: Diese Kategorie wird noch nicht unterstützt.",
+      "transactionFailed": "Import von \"{symbol}\" {side} am {date} fehlgeschlagen.",
+      "transactionFailedWithReason": "Import von \"{symbol}\" {side} am {date} fehlgeschlagen: {reason}",
+      "unknown": "Einige Zeilen wurden möglicherweise nicht wie erwartet importiert."
+    },
+    "columnMapping": {
+      "rowsAndDelimiter": "{rows} Zeilen · Trennzeichen \"{delimiter}\"",
+      "backToUpload": "Zurück",
+      "previewTitle": "Vorschau",
+      "requiredTitle": "Erforderliche Spalten",
+      "optionalTitle": "Optionale Spalten",
+      "defaultsTitle": "Standardwerte",
+      "sideValueMappingTitle": "Typ-Wert-Zuordnung",
+      "sideValueMappingHint": "Gib an, was jeder Wert in der Typ-Spalte bedeutet.",
+      "sideValueMappingEmpty": "Noch keine Werte in dieser Spalte gefunden.",
+      "selectColumn": "Spalte auswählen…",
+      "notMapped": "Nicht zugeordnet",
+      "pickCategory": "Kategorie auswählen…",
+      "cashMovementsNote": "Cash-Ein- und Auszahlungen werden noch nicht unterstützt. Wähle \"Diese Zeilen überspringen\" für diese Typ-Werte, um sie vom Import auszuschließen.",
+      "extractButton": "Weiter zur Überprüfung",
+      "extracting": "Extrahiere…",
+      "fields": {
+        "symbol": "Symbol",
+        "date": "Datum",
+        "side": "Typ / Aktion",
+        "quantity": "Anzahl",
+        "price": "Preis",
+        "fees": "Gebühren",
+        "currency": "Währung",
+        "name": "Name",
+        "defaultCurrency": "Standardwährung",
+        "defaultAssetClass": "Standard-Anlageklasse"
+      },
+      "tooltips": {
+        "fees": "Spalte mit Provisionen/Gebühren pro Transaktion. Wenn nicht zugeordnet, betragen die Gebühren standardmäßig 0.",
+        "currency": "Spalte für die Notierungswährung (z.B. USD, EUR, USDT). Bestimmt die Cash-Seite jedes Trades. Fällt auf die untenstehende Standardwährung zurück, wenn sie leer oder nicht zugeordnet ist.",
+        "name": "Optionaler Anzeigename des Wertpapiers (z.B. \"Apple Inc.\"). Wird nur für die Anzeige im Überprüfungsschritt verwendet – der Ticker bleibt die maßgebliche Kennung.",
+        "defaultCurrency": "Wird verwendet, wenn die Spalte Währung oben leer oder nicht zugeordnet ist.",
+        "defaultAssetClass": "Hinweis für die Zuordnung deiner Symbole zu Wertpapieren. Wähle die Klasse, die zu den meisten Zeilen in deiner Datei passt – du kannst dies im Überprüfungsschritt pro Wertpapier überschreiben."
+      }
+    },
+    "categories": {
+      "buy": "Kauf",
+      "sell": "Verkauf",
+      "dividend": "Dividende",
+      "transfer": "Umbuchung",
+      "tax": "Steuer",
+      "fee": "Gebühr",
+      "cancel": "Storno",
+      "other": "Sonstiges",
+      "skip": "Diese Zeilen überspringen"
+    },
+    "assetClasses": {
+      "stocks": "Aktien",
+      "crypto": "Krypto"
+    }
+  }
+}

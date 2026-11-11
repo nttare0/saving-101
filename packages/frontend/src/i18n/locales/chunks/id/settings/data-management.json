@@ -1,0 +1,108 @@
+{
+  "settings": {
+    "dataManagement": {
+      "title": "Impor Data",
+      "description": "Impor data keuangan Anda dari berbagai sumber",
+      "tabs": {
+        "import": "Impor",
+        "export": "Ekspor"
+      },
+      "textSource": {
+        "title": "Impor dari Sumber Teks Apa Pun",
+        "aiBadge": "Ditenagai AI",
+        "listDescription": "Laporan bank, email, atau sumber teks apa pun"
+      },
+      "csv": {
+        "title": "Impor CSV",
+        "description": "Impor transaksi dari file CSV. Anda dapat memetakan kolom, menangani duplikat, dan membuat akun atau kategori baru sesuai kebutuhan.",
+        "button": "Impor File CSV",
+        "cta": "Impor file CSV",
+        "listDescription": "Petakan kolom dan tangani duplikat"
+      },
+      "ofx": {
+        "title": "OFX or QFX statement",
+        "listDescription": "Import bank and credit card transactions"
+      },
+      "ynab": {
+        "title": "Impor dari YNAB",
+        "listDescription": "Akun, transaksi, kategori, dan penerima"
+      },
+      "budget-bakers-wallet": {
+        "title": "Wallet (BudgetBakers)",
+        "listDescription": "Multi-mata uang dengan pemasangan transfer otomatis"
+      },
+      "ms-money": {
+        "title": "Microsoft Money",
+        "listDescription": "Impor file .mny dari Microsoft Money"
+      },
+      "messageImport": {
+        "title": "iOS message sync"
+      },
+      "importHistory": {
+        "title": "Riwayat Impor",
+        "listDescription": "Lihat impor sebelumnya dan apa saja yang dibuatnya"
+      },
+      "import": {
+        "back": "Kembali ke Impor",
+        "whichImporterHint": "Not sure which one to use?",
+        "groups": {
+          "filesAndText": "File & teks",
+          "fromOtherApps": "Dari aplikasi lain",
+          "history": "Riwayat"
+        },
+        "requestMore": {
+          "title": "Ingin opsi lain? Minta di sini"
+        }
+      },
+      "export": {
+        "cardTitle": "Ekspor data Anda",
+        "backupOrExportHint": "Not sure whether you need Export or Backup?",
+        "form": {
+          "title": "Ekspor data Anda",
+          "description": "Pilih format dan bagian data yang Anda inginkan. Unduhan dimulai setelah Anda mengonfirmasi.",
+          "confirmLabel": "Unduh",
+          "confirmLoading": "Menyiapkan…",
+          "back": "Kembali ke Ekspor"
+        },
+        "format": {
+          "label": "Format",
+          "json": "JSON",
+          "csv": "CSV",
+          "xlsx": "Excel"
+        },
+        "groups": {
+          "label": "Apa yang ingin disertakan",
+          "selectAll": "Pilih semua",
+          "deselectAll": "Batalkan semua",
+          "transactions": "Transaksi & akun",
+          "transactionsDescription": "Transaksi, akun, riwayat saldo, kategori, tag, kendaraan",
+          "budgets": "Anggaran",
+          "budgetsDescription": "Anggaran kustom dengan kategori terkait dan total pengeluaran",
+          "subscriptions": "Langganan & pengingat",
+          "subscriptionsDescription": "Langganan berulang dan pengingat tagihan",
+          "investments": "Investasi",
+          "investmentsDescription": "Portofolio, kepemilikan, transaksi investasi, transfer"
+        },
+        "notifications": {
+          "success": "Ekspor siap – unduhan akan dimulai sebentar lagi.",
+          "successWithCount": "Ekspor siap – {count} baris diekspor.",
+          "failed": "Tidak dapat mengekspor data Anda. Silakan coba lagi.",
+          "downloadBlocked": "Ekspor siap, tetapi browser Anda memblokir unduhan. Periksa bilah alamat untuk prompt unduhan.",
+          "tooLarge": "Data Anda terlalu besar untuk ekspor tunggal. Silakan hubungi dukungan."
+        },
+        "dateRange": {
+          "label": "Rentang tanggal (opsional)",
+          "helper": "Hanya tabel peristiwa (transaksi, riwayat saldo, aktivitas investasi) yang difilter. Akun, kategori, dan tabel referensi lainnya tetap lengkap.",
+          "placeholder": "Sepanjang waktu",
+          "clear": "Hapus rentang tanggal"
+        },
+        "accounts": {
+          "label": "Akun",
+          "helper": "Export only the selected accounts with their transactions and balance history. Leave empty to export all accounts.",
+          "placeholder": "Semua Akun"
+        },
+        "listDescription": "Unduh zip untuk spreadsheet, pajak, atau migrasi"
+      }
+    }
+  }
+}

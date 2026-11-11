@@ -1,0 +1,514 @@
+{
+  "pages": {
+    "integrations": {
+      "addDialog": {
+        "titleSelect": "Додати інтеграцію",
+        "titleConnect": "Підключити {provider}",
+        "selectProviderHint": "Оберіть провайдера банківських даних для підключення",
+        "betaBadge": "Бета"
+      },
+      "providers": {
+        "monobank": {
+          "name": "Monobank",
+          "description": "Український цифровий банк"
+        },
+        "enableBanking": {
+          "name": "Enable Banking",
+          "description": "Доступ до 6000+ європейських банків через PSD2 open banking"
+        },
+        "lunchflow": {
+          "name": "Lunch Flow",
+          "description": "Синхронізація транзакцій з 20 000+ банків по всьому світу через Lunch Flow"
+        },
+        "simplefin": {
+          "name": "SimpleFIN",
+          "description": "Синхронізація транзакцій з банків США та Канади через SimpleFIN Bridge"
+        },
+        "walutomat": {
+          "name": "Walutomat",
+          "description": "Польська платформа для обміну валют із 23 валютами"
+        },
+        "akahu": {
+          "name": "Akahu",
+          "description": "Безкоштовна синхронізація транзакцій із банків Нової Зеландії через персональний застосунок Akahu"
+        }
+      },
+      "monobank": {
+        "apiTokenLabel": "API-токен",
+        "connectionNameLabel": "Назва підключення (необов'язково)",
+        "tokenPlaceholder": "Введіть ваш API-токен Monobank",
+        "accountNamePlaceholder": "напр., Особистий рахунок",
+        "help": {
+          "trigger": "Де отримати API-токен?",
+          "title": "Отримайте ваш API-токен Monobank",
+          "step1": "Відвідайте {link} та дотримуйтесь інструкцій, щоб згенерувати особистий токен.",
+          "step2": "Збережіть токен у безпечному місці та вставте його в поле.",
+          "note": "Не хвилюйтесь — API-токен має лише права на читання."
+        },
+        "backButton": "Назад",
+        "connectingButton": "Підключення...",
+        "connectButton": "Підключити",
+        "loadingAccounts": "Завантаження рахунків...",
+        "selectAccountsHint": "Оберіть рахунки для синхронізації з MoneyMatter",
+        "syncingButton": "Синхронізація...",
+        "syncButton": "Синхронізувати {count} рахунок(ів)",
+        "syncSuccess": "Підключено {count} рахунок(ів). Транзакції синхронізуються у фоновому режимі.",
+        "errors": {
+          "connectFailed": "Не вдалося підключити провайдера",
+          "syncFailed": "Не вдалося синхронізувати рахунки"
+        }
+      },
+      "enableBankingConnector": {
+        "beta": {
+          "title": "Бета-функція - для розробників",
+          "description": "Ця інтеграція вимагає технічних знань для налаштування. Вам потрібно зареєструвати власний застосунок Enable Banking та надати облікові дані API. Процес налаштування та API можуть змінитися в майбутніх оновленнях."
+        },
+        "credentials": {
+          "appIdLabel": "ID застосунку",
+          "appIdHint": "Отримайте з порталу Enable Banking після завантаження сертифіката",
+          "privateKeyLabel": "Приватний ключ",
+          "privateKeyHint": "Ваш PEM-кодований приватний ключ RSA (зберігається зашифрованим)",
+          "bicLabel": "BIC:"
+        },
+        "steps": {
+          "loadingCountries": "Завантаження країн...",
+          "selectCountryHint": "Оберіть країну вашого банку",
+          "countryLabel": "Країна",
+          "loadingBanks": "Завантаження банків...",
+          "selectBankHint": "Оберіть ваш банк у {country}",
+          "bankLabel": "Банк",
+          "connectingToBank": "Підключення до {bank}...",
+          "authDescription": "Натисніть кнопку нижче, щоб авторизувати доступ до вашого рахунку {bank}.",
+          "authWarning": "Вас буде перенаправлено на сайт {bank} для входу та підтвердження підключення.",
+          "authorizeButton": "Авторизуватися через {bank}",
+          "loadingAccounts": "Завантаження рахунків...",
+          "selectAccountsHint": "Оберіть рахунки для синхронізації з MoneyMatter"
+        },
+        "buttons": {
+          "back": "Назад",
+          "loading": "Завантаження...",
+          "next": "Далі",
+          "syncing": "Синхронізація...",
+          "sync": "Синхронізувати {count} рахунок | Синхронізувати {count} рахунки | Синхронізувати {count} рахунків"
+        },
+        "errors": {
+          "loadCountriesFailed": "Не вдалося завантажити країни. Перевірте облікові дані.",
+          "loadAccountsFailed": "Не вдалося завантажити рахунки",
+          "syncFailed": "Не вдалося синхронізувати рахунки"
+        },
+        "syncSuccess": "Підключено {count} рахунок(ів). Транзакції синхронізуються у фоновому режимі."
+      },
+      "instructionsDialog": {
+        "title": "Як отримати облікові дані Enable Banking",
+        "overview": {
+          "title": "Огляд",
+          "text": "Enable Banking вимагає реєстрації застосунку та генерації облікових даних безпеки для доступу до банківських даних. Виконайте ці кроки, щоб отримати ID застосунку та приватний ключ."
+        },
+        "step1": {
+          "title": "Реєстрація та створення застосунку",
+          "intro": "Відвідайте {link} та створіть обліковий запис, якщо у вас його ще немає.",
+          "createApp": "Потім створіть застосунок:",
+          "steps": {
+            "login": "Увійдіть до порталу Enable Banking",
+            "navigate": "Перейдіть до {link}",
+            "lookForm": "Знайдіть форму «Create Application»",
+            "selectEnv": "Оберіть середовище {strong}",
+            "selectEnvStrong": "«Production»",
+            "generateKey": "Поставте галочку {strong}. Після створення застосунку .pem ключ буде автоматично збережено на ваш комп'ютер як файл. {warning} з будь-якої причини – вам потрібно буде перестворити застосунок",
+            "generateKeyStrong": "«Generate private RSA key in the browser»",
+            "generateKeyWarning": "Якщо файл не було збережено",
+            "fillForm": "Заповніть форму наступними значеннями:",
+            "appName": "Application name:",
+            "redirectUrls": "Allowed redirect URLs:",
+            "httpsRequired": "Enable Banking приймає лише адреси перенаправлення з https. Розгорніть цей сервер через HTTPS, встановіть {envVar} на його публічну адресу зворотного виклику (наприклад, {example}), перестворіть контейнер бекенду та введіть ту саму адресу в цьому полі. {link}",
+            "httpsRequiredLink": "Як налаштувати",
+            "appDescription": "Application description:",
+            "emailProtection": "Email for data protection matters:",
+            "privacyUrl": "Privacy URL:",
+            "termsUrl": "Terms URL:",
+            "clickRegister": "Натисніть «Register»",
+            "downloadKey": "Вам буде запропоновано завантажити файл. Це ваш ключ RSA, який потрібно зберегти, оскільки це частина ваших облікових даних"
+          }
+        },
+        "step2": {
+          "title": "Прив'яжіть ваші банківські рахунки",
+          "intro": "Перш ніж використовувати застосунок з MoneyMatter, спочатку потрібно прив'язати банківські рахунки через портал Enable Banking. Знайдіть кнопку «Link accounts» всередині картки створеного застосунку та виконайте всі необхідні кроки.",
+          "breakdown": "Ось детальний опис:",
+          "steps": {
+            "clickLink": "Натисніть «Link accounts», зачекайте завершення завантаження",
+            "newFields": "З'являться нові поля: «Country», «ASPSP», «Usage type»",
+            "country": "Country:",
+            "countryValue": "Країна вашого банку",
+            "aspsp": "ASPSP:",
+            "aspspValue": "Назва вашого банку",
+            "usageType": "Usage type:",
+            "usageTypeValue": "Private",
+            "clickSave": "Натисніть «Save»",
+            "redirect": "Вас буде перенаправлено на сторінку авторизації вашого банку. Увійдіть та оберіть усі рахунки, які хочете підключити",
+            "finishAuth": "Після завершення авторизації вас буде перенаправлено назад до Enable Banking",
+            "waitAccounts": "Зачекайте, поки обрані рахунки з'являться в картці застосунку під полем «Linked accounts»"
+          },
+          "warningNotLinked": "Може статися так, що деякі обрані рахунки не прив'язані. Це проблема на стороні вашого банку, яку ви не можете вирішити самостійно. Залишається лише почекати кілька годин/днів до вирішення проблеми. Якщо проблема не вирішується, єдиний спосіб – звернутися до Enable Banking.",
+          "infoAddMore": "Якщо в майбутньому ви захочете підключити більше рахунків, вам потрібно буде повторити процес прив'язки рахунків. {strong}, що при додаванні НОВИХ рахунків потрібно також обрати СТАРІ рахунки – тобто потрібно обрати ВСІ рахунки, які ви хочете підключити.",
+          "infoAddMoreStrong": "Майте на увазі"
+        },
+        "step3": {
+          "title": "Отримайте свої облікові дані",
+          "intro": "З порталу Enable Banking:",
+          "appId": "{strong} Скопіюйте {code} з деталей вашого застосунку",
+          "appIdStrong": "Application ID:",
+          "appIdCode": "app_id",
+          "appIdExample": "Приклад:",
+          "privateKey": "{strong} Відкрийте збережений файл {code} через текстовий редактор (TextEdit на MacOS або Блокнот на Windows) та скопіюйте весь його вміст (включаючи рядки BEGIN та END)",
+          "privateKeyStrong": "Приватний ключ:",
+          "privateKeyCode": "private.pem"
+        },
+        "securityNote": {
+          "title": "Примітка щодо безпеки",
+          "text": "Ваш приватний ключ зберігається в зашифрованому вигляді в нашій базі даних і використовується лише для автентифікації в Enable Banking від вашого імені. Токен обмежений лише читанням даних. Проте ніколи не діліться своїм приватним ключем з іншими."
+        },
+        "gotItButton": "Зрозуміло"
+      },
+      "enableBanking": {
+        "instructions": {},
+        "placeholders": {
+          "appId": "Введіть ваш Enable Banking app_id",
+          "privateKey": "-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----",
+          "searchCountries": "Шукати країни...",
+          "searchBanks": "Шукати банки..."
+        },
+        "errors": {
+          "noAuthUrl": "URL авторизації не отримано від сервера",
+          "failedToLoadBanks": "Не вдалося завантажити банки",
+          "failedToConnectProvider": "Не вдалося підключити провайдера"
+        },
+        "help": {
+          "trigger": "Де отримати облікові дані Enable Banking?"
+        }
+      },
+      "lunchflow": {
+        "apiKeyLabel": "API-ключ",
+        "apiKeyPlaceholder": "Введіть ваш API-ключ Lunch Flow",
+        "help": {
+          "trigger": "Де знайти мій API-ключ?",
+          "title": "Отримайте ваш API-ключ Lunch Flow",
+          "step1": "Відкрийте ваш {link}.",
+          "step2": "Перейдіть до Налаштування → API Destinations.",
+          "step3": "Скопіюйте API-ключ та вставте його в поле."
+        },
+        "backButton": "Назад",
+        "connectingButton": "Підключення...",
+        "connectButton": "Підключити",
+        "loadingAccounts": "Завантаження рахунків...",
+        "accountsPreviewHint": "Знайдено рахунків: {count}. Усі рахунки будуть імпортовані.",
+        "importingButton": "Імпортування...",
+        "importButton": "Імпортувати рахунки ({count})",
+        "importSuccess": "Підключено {count} рахунок(ів). Транзакції синхронізуються у фоновому режимі.",
+        "skipButton": "Пропустити",
+        "skipTooltip": "Пропустіть імпорт, щоб пізніше підключити лише потрібні рахунки або знову прив'язати існуючі через їхні налаштування.",
+        "errors": {
+          "connectFailed": "Не вдалося підключитися до Lunch Flow",
+          "importFailed": "Не вдалося імпортувати рахунки"
+        }
+      },
+      "common": {
+        "selectAll": "Вибрати всі",
+        "availableLabel": "Доступно",
+        "clearAll": "Очистити всі",
+        "noCurrencyBadge": "Без валюти",
+        "currencyPicker": {
+          "placeholder": "Оберіть валюту",
+          "missingCount": "{count} обраному рахунку все ще потрібна валюта — її не можна буде змінити після імпорту. | {count} обраним рахункам все ще потрібна валюта — її не можна буде змінити після імпорту. | {count} обраним рахункам все ще потрібна валюта — її не можна буде змінити після імпорту."
+        }
+      },
+      "help": {
+        "openSite": "Відкрити {site}"
+      },
+      "simplefin": {
+        "setupTokenLabel": "Токен налаштування",
+        "setupTokenPlaceholder": "Вставте ваш токен налаштування від SimpleFIN",
+        "help": {
+          "trigger": "Де отримати токен налаштування?",
+          "title": "Отримайте ваш токен налаштування SimpleFIN",
+          "step1": "Створіть обліковий запис SimpleFIN Bridge на {link} та підключіть свій банк.",
+          "step2": "Згенеруйте новий токен налаштування на панелі Bridge.",
+          "step3": "Вставте токен у поле."
+        },
+        "brokerageNotice": {
+          "trigger": "Підтримуються лише банківські рахунки – брокерські не підтримуються",
+          "title": "Що може імпортувати SimpleFIN",
+          "supported": "Банківські рахунки – поточні, ощадні, кредитні картки – підтримуються повністю. Баланси й транзакції синхронізуються автоматично.",
+          "unsupported": "Брокерські та пенсійні рахунки (акції, ETF, криптовалюта, 401k, IRA) не підтримуються. SimpleFIN і сам не підтримує їх по-справжньому – він не вказує, який рахунок є брокерським, а дані про активи надходять у неофіційному форматі, який може змінитися будь-коли.",
+          "tryAnyway": "Ви все одно можете спробувати їх підключити – вони імпортуються як звичайні рахунки з тим балансом і грошовими транзакціями, які надає SimpleFIN, але ваші позиції не відобразяться. Гарантій правильної роботи немає."
+        },
+        "connectButton": "Підключити",
+        "connectingButton": "Підключення…",
+        "backButton": "Назад",
+        "loadingAccounts": "Завантаження рахунків…",
+        "backfillNote": "Зараз завантажимо транзакції за останні 6 місяців. Старішу історію можна завантажити будь-коли на сторінці рахунку за допомогою вибору діапазону дат.",
+        "importButton": "Імпортувати {count} рахунок | Імпортувати {count} рахунки | Імпортувати {count} рахунків",
+        "importingButton": "Імпортування…",
+        "errors": {
+          "connectFailed": "Не вдалося підключитися до SimpleFIN. Перевірте токен налаштування і спробуйте ще раз.",
+          "importFailed": "Не вдалося імпортувати рахунки. Будь ласка, спробуйте ще раз."
+        }
+      },
+      "walutomat": {
+        "help": {
+          "trigger": "Як налаштувати доступ до API Walutomat?"
+        },
+        "apiKeyLabel": "API-ключ",
+        "apiKeyPlaceholder": "Введіть ваш API-ключ Walutomat",
+        "apiKeyHint": "Знаходиться на панелі Walutomat у розділі Налаштування → API",
+        "privateKeyLabel": "Приватний ключ (PEM)",
+        "privateKeyPlaceholder": "-----BEGIN RSA PRIVATE KEY-----\n...\n-----END RSA PRIVATE KEY-----",
+        "privateKeyHint": "Вставте вміст вашого файлу private.key (формат RSA 4096-біт PEM)",
+        "backButton": "Назад",
+        "connectButton": "Підключити",
+        "connectingButton": "Підключення...",
+        "loadingWallets": "Завантаження гаманців...",
+        "selectWalletsHint": "Оберіть, які валютні гаманці синхронізувати ({count} доступно)",
+        "selectAll": "Вибрати всі",
+        "importButton": "Імпортувати {count} гаманець(ів)",
+        "importingButton": "Імпортування...",
+        "importSuccess": "Підключено {count} рахунок(ів). Транзакції синхронізуються у фоновому режимі.",
+        "errors": {
+          "connectFailed": "Не вдалося підключитися до Walutomat. Перевірте свої облікові дані.",
+          "importFailed": "Не вдалося імпортувати гаманці."
+        },
+        "instructions": {
+          "title": "Інструкція з налаштування API Walutomat",
+          "overviewTitle": "Огляд",
+          "overviewText": "Щоб підключити Walutomat, вам знадобляться API-ключ та приватний ключ RSA. API-ключ автентифікує ваш обліковий запис, а приватний ключ підписує кожен запит для безпеки.",
+          "step1Title": "Згенеруйте пару ключів RSA",
+          "step1Intro": "Відкрийте термінал і виконайте такі команди:",
+          "step1FilesCreated": "Це створить два файли: {privateKey} (тримайте в секреті!) та {publicKey} (завантажте до Walutomat).",
+          "step2Title": "Завантажте публічний ключ до Walutomat",
+          "step2Login": "1. Увійдіть до",
+          "step2GoToSettings": "2. Перейдіть до {settings} → {api}",
+          "step2Upload": "3. Завантажте файл {publicKey}",
+          "step2ApiKeyGenerated": "4. Walutomat згенерує для вас API-ключ",
+          "step3Title": "Введіть облікові дані тут",
+          "step3Intro": "Вам знадобляться дві речі:",
+          "step3ApiKeyDesc": "{apiKey} — скопіюйте його зі сторінки налаштувань API Walutomat",
+          "step3PrivateKeyDesc": "{privateKey} — відкрийте {filename} у текстовому редакторі та скопіюйте весь вміст (включно з рядками BEGIN/END)",
+          "securityNoteTitle": "Примітка щодо безпеки",
+          "securityNoteText": "Ваш приватний ключ шифрується перед збереженням і використовується лише для підписання API-запитів. Він ніколи не розкривається і не передається нікому, крім Walutomat.",
+          "closeButton": "Зрозуміло"
+        }
+      },
+      "akahu": {
+        "userTokenLabel": "User Access Token",
+        "userTokenPlaceholder": "Введіть ваш Akahu User Access Token",
+        "userTokenHint": "Відображається на сторінці вашого персонального застосунку на my.akahu.nz",
+        "appTokenLabel": "App ID Token",
+        "appTokenPlaceholder": "Введіть ваш Akahu App ID Token",
+        "appTokenHint": "Також відображається на тій самій сторінці (надсилається як заголовок X-Akahu-Id)",
+        "help": {
+          "trigger": "Де знайти мої токени Akahu?",
+          "title": "Отримайте токени вашого персонального застосунку Akahu",
+          "step1": "Відкрийте ваш {link}, увійшовши в Akahu.",
+          "step2": "Створіть персональний застосунок (або відкрийте наявний) — спочатку підключіть свої банківські рахунки в Akahu.",
+          "step3": "Скопіюйте User Access Token і App ID Token та вставте обидва в поля вище."
+        },
+        "backButton": "Назад",
+        "connectingButton": "Підключення...",
+        "connectButton": "Підключити",
+        "loadingAccounts": "Завантаження рахунків...",
+        "accountsPreviewHint": "Знайдено рахунків: {count}. Усі рахунки будуть імпортовані.",
+        "importingButton": "Імпортування...",
+        "importButton": "Імпортувати рахунки ({count})",
+        "importSuccess": "Підключено {count} рахунок(ів). Транзакції синхронізуються у фоновому режимі.",
+        "skipButton": "Пропустити",
+        "skipTooltip": "Пропустіть імпорт, щоб пізніше підключити лише потрібні рахунки або знову прив'язати існуючі через їхні налаштування.",
+        "errors": {
+          "connectFailed": "Не вдалося підключитися до Akahu",
+          "importFailed": "Не вдалося імпортувати рахунки"
+        }
+      },
+      "notifications": {
+        "disconnectSuccess": "Інтеграцію успішно відключено",
+        "disconnectFailed": "Не вдалося відключити інтеграцію",
+        "connectAccountsSuccess": "Рахунки підключено. Транзакції синхронізуються у фоновому режимі.",
+        "connectAccountsFailed": "Не вдалося підключити рахунки",
+        "updateNameSuccess": "Назву підключення успішно оновлено",
+        "updateNameFailed": "Не вдалося оновити назву підключення",
+        "connectionEstablished": "Банківське підключення успішно встановлено!"
+      },
+      "details": {
+        "error": {
+          "notFoundTitle": "Інтеграцію не знайдено",
+          "notFoundDescription": "Ця інтеграція могла бути видалена або посилання є некоректним. Перевірте список інтеграцій, щоб знайти потрібне.",
+          "unexpectedTitle": "Щось пішло не так",
+          "unexpectedDescription": "Не вдалося завантажити це підключення. Будь ласка, спробуйте пізніше.",
+          "backButton": "До списку інтеграцій"
+        },
+        "connectionDetails": {
+          "statusActive": "Активний",
+          "statusInactive": "Неактивний",
+          "autoSync": "Автосинхронізація"
+        },
+        "connectionValidity": {
+          "statusExpired": "Закінчився",
+          "statusActive": "Активний",
+          "daysCount": "{count} день | {count} дні | {count} днів",
+          "notAvailable": "Н/Д",
+          "reconnectButton": "Перепідключити зараз"
+        },
+        "connectedAccounts": {
+          "title": "Підключені рахунки",
+          "empty": "Рахунки ще не підключено.",
+          "connectButton": "Підключити рахунки",
+          "currencyFallback": "Банк не повідомив валюту, тому використано вашу базову валюту ({currency})",
+          "columnAccount": "Рахунок",
+          "columnExternalId": "Зовнішній ID",
+          "columnBalance": "Баланс",
+          "currencyFallbackChip": "Валюта: {currency}",
+          "syncNow": "Синхронізувати зараз",
+          "connectRemainingWithCount": "Підключити решту рахунків ({count})",
+          "needsAttention": "{count} потребує уваги | {count} потребують уваги | {count} потребують уваги",
+          "totalLabel": "{amount} загалом",
+          "syncStarted": "Синхронізацію розпочато",
+          "syncFailed": "Не вдалося розпочати синхронізацію"
+        },
+        "actions": {
+          "renameButton": "Перейменувати підключення",
+          "disconnectButton": "Відключити інтеграцію",
+          "manage": "Керувати"
+        },
+        "fetchAccountsDialog": {
+          "title": "Підключити решту рахунків",
+          "description": "Виберіть доступні рахунки з {providerName}, які ще не підключено.",
+          "missingAccountsQuestion": "Не бачите свої рахунки?",
+          "missingAccountsHint": "Якщо ви не бачите деяких своїх рахунків, спробуйте перепідключити банк у розділі {section}, натиснувши {button}.",
+          "missingAccountsSectionName": "Термін дії підключення",
+          "missingAccountsButtonName": "Перепідключити зараз",
+          "missingAccountsPersist": "Якщо проблема не зникає, будь ласка, повідомте про це для подальшого розслідування.",
+          "sessionExpired": "Ваша сесія закінчилася. Будь ласка, перепідключіть банк, щоб продовжити.",
+          "loadFailed": "Не вдалося завантажити доступні рахунки. Спробуйте ще раз.",
+          "noAdditionalAccounts": "Немає додаткових рахунків для підключення.",
+          "connectSelectedButton": "Підключити вибрані рахунки ({count})",
+          "selectAccountsButton": "Виберіть рахунки",
+          "alreadyConnected": "Вже підключено",
+          "creditLimitMeta": "Ліміт {amount}"
+        },
+        "meta": {
+          "connectedSince": "Підключено {date}"
+        },
+        "summary": {
+          "totalBalance": "Загальний баланс",
+          "accounts": "Рахунки",
+          "accountsCount": "{count} рахунок | {count} рахунки | {count} рахунків",
+          "lastSync": "Остання синхронізація",
+          "consent": "Згода",
+          "every": "Кожні {hours} год",
+          "autoSyncOff": "Вимкнено",
+          "connectedOf": "{connected} з {total}",
+          "connectedSub": "підключено",
+          "accountsFailed": "{count} рахунок з помилкою | {count} рахунки з помилками | {count} рахунків з помилками"
+        },
+        "consentStrip": {
+          "expiring": "Термін дії згоди спливає через {days} день · {date} | Термін дії згоди спливає через {days} дні · {date} | Термін дії згоди спливає через {days} днів · {date}",
+          "expired": "Термін дії згоди сплив. Перепідключіться, щоб відновити синхронізацію."
+        },
+        "relativeTime": {
+          "never": "ніколи"
+        },
+        "errors": {
+          "reauthorizationFailed": "Не вдалося розпочати повторну авторизацію"
+        }
+      },
+      "dialogs": {
+        "disconnect": {
+          "title": "Відключити інтеграцію",
+          "description": "Ви впевнені, що хочете відключити цю інтеграцію? Цю дію неможливо скасувати.",
+          "removeAccounts": "Також видалити пов'язані рахунки",
+          "removeAccountsHint": "Це назавжди видалить усі рахунки, прив'язані до цієї інтеграції",
+          "disconnecting": "Відключення...",
+          "disconnect": "Відключити"
+        },
+        "editName": {
+          "title": "Редагувати назву підключення",
+          "description": "Дайте підключенню власну назву для легкої ідентифікації.",
+          "label": "Назва підключення",
+          "saving": "Збереження...",
+          "save": "Зберегти"
+        },
+        "reconnect": {
+          "title": "Перепідключити інтеграцію",
+          "description": "Після початку процесу перепідключення {warning}. Ви повинні завершити процес, щоб підключення знову стало активним.",
+          "warning": "ваше поточне підключення одразу стане недійсним",
+          "preparing": "Підготовка...",
+          "continue": "Продовжити"
+        }
+      },
+      "authFailure": {
+        "description": "Ваші облікові дані закінчилися. Будь ласка, оновіть їх, щоб продовжити синхронізацію транзакцій.",
+        "updateButton": "Оновити облікові дані"
+      },
+      "updateCredentials": {
+        "title": "Оновити облікові дані",
+        "apiKeyLabel": "API-ключ",
+        "apiKeyPlaceholder": "Введіть ваш API-ключ",
+        "updatingButton": "Оновлення...",
+        "updateButton": "Оновити",
+        "success": "Облікові дані успішно оновлено",
+        "failed": "Не вдалося оновити облікові дані"
+      },
+      "labels": {
+        "free": "Безкоштовно",
+        "paid": "Платно",
+        "easySetup": "Легко налаштувати",
+        "mediumSetup": "Середньо складно налаштувати",
+        "veryDifficultSetup": "Дуже складно налаштувати"
+      },
+      "regions": {
+        "ukraine": "Україна",
+        "eu": "ЄС",
+        "uk": "Великобританія",
+        "usa": "США",
+        "poland": "Польща",
+        "canada": "Канада",
+        "australia": "Австралія",
+        "newZealand": "Нова Зеландія"
+      },
+      "filters": {
+        "all": "Усі",
+        "usCanada": "США та Канада",
+        "euUk": "ЄС та Велика Британія"
+      },
+      "tooltips": {
+        "monobank": "Потрібно вручну скопіювати API-токен з мобільного застосунку Monobank",
+        "enableBanking": "Оскільки повноцінна інтеграція коштує кілька тисяч $ на місяць, підключитися можна лише створивши власний обліковий запис розробника Enable Banking та налаштувавши «тестовий» застосунок з реальним підключенням до своїх банків, зберігаючи сертифікати та ключі й завантажуючи їх сюди. Потрібні середні технічні знання.",
+        "lunchflow": "Просто підключіть свої банки на стороні Lunch Flow, потім створіть та вставте свій API-ключ Lunch Flow",
+        "simplefin": "SimpleFIN Bridge — платний сервіс. Ви створюєте обліковий запис SimpleFIN Bridge, підключаєте банк і вставляєте токен налаштування — налаштування розробника не потрібне.",
+        "walutomat": "Потребує генерації пари ключів RSA та завантаження публічного ключа до панелі Walutomat",
+        "akahu": "Безкоштовно для ваших власних рахунків: створіть персональний застосунок Akahu на my.akahu.nz, підключіть там свої банки Нової Зеландії, а потім вставте два токени"
+      }
+    },
+    "connectionName": {
+      "placeholder": "напр., Особистий рахунок"
+    },
+    "bankCallback": {
+      "processing": {
+        "title": "Завершення авторизації...",
+        "description": "Будь ласка, зачекайте, поки ми перевіряємо ваше банківське підключення"
+      },
+      "error": {
+        "title": "Авторизація не вдалася",
+        "backToIntegrations": "Назад до інтеграцій"
+      },
+      "success": {
+        "title": "Підключення успішне!",
+        "description": "Ваш банківський рахунок успішно підключено.",
+        "viewAccounts": "Переглянути рахунки"
+      },
+      "errors": {
+        "authorizationDenied": "Авторизацію відхилено або вона не вдалася",
+        "missingParameters": "Відсутні обов'язкові параметри (code або state)",
+        "connectionIdNotFound": "ID підключення не знайдено. Будь ласка, почніть процес підключення знову.",
+        "failedToComplete": "Не вдалося завершити авторизацію"
+      }
+    }
+  }
+}

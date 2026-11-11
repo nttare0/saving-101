@@ -1,0 +1,158 @@
+{
+  "settings": {
+    "admin": {
+      "title": "Panneau d'administration",
+      "description": "Outils d'administration et gestion du système",
+      "priceSync": {
+        "title": "Synchronisation du cours des titres",
+        "description": "Déclencher manuellement la synchronisation des cours pour tous les titres détenus",
+        "button": "Synchroniser les cours",
+        "buttonLoading": "Synchronisation...",
+        "notifications": {
+          "success": "Synchronisation du cours des titres réussie",
+          "failed": "Échec du déclenchement de la synchronisation des cours",
+          "rateLimited": "Non autorisé. Réessayez dans {time}.",
+          "adminRequired": "Droits d'administrateur requis pour cette action"
+        }
+      },
+      "priceUpload": {
+        "title": "Import manuel du cours des titres",
+        "description": "Importer l'historique des cours de titres via des fichiers CSV ou JSON",
+        "button": "Importer le cours des titres",
+        "dialogTitle": "Importer le cours des titres",
+        "selectSecurity": {
+          "searchLabel": "Rechercher par symbole ou nom",
+          "searchPlaceholder": "AAPL",
+          "searching": "Recherche…",
+          "failed": "Échec de la recherche de titres.",
+          "noResults": "Aucun résultat.",
+          "changeButton": "Modifier"
+        },
+        "dateRangeInfo": {
+          "loading": "Chargement de la période couverte...",
+          "title": "Période disponible pour les taux de change ({currency}) :",
+          "tooltipText": "Vous ne pouvez importer le cours des titres que pour les dates où les taux de change sont disponibles. Sinon, la conversion du cours vers d'autres devises sera impossible. Si vous avez besoin de données plus anciennes, importez d'abord les taux de change. Selon l'option choisie aux étapes suivantes, les entrées seront automatiquement filtrées (ignorées) ou l'import échouera."
+        },
+        "fileUpload": {
+          "title": "Importer un fichier",
+          "supportedFormats": "Fichiers CSV ou JSON pris en charge",
+          "errors": {
+            "unsupportedFormat": "Format de fichier non pris en charge. Veuillez importer un fichier CSV ou JSON.",
+            "parseFailed": "Échec de l'analyse du fichier {fileType} : {error}"
+          }
+        },
+        "fieldMapper": {
+          "title": "Faire correspondre les champs",
+          "description": "Associez les colonnes de votre fichier aux champs requis ci-dessous.",
+          "selectField": "Sélectionner un champ...",
+          "dateFormatLabel": "Format de date",
+          "dateFormatDescription": "Sélectionnez le format de date utilisé dans votre fichier",
+          "dateFormats": {
+            "ddMMyyyySlash": "JJ/MM/AAAA (ex. 31/12/2024)",
+            "MMddyyyySlash": "MM/JJ/AAAA (ex. 12/31/2024)",
+            "yyyyMMddDash": "AAAA-MM-JJ (ex. 2024-12-31)",
+            "ddMMyyyyDash": "JJ-MM-AAAA (ex. 31-12-2024)",
+            "MMddyyyyDash": "MM-JJ-AAAA (ex. 12-31-2024)"
+          },
+          "mappingComplete": "Tous les champs obligatoires sont associés",
+          "mappingIncomplete": "Veuillez associer tous les champs obligatoires pour continuer",
+          "fileInfo": "Fichier :",
+          "records": "{count} entrées",
+          "changeFileButton": "Changer de fichier",
+          "continueButton": "Passer à l'aperçu"
+        },
+        "preview": {
+          "title": "Aperçu des données",
+          "recordsCount": "{count} entrée sera importée | {count} entrées seront importées",
+          "recordsPeriod": "pour la période comprise entre le {oldest} et le {newest}",
+          "loadingExisting": "Chargement des cours existants pour comparaison...",
+          "warnings": {
+            "significantDifferences": "Écarts de cours importants détectés",
+            "differencesDetails": "{count} entrée présente un écart de prix supérieur à 4 % par rapport aux données existantes. Veuillez vérifier attentivement. | {count} entrées présentent un écart de prix supérieur à 4 % par rapport aux données existantes. Veuillez vérifier attentivement."
+          },
+          "filterCheckbox": "Afficher uniquement les entrées avec un écart important (> 4 %)",
+          "tableHeaders": {
+            "date": "Date",
+            "newPrice": "Nouveau cours",
+            "existingPrice": "Cours existant",
+            "difference": "Écart (%)"
+          },
+          "noExistingPrice": "N/D",
+          "scrollForMore": "Faites défiler pour en voir plus...",
+          "noDifferences": "Aucune entrée avec un écart important n'a été trouvée.",
+          "backButton": "Retour à la correspondance",
+          "continueButton": "Continuer vers les options"
+        },
+        "options": {
+          "title": "Options d'importation",
+          "autoFilter": {
+            "title": "Filtrer automatiquement les dates hors période",
+            "description": "Supprimer automatiquement les dates situées hors de la plage des taux de change disponibles"
+          },
+          "override": {
+            "title": "Écraser les entrées existantes",
+            "description": "Mettre à jour les cours existants au lieu d'ignorer les doublons"
+          },
+          "backButton": "Retour",
+          "uploadButton": "Importer les cours",
+          "uploadingButton": "Importation en cours..."
+        },
+        "result": {
+          "title": "Importation terminée !",
+          "inserted": "✓ {count} nouvelle entrée importée | ✓ {count} nouvelles entrées importées",
+          "duplicates": "• {count} doublon {action}",
+          "duplicatesUpdated": "mis à jour",
+          "duplicatesSkipped": "ignorés",
+          "filtered": "• {count} date filtrée (hors période) | • {count} dates filtrées (hors période)",
+          "closeButton": "Fermer",
+          "uploadMoreButton": "Importer d'autres fichiers"
+        },
+        "notifications": {
+          "dateInfoLoadFailed": "Échec du chargement des informations de date : {error}",
+          "uploadSuccess": "{count} cours importé avec succès | {count} cours importés avec succès",
+          "uploadFailed": "Échec de l'import : {error}"
+        }
+      },
+      "broadcast": {
+        "title": "Broadcast notification",
+        "description": "Send an in-app notification to every user active in the last 30 days, or only to the user IDs and emails you list. With a link, clicking it opens the link in a new tab, and re-sending the same link skips users who already got it.",
+        "fields": {
+          "title": "Title",
+          "titlePlaceholder": "e.g. iOS app is in public beta 📱",
+          "message": "Message",
+          "messagePlaceholder": "Optional text shown under the title",
+          "url": "Lier",
+          "urlPlaceholder": "https://…  (optional)",
+          "urlError": "Link must start with https://",
+          "icon": "Icône",
+          "recipients": "Recipients",
+          "recipientsPlaceholder": "Optional user IDs or emails, comma-separated, e.g. 12, jane@example.com. Empty = all active users",
+          "recipientsError": "Use positive whole-number IDs or valid emails, separated by commas"
+        },
+        "icons": {
+          "info": "Info",
+          "announcement": "Announcement",
+          "success": "Success",
+          "warning": "Warning"
+        },
+        "button": "Send notification",
+        "confirm": {
+          "title": "Send to all active users?",
+          "titleSelected": "Send to {count} users?",
+          "description": "This creates a notification for every user active in the last 30 days. It can't be undone.",
+          "descriptionSelected": "Unknown IDs and emails are skipped. It can't be undone.",
+          "button": "Envoyer"
+        },
+        "notifications": {
+          "success": "Notification sent to {count} users",
+          "failed": "Failed to send the notification",
+          "noneCreated": "No notifications were sent: no matching users, or they already got this link"
+        }
+      },
+      "tabs": {
+        "investments": "Investissements",
+        "notifications": "Notifications"
+      }
+    }
+  }
+}

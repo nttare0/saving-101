@@ -1,0 +1,125 @@
+{
+  "pages": {
+    "importExport": {
+      "ofxImport": {
+        "pageTitle": "Importer un fichier OFX ou QFX",
+        "pageDescription": "Importez les opérations bancaires et de carte bancaire depuis un fichier OFX ou QFX.",
+        "stepper": {
+          "steps": {
+            "upload": "Téléverser",
+            "resolve": "Associer les comptes",
+            "review": "Vérifier",
+            "results": "Terminé"
+          }
+        },
+        "fileUpload": {
+          "stepTitle": "Téléversez votre fichier OFX ou QFX",
+          "description": "Sélectionnez un relevé téléchargé auprès de votre banque ou de l'émetteur de votre carte.",
+          "maxSize": "Fichier .ofx ou .qfx, jusqu'à 10 Mo",
+          "parsing": "Lecture du fichier…",
+          "continue": "Continuer",
+          "errors": {
+            "invalidFormatNamed": "« {name} » n'est pas un fichier OFX ou QFX valide."
+          }
+        },
+        "errors": {
+          "uploadUnavailable": "Le fichier téléversé n'est plus disponible. Veuillez téléverser à nouveau votre fichier OFX ou QFX."
+        },
+        "resolve": {
+          "accounts": {
+            "sectionTitle": "Comptes",
+            "nameLabel": "Nom du compte",
+            "namePlaceholder": "Saisissez un nom de compte",
+            "currentBalanceLabel": "Solde actuel",
+            "currentBalancePlaceholder": "Laisser vide pour utiliser la somme des opérations importées",
+            "ledgerBalanceHint": "Solde du relevé : {balance} au {date}",
+            "transactionCount": "{count} opération | {count} opérations",
+            "skippedNote": "{count} compte sera ignoré. Ses opérations ne seront pas importées. | {count} comptes seront ignorés. Leurs opérations ne seront pas importées.",
+            "statementType": {
+              "bank": "Compte bancaire",
+              "credit-card": "Carte de crédit"
+            }
+          },
+          "quickActions": {
+            "mapExactMatches": "Associer les correspondances exactes",
+            "createNewForUnmatched": "Créer les comptes non associés",
+            "reset": "Réinitialiser",
+            "tooltips": {
+              "mapExactMatches": "Associer chaque compte à un compte existant portant le même nom et la même devise.",
+              "createNewForUnmatched": "Configurer chaque compte non associé pour créer un nouveau compte.",
+              "reset": "Effacer tous les choix et relancer l'association."
+            }
+          },
+          "footer": {
+            "back": "Retour",
+            "continue": "Continuer"
+          }
+        },
+        "review": {
+          "transactions": "Opérations",
+          "accountsSkipped": "Comptes ignorés",
+          "duplicatesSkipped": "Doublons ignorés",
+          "willImport": "À importer",
+          "dateRange": "Période : {from} — {to}",
+          "warningsTitle": "Vérifier les détails du fichier",
+          "warningsHint": "L'importation peut continuer, mais certaines opérations nécessitent une attention particulière.",
+          "warnings": {
+            "dateUserFallback": "{count} opération a utilisé le fuseau horaire par défaut du fichier | {count} opérations ont utilisé le fuseau horaire par défaut du fichier",
+            "fitidMissing": "{count} opération n'avait pas d'identifiant bancaire | {count} opérations n'avaient pas d'identifiant bancaire",
+            "fitidDuplicate": "{count} identifiant d'opération bancaire en double trouvé dans le fichier | {count} identifiants d'opération bancaire en double trouvés dans le fichier"
+          },
+          "duplicatesTitle": "{count} doublon potentiel | {count} doublons potentiels",
+          "duplicatesHint": "Ces opérations ressemblent à des opérations existantes. Cochez une ligne pour l'importer malgré tout ; les doublons décochés seront ignorés.",
+          "back": "Retour",
+          "importing": "Démarrage de l'importation…",
+          "importButton": "Importer {count} opération | Importer {count} opérations"
+        },
+        "execute": {
+          "starting": "Démarrage de l'importation…",
+          "progressCount": "{processed} sur {total}",
+          "failed": "L'importation a échoué.",
+          "partialImportNote": "Certaines opérations ont peut-être déjà été importées.",
+          "statusQueued": "En attente",
+          "statusRunning": "Importation en cours",
+          "statusCompleted": "Terminé",
+          "statusFailed": "Échec"
+        },
+        "done": {
+          "successTitle": "Importation terminée",
+          "successDescription": "Vos opérations OFX ou QFX sont désormais dans votre compte.",
+          "partialTitle": "Importé avec {count} problème | Importé avec {count} problèmes",
+          "partialDescription": "La plupart des opérations ont été importées. La liste ci-dessous indique celles qui ne l'ont pas été.",
+          "emptyTitle": "Rien de nouveau à importer",
+          "emptyDescription": "Toutes les opérations ont été ignorées ou étaient déjà présentes dans vos comptes.",
+          "failedTitle": "Rien n'a été importé",
+          "failedDescription": "Aucune opération n'a pu être créée. Consultez les erreurs ci-dessous.",
+          "accountsCreated": "Comptes créés",
+          "accountsLinked": "Comptes associés",
+          "accountsSkipped": "Comptes ignorés",
+          "payeesCreated": "Tiers créés",
+          "transactionsImported": "Opérations importées",
+          "duplicatesSkipped": "Doublons ignorés",
+          "mergedIntoPlanned": "Fusionné avec le prévisionnel",
+          "balanceWarningTitle": "Certains soldes peuvent être incorrects",
+          "balanceWarningBody": "Le solde final n'a pas pu être défini sur chaque compte. Vérifiez ces comptes et ajustez leurs soldes si nécessaire.",
+          "errorsTitle": "{count} opération n'a pas pu être importée | {count} opérations n'ont pas pu être importées",
+          "errorsOverflow": "…et {count} de plus",
+          "errors": {
+            "rowImportFailed": "Cette ligne n'a pas pu être importée.",
+            "accountBalanceDesync": "Le solde d'un compte n'a pas pu être mis à jour après l'import.",
+            "rowsSuppressed": "{count} autre ligne à partir de celle-ci n'a pas pu être importée. Seules les {listed} premières erreurs sont affichées. | {count} autres lignes à partir de celle-ci n'ont pas pu être importées. Seules les {listed} premières erreurs sont affichées."
+          },
+          "rowPrefix": "Ligne {rowIndex} :",
+          "viewTransactions": "Voir les opérations",
+          "importAnother": "Importer un autre fichier"
+        },
+        "leaseExpired": {
+          "title": "Votre fichier importé n'est plus disponible",
+          "description": "La copie analysée de votre fichier OFX ou QFX a expiré après une période d'inactivité. Vos choix de correspondance n'ont pas pu être conservés. Recommencez l'import.",
+          "action": "Recommencer"
+        },
+        "leaseResourceLabel": "Votre fichier importé"
+      }
+    }
+  }
+}

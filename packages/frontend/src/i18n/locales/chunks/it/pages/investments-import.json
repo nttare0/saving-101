@@ -1,0 +1,162 @@
+{
+  "investmentsImport": {
+    "title": "Importa transazioni",
+    "description": "Caricare un CSV di un exchange, un PDF del broker o incollare lo storico delle transazioni. L'IA estrarrà acquisti e vendite. Sarà possibile rivedere tutto prima dell'importazione.",
+    "backToPortfolio": "Torna al portafoglio",
+    "upload": {
+      "fileTab": "File",
+      "pasteTab": "Incolla testo",
+      "fileHintFormats": "CSV, TXT o PDF",
+      "pastePlaceholder": "Incollare qui l'elenco delle transazioni...",
+      "estimatedCost": "Costo stimato",
+      "model": "Modello",
+      "estimateButton": "Stima costo",
+      "extractButton": "Estrai",
+      "extracting": "Estrazione…",
+      "modeAi": "Importazione IA",
+      "modeCsv": "Importazione CSV",
+      "modeAiHint": "Caricare qualsiasi file: l'IA estrae automaticamente le transazioni. Consuma token.",
+      "modeCsvHint": "Caricare un CSV del broker e mappare le colonne manualmente. Nessun uso dell'IA.",
+      "csvHintFormats": "Solo file CSV.",
+      "parsingCsv": "Analisi…",
+      "continueToMapping": "Continua alla mappatura"
+    },
+    "review": {
+      "warningsTitle": "Avvisi",
+      "empty": "L'IA non ha trovato transazioni in questo file.",
+      "pickSecurity": "Scegli titolo...",
+      "pickCurrency": "Valuta...",
+      "searchPlaceholder": "Cerca per simbolo...",
+      "searching": "Ricerca...",
+      "parsedSymbolHint": "Impossibile abbinare automaticamente {symbol}: scegliere il titolo corretto qui sotto.",
+      "startTyping": "Iniziare a digitare per cercare",
+      "noResults": "Nessuna corrispondenza",
+      "alreadyPicked": "già scelto",
+      "duplicateSecurity": "Lo stesso titolo è scelto in un'altra riga",
+      "willMerge": "Verrà unito alla posizione esistente",
+      "txns": "{count} transazione | {count} transazioni",
+      "expand": "Espandi",
+      "collapse": "Comprimi",
+      "deleteHolding": "Elimina posizione",
+      "deleteTransaction": "Elimina transazione",
+      "buy": "Acquisto",
+      "sell": "Vendita",
+      "possibleDup": "Possibile duplicato",
+      "skipping": "Verrà saltata",
+      "duplicateBadgeTooltip": "Sembra un possibile duplicato di una transazione esistente. Fare clic per saltarla, altrimenti verrà creata una nuova transazione accanto a quella esistente (senza unione né sovrascrittura).",
+      "back": "Indietro",
+      "commit": "Importa",
+      "cols": {
+        "date": "Data",
+        "side": "Tipo",
+        "qty": "Quantità",
+        "price": "Prezzo",
+        "fees": "Commissioni",
+        "amount": "Importo",
+        "security": "Titolo",
+        "currency": "Valuta",
+        "txCount": "Transazioni"
+      },
+      "tooltips": {
+        "security": "Il titolo è stato scelto automaticamente in base al ticker estratto dall'IA. Fare clic sul campo per correggere l'abbinamento se è errato.",
+        "currency": "Valuta in cui è stata regolata la parte in contanti dell'operazione (es. USD, EUR). Non cambia il modo in cui la posizione viene memorizzata: gli importi sono convertiti nella valuta di base usando i tassi di cambio storici alla data dell'operazione.",
+        "parentRowDuplicates": "{count} possibile duplicato in questa posizione verrà importato come nuova transazione, a meno che non venga saltato. | {count} possibili duplicati in questa posizione verranno importati come nuove transazioni, a meno che non vengano saltati."
+      }
+    },
+    "done": {
+      "transactions": "Transazioni aggiunte"
+    },
+    "notifications": {
+      "imported": "{count} transazioni importate",
+      "extractFailed": "Impossibile estrarre le transazioni dal file.",
+      "importFailed": "Impossibile importare le transazioni.",
+      "skippedHoldings": "Posizioni saltate: {count}",
+      "failedTransactions": "Transazioni non riuscite: {count}",
+      "estimateFailed": "Stima del costo di importazione non riuscita",
+      "csvParseFailed": "Impossibile analizzare il CSV. Verificare il formato del file e riprovare."
+    },
+    "errors": {
+      "csv": {
+        "empty": "Il file CSV è vuoto.",
+        "noHeaders": "Il file CSV non ha una riga di intestazione.",
+        "forbiddenHeader": "L'intestazione del CSV usa un nome riservato (es. __proto__).",
+        "tooManyRows": "Il CSV supera il limite di {max} righe.",
+        "parseError": "Impossibile analizzare il file CSV. Verificare che sia un CSV valido."
+      }
+    },
+    "warnings": {
+      "csvRowMissingSymbol": "Riga {row}: simbolo mancante",
+      "csvRowInvalidDate": "Riga {row}: data non interpretabile \"{value}\"",
+      "csvRowUnmappedSide": "Riga {row}: valore di operazione non mappato \"{value}\"",
+      "csvRowInvalidQuantity": "Riga {row}: quantità non valida \"{value}\"",
+      "csvRowInvalidPrice": "Riga {row}: prezzo non valido \"{value}\"",
+      "csvRowInvalidFees": "Riga {row}: commissioni non valide \"{value}\"",
+      "aiRowsDropped": "L'IA ha restituito {count} riga non interpretabile (data, operazione o numeri errati), che è stata saltata. | L'IA ha restituito {count} righe non interpretabili (data, operazione o numeri errati), che sono state saltate.",
+      "csvRowsInvalid": "{count} di {total} righe CSV è stata saltata: | {count} di {total} righe CSV sono state saltate:",
+      "csvRowsSkipped": "{count} riga è stata saltata perché il valore di operazione è mappato su \"Salta\". | {count} righe sono state saltate perché il valore di operazione è mappato su \"Salta\".",
+      "unsupportedQuoteCurrency": "{symbol}: {count} riga ha una valuta di quotazione non supportata. | {symbol}: {count} righe hanno una valuta di quotazione non supportata.",
+      "duplicateCheckFailed": "Impossibile verificare i possibili duplicati. Rivedere manualmente le transazioni esistenti.",
+      "providerLookupFailed": "Impossibile cercare \"{symbol}\" presso il fornitore di dati di mercato. Riprovare più tardi.",
+      "noResolvedSecurity": "\"{symbol}\" saltato: nessun titolo selezionato.",
+      "noCurrency": "\"{symbol}\" saltato: nessuna valuta selezionata.",
+      "portfolioNotFound": "\"{symbol}\" saltato: portafoglio di destinazione non trovato.",
+      "holdingSetupFailed": "\"{symbol}\" saltato: impossibile configurare la posizione.",
+      "holdingSetupFailedWithReason": "\"{symbol}\" saltato: {reason}",
+      "unsupportedCategory": "Saltata un'operazione {side} su \"{symbol}\" del {date}: questa categoria non è ancora supportata.",
+      "transactionFailed": "Importazione non riuscita per un'operazione {side} su \"{symbol}\" del {date}.",
+      "transactionFailedWithReason": "Importazione non riuscita per un'operazione {side} su \"{symbol}\" del {date}: {reason}",
+      "unknown": "Alcune righe potrebbero non essere state importate come previsto."
+    },
+    "columnMapping": {
+      "rowsAndDelimiter": "{rows} righe · delimitatore '{delimiter}'",
+      "backToUpload": "Indietro",
+      "previewTitle": "Anteprima",
+      "requiredTitle": "Colonne obbligatorie",
+      "optionalTitle": "Colonne facoltative",
+      "defaultsTitle": "Valori predefiniti",
+      "sideValueMappingTitle": "Mappatura dei valori di operazione",
+      "sideValueMappingHint": "Indicare il significato di ciascun valore della colonna dell'operazione.",
+      "sideValueMappingEmpty": "Ancora nessun valore trovato in questa colonna.",
+      "selectColumn": "Seleziona colonna…",
+      "notMapped": "Non mappata",
+      "pickCategory": "Scegli categoria…",
+      "cashMovementsNote": "Depositi e Prelievi non sono ancora supportati. Selezione 'Salta queste righe' per i rispettivi valori per lasciarli fuori dall'importazione.",
+      "extractButton": "Continua alla revisione",
+      "extracting": "Estrazione…",
+      "fields": {
+        "symbol": "Simbolo",
+        "date": "Data",
+        "side": "Operazione / azione",
+        "quantity": "Quantità",
+        "price": "Prezzo",
+        "fees": "Commissioni",
+        "currency": "Valuta",
+        "name": "Nome",
+        "defaultCurrency": "Valuta predefinita",
+        "defaultAssetClass": "Classe di asset predefinita"
+      },
+      "tooltips": {
+        "fees": "Colonna con commissioni/spese per transazione. Se non mappata, le commissioni sono pari a 0.",
+        "currency": "Colonna della valuta di quotazione (es. USD, EUR, USDT). Determina la parte in contanti di ogni operazione. Se vuota o non mappata, si usa la Valuta predefinita qui sotto.",
+        "name": "Nome visualizzato facoltativo del titolo (es. 'Apple Inc.'). Usato solo nella fase di revisione: il ticker resta l'identificativo di riferimento.",
+        "defaultCurrency": "Usata quando la colonna Valuta qui sopra è vuota o non mappata.",
+        "defaultAssetClass": "Suggerimento per abbinare i simboli ai titoli. Scegliere la classe corrispondente alla maggior parte delle righe del file: sarà possibile modificarla per singolo titolo nella fase di revisione."
+      }
+    },
+    "categories": {
+      "buy": "Acquisto",
+      "sell": "Vendita",
+      "dividend": "Dividendo",
+      "transfer": "Trasferimento",
+      "tax": "Imposta",
+      "fee": "Commissione",
+      "cancel": "Annulla",
+      "other": "Altro",
+      "skip": "Salta queste righe"
+    },
+    "assetClasses": {
+      "stocks": "Azioni",
+      "crypto": "Crypto"
+    }
+  }
+}

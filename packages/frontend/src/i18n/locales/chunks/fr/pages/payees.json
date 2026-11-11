@@ -1,0 +1,182 @@
+{
+  "payees": {
+    "title": "Tiers",
+    "subtitle": "Liste principale des commerçants et tiers avec lesquels vous effectuez des opérations",
+    "newPayeeButton": "Nouveau tiers",
+    "searchPlaceholder": "Rechercher des tiers…",
+    "columns": {
+      "name": "Nom",
+      "transactionCount": "Nb d'opér.",
+      "netFlow": "Flux net",
+      "category": "Catégorie",
+      "categoryHint": "Catégorie effective pour ce tiers. Affiche la valeur par défaut si définie — sinon la catégorie la plus fréquente de ses opérations passées. Remplie automatiquement lors de la création d'une opération.",
+      "topCategory": "Catégorie principale",
+      "defaultCategory": "Catégorie par défaut",
+      "defaultTags": "Étiquettes par défaut"
+    },
+    "sort": {
+      "label": "Trier par",
+      "transactionCount": "Nombre d'opérations",
+      "netFlow": "Flux net",
+      "name": "Nom",
+      "lastSeen": "Activité récente",
+      "defaultTags": "Étiquettes par défaut"
+    },
+    "actions": {
+      "menu": "Actions",
+      "rename": "Renommer",
+      "merge": "Fusionner avec…",
+      "delete": "Supprimer",
+      "deleteAndIgnore": "Supprimer et ignorer"
+    },
+    "bulk": {
+      "select": "Sélectionner",
+      "selectedCount": "{count} sélectionné(s)",
+      "clearSelection": "Désélectionner tout",
+      "selectAll": "Sélectionner tous les tiers chargés",
+      "selectRow": "Sélectionner {name}",
+      "deleteTitle": "Supprimer {count} tiers ? | Supprimer {count} tiers ?",
+      "deleteDescription": "Leurs opérations sont conservées, mais ne seront plus associées à ce tiers. Cette action est irréversible.",
+      "deleteAndIgnoreTitle": "Supprimer et ignorer {count} tiers ? | Supprimer et ignorer {count} tiers ?",
+      "deleteAndIgnoreDescription": "Leur nom sera ajouté à la liste des exclusions afin que les imports et synchronisations bancaires ne les recréent pas. Leurs opérations sont conservées, mais ne seront plus associées à ce tiers."
+    },
+    "emptyState": {
+      "title": "Aucun tiers pour le moment",
+      "description": "Connectez une banque pour détecter automatiquement vos tiers, ou ajoutez-en un manuellement."
+    },
+    "form": {
+      "namePlaceholder": "Saisir le nom du tiers",
+      "categoryPlaceholder": "Sélectionner une catégorie",
+      "categorizationMode": {
+        "label": "Catégorisation par IA",
+        "enforce": {
+          "label": "Toujours utiliser la catégorie du tiers",
+          "hint": "La catégorie par défaut du tiers est toujours appliquée. La catégorisation par IA est ignorée pour ce tiers."
+        },
+        "hint": {
+          "label": "Utiliser comme suggestion",
+          "hint": "Définit la catégorie par défaut du tiers, mais l'IA peut la modifier selon les détails de l'opération."
+        },
+        "off": {
+          "label": "Désactivé",
+          "hint": "La catégorie par défaut du tiers est ignorée. La catégorisation est gérée par l'IA ou par vos autres règles."
+        }
+      }
+    },
+    "detail": {
+      "categorizationSection": "Catégorisation",
+      "aliasesHeading": "Alias",
+      "aliasesEmpty": "Aucun alias pour le moment. Les variantes apparaîtront ici lorsque ce tiers correspondra au libellé d'un autre commerçant.",
+      "cannotDeleteCanonicalAlias": "Impossible de supprimer l'alias correspondant au nom du tiers. Renommez plutôt le tiers.",
+      "deleteAliasConfirm": "Supprimer cet alias ?",
+      "addAlias": "Ajouter",
+      "addAliasTitle": "Ajouter un alias",
+      "addAliasDescription": "Les futures opérations dont le libellé correspond à cet alias seront automatiquement associées à ce tiers. Les opérations passées restent inchangées.",
+      "addAliasInputLabel": "Nom du commerçant",
+      "addAliasPlaceholder": "ex. MAGASIN ACME #1234",
+      "aliasDuplicate": "Cet alias est déjà associé à ce tiers.",
+      "aliasUsedByOtherPayee": "Cet alias est déjà utilisé par « {name} ».",
+      "deletePayeeTitle": "Supprimer le tiers ?",
+      "deletePayeeDescription": "Les opérations associées conservent leur catégorie mais perdent le lien avec le tiers. Cette action est irréversible.",
+      "deleteAndIgnoreTitle": "Supprimer ce tiers et ignorer les futures correspondances ?",
+      "deleteAndIgnoreDescription": "Supprime ce tiers ET ajoute ses noms (canonique + tous les alias) à la liste d'exclusion. Les prochaines synchronisations ne le recréeront pas à partir du libellé brut. Les opérations associées sont conservées mais déliées.",
+      "mergeTitle": "Fusionner avec un autre tiers",
+      "mergeDescription": "Sélectionnez le tiers cible. Toutes les opérations et tous les alias y seront transférés ; ce tiers sera supprimé.",
+      "confirmMerge": "Fusionner",
+      "topCategoryHint": "Catégorie la plus fréquemment utilisée pour les opérations liées à ce tiers. Utilisée par défaut si aucune catégorie principale n'est définie.",
+      "defaultCategoryPlaceholder": "Sélectionner une catégorie",
+      "defaultTagsLabel": "Appliquer automatiquement des étiquettes",
+      "defaultTagsPlaceholder": "Sélectionner les étiquettes à appliquer",
+      "defaultTagsHint": "Ces étiquettes sont automatiquement ajoutées aux nouvelles opérations liées à ce tiers (synchronisations bancaires et imports).",
+      "defaultLocationLabel": "Lieu par défaut",
+      "defaultLocationEmpty": "Aucun lieu défini",
+      "defaultLocationHint": "Les opérations liées à ce tiers qui n'ont pas de lieu défini recevront celui-ci, à la création comme lors de la synchronisation bancaire.",
+      "clearDefaultLocationTitle": "Supprimer le lieu par défaut ?",
+      "clearDefaultLocationDescription": "Les nouvelles opérations liées à ce tiers ne recevront plus ce lieu. Les opérations existantes conservent le leur.",
+      "applyTagsToExisting": "Appliquer aux opérations existantes"
+    },
+    "logo": {
+      "change": "Modifier le logo",
+      "dialogTitle": "Modifier le logo",
+      "dialogDescription": "Rechercher le logo d'une marque pour représenter ce tiers.",
+      "resetToAuto": "Rétablir le logo automatique",
+      "updatedToast": "Logo mis à jour.",
+      "resetToast": "Logo automatique rétabli.",
+      "fieldLabel": "Logo",
+      "domainHint": "Pour trouver la bonne marque, saisissez le nom de domaine de son site web (ex. amazon.com) — cela permet de toujours trouver le bon logo."
+    },
+    "transactionsDialog": {
+      "title": "{name} — opérations",
+      "empty": "Aucune opération liée à ce tiers.",
+      "unlink": "Délier du tiers",
+      "unlinked": "Opération déliée du tiers",
+      "unlinkConfirmTitle": "Délier l'opération ?",
+      "unlinkConfirmDescription": "Cette opération ne sera plus associée à {name}. Les prochaines synchronisations bancaires ne la réassocieront pas automatiquement.",
+      "unlinkConfirmLabel": "Délier"
+    },
+    "toasts": {
+      "created": "Tiers créé",
+      "updated": "Tiers mis à jour",
+      "deleted": "Tiers supprimé",
+      "merged": "Tiers fusionnés",
+      "aliasDeleted": "Alias supprimé",
+      "aliasAdded": "Alias ajouté",
+      "deletedAndIgnored": "Tiers supprimé et ajouté à la liste des noms ignorés",
+      "tagsAppliedToExisting": "Étiquettes appliquées à {count} opérations",
+      "bulkDeleted": "{count} tiers supprimé | {count} tiers supprimés",
+      "bulkDeletedAndIgnored": "{count} tiers supprimé et ignoré | {count} tiers supprimés et ignorés"
+    },
+    "errors": {
+      "collision": "Un tiers portant ce nom existe déjà. Fusionnez-les plutôt.",
+      "generic": "Une erreur s'est produite, veuillez réessayer."
+    },
+    "tabs": {
+      "manage": "Gérer",
+      "settings": "Paramètres"
+    },
+    "settings": {
+      "title": "Paramètres de détection des tiers",
+      "description": "Définissez la manière dont l'application détecte automatiquement les tiers à partir de vos opérations synchronisées.",
+      "howDetectionWorks": "Comment fonctionne la détection",
+      "payeeFromDescription": {
+        "label": "Détecter les tiers depuis le libellé des opérations",
+        "description": "Lorsque votre banque ne fournit pas de champ commerçant dédié, le libellé de l'opération est utilisé pour détecter automatiquement les tiers. Pratique pour les banques dont ce champ est vide ou absent. Peut générer des libellés plus bruyants (ex. mentions de paiement fractionné), que vous pouvez renommer ou fusionner ultérieurement.",
+        "successNotification": "Préférence mise à jour",
+        "errorNotification": "Échec de la mise à jour de la préférence"
+      },
+      "promotionThreshold": {
+        "label": "Créer un tiers après N occurrences",
+        "description": "Nombre d'opérations devant partager le même nom de commerçant avant de créer automatiquement un tiers. Réglez sur 1 pour créer un tiers dès la première opération.",
+        "successNotification": "Seuil de création des tiers mis à jour",
+        "errorNotification": "Échec de la mise à jour du seuil de création"
+      },
+      "bulkCategorizationMode": {
+        "label": "Appliquer le mode de catégorisation à tous les tiers",
+        "description": "Choisissez le comportement de catégorisation pour l'ensemble des tiers existants. Ce réglage remplace les préférences individuelles de chaque tiers.",
+        "applyButton": "Appliquer à tous",
+        "confirmTitle": "Appliquer à tous les tiers ?",
+        "confirmDescription": "Tous les tiers passeront sur le mode {mode}. Vous pourrez toujours modifier chaque tiers individuellement par la suite.",
+        "successNotification": "{count} tiers mis à jour.",
+        "errorNotification": "Échec de la mise à jour des tiers. Veuillez réessayer."
+      }
+    },
+    "ignoredNames": {
+      "title": "Noms de commerçants ignorés",
+      "description": "Libellés bruts de commerçants qui ne doivent jamais créer automatiquement un tiers. Utile pour filtrer le bruit, comme « Card transfer », « From: <name> » ou les préfixes de remboursement. Vous pouvez toujours associer manuellement ces libellés à un tiers : seule la correspondance automatique est désactivée.",
+      "addPlaceholder": "ex. Spotify",
+      "addButton": "Ajouter",
+      "addedToast": "Ajouté aux noms ignorés",
+      "addError": "Échec de l'ajout aux noms ignorés",
+      "removeTooltip": "Retirer de la liste des noms ignorés",
+      "removedToast": "Retiré des noms ignorés",
+      "removeError": "Échec de la suppression",
+      "empty": "Aucun nom ignoré pour le moment.",
+      "normalizedLabel": "Normalisé",
+      "conflictTitle": "Un tiers existant correspond",
+      "conflictDescription": "Un tiers avec le même nom normalisé que « {name} » existe déjà. Continuer supprimera ce tiers (les opérations sont conservées, mais le lien est perdu).",
+      "forceConfirm": "Supprimer le tiers et ignorer"
+    },
+    "loadingMore": "Chargement…",
+    "txCount": "{count} opé"
+  }
+}

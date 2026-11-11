@@ -1,0 +1,628 @@
+/* Manrope variable font via fontsource - supports weights 200-800 */
+@import '@fontsource-variable/manrope';
+
+@import 'tailwindcss';
+@import './calendar.css';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:where(.dark, .dark *));
+/* Devices without hover (phones, tablets) */
+@custom-variant touch {
+  @media (hover: none) {
+    @slot;
+  }
+}
+/* Transactions table: locked-cell shading shown without hover (touch, or the "always show" table setting) */
+@custom-variant locks-visible {
+  @media (hover: none) {
+    @slot;
+  }
+  &:where([data-always-show-locked-cells] *) {
+    @slot;
+  }
+}
+@reference;
+
+@theme {
+  /* Dark mode configuration */
+  --default-dark-mode: class;
+
+  /* Container configuration */
+  --container-center: true;
+  --container-padding: 2rem;
+  --container-screens-2xl: 1400px;
+
+  /* Extended breakpoints */
+  --breakpoint-xxs: 390px;
+  --breakpoint-xs: 550px;
+
+  /* Colors using CSS custom properties */
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-base-text: var(--base-text);
+  --color-error-message: var(--error-message);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-text: var(--primary-text);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary-hover: var(--secondary-hover);
+  --color-secondary-border: var(--secondary-border);
+
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-destructive-text: var(--destructive-text);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-dialog: var(--dialog);
+
+  --color-card-tooltip: var(--card-tooltip);
+  --color-card-tooltip-foreground: var(--card-tooltip-foreground);
+  --color-card-tooltip-glass: var(--card-tooltip-glass);
+  --color-card-tooltip-muted: var(--card-tooltip-muted);
+  --color-card-tooltip-border: var(--card-tooltip-border);
+  --shadow-card-tooltip: var(--card-tooltip-shadow);
+  --shadow-card: var(--card-shadow);
+
+  --color-input-background: var(--input-background);
+
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-success-text: var(--success-text);
+
+  --color-warning: rgb(230 126 34);
+  --color-warning-text: var(--warning-text);
+  --color-app-income-color: var(--app-income-color);
+  --color-app-expense-color: var(--app-expense-color);
+  --color-app-transfer-color: var(--app-transfer-color);
+  --color-app-savings-color: var(--app-savings-color);
+  --color-automation-when: var(--automation-when);
+
+  --color-heart: var(--heart);
+
+  --color-loan-mortgage: var(--loan-mortgage);
+  --color-loan-auto: var(--loan-auto);
+  --color-loan-student: var(--loan-student);
+  --color-loan-personal: var(--loan-personal);
+  --color-loan-heloc: var(--loan-heloc);
+  --color-loan-business: var(--loan-business);
+  --color-loan-medical: var(--loan-medical);
+  --color-loan-other: var(--loan-other);
+  --color-loan-principal: var(--loan-principal);
+  --color-loan-interest: var(--loan-interest);
+
+  --color-account-checking: var(--account-checking);
+  --color-account-saving: var(--account-saving);
+  --color-account-credit: var(--account-credit);
+  --color-account-cash: var(--account-cash);
+  --color-account-investment: var(--account-investment);
+  --color-account-crypto: var(--account-crypto);
+  --color-account-vehicle: var(--account-vehicle);
+
+  --color-subscription-type-subscription: var(--subscription-type-subscription);
+  --color-subscription-type-bill: var(--subscription-type-bill);
+  --color-subscription-type-installment: var(--subscription-type-installment);
+
+  /* Border radius */
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  /* Box shadows */
+  --shadow-header: 0 4px 12px -4px rgba(0, 0, 0, 0.08), 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+
+  /* Z-index */
+  --z-over-default: 1;
+  --z-scrollbar: 2;
+  --z-navbar: 10;
+  --z-dialog: 50;
+  --z-over-dialog: 51;
+  --z-notifications: 51;
+  /* App-lock overlay must sit above dialogs and notifications — nothing may render over it. */
+  --z-app-lock: 100;
+
+  /* Keyframes and animations */
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-collapsible-down: collapsible-down 0.2s ease-in-out;
+  --animate-collapsible-up: collapsible-up 0.2s ease-in-out;
+  --animate-archive-check: archive-check 0.4s ease-out;
+}
+
+/* Define keyframes */
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--reka-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--reka-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+@keyframes collapsible-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--reka-collapsible-content-height);
+  }
+}
+
+@keyframes collapsible-up {
+  from {
+    height: var(--reka-collapsible-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+@keyframes archive-check {
+  0% {
+    transform: scale(0) rotate(-45deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes feedback-pulse {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--primary) 45%, transparent);
+  }
+  70% {
+    box-shadow: 0 0 0 10px color-mix(in srgb, var(--primary) 0%, transparent);
+  }
+  100% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--primary) 0%, transparent);
+  }
+}
+
+.feedback-pulse {
+  animation: feedback-pulse 1.5s ease-out 3;
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+/*
+  Buttons in tailwind v4 use `cursor: default` instead of `cursor: pointer` to
+  match the default browser behavior. We revert it back.
+*/
+@layer base {
+  button:not(:disabled),
+  [role='button']:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+/*
+  Prevent document-level scrolling. All scrolling should happen inside ScrollArea components.
+  This fixes the "double scroll" issue where html/body can scroll independently.
+*/
+@layer base {
+  html,
+  body {
+    height: 100%;
+    overflow: hidden;
+  }
+}
+
+@layer base {
+  :root {
+    --font-sans:
+      'Manrope Variable', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+      'Segoe UI Symbol', 'Noto Color Emoji';
+    --header-height: 69px;
+
+    --background: rgb(243, 241, 237);
+    --foreground: rgb(32, 28, 22);
+
+    --base-text: rgb(32, 28, 22);
+
+    --card: rgb(255, 255, 255);
+    --card-foreground: rgb(32, 28, 22);
+    --card-shadow: 0 1px 2px rgb(32 28 22 / 0.05), 0 6px 20px rgb(32 28 22 / 0.06);
+
+    --dialog: rgb(255, 255, 255);
+
+    /* --card-tooltip is the opaque fallback; -glass applies only where backdrop-filter is supported.
+       White-on-white needs a near-opaque glass plus a strong border and shadow to separate. */
+    --card-tooltip: rgb(255, 255, 255);
+    --card-tooltip-foreground: rgb(32, 28, 22);
+    --card-tooltip-glass: rgb(255 255 255 / 0.9);
+    --card-tooltip-muted: rgb(110, 104, 97);
+    --card-tooltip-border: rgb(30 25 18 / 0.14);
+    --card-tooltip-shadow: 0 16px 40px rgb(28 22 12 / 0.16), 0 4px 12px rgb(28 22 12 / 0.1);
+
+    --popover: rgb(255, 255, 255);
+    --popover-foreground: rgb(32, 28, 22);
+
+    --input-background: rgb(242, 241, 238);
+
+    --primary: rgb(115, 85, 190);
+    --primary-foreground: rgb(255, 255, 255);
+    --primary-text: rgb(106, 75, 181);
+
+    --secondary: rgb(239, 237, 233);
+    --secondary-foreground: rgb(32, 28, 22);
+    --secondary-hover: rgb(230, 227, 221);
+    --secondary-border: rgb(220, 215, 206);
+
+    --muted: rgb(242, 240, 236);
+    --muted-foreground: rgb(118, 107, 91);
+
+    --accent: rgb(234, 231, 225);
+    --accent-foreground: rgb(32, 28, 22);
+
+    --destructive: rgb(217, 90, 58);
+    --destructive-foreground: rgb(249, 249, 249);
+    --destructive-text: rgb(172, 60, 38);
+
+    --border: rgb(234, 229, 220);
+    --input: rgb(30 25 18 / 0.16);
+    --ring: rgba(115, 85, 190, 0.6);
+    --radius: 0.75rem;
+
+    --success: rgb(42, 141, 82);
+    --success-foreground: rgb(38, 32, 24);
+    --success-text: rgb(38, 116, 71);
+
+    --warning-text: rgb(154, 91, 18);
+
+    /* Darkens whatever transaction-type color bar sits under the planned stripe overlay. */
+    --planned-stripe: rgba(0, 0, 0, 0.35);
+
+    /* Custom colors */
+    --error-message: rgb(201, 75, 54);
+
+    /* Amount colors — more muted, sophisticated tones for light theme */
+    --app-income-color: rgb(38, 116, 71);
+    --app-expense-color: rgb(194, 65, 41);
+    --app-transfer-color: rgb(106, 113, 116);
+    --app-savings-color: rgb(37, 99, 235);
+
+    /* Accent for the "When" half of automation rules; "Then" uses --primary. */
+    --automation-when: rgb(2, 132, 199);
+
+    /* Donation/support heart — a true red, distinct from the coral expense/error red */
+    --heart: rgb(220, 38, 38);
+
+    /*
+      Per-loan-type category identity colors: one hue per loan type, shared as the single source
+      behind the solid badge, the composition-bar/legend dots, and the soft tinted list-row chip so
+      a given loan type reads as the same color everywhere. `principal`/`interest` are the two fixed
+      roles of the cost-split bar (not loan types).
+    */
+    --loan-mortgage: rgb(59, 130, 246);
+    --loan-auto: rgb(245, 158, 11);
+    --loan-student: rgb(139, 92, 246);
+    --loan-personal: rgb(16, 185, 129);
+    --loan-heloc: rgb(6, 182, 212);
+    --loan-business: rgb(244, 63, 94);
+    --loan-medical: rgb(236, 72, 153);
+    --loan-other: rgb(100, 116, 139);
+    --loan-principal: rgb(59, 130, 246);
+    --loan-interest: rgb(245, 158, 11);
+
+    /*
+      Per-account-category identity colors: one hue per account category, sitting behind the
+      soft tinted icon chip on account list rows so a category reads as the same color everywhere.
+    */
+    --account-checking: rgb(37, 99, 235);
+    --account-saving: rgb(16, 141, 90);
+    --account-credit: rgb(202, 138, 4);
+    --account-cash: rgb(13, 148, 136);
+    --account-investment: rgb(124, 92, 200);
+    --account-crypto: rgb(234, 88, 12);
+    --account-vehicle: rgb(79, 70, 229);
+
+    /*
+      Per-recurring-payment-type identity colors: one hue per type, shared by the type badge and
+      the summary card's composition bar and legend dots.
+    */
+    --subscription-type-subscription: rgb(37, 99, 235);
+    --subscription-type-bill: rgb(234, 88, 12);
+    --subscription-type-installment: rgb(147, 51, 234);
+  }
+
+  :root.dark {
+    --shadow-header: 0 0 10px 2px rgba(0, 0, 0, 0.1);
+
+    --background: rgb(11, 9, 8);
+    --foreground: rgb(245, 243, 240);
+
+    --base-text: rgb(250, 249, 247);
+
+    --card: rgb(27, 25, 23);
+    --card-foreground: rgb(245, 243, 240);
+    --card-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+
+    /* A subtle step above --background; input fields inside dialogs read through their border, not surface contrast. */
+    --dialog: rgb(20, 18, 17);
+
+    /* Darker than --card so tooltips separate from chart cards by depth, not lightness. */
+    --card-tooltip: rgb(18, 17, 16);
+    --card-tooltip-foreground: rgb(250, 249, 247);
+    --card-tooltip-glass: rgb(12 11 10 / 0.72);
+    --card-tooltip-muted: rgb(156, 152, 147);
+    --card-tooltip-border: rgb(255 255 255 / 0.1);
+    /* = Tailwind's shadow-xl */
+    --card-tooltip-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+
+    --popover: rgb(22, 20, 19);
+    --popover-foreground: rgb(245, 243, 240);
+
+    /* Matches --background; field edges come from the --input border rather than a surface step. */
+    --input-background: rgb(11, 9, 8);
+
+    --primary: rgb(130, 100, 205);
+    --primary-foreground: rgb(255, 255, 255);
+    /* --primary stays dark enough for white labels on filled buttons; --primary-text is the brighter tint text/icons need on dark backgrounds. */
+    --primary-text: rgb(167, 139, 250);
+
+    --secondary: rgb(42, 40, 38);
+    --secondary-foreground: rgb(249, 248, 246);
+    --secondary-hover: rgb(50, 46, 42);
+    --secondary-border: transparent;
+
+    --muted: rgb(40, 38, 36);
+    --muted-foreground: rgb(163, 160, 155);
+
+    --accent: rgb(41, 37, 36);
+    --accent-foreground: rgb(249, 248, 246);
+
+    --destructive: rgb(147, 29, 29);
+    --destructive-foreground: rgb(254, 242, 242);
+    --destructive-text: oklch(0.704 0.191 22.216);
+
+    --border: rgb(42, 40, 37);
+    --input: rgb(255 255 255 / 0.12);
+    --ring: rgb(115, 85, 190);
+
+    --success: rgb(16, 59, 49);
+    --success-foreground: rgb(250, 250, 250);
+    --success-text: rgb(46, 204, 113);
+
+    --warning-text: rgb(243, 156, 18);
+
+    /* Darkens whatever transaction-type color bar sits under the planned stripe overlay. */
+    --planned-stripe: rgba(0, 0, 0, 0.35);
+
+    /* Custom colors */
+    --error-message: rgb(228, 105, 89);
+
+    /* Amount colors — brighter tones for dark theme contrast */
+    --app-income-color: #2ecc71;
+    --app-expense-color: #e74c3c;
+    --app-transfer-color: #95a5a6;
+    --app-savings-color: #3b82f6;
+
+    /* Accent for the "When" half of automation rules; "Then" uses --primary. */
+    --automation-when: rgb(56, 189, 248);
+
+    /* Donation/support heart — a true red, distinct from the coral expense/error red */
+    --heart: #ef4444;
+
+    /*
+      Loan category colors, brighter variants for contrast on the near-black dark background. Darker
+      hues step up to their lighter shade; already-light hues (amber, cyan, pink) stay put so white
+      badge text keeps adequate contrast.
+    */
+    --loan-mortgage: rgb(96, 165, 250);
+    --loan-auto: rgb(245, 158, 11);
+    --loan-student: rgb(167, 139, 250);
+    --loan-personal: rgb(52, 211, 153);
+    --loan-heloc: rgb(6, 182, 212);
+    --loan-business: rgb(251, 113, 133);
+    --loan-medical: rgb(236, 72, 153);
+    --loan-other: rgb(148, 163, 184);
+    --loan-principal: rgb(96, 165, 250);
+    --loan-interest: rgb(245, 158, 11);
+
+    /*
+      Per-account-category identity colors, brighter variants for contrast on the near-black dark
+      background, behind the soft tinted icon chip on account list rows.
+    */
+    --account-checking: rgb(96, 165, 250);
+    --account-saving: rgb(52, 211, 153);
+    --account-credit: rgb(245, 158, 11);
+    --account-cash: rgb(45, 212, 191);
+    --account-investment: rgb(167, 139, 250);
+    --account-crypto: rgb(251, 146, 60);
+    --account-vehicle: rgb(129, 140, 248);
+
+    /*
+      Per-recurring-payment-type identity colors, brighter variants for contrast on the near-black
+      dark background.
+    */
+    --subscription-type-subscription: rgb(96, 165, 250);
+    --subscription-type-bill: rgb(251, 146, 60);
+    --subscription-type-installment: rgb(192, 132, 252);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+  /* Grayscale smoothing thins dark-on-light text on macOS; only light-on-dark benefits. */
+  .dark body {
+    @apply antialiased;
+  }
+}
+
+/* Hand-rolled top-level card containers; inner tiles use smaller radii and stay flat. */
+@layer components {
+  :root:not(.dark) .bg-card.border:is(.rounded-xl, .rounded-2xl) {
+    box-shadow: var(--card-shadow);
+  }
+}
+
+/* Utility for inline monetary amounts — consistent weight and alignment */
+@utility text-amount {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Diagonal pinstripe fill marking a card as not-yet-available */
+@utility bg-hatched {
+  background: repeating-linear-gradient(
+    135deg,
+    transparent 0 10px,
+    color-mix(in srgb, var(--muted-foreground) 6%, transparent) 10px 11px
+  );
+}
+
+/* Denser pinstripe for small cells (table rows) whose value the user can't change */
+@utility bg-hatched-dense {
+  background-image: repeating-linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--muted-foreground) 20%, transparent) 0 1px,
+    transparent 1px 6px
+  );
+}
+
+/* Hide scrollbar while keeping scroll functionality */
+@utility no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@keyframes overscroll-contain {
+  from,
+  to {
+    overscroll-behavior: contain;
+  }
+}
+
+/* A scroll timeline is inactive while the element has nothing to scroll, so a
+   list that fits passes the gesture to the page instead of rubber-banding. */
+@utility overscroll-contain-if-scrollable {
+  animation: overscroll-contain linear both;
+  animation-timeline: scroll(self);
+}
+
+.datetime-raw-input::-webkit-inner-spin-button,
+.datetime-raw-input::-webkit-calendar-picker-indicator,
+.date-raw-input::-webkit-inner-spin-button,
+.date-raw-input::-webkit-calendar-picker-indicator,
+.datetime-local-raw-input::-webkit-inner-spin-button,
+.datetime-local-raw-input::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+}
+
+/*
+  Paint focus rings inset (inside the border box) instead of outside it.
+  Tailwind's ring/ring-offset draws the glow beyond the element, so a focused
+  control near a ScrollArea edge gets its ring clipped ("sliced" look). Inset
+  keeps the whole ring within the element's box, so it's never clipped.
+  Checkbox/radio/switch stay outward — an inset ring crowds their ~16px glyph.
+*/
+:focus-visible:not([role='checkbox']):not([role='radio']):not([role='switch']),
+:focus:not([role='checkbox']):not([role='radio']):not([role='switch']) {
+  --tw-ring-inset: inset;
+}
+
+/*
+  Form fields highlight their border on focus rather than showing a separate
+  inner outline. The ring sits flush against the border (no offset gap) and the
+  border takes the ring color, so the two merge into one solid highlighted edge.
+  `bg-input-background` is the shared marker for every field surface — native
+  inputs plus the custom select / combobox / multi-select triggers (reka
+  buttons) — so this covers them all without per-component edits.
+*/
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+.bg-input-background:focus-visible,
+.bg-input-background:focus {
+  border-color: var(--ring);
+  --tw-ring-inset: inset;
+  --tw-ring-offset-width: 0px;
+}
+
+/*
+  reka's ScrollArea viewport is a keyboard-focusable scroll region (it hardcodes
+  tabindex=0), so tabbing lands on it and the browser paints a full-box outline
+  around whatever it wraps. It carries no interactive content of its own, so the
+  outline is just noise — drop it while keeping the region keyboard-scrollable.
+*/
+[data-reka-scroll-area-viewport]:focus-visible,
+[data-reka-scroll-area-viewport]:focus {
+  outline: none;
+}
+
+/*
+  PostHog surveys render in a shadow root and style it from custom properties set inline
+  on the host div, using one fixed color set from the PostHog dashboard. Custom properties
+  inherit into the shadow root, so `!important` here lets the popup follow the app theme.
+*/
+[class^='PostHogSurvey-'] {
+  --ph-survey-background-color: var(--card) !important;
+  --ph-survey-text-primary-color: var(--card-foreground) !important;
+  --ph-survey-text-subtle-color: var(--muted-foreground) !important;
+  --ph-survey-border-color: var(--border) !important;
+  --ph-survey-submit-button-color: var(--primary) !important;
+  --ph-survey-submit-button-text-color: var(--primary-foreground) !important;
+  --ph-survey-input-background: var(--input-background) !important;
+  --ph-survey-input-text-color: var(--foreground) !important;
+  --ph-survey-outline-color: var(--ring) !important;
+  --ph-survey-rating-bg-color: var(--accent) !important;
+  --ph-survey-rating-text-color: var(--accent-foreground) !important;
+  --ph-survey-rating-active-bg-color: var(--primary) !important;
+  --ph-survey-rating-active-text-color: var(--primary-foreground) !important;
+}

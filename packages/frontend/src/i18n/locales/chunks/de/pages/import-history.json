@@ -1,0 +1,29 @@
+{
+  "pages": {
+    "importExport": {
+      "importHistory": {
+        "pageTitle": "Importverlauf",
+        "pageDescription": "Sieh deine vergangenen Importe ein und prüfe genau, welche Konten und Transaktionen jeweils erstellt wurden.",
+        "loadError": "Dein Importverlauf konnte nicht geladen werden.",
+        "emptyTitle": "Noch keine Importe",
+        "emptyDescription": "Sobald du Transaktionen importierst, werden sie hier angezeigt.",
+        "emptyAction": "Daten importieren",
+        "transactionCount": "{count} Transaktion | {count} Transaktionen",
+        "accountCount": "{count} Konto | {count} Konten",
+        "deleteButton": "Import löschen",
+        "deleteConfirmTitle": "Diesen Import löschen?",
+        "deleteConfirmDescription": "Dies wird {count} Transaktion aus diesem Import dauerhaft löschen. Diese Aktion kann nicht rückgängig gemacht werden. | Dies wird {count} Transaktionen aus diesem Import dauerhaft löschen. Diese Aktion kann nicht rückgängig gemacht werden.",
+        "deleteConfirmDescriptionNoTransactions": "Die Transaktionen aus diesem Import wurden bereits gelöscht. Dies entfernt den verbleibenden Rest des Imports, einschließlich aller Saldenanpassungen, die an deinen Konten vorgenommen wurden.",
+        "deleteConfirmCreatedAccountsNote": "Durch diesen Import erstellte Konten werden ebenfalls entfernt, wenn sie keine anderen Transaktionen enthalten.",
+        "deleteSuccessMessage": "{count} Transaktion gelöscht | {count} Transaktionen gelöscht",
+        "deleteSuccessNoTransactions": "Import gelöscht",
+        "deleteUnexpectedError": "Beim Löschen des Imports ist etwas schiefgelaufen. Bitte versuche es erneut.",
+        "deleteLinkedTransfersWarningTitle": "Dieser Import ist mit einer anderen Transaktion verknüpft",
+        "deleteLinkedTransfersCheckbox": "Auch die verknüpfte Umbuchungstransaktion löschen",
+        "deleteLinkedTransfersDescription": "Standardmäßig wird jede Transaktion, die mit diesem Import als Umbuchung verknüpft ist, nur getrennt, nicht gelöscht. Wenn du dieses Kontrollkästchen aktivierst, wird sie ebenfalls dauerhaft gelöscht – dies kann nicht rückgängig gemacht werden.",
+        "deleteLinkedTransfersConfirmTitle": "Verknüpfte Transaktion ebenfalls löschen?",
+        "deleteLinkedTransfersConfirmDescription": "Du bist dabei, eine Transaktion außerhalb dieses Import-Stapels dauerhaft zu löschen, statt nur ihre Verknüpfung aufzuheben. Diese Aktion kann nicht rückgängig gemacht werden."
+      }
+    }
+  }
+}

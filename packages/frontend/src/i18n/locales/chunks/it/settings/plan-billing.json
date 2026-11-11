@@ -1,0 +1,140 @@
+{
+  "settings": {
+    "planBilling": {
+      "title": "Piano e fatturazione",
+      "description": "Scegliere un piano e gestire la fatturazione.",
+      "checkoutSuccess": "Il piano è ora attivo.",
+      "checkoutFailed": "Impossibile aprire il checkout. Riprovare.",
+      "currentPlanEyebrow": "Piano attuale",
+      "updatePaymentMethod": "Aggiorna metodo di pagamento",
+      "manageBilling": "Gestisci fatturazione",
+      "manageInAppStore": "Gestisci nell'App Store",
+      "currentPlan": "Piano attuale",
+      "recommended": "Consigliate",
+      "previousPlan": "Piano precedente",
+      "yourPlan": "Il tuo piano",
+      "planned": "Transazioni pianificate",
+      "voteOnRoadmap": "Vota sulla roadmap",
+      "roadmapNote": "Nessun costo. Votare la funzione e verrà inviata una notifica al rilascio.",
+      "saveUpTo": "Risparmia fino al {percent}%",
+      "portalFailed": "Impossibile aprire il portale di fatturazione. Riprovare.",
+      "pastDueNote": "L'ultimo pagamento non è riuscito. Stripe ritenterà automaticamente l'addebito sulla carta nei prossimi giorni. Aggiornare il metodo di pagamento tramite Gestisci fatturazione per mantenere l'accesso dopo il {date}.",
+      "priceNote": "I prezzi sono in USD, IVA esclusa. La valuta locale e le eventuali imposte applicabili vengono mostrate al checkout.",
+      "cycleHint": {
+        "year": "L'annuale equivale a 6 mesi del mensile. Fatturato una volta all'anno.",
+        "month": "Annullabile ogni mese. L'annuale costa la metà."
+      },
+      "price": {
+        "yearFootnote": "{amount} / mese · {struck} · {save}",
+        "monthFootnote": "oppure {amount} / anno · {save}",
+        "save": "risparmia {amount}"
+      },
+      "current": {
+        "lifetime": "{plan} · a vita",
+        "lifetimeMeta": "Tutto ciò che è incluso in Plus. Nessun rinnovo, nessuna carta registrata.",
+        "earlyAdopterNote": "Grazie per essere arrivati presto. Tutto ciò che Plus include oggi è tuo a vita. Le funzioni aggiunte da qui in poi, e tutto ciò che ha un costo per utente, appartengono ai piani a pagamento. Le vuoi? Sconto del 50% su qualsiasi piano, per sempre, applicato automaticamente al checkout.",
+        "seats": "1 posto nel Nucleo Familiare | {count} posti nel Nucleo Familiare",
+        "subscription": "{tier} · {cycle}",
+        "trial": "{count} giorno rimanente nella prova | {count} giorni rimanenti nella prova",
+        "trialProgress": "Giorno {used} di {total}",
+        "trialEnded": "Prova terminata",
+        "trialEndedMeta": "La prova di {days} giorni è terminata. Scegliere un piano per continuare ad aggiungere dati.",
+        "trialEndsOn": "Termina il {date}",
+        "trialExcluded": "Il ripristino da backup non è disponibile durante la prova",
+        "subscriptionEnded": "Abbonamento terminato",
+        "endedMeta": "I dati sono al sicuro. Scegliere un piano per continuare ad aggiungere dati.",
+        "renewsOn": "Si rinnova il {date}",
+        "activating": "Attiva il piano",
+        "activatingNote": "Pagamento ricevuto. Di solito Stripe conferma entro pochi secondi.",
+        "activationTimedOut": "Il pagamento è andato a buon fine ma il piano è ancora in fase di attivazione. Aggiornare tra un minuto; se non cambia nulla, contattare l'assistenza.",
+        "activationUnreachable": "Impossibile contattare il server per confermare il pagamento. Ricaricare la pagina; se il piano manca ancora, contattare l'assistenza.",
+        "accessContinuesUntil": "L'accesso continua fino al {date}",
+        "billedByAppStore": "Fatturato tramite l'App Store",
+        "accessUntil": "Accesso fino al {date}, poi in sola lettura",
+        "resumesOn": "Riprende automaticamente il {date}",
+        "pausedNote": "Durante la pausa il profilo è in sola lettura.",
+        "noFurtherCharges": "Nessun ulteriore addebito",
+        "cancelNote": "Ci hai ripensato? Rinnova dal portale di fatturazione e la data di rinnovo resta invariata.",
+        "monthlyHint": "Passa all'annuale e risparmia {amount} all'anno.",
+        "noCard": "Nessuna carta registrata",
+        "readOnlyHelp": "Cosa significa sola lettura?"
+      },
+      "status": {
+        "pastDue": "Pagamento non riuscito",
+        "active": "Attivo",
+        "paused": "In pausa",
+        "readOnly": "Sola lettura",
+        "trial": "Funzioni Plus",
+        "processing": "In elaborazione",
+        "earlyAdopter": "Early adopter",
+        "endsOn": "Termina il {date}"
+      },
+      "cta": {
+        "activating": "Attivazione in corso...",
+        "switchTo": "Passa a {tier}",
+        "switchToCycle": "Passa alla fatturazione {cycle}",
+        "subscribeAgain": "Abbonati di nuovo",
+        "getTier": "Ottieni {tier}"
+      },
+      "ctaNote": {
+        "keepIt": "Aggiornare il metodo di pagamento per mantenerlo.",
+        "viaPortal": "Modificabile nel portale di fatturazione.",
+        "viaAppStore": "Le modifiche al piano avvengono nell'App Store",
+        "billedToday": "Addebito oggi. Annullabile in qualsiasi momento.",
+        "earlyAdopter": "Sconto del 50% a vita, applicato al checkout"
+      },
+      "plans": {
+        "essential": "Essential",
+        "plus": "Plus",
+        "premium": "Premium",
+        "early_adopter": "Early Adopter"
+      },
+      "cycle": {
+        "month": "Mensile",
+        "year": "Annualmente"
+      },
+      "perCycle": {
+        "month": "/mese",
+        "year": "/anno"
+      },
+      "tiers": {
+        "essential": {
+          "name": "Essential",
+          "tagline": "Inserimento manuale e tutti i calcoli locali.",
+          "features": {
+            "imports": "Importazioni CSV, OFX, YNAB, Wallet, MS Money",
+            "investments": "Investimenti, prestiti, veicoli",
+            "ownAiKey": "Funzioni IA con la propria chiave API",
+            "backup": "Esportazione e ripristino dei backup",
+            "mcp": "Accesso al server MCP",
+            "seats": "2 posti nel Nucleo Familiare"
+          }
+        },
+        "plus": {
+          "name": "Plus",
+          "tagline": "Tutto ciò che riguarda le connessioni bancarie configurate in autonomia.",
+          "features": {
+            "everythingInEssential": "Tutto ciò che è incluso in Essential",
+            "bankProviders": "Connessioni bancarie (Monobank, Enable Banking, SimpleFIN, LunchFlow, Walutomat)",
+            "ourAiKey": "Funzioni IA con la nostra chiave, con limite di utilizzo equo",
+            "firePlanner": "Pianificatore FIRE",
+            "seats": "5 posti nel Nucleo Familiare"
+          }
+        },
+        "premium": {
+          "name": "Premium",
+          "tagline": "Sincronizzazione bancaria gestita da noi. Pianificata: aiutaci a darle priorità.",
+          "priceTba": "Prezzo da annunciare",
+          "priceNote": "Il prezzo verrà definito una volta noti i costi della sincronizzazione bancaria.",
+          "features": {
+            "everythingInPlus": "Tutto ciò che è incluso in Plus",
+            "builtInBankSync": "Sincronizzazione bancaria integrata nell'app, senza profili di terze parti da configurare",
+            "realtimePrices": "Prezzi dei titoli in tempo reale",
+            "higherAiCap": "Funzioni IA con la nostra chiave, limite più alto",
+            "seats": "10 posti nel Nucleo Familiare"
+          }
+        }
+      }
+    }
+  }
+}

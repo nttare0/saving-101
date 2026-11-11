@@ -1,0 +1,367 @@
+{
+  "transactions": {
+    "filters": {
+      "filtersLabel": "Фільтри",
+      "selectFilters": "Вибрати фільтри",
+      "reset": "Скинути",
+      "apply": "Застосувати",
+      "dateRange": {
+        "placeholder": "Дата або діапазон",
+        "presets": {
+          "thisMonth": "Цей місяць",
+          "last3Months": "Останні 3 місяці",
+          "last6Months": "Останні 6 місяців",
+          "last12Months": "Останні 12 місяців"
+        }
+      },
+      "transactionType": {
+        "label": "Тип транзакції:",
+        "income": "Доходи",
+        "expense": "Витрати",
+        "allTypes": "Всі типи"
+      },
+      "amountRange": {
+        "from": "Сума від (включно)",
+        "to": "Сума до (включно)",
+        "placeholderFrom": ">= ніж",
+        "placeholderTo": "<= ніж",
+        "compactFrom": "Мін. сума",
+        "compactTo": "Макс. сума"
+      },
+      "refundsFilter": {
+        "label": "Повернення"
+      },
+      "transferFilter": {
+        "label": "Перекази"
+      },
+      "plannedFilter": {
+        "label": "Заплановані"
+      },
+      "attachments": {
+        "label": "Вкладення"
+      },
+      "filterOperation": {
+        "all": "Всі",
+        "exclude": "Виключити",
+        "only": "Тільки"
+      },
+      "noteIncludes": {
+        "label": "Примітка містить (через кому):",
+        "placeholder": "Amazon,nike",
+        "compactPlaceholder": "Пошук у примітках"
+      },
+      "tags": {
+        "allTags": "Усі теги",
+        "tagSingular": "тег",
+        "tagPlural": "тегів",
+        "selected": "обрано",
+        "searchPlaceholder": "Шукати теги...",
+        "blankOption": "Без тегів"
+      },
+      "payees": {
+        "label": "Отримувачі",
+        "selectedOne": "1 отримувач вибраний",
+        "selectedMany": "{n} отримувачів вибрано"
+      },
+      "removeFilter": "Видалити фільтр",
+      "menu": {
+        "type": "Тип",
+        "tags": "Теги",
+        "budgets": "Трекери",
+        "amount": "Діапазон суми",
+        "note": "Примітки"
+      },
+      "transferNature": {
+        "label": "Види переказів",
+        "disabledTooltip": "Перекази виключені фільтром вище, тому види переказів не мають ефекту.",
+        "commonTransfer": "Між рахунками",
+        "outOfWallet": "Поза гаманцем",
+        "toPortfolio": "На портфель",
+        "toVenture": "На венчур",
+        "selectedCount": "Вибрано: {n}"
+      }
+    },
+    "list": {
+      "noMoreData": "Більше транзакцій немає",
+      "loadingMore": "Завантаження...",
+      "detailsTitle": "Деталі транзакції",
+      "detailsDescription": "Перегляд та редагування транзакції"
+    },
+    "bulkEdit": {
+      "selectAll": "Вибрати всі",
+      "selectAllShort": "Усі",
+      "cancelSelection": "Скасувати вибір",
+      "editButton": "Редагувати",
+      "selectedCount": "Вибрано: {count}",
+      "matchingCount": "Всього: {count}",
+      "dialogTitle": "Редагувати {count} транзакцій",
+      "dialogDescription": "Зміни буде застосовано до всіх вибраних транзакцій. Оновлені будуть лише заповнені поля.",
+      "categoryLabel": "Категорія",
+      "categoryPlaceholder": "Оберіть категорію...",
+      "payeeLabel": "Отримувач",
+      "payeePlaceholder": "Виберіть отримувача...",
+      "tagsLabel": "Теги",
+      "tagsPlaceholder": "Оберіть теги...",
+      "noteLabel": "Примітка",
+      "notePlaceholder": "Введіть примітку...",
+      "applyButton": "Застосувати зміни",
+      "applyingButton": "Застосування...",
+      "confirmTitle": "Підтвердження змін",
+      "confirmDescription": "Ви збираєтесь оновити {count} транзакцій:",
+      "confirmCategoryLabel": "Категорія",
+      "confirmPayeeLabel": "Отримувач",
+      "confirmTagsLabel": "Теги",
+      "confirmNoteLabel": "Примітка",
+      "cancelButton": "Скасувати",
+      "confirmApplyButton": "Застосувати",
+      "successMessage": "Успішно оновлено {count} транзакцій",
+      "unexpectedError": "Виникла неочікувана помилка",
+      "tagModeLabel": "Дія з тегами",
+      "tagModeAdd": "Додати до існуючих тегів",
+      "tagModeReplace": "Замінити всі теги",
+      "tagModeRemove": "Видалити ці теги",
+      "tagModeAddShort": "Додати",
+      "tagModeReplaceShort": "Замінити",
+      "tagModeRemoveShort": "Видалити",
+      "tagModeAddHint": "Зберігає поточні теги і додає ці.",
+      "tagModeReplaceHint": "Видаляє всі поточні теги, після чого додає ці.",
+      "tagModeRemoveHint": "Видаляє лише ці теги. Інші теги залишаються.",
+      "totals": {
+        "income": "Дохід",
+        "expense": "Витрата",
+        "net": "Сальдо",
+        "transfers": "Перекази"
+      }
+    },
+    "transactionGroups": {
+      "bulkActions": {
+        "createNewGroup": "Створити нову групу",
+        "addToExistingGroup": "Додати до існуючої групи",
+        "groupButton": "Група"
+      },
+      "addToGroupDialog": {
+        "title": "Додати до існуючої групи",
+        "searchPlaceholder": "Шукати групи...",
+        "noGroupsMessage": "Груп ще немає. Спочатку створіть одну.",
+        "noSearchResultsMessage": "Жодна група не відповідає вашому пошуку.",
+        "addingText": "Додавання...",
+        "buttonLabel": "Додати до групи",
+        "cancelButton": "Скасувати",
+        "transactionCountLabel": "транзакцій"
+      },
+      "createGroupDialog": {
+        "title": "Створити групу транзакцій",
+        "descriptionPrefix": "Група",
+        "groupNameLabel": "Назва",
+        "groupNamePlaceholder": "напр. травневий переказ зарплати",
+        "noteLabel": "Примітка (необов'язково)",
+        "notePlaceholder": "Необов'язковий опис...",
+        "creatingText": "Створення...",
+        "buttonLabel": "Створити групу",
+        "cancelButton": "Скасувати"
+      },
+      "groupsPage": {
+        "title": "Групи транзакцій",
+        "searchPlaceholder": "Шукати групи...",
+        "noGroupsMessage": "Групи транзакцій ще не створені.",
+        "emptyStateHint": "Виберіть транзакції на сторінці «Транзакції» і натисніть «Створити групу» для початку.",
+        "transactionCountLabel": "транзакцій",
+        "deleteError": "Не вдалося видалити групу. Спробуйте ще раз.",
+        "loadError": "Не вдалося завантажити групи транзакцій",
+        "description": "Об'єднуйте пов'язані транзакції, як-от поїздку чи ланцюжок переказів, і переглядайте їх разом.",
+        "noMatchTitle": "Жодна група не відповідає вашому пошуку",
+        "moreActions": "Додаткові дії для «{name}»",
+        "columns": {
+          "name": "Назва",
+          "transactions": "Транзакції",
+          "date": "Дата",
+          "net": "Сальдо"
+        },
+        "sort": {
+          "label": "Сортування груп",
+          "dateDesc": "Спочатку нові",
+          "dateAsc": "Спочатку старі",
+          "nameAsc": "Назва А–Я",
+          "nameDesc": "Назва Я–А",
+          "amountDesc": "Сальдо: від більшого до меншого",
+          "amountAsc": "Сальдо: від меншого до більшого"
+        }
+      },
+      "errors": {
+        "nameRequired": "Назва групи обов'язкова",
+        "minTransactions": "Виберіть щонайменше {min} транзакцій",
+        "alreadyInGroup": "Деякі вибрані транзакції вже належать до групи",
+        "createFailed": "Не вдалося створити групу",
+        "addFailed": "Не вдалося додати транзакції до групи"
+      }
+    },
+    "planned": {
+      "label": "Заплановано",
+      "confirmedLabel": "Підтверджено",
+      "plannedTooltip": "Запланована транзакція",
+      "expiredTooltip": "Очікувалася {days} дн. тому, відповідної банківської транзакції немає",
+      "mergedTooltip": "Підтверджено із запланованого запису від {date}"
+    },
+    "pending": {
+      "label": "В обробці",
+      "tooltip": "Банк ще не провів цю транзакцію. Вона не впливає на баланс рахунку."
+    },
+    "table": {
+      "columns": {
+        "date": "Дата",
+        "account": "Рахунок",
+        "category": "Категорія",
+        "payee": "Отримувач",
+        "amount": "Сума",
+        "refAmount": "Базова сума",
+        "originalAmount": "Оригінальна сума",
+        "note": "Примітка",
+        "tags": "Теги",
+        "categorizationSource": "Категоризовано",
+        "group": "Група",
+        "refund": "Повернення",
+        "split": "Розподіл"
+      },
+      "outOfWallet": "Поза гаманцем",
+      "hint": "Натисніть на клітинку, щоб редагувати її, або на ↗, щоб відкрити повну транзакцію. Виберіть рядки для масового редагування.",
+      "plannedRows": "{count} запланованих транзакцій",
+      "emptyTitle": "Немає транзакцій, які відповідають цим фільтрам",
+      "emptyDescription": "Спробуйте налаштувати або скинути фільтри.",
+      "columnConfig": {
+        "title": "Параметри таблиці",
+        "columns": "Стовпці",
+        "visibleCount": "{count} видимо",
+        "resetDefaults": "Скинути за замовчуванням",
+        "alwaysShowLockedCells": {
+          "label": "Завжди показувати заблоковані клітинки",
+          "description": "Затіняти клітинки, які тут не можна редагувати, у кожному рядку, а не лише при наведенні."
+        }
+      },
+      "categorizationSourceValues": {
+        "manual": "Вручну",
+        "ai": "AI",
+        "user_rule": "Користувацьке правило",
+        "subscription_rule": "Правило регулярного платежу",
+        "payee_rule": "Правило отримувача"
+      },
+      "viewToggle": {
+        "list": "Вигляд списком",
+        "table": "Вигляд таблицею"
+      },
+      "fullscreen": {
+        "enter": "Режим фокусу",
+        "exit": "Вийти з режиму фокусу"
+      }
+    },
+    "bulkDelete": {
+      "button": "Видалити",
+      "externalTooltip": "Вибір містить синхронізовані банком транзакції, які неможливо видалити.",
+      "confirmButton": "Видалити",
+      "confirmTitle": "Видалити {count} транзакцій?",
+      "confirmDescription": "Вони зберігатимуться у смітнику 30 днів, і до цього часу їх можна відновити. Для переказів переміщуються обидві сторони.",
+      "successMessage": "{count} транзакцію переміщено у смітник | {count} транзакції переміщено у смітник | {count} транзакцій переміщено у смітник",
+      "skippedMessage": "{count} транзакцію пропущено, бо вона пов'язана з платежем, портфелем або Венчуром. | {count} транзакції пропущено, бо вони пов'язані з платежем, портфелем або Венчуром. | {count} транзакцій пропущено, бо вони пов'язані з платежем, портфелем або Венчуром.",
+      "noneDeletedMessage": "Нічого не переміщено у смітник: {count} транзакція пов'язана з платежем, портфелем або Венчуром. | Нічого не переміщено у смітник: {count} транзакції пов'язані з платежем, портфелем або Венчуром. | Нічого не переміщено у смітник: {count} транзакцій пов'язані з платежем, портфелем або Венчуром.",
+      "unexpectedError": "Не вдалося видалити транзакції. Спробуйте ще раз."
+    },
+    "inlineEdit": {
+      "saveFailed": "Не вдалося зберегти «{field}». Спробуйте ще раз.",
+      "bankTitle": "Визначає ваш банк",
+      "bankDescription": "Дата, рахунок і сума синхронізуються з вашим банківським підключенням. Усе інше в цій транзакції можна змінювати.",
+      "managedTitle": "Керується в іншому місці",
+      "managedDescription": "Ця транзакція належить до портфеля, інвестиції, транспортного засобу або кредиту. Змінюйте її на власній сторінці, щоб баланси залишались коректними.",
+      "gotIt": "Зрозуміло",
+      "openDetails": "Відкрити деталі",
+      "tooManyTags": "До {max} тегів на транзакцію"
+    },
+    "savedViews": {
+      "trigger": "Вигляди",
+      "empty": "Збережених виглядів ще немає. Налаштуйте фільтри та збережіть їх як вигляд.",
+      "modified": "Фільтри змінено",
+      "update": "Оновити «{name}» поточними фільтрами",
+      "updateShort": "Оновити вигляд",
+      "revert": "Скасувати зміни",
+      "saveNew": "Зберегти як новий вигляд",
+      "actions": "Дії з виглядом",
+      "rename": "Перейменувати",
+      "moveUp": "Перемістити вгору",
+      "moveDown": "Перемістити вниз",
+      "saveTitle": "Зберегти вигляд",
+      "renameTitle": "Перейменувати вигляд",
+      "dialogDescription": "Вигляд зберігає поточні фільтри та сортування, щоб ви могли застосувати їх знову одним кліком.",
+      "nameLabel": "Назва",
+      "namePlaceholder": "напр. Продукти, останні 3 місяці",
+      "savedToast": "Вигляд збережено",
+      "updatedToast": "Вигляд оновлено",
+      "deletedToast": "Вигляд видалено",
+      "saveError": "Не вдалося зберегти ваші вигляди. Спробуйте ще раз.",
+      "deleteTitle": "Видалити вигляд «{name}»?",
+      "deleteDescription": "Ваші транзакції це не зачепить. Цю дію неможливо скасувати.",
+      "filtersCount": "{count} фільтр | {count} фільтри | {count} фільтрів"
+    },
+    "trashPage": {
+      "title": "Смітник",
+      "description": "Спочатку найновіші видалення. Кожну транзакцію буде остаточно видалено через {days} днів. Виберіть транзакцію, щоб побачити, що відновиться разом із нею.",
+      "expiringBanner": "{count} буде остаточно видалено протягом {days}.",
+      "expiringCount": "{count} транзакцію | {count} транзакції | {count} транзакцій",
+      "expiringDays": "{count} день | {count} дні | {count} днів",
+      "loadError": "Не вдалося завантажити смітник",
+      "emptyTitle": "Смітник порожній",
+      "emptyDescription": "Видалені транзакції зберігаються тут {days} днів, після чого їх буде видалено остаточно.",
+      "daysLeft": "Залишився {count} день | Залишилося {count} дні | Залишилося {count} днів",
+      "deletedOn": "видалено {date}",
+      "transferTitle": "Переказ з {from} до {to}",
+      "unknownAccount": "Невідомий рахунок",
+      "restore": "Відновити",
+      "deletePermanently": "Видалити остаточно",
+      "deleteConfirmTitle": "Видалити остаточно?",
+      "deleteConfirmDescription": "Цю транзакцію буде остаточно видалено. Цю дію неможливо скасувати.",
+      "notifications": {
+        "restored": "Транзакцію відновлено",
+        "restoreError": "Не вдалося відновити транзакцію",
+        "deleted": "Транзакцію остаточно видалено",
+        "deleteError": "Не вдалося видалити транзакцію",
+        "restoredWithDroppedRefundLinks": "Відновлено. {count} прив'язку повернення не вдалося відновити, бо вона більше не підходить. | Відновлено. {count} прив'язки повернення не вдалося відновити, бо вони більше не підходять. | Відновлено. {count} прив'язок повернення не вдалося відновити, бо вони більше не підходять."
+      },
+      "comesBack": {
+        "title": "Відновиться разом із нею",
+        "basics": "Категорія, примітка та отримувач",
+        "splits": "{n} частина розподілу | {n} частини розподілу | {n} частин розподілу",
+        "tags": "{n} тег | {n} теги | {n} тегів",
+        "attachments": "{n} вкладення | {n} вкладення | {n} вкладень",
+        "otherLeg": "Друга сторона: {accountName} · {amountText}",
+        "balance": "Баланс рахунку буде перераховано",
+        "balances": "Баланси обох рахунків буде перераховано",
+        "counterpartInTrash": "Відновиться, коли буде відновлено і пов'язану транзакцію.",
+        "links": {
+          "refund": "Прив'язка повернення до «{name}»",
+          "tracker": "Трекер «{name}»",
+          "group": "Група «{name}»",
+          "subscription": "Регулярний платіж «{name}»",
+          "subscriptionPeriod": "Регулярний платіж до {name}",
+          "unnamed": "Без назви"
+        }
+      }
+    }
+  },
+  "records": {
+    "upcomingSection": {
+      "title": "Найближчі",
+      "overdueBadge": "Прострочено",
+      "scheduledBadge": "Заплановано",
+      "payAction": "Позначити як сплачено",
+      "hideToggle": "Сховати найближчі платежі",
+      "expectedBadge": "Очікується",
+      "unconfirmedBadge": "Не підтверджено",
+      "morePlans": "+{count} запланованих",
+      "morePlansAtLeast": "+{count}+ запланованих",
+      "deletePlanTitle": "Видалити заплановану транзакцію?",
+      "deletePlanDescription": "Вона зберігатиметься у смітнику 30 днів, і до цього часу її можна відновити.",
+      "plansLoadFailed": "Не вдалося завантажити заплановані транзакції",
+      "confirmAction": "Підтвердити",
+      "confirmTooltip": "Гроші вже перейшли — запишіть це та оновіть баланс",
+      "confirmPlanSuccess": "План записано — баланс оновлено",
+      "confirmPlanError": "Не вдалося записати план"
+    }
+  }
+}

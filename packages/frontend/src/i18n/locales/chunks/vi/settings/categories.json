@@ -1,0 +1,53 @@
+{
+  "settings": {
+    "categories": {
+      "title": "Danh mục",
+      "description": "Phân loại giao dịch thành danh mục và danh mục con. Kéo danh mục để chuyển vào danh mục cha khác hoặc lên cấp cao nhất.",
+      "addButton": "Thêm danh mục",
+      "organizeButton": "Sắp xếp",
+      "empty": "Chưa có danh mục nào. Hãy tạo danh mục đầu tiên để bắt đầu.",
+      "categoriesCount": "{n} danh mục | {n} danh mục",
+      "organizeHint": "Kéo vào danh mục cha mới hoặc thả vào đây để chuyển lên cấp cao nhất.",
+      "dropToTopLevel": "Thả vào đây để chuyển “{name}” thành danh mục cấp cao nhất",
+      "movesQueued": "{n} thao tác di chuyển đang chờ | {n} thao tác di chuyển đang chờ",
+      "unqueueMove": "Hủy thao tác di chuyển này",
+      "topLevel": "Cấp cao nhất",
+      "saveChanges": "Lưu thay đổi",
+      "parentField": {
+        "label": "Danh mục cha",
+        "placeholder": "Chọn danh mục cha",
+        "hiddenHint": "Các danh mục không thể dùng làm danh mục cha sẽ bị ẩn khỏi danh sách."
+      },
+      "moveDialog": {
+        "title": "Di chuyển “{name}”",
+        "description": "Chọn danh mục cha mới.",
+        "moveButton": "Di chuyển"
+      },
+      "delete": {
+        "title": "Xóa danh mục?",
+        "description": "Thao tác này sẽ xóa vĩnh viễn \"{name}\". Không thể hoàn tác thao tác này.",
+        "deleteButton": "Xóa",
+        "cancelButton": "Hủy"
+      },
+      "errors": {
+        "cannotLoad": "Không tải được danh mục"
+      },
+      "notifications": {
+        "deleteSuccess": "Đã xóa danh mục",
+        "deleteFailed": "Không xóa được danh mục",
+        "checkFailed": "Không kiểm tra được danh mục",
+        "moveFailed": "Không di chuyển được danh mục.",
+        "saveSuccess": "Đã lưu thay đổi.",
+        "staleMovesRemoved": "Đã xóa {n} thao tác di chuyển đang chờ không còn phù hợp | Đã xóa {n} thao tác di chuyển đang chờ không còn phù hợp"
+      },
+      "dropErrors": {
+        "currentParent": "Danh mục này đã nằm trong danh mục đó rồi",
+        "insideItself": "Không thể chuyển danh mục vào danh mục con của chính nó",
+        "internalTarget": "Danh mục hệ thống không thể chứa danh mục khác",
+        "tooDeep": "Danh mục chỉ có thể lồng tối đa {max} cấp",
+        "childrenTooDeep": "Các danh mục con của danh mục này sẽ nằm sâu hơn {max} cấp",
+        "alreadyTopLevel": "Đã là danh mục cấp cao nhất"
+      }
+    }
+  }
+}

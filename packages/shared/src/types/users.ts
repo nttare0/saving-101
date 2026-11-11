@@ -1,0 +1,80 @@
+import type { Entitlements } from './billing';
+import type { RecordId } from './record-id';
+
+/**
+ * User roles for access control and feature gating.
+ * - admin: Full access to all features including admin panel
+ * - common: Regular registered user
+ * - demo: Temporary demo user (auto-deleted after 4 hours)
+ */
+export const USER_ROLES = {
+  admin: 'admin',
+  common: 'common',
+  demo: 'demo',
+} as const;
+
+export type UserRole = (typeof USER_ROLES)[keyof typeof USER_ROLES];
+
+/**
+ * Supported OAuth providers for authentication
+ */
+export enum OAUTH_PROVIDER {
+  google = 'google',
+  github = 'github',
+  apple = 'apple',
+  // Generic OpenID Connect provider configured by a self-hoster (Pocket ID, Authelia, Keycloak, ...)
+  oidc = 'oidc',
+}
+
+// Array of all providers for iteration (e.g., login method lists)
+export const OAUTH_PROVIDERS_LIST = Object.values(OAUTH_PROVIDER);
+
+/** Built-in providers configured via client id/secret env vars; OIDC is reported separately. */
+export type SocialOAuthProvider = Exclude<OAUTH_PROVIDER, OAUTH_PROVIDER.oidc>;
+
+/** Response of `GET /auth/features`: server-side auth capabilities the pre-login pages adapt to. */
+export interface AuthFeaturesResponse {
+  emailEnabled: boolean;
+  /** Social providers whose credentials are configured. */
+  socialProviders: SocialOAuthProvider[];
+  /** Generic OIDC sign-in; null when the server has no OIDC provider configured. */
+  oidc: { name: string } | null;
+}
+
+export interface UserModel {
+  id: number;
+  username: string;
+  firstName: string;
+  lastName: string;
+  middleName: string;
+  avatar: string;
+  totalBalance: number;
+  defaultCategoryId: RecordId;
+  authUserId?: RecordId;
+  /** User role for access control. Defaults to 'common' for regular users. */
+  role: UserRole;
+  /** @deprecated Use role === 'admin' instead */
+  isAdmin?: boolean;
+  /** iOS passes it as `appAccountToken` on every App Store purchase, so Apple notifications map back to this user. */
+  appStoreAccountToken: string;
+  /** Feeds the demo-account expiry countdown. */
+  createdAt: Date;
+  /** Present on `GET /user` only. */
+  entitlements?: Entitlements;
+}
+
+/** `GET /user` payload. Email comes from better-auth's ba_user, not the Users table. */
+export type UserInfoResponse = UserModel & { email: string | null };
+
+/** One entry of `GET /user/sessions`: a login session of the signed-in user, as better-auth stores it. */
+export interface AuthSessionInfo {
+  id: string;
+  userId: string;
+  /** Needed by better-auth's revoke-session call. */
+  token: string;
+  ipAddress: string | null;
+  userAgent: string | null;
+  createdAt: string;
+  updatedAt: string;
+  expiresAt: string;
+}

@@ -1,0 +1,63 @@
+{
+  "oauth": {
+    "authorize": {
+      "title": "{name} ingin mengakses data MoneyMatter Anda",
+      "redirect_notice": "After approval you will be redirected to {host}. Only continue if you recognize this address.",
+      "description": "Aplikasi ini meminta izin berikut:",
+      "approve": "Setujui",
+      "deny": "Tolak",
+      "footer": "Anda dapat mencabut akses kapan saja dari Pengaturan > Integrasi AI.",
+      "error": "Gagal memproses permintaan. Silakan coba lagi.",
+      "unexpected_response": "Respons tak terduga dari server. Silakan coba lagi.",
+      "always_granted": "Selalu diberikan",
+      "optional": "Opsional",
+      "delete_warning": "Berikan hanya ke aplikasi yang Anda percayai sepenuhnya",
+      "unknown_app": "Sebuah aplikasi",
+      "steps": {
+        "permissions": "Permissions",
+        "tools": "Tools"
+      },
+      "continue": "Lanjutkan",
+      "back": "Kembali",
+      "toolsets": {
+        "intro": "Pick what {name} can work with. Each extra set adds tools that {name} loads into every chat.",
+        "add_all": "Add all",
+        "core_only": "Core only",
+        "always_on": "{count} tool, always on | {count} tools, always on",
+        "tool_count": "{count} tool | {count} tools",
+        "selected": "{count} tool selected | {count} tools selected",
+        "of_total": "of {total}",
+        "counter_label": "Selected tools",
+        "fits_cap": "Fits every app, including ChatGPT and VS Code Copilot ({cap} tools max).",
+        "over_cap": "Over {cap} tools. ChatGPT and VS Code Copilot won't load this many.",
+        "load_error": "Couldn't load the toolsets. Allow access to use the core tools, and reconnect later to add more."
+      }
+    },
+    "scopes": {
+      "finance_read": {
+        "label": "Lihat data keuangan Anda",
+        "desc": "Baca akun, transaksi, anggaran, kategori, tag, portofolio, dan statistik pengeluaran."
+      },
+      "finance_write": {
+        "label": "Buat dan sunting data keuangan Anda",
+        "desc": "Tambah dan perbarui transaksi, anggaran, langganan, posisi investasi, dan lainnya."
+      },
+      "finance_delete": {
+        "label": "Hapus data keuangan Anda",
+        "desc": "Hapus secara permanen transaksi, akun, anggaran, dan catatan lainnya."
+      },
+      "profile_read": {
+        "label": "Lihat profil Anda",
+        "desc": "Lihat nama, email, dan mata uang bawaan Anda."
+      },
+      "offline_access": {
+        "label": "Tetap terhubung di latar belakang",
+        "desc": "Jaga akses tetap aktif tanpa meminta Anda lagi setiap sesi."
+      },
+      "unknown": {
+        "label": "Izin tambahan",
+        "desc": "Aplikasi meminta izin yang tidak dikenali oleh MoneyMatter."
+      }
+    }
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "pages": {
+    "importExport": {
+      "ynabImport": {
+        "pageTitle": "Nhập từ YNAB",
+        "pageDescription": "Tải tệp Register.csv xuất từ YNAB lên để nhập tài khoản, giao dịch, danh mục, người nhận và thẻ vào MoneyMatter.",
+        "stepper": {
+          "steps": {
+            "upload": "Tải lên",
+            "preview": "Xem xét",
+            "results": "Hoàn tất"
+          }
+        },
+        "fileUpload": {
+          "stepTitle": "Thả tệp Register.csv vào đây",
+          "description": "YNAB → Budget → Export budget → giải nén → dùng tệp Register.csv.",
+          "maxSize": "Tối đa 10 MB.",
+          "parsing": "Đang phân tích…",
+          "continueToPreview": "Tiếp tục",
+          "errors": {
+            "invalidFormat": "Vui lòng tải lên tệp .csv."
+          }
+        },
+        "preview": {
+          "emptyList": "Không có gì để nhập ở đây.",
+          "accounts": "Tài khoản",
+          "categories": "Danh mục",
+          "payees": "Người nhận",
+          "tags": "Thẻ",
+          "transactions": "Giao dịch",
+          "transfers": "Chuyển khoản",
+          "dateRange": "Khoảng thời gian: {from} → {to}",
+          "accountsHelper": "Xác nhận tiền tệ cho từng tài khoản YNAB.",
+          "skippedNote": "{count} tài khoản sẽ bị bỏ qua. Giao dịch của các tài khoản này — cùng mọi khoản chuyển khoản đến hoặc đi từ chúng — sẽ không được nhập.",
+          "warningsTitle": "Cảnh báo",
+          "rowPrefix": "Dòng {rowIndex}:",
+          "startOver": "Bắt đầu lại",
+          "continueToImport": "Bắt đầu nhập"
+        },
+        "accountRow": {
+          "transactionsCount": "{count} giao dịch",
+          "startingBalance": "Số dư ban đầu",
+          "currencyPlaceholder": "USD",
+          "currencyLabel": "Tiền tệ",
+          "currencyInvalid": "Nhập mã tiền tệ gồm 3 chữ cái (ví dụ: USD)",
+          "autoDetected": "Tự động nhận diện: {code}",
+          "undoSkip": "Bao gồm trong lần nhập"
+        },
+        "execute": {
+          "starting": "Đang bắt đầu nhập…",
+          "progressCount": "{processed} / {total}",
+          "statusQueued": "Đang chờ xử lý",
+          "statusRunning": "Đang nhập…",
+          "statusCompleted": "Hoàn tất",
+          "statusFailed": "Thất bại",
+          "failed": "Không thể hoàn tất quá trình nhập."
+        },
+        "done": {
+          "successTitle": "Nhập dữ liệu hoàn tất",
+          "successDescription": "Dữ liệu YNAB của bạn hiện đã có trong MoneyMatter.",
+          "accountsCreated": "Tài khoản đã tạo",
+          "accountsSkipped": "Tài khoản đã bỏ qua",
+          "categoriesCreated": "Danh mục đã tạo",
+          "payeesCreated": "Người nhận đã tạo",
+          "tagsCreated": "Thẻ đã tạo",
+          "transactionsImported": "Giao dịch đã nhập",
+          "transfersImported": "Giao dịch chuyển khoản đã nhập",
+          "splitsDetected": "Nhóm giao dịch đã phát hiện",
+          "errorsTitle": "{count} dòng không nhập được",
+          "errors": {
+            "payeeCreateFailed": "Could not create payee \"{payeeName}\". Its transactions were imported without a payee.",
+            "rowImportFailed": "This row could not be imported."
+          },
+          "viewTransactions": "Xem giao dịch",
+          "importAnother": "Nhập tệp khác"
+        }
+      }
+    }
+  }
+}

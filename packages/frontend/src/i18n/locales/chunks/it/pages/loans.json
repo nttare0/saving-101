@@ -1,0 +1,222 @@
+{
+  "loans": {
+    "title": "Prestiti & Finanziamenti",
+    "loadError": "Caricamento dei prestiti non riuscito.",
+    "tryAgain": "Riprova",
+    "addButton": {
+      "label": "Aggiungi prestito"
+    },
+    "actions": {
+      "more": "Altro",
+      "moreAriaLabel": "Altre azioni",
+      "excludeFromStats": "Escludi dalle statistiche",
+      "linkPayments": "Collega pagamenti precedenti"
+    },
+    "linkPayments": {
+      "title": "Collega pagamenti precedenti",
+      "description": "Selezionare le transazioni già pagate per questo prestito per registrarle come pagamenti.",
+      "emptyTitle": "Nessuna transazione corrispondente",
+      "emptyDescription": "Nessuna transazione corrisponde a questi filtri. Provare ad ampliare l'intervallo di date o a cancellare i filtri.",
+      "selectedCount": "{count} selezionati",
+      "clearSelection": "Pulisci",
+      "linkSelected": "Collega {count}",
+      "success": "{count} pagamento collegato al prestito. | {count} pagamenti collegati al prestito.",
+      "preAnchorWarning": "{count} pagamento selezionato ha una data precedente al saldo di riferimento del prestito ({date}): viene collegato solo come storico e non riduce il saldo residuo. | {count} pagamenti selezionati hanno una data precedente al saldo di riferimento del prestito ({date}): vengono collegati solo come storico e non riducono il saldo residuo.",
+      "error": "Impossibile collegare i pagamenti selezionati. Riprovare.",
+      "overpayTitle": "I pagamenti superano il saldo",
+      "overpayDescription": "I pagamenti selezionati superano di {amount} il saldo residuo del prestito. Collegarli comunque?",
+      "overpayConfirmButton": "Collega comunque"
+    },
+    "dialog": {
+      "createTitle": "Aggiungi un prestito",
+      "createDescription": "Monitorare un mutuo, un prestito auto, un prestito studentesco o qualsiasi altra passività. Tutto può essere modificato in seguito.",
+      "editTitle": "Modifica prestito",
+      "editDescription": "Aggiornare le condizioni del prestito. Le modifiche a tasso, durata o rata pianificata vengono registrate nella cronologia degli eventi."
+    },
+    "settings": {
+      "title": "Impostazioni",
+      "editTitle": "Modifica dettagli del prestito",
+      "editDescription": "Aggiornare nome, saldo, tasso, durata, campi di pagamento o informazioni sul finanziatore.",
+      "editButton": "Modifica",
+      "excludeFromStatsTitle": "Escludi dalle statistiche",
+      "excludeFromStatsDescription": "Nascondere questo prestito da patrimonio netto, grafici e report senza archiviarlo.",
+      "archiveTitle": "Archivia prestito",
+      "archiveDescription": "Nasconde il prestito dalla barra laterale e dagli elenchi dei conti. È possibile ripristinarlo in qualsiasi momento.",
+      "archiveButton": "Archivia",
+      "archivedTitle": "Questo prestito è archiviato",
+      "archivedDescription": "È nascosto dalla barra laterale e dai selettori dei conti ed è elencato in Archiviati nella pagina dei prestiti. Ripristinarlo per riprendere il monitoraggio.",
+      "unarchiveButton": "Ripristina",
+      "archiveConfirmTitle": "Archiviare questo prestito?",
+      "archiveConfirmDescription": "{name} verrà spostato nella sezione Archiviati di questa pagina e nascosto dalla barra laterale e dai selettori dei conti.",
+      "archiveAlsoExclude": "Escludi anche dalle statistiche",
+      "deleteTitle": "Elimina prestito",
+      "deleteDescription": "Rimuove definitivamente il prestito e il suo storico. L'operazione non può essere annullata.",
+      "deleteButton": "Elimina",
+      "deleteConfirmTitle": "Eliminare definitivamente questo prestito?",
+      "deleteConfirmDescription": "{name} e tutti i suoi eventi verranno rimossi definitivamente. L'operazione non può essere annullata.",
+      "toggleSuccess": "Impostazione aggiornata",
+      "toggleError": "Impossibile aggiornare l'impostazione",
+      "archiveSuccess": "Prestito archiviato",
+      "archiveError": "Impossibile archiviare il prestito",
+      "unarchiveSuccess": "Prestito ripristinato",
+      "deleteSuccess": "Prestito eliminato",
+      "deleteError": "Impossibile eliminare il prestito",
+      "deleteBlockedByPayments": "Questo prestito ha pagamenti registrati. Eliminarli prima, poi sarà possibile eliminare il prestito."
+    },
+    "empty": {
+      "title": "Ancora nessun prestito",
+      "description": "Monitorare qui mutui, prestiti auto, prestiti studenteschi e altre passività.",
+      "createFirstButton": "Aggiungi il primo prestito"
+    },
+    "paidOff": {
+      "sectionTitle": "Estinti",
+      "repaid": "Rimborsato",
+      "opened": "Aperto",
+      "closed": "Chiuso",
+      "interestPaid": "Interessi pagati (stima)"
+    },
+    "archivedList": {
+      "sectionTitle": "Archiviati",
+      "badge": "Archiviati",
+      "outstanding": "Residuo"
+    },
+    "aggregate": {
+      "avgApr": "TAEG medio",
+      "monthlyObligation": "Impegno mensile",
+      "interestProjected": "Interessi previsti",
+      "totalOutstanding": "Totale residuo",
+      "principalRepaid": "Rimborsato il {percent}% di {amount} di capitale",
+      "debtFree": "Senza debiti"
+    },
+    "list": {
+      "columns": {
+        "loan": "Prestito",
+        "progress": "Avanzamento",
+        "balance": "Saldo",
+        "apr": "TAEG",
+        "monthly": "Mensile",
+        "payoff": "Estinzione",
+        "interestLeft": "Interessi residui"
+      },
+      "paidPercent": "{value}% pagato",
+      "monthsLeft": "{count} mesi rimanenti",
+      "ofPrincipal": "di {amount}"
+    },
+    "types": {
+      "mortgage": "Mutuo",
+      "auto": "Veicolo",
+      "student": "Studentesco",
+      "personal": "Personale",
+      "heloc": "HELOC",
+      "business": "Aziendale",
+      "medical": "Medico",
+      "other": "Altro"
+    },
+    "warnings": {
+      "no_planned_payment": "Nessuna rata pianificata impostata: estinzione prevista non disponibile.",
+      "payment_below_interest": "La rata pianificata non copre gli interessi mensili: il prestito aumenterebbe."
+    },
+    "detail": {
+      "backToList": "Torna ai prestiti",
+      "loadError": "Caricamento del prestito non riuscito.",
+      "paidOffBadge": "Estinto",
+      "summary": {
+        "outstanding": "Saldo attuale",
+        "principalOnlyTooltip": "Il saldo riflette solo i pagamenti in conto capitale. Gli interessi non vengono maturati automaticamente: fa fede l'estratto conto del finanziatore.",
+        "apr": "TAEG",
+        "originalPrincipal": "Capitale originario",
+        "term": "Durata",
+        "termMonths": "{count} mese | {count} mesi",
+        "startDate": "Data di inizio",
+        "paymentDay": "Giorno di pagamento",
+        "dayOfMonth": "Il {day} di ogni mese",
+        "accountNumber": "Numero di conto",
+        "balanceAnchor": "Saldo al",
+        "balanceAnchorTooltip": "Il saldo residuo è fissato a questa data. I pagamenti con data precedente vengono conservati come storico ma non modificano l'avanzamento Pagato.",
+        "actualDuration": "Durata effettiva"
+      },
+      "paidOff": {
+        "bannerTitle": "{name}: estinto completamente",
+        "bannerSubline": "{type} · Aperto {opened} · Chiuso {closed}",
+        "took": "Durata",
+        "monthsEarly": "{count} mesi in anticipo",
+        "duration": {
+          "full": "{years} anni {months} mesi",
+          "years": "{years} anni",
+          "months": "{months} mesi"
+        },
+        "cost": {
+          "title": "Quanto è costato questo prestito",
+          "totalLabel": "Costo totale",
+          "principal": "Capitale",
+          "interest": "Interessi (stima)",
+          "estimateFootnote": "Gli interessi sono una stima basata sul piano di ammortamento: i pagamenti sono registrati come capitale, quindi non viene memorizzata una ripartizione esatta degli interessi.",
+          "effectiveCost": "Costo effettivo: {percent} di interessi sull'importo preso in prestito"
+        },
+        "chart": {
+          "title": "Andamento del saldo",
+          "titleHint": "Il saldo effettivo registrato del prestito nel tempo, rispetto al piano di ammortamento originale.",
+          "noData": "Storico insufficiente per rappresentare l'andamento del saldo di questo prestito."
+        }
+      },
+      "projection": {
+        "title": "Proiezione",
+        "paidLabel": "Pagato",
+        "paidOfOriginal": "{paid} di {original} pagati",
+        "payoffDate": "Data di estinzione",
+        "monthsRemaining": "Mesi rimanenti",
+        "totalInterestRemaining": "Interessi totali residui",
+        "nextMonthInterest": "Interessi del mese prossimo",
+        "nextMonthPrincipal": "Capitale del mese prossimo",
+        "plannedPayment": "Rata pianificata"
+      },
+      "events": {
+        "title": "Cronologia",
+        "empty": "Ancora nessuno storico: variazioni di tasso, correzioni del saldo e note compariranno qui.",
+        "rateChange": "Tasso cambiato da {from}% a {to}%",
+        "termChange": "Durata cambiata da {from} a {to} mesi",
+        "plannedPaymentChange": "Rata pianificata cambiata da {from} a {to}",
+        "paidOff": "Prestito estinto",
+        "balanceCorrection": "Saldo residuo corretto da {from} a {to}"
+      },
+      "payments": {
+        "title": "Pagamenti recenti",
+        "empty": "Ancora nessun pagamento registrato per questo prestito.",
+        "loadError": "Caricamento dei pagamenti recenti non riuscito.",
+        "seeAll": "Vedi tutti",
+        "allTitle": "Tutti i pagamenti"
+      },
+      "recordPayment": "Registra pagamento",
+      "payoffChart": {
+        "title": "Proiezione di estinzione",
+        "titleHint": "Stima quando il prestito sarà estinto con la rata minima, quella pianificata e una rata mensile personalizzata, con data di estinzione e interessi totali per ciascuno scenario. Digitare un importo qualsiasi nel campo della rata personalizzata per giocare con i numeri e vedere subito come cambiano la data di estinzione e gli interessi totali.",
+        "customPaymentLabel": "Rata personalizzata",
+        "applyAsPlanned": "Applica come rata pianificata",
+        "applyConfirmTitle": "Applicare come rata pianificata?",
+        "applyConfirmDescription": "La rata mensile pianificata del prestito verrà impostata a {amount}.",
+        "applySuccess": "Rata pianificata aggiornata.",
+        "applyError": "Impossibile aggiornare la rata pianificata. Riprovare.",
+        "belowInterest": "Questa rata non copre gli interessi mensili, quindi il saldo non diminuisce mai.",
+        "paidOff": "Questo prestito è estinto: non c'è nulla da proiettare.",
+        "enterPaymentPrompt": "Inserire un importo della rata qui sopra per stimare l'estinzione.",
+        "paidOffShort": "Estinto",
+        "neverPaysOff": "Mai",
+        "interestVsPlanned": "Interessi rispetto al pianificato",
+        "payoffVsPlanned": "Estinzione rispetto al pianificato",
+        "sameAsPlanned": "Come pianificato",
+        "earlierBy": "{time} prima",
+        "laterBy": "{time} dopo",
+        "monthsLabel": "{n} mesi",
+        "yearsLabel": "{n} anni",
+        "yearsMonthsLabel": "{y} anni {m} mesi",
+        "legend": {
+          "minimum": "Rata minima",
+          "planned": "Rata pianificata",
+          "custom": "Rata personalizzata",
+          "actual": "Saldo effettivo",
+          "schedule": "Piano originale"
+        }
+      }
+    }
+  }
+}

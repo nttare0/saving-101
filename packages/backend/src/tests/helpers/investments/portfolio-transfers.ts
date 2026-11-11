@@ -1,0 +1,281 @@
+import {
+  accountToPortfolioTransfer as _accountToPortfolioTransfer,
+  createPortfolioTransfer as _createPortfolioTransfer,
+  deletePortfolioTransfer as _deletePortfolioTransfer,
+  directCashTransaction as _directCashTransaction,
+  exchangeCurrency as _exchangeCurrency,
+  getTransactionPortfolioLink as _getTransactionPortfolioLink,
+  linkTransactionToPortfolio as _linkTransactionToPortfolio,
+  listPortfolioTransfers as _listPortfolioTransfers,
+  portfolioToAccountTransfer as _portfolioToAccountTransfer,
+  setTransferAdjustment as _setTransferAdjustment,
+  unlinkTransactionFromPortfolio as _unlinkTransactionFromPortfolio,
+} from '@services/investments/portfolios/transfers';
+
+import { makeRequest } from '../common';
+
+export function buildPortfolioTransferPayload({
+  toPortfolioId,
+  currencyCode,
+  amount = '100',
+  date = new Date().toISOString().slice(0, 10),
+  description = 'Test portfolio transfer',
+}: {
+  toPortfolioId: string;
+  currencyCode: string;
+  amount?: string;
+  date?: string;
+  description?: string | null;
+}) {
+  return {
+    toPortfolioId,
+    currencyCode,
+    amount,
+    date,
+    description,
+  };
+}
+
+export async function createPortfolioTransfer<R extends boolean | undefined = false>({
+  fromPortfolioId,
+  payload,
+  raw,
+}: {
+  fromPortfolioId: string;
+  payload: ReturnType<typeof buildPortfolioTransferPayload>;
+  raw?: R;
+}) {
+  return makeRequest<Awaited<ReturnType<typeof _createPortfolioTransfer>>, R>({
+    method: 'post',
+    url: `/investments/portfolios/${fromPortfolioId}/transfer`,
+    payload,
+    raw,
+  });
+}
+
+export async function listPortfolioTransfers<R extends boolean | undefined = false>({
+  portfolioId,
+  raw,
+  ...payload
+}: {
+  portfolioId: string;
+  from?: string;
+  to?: string;
+  limit?: number;
+  offset?: number;
+  page?: number;
+  sortBy?: 'date' | 'amount';
+  sortDirection?: 'ASC' | 'DESC';
+  raw?: R;
+}) {
+  const url = `/investments/portfolios/${portfolioId}/transfers`;
+
+  return makeRequest<
+    {
+      data: Awaited<ReturnType<typeof _listPortfolioTransfers>>['data'];
+      pagination: { limit: number; offset: number; page: number; totalCount: number };
+    },
+    R
+  >({
+    method: 'get',
+    url,
+    payload,
+    raw,
+  });
+}
+
+export async function accountToPortfolioTransfer<R extends boolean | undefined = false>({
+  portfolioId,
+  payload,
+  raw,
+}: {
+  portfolioId: string;
+  payload: {
+    accountId: string;
+    amount: string;
+    date: string;
+    description?: string | null;
+  };
+  raw?: R;
+}) {
+  return makeRequest<Awaited<ReturnType<typeof _accountToPortfolioTransfer>>, R>({
+    method: 'post',
+    url: `/investments/portfolios/${portfolioId}/transfer/from-account`,
+    payload,
+    raw,
+  });
+}
+
+export async function portfolioToAccountTransfer<R extends boolean | undefined = false>({
+  portfolioId,
+  payload,
+  raw,
+}: {
+  portfolioId: string;
+  payload: {
+    accountId: string;
+    amount: string;
+    currencyCode: string;
+    date: string;
+    description?: string | null;
+    existingTransactionId?: string;
+  };
+  raw?: R;
+}) {
+  return makeRequest<Awaited<ReturnType<typeof _portfolioToAccountTransfer>>, R>({
+    method: 'post',
+    url: `/investments/portfolios/${portfolioId}/transfer/to-account`,
+    payload,
+    raw,
+  });
+}
+
+export async function deletePortfolioTransfer<R extends boolean | undefined = false>({
+  portfolioId,
+  transferId,
+  deleteLinkedTransaction,
+  raw,
+}: {
+  portfolioId: string;
+  transferId: string;
+  deleteLinkedTransaction?: boolean;
+  raw?: R;
+}) {
+  const query = deleteLinkedTransaction !== undefined ? `?deleteLinkedTransaction=${deleteLinkedTransaction}` : '';
+
+  return makeRequest<Awaited<ReturnType<typeof _deletePortfolioTransfer>>, R>({
+    method: 'delete',
+    url: `/investments/portfolios/${portfolioId}/transfers/${transferId}${query}`,
+    raw,
+  });
+}
+
+export async function directCashTransaction<R extends boolean | undefined = false>({
+  portfolioId,
+  payload,
+  raw,
+}: {
+  portfolioId: string;
+  payload: {
+    type: 'deposit' | 'withdrawal';
+    amount: string;
+    currencyCode: string;
+    date: string;
+    description?: string | null;
+    isAdjustment?: boolean;
+  };
+  raw?: R;
+}) {
+  return makeRequest<Awaited<ReturnType<typeof _directCashTransaction>>, R>({
+    method: 'post',
+    url: `/investments/portfolios/${portfolioId}/cash-transaction`,
+    payload,
+    raw,
+  });
+}
+
+export async function setTransferAdjustment<R extends boolean | undefined = false>({
+  portfolioId,
+  transferId,
+  payload,
+  raw,
+}: {
+  portfolioId: string;
+  transferId: string;
+  payload: { isAdjustment: boolean };
+  raw?: R;
+}) {
+  return makeRequest<Awaited<ReturnType<typeof _setTransferAdjustment>>, R>({
+    method: 'patch',
+    url: `/investments/portfolios/${portfolioId}/transfers/${transferId}/adjustment`,
+    payload,
+    raw,
+  });
+}
+
+export async function linkTransactionToPortfolio<R extends boolean | undefined = false>({
+  transactionId,
+  payload,
+  raw,
+}: {
+  transactionId: string;
+  payload: { portfolioId: string; affectsCash?: boolean };
+  raw?: R;
+}) {
+  return makeRequest<Awaited<ReturnType<typeof _linkTransactionToPortfolio>>, R>({
+    method: 'post',
+    url: `/transactions/${transactionId}/link-to-portfolio`,
+    payload,
+    raw,
+  });
+}
+
+export async function unlinkTransactionFromPortfolio<R extends boolean | undefined = false>({
+  transactionId,
+  raw,
+}: {
+  transactionId: string;
+  raw?: R;
+}) {
+  return makeRequest<Awaited<ReturnType<typeof _unlinkTransactionFromPortfolio>>, R>({
+    method: 'post',
+    url: `/transactions/${transactionId}/unlink-from-portfolio`,
+    raw,
+  });
+}
+
+export function buildExchangeCurrencyPayload({
+  fromCurrencyCode,
+  toCurrencyCode,
+  fromAmount = '100',
+  toAmount = '110',
+  date = new Date().toISOString().slice(0, 10),
+  description = 'Test currency exchange',
+}: {
+  fromCurrencyCode: string;
+  toCurrencyCode: string;
+  fromAmount?: string;
+  toAmount?: string;
+  date?: string;
+  description?: string | null;
+}) {
+  return {
+    fromCurrencyCode,
+    toCurrencyCode,
+    fromAmount,
+    toAmount,
+    date,
+    description,
+  };
+}
+
+export async function exchangeCurrency<R extends boolean | undefined = false>({
+  portfolioId,
+  payload,
+  raw,
+}: {
+  portfolioId: string;
+  payload: ReturnType<typeof buildExchangeCurrencyPayload>;
+  raw?: R;
+}) {
+  return makeRequest<Awaited<ReturnType<typeof _exchangeCurrency>>, R>({
+    method: 'post',
+    url: `/investments/portfolios/${portfolioId}/exchange-currency`,
+    payload,
+    raw,
+  });
+}
+
+export async function getTransactionPortfolioLink<R extends boolean | undefined = false>({
+  transactionId,
+  raw,
+}: {
+  transactionId: string;
+  raw?: R;
+}) {
+  return makeRequest<Awaited<ReturnType<typeof _getTransactionPortfolioLink>>, R>({
+    method: 'get',
+    url: `/transactions/${transactionId}/portfolio-link`,
+    raw,
+  });
+}

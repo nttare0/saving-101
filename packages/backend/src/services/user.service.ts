@@ -1,0 +1,264 @@
+import type { CurrencyInUseDetails, RecordId } from '@bt/shared/types';
+import { ACCOUNT_TYPES, API_ERROR_CODES } from '@bt/shared/types';
+import { t } from '@i18n/index';
+import { UnexpectedError, ValidationError } from '@js/errors';
+import * as Currencies from '@models/currencies.model';
+import { updateTransactions } from '@models/transactions-query';
+import * as Transactions from '@models/transactions.model';
+import * as UsersCurrencies from '@models/users-currencies.model';
+import * as Users from '@models/users.model';
+
+import { withTransaction } from './common/with-transaction';
+import { addUserCurrencies } from './currencies/add-user-currency';
+import { getCurrencyInUseBlockers } from './currencies/get-currency-in-use-blockers';
+import { revalueAccountsInCurrencies } from './user-exchange-rate/revalue-accounts-in-currencies';
+
+export const getUser = async (id: number) => {
+  const user = await Users.default.findOne({
+    where: { id },
+    raw: true,
+  });
+
+  return user;
+};
+
+export const createUser = withTransaction(
+  async ({
+    username,
+    firstName,
+    lastName,
+    middleName,
+    avatar,
+    totalBalance,
+    authUserId,
+    trialEndsAt,
+  }: {
+    username: string;
+    firstName?: string;
+    lastName?: string;
+    middleName?: string;
+    avatar?: string;
+    totalBalance?: number;
+    authUserId?: string;
+    trialEndsAt?: Date | null;
+  }) => {
+    const user = await Users.createUser({
+      username,
+      firstName,
+      lastName,
+      middleName,
+      avatar,
+      totalBalance,
+      authUserId,
+      trialEndsAt,
+    });
+
+    return user;
+  },
+);
+
+export const updateUser = withTransaction(
+  async ({
+    id,
+    username,
+    firstName,
+    lastName,
+    middleName,
+    avatar,
+    totalBalance,
+    defaultCategoryId,
+  }: {
+    id: number;
+    username?: string;
+    firstName?: string;
+    lastName?: string;
+    middleName?: string;
+    avatar?: string;
+    totalBalance?: number;
+    defaultCategoryId?: RecordId;
+  }) => {
+    const user = await Users.updateUserById({
+      id,
+      username,
+      firstName,
+      lastName,
+      middleName,
+      avatar,
+      totalBalance,
+      defaultCategoryId,
+    });
+
+    return user;
+  },
+);
+
+export const getUserCurrencies = withTransaction(async ({ userId }: { userId: number }) => {
+  const list = await UsersCurrencies.getCurrencies({ userId });
+
+  return list;
+});
+
+export const getUserBaseCurrency = withTransaction(({ userId }: { userId: number }) => {
+  return UsersCurrencies.getBaseCurrency({ userId });
+});
+
+export const setBaseUserCurrency = withTransaction(
+  async ({ userId, currencyCode }: { userId: number; currencyCode: string }) => {
+    const existingBaseCurrency = await getUserBaseCurrency({ userId });
+
+    if (existingBaseCurrency) {
+      throw new ValidationError({ message: t({ key: 'userCurrencies.baseCurrencyExists' }) });
+    }
+
+    const currency = await Currencies.getCurrency({ code: currencyCode });
+
+    if (!currency) {
+      throw new ValidationError({
+        message: t({ key: 'userCurrencies.currencyCodeNotExist' }),
+      });
+    }
+
+    // UsersCurrencies.exchangeRate is always relative to the user's base currency,
+    // so the base currency's rate against itself is trivially 1.
+    await addUserCurrencies([
+      {
+        userId,
+        currencyCode,
+        exchangeRate: 1,
+      },
+    ]);
+
+    const result = await setDefaultUserCurrency({ userId, currencyCode });
+
+    return result;
+  },
+);
+
+export const editUserCurrency = withTransaction(
+  async ({
+    userId,
+    currencyCode,
+    exchangeRate,
+    liveRateUpdate,
+  }: {
+    userId: number;
+    currencyCode: string;
+    exchangeRate?: number;
+    liveRateUpdate?: boolean;
+  }) => {
+    const passedCurrency = await UsersCurrencies.getCurrency({
+      userId,
+      currencyCode,
+    });
+
+    if (!passedCurrency) {
+      throw new ValidationError({
+        message: t({ key: 'userCurrencies.currencyNotExist', variables: { currencyCode } }),
+      });
+    }
+
+    const result = await UsersCurrencies.updateCurrency({
+      userId,
+      currencyCode,
+      exchangeRate,
+      liveRateUpdate,
+    });
+
+    // `liveRateUpdate` picks between a flat manual rate and per-day market rates for
+    // every stored balance row in this currency, so the whole history must be rebuilt.
+    if (liveRateUpdate !== undefined && liveRateUpdate !== passedCurrency.liveRateUpdate) {
+      await revalueAccountsInCurrencies({ userId, pairs: [{ baseCode: currencyCode, quoteCode: currencyCode }] });
+    }
+
+    return result;
+  },
+);
+
+export const setDefaultUserCurrency = withTransaction(
+  async ({ userId, currencyCode }: { userId: number; currencyCode: string }) => {
+    const passedCurrency = await UsersCurrencies.getCurrency({
+      userId,
+      currencyCode,
+    });
+
+    if (!passedCurrency) {
+      throw new ValidationError({
+        message: t({ key: 'userCurrencies.currencyNotExist', variables: { currencyCode } }),
+      });
+    }
+
+    // Make all curerncies not default
+    await UsersCurrencies.updateCurrencies({
+      userId,
+      isDefaultCurrency: false,
+    });
+
+    const result = await UsersCurrencies.updateCurrency({
+      userId,
+      currencyCode,
+      isDefaultCurrency: true,
+    });
+
+    const currency = await Currencies.getCurrency({ code: currencyCode });
+    if (!currency) {
+      throw new UnexpectedError({ message: t({ key: 'userCurrencies.currencyCodeNotExist' }) });
+    }
+
+    await Transactions.updateTransactions(
+      {
+        refCurrencyCode: currency.code,
+      },
+      { userId, accountType: ACCOUNT_TYPES.system },
+    );
+
+    return result;
+  },
+);
+
+export const deleteUserCurrency = withTransaction(
+  async ({ userId, currencyCode }: { userId: number; currencyCode: string }) => {
+    const passedCurrency = await UsersCurrencies.getCurrency({
+      userId,
+      currencyCode,
+    });
+
+    if (!passedCurrency) {
+      throw new ValidationError({
+        message: t({ key: 'userCurrencies.currencyNotExist', variables: { currencyCode } }),
+      });
+    }
+
+    if (passedCurrency.isDefaultCurrency) {
+      throw new ValidationError({
+        message: t({ key: 'userCurrencies.cannotDeleteDefaultCurrency' }),
+      });
+    }
+
+    const blockers = await getCurrencyInUseBlockers({ userId, currencyCode });
+
+    if (blockers.length) {
+      throw new ValidationError({
+        code: API_ERROR_CODES.currencyInUse,
+        message: t({ key: 'userCurrencies.currencyInUse', variables: { currencyCode } }),
+        details: { blockers } satisfies CurrencyInUseDetails,
+      });
+    }
+
+    // Transactions.currencyCode is the account currency, so the account blocker covers it;
+    // only the foreign-amount metadata can still reference this currency.
+    await updateTransactions({
+      planned: 'include',
+      access: { creator: userId },
+      balanceAdjustments: 'include',
+      where: { originalCurrencyCode: currencyCode },
+      values: { originalAmount: null, originalCurrencyCode: null },
+      // Trashed transactions can be restored (reconciliation, bank sync).
+      paranoid: false,
+    });
+
+    await UsersCurrencies.deleteCurrency({
+      userId,
+      currencyCode,
+    });
+  },
+);

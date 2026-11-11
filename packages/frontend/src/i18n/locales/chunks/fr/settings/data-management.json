@@ -1,0 +1,108 @@
+{
+  "settings": {
+    "dataManagement": {
+      "title": "Importer des données",
+      "description": "Importez vos données financières depuis différentes sources",
+      "tabs": {
+        "import": "Importer",
+        "export": "Exporter"
+      },
+      "textSource": {
+        "title": "Importer depuis du texte libre",
+        "aiBadge": "Optimisé par IA",
+        "listDescription": "Relevés de compte, reçus, captures d'écran ou tout texte"
+      },
+      "csv": {
+        "title": "Importer un fichier CSV",
+        "description": "Importez des opérations depuis un fichier CSV. Vous pouvez mapper les colonnes, gérer les doublons et créer de nouveaux comptes ou catégories si nécessaire.",
+        "button": "Importer un fichier CSV",
+        "cta": "Importer un fichier CSV",
+        "listDescription": "Mapper les colonnes et gérer les doublons"
+      },
+      "ofx": {
+        "title": "Relevé OFX ou QFX",
+        "listDescription": "Importer les opérations bancaires et de carte de crédit"
+      },
+      "ynab": {
+        "title": "Importer depuis YNAB",
+        "listDescription": "Comptes, opérations, catégories et tiers"
+      },
+      "budget-bakers-wallet": {
+        "title": "Wallet (BudgetBakers)",
+        "listDescription": "Multidevise avec rapprochement automatique des virements"
+      },
+      "ms-money": {
+        "title": "Microsoft Money",
+        "listDescription": "Importer un fichier .mny depuis Microsoft Money"
+      },
+      "messageImport": {
+        "title": "iOS message sync"
+      },
+      "importHistory": {
+        "title": "Historique des imports",
+        "listDescription": "Consulter les imports précédents et les éléments créés"
+      },
+      "import": {
+        "back": "Retour aux imports",
+        "whichImporterHint": "Vous ne savez pas lequel choisir ?",
+        "groups": {
+          "filesAndText": "Fichiers et texte",
+          "fromOtherApps": "Depuis d'autres applications",
+          "history": "Historique"
+        },
+        "requestMore": {
+          "title": "Besoin d'autres options ? Faites une demande ici"
+        }
+      },
+      "export": {
+        "cardTitle": "Exporter vos données",
+        "backupOrExportHint": "Vous hésitez entre Exportation et Sauvegarde ?",
+        "form": {
+          "title": "Exporter vos données",
+          "description": "Choisissez un format et les données à inclure. Le téléchargement démarrera dès votre confirmation.",
+          "confirmLabel": "Télécharger",
+          "confirmLoading": "Préparation…",
+          "back": "Retour aux exports"
+        },
+        "format": {
+          "label": "Format",
+          "json": "JSON",
+          "csv": "CSV",
+          "xlsx": "Excel"
+        },
+        "groups": {
+          "label": "Éléments à inclure",
+          "selectAll": "Tout sélectionner",
+          "deselectAll": "Tout désélectionner",
+          "transactions": "Opérations et comptes",
+          "transactionsDescription": "Opérations, comptes, historique des soldes, catégories, étiquettes, véhicules",
+          "budgets": "Suivis",
+          "budgetsDescription": "Suivis personnalisés avec catégories associées et totaux des dépenses",
+          "subscriptions": "Abonnements et rappels",
+          "subscriptionsDescription": "Abonnements récurrents et rappels de factures",
+          "investments": "Investissements",
+          "investmentsDescription": "Portefeuilles, avoirs, opérations d'investissement, virements"
+        },
+        "notifications": {
+          "success": "Export prêt – le téléchargement va commencer dans un instant.",
+          "successWithCount": "Export prêt – {count} lignes exportées.",
+          "failed": "Impossible d'exporter vos données. Veuillez réessayer.",
+          "downloadBlocked": "Export prêt, mais votre navigateur a bloqué le téléchargement. Vérifiez la barre d'adresse pour autoriser le téléchargement.",
+          "tooLarge": "Vos données sont trop volumineuses pour un seul export. Veuillez contacter le support."
+        },
+        "dateRange": {
+          "label": "Période (facultatif)",
+          "helper": "Seules les tables d'événements (opérations, historique des soldes, activité d'investissement) sont filtrées. Les comptes, catégories et autres tables de référence restent complets.",
+          "placeholder": "Toutes les dates",
+          "clear": "Effacer la période"
+        },
+        "accounts": {
+          "label": "Comptes",
+          "helper": "Exporter uniquement les comptes sélectionnés avec leurs opérations et leur historique de solde. Laissez vide pour exporter tous les comptes.",
+          "placeholder": "Tous les comptes"
+        },
+        "listDescription": "Télécharger un fichier ZIP pour tableurs, impôts ou migration"
+      }
+    }
+  }
+}

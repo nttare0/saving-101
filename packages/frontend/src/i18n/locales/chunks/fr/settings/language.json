@@ -1,0 +1,19 @@
+{
+  "settings": {
+    "language": {
+      "title": "Langue",
+      "description": "Langue d'affichage de l'application.",
+      "community": {
+        "title": "Traductions de la communauté",
+        "hint": "Traduit par des bénévoles sur Crowdin. Les éléments non traduits s'affichent en anglais."
+      },
+      "contribute": {
+        "title": "Traductions manquantes ou incorrectes ?",
+        "description": "Les langues de la communauté sont traduites sur Crowdin. Vous pouvez demander une nouvelle langue, suggérer des corrections ou traduire vous-même, sans aucune compétence en code.",
+        "requestNote": "Vous préférez ne pas utiliser Crowdin ? Demandez une langue sur notre {boardLink}.",
+        "requestNoteLink": "tableau des suggestions",
+        "action": "Contribuer sur Crowdin"
+      }
+    }
+  }
+}

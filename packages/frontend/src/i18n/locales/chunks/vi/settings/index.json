@@ -1,0 +1,25 @@
+{
+  "settings": {
+    "navigation": {
+      "currencies": "Tiền tệ",
+      "categories": "Danh mục",
+      "tags": "Thẻ",
+      "accountsGroups": "Nhóm tài khoản",
+      "importData": "Nhập/Xuất",
+      "ai": "AI",
+      "security": "Bảo mật",
+      "admin": "Quản trị",
+      "sharedWithMe": "Được chia sẻ với tôi",
+      "household": "Hộ gia đình",
+      "personalGroup": "Cá nhân",
+      "workspaceGroup": "Tài chính",
+      "appearance": "Giao diện",
+      "language": "Ngôn ngữ",
+      "general": "Tổng quan",
+      "payees": "Người nhận",
+      "planBilling": "Gói & thanh toán",
+      "collapse": "Thu gọn"
+    },
+    "backToSettings": "Quay lại Cài đặt"
+  }
+}

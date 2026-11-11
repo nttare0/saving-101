@@ -1,0 +1,35 @@
+{
+  "pages": {
+    "sharedWithMe": {
+      "title": "Partagés avec moi",
+      "loadError": "Impossible de charger les éléments partagés.",
+      "empty": {
+        "title": "Rien de partagé avec vous pour l'instant",
+        "description": "Lorsqu'un compte sera partagé avec vous, il apparaîtra ici."
+      },
+      "sections": {
+        "account": "Comptes",
+        "household": "Foyers",
+        "budget": "Suivis partagés avec vous"
+      },
+      "sharedBy": "Partagé par {handle}",
+      "viaHousehold": "Via le foyer {handle}",
+      "unnamedResource": "Sans titre",
+      "permissions": {
+        "read": "Lecture",
+        "write": "Écriture",
+        "manage": "Gérer"
+      },
+      "leave": "Quitter",
+      "leaveTitle": "Quitter le partage ?",
+      "leaveDescription": "Vous perdrez l'accès à {resource} appartenant à {owner}. Le propriétaire ne sera pas averti.",
+      "leaveConfirm": "Quitter",
+      "leaveSuccess": "Vous avez quitté le partage.",
+      "leaveError": "Impossible de quitter le partage.",
+      "pending": {
+        "heading": "Invitations en attente",
+        "review": "Examiner"
+      }
+    }
+  }
+}

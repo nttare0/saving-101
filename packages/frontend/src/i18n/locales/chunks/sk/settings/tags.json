@@ -1,0 +1,96 @@
+{
+  "settings": {
+    "tags": {
+      "title": "Značky",
+      "addButton": "Pridať značku",
+      "empty": "Zatiaľ žiadne značky. Vytvorte prvú značku a usporiadajte si transakcie.",
+      "tabs": {
+        "details": "Podrobnosti",
+        "reminders": "Pripomienky"
+      },
+      "form": {
+        "createTitle": "Vytvoriť značku",
+        "editTitle": "Upraviť značku",
+        "name": "Názov",
+        "namePlaceholder": "Názov značky",
+        "color": "Farba",
+        "icon": "Ikona",
+        "iconPlaceholder": "Vyberte ikonu",
+        "description": "Popis",
+        "descriptionPlaceholder": "Voliteľný popis",
+        "saveButton": "Uložiť",
+        "previewPlaceholder": "Názov značky"
+      },
+      "delete": {
+        "title": "Zmazať značku?",
+        "description": "Toto natrvalo zmaže „{name}\" a odstráni ho zo všetkých transakcií. Túto akciu nie je možné vrátiť späť.",
+        "deleteButton": "Zmazať",
+        "cancelButton": "Zrušiť"
+      },
+      "notifications": {
+        "createSuccess": "Značka vytvorená",
+        "createFailed": "Značku sa nepodarilo vytvoriť",
+        "updateSuccess": "Značka bola aktualizovaná",
+        "updateFailed": "Značku sa nepodarilo aktualizovať",
+        "deleteSuccess": "Značka bola zmazaná",
+        "deleteFailed": "Značku sa nepodarilo zmazať"
+      },
+      "reminders": {
+        "addButton": "Pridať pripomienku",
+        "empty": "Zatiaľ žiadne pripomienky. Vytvorte pripomienku a nechajte sa upozorniť na aktivitu tejto značky.",
+        "enabled": "Zapnuté",
+        "disabled": "Vypnuté",
+        "form": {
+          "createTitle": "Vytvoriť pripomienku",
+          "editTitle": "Upraviť pripomienku",
+          "type": "Typ pripomienky",
+          "typePlaceholder": "Vyberte typ",
+          "amountThreshold": "Hraničná suma",
+          "amountThresholdPlaceholder": "Zadajte hraničnú sumu",
+          "amountThresholdHint": "Upozorníme vás, keď výdavky s touto značkou prekročia túto sumu",
+          "frequency": "Frekvencia",
+          "frequencyPlaceholder": "Vyberte frekvenciu",
+          "dayOfMonth": "Deň v mesiaci",
+          "dayOfMonthPlaceholder": "Vyberte deň",
+          "dayOfMonthHint": "Pri mesiacoch s menším počtom dní sa použije posledný deň",
+          "isEnabled": "Zapnuté",
+          "saveButton": "Uložiť"
+        },
+        "types": {
+          "amountThreshold": "Hraničná suma",
+          "amountThresholdDescription": "Upozorniť, keď výdavky prekročia určitú sumu",
+          "existenceCheck": "Kontrola aktivity",
+          "existenceCheckDescription": "Upozorniť, keď sa objavia transakcie s touto značkou"
+        },
+        "frequencies": {
+          "immediate": "Okamžite",
+          "immediateDescription": "Spustí sa pri označení transakcií značkou (interval 24 hodín)",
+          "daily": "Denne",
+          "dailyDescription": "Kontrola každý deň",
+          "weekly": "Týždenne",
+          "weeklyDescription": "Kontrola každý pondelok",
+          "monthly": "Mesačne",
+          "monthlyDescription": "Kontrola v určený deň každého mesiaca",
+          "quarterly": "Štvrťročne",
+          "quarterlyDescription": "Kontrola každé 3 mesiace (jan, apr, júl, okt)",
+          "yearly": "Ročne",
+          "yearlyDescription": "Kontrola raz ročne v januári"
+        },
+        "delete": {
+          "title": "Zmazať pripomienku?",
+          "description": "Toto natrvalo zmaže túto pripomienku. Túto akciu nie je možné vrátiť späť.",
+          "deleteButton": "Zmazať",
+          "cancelButton": "Zrušiť"
+        },
+        "notifications": {
+          "createSuccess": "Pripomienka vytvorená",
+          "createFailed": "Pripomienku sa nepodarilo vytvoriť",
+          "updateSuccess": "Pripomienka aktualizovaná",
+          "updateFailed": "Pripomienku sa nepodarilo aktualizovať",
+          "deleteSuccess": "Pripomienka zmazaná",
+          "deleteFailed": "Pripomienku sa nepodarilo zmazať"
+        }
+      }
+    }
+  }
+}

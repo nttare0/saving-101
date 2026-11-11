@@ -1,0 +1,113 @@
+{
+  "pages": {
+    "importExport": {
+      "progress": {
+        "jobExpired": "Tugas impor kedaluwarsa atau tidak dapat ditemukan.",
+        "lostContact": "Kehilangan kontak dengan tugas impor."
+      },
+      "balanceDesync": {
+        "createdAccount": "{account}: the entered balance could not be applied after import, so this account balance may be incorrect.",
+        "linkedAccount": "{account}: the balance could not be updated after import, so this account balance may be incorrect.",
+        "unnamedAccount": "An account balance could not be updated after import and may be incorrect."
+      },
+      "jobFailure": {
+        "interrupted": "The import was interrupted by a server restart. Some rows may already have been imported; undo this import from the import history before retrying.",
+        "baseCurrencyChangeInProgress": "A base currency change is in progress. Wait for it to finish, then retry the import.",
+        "accountCurrencyMismatch": "Currencies must match to link an existing account: {mismatches}. Link an account with the same currency or create a new one.",
+        "categoryNameTooLong": "Category name \"{name}\" is too long ({length} characters); the maximum is {max}.",
+        "payeeNameTooLong": "Payee name \"{name}\" is too long ({length} characters); the maximum is {max}.",
+        "accountMappingMissing": "These accounts from the file have no mapping: {accounts}. Go back and map each of them.",
+        "linkedAccountNotFound": "The account linked to \"{account}\" no longer exists. Go back and choose another account or create a new one."
+      },
+      "importResults": {
+        "findTransfers": "Find transfers"
+      }
+    }
+  },
+  "importShared": {
+    "action": {
+      "createNew": "Buat baru",
+      "linkExisting": "Hubungkan ke yang sudah ada",
+      "skip": "Lewati"
+    },
+    "selectAction": "Pilih tindakan",
+    "resolvedCounterWord": "terselesaikan",
+    "quickActionsMenuLabel": "Tindakan massal",
+    "quickActions": {
+      "menu": "Tindakan"
+    },
+    "columns": {
+      "sourceName": "Nama sumber",
+      "currency": "Mata Uang",
+      "action": "Tindakan",
+      "target": "Target"
+    },
+    "account": {
+      "selectTarget": "Pilih akun",
+      "noMatchingCurrency": "Tidak ada akun dengan mata uang {currency}",
+      "willCreate": "Akan membuat {name} ({currency})",
+      "empty": "Tidak ada akun untuk dipetakan",
+      "willSkip": "Tidak akan diimpor"
+    },
+    "category": {
+      "selectTarget": "Pilih kategori",
+      "willCreate": "Akan membuat {name}",
+      "empty": "Tidak ada kategori untuk dipetakan"
+    },
+    "recalculateBalance": {
+      "label": "Perbarui saldo akun dari transaksi yang diimpor",
+      "hint": "Transaksi yang lebih lama dari transaksi terbaru akun yang sudah ada dianggap sebagai backfill dan tidak mengubah saldo terkininya.",
+      "loadFailedHint": "Tidak dapat memuat preferensi tersimpan Anda — kembali ke nonaktif secara default."
+    },
+    "balanceChanges": {
+      "title": "Perubahan saldo akun",
+      "columns": {
+        "account": "Akun",
+        "before": "Sebelum",
+        "after": "Sesudah",
+        "delta": "Perubahan",
+        "newRows": "Baris baru",
+        "backfillRows": "Baris backfill"
+      },
+      "newAccount": "Akun baru"
+    },
+    "duplicatesTable": {
+      "columnHeaders": {
+        "row": "Baris",
+        "match": "Cocok",
+        "csvTransaction": "Transaksi CSV",
+        "existingTransaction": "Transaksi yang Ada",
+        "csvShort": "CSV",
+        "existingShort": "Ada"
+      },
+      "matchTypeLabels": {
+        "exact": "Tepat",
+        "idMatch": "Cocok ID",
+        "fuzzy": "Samar"
+      },
+      "fieldLabels": {
+        "amount": "Jumlah",
+        "date": "Tanggal",
+        "note": "Catatan",
+        "category": "Kategori"
+      },
+      "importAnywayAriaLabel": "Tetap impor baris {row}"
+    },
+    "aiMapping": {
+      "action": "Cocokkan AI",
+      "tooltipCategories": "Biarkan AI menautkan setiap kategori sumber ke kategori yang ada yang paling mendekati. Baris yang sudah Anda tautkan ke kategori tetap tidak berubah.",
+      "failed": "Pencocokan AI gagal. Silakan coba lagi.",
+      "inProgress": "Pencocokan AI sedang berlangsung…"
+    },
+    "categoryPreset": {
+      "menuTrigger": "Terapkan pemetaan",
+      "currentLayout": "Tata letak file ini",
+      "savedTemplates": "Templat tersimpan",
+      "lastUsed": "Pemetaan terakhir digunakan",
+      "namePlaceholder": "Beri nama pemetaan ini",
+      "renameAria": "Ganti nama pemetaan",
+      "deleteAria": "Hapus pemetaan",
+      "confirmRenameAria": "Simpan nama"
+    }
+  }
+}

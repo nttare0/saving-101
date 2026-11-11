@@ -1,0 +1,63 @@
+{
+  "oauth": {
+    "authorize": {
+      "title": "{name} يريد الوصول الى بيانات MoneyMatter",
+      "redirect_notice": "After approval you will be redirected to {host}. Only continue if you recognize this address.",
+      "description": "هذا التطبيق يطلب هذه الأذونات:",
+      "approve": "قبول",
+      "deny": "رفض",
+      "footer": "يمكنك إلغاء الوصول في أي وقت من الإعدادات ← الذكاء الصناعي ← الموصلات (MCP).",
+      "error": "فشلت معالجة الطلب. الرجاء المحاولة مرة أخرى.",
+      "unexpected_response": "استجابة غير متوقعة من الخادم. الرجاء المحاولة مرة أخرى.",
+      "always_granted": "القبول دائما",
+      "optional": "اختياري",
+      "delete_warning": "القبول للتطبيقات التي تثق بها فقط",
+      "unknown_app": "تطبيق",
+      "steps": {
+        "permissions": "Permissions",
+        "tools": "Tools"
+      },
+      "continue": "Continue",
+      "back": "Back",
+      "toolsets": {
+        "intro": "Pick what {name} can work with. Each extra set adds tools that {name} loads into every chat.",
+        "add_all": "Add all",
+        "core_only": "Core only",
+        "always_on": "{count} tool, always on | {count} tools, always on",
+        "tool_count": "{count} tool | {count} tools",
+        "selected": "{count} tool selected | {count} tools selected",
+        "of_total": "of {total}",
+        "counter_label": "Selected tools",
+        "fits_cap": "Fits every app, including ChatGPT and VS Code Copilot ({cap} tools max).",
+        "over_cap": "Over {cap} tools. ChatGPT and VS Code Copilot won't load this many.",
+        "load_error": "Couldn't load the toolsets. Allow access to use the core tools, and reconnect later to add more."
+      }
+    },
+    "scopes": {
+      "finance_read": {
+        "label": "عرض بياناتك المالية",
+        "desc": "Read accounts, transactions, trackers, categories, tags, portfolios, and spending stats."
+      },
+      "finance_write": {
+        "label": "إنشاء وتعديل بياناتك المالية",
+        "desc": "Add and update transactions, trackers, subscriptions, investment positions, and more."
+      },
+      "finance_delete": {
+        "label": "حذف بياناتك المالية",
+        "desc": "Permanently remove transactions, accounts, trackers, and other records."
+      },
+      "profile_read": {
+        "label": "عرض ملفك الشخصي",
+        "desc": "شاهد اسمك، البريد الإلكتروني، والعملة الافتراضية."
+      },
+      "offline_access": {
+        "label": "البقاء متصلا في الخلفية",
+        "desc": "ابق الوصول نشطا دون سؤالك مرة أخرى في كل جلسة."
+      },
+      "unknown": {
+        "label": "أذونات إضافية",
+        "desc": "طلب التطبيق إذنًا لم يتعرف عليه MoneyMatter."
+      }
+    }
+  }
+}

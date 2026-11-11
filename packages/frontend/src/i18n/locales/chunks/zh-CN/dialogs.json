@@ -1,0 +1,878 @@
+{
+  "dialogs": {
+    "linkAccountGroup": {
+      "title": "链接账户分组",
+      "createNewGroup": "创建新分组",
+      "noGroup": "无分组",
+      "noGroupDescription": "保持此账户未分组",
+      "current": "当前",
+      "syncHint": "分组只组织您的帐户——更换账户分组不会影响银行同步。",
+      "accountsCount": "{count} 个账号 | {count} 个账号"
+    },
+    "reassignCategory": {
+      "title": "重新归类交易记录",
+      "description": "这个分类有 {count} 个交易记录，删除前请为“{categoryName}”设定新的分类。",
+      "newCategoryLabel": "新建分类",
+      "newCategoryPlaceholder": "选择分类",
+      "cancelButton": "取消",
+      "reassignButton": "重新归类并删除",
+      "reassignButtonLoading": "正在重新归类……",
+      "notifications": {
+        "success": "{count} 个交易记录已归类至 {newCategoryName}",
+        "error": "未能重新归类交易记录"
+      }
+    },
+    "syncConfirmation": {
+      "title": "最近完成的同步",
+      "description": "您在 {time} 前同步您的账号。请问您仍要继续同步吗？",
+      "syncAnyway": "继续同步",
+      "cancel": "取消",
+      "timeUnits": {
+        "someTime": "有些时间",
+        "hours": "{count} 小时 | {count} 小时",
+        "minutes": "{count} 分钟 | {count} 分钟"
+      }
+    },
+    "createPortfolio": {
+      "title": "创建投资组合",
+      "description": "创建新的投资组合来追踪您的持仓和交易。",
+      "assetSupportNotice": "目前支持股票、基金（ETF）和加密货币。债卷、期权和其他证券还在{roadmapLink}——您也可以{feedbackLink}。",
+      "assetSupportRoadmapLink": "未来方向的投票选项",
+      "assetSupportFeedbackLink": "建议新功能",
+      "form": {
+        "nameLabel": "投资组合名称",
+        "namePlaceholder": "我的投资组合",
+        "typeLabel": "投资组合类型",
+        "typePlaceholder": "选择投资组合类型",
+        "portfolioTypes": {
+          "investment": "投资",
+          "retirement": "退休金",
+          "savings": "储蓄",
+          "other": "其他"
+        },
+        "descriptionLabel": "描述（可选）",
+        "descriptionPlaceholder": "此组合的简要描述……",
+        "submitButton": "创建投资组合",
+        "submitButtonLoading": "创建中……"
+      },
+      "notifications": {
+        "success": "投资组合创建成功。",
+        "error": "创建组合失败。请重试。"
+      }
+    },
+    "editPortfolio": {
+      "title": "编辑投资组合",
+      "description": "更新您的组合名称、类型或描述。"
+    },
+    "deletePortfolio": {
+      "title": "删除投资组合",
+      "description": "此投资组合将被移到回收站并可在 30 天内恢复。超过 30 天后，该投资组合将被永久删除，包括所有持仓和交易记录。",
+      "cancelButton": "取消",
+      "deleteButton": "移动到回收站",
+      "deleteButtonLoading": "移动中……",
+      "notifications": {
+        "success": "投资组合已移动到回收站。您在 30 天内仍可从投资页面恢复。",
+        "error": "删除投资组合失败。"
+      }
+    },
+    "manageTransaction": {
+      "addTitle": "新增交易",
+      "editTitle": "编辑交易",
+      "detailsTitle": "交易详情",
+      "title": "管理交易",
+      "description": "创建或编辑交易",
+      "linkSection": {
+        "linkButton": "关联至另一方",
+        "title": "寻找此转账的另一方",
+        "description": "从另一方账户中选择对应的交易记录。两个记录将关联为一个转账——不会删除任何记录。",
+        "orDivider": "或者",
+        "linkHint": "已在另一个账户中记录了？可以选择合并两个记录。",
+        "unlinkButton": "取消关联交易",
+        "cancelLinkingAriaLabel": "取消关联",
+        "linkedTransactionLabel": "已关联交易"
+      },
+      "typeSelector": {
+        "expense": "支出",
+        "income": "收入",
+        "transfer": "转账",
+        "selectExpense": "选择支出",
+        "selectIncome": "选择收入",
+        "selectTransfer": "选择转账记录"
+      },
+      "recordList": {},
+      "form": {
+        "payeeLabel": "收款人",
+        "outOfWalletDocsLink": "What is out of wallet?",
+        "destinationGroupLabel": "钱去哪里了",
+        "paymentTypeLabel": "付款方式",
+        "noteLabel": "备注",
+        "notePlaceholder": "备注",
+        "addFieldsLabel": "添加",
+        "externalUrlLabel": "External URL",
+        "externalUrlPlaceholder": "Link to the order, booking or receipt page",
+        "externalReferenceLabel": "External reference",
+        "externalReferencePlaceholder": "Order number, invoice number, booking reference",
+        "location": {
+          "label": "Location",
+          "useCurrent": "Use my location",
+          "clear": "Clear location",
+          "latitudePlaceholder": "Latitude, e.g. 50.4501",
+          "longitudePlaceholder": "Longitude, e.g. 30.5234",
+          "unsupported": "Your browser does not support geolocation",
+          "denied": "Location access was denied. Allow it in your browser settings or enter coordinates manually",
+          "unavailable": "Could not determine your location. Try again or enter coordinates manually",
+          "pickOnMap": "Pick on map",
+          "picker": {
+            "title": "Pick a location",
+            "searchPlaceholder": "Search address or place",
+            "noResults": "No places found",
+            "searchFailed": "Search is unavailable right now. Try again in a moment",
+            "confirm": "Use this location",
+            "loadFailed": "Could not load the map. Check your connection and try again",
+            "retry": "Try again",
+            "consent": {
+              "title": "Map tiles come from OpenStreetMap",
+              "description": "Opening the map and searching addresses sends requests to openstreetmap.org, which sees your IP address. You can turn this off later in Settings.",
+              "enable": "Enable map",
+              "failed": "Could not save the setting. Try again"
+            }
+          }
+        },
+        "tagsLabel": "标签",
+        "originalAmountLabel": "原始金额",
+        "originalAmountPlaceholder": "外币金额",
+        "originalAmountTooltip": "当交易记录的货币与账户货币不同时，这是交易货币支付的实际金额。 主金额仍以账户货币记账，且不影响统计。",
+        "originalCurrencyLabel": "原始货币",
+        "originalCurrencyTriggerEmpty": "货币",
+        "originalCurrencyNone": "无货币",
+        "originalAmountSuggestHint": "{amount}——{date}的汇率",
+        "originalAmountSuggestApply": "应用",
+        "amountLabel": "金额",
+        "amountPlaceholder": "金额",
+        "categoryLabel": "分类",
+        "selectCategoryPlaceholder": "选择分类",
+        "targetAmountLabel": "目标金额",
+        "targetAmountPlaceholder": "目标金额",
+        "plannedLabel": "已规划",
+        "plannedUnavailableNotification": "此处没有已规划交易，因此选项不可选。",
+        "plannedTooltip": "记录即将到来的交易。您的余额在交易完成前将保持不变。",
+        "plannedConnectedAccountTooltip": "已连接银行的账户里只能有已规划交易。关闭此功能将会清除账户和日期。",
+        "plannedConfirmTooltip": "转账完成后请关闭此功能——保存将会把交易记录添加到您的余额中。",
+        "plannedAccountsUnlockedHint": "您可选择已连接银行的账户",
+        "plannedDatesUnlockedHint": "可选择未来的日期",
+        "datetimeLabel": "日期时间",
+        "splitInfo": "拆分成 {count} 个分类",
+        "editSplit": "编辑",
+        "splitPillLabel": "拆分",
+        "moreOptionsButton": "更多选项",
+        "closeButton": "关闭",
+        "deleteButton": "删除",
+        "deleteAriaLabel": "删除交易",
+        "deleteConfirmTitle": "确定要删除该交易吗？",
+        "deleteConfirmDescription": "此操作无法撤销。任何关联到它的拆分分类和退款关联也将被删除。",
+        "deleteBlockedByPayment": "Remove it from the payment first to delete it",
+        "createAriaLabel": "创建交易",
+        "editAriaLabel": "编辑交易",
+        "loadingButton": "加载中……",
+        "createButton": "创建",
+        "editButton": "编辑",
+        "duplicateButton": "Duplicate",
+        "createMore": {
+          "label": "Create more",
+          "createdToast": "Transaction created"
+        },
+        "fromAccountLabel": "从账户",
+        "toAccountLabel": "到账户",
+        "accountLabel": "账户",
+        "selectAccountPlaceholder": "选择账户",
+        "noAccountExists": "不存在帐户",
+        "addNewAccountButton": "添加新账户",
+        "createAccountLink": "创建账户",
+        "destinationTypeAccount": "账户",
+        "destinationTypePortfolio": "投资组合",
+        "toPortfolioLabel": "到投资组合",
+        "portfolioCashAlreadyReflectedLabel": "投资组合余额已包括这笔资金",
+        "portfolioCashAlreadyReflectedHint": "记录这笔转账以用于保留缴款历史，但不向投资组合增加现金。如果投资组合创建时已设定正确的当前余额，请使用此选项记录之前的交易。",
+        "selectPortfolioPlaceholder": "选择投资组合",
+        "noPortfoliosExist": "无投资组合",
+        "destinationTypeLoan": "贷款",
+        "toLoanLabel": "转到贷款",
+        "selectLoanPlaceholder": "选择贷款",
+        "noLoansExist": "无贷款",
+        "validation": {
+          "required": "此字段为必填",
+          "minValue": "金额必须大于或等于 0",
+          "futureDate": "日期必须早于今天。",
+          "latitudeRange": "Latitude must be between -90 and 90",
+          "longitudeRange": "Longitude must be between -180 and 180",
+          "locationPair": "Enter both latitude and longitude",
+          "maxLength": "Must not exceed {max} characters",
+          "httpUrl": "Enter a valid http(s) URL"
+        },
+        "attachments": {
+          "label": "Attachments",
+          "loading": "Loading attachments…",
+          "listLoadFailed": "Couldn't load attachments. Close and reopen this dialog to try again.",
+          "hint": "Up to {max} files, {size} each. JPEG, PNG, WebP or PDF.",
+          "trigger": {
+            "empty": "Add attachments",
+            "count": "{count} attachment | {count} attachments",
+            "uploading": "Uploading…"
+          },
+          "dropzone": {
+            "idle": "Drop files here or click to browse",
+            "drag": "Drop to attach"
+          },
+          "errors": {
+            "unsupportedType": "Some files were skipped: only JPEG, PNG, WebP and PDF files can be attached.",
+            "tooMany": "A transaction can have at most {max} attachments.",
+            "tooLarge": "\"{filename}\" is larger than {max} and was not uploaded.",
+            "upload": "Failed to upload the attachment.",
+            "delete": "Failed to delete the attachment."
+          },
+          "deleteConfirm": {
+            "title": "Delete attachment?",
+            "description": "\"{filename}\" will be permanently deleted. This action cannot be undone."
+          },
+          "deleteAll": "Delete all",
+          "deleteAllConfirm": {
+            "title": "Delete all attachments?",
+            "description": "All {count} files will be permanently deleted. This action cannot be undone."
+          },
+          "viewer": {
+            "loadFailed": "Could not load this file.",
+            "openInNewTab": "Open in new tab",
+            "download": "Download"
+          }
+        },
+        "paymentLegs": {
+          "severalAccountsPill": "Several accounts",
+          "paidFromLabel": "Paid from",
+          "receivedIntoLabel": "Received into",
+          "addAccount": "Add account",
+          "removeRow": "Remove account",
+          "syncedLock": "Synced from your bank – this amount can't be changed",
+          "editHint": "Removing an account deletes only its part. With one account left, this becomes a regular transaction.",
+          "syncedHint": "Only accounts you manage by hand can be added here.",
+          "splitUnavailableHint": "Splitting by category isn't available when paying from several accounts.",
+          "linkExisting": "Link existing",
+          "linkedChangesTitle": "Changes on save",
+          "linkedChangesTakes": "Takes this transaction's category, payee, note and tags.",
+          "linkedChangesKeeps": "Its account, amount and date stay the same.",
+          "linkedChangesUnlink": "Unlinking restores its original details.",
+          "unlink": "Unlink",
+          "convertedAmountLabel": "Amount in {currency}",
+          "rateInfo": "Exchange rate details",
+          "rateFromAmounts": "Rate from your amounts",
+          "marketRate": "Market rate",
+          "rateValue": "1 {from} = {rate} {to}",
+          "convertedHint": "Prefilled from the market rate. Change the {currency} amount to match what you actually paid.",
+          "noMarketRate": "No market rate for {currency} – enter the amount manually.",
+          "linkPicker": {
+            "title": "链接现有的交易",
+            "windowHint": "Within {days} days of {date}",
+            "loadError": "Couldn't load transactions",
+            "emptyTitle": "No transactions to link",
+            "emptyDescription": "There are no transactions of this type to link yet.",
+            "emptyFilteredDescription": "No transactions match these filters.",
+            "limitReached": "Selection limit reached",
+            "inOtherPayment": "Already part of another payment",
+            "hasSplits": "Split by category",
+            "refundLinked": "Linked to a refund",
+            "pending": "Not booked by the bank yet",
+            "transfer": "Transfers can't be linked",
+            "planned": "Planned transactions can't be linked",
+            "differentType": "Different type from this transaction",
+            "submit": "Link {count} transaction | Link {count} transactions"
+          }
+        }
+      },
+      "refundRecordsList": {
+        "filtersDialogTitle": "搜索条件",
+        "fromDateLabel": "起始日期",
+        "toDateLabel": "结束日期",
+        "amountFromLabel": "金额大于",
+        "amountFromPlaceholder": "金额>=",
+        "amountToLabel": "金额小于",
+        "amountToPlaceholder": "金额<=",
+        "resetButton": "重置",
+        "applyButton": "应用",
+        "noMoreTransactions": "已加载全部交易记录",
+        "noIncomeTransactions": "系统中没有未标记为退款的收入交易。创建交易以继续",
+        "noExpenseTransactions": "系统中没有未标记为退款的支出交易。创建交易以继续",
+        "noTransactions": "没有可选择的交易。创建交易以继续",
+        "resetFiltersButton": "重置搜索条件",
+        "recommendedLabel": "推荐",
+        "allTransactionsLabel": "所有交易",
+        "searchPlaceholder": "搜索备注……",
+        "filtersLabel": "搜索条件",
+        "noSearchResults": "没有匹配“{query}”的结果",
+        "clearSearchButton": "清除搜索"
+      },
+      "splitDialog": {
+        "title": "依分类拆分",
+        "description": "将此交易拆分到多个分类。任何未分配金额将计入主分类。",
+        "mainCategoryLabel": "主分类",
+        "selectCategoryPlaceholder": "选择分类",
+        "amountPlaceholder": "0",
+        "addCategoryButton": "添加分类",
+        "removeRowLabel": "移除类别",
+        "totalAmountLabel": "总金额",
+        "splitTotalLabel": "拆分总计",
+        "mainCategoryKeepsLabel": "主分类余额为",
+        "exceedsTransactionTotal": "拆分金额超过交易总额",
+        "cancelButton": "取消",
+        "removeSplitsButton": "移除拆分",
+        "saveSplitsButton": "保存拆分",
+        "errors": {
+          "amountMustBePositive": "金额必须是正数",
+          "duplicateCategory": "复制分类",
+          "cannotUseMainCategory": "不可在拆分内使用主分类"
+        }
+      },
+      "markAsRefund": {
+        "linkRefund": "链接退款",
+        "refundedByCreationHint": "“交易退款来源”将在交易创建后可用。",
+        "saveButton": "保存",
+        "confirmButton": "确认",
+        "linkedRefunds": "已链接退款",
+        "unlinkRefund": "取消链接退款",
+        "refundsPortion": "退款 {name} 的部分",
+        "selectWhichPartToRefund": "选择要退款的部分",
+        "transactionSplitInfo": "此交易被拆分为多个分类。选择您想要退款的分类。",
+        "mainCategoryLabel": "（主分类）",
+        "linkRemovedOnTypeChange": "由于交易类型已更改，退款链接已删除。",
+        "summaryEmpty": "尚未选择",
+        "sharePlaceholder": "Amount",
+        "shareInputLabel": "Refund share for {name}",
+        "shareErrorNonPositive": "Enter an amount above zero",
+        "shareErrorExceedsPurchase": "More than what is left of this purchase ({amount})",
+        "loadFailed": "Refund links couldn't be loaded, so refund editing is disabled.",
+        "externalLink": "Refund of a transaction outside the app",
+        "adjustAmountsLink": "Adjust amounts",
+        "adjustTitle": "Adjust how the refund is split",
+        "adjustDescription": "This {amount} refund is linked to {count} purchase. By default it counts as refunding the purchase in full, up to what the refund covers. Lower the number if the shop gave back only part of it. Reports then subtract exactly that amount from the purchase's category. | This {amount} refund is linked to {count} purchases. By default each purchase counts as refunded in full, up to what the refund covers. Lower a number if the shop gave back only part of that purchase. Reports then subtract exactly that amount from the purchase's category.",
+        "adjustYouPaid": "you paid {amount}",
+        "adjustRefundedLabel": "Refunded",
+        "adjustWholeButton": "Whole",
+        "adjustResetButton": "Reset to whole purchases",
+        "adjustHintWhole": "Whole purchase.",
+        "adjustHintRest": "Covers what is left of this purchase after other refunds.",
+        "adjustHintPartial": "Partial. {amount} of this purchase stays as spent.",
+        "adjustHintCross": "{share} ≈ {amount}, since the purchase is in another currency.",
+        "adjustWarningCross": "More than the purchase is worth at current rates (≈ {amount}). Check the amount.",
+        "nothingLeftHint": "Nothing of this refund is left. Untick a purchase or adjust amounts.",
+        "purchaseFullyRefundedHint": "This purchase is already fully refunded by other refunds.",
+        "purchasePaidBackHint": "This purchase is already fully paid back. Untick a refund first.",
+        "externalLinkReplaceNotice": "This refund is marked as paying back a purchase outside the app. Linking a purchase replaces that.",
+        "footerPurchasesTicked": "{count} purchase ticked | {count} purchases ticked",
+        "footerRefundsTicked": "{count} refund ticked | {count} refunds ticked",
+        "sharesInvalid": "Some amounts need fixing. Open “Adjust amounts”.",
+        "refundsOverPurchase": "These refunds add up to more than the purchase. Untick one.",
+        "sharesOverRefund": "The linked shares add up to more than this refund. Open the link to adjust them.",
+        "notCoveredWillUnlink": "Not covered by this refund, it will be unlinked on save",
+        "directionEmpty": "Tick earlier records this one refunds, or later records that refund it"
+      },
+      "refundInfo": {
+        "trigger": "它是如何运作的？",
+        "title": "关于退款交易",
+        "description": "此操作会将当前交易记录［支出/收入］链接称已有交易的退款。",
+        "howItWorks": {
+          "title": "工作方式：",
+          "expenseRefund": "链接支出交易的退款时：选择原始收入交易。",
+          "incomeRefund": "链接收入交易的退款时：选择原始支出交易。",
+          "noOriginal": "即使系统中没有对应的“原始”交易，您也可以将交易标记为退款。在系统内没有原始交易账户的情况下使用。"
+        },
+        "benefits": {
+          "title": "优势：",
+          "accuracy": "统计支出或收入时，排除非账户内的退款金额，以提高财务准确性。",
+          "tracking": "帮助追踪相关的交易以改善您的历史记录。"
+        },
+        "notes": {
+          "title": "重要提示：",
+          "recordKeeping": "此链接仅用于记录保存。",
+          "noBalanceAdjust": "链接退款金额不会影响原始交易金额。",
+          "canUnlink": "您可随时取消退款链接。"
+        },
+        "examples": {
+          "title": "例：",
+          "customerPayment": "退还客户付款：创建支出交易并将其与原始收入交易链接。",
+          "vendorRefund": "从供应商收取退款：创建收入交易并将其与原始支出交易链接。",
+          "noOriginalTx": "记录没有原始交易的退款：有时您可能需要为系统中不存在的交易记录退款。例如您要记录一笔之前未记录的现金支付退款，您仍可创建退款记录。即使原始交易没有被系统记录，也能帮助您保持准确、完整的财务记录。"
+        }
+      },
+      "transferRecordsList": {
+        "filtersDialogTitle": "搜索条件",
+        "fromDateLabel": "起始日期",
+        "toDateLabel": "结束日期",
+        "amountFromLabel": "从金额",
+        "amountFromPlaceholder": "最少",
+        "amountToLabel": "至金额",
+        "amountToPlaceholder": "最多",
+        "resetButton": "重置",
+        "applyButton": "应用",
+        "recommendedLabel": "推荐",
+        "allTransactionsLabel": "所有交易",
+        "noMoreTransactions": "无更多交易",
+        "noIncomeTransactions": "未找到收入交易。请尝试修改搜索条件。",
+        "noExpenseTransactions": "未找到支出交易。请尝试修改搜索条件。",
+        "noTransactions": "未找到交易。请尝试修改搜索条件。",
+        "resetFiltersButton": "重置搜索条件"
+      },
+      "portfolioLinked": {
+        "title": "链接至投资组合的交易",
+        "linkedAs": "此次{type}交易被链接到",
+        "deposit": "存款",
+        "withdrawal": "提现",
+        "unlinkButton": "取消链接到投资组合",
+        "unlinkWarning": "取消链接将减少投资组合 {portfolio} 的余额。",
+        "unlinkWarningNoCash": "此转账未改变 {portfolio} 的余额，因此取消链接不会影响余额。",
+        "noCashBadge": "No cash impact",
+        "unlinkDescription": "原始交易详情将被恢复。",
+        "cancelButton": "取消",
+        "confirmUnlink": "确认取消链接"
+      },
+      "ventureLinked": {
+        "title": "链接至风险投资的交易",
+        "description": "此交易与风险投资关联。",
+        "editHint": "在相关的风险投资时间线中编辑交易或取消链接交易。",
+        "openVenture": "打开风险投资"
+      },
+      "vehicleLinked": {
+        "title": "车辆支出调整",
+        "description": "此交易记录是对 {name} 手动修改数值的审计跟踪记录。",
+        "editHint": "要更改金额、日期或删除此覆盖项，请在该车辆的详情页面内管理。",
+        "openVehicle": "打开 {name}"
+      },
+      "templates": {
+        "trigger": "模板",
+        "filterPlaceholder": "查找模板……",
+        "emptyState": "模板会使用您经常填写的信息填充此表单——金额、账户、分类、收款人、标签、备注等。模板不会自行添加任何内容；如果是定期重复的交易，请使用“定期付款”。",
+        "noMatches": "没有匹配的模板。",
+        "loadError": "无法加载您的模板。",
+        "saveCurrent": "将当前保存为模板",
+        "updateApplied": "编辑 '{name}'",
+        "saveAsNew": "另存为",
+        "newTemplate": "创建模版",
+        "use": "使用模板",
+        "edit": "编辑",
+        "tapHint": "点击模板以填写表单",
+        "toggleDetails": "显示详情",
+        "noAmount": "未保存金额",
+        "keepsAccount": "保留所选账户",
+        "stale": {
+          "categoryDeleted": "分类已删除",
+          "accountUnavailable": "账户不可用"
+        },
+        "removeAriaLabel": "删除模板，还原表单",
+        "announceApplied": "已应用 {name} — {count} 个字段已填写。金额为空。| 已应用 {name} — {count} 个字段已填写。金额为空。",
+        "announceAppliedWithAmount": "已应用 {name} — {count} 个字段已填写。金额已设定为 {amount}。 | 已应用 {name} — {count} 个字段已填写。金额已设定为 {amount}。",
+        "categoryDeletedHint": "此模板的分类已删除——请选择新的分类。",
+        "applyConfirmTitle": "应用模板？",
+        "applyConfirmDescription": "应用将替换您的拆分和退款链接。",
+        "toasts": {
+          "savedFromForm": "已保存 “{name}”——现为当前模板。",
+          "saved": "模板已保存。",
+          "deleted": "模板已删除。"
+        },
+        "form": {
+          "titleNew": "创建模版",
+          "titleEdit": "编辑模板",
+          "titleSaveCurrent": "另存为模板",
+          "nameLabel": "名称",
+          "namePlaceholder": "例如：早晨咖啡",
+          "typeLabel": "分类",
+          "keepAccount": "保留我使用时选择的账户",
+          "noAmount": "不保存金额——我将每次输入金额",
+          "delete": "删除模板",
+          "save": "保存模版",
+          "deleteConfirmTitle": "删除 '{name}'？",
+          "deleteConfirmDescription": "此模板将被删除。使用此模板创建的交易不受影响。",
+          "duplicateName": "你已经有应该叫 “{name}” 的模板。",
+          "originalCurrencyLabel": "Original amount currency",
+          "originalCurrencyPlaceholder": "Select a currency"
+        },
+        "errors": {
+          "create": "无法保存模板。请重试。",
+          "update": "无法更新模板。请重试。",
+          "delete": "无法删除模板。请重试。"
+        }
+      }
+    },
+    "portfolioTransfer": {
+      "portfolio": {
+        "title": "从投资组合转账",
+        "description": "从该投资组合转账去另一个投资组合或账户。"
+      },
+      "account": {
+        "title": "从账户转账",
+        "description": "从该账户转账去投资组合。"
+      }
+    },
+    "addSymbols": {
+      "title": "添加证券代码",
+      "searchLabel": "搜索证券代码或名称",
+      "searchPlaceholder": "AAPL",
+      "searchError": "无法搜索证券。",
+      "addedIndicator": "（已添加）",
+      "noResults": "查无结果。",
+      "emptyState": {
+        "title": "搜索证券代码",
+        "description": "输入股票代码或名称，以查找可添加到此投资组合的股票或加密货币。"
+      },
+      "noResultsHint": "请尝试输入其他股票代码或名称，或修改上方的搜索条件。",
+      "clearSearch": "清除搜索条件",
+      "endOfList": "已加载全部",
+      "assetClass": {
+        "crypto": "加密货币"
+      },
+      "filters": {
+        "all": "全部",
+        "stocks": "股票",
+        "crypto": "加密货币"
+      },
+      "marketCapRank": "#{rank}",
+      "notifications": {
+        "success": "已添加持仓。",
+        "error": "无法添加持仓。"
+      },
+      "cryptoProviderNotConfigured": "无法搜索加密货币。请在您的环境内设置 COINGECKO_API_KEY。"
+    },
+    "deleteInvestmentTransaction": {
+      "title": "删除交易",
+      "description": "确定要删除此交易吗？此操作无法撤消。",
+      "cancelButton": "取消",
+      "deleteButton": "删除",
+      "deleteButtonLoading": "正在删除……",
+      "notifications": {
+        "success": "已成功删除交易。",
+        "error": "删除交易失败。"
+      }
+    },
+    "categoryForm": {
+      "title": {
+        "edit": "编辑分类",
+        "add": "添加分类"
+      },
+      "description": {
+        "addSubcategory": "在 {parentName} 内添加子分类",
+        "edit": "更新分类名称或设置",
+        "add": "创建新分类"
+      },
+      "nameLabel": "分类名称",
+      "namePlaceholder": "输入分组名称",
+      "colorLabel": "颜色",
+      "inheritParentColor": "使用上级颜色",
+      "iconLabel": "图标",
+      "iconPlaceholder": "选择图标",
+      "defaultTagsLabel": "Default tags",
+      "defaultTagsPlaceholder": "Select tags",
+      "defaultTagsHint": "Added to a transaction when you pick this category.",
+      "applyTagsOnAiLabel": "Also apply when AI categorizes a transaction",
+      "applyTagsOnAiHint": "Tags stay on the transaction if you change its category later.",
+      "settingsDivider": "设置",
+      "saveButton": "保存",
+      "createButton": "创建",
+      "notifications": {
+        "updated": "分类已更新",
+        "created": "分类已创建",
+        "saveFailed": "无法保存分类",
+        "unexpectedError": "未知错误"
+      }
+    },
+    "addCurrency": {
+      "title": "添加新货币",
+      "description": "选择要添加的货币",
+      "selectPlaceholder": "选择货币",
+      "addButton": "添加",
+      "notifications": {
+        "success": "货币添加成功！",
+        "error": "未知错误。未添加货币。"
+      }
+    },
+    "accountGroups": {
+      "createDialog": {
+        "title": "创建分组",
+        "nameLabel": "分组名",
+        "namePlaceholder": "投资",
+        "createButton": "创建",
+        "subgroupTitle": "New subgroup",
+        "insideLabel": "Inside",
+        "subgroupNamePlaceholder": "e.g. Savings",
+        "createSubgroupButton": "Create subgroup"
+      }
+    },
+    "directCashTransaction": {
+      "title": "现金交易",
+      "description": "为投资组合添加存款或提现"
+    },
+    "pickTransaction": {
+      "title": "选择交易"
+    },
+    "attachInvoice": {
+      "title": "Attach invoice",
+      "description": "Drop an invoice or receipt. We read the total, date and merchant, then find the transaction it belongs to.",
+      "resultsTitle": "Pick the transaction",
+      "resultsDescription": "No transactions match this invoice. | {count} transaction could belong to this invoice. | {count} transactions could belong to this invoice.",
+      "analyzing": "Reading the invoice and searching your transactions…",
+      "attaching": "Attaching the invoice to the transaction…",
+      "privacyNote": "The file goes to the AI provider for reading only. Nothing is saved until you link it to a transaction.",
+      "aiPausedHint": "Invoice reading is paused. Open the AI badge above to see your options.",
+      "direction": {
+        "paid": "I paid this",
+        "gotPaid": "I got paid",
+        "paidHint": "We search your expenses for the payment.",
+        "gotPaidHint": "We search your income for the payment."
+      },
+      "invoice": {
+        "number": "Invoice №",
+        "issued": "Issued",
+        "total": "Total"
+      },
+      "fixDetails": "Fix details",
+      "form": {
+        "vendor": "Merchant",
+        "vendorPlaceholder": "Enter the merchant name",
+        "customer": "Customer",
+        "customerPlaceholder": "Who the invoice is billed to",
+        "total": "Total",
+        "totalPlaceholder": "0.00",
+        "currency": "Currency",
+        "currencyPlaceholder": "EUR",
+        "issued": "Invoice date",
+        "submit": "Search again"
+      },
+      "signals": {
+        "amountExact": "Amount exact",
+        "amountClose": "{diff} off",
+        "amountConverted": "Matches after conversion",
+        "amountUnknown": "Amount not compared",
+        "sameDay": "Same day as invoice",
+        "daysAfter": "{count} day after invoice | {count} days after invoice",
+        "daysBefore": "{count} day before invoice | {count} days before invoice",
+        "merchant": {
+          "match": "Merchant matches",
+          "partial": "Merchant looks similar",
+          "none": "Different merchant",
+          "unknown": "No payee set"
+        },
+        "customer": {
+          "match": "Customer matches",
+          "partial": "Customer looks similar",
+          "none": "Different customer",
+          "unknown": "No payee set"
+        }
+      },
+      "alreadyHasFile": "Already has a file",
+      "bestMatch": "Best match · {score}%",
+      "empty": {
+        "title": "No matching transaction",
+        "description": "We looked for about {total} from 14 days before to 30 days after the invoice date, in all accounts. The payment may not be imported yet, or the invoice was read wrong."
+      },
+      "searchManually": "Search manually",
+      "createTransaction": "创建交易",
+      "link": "Link invoice",
+      "linked": "Invoice linked to the transaction",
+      "created": "Transaction created and invoice attached",
+      "openTransaction": "Open transaction",
+      "confirm": {
+        "title": "Link invoice to this transaction?",
+        "description": "{filename} will be attached to the {amount} transaction from {date}. You can remove it from the transaction later."
+      },
+      "errors": {
+        "match": "Could not read the invoice. Try again or use a clearer file.",
+        "link": "Could not link the invoice. Try again.",
+        "detailsNotFilled": "Invoice attached, but its details couldn't be copied to the transaction. Add them manually if you need them.",
+        "createdNotAttached": "Transaction created, but the invoice wasn't attached. Pick it from the list to attach it.",
+        "rematch": "Could not search again. Check the details and retry.",
+        "openTransaction": "Couldn't open the transaction. Find it in your transactions list."
+      },
+      "trial": {
+        "left": "1 free try left of {limit} | {count} free tries left of {limit}",
+        "spent": "You've used all your free tries. Upgrade to Plus to keep attaching invoices with AI."
+      }
+    },
+    "exchangeCurrency": {
+      "title": "兑换货币",
+      "description": "在您的投资组合内兑换不同的货币"
+    },
+    "shareAccountDialog": {
+      "title": "分享账户",
+      "description": "邀请他人访问 {name}。",
+      "emailLabel": "收件人邮箱",
+      "emailPlaceholder": "name{'@'}example.com",
+      "permissionLabel": "权限",
+      "permissions": {
+        "read": "只读",
+        "write": "读取并添加交易",
+        "manage": "全部权限"
+      },
+      "writeScopeLabel": "交易记录编辑范围",
+      "writeScope": {
+        "all": "账户上的所有交易",
+        "own": "只有他们创建的交易"
+      },
+      "householdOverrideHint": "{invitee} 已在您的家庭成员中，并拥有 {permission} 访问权限。此次共享将覆盖该账户的访问权限。",
+      "householdLookupFailed": "无法检查家庭成员关系——将继续操作，不显示覆盖提示。",
+      "cancel": "取消",
+      "send": "发送邀请",
+      "success": "邀请请求已提交。如果使用该电邮的用户已在本站注册，他们将收到邀请。",
+      "error": "无法发送邀请。请重试。",
+      "emailSendFailedWarning": "邀请已保存，但无法发送电邮。收件人可能没有收到通知——请稍后再试。"
+    },
+    "shareBudgetDialog": {
+      "title": "共享预算",
+      "description": "邀请他人读取预算并添加他们的交易记录进 {name}。",
+      "emailLabel": "电邮",
+      "emailPlaceholder": "收件人邮箱",
+      "permissionLabel": "权限",
+      "permissions": {
+        "read": "仅浏览",
+        "write": "附加自己的交易",
+        "manage": "管理"
+      },
+      "cancel": "取消",
+      "send": "发送邀请",
+      "success": "已发送邀请。",
+      "error": "无法发送邀请。",
+      "emailSendFailedWarning": "已创建邀请，但无法发送电子邮件。"
+    },
+    "shareInvitationDialog": {
+      "titlePending": "{owner} 想与您共享",
+      "titleAccepted": "已接受邀请",
+      "titleDeclined": "已拒绝邀请",
+      "titleCurrencyMismatch": "基础货币不匹配",
+      "titleLoading": "正在加载邀请……",
+      "titleLoadError": "无法加载邀请",
+      "titleNotFound": "邀请不可用",
+      "loadErrorBody": "获取此邀请时出现问题。请检查您的网络连接后重试。",
+      "retry": "重试",
+      "pendingMessage": "您已受邀访问 {resource}。请查看以下详细信息，并选择您的处理方式。",
+      "acceptedBody": "您现在可以访问此共享资源。打开它开始合作。",
+      "declinedBody": "我们已通知发送者。",
+      "currencyMismatch": "您的基础货币必须为 {currency} 才能接受此邀请。请更新您的基础货币后重试。",
+      "currencyMismatchUnknown": "您的基础货币必须匹配邀请者才能接受此邀请。",
+      "acceptDataRefreshFailed": "邀请已接受，但刷新账户失败。如果页面上的信息看起来未更新，请重新加载页面。",
+      "notFoundBody": "此邀请可能已过期、已被撤销，或已处理。如果您仍需要访问权限，请联系发送者重新发送邀请。",
+      "unexpectedError": "出错了。请稍后重试。",
+      "loading": "正在加载邀请……",
+      "householdResourceLabel": "您所有的账户和共享的交易",
+      "permissionLabel": "权限范围",
+      "expiresLabel": "有效期",
+      "permissions": {
+        "read": "只读",
+        "write": "读取 + 写入",
+        "manage": "管理"
+      },
+      "unknownOwner": "MoneyMatter用户",
+      "unknownResource": "一个共享资源",
+      "accept": "接受",
+      "decline": "拒绝",
+      "close": "关闭",
+      "goToAccount": "前往账户",
+      "goToBudget": "前往预算",
+      "updateBaseCurrency": "更新基础货币",
+      "acceptSuccess": "您现在是此共享资源的成员。",
+      "acceptError": "无法接受邀请。请重试。",
+      "declineSuccess": "已拒绝邀请。",
+      "declineError": "无法拒绝邀请。请重试。",
+      "backInvite": {
+        "prompt": "也想与 {owner} 共享您的家庭账户吗？他们将能够查看您的账户并进行操作。",
+        "permissionLabel": "他们的权限",
+        "writeScopeLabel": "写入范围",
+        "permissions": {
+          "read": "只读",
+          "write": "写入"
+        },
+        "writeScope": {
+          "all": "任何账户",
+          "own": "只有他们创建的交易"
+        },
+        "send": "共享回对方",
+        "notNow": "以后再说",
+        "done": "完成",
+        "sentTitle": "已发送邀请",
+        "sentBody": "我们已发送邀请给 {owner}。他们在接受邀请后即可访问。",
+        "success": "已发送邀请。",
+        "deliveryFailed": "已创建邀请，但无法发送电子邮件。请稍后再试。",
+        "emailNotConfigured": "邀请已创建，但此服务器无法发送邮件。请对方在应用中查看邀请。",
+        "error": "无法发送邀请。"
+      }
+    },
+    "categoryExclusions": {
+      "title": "排除分类",
+      "description": "从这个组件的图表和总额隐藏",
+      "menuItem": "排除分类",
+      "nothingExcluded": "未排除任何内容。此组件统计全部分类。",
+      "excludedTag": "已排除",
+      "stopExcluding": "停止排除 {name}",
+      "badgeTooltip": "此组件已排除 1 项分类 | 此组件已排除 {count} 项分类",
+      "andMore": "以及其他 {count} 项",
+      "clearAll": "全部清除",
+      "countExcluded": "此已排除 1 项分类 | 已排除 {count} 项分类"
+    },
+    "subscriptionMarkPaid": {
+      "title": "标记付款",
+      "description": "为 {name} 记录付款",
+      "chooseDescription": "您想要如何为 {name} 记录付款？",
+      "amountLabel": "金额",
+      "amountPlaceholder": "0.00",
+      "crossCurrencyEstimate": "~{sourceAmount} {sourceCurrency} → {accountCurrency} （估算）",
+      "dateLabel": "付款日期",
+      "accountLabel": "账户",
+      "accountPlaceholder": "选择账户",
+      "confirm": "确认",
+      "confirmMarkOnly": "标记为已支付",
+      "recordModeMarkTitle": "只标记为已支付",
+      "recordModeMarkDescription": "仅更新计划——不创建交易记录。",
+      "recordModeTransactionTitle": "创建交易",
+      "recordModeTransactionDescription": "在账户中记录一笔实际支出，同时关联该账户以便用于未来的付款。",
+      "useExistingTitle": "Use the existing payment",
+      "useExistingDescription": "A transaction linked to this subscription is already recorded in this period. Nothing new is added to your account.",
+      "recordNewTitle": "Record a new payment",
+      "recordNewDescription": "Adds another transaction for this period. The existing payment stays as it is.",
+      "linkedPaymentDescription": "{name} already has a payment in this period. Choose how to mark it paid.",
+      "confirmUseExisting": "Use this payment",
+      "previewUnavailable": "Couldn't check for payments already recorded in this period. Review the details before recording a new one.",
+      "notifications": {
+        "markedAsPaid": "已记录付款",
+        "markAsPaidFailed": "无法记录付款"
+      }
+    },
+    "loanPayment": {
+      "title": "贷款",
+      "description": "记录或编辑此贷款的付款。",
+      "createTitle": "记录付款",
+      "editTitle": "编辑贷款付款",
+      "payingTo": "付款给",
+      "fromAccountLabel": "从账户",
+      "fromAccountPlaceholder": "选择账户",
+      "amountLabel": "金额",
+      "amountPlaceholder": "0.00",
+      "targetAmountLabel": "适用于贷款的金额",
+      "targetAmountPlaceholder": "0.00",
+      "targetAmountTooltip": "原始账户货币为 {source}，贷款货币为 {loan}。我们会根据当前汇率预先填入金额——如果您的银行采用了不同的汇率，请进行调整。",
+      "saveButton": "保存",
+      "recordButton": "记录",
+      "overdrawWarning": "金额已超过 {account} 的余额，将导致账户透支。",
+      "preAnchorWarning": "此笔付款的日期早于贷款余额基准日期（{date}），因此将保存为历史记录，并不会减少未偿还余额。",
+      "overpayError": "付款金额超过贷款余额（{max}）。",
+      "deleteConfirmTitle": "删除这笔付款？",
+      "deleteConfirmDescription": "转账双方的记录都将被删除，贷款余额将会恢复。此操作无法撤销。",
+      "preAnchorHint": "此日期早于贷款余额快照的日期，因此此笔付款不会改变未偿还余额——该笔付款已计入期初余额。",
+      "unlinkButton": "取消链接",
+      "unlinkConfirmTitle": "取消此交易的链接？",
+      "unlinkConfirmDescription": "此交易将保留为普通支出，但会从该贷款中移除。贷款余额将重新计算。",
+      "unlinkSuccess": "付款已取消链接",
+      "unlinkError": "无法取消链接。请重试。",
+      "syncedAccountHint": "从银行同步账户支付？使用\"链接付款“来关联对应导入的支出交易。",
+      "sourceInfo": {
+        "trigger": "了解更多",
+        "title": "为什么只有这些账户？",
+        "manualOnly": "此处只列出您手动管理的账户。",
+        "whySynced": "银行同步账户中的交易记录会直接从您的银行导入。在这里记录新的贷款还款会与您银行将要同步的交易记录重复。",
+        "howToLink": "因此，请在完成银行同步后，打开对应的交易记录并选择“链接交易”以关联至这笔贷款。这样可以确保只有一条交易记录是唯一真实来源，并正确更新贷款余额。"
+      }
+    }
+  }
+}

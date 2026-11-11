@@ -1,0 +1,142 @@
+{
+  "pages": {
+    "importExport": {
+      "budgetBakersWalletImport": {
+        "pageTitle": "Імпорт з Wallet (BudgetBakers)",
+        "pageDescription": "Імпортуйте транзакції, експортовані із застосунку Wallet від BudgetBakers.",
+        "fileUpload": {
+          "stepTitle": "Завантажте CSV-файл Wallet",
+          "description": "Завантажте один або кілька CSV-файлів експорту Wallet для імпорту транзакцій. Усі файли повинні мати однакові стовпці.",
+          "maxSize": "Максимальний розмір файлу: 10 МБ",
+          "parsing": "Обробка…",
+          "errors": {
+            "invalidFormatNamed": "«{name}» не є CSV-файлом.",
+            "parseFailed": "Не вдалося розібрати файл. Перевірте формат та спробуйте знову.",
+            "merge": {
+              "emptySelection": "Виберіть принаймні один CSV-файл",
+              "fileReadFailed": "Не вдалося прочитати «{file}»",
+              "fileEmpty": "«{file}» порожній",
+              "fileNoDataRows": "«{file}» не містить рядків даних",
+              "headerMismatch": "Стовпці у «{file}» не збігаються з першим файлом. Усі файли повинні мати однакові стовпці в однаковому порядку.",
+              "forbiddenHeader": "«{file}» використовує зарезервовану назву стовпця",
+              "tooManyRows": "Вибрані файли містять більше {max} рядків. Видаліть деякі файли або рядки та спробуйте знову.",
+              "parseError": "Не вдалося обробити «{file}». Переконайтеся, що це коректний CSV-файл."
+            }
+          },
+          "continue": "Продовжити"
+        },
+        "preview": {
+          "accountsHelper": "Налаштуйте, як кожен виявлений рахунок буде оброблятися під час імпорту.",
+          "accounts": "Рахунки",
+          "transactions": "Транзакції",
+          "rowPrefix": "Рядок {rowIndex}: "
+        },
+        "accountRow": {
+          "transactionsCount": "{count} транзакція | {count} транзакції | {count} транзакцій",
+          "modeLabel": "Дія",
+          "modePlaceholder": "Оберіть дію",
+          "modeCreateNew": "Створити новий рахунок",
+          "modeLinkExisting": "Зіставити з наявним рахунком",
+          "currentBalanceLabel": "Поточний баланс (необов'язково)",
+          "currentBalancePlaceholder": "напр. 1234.56",
+          "currentBalanceHint": "Залиште порожнім, щоб почати із суми імпортованих транзакцій.",
+          "linkTargetLabel": "Наявний рахунок",
+          "linkTargetPlaceholder": "Оберіть рахунок",
+          "keepBalanceNote": "Поточний баланс наявного рахунку буде збережено. Історію буде дозавантажено."
+        },
+        "execute": {
+          "starting": "Початок імпорту…",
+          "progressCount": "{processed} / {total}",
+          "statusQueued": "У черзі",
+          "statusRunning": "Імпортування…",
+          "statusCompleted": "Завершено",
+          "statusFailed": "Помилка",
+          "failed": "Помилка імпорту.",
+          "partialImportNote": "Деякі рядки могли бути вже імпортовані до цієї помилки. Повторний імпорт може створити дублікати."
+        },
+        "done": {
+          "successTitle": "Імпорт завершено",
+          "successDescription": "Ваші дані Wallet успішно імпортовано.",
+          "partialTitle": "Імпортовано з помилками: {count}",
+          "partialDescription": "Деякі рядки успішно імпортовано, але інші зустріли помилки.",
+          "allFailedTitle": "Імпорт не вдався",
+          "allFailedDescription": "Жодні рядки не були імпортовані. Перевірте помилки нижче та спробуйте ще раз.",
+          "accountsCreated": "Рахунків створено",
+          "accountsLinked": "Рахунків зіставлено",
+          "accountsSkipped": "Рахунків пропущено",
+          "categoriesCreated": "Категорій створено",
+          "tagsCreated": "Тегів створено",
+          "transactionsImported": "Транзакцій імпортовано",
+          "transfersImported": "Переказів імпортовано",
+          "outOfWalletImported": "Поза гаманцем імпортовано",
+          "mergedIntoPlanned": "Об'єднано із запланованими",
+          "duplicatesSkipped": "Дублікатів пропущено",
+          "errorsTitle": "Не вдалося імпортувати {count} рядок | Не вдалося імпортувати {count} рядки | Не вдалося імпортувати {count} рядків",
+          "errorsOverflow": "+{count} більше",
+          "errors": {
+            "rowImportFailed": "Не вдалося імпортувати цей рядок.",
+            "payeeDefaultTagsFailed": "Транзакцію імпортовано, але теги отримувача за замовчуванням не вдалося застосувати.",
+            "accountBalanceDesync": "Не вдалося оновити баланс рахунку після імпорту, тож він може бути некоректним."
+          },
+          "balanceWarningTitle": "Баланс деяких рахунків може бути некоректним",
+          "balanceWarningBody": "Не вдалося скинути баланс одного або кількох наявних рахунків після імпорту. Перевірте відповідні рахунки.",
+          "viewTransactions": "Переглянути транзакції",
+          "importAnother": "Імпортувати інший файл"
+        },
+        "stepper": {
+          "steps": {
+            "upload": "Завантажити",
+            "resolve": "Вирішити",
+            "review": "Перегляд",
+            "results": "Готово"
+          }
+        },
+        "resolve": {
+          "resolvedCounterWord": "вирішено",
+          "accounts": {
+            "sectionTitle": "Рахунки",
+            "currentBalanceLabel": "Поточний баланс (необов'язково)",
+            "currentBalancePlaceholder": "Залиште порожнім, щоб використати імпортовану суму",
+            "willCreateHint": "Буде створено новий рахунок {currency}",
+            "skippedNote": "{count} рахунків буде пропущено. Їхні транзакції — і будь-які перекази до них або з них — не будуть імпортовані."
+          },
+          "categories": {
+            "sectionTitle": "Категорії"
+          },
+          "quickActions": {
+            "mapExactMatches": "Зіставити точні збіги",
+            "createNewForUnmatched": "Створити нові для незіставлених",
+            "reset": "Скинути",
+            "tooltips": {
+              "mapExactMatchesAccounts": "Зіставте кожен рахунок, назва якого точно збігається з наявним рахунком",
+              "mapExactMatchesCategories": "Зіставте кожну категорію, назва якої точно збігається з наявною категорією",
+              "createNewForUnmatched": "Встановіть усі невирішені рядки на створення нового запису",
+              "reset": "Очистіть усі вибори та повторно виконайте автоматичне зіставлення"
+            }
+          },
+          "footer": {
+            "back": "Назад",
+            "continue": "Продовжити"
+          }
+        },
+        "review": {
+          "transactions": "Транзакції",
+          "transfersDetected": "Виявлено переказів",
+          "outOfWallet": "Поза гаманцем",
+          "duplicatesSkipped": "Дублікатів пропущено",
+          "willImport": "Буде імпортовано",
+          "warningsTitle": "Попереджень: {count}",
+          "rowPrefix": "Рядок {rowIndex}:",
+          "duplicatesTitle": "Можливих дублікатів: {count}",
+          "duplicatesHint": "Позначені рядки буде імпортовано; непозначені дублікати пропущені.",
+          "back": "Назад",
+          "importButton": "Імпортувати {count} транзакцій",
+          "importing": "Імпортування…"
+        },
+        "errors": {
+          "fileMissing": "Файл не завантажено. Завантажте експорт Wallet ще раз."
+        }
+      }
+    }
+  }
+}

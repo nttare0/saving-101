@@ -1,0 +1,13 @@
+{
+  "settings": {
+    "subscriptions": {
+      "title": "Geplante Zahlungen",
+      "defaultAutoRecord": {
+        "label": "Automatische Erfassung bei neuen geplanten Zahlungen standardmäßig aktivieren",
+        "help": "Wenn aktiviert, ist der Schalter für die automatische Erfassung im Formular für geplante Zahlungen standardmäßig eingeschaltet. Du kannst dies jederzeit für jede geplante Zahlung einzeln anpassen.",
+        "successNotification": "Einstellung gespeichert",
+        "errorNotification": "Einstellung konnte nicht gespeichert werden"
+      }
+    }
+  }
+}

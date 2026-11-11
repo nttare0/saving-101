@@ -1,0 +1,96 @@
+{
+  "settings": {
+    "tags": {
+      "title": "Tags",
+      "addButton": "Tag hinzufügen",
+      "empty": "Noch keine Tags vorhanden. Erstelle deinen ersten Tag, um deine Transaktionen zu organisieren.",
+      "tabs": {
+        "details": "Details",
+        "reminders": "Erinnerungen"
+      },
+      "form": {
+        "createTitle": "Tag erstellen",
+        "editTitle": "Tag bearbeiten",
+        "name": "Name",
+        "namePlaceholder": "Tag-Name",
+        "color": "Farbe",
+        "icon": "Symbol",
+        "iconPlaceholder": "Symbol auswählen",
+        "description": "Beschreibung",
+        "descriptionPlaceholder": "Optionale Beschreibung",
+        "saveButton": "Speichern",
+        "previewPlaceholder": "Tag-Name"
+      },
+      "delete": {
+        "title": "Tag löschen?",
+        "description": "Dadurch wird \"{name}\" dauerhaft gelöscht und aus allen Transaktionen entfernt. Diese Aktion kann nicht rückgängig gemacht werden.",
+        "deleteButton": "Löschen",
+        "cancelButton": "Abbrechen"
+      },
+      "notifications": {
+        "createSuccess": "Tag erstellt",
+        "createFailed": "Tag konnte nicht erstellt werden",
+        "updateSuccess": "Tag aktualisiert",
+        "updateFailed": "Tag konnte nicht aktualisiert werden",
+        "deleteSuccess": "Tag gelöscht",
+        "deleteFailed": "Tag konnte nicht gelöscht werden"
+      },
+      "reminders": {
+        "addButton": "Erinnerung hinzufügen",
+        "empty": "Noch keine Erinnerungen. Erstelle eine Erinnerung, um über Aktivitäten dieses Tags benachrichtigt zu werden.",
+        "enabled": "Aktiviert",
+        "disabled": "Deaktiviert",
+        "form": {
+          "createTitle": "Erinnerung erstellen",
+          "editTitle": "Erinnerung bearbeiten",
+          "type": "Erinnerungstyp",
+          "typePlaceholder": "Typ auswählen",
+          "amountThreshold": "Betragsschwellenwert",
+          "amountThresholdPlaceholder": "Schwellenwert eingeben",
+          "amountThresholdHint": "Werde benachrichtigt, wenn die Ausgaben für diesen Tag diesen Betrag übersteigen",
+          "frequency": "Häufigkeit",
+          "frequencyPlaceholder": "Häufigkeit auswählen",
+          "dayOfMonth": "Tag des Monats",
+          "dayOfMonthPlaceholder": "Tag auswählen",
+          "dayOfMonthHint": "Für Monate mit weniger Tagen wird der letzte Tag verwendet",
+          "isEnabled": "Aktiviert",
+          "saveButton": "Speichern"
+        },
+        "types": {
+          "amountThreshold": "Betragsschwellenwert",
+          "amountThresholdDescription": "Benachrichtigen, wenn die Ausgaben einen bestimmten Betrag übersteigen",
+          "existenceCheck": "Aktivitätsprüfung",
+          "existenceCheckDescription": "Benachrichtigen, wenn Transaktionen mit diesem Tag vorhanden sind"
+        },
+        "frequencies": {
+          "immediate": "Sofort",
+          "immediateDescription": "Wird ausgelöst, wenn eine Transaktion mit diesem Tag versehen wird. Zwischen zwei Benachrichtigungen liegen mindestens 24 Stunden.",
+          "daily": "Täglich",
+          "dailyDescription": "Jeden Tag prüfen",
+          "weekly": "Wöchentlich",
+          "weeklyDescription": "Jeden Montag prüfen",
+          "monthly": "Monatlich",
+          "monthlyDescription": "Jeden Monat an einem bestimmten Tag prüfen",
+          "quarterly": "Vierteljährlich",
+          "quarterlyDescription": "Alle 3 Monate prüfen (Jan., Apr., Jul., Okt.)",
+          "yearly": "Jährlich",
+          "yearlyDescription": "Einmal pro Jahr im Januar prüfen"
+        },
+        "delete": {
+          "title": "Erinnerung löschen?",
+          "description": "Dadurch wird diese Erinnerung dauerhaft gelöscht. Diese Aktion kann nicht rückgängig gemacht werden.",
+          "deleteButton": "Löschen",
+          "cancelButton": "Abbrechen"
+        },
+        "notifications": {
+          "createSuccess": "Erinnerung erstellt",
+          "createFailed": "Erinnerung konnte nicht erstellt werden",
+          "updateSuccess": "Erinnerung aktualisiert",
+          "updateFailed": "Erinnerung konnte nicht aktualisiert werden",
+          "deleteSuccess": "Erinnerung gelöscht",
+          "deleteFailed": "Erinnerung konnte nicht gelöscht werden"
+        }
+      }
+    }
+  }
+}

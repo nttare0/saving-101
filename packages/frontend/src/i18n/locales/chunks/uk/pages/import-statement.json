@@ -1,0 +1,199 @@
+{
+  "pages": {
+    "statementParser": {
+      "pageTitle": "Парсер виписок",
+      "pageDescription": "Завантажте банківську виписку (PDF, CSV або TXT), фото чека або знімок екрана банківського застосунку для вилучення транзакцій за допомогою AI. Додайте власну AI-модель у налаштуваннях для необмеженого доступу.",
+      "stepper": {
+        "steps": {
+          "upload": "Завантажити",
+          "account": "Рахунок",
+          "review": "Перегляд",
+          "results": "Імпорт"
+        }
+      },
+      "steps": {
+        "accountTitle": "Вибрати рахунок",
+        "accountDescription": "Виберіть або створіть рахунок для транзакцій"
+      },
+      "selectCurrency": "Виберіть валюту",
+      "selectExistingAccount": "Виберіть існуючий рахунок",
+      "accountNamePlaceholder": "напр., Основний банківський рахунок",
+      "selectAccount": "Виберіть рахунок",
+      "searchAccounts": "Шукати рахунки...",
+      "uploadExtract": {
+        "supportedFormats": "Підтримувані формати: PDF, CSV, TXT, JPG, PNG, WebP (макс. 10МБ)",
+        "clickOrDragStatements": "Натисніть або перетягніть файли виписок сюди",
+        "filesLabel": "Файли",
+        "analyzingFiles": "Аналіз файлів...",
+        "totalForFiles": "загалом за {count} файлів",
+        "estimateFailedSome": "{count} з {total} файлів не вдалося проаналізувати:",
+        "extractionFailedSome": "{count} з {total} файлів не вдалося розібрати. Решта готова до імпорту.",
+        "retryFailed": "Повторити невдалі файли",
+        "progressFile": "Розбір {name} ({current} з {total})",
+        "acrossFiles": "у {count} файлах",
+        "currencyConflict": "Вибрані виписки містять різні валюти ({currencies}). Усі вони будуть імпортовані на один рахунок з використанням валюти цього рахунку.",
+        "unsupportedFileNamed": "{name} не є файлом PDF, CSV, TXT, JPG, PNG або WebP",
+        "unreadableImageNamed": "Не вдалося прочитати {name} як зображення",
+        "invalidPdfNamed": "Файл {name} не схожий на коректний PDF. Можливо, його пошкоджено або перейменовано.",
+        "invalidImageNamed": "Файл {name} не схожий на коректне зображення JPG, PNG або WebP. Можливо, його пошкоджено або перейменовано.",
+        "invalidTextNamed": "Файл {name} не схожий на коректний файл {ext}. Можливо, він двійковий або перейменований.",
+        "unreadableFiles": "Не вдалося прочитати: {files}",
+        "fileStatus": {
+          "pending": "Не проаналізовано",
+          "estimating": "Аналіз...",
+          "estimated": "Готово",
+          "estimateFailed": "Не вдалося проаналізувати",
+          "extracting": "Розбір...",
+          "extracted": "{count} транзакція | {count} транзакції | {count} транзакцій",
+          "failed": "Помилка"
+        },
+        "analyzeButton": "Аналізувати {count} файл | Аналізувати {count} файли | Аналізувати {count} файлів",
+        "tryAgain": "Спробувати ще раз",
+        "modelLabel": "Модель",
+        "estimatedCostLabel": "Орієнтовна вартість",
+        "estimatedTokensLabel": "Орієнтовні токени",
+        "extractButton": "Вилучити транзакції",
+        "progressMessage": "Це може зайняти 30-60 секунд залежно від розміру документа",
+        "foundLabel": "Знайдено:",
+        "transactions": "транзакцій",
+        "fromLabel": "з",
+        "inLabel": "в",
+        "continueMessage": "Продовжуйте, щоб вибрати рахунок для цих транзакцій.",
+        "continueButton": "Перейти до рахунку",
+        "tokenWarning": {
+          "medium": {
+            "title": "Виявлено великий файл",
+            "description": "Обробка може зайняти 1-2 хвилини. Будь ласка, зачекайте."
+          },
+          "high": {
+            "title": "Виявлено дуже великий файл",
+            "description": "Обробка може зайняти кілька хвилин через розмір файлу."
+          },
+          "extreme": {
+            "title": "Надзвичайно великий файл",
+            "description": "Обробка може зайняти 5+ хвилин. Розгляньте можливість розділити файл на менші частини для швидшої обробки."
+          }
+        },
+        "status": {
+          "sendingFile": "Відправка файлу до AI...",
+          "readingDocument": "AI читає документ...",
+          "analyzingStructure": "Аналіз структури виписки...",
+          "extractingData": "Вилучення даних транзакцій...",
+          "processingTransactions": "Обробка транзакцій...",
+          "finalizing": "Завершення вилучення...",
+          "almostDone": "Майже готово..."
+        },
+        "tokenFormat": "{inputTokens}K входу, ~{outputTokens}K виходу",
+        "pdfPasswordLabel": "Пароль PDF",
+        "pdfPasswordPlaceholder": "Введіть пароль документа",
+        "pdfPasswordSubmit": "Розблокувати та аналізувати"
+      },
+      "accountSelect": {
+        "newlyCreated": "(щойно створено)",
+        "differentCurrency": "Різна валюта",
+        "linkedToBanks": "Прив'язано до банків",
+        "linkedToBanksTooltip": "Наразі імпорт виписок обмежений лише ручними рахунками.",
+        "noAccountsFound": "Рахунків не знайдено",
+        "currencyAccounts": "Рахунки {currency}"
+      },
+      "accountSelection": {
+        "transactions": "Транзакції:",
+        "files": "Виписки:",
+        "filesList": "З: {files}",
+        "currencyConflict": "Виписки містять різні валюти ({currencies}). Виберіть валюту, яку має використовувати рахунок:",
+        "bank": "Банк:",
+        "currency": "Валюта:",
+        "currencyNotDetected": "Не вдалося визначити валюту виписки. Будь ласка, виберіть валюту вручну:",
+        "currencyMismatch": "Валюта виписки ({statementCurrency}) відрізняється від валюти рахунку ({accountCurrency}). Транзакції будуть імпортовані з використанням валюти рахунку.",
+        "yourCurrenciesGroup": "Ваші валюти",
+        "allCurrenciesGroup": "Усі валюти",
+        "createNew": "Створити нову",
+        "back": "Назад",
+        "importTransactions": "Імпортувати транзакції",
+        "checkForDuplicates": "Перевірити дублікати"
+      },
+      "createAccountDialog": {
+        "title": "Створити рахунок для імпорту",
+        "description": "Створіть новий рахунок для імпорту транзакцій виписки.",
+        "accountNameLabel": "Назва рахунку",
+        "currencyLabel": "Валюта",
+        "fromStatement": "(з виписки)",
+        "currencyLocked": "Валюта заблокована для відповідності виписці ({currency}).",
+        "currencyWillBeAdded": "Примітка: {currency} буде додано до ваших валют.",
+        "cancel": "Скасувати",
+        "creating": "Створення...",
+        "createAccount": "Створити рахунок",
+        "validation": {
+          "nameRequired": "Назва рахунку обов'язкова",
+          "currencyRequired": "Будь ласка, виберіть валюту"
+        },
+        "success": "Рахунок успішно створено",
+        "error": "Не вдалося створити рахунок"
+      },
+      "transactionReview": {
+        "checkingDuplicates": "Перевірка дублікатів...",
+        "extractedLabel": "Вилучено:",
+        "fromFiles": "з {count} виписок",
+        "duplicatesLabel": "Потенційні дублікати:",
+        "willImportLabel": "Буде імпортовано:",
+        "alreadyInAccountLabel": "Вже на рахунку:",
+        "timelineTitle": "Хронологія транзакцій",
+        "legendNew": "Нова",
+        "legendDuplicate": "Дублікат",
+        "legendExisting": "Вже в рахунку",
+        "statusDup": "Дублікат",
+        "statusImport": "Імпорт",
+        "statusExists": "В рахунку",
+        "duplicateInfoSkipped": "{count} транзакцій буде пропущено як дублікати.",
+        "duplicateInfoOverridden": "{count} дублікатів перевизначено і буде імпортовано.",
+        "toggleInfo": "Позначені рядки буде імпортовано. Дублікати спочатку не позначені – позначте рядок, щоб усе одно імпортувати його.",
+        "backButton": "Назад",
+        "continueButton": "Перейти до імпорту",
+        "transactionCount": "({count} транзакцій)",
+        "duplicateCheckFailed": "Не вдалося перевірити цю виписку на дублікати серед ваших наявних транзакцій, тому кількість дублікатів нижче недоступна. Перегляньте список перед імпортом.",
+        "noDescription": "Без опису"
+      },
+      "droppedRowsWarning": "{count} рядок з відповіді AI не вдалося прочитати, тому його пропущено. Кількість імпортованих нижче може бути меншою, ніж у вашому файлі. | {count} рядки з відповіді AI не вдалося прочитати, тому їх пропущено. Кількість імпортованих нижче може бути меншою, ніж у вашому файлі. | {count} рядків з відповіді AI не вдалося прочитати, тому їх пропущено. Кількість імпортованих нижче може бути меншою, ніж у вашому файлі.",
+      "errors": {
+        "estimateFailed": "Не вдалося проаналізувати файл",
+        "extractFailed": "Не вдалося вилучити транзакції",
+        "importFailed": "Не вдалося розпочати імпорт"
+      },
+      "importResults": {
+        "readyTitle": "Готово до імпорту",
+        "readyDescription": "Перегляньте підсумок нижче та натисніть «Імпортувати транзакції», щоб продовжити.",
+        "accountLabel": "Рахунок:",
+        "statementsLabel": "Виписки:",
+        "toImportLabel": "Транзакцій для імпорту:",
+        "toSkipLabel": "Транзакцій для пропуску:",
+        "backButton": "Назад",
+        "importButton": "Імпортувати {count} транзакцій",
+        "importingTitle": "Імпорт транзакцій",
+        "importingDescription": "Будь ласка, зачекайте, поки ми імпортуємо ваші транзакції...",
+        "failedTitle": "Імпорт не вдався",
+        "failedDescription": "Нічого не було імпортовано. Деталі нижче надані сервером.",
+        "jobFailedDescription": "Імпорт зупинився до завершення. Деякі транзакції вже могли бути створені. Перевірте свої транзакції, перш ніж імпортувати цю виписку знову.",
+        "tryAgainButton": "Спробувати ще раз",
+        "completeTitle": "Імпорт завершено!",
+        "completeWithIssuesTitle": "Імпорт завершено з проблемами",
+        "successDescription": "Ваші транзакції успішно імпортовано.",
+        "partialDescription": "Деякі транзакції не вдалося імпортувати.",
+        "importedLabel": "Імпортовано:",
+        "skippedLabel": "Пропущено:",
+        "errorsTitle": "Помилки імпорту",
+        "transactionNumberHeader": "Транзакція #",
+        "errorHeader": "Помилка",
+        "batchIdNote": "ID пакета імпорту: {batchId}. Ви можете використовувати цей ID для пошуку та керування всіма імпортованими транзакціями.",
+        "viewTransactionsButton": "Переглянути транзакції",
+        "startNewImportButton": "Почати новий імпорт",
+        "rowErrors": {
+          "invalidDate": "Нерозпізнана дата «{date}»",
+          "futureDate": "Дата {date} у майбутньому",
+          "amountNotPositive": "Сума має бути більшою за нуль (отримано {amount})",
+          "amountTooLarge": "Сума {amount} перевищує максимум {max}",
+          "rowFailed": "Цю транзакцію не вдалося імпортувати"
+        }
+      }
+    }
+  }
+}

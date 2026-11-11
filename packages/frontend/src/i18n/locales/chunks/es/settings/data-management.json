@@ -1,0 +1,108 @@
+{
+  "settings": {
+    "dataManagement": {
+      "title": "Importar datos",
+      "description": "Importe sus datos financieros desde diversas fuentes",
+      "tabs": {
+        "import": "Importar",
+        "export": "Exportar"
+      },
+      "textSource": {
+        "title": "Importar desde cualquier fuente de texto",
+        "aiBadge": "Impulsado por IA",
+        "listDescription": "Extractos bancarios, correos o cualquier fuente de texto"
+      },
+      "csv": {
+        "title": "Importar CSV",
+        "description": "Importe transacciones desde un archivo CSV. Puede asignar columnas, gestionar duplicados y crear nuevas cuentas o categorías según sea necesario.",
+        "button": "Importar archivo CSV",
+        "cta": "Importar archivo CSV",
+        "listDescription": "Asigna columnas y gestiona duplicados"
+      },
+      "ofx": {
+        "title": "Extracto OFX o QFX",
+        "listDescription": "Importe transacciones bancarias y de tarjeta de crédito"
+      },
+      "ynab": {
+        "title": "Importar desde YNAB",
+        "listDescription": "Cuentas, transacciones, categorías y beneficiarios"
+      },
+      "budget-bakers-wallet": {
+        "title": "Wallet (BudgetBakers)",
+        "listDescription": "Multidivisa con emparejamiento automático de transferencias"
+      },
+      "ms-money": {
+        "title": "Microsoft Money",
+        "listDescription": "Importa un archivo .mny de Microsoft Money"
+      },
+      "messageImport": {
+        "title": "iOS message sync"
+      },
+      "importHistory": {
+        "title": "Historial de importaciones",
+        "listDescription": "Consulte las importaciones anteriores y lo que crearon"
+      },
+      "import": {
+        "back": "Volver a Importar",
+        "whichImporterHint": "¿No estás seguro de cuál usar?",
+        "groups": {
+          "filesAndText": "Archivos y texto",
+          "fromOtherApps": "Desde otras apps",
+          "history": "Historial"
+        },
+        "requestMore": {
+          "title": "¿Quieres más opciones? Solicítalo aquí"
+        }
+      },
+      "export": {
+        "cardTitle": "Exporta tus datos",
+        "backupOrExportHint": "¿No estás seguro de si necesitas exportar o hacer una copia de seguridad?",
+        "form": {
+          "title": "Exporta tus datos",
+          "description": "Elige un formato y las partes de tus datos que deseas. La descarga comenzará tan pronto como confirmes.",
+          "confirmLabel": "Descargar",
+          "confirmLoading": "Preparando…",
+          "back": "Volver a Exportar"
+        },
+        "format": {
+          "label": "Formato",
+          "json": "JSON",
+          "csv": "CSV",
+          "xlsx": "Excel"
+        },
+        "groups": {
+          "label": "Qué incluir",
+          "selectAll": "Seleccionar todo",
+          "deselectAll": "Deseleccionar todo",
+          "transactions": "Transacciones y cuentas",
+          "transactionsDescription": "Transacciones, cuentas, historial de saldos, categorías, etiquetas, vehículos",
+          "budgets": "Presupuestos",
+          "budgetsDescription": "Presupuestos personalizados con categorías vinculadas y totales de gastos",
+          "subscriptions": "Suscripciones y recordatorios",
+          "subscriptionsDescription": "Suscripciones recurrentes y recordatorios de facturas",
+          "investments": "Inversiones",
+          "investmentsDescription": "Carteras, participaciones, transacciones de inversión, transferencias"
+        },
+        "notifications": {
+          "success": "Exportación lista – tu descarga debería comenzar en un momento.",
+          "successWithCount": "Exportación lista – se exportaron {count} filas.",
+          "failed": "No se pudo exportar tus datos. Por favor, intenta de nuevo.",
+          "downloadBlocked": "Exportación lista, pero tu navegador bloqueó la descarga. Revisa la barra de direcciones para un aviso de descarga.",
+          "tooLarge": "Tus datos son demasiado grandes para una única exportación. Por favor, contacta con soporte."
+        },
+        "dateRange": {
+          "label": "Rango de fechas (opcional)",
+          "helper": "Solo se filtran las tablas con eventos (transacciones, historial de saldos, actividad de inversión). Las cuentas, categorías y otras tablas de referencia se exportan completas.",
+          "placeholder": "Todo el tiempo",
+          "clear": "Quitar rango de fechas"
+        },
+        "accounts": {
+          "label": "Cuentas",
+          "helper": "Exportar solo las cuentas seleccionadas con sus transacciones e historial de saldo. Dejar en blanco para exportar todas las cuentas.",
+          "placeholder": "Todas las cuentas"
+        },
+        "listDescription": "Descarga un zip para hojas de cálculo, impuestos o migración"
+      }
+    }
+  }
+}

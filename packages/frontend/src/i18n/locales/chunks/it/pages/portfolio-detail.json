@@ -1,0 +1,156 @@
+{
+  "portfolioDetail": {
+    "loading": "Caricamento in corso...",
+    "loadingDetails": "Caricamento dei dettagli del portafoglio...",
+    "loadError": "Caricamento dei dettagli del portafoglio non riuscito.",
+    "tryAgain": "Riprova",
+    "notFoundTitle": "Portafoglio non trovato",
+    "notFoundDescription": "Impossibile trovare questo portafoglio. Potrebbe essere stato eliminato oppure non si dispone dell'accesso.",
+    "backToInvestments": "Torna agli investimenti",
+    "subtitle": "Panoramica del portafoglio",
+    "actions": {
+      "transfer": "Trasferisci",
+      "edit": "Modifica",
+      "delete": "Elimina",
+      "exchangeCurrency": "Cambio valuta"
+    },
+    "balance": {
+      "totalValue": "Valore totale",
+      "baseCurrencyEquivalent": "≈ {value} in {code}",
+      "loadError": "Caricamento del riepilogo del portafoglio non riuscito.",
+      "metrics": {
+        "costBasis": "Costo di carico",
+        "unrealized": "Non realizzato",
+        "realized": "Realizzato",
+        "totalReturn": "Rendimento totale"
+      }
+    },
+    "cashBalances": {
+      "title": "Saldi di liquidità",
+      "emptyState": "Nessun saldo di liquidità",
+      "tabs": {
+        "balances": "Saldi",
+        "cashTransactions": "Transazioni",
+        "buysSells": "Acquisti e vendite"
+      },
+      "cashTransactions": {
+        "addButton": "Aggiungi transazione di liquidità",
+        "emptyState": "Ancora nessuna transazione di liquidità",
+        "deposit": "Versamento",
+        "withdrawal": "Prelievo",
+        "transferIn": "Trasferimento in entrata",
+        "transferOut": "Trasferimento in uscita",
+        "exchange": "Cambio valuta",
+        "deleteConfirm": "Eliminare questa transazione di liquidità?",
+        "linkedTransactionNote": "Questo trasferimento ha una transazione del conto collegata. Cosa farne?",
+        "keepLinkedTransaction": "Mantieni la transazione del conto. Verranno ripristinati i dettagli originali della transazione.",
+        "deleteLinkedTransaction": "Elimina anche la transazione del conto collegata",
+        "adjustmentBadge": "Rettifica",
+        "noCashBadge": "Nessun impatto sulla liquidità",
+        "markedAsAdjustment": "Segnata come correzione del saldo",
+        "markedAsContribution": "Segnata come versamento effettivo",
+        "adjustmentError": "Aggiornamento del trasferimento non riuscito",
+        "rowActions": "Azioni della transazione",
+        "emptyStateDescription": "Versamenti, prelievi e trasferimenti di questo portafoglio compariranno qui.",
+        "edit": "Modifica",
+        "editDialog": {
+          "title": "Modifica transazione di liquidità",
+          "description": "Modificare il modo in cui questa transazione viene trattata nei report.",
+          "save": "Salva modifiche"
+        }
+      },
+      "buysSells": {
+        "emptyState": "Nessuna transazione di acquisto/vendita",
+        "shares": "quote"
+      }
+    },
+    "holdings": {
+      "title": "Posizioni",
+      "subtitle": "{count} simboli",
+      "filterPlaceholder": "Filtra per simbolo o nome...",
+      "addButton": "Aggiungi simbolo",
+      "importButton": "Importa transazioni",
+      "importButtonShort": "Importa"
+    },
+    "holdingsTable": {
+      "loadError": "Impossibile caricare le posizioni",
+      "empty": "Ancora nessuna posizione",
+      "noFilterResults": "Nessuna posizione corrispondente",
+      "noFilterResultsDescription": "Nessuna posizione corrisponde alla ricerca. Provare un simbolo o un nome diverso.",
+      "clearFilterButton": "Cancella ricerca",
+      "headers": {
+        "symbol": "Simbolo",
+        "name": "Nome",
+        "shares": "Quote",
+        "price": "Prezzo",
+        "avgCostPerShare": "PMC/quota",
+        "totalCost": "Costo totale",
+        "marketValue": "Valore di mercato",
+        "unrealizedGain": "Plusvalenza non realizzata",
+        "realizedGain": "Plusvalenza realizzata"
+      },
+      "transactions": {
+        "loading": "Caricamento transazioni…",
+        "empty": "Nessuna transazione trovata.",
+        "addFirstButton": "Aggiungi la prima transazione"
+      },
+      "closedPositions": "Posizioni chiuse ({count})",
+      "stalePrice": "Ultimo prezzo disponibile. Valore di mercato e plusvalenze potrebbero non essere aggiornati.",
+      "deleteHolding": {
+        "ariaLabel": "Elimina posizione",
+        "title": "Elimina posizione",
+        "description": "La posizione {symbol} e tutte le sue transazioni verranno eliminate definitivamente. Questa azione non può essere annullata.",
+        "confirmLabel": "Elimina posizione",
+        "success": "Posizione eliminata.",
+        "error": "Eliminazione della posizione non riuscita."
+      },
+      "addTransactionDialog": {
+        "title": "Aggiungi transazione",
+        "description": "Aggiungere una nuova transazione al portafoglio."
+      },
+      "tryAgainLater": "Riprovare più tardi",
+      "emptyDescription": "Aggiungere la prima operazione per iniziare a monitorare gli investimenti",
+      "addFirstHolding": "Aggiungi la prima posizione",
+      "importTransactions": "Oppure importa da un file"
+    },
+    "transactionsList": {
+      "title": "Transazioni",
+      "addButton": "Aggiungi transazione",
+      "loadingMore": "Caricamento di altre transazioni…",
+      "headers": {
+        "date": "Data",
+        "type": "Tipo",
+        "note": "Nota",
+        "quantity": "Quantità",
+        "price": "Prezzo",
+        "fees": "Commissioni",
+        "amount": "Importo",
+        "refAmount": "Importo base",
+        "refFees": "Commissioni base",
+        "settlementAmount": "Contanti",
+        "settlementCurrency": "Valuta liquidità",
+        "settlementFees": "Commissioni liquidità",
+        "settlementRate": "Tasso di cambio",
+        "createdAt": "Aggiunta il"
+      },
+      "categories": {
+        "buy": "Acquisto",
+        "sell": "Vendita",
+        "dividend": "Dividendo",
+        "transfer": "Trasferimento",
+        "tax": "Imposta",
+        "fee": "Commissione",
+        "cancel": "Annulla",
+        "other": "Altro"
+      },
+      "headerTooltips": {
+        "amount": "Totale della transazione nella valuta di negoziazione del titolo.",
+        "refAmount": "Totale della transazione convertito nella valuta di base.",
+        "settlementAmount": "Liquidità effettivamente pagata o ricevuta sul conto, nella valuta di regolamento."
+      },
+      "deleteTransaction": {
+        "tooltip": "Elimina transazione"
+      }
+    }
+  }
+}

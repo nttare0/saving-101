@@ -1,0 +1,25 @@
+{
+  "settings": {
+    "navigation": {
+      "currencies": "Monedas",
+      "categories": "Categorías",
+      "tags": "Etiquetas",
+      "accountsGroups": "Grupos de cuentas",
+      "importData": "Importar datos",
+      "ai": "IA",
+      "security": "Seguridad",
+      "admin": "Administración",
+      "sharedWithMe": "Compartido conmigo",
+      "household": "Hogar",
+      "personalGroup": "Personal",
+      "workspaceGroup": "Espacio de trabajo",
+      "appearance": "Apariencia",
+      "language": "Idioma",
+      "general": "General",
+      "payees": "Beneficiarios",
+      "planBilling": "Planes y facturación",
+      "collapse": "Contraer"
+    },
+    "backToSettings": "Volver a ajustes"
+  }
+}

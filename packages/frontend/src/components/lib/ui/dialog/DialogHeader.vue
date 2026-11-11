@@ -1,0 +1,14 @@
+<script setup lang="ts">
+import { cn } from '@/lib/utils';
+import type { HTMLAttributes } from 'vue';
+
+const props = defineProps<{
+  class?: HTMLAttributes['class'];
+}>();
+</script>
+
+<template>
+  <div :class="cn('flex shrink-0 flex-col gap-y-1.5 pr-10 text-center sm:text-left', props.class)">
+    <slot />
+  </div>
+</template>

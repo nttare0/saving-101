@@ -1,0 +1,53 @@
+{
+  "settings": {
+    "categories": {
+      "title": "Catégories",
+      "description": "Organisez vos opérations en catégories et sous-catégories. Glissez une catégorie pour la déplacer sous un autre parent ou au niveau supérieur.",
+      "addButton": "Ajouter une catégorie",
+      "organizeButton": "Organiser",
+      "empty": "Aucune catégorie pour l'instant. Créez votre première catégorie pour commencer.",
+      "categoriesCount": "{n} catégorie | {n} catégories",
+      "organizeHint": "Glissez sur un nouveau parent, ou déposez ici pour le niveau supérieur.",
+      "dropToTopLevel": "Déposez ici pour placer « {name} » au niveau supérieur",
+      "movesQueued": "{n} déplacement en attente | {n} déplacements en attente",
+      "unqueueMove": "Annuler ce déplacement",
+      "topLevel": "Niveau supérieur",
+      "saveChanges": "Enregistrer les modifications",
+      "parentField": {
+        "label": "Catégorie parente",
+        "placeholder": "Sélectionner une catégorie parente",
+        "hiddenHint": "Les catégories ne pouvant pas servir de parent sont masquées de la liste."
+      },
+      "moveDialog": {
+        "title": "Déplacer « {name} »",
+        "description": "Choisissez une nouvelle catégorie parente.",
+        "moveButton": "Déplacer"
+      },
+      "delete": {
+        "title": "Supprimer la catégorie ?",
+        "description": "Cette action supprimera définitivement « {name} ». Cette action est irréversible.",
+        "deleteButton": "Supprimer",
+        "cancelButton": "Annuler"
+      },
+      "errors": {
+        "cannotLoad": "Impossible de charger les catégories"
+      },
+      "notifications": {
+        "deleteSuccess": "Catégorie supprimée",
+        "deleteFailed": "Échec de la suppression de la catégorie",
+        "checkFailed": "Échec de la vérification de la catégorie",
+        "moveFailed": "Échec du déplacement de la catégorie.",
+        "saveSuccess": "Modifications enregistrées.",
+        "staleMovesRemoved": "{n} déplacement en attente obsolète supprimé | {n} déplacements en attente obsolètes supprimés"
+      },
+      "dropErrors": {
+        "currentParent": "Déjà dans cette catégorie",
+        "insideItself": "Une catégorie ne peut pas être déplacée dans sa propre sous-catégorie",
+        "internalTarget": "Les catégories système ne peuvent pas contenir d'autres catégories",
+        "tooDeep": "Les catégories ne peuvent être imbriquées que sur {max} niveaux",
+        "childrenTooDeep": "Ses sous-catégories dépasseraient la limite de {max} niveaux",
+        "alreadyTopLevel": "Déjà au niveau supérieur"
+      }
+    }
+  }
+}

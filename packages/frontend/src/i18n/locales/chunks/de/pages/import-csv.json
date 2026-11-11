@@ -1,0 +1,338 @@
+{
+  "pages": {
+    "importExport": {
+      "csvImport": {
+        "pageTitle": "Transaktionen aus CSV importieren",
+        "pageDescription": "Lade deinen Bank-CSV-Export oder deine Transaktionsverlauf-Datei hoch, um Transaktionen in dein Konto zu importieren.",
+        "stepper": {
+          "stepOf": "Schritt {current} von {total}",
+          "steps": {
+            "upload": "Hochladen",
+            "map": "Spalten zuordnen",
+            "resolveAccounts": "Konten",
+            "resolveCategories": "Kategorien",
+            "review": "Überprüfen",
+            "results": "Fertig"
+          }
+        },
+        "steps": {
+          "uploadTitle": "CSV-Datei hochladen",
+          "uploadDescription": "Wähle deine CSV-Datei aus, um zu beginnen",
+          "mappingTitle": "Spalten zuordnen",
+          "mappingDescription": "Ordne CSV-Spalten den Transaktionsfeldern zu",
+          "reviewTitle": "Duplikate überprüfen",
+          "reviewDescription": "Auf doppelte Transaktionen prüfen",
+          "completeTitle": "Import abgeschlossen",
+          "completeDescription": "Importergebnisse überprüfen"
+        },
+        "fileUpload": {
+          "stepTitle": "CSV-Datei hochladen",
+          "description": "Lade eine oder mehrere CSV-Dateien hoch, um Transaktionen zu importieren. Alle Dateien müssen dieselben Spalten haben.",
+          "dragDrop": "Ziehe deine CSV-Datei hierher",
+          "orBrowse": "oder klicke zum Durchsuchen",
+          "maxSize": "Maximale Dateigröße: 50 MB",
+          "removeFile": "Datei entfernen",
+          "parsing": "Verarbeite...",
+          "continueToMapping": "Weiter zur Zuordnung",
+          "errors": {
+            "invalidFormat": "Ungültiges Dateiformat. Bitte lade eine CSV-Datei hoch.",
+            "invalidFormatNamed": "{name} ist keine CSV-Datei",
+            "fileTooLarge": "Dateigröße ({size}) überschreitet das erlaubte Maximum (50 MB)",
+            "parseFailed": "Datei konnte nicht verarbeitet werden. Bitte überprüfe das Format und versuche es erneut.",
+            "merge": {
+              "emptySelection": "Wähle mindestens eine CSV-Datei aus",
+              "fileReadFailed": "\"{file}\" konnte nicht gelesen werden",
+              "fileEmpty": "\"{file}\" ist leer",
+              "fileNoDataRows": "\"{file}\" enthält keine Datenzeilen",
+              "headerMismatch": "Die Spalten in \"{file}\" stimmen nicht mit der ersten Datei überein. Alle Dateien müssen dieselben Spalten in derselben Reihenfolge enthalten.",
+              "forbiddenHeader": "\"{file}\" verwendet einen reservierten Spaltennamen",
+              "tooManyRows": "Die ausgewählten Dateien umfassen insgesamt mehr als {max} Zeilen. Entferne einige Dateien oder Zeilen und versuche es erneut.",
+              "parseError": "\"{file}\" konnte nicht verarbeitet werden. Stelle sicher, dass es eine gültige CSV-Datei ist."
+            }
+          }
+        },
+        "columnMapping": {
+          "stepTitle": "Spalten zuordnen",
+          "description": "Ordne deine CSV-Spalten den erforderlichen Feldern zu",
+          "file": "Datei",
+          "filesCount": "{count} Datei | {count} Dateien",
+          "totalRows": "Zeilen insgesamt",
+          "delimiter": "Trennzeichen",
+          "extracting": "Extrahiere...",
+          "detecting": "Erkenne Duplikate…",
+          "nextExtract": "Weiter: Werte extrahieren",
+          "continueToDuplicates": "Weiter zur Duplikate-Prüfung"
+        },
+        "execute": {
+          "starting": "Starte Import…",
+          "progressCount": "{processed} / {total}",
+          "statusQueued": "In Warteschlange",
+          "statusRunning": "Importieren…",
+          "statusCompleted": "Abgeschlossen",
+          "statusFailed": "Fehlgeschlagen",
+          "failed": "Import fehlgeschlagen.",
+          "partialImportNote": "Einige Zeilen wurden vor diesem Fehler möglicherweise bereits importiert. Ein erneuter Import könnte Duplikate erzeugen."
+        },
+        "review": {
+          "stepTitle": "Import überprüfen",
+          "description": "Überprüfe die Daten vor dem Import",
+          "totalRows": "Zeilen insgesamt",
+          "validRows": "Gültige Zeilen",
+          "invalidRows": "Ungültige Zeilen",
+          "duplicates": "Duplikate",
+          "invalidRowsTitle": "Ungültige Zeilen",
+          "rowNumber": "Zeile Nr.",
+          "errors": "Fehler",
+          "rawData": "Rohdaten",
+          "duplicatesTitle": "{count} mögliche Duplikate gefunden",
+          "duplicatesHint": "Wähle Zeilen aus, die du trotzdem importieren möchtest; nicht ausgewählte Duplikate werden übersprungen.",
+          "skip": "Überspringen",
+          "match": "Übereinstimmung",
+          "csvTransaction": "CSV-Transaktion",
+          "existingTransaction": "Bestehende Transaktion",
+          "importSummary": "Zusammenfassung des Imports",
+          "willBeImported": "Transaktionen werden importiert.",
+          "invalidWillBeSkipped": "ungültige Zeilen werden übersprungen.",
+          "duplicatesWillBeSkipped": "Duplikate werden übersprungen.",
+          "backToMapping": "Zurück zur Zuordnung",
+          "importing": "Importieren...",
+          "importButton": "{count} Transaktionen importieren",
+          "unpriceableTitle": "{count} Zeile(n) können nicht bewertet werden – kein Wechselkurs gefunden",
+          "unpriceableDescription": "Diese Zeilen verwenden eine Währung, für die kein Wechselkurs gespeichert ist und die nicht in deine Basiswährung umgerechnet werden kann. Du musst sie überspringen oder den Import abbrechen.",
+          "unpriceableWillBeSkipped": "nicht bewertbare werden übersprungen",
+          "currency": "Währung",
+          "skipAndImport": "Überspringen & importieren",
+          "cancelImport": "Import abbrechen",
+          "noInvalidRows": "Keine ungültigen Zeilen",
+          "noDuplicates": "Keine Duplikate",
+          "expand": "Vollständige Daten anzeigen",
+          "collapse": "Vollständige Daten ausblenden"
+        },
+        "results": {
+          "completeTitle": "Import abgeschlossen!",
+          "completeWithIssuesTitle": "Import mit Problemen abgeschlossen",
+          "successDescription": "Alle Transaktionen wurden erfolgreich importiert.",
+          "partialDescription": "Einige Transaktionen konnten nicht importiert werden.",
+          "imported": "Importiert",
+          "skippedDuplicates": "Übersprungen (Duplikate)",
+          "accountsCreated": "Konten erstellt",
+          "accountsSkipped": "Konten übersprungen",
+          "categoriesCreated": "Kategorien erstellt",
+          "tagsCreated": "Tags erstellt",
+          "payeesCreated": "Zahlungsempfänger erstellt",
+          "importErrors": "Importfehler",
+          "rowNumber": "Zeile Nr.",
+          "error": "Importfehler",
+          "batchIdLabel": "Batch-ID",
+          "batchIdDescription": "Verwende diese ID, um alle Transaktionen aus diesem Import zu finden.",
+          "viewTransactions": "Transaktionen anzeigen",
+          "startNewImport": "Neuen Import starten",
+          "skippedUnpriceable": "Übersprungen (ohne Preis)",
+          "importFailed": "Transaktionen konnten nicht importiert werden. Bitte versuche es erneut.",
+          "successCallout": "{count} Transaktionen erfolgreich importiert",
+          "failed": "Fehlgeschlagen",
+          "noErrors": "Keine Fehler",
+          "balanceWarningTitle": "Kontosalden könnten fehlerhaft sein",
+          "balanceWarningBody": "Die Transaktionen wurden importiert, aber einige Kontosalden konnten danach nicht aktualisiert werden. Überprüfe diese Konten und passe ihre Salden bei Bedarf manuell an.v"
+        }
+      },
+      "columnMapping": {
+        "stepTitle": "Spalten zuordnen",
+        "description": "Ordne deine CSV-Spalten den erforderlichen Feldern zu",
+        "file": "Datei",
+        "totalRows": "Zeilen insgesamt",
+        "delimiter": "Trennzeichen",
+        "detecting": "Erkenne Duplikate…"
+      },
+      "common": {
+        "selectOption": "Option auswählen...",
+        "selectColumn": "Spalte auswählen...",
+        "noneOptional": "Keine (optional)",
+        "selectAction": "Aktion auswählen..."
+      },
+      "transactionTypeMapping": {
+        "columnLabel": "Spalte für Transaktionstyp",
+        "incomeValuesLabel": "Werte für Einnahmen",
+        "expenseValuesLabel": "Werte für Ausgaben",
+        "commaSeparatedHint": "Kommagetrennte Werte",
+        "uncoveredValues": "Diese Werte in der Typ-Spalte sind noch nicht Einnahmen oder Ausgaben zugewiesen: {values}. Füge jeden Wert einer der obigen Listen hinzu, um fortzufahren.",
+        "selectColumn": "Spalte auswählen...",
+        "incomeValuesPlaceholder": "z.B. Gutschrift, Einzahlung, Einnahme",
+        "expenseValuesPlaceholder": "z.B. Lastschrift, Auszahlung, Ausgabe",
+        "methodOptions": {
+          "amountSign": "Aus Vorzeichen des Betrags (negativ = Ausgabe, positiv = Einnahme)",
+          "dataSourceColumn": "Aus Spalte (Werte festlegen)"
+        },
+        "amountSignInfo": "ℹ️ Transaktionstypen werden automatisch bestimmt: negative Beträge = Ausgaben, positive Beträge = Einnahmen"
+      },
+      "currencyMapping": {
+        "selectCurrency": "Währung auswählen...",
+        "methodOptions": {
+          "dataSourceColumn": "Aus CSV-Spalte zuordnen",
+          "existingCurrency": "Gleiche Währung für alle Transaktionen verwenden"
+        }
+      },
+      "categoryMapping": {
+        "selectCategory": "Kategorie auswählen..."
+      },
+      "accountMapping": {
+        "selectAccount": "Konto auswählen..."
+      },
+      "accountAssignment": {
+        "title": "Kontozuweisung",
+        "howToAssign": "Wie möchtest du Konten zuweisen?",
+        "description": "Wähle, wie Konten importierten Transaktionen zugewiesen werden sollen",
+        "accountColumn": "Konto-Spalte",
+        "columnDescription": "Wähle die CSV-Spalte aus, die Kontennamen enthält",
+        "accountLabel": "Konto",
+        "singleAccountDescription": "Alle importierten Transaktionen werden diesem Konto zugewiesen",
+        "mapOnNextStep": "Du ordnest im nächsten Schritt jedes CSV-Konto deinen bestehenden Konten zu",
+        "options": {
+          "mapToExisting": "Jedes CSV-Konto bestehenden Konten zuordnen (im nächsten Schritt)",
+          "assignToSingle": "Alle einem einzelnen bestehenden Konto zuweisen"
+        }
+      },
+      "accountMappingTable": {
+        "title": "Kontenzuordnung",
+        "description": "Ordne CSV-Kontennamen deinen bestehenden Konten zu oder erstelle neue. Es werden nur Konten mit passender Währung angezeigt.",
+        "csvAccountName": "CSV-Kontoname",
+        "currency": "Währung",
+        "action": "Aktion",
+        "targetAccount": "Zielkonto",
+        "actions": {
+          "createNew": "Neues Konto erstellen",
+          "mapToExisting": "Bestehendem Konto zuordnen"
+        },
+        "noMatchingCurrency": "Keine Konten mit passender Währung ({currency}) verfügbar",
+        "willBeCreated": "Neues Konto \"{name}\" wird mit der Währung {currency} erstellt",
+        "defaultCurrency": "Standard",
+        "mappedTo": "zugeordnet zu \"{name}\"",
+        "selectAccount": "Konto auswählen..."
+      },
+      "categoryMappingTable": {
+        "csvCategoryName": "CSV-Kategoriename"
+      },
+      "categoryAssignment": {
+        "options": {
+          "mapToExisting": "Jede CSV-Kategorie bestehenden Kategorien zuordnen (im nächsten Schritt)",
+          "createNew": "Neue Kategorien aus CSV-Werten erstellen",
+          "assignToSingle": "Alle einer einzelnen bestehenden Kategorie zuweisen"
+        }
+      },
+      "tagMappingTable": {
+        "csvTagName": "CSV-Tag-Wert"
+      },
+      "resolveValues": {
+        "selectAction": "Aktion auswählen",
+        "actions": {
+          "createNew": "Neu erstellen",
+          "linkExisting": "Verknüpfen",
+          "skip": "Überspringen"
+        },
+        "quickActions": {
+          "mapExactMatches": "Exakte Übereinstimmungen zuordnen",
+          "createNewForUnmatched": "Neue für nicht zugeordnete erstellen",
+          "skipAll": "Alle überspringen",
+          "reset": "Zurücksetzen",
+          "tooltips": {
+            "mapExactMatchesAccounts": "Verknüpft jedes CSV-Konto mit einem bestehenden Konto, das denselben Namen und dieselbe Währung hat. Konten ohne exakte Übereinstimmung bleiben unverändert.",
+            "mapExactMatchesCategories": "Verknüpft jede CSV-Kategorie mit einer bestehenden Kategorie desselben Namens. Kategorien ohne exakte Übereinstimmung bleiben unverändert.",
+            "mapExactMatchesTags": "Verknüpft jedes CSV-Tag mit einem bestehenden Tag desselben Namens. Tags ohne exakte Übereinstimmung bleiben unverändert.",
+            "createNewForUnmatched": "Setzt jede Zeile, die nicht mit einem bestehenden Eintrag verknüpft ist, auf \"Neu erstellen\". Bereits verknüpfte Zeilen bleiben unverändert.",
+            "skipAll": "Überspringt jedes Tag – keines wird importiert oder erstellt.",
+            "reset": "Löscht alle Auswahlen und führt den automatischen Abgleich erneut aus."
+          }
+        },
+        "accounts": {
+          "sectionTitle": "Kontenzuordnung",
+          "resolvedCount": "{resolved} von {total} gelöst",
+          "csvName": "CSV-Konto",
+          "currency": "Währung",
+          "action": "Aktion",
+          "target": "Zielkonto",
+          "selectTarget": "Konto auswählen",
+          "noMatchingCurrency": "Keine Konten passen zur Währung {currency}",
+          "willCreate": "Erstellt \"{name}\" ({currency})",
+          "empty": "Keine Konten in CSV gefunden",
+          "currentBalanceLabel": "Aktueller Saldo",
+          "currentBalancePlaceholder": "0.00",
+          "currentBalanceHint": "Der Saldo, den dieses Konto aktuell aufweist – der Import setzt das Konto auf genau diesen Wert. Leer lassen, um die Summe der importierten Transaktionen zu verwenden.",
+          "skippedNote": "{count} Konto/Konten werden übersprungen. Ihre Transaktionen werden nicht importiert."
+        },
+        "categories": {
+          "sectionTitle": "Kategoriezuordnung",
+          "csvName": "CSV-Kategorie"
+        },
+        "tags": {
+          "sectionTitle": "Tag-Zuordnung",
+          "resolvedCount": "{resolved} von {total} gelöst",
+          "csvName": "CSV-Tag",
+          "action": "Aktion",
+          "target": "Ziel-Tag",
+          "selectTarget": "Tag auswählen",
+          "willCreate": "Erstellt \"{name}\"",
+          "willSkip": "Wird übersprungen",
+          "noExistingTags": "Keine bestehenden Tags zum Verknüpfen",
+          "loadFailed": "Tags konnten nicht geladen werden",
+          "empty": "Keine Tags in CSV gefunden"
+        },
+        "detectError": "Fortfahren fehlgeschlagen. Bitte versuche es erneut.",
+        "extractFailed": "Werte zur Zuordnung konnten nicht geladen werden. Bitte gehe zurück und versuche es erneut.",
+        "retry": "Erneut versuchen",
+        "footer": {
+          "back": "Zurück",
+          "next": "Weiter"
+        }
+      },
+      "mapColumns": {
+        "columnsTitle": "Spalten",
+        "assignmentsTitle": "Zuweisungen",
+        "fieldHeader": "Feld",
+        "csvColumnHeader": "CSV-Spalte",
+        "exampleHeader": "Beispieldaten",
+        "howToAssignHeader": "Zuweisungsmethode",
+        "usingHeader": "Verwendet",
+        "optionalSuffix": "(optional)",
+        "choosePlaceholder": "Auswählen…",
+        "alreadyMatchedSuffix": "(bereits zugeordnet)",
+        "amountSignNote": "Aus dem Vorzeichen des Betrags bestimmt",
+        "back": "Zurück",
+        "next": "Weiter",
+        "missingHint": "Noch benötigt: {fields}",
+        "fields": {
+          "date": "Datum",
+          "amount": "Betrag",
+          "description": "Beschreibung",
+          "category": "Kategorie",
+          "account": "Konto",
+          "currency": "Währung",
+          "transactionType": "Transaktionstyp",
+          "payee": "Zahlungsempfänger"
+        },
+        "dateFormat": {
+          "label": "Datumsformat",
+          "placeholder": "Datumsformat auswählen",
+          "dayFirstOption": "Tag zuerst — {example}",
+          "monthFirstOption": "Monat zuerst — {example}",
+          "suggestedBadge": "Vorgeschlagen",
+          "isoDetected": "ISO-Datumsformat erkannt – Datumsangaben in dieser Spalte beginnen mit dem Jahr, daher ist keine Auswahl von Tag/Monat erforderlich.",
+          "previewLabel": "Vorschau",
+          "previewUnrecognized": "nicht erkannt",
+          "mismatchWarning": "{count} Zeile entspricht nicht diesem Format und wird als ungültig markiert. | {count} Zeilen entsprechen nicht diesem Format und werden als ungültig markiert."
+        }
+      },
+      "importResults": {
+        "errorColumns": {
+          "row": "Zeile",
+          "error": "Fehler"
+        },
+        "rowErrors": {
+          "payeeDefaultTagsFailed": "Die Transaktion wurde importiert, aber die Standard-Tags des Zahlungsempfängers konnten nicht angewendet werden.",
+          "accountUnresolved": "Das Konto für diese Zeile konnte nicht zugeordnet werden, daher wurde die Zeile übersprungen.",
+          "readBackFailed": "Die Transaktion wurde gespeichert, konnte aber nicht verifiziert werden und fehlt daher in der Import-Zusammenfassung.",
+          "generic": "Diese Zeile konnte nicht importiert werden."
+        }
+      }
+    }
+  }
+}

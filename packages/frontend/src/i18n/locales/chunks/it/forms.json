@@ -1,0 +1,388 @@
+{
+  "forms": {
+    "investmentTransaction": {
+      "typeLabel": "Tipo di transazione",
+      "types": {
+        "buy": "Acquista",
+        "sell": "Vendita",
+        "dividend": "Dividendo",
+        "fee": "Costo",
+        "tax": "Imposta"
+      },
+      "securityLabel": "Titolo",
+      "securityPlaceholder": "Selezionare un titolo",
+      "quantityLabel": "Quantità",
+      "quantityPlaceholder": "0.00",
+      "priceLabel": "Prezzo per azione",
+      "pricePlaceholder": "0.00",
+      "priceHelp": "Usare 0 per ricompense di staking, airdrop o rettifiche del saldo.",
+      "feesLabel": "Commissioni (facoltative)",
+      "feesPlaceholder": "0.00",
+      "dateLabel": "Data della transazione",
+      "noteLabel": "Nota",
+      "notePlaceholder": "Facoltativa. Aggiungere una nota su questa transazione",
+      "cancelButton": "Annulla",
+      "submitButton": "Crea transazione",
+      "submitButtonLoading": "Creazione...",
+      "notifications": {
+        "success": "Transazione creata.",
+        "error": "Impossibile creare la transazione."
+      },
+      "settlement": {
+        "toggleLabel": "Specificare l'importo effettivo in contanti",
+        "toggleHint": "Usare quando l'operazione è stata regolata in un'altra valuta, oppure quando si conosce solo il totale e si vuole calcolare automaticamente la commissione",
+        "currencyLabel": "Valuta di pagamento",
+        "currencyPlaceholder": "Selezionare la valuta",
+        "totalPaidLabel": "Totale pagato",
+        "totalReceivedLabel": "Totale ricevuto",
+        "totalPlaceholder": "es. 1700",
+        "feeLabel": "Commissione (nella valuta di pagamento)",
+        "feePlaceholder": "0",
+        "sameCurrencyFeeHint": "La commissione viene registrata come differenza tra il totale e quantità × prezzo.",
+        "crossCurrencyFeeHint": "La commissione esplicita del broker. L'eventuale spread di cambio è incluso nel tasso di conversione dell'operazione.",
+        "modeFee": "Conosco la commissione",
+        "modeAuto": "Automatico",
+        "modeRate": "Conosco il tasso",
+        "rateLabel": "Tasso di cambio",
+        "ratePlaceholder": "es. 3,66",
+        "rateHint": "Unità della valuta di regolamento per 1 unità della valuta del titolo. La commissione viene registrata come differenza tra il totale e quantità × prezzo × tasso.",
+        "autoHint": "La commissione viene calcolata automaticamente usando il tasso di cambio di mercato alla data della transazione.",
+        "previewRate": "Verrà registrato un tasso di cambio di ≈ {rate}",
+        "previewFee": "Verrà registrata una commissione di ≈ {fee} {currency} (tasso {rate})",
+        "previewUnavailable": "Nessun tasso di mercato trovato per questa data: inserire manualmente la commissione o il tasso di cambio.",
+        "previewFetchFailed": "Impossibile caricare i tassi di mercato. Verificare la connessione o inserire il tasso manualmente.",
+        "previewPlaceholder": "L'anteprima compare qui durante la compilazione del modulo."
+      }
+    },
+    "portfolioSettings": {
+      "nameLabel": "Nome del portafoglio",
+      "namePlaceholder": "Il mio portafoglio di investimenti",
+      "nameRequired": "Il nome è obbligatorio",
+      "typeLabel": "Tipo di portafoglio",
+      "typePlaceholder": "Selezionare il tipo di portafoglio",
+      "descriptionLabel": "Descrizione (facoltativa)",
+      "descriptionPlaceholder": "Una breve descrizione di questo portafoglio...",
+      "displayCurrencyLabel": "Valuta di visualizzazione",
+      "displayCurrencyPlaceholder": "Selezionare la valuta di visualizzazione",
+      "displayCurrencyBaseOption": "Valuta di base ({code})",
+      "displayCurrencyDescription": "Il valore e le statistiche del portafoglio vengono convertiti in questa valuta al tasso di cambio corrente.",
+      "cancelButton": "Annulla",
+      "submitButton": "Salva modifiche",
+      "submitButtonLoading": "Salvataggio...",
+      "notifications": {
+        "success": "Portafoglio aggiornato.",
+        "error": "Impossibile aggiornare il portafoglio. Riprovare."
+      }
+    },
+    "portfolioTransfer": {
+      "transferTypeLabel": "Tipo di trasferimento",
+      "transferTypes": {
+        "portfolioToPortfolio": "Verso un altro portafoglio",
+        "portfolioToAccount": "Verso un conto",
+        "accountToPortfolio": "Verso un portafoglio"
+      },
+      "comingSoonNotice": "💡 I trasferimenti da conto a portafoglio arriveranno in un prossimo aggiornamento!",
+      "fromPortfolioLabel": "Portafoglio di origine",
+      "fromPortfolioPlaceholder": "Selezionare il portafoglio di origine",
+      "fromAccountLabel": "Conto di origine",
+      "fromAccountPlaceholder": "Selezionare il conto di origine",
+      "toPortfolioLabel": "Portafoglio di destinazione",
+      "toPortfolioPlaceholder": "Selezionare il portafoglio di destinazione",
+      "toAccountLabel": "Conto di destinazione",
+      "toAccountPlaceholder": "Selezionare il conto di destinazione",
+      "currencyLabel": "Valuta",
+      "currencyPlaceholder": "Selezionare la valuta",
+      "amountLabel": "Importo",
+      "amountLabelWithCurrency": "Importo ({currency})",
+      "amountPlaceholder": "0.00",
+      "dateLabel": "Data",
+      "descriptionLabel": "Descrizione (facoltativa)",
+      "descriptionPlaceholder": "Aggiungere una nota su questo trasferimento...",
+      "cancelButton": "Annulla",
+      "submitButton": "Trasferisci",
+      "submitButtonLoading": "Elaborazione...",
+      "confirmDialog": {
+        "title": "Conferma trasferimento",
+        "description": "Verrà creato un {action} di {amount} da {from} a {to}",
+        "actionTransfer": "trasferimento",
+        "actionWithdrawal": "prelievo",
+        "actionDeposit": "deposito",
+        "cancelButton": "Annulla",
+        "confirmButton": "Conferma trasferimento"
+      },
+      "validation": {
+        "required": "Questo campo è obbligatorio",
+        "minValue": "L'importo deve essere maggiore di 0"
+      },
+      "notifications": {
+        "comingSoon": "I trasferimenti da conto a portafoglio arriveranno in un prossimo aggiornamento!",
+        "success": "Trasferimento completato.",
+        "error": "Trasferimento non riuscito. Riprovare."
+      },
+      "linkExistingTransaction": "Collega transazione esistente",
+      "linkedTransactionLabel": "Transazione",
+      "noPortfoliosAvailable": "Nessun altro portafoglio disponibile"
+    },
+    "createAccount": {
+      "nameLabel": "Nome del conto",
+      "namePlaceholder": "Nome del conto",
+      "currencyLabel": "Valuta",
+      "currencyPlaceholder": "Selezionare la valuta",
+      "addCurrencyButton": "Aggiungi nuova valuta",
+      "initialBalanceLabel": "Saldo iniziale",
+      "initialBalancePlaceholder": "Saldo iniziale",
+      "initialBalanceHelpLink": "Cosa inserire?",
+      "accountCategoryLabel": "Categoria del conto",
+      "accountCategoryPlaceholder": "Selezionare la categoria del conto",
+      "creditLimitLabel": "Limite di credito",
+      "creditLimitPlaceholder": "Limite di credito",
+      "defaultPaymentTypeLabel": "Tipo di pagamento predefinito",
+      "submitButton": "Crea",
+      "submitButtonLoading": "Creazione...",
+      "notifications": {
+        "success": "Creato.",
+        "error": "Errore imprevisto."
+      }
+    },
+    "directCashTransaction": {
+      "methodTypes": {
+        "direct": "Diretto",
+        "transfer": "Trasferimento"
+      },
+      "operationTypes": {
+        "deposit": "Deposito",
+        "withdrawal": "Prelievo"
+      },
+      "fromAccountLabel": "Conto di origine",
+      "toAccountLabel": "Conto di destinazione",
+      "accountPlaceholder": "Selezionare il conto",
+      "orSeparator": "oppure",
+      "linkExistingTransaction": "Collega transazione esistente",
+      "linkedTransactionLabel": "Transazione collegata",
+      "amountLabel": "Importo",
+      "amountPlaceholder": "Inserire l'importo",
+      "currencyLabel": "Valuta",
+      "currencyPlaceholder": "Selezionare la valuta",
+      "dateLabel": "Data",
+      "descriptionLabel": "Descrizione",
+      "adjustmentLabel": "Questa è una rettifica del saldo",
+      "adjustmentHint": "Il saldo di cassa cambia comunque, ma l'importo non verrà conteggiato come denaro versato nel report dei contributi agli investimenti.",
+      "descriptionPlaceholder": "Descrizione facoltativa",
+      "cancelButton": "Annulla",
+      "submitButton": "Invia",
+      "submitButtonLoading": "Invio...",
+      "confirmDialog": {
+        "title": "Conferma trasferimento",
+        "description": "Verrà creato un {action} di {amount} da {from} a {to}",
+        "cancelButton": "Annulla",
+        "confirmButton": "Conferma",
+        "actionDeposit": "deposito",
+        "actionWithdrawal": "prelievo"
+      },
+      "validation": {
+        "required": "Questo campo è obbligatorio",
+        "minValue": "L'importo deve essere maggiore di 0"
+      },
+      "notifications": {
+        "success": "Transazione in contanti creata",
+        "error": "Impossibile creare la transazione in contanti"
+      }
+    },
+    "validators": {
+      "invalidCurrencyDecimal": "Inserire un importo valido (fino a 2 decimali)",
+      "mustBePositive": "L'importo deve essere positivo"
+    },
+    "exchangeCurrency": {
+      "fromCurrencyLabel": "Valuta di origine",
+      "toCurrencyLabel": "Valuta di destinazione",
+      "currencyPlaceholder": "Selezionare la valuta",
+      "fromAmountLabel": "Importo di origine",
+      "toAmountLabel": "Importo di destinazione",
+      "amountPlaceholder": "0.00",
+      "maxButton": "Max: {amount}",
+      "dateLabel": "Data del cambio",
+      "descriptionLabel": "Descrizione (facoltativa)",
+      "descriptionPlaceholder": "Aggiungere una nota su questo cambio...",
+      "cancelButton": "Annulla",
+      "submitButton": "Cambia",
+      "submitButtonLoading": "Elaborazione...",
+      "validation": {
+        "required": "Questo campo è obbligatorio",
+        "minValue": "L'importo deve essere maggiore di 0",
+        "sameCurrency": "Le valute di origine e di destinazione devono essere diverse"
+      },
+      "notifications": {
+        "success": "Valuta cambiata",
+        "error": "Impossibile cambiare la valuta"
+      }
+    },
+    "createVehicle": {
+      "nameLabel": "Nome del veicolo",
+      "namePlaceholder": "es. La mia Panda",
+      "currencyLabel": "Valuta",
+      "makeLabel": "Marca",
+      "modelLabel": "Modello",
+      "trimLabel": "Allestimento (facoltativo)",
+      "yearLabel": "Anno",
+      "vehicleClassLabel": "Classe del veicolo",
+      "purchasePriceLabel": "Prezzo di acquisto",
+      "purchaseDateLabel": "Data di acquisto",
+      "depreciationPresetLabel": "Modello di deprezzamento",
+      "customAnnualRatePctLabel": "Tasso di deprezzamento annuo personalizzato (%)",
+      "salvageFloorPctLabel": "Valore residuo minimo (% del prezzo di acquisto)",
+      "currentMileageLabel": "Chilometraggio attuale (facoltativo)",
+      "currentMileagePlaceholder": "es. 45000",
+      "submitButton": "Aggiungi veicolo",
+      "submitButtonLoading": "Aggiunta in corso...",
+      "notifications": {
+        "success": "Veicolo aggiunto",
+        "error": "Impossibile aggiungere il veicolo"
+      }
+    },
+    "editVehicle": {
+      "submitButton": "Salva modifiche",
+      "submitButtonLoading": "Salvataggio...",
+      "notifications": {
+        "success": "Veicolo aggiornato",
+        "error": "Impossibile aggiornare il veicolo"
+      }
+    },
+    "loan": {
+      "nameLabel": "Nome del prestito",
+      "namePlaceholder": "es. Mutuo prima casa",
+      "loanTypeLabel": "Tipo di prestito",
+      "loanTypePlaceholder": "Selezionare il tipo di prestito",
+      "currencyLabel": "Valuta",
+      "currencyPlaceholder": "Selezionare la valuta",
+      "originalPrincipalLabel": "Capitale iniziale",
+      "originalPrincipalPlaceholder": "es. 320000",
+      "initialBalanceLabel": "Debito residuo attuale",
+      "initialBalancePlaceholder": "Quanto si deve oggi",
+      "interestRateLabel": "Tasso di interesse annuo (%)",
+      "interestRatePlaceholder": "es. 6,25",
+      "minPaymentEstimateTooltip": "Stimata dal capitale, dal tasso di interesse annuo e dalla durata con la formula standard di ammortamento.",
+      "minPaymentApplyEstimateAriaLabel": "Usa la rata minima stimata",
+      "termMonthsLabel": "Durata (mesi)",
+      "termPresetsAriaLabel": "Durate predefinite",
+      "termPresetsHeader": "Durate comuni",
+      "termMonthsSuffix": "mesi",
+      "termPresetYears": "{count} anno | {count} anni",
+      "termMonthsPlaceholder": "es. 360 per un prestito di 30 anni",
+      "startDateLabel": "Data di inizio",
+      "startDatePlaceholder": "GG/MM/AAAA",
+      "startDateTooltip": "La data di accensione del prestito. È solo informativa e non modifica il debito residuo attuale né la proiezione di estinzione.",
+      "plannedPaymentLabel": "Rata mensile pianificata",
+      "plannedPaymentPlaceholder": "Quanto si paga effettivamente",
+      "minPaymentLabel": "Rata mensile minima",
+      "minPaymentPlaceholder": "Facoltativa, indicata dal finanziatore",
+      "paymentDayLabel": "Giorno del mese del pagamento",
+      "paymentDayPlaceholder": "1–31",
+      "lenderNameLabel": "Finanziatore",
+      "lenderNamePlaceholder": "es. Intesa Sanpaolo, UniCredit",
+      "accountNumberLabel": "Numero del conto / prestito",
+      "accountNumberPlaceholder": "Opzionale",
+      "currentBalanceLabel": "Debito residuo attuale",
+      "balanceAsOfLabel": "Saldo al",
+      "balanceAsOfPlaceholder": "GG/MM/AAAA",
+      "saveButton": "Salva modifiche",
+      "submitButton": "Crea prestito",
+      "submitButtonLoading": "Creazione…",
+      "cancelButton": "Annulla",
+      "notifications": {
+        "success": "Prestito creato.",
+        "error": "Impossibile creare il prestito. Riprovare.",
+        "updateSuccess": "Prestito aggiornato",
+        "updateError": "Impossibile aggiornare il prestito"
+      },
+      "errors": {
+        "required": "Questo campo è obbligatorio.",
+        "mustBePositive": "Deve essere maggiore di 0.",
+        "mustBeNonNegative": "Deve essere 0 o maggiore.",
+        "interestRateRange": "Il tasso di interesse deve essere compreso tra 0 e 99,9999.",
+        "termRange": "La durata deve essere compresa tra 1 e 1200 mesi.",
+        "paymentDayRange": "Il giorno del mese deve essere compreso tra 1 e 31.",
+        "asOfInFuture": "La data non può essere nel futuro",
+        "startDateInFuture": "La data di inizio non può essere nel futuro"
+      },
+      "balanceExceedsPrincipalWarning": "Il debito residuo è superiore al capitale iniziale: ricontrollare gli importi."
+    }
+  },
+  "fields": {
+    "categorySelect": {
+      "noCategoriesFound": "Nessuna categoria trovata",
+      "selectCategoryLabel": "Selezionare la categoria",
+      "searchCategoryLabel": "Cercare una categoria",
+      "clearSearchLabel": "Cancella ricerca",
+      "clearSelectionLabel": "Pulisci la selezione",
+      "searchPlaceholder": "Cerca...",
+      "sharedOwnerNotice": "Categorie di {owner}",
+      "unlistedNotice": "Cercare per trovare qualsiasi categoria",
+      "sharedOwnerNoticeTooltip": "Le transazioni su un conto condiviso usano sempre le categorie del proprietario. Quanto salvato qui viene archiviato nelle categorie di {owner}, così entrambi vedono totali coerenti.",
+      "sharedOwnerCategoriesLoadError": "Impossibile caricare le categorie del conto condiviso. Riprovare."
+    },
+    "select": {
+      "selectOption": "Selezionare un'opzione",
+      "searchPlaceholder": "Cerca..."
+    },
+    "currencySelect": {
+      "yourCurrencies": "Valute in uso",
+      "otherCurrencies": "Altre valute"
+    },
+    "comboboxAccounts": {
+      "allAccounts": "Tutti i conti",
+      "account": "conto",
+      "accountsSelected": "conti selezionati",
+      "selectedOne": "1 conto selezionato",
+      "selectedMany": "{n} conti selezionati",
+      "searchPlaceholder": "Cerca conti...",
+      "noResults": "Nessun risultato."
+    },
+    "comboboxCategories": {
+      "searchPlaceholder": "Cerca categorie...",
+      "unselectedPlaceholder": "Tutte le categorie",
+      "selectedOne": "1 categoria selezionata",
+      "selectedMany": "{n} categorie selezionate",
+      "excludingOne": "Esclusa 1 categoria",
+      "excludingMany": "Escluse {n} categorie"
+    },
+    "accountMultiSelect": {
+      "ungrouped": "Senza gruppo"
+    },
+    "tagSelect": {
+      "placeholder": "Selezionare etichette...",
+      "noTagsAvailable": "Nessuna etichetta disponibile"
+    },
+    "categoryMultiSelect": {
+      "placeholder": "Selezionare categorie...",
+      "searchPlaceholder": "Cerca categorie...",
+      "noCategoriesFound": "Nessuna categoria trovata",
+      "takenBy": "In {name}"
+    },
+    "payeeMultiSelect": {
+      "label": "Tutti i beneficiari",
+      "searchPlaceholder": "Cerca beneficiari",
+      "selectedMany": "{n} beneficiari selezionati",
+      "noResults": "Nessun beneficiario trovato",
+      "unknownPayee": "Beneficiario sconosciuto",
+      "loadError": "Impossibile caricare i beneficiari. Riprovare.",
+      "blankOption": "Nessun beneficiario"
+    },
+    "budgetMultiSelect": {
+      "label": "Tutti i tracker",
+      "selectedMany": "{n} tracker selezionati",
+      "searchPlaceholder": "Cerca tracker",
+      "noResults": "Nessun tracker trovato",
+      "unknownBudget": "Tracker sconosciuto",
+      "blankOption": "Non in un tracker",
+      "loadError": "Impossibile caricare i tracker. Riprovare."
+    },
+    "payeeSelect": {
+      "placeholder": "Selezionare un beneficiario",
+      "searchPlaceholder": "Cerca beneficiari…",
+      "empty": "Ancora nessun beneficiario",
+      "createAffordance": "Crea beneficiario «{name}»",
+      "createNew": "Crea nuovo beneficiario",
+      "sharedOwnerPayeesLoadError": "Impossibile caricare i beneficiari del conto condiviso. Riprovare."
+    }
+  }
+}

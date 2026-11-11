@@ -1,0 +1,92 @@
+import { TRANSACTION_TYPES } from '@bt/shared/types';
+import * as Transactions from '@models/transactions.model';
+import { type StatsScopeFilters, buildStatsScopeWhere } from '@services/stats/stats-scope-filters';
+import { statsTransactions } from '@services/stats/stats-transactions';
+import { Op } from 'sequelize';
+
+type GetExpensesHistoryResponseSchema = Pick<
+  Transactions.default,
+  | 'id'
+  | 'accountId'
+  | 'time'
+  | 'amount'
+  | 'refAmount'
+  | 'currencyCode'
+  | 'categoryId'
+  | 'refundLinked'
+  | 'transactionType'
+>;
+
+interface GetExpensesHistoryParams extends StatsScopeFilters {
+  userId: number;
+  from?: string;
+  to?: string;
+  transactionType?: TRANSACTION_TYPES;
+  /** Drops pending planned rows, leaving only money that actually moved. */
+  excludePlanned?: boolean;
+}
+
+/**
+ * Fetches the expense history for a specified user within an optional date range and account.
+ *
+ * Category scoping (selected and hidden categories alike) is left to the caller: a transaction can
+ * split across several categories, so a row that looks irrelevant by its own `categoryId` may still
+ * carry legs that belong in the report.
+ *
+ * @param {Object} params - The parameters for fetching balances.
+ * @param {number} params.userId - The ID of the user for whom balances are to be fetched.
+ * @param {string} [params.from] - The start date (inclusive) of the date range in 'yyyy-mm-dd' format.
+ * @param {string} [params.to] - The end date (inclusive) of the date range in 'yyyy-mm-dd' format.
+ * @param {string} [params.accountId] - Load history for asked account.
+ * @returns {Promise<BalanceModel[]>} - A promise that resolves to an array of expenses records.
+ * @throws {Error} - Throws an error if the database query fails.
+ *
+ * @example
+ * const balances = await getExpensesHistory({ userId: 1, from: '2023-01-01', to: '2023-12-31' });
+ */
+export const getExpensesHistory = async ({
+  userId,
+  from,
+  to,
+  accountId,
+  accountIds,
+  payeeIds,
+  excludedPayeeIds,
+  tagIds,
+  excludedTagIds,
+  transactionType = TRANSACTION_TYPES.expense,
+  excludePlanned,
+}: GetExpensesHistoryParams): Promise<GetExpensesHistoryResponseSchema[]> => {
+  const dataAttributes: (keyof Transactions.default)[] = [
+    'id',
+    'accountId',
+    'time',
+    'amount',
+    'refAmount',
+    'currencyCode',
+    'categoryId',
+    'refundLinked',
+    'transactionType',
+  ];
+
+  // Refunds are left gross here: the caller runs them through the category-allocation engine,
+  // which resolves the pairs itself.
+  const { rows } = await statsTransactions({
+    access: { accessibleTo: userId },
+    // See the note in `get-cash-flow.ts`: a widened row scope makes `'include'` leak
+    // other members' plans into this caller's numbers.
+    planned: excludePlanned ? 'exclude' : { visibleTo: userId },
+    refunds: 'ignore',
+    window: { from, to },
+    where: {
+      [Op.and]: [
+        { transactionType },
+        ...buildStatsScopeWhere({ accountId, accountIds, payeeIds, excludedPayeeIds, tagIds, excludedTagIds }),
+      ],
+    },
+    order: [['time', 'ASC']],
+    attributes: dataAttributes,
+  });
+
+  return rows;
+};

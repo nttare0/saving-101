@@ -1,0 +1,41 @@
+{
+  "auth": {
+    "signup": {
+      "title": "注册帐号",
+      "divider": "或使用邮箱继续",
+      "submitButton": "注册",
+      "alreadyHaveAccount": "已经有帐号了？",
+      "signInLink": "登录",
+      "labels": {
+        "displayName": "显示名",
+        "verifyPassword": "确认密码"
+      },
+      "placeholders": {
+        "displayName": "例：李大刚",
+        "verifyPassword": "确认密码"
+      },
+      "errors": {
+        "invalidEmail": "请输入有效的电邮地址。",
+        "passwordTooShort": "密码太短了。",
+        "passwordTooLong": "密码太长了。",
+        "invalidPassword": "密码无效。",
+        "userExists": "使用此电邮的用户已存在。",
+        "signupsDisabled": "此实例的管理员禁止新用户注册。",
+        "genericErrorRetry": "发生错误。请重试。",
+        "oauthFailed": "无法使用 {provider} 登录。请重试。",
+        "oauthNotConfigured": "本实例没有设置 {provider} 登录。"
+      }
+    },
+    "shared": {
+      "divider": "或使用",
+      "passkeyButton": {
+        "signIn": "使用通行密钥登录",
+        "register": "添加通行密钥"
+      },
+      "oauthButton": {
+        "signIn": "使用 {provider} 登录",
+        "signUp": "使用 {provider} 注册"
+      }
+    }
+  }
+}

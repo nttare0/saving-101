@@ -1,0 +1,346 @@
+{
+  "navigation": {
+    "dashboard": "看板",
+    "accounts": "账户",
+    "accountsList": "所有账户",
+    "investments": "投资",
+    "loans": "贷款",
+    "allTransactions": "所有交易记录",
+    "transactions": "交易记录",
+    "transactionGroups": "交易组",
+    "trash": "回收站",
+    "analytics": "统计分析",
+    "optimizations": "优化",
+    "automations": "自动化",
+    "accountDetails": "账户详情",
+    "helpAndDocs": "Help & docs",
+    "community": "Community",
+    "logout": "登出",
+    "appVersion": "App version {version}",
+    "updateAvailable": "Update available",
+    "updateToVersion": "Update · {version}",
+    "settings": "设置",
+    "planned": {
+      "planned": "已规划",
+      "subscriptions": "定期付款",
+      "budgets": "预算",
+      "goals": "Goals"
+    },
+    "venture": "风险投资",
+    "budget": "Budget"
+  },
+  "sidebar": {
+    "collapse": "Collapse sidebar",
+    "expand": "Expand sidebar",
+    "settings": {
+      "title": "设置",
+      "sections": {
+        "label": "侧边栏小组",
+        "description": "选择在侧边栏中显示哪些小组。",
+        "alwaysVisibleTooltip": "本组总是可见。"
+      },
+      "hideZeroBalances": {
+        "label": "隐藏零余额",
+        "description": "隐藏零余额的账户和账户组"
+      }
+    },
+    "accountsView": {
+      "title": "账户",
+      "bankAccounts": "银行账户",
+      "newAccount": "新建账户",
+      "newAccountsGroup": "新建账户组",
+      "portfolios": "投资组合",
+      "newPortfolio": "新建投资组合",
+      "noPortfolios": "无投资组合",
+      "ventures": "风险投资",
+      "cars": "车辆",
+      "loans": "贷款",
+      "collapseNavigation": "折叠导航栏",
+      "viaHousehold": "由 {handle} 的家庭账户共享",
+      "sharedBy": "由 {handle} 共享",
+      "needsReauthTooltip": "连接已过期。重新连接以恢复同步。"
+    }
+  },
+  "header": {
+    "add": "添加",
+    "importData": "导入数据",
+    "moreActions": "More ways to add data",
+    "importDataHint": "CSV file or bank statement",
+    "attachInvoice": "Attach invoice",
+    "attachInvoiceHint": "We find the transaction it belongs to",
+    "language": "语言",
+    "newTransaction": "添加交易",
+    "settings": "设置",
+    "feedback": "意见反馈",
+    "support": "帮助",
+    "sync": {
+      "syncing": "正在同步",
+      "synchronizing": "正在同步……",
+      "syncedTime": "{time} 已同步",
+      "connectBank": "连接银行",
+      "syncingAccounts": "同步 {count} 个账户",
+      "stuck": "同步卡住了",
+      "failed": "Sync failed, some accounts need attention"
+    },
+    "categorization": {
+      "title": "AI 分类",
+      "categorizing": "分类中……",
+      "completed": "AI 已分类 {count} 条交易记录| AI 已分类 {count} 条交易记录",
+      "completedShort": "分类完成",
+      "completedWithSkipped": "已分类 {count} 个交易（跳过 {skipped} 个） | 已分类 {count} 个交易（跳过 {skipped} 个）",
+      "failed": "分类失败",
+      "failedShort": "失败",
+      "allSkipped": "AI couldn't confidently categorize the transaction | AI couldn't confidently categorize any of the {count} transactions",
+      "queued": "正在等待开始……",
+      "transactions": "交易记录"
+    }
+  },
+  "themeSelector": {
+    "light": "浅色",
+    "dark": "深色",
+    "system": "系统"
+  },
+  "feedback": {
+    "dialog": {
+      "title": "提出反馈",
+      "description": "告诉我们什么是可行的，什么是不可行的。",
+      "typeLabel": "Type",
+      "typePlaceholder": "Choose a type",
+      "types": {
+        "bug": "有些功能有问题",
+        "featureRequest": "我想要新功能",
+        "other": "其他"
+      },
+      "docsHint": "Not sure how something works? Check the {link} first.",
+      "docsHintLink": "docs",
+      "messageLabel": "您的反馈",
+      "messagePlaceholder": "发生了什么，或者你想看到什么？",
+      "messageRequired": "请在发送前填写消息。",
+      "submit": "发送",
+      "thanks": "谢谢，我们阅读了每一个信息。",
+      "unavailable": "发送现在不可用。请使用下面的反馈板来代替。",
+      "or": "或",
+      "reddit": {
+        "title": "Ask the community on Reddit",
+        "description": "Get help from other users, share how you set things up, and follow updates."
+      },
+      "board": {
+        "title": "将其发布在公共反馈板",
+        "description": "为其他人的想法投票，查看未来计划，并获取对您所提想法的回复。"
+      }
+    }
+  },
+  "syncStatusTooltip": {
+    "title": "银行连接同步状态",
+    "syncedSuccessfully": "同步成功",
+    "syncCompletedWithErrors": "某些账户同步失败",
+    "syncStuckTitle": "同步似乎卡住了",
+    "syncStuckDescription": "有些银行连接没有及时响应。请重试或从集成页面重新连接。",
+    "progress": "已同步 {current}/{total}",
+    "progressPercentage": "{percentage}%",
+    "statuses": {
+      "syncing": "正在同步",
+      "queued": "队列中",
+      "synced": "已同步",
+      "failed": "失败",
+      "idle": "空闲"
+    },
+    "lastSynced": "上次同步：",
+    "neverSynced": "尚未同步",
+    "syncNowButton": "立即同步",
+    "noBankAccounts": "没有连接到银行账户",
+    "connectButton": "连接",
+    "retrySyncButton": "重试同步",
+    "manageConnectionsButton": "管理连接",
+    "needsReauthTitle": "需要重新连接",
+    "needsReauthDescription": "这些银行会话已过期。重新连接以恢复同步。",
+    "reconnectButton": "重新连接",
+    "affectedAccounts": "1 个账号 | {count} 个账号",
+    "timeAgo": {
+      "justNow": "刚刚",
+      "secondsAgo": "{count} 秒前 | {count} 秒前",
+      "minutesAgo": "{count} 分钟前 | {count} 分钟前",
+      "hoursAgo": "{count} 小时前 | {count} 小时前",
+      "daysAgo": "{count} 天前 | {count} 天前",
+      "weeksAgo": "{count} 星期前 | {count} 星期前",
+      "monthsAgo": "{count} 个月前 | {count} 个月前",
+      "yearsAgo": "{count} 年前 | {count} 年前"
+    }
+  },
+  "banners": {
+    "recoveryMethod": {
+      "title": "添加备份登录方式",
+      "description": "添加谷歌登录或通行密钥来保护您的帐户。这确保您可以随时访问您的帐户。",
+      "actionButton": "前往安全设置"
+    }
+  },
+  "relinkWarning": {
+    "buttonLabel": "{count} 个账户需要注意 | {count} 个账户需要注意",
+    "title": "Enable Banking：需要操作",
+    "description": "由于数据格式发生变更，这些 Enable Banking 账户需要更新。这是一次性操作，以提高同步的可靠性。",
+    "step1Full": "To save your time, firstly try reconnecting the whole bank connection. You can find a {reconnect} button under the {connectionValidity} section on each connection page:",
+    "reconnectButton": "重新连接",
+    "connectionValiditySection": "连接有效性",
+    "connectionLabel": "连接 #{id}",
+    "step2Full": "如何有账户在重新连接后仍在下列列表，请前往各个账户内手动{unlink}然后{link}。",
+    "unlinkAction": "取消连接",
+    "linkAction": "重新连接"
+  },
+  "pages": {
+    "integrations": {
+      "providers": {
+        "monobank": {
+          "name": "Monobank"
+        },
+        "enableBanking": {
+          "name": "Enable Banking"
+        },
+        "lunchflow": {
+          "name": "Lunch Flow"
+        }
+      }
+    }
+  },
+  "dashboard": {
+    "onboarding": {
+      "title": "欢迎来到 MoneyMatter",
+      "subtitle": "从设置您的第一个账户开始",
+      "createManualAccount": {
+        "title": "创建手动账户",
+        "description": "手动追踪现金、储蓄或任何账户"
+      },
+      "connectBank": {
+        "title": "连接您的银行",
+        "description": "自动从您的银行同步交易"
+      },
+      "divider": "或导入现有数据",
+      "importFile": {
+        "title": "从文件导入",
+        "description": "从银行对账单 (PDF) 或 CSV 文件导入交易"
+      },
+      "quickStart": {
+        "categories": {
+          "getting-started": {
+            "title": "快速上手"
+          },
+          "advanced-transactions": {
+            "title": "高级交易"
+          },
+          "organization": {
+            "title": "组织您的财务"
+          },
+          "bank-import": {
+            "title": "连接与导入"
+          },
+          "analytics": {
+            "title": "探索分析"
+          },
+          "ai-settings": {
+            "title": "AI 功能"
+          },
+          "sharing": {
+            "title": "共享和家庭"
+          }
+        },
+        "tasks": {
+          "create-account": {
+            "title": "创建您的第一个账户",
+            "description": "添加并追踪一个银行账户或钱包"
+          },
+          "add-transaction": {
+            "title": "添加您的第一笔交易记录",
+            "description": "记录收入或支出"
+          },
+          "create-transfer": {
+            "title": "创建转账",
+            "description": "在您的账户之间转移资金"
+          },
+          "link-refund": {
+            "title": "链接退款",
+            "description": "将退款与原始交易链接"
+          },
+          "link-transactions": {
+            "title": "链接现有的交易",
+            "description": "将相关的交易链接到一起"
+          },
+          "split-transaction": {
+            "title": "拆分交易",
+            "description": "将支出拆分到不同分类"
+          },
+          "mark-transfer-out": {
+            "title": "标记转出钱包",
+            "description": "追踪离开您帐户的资金"
+          },
+          "create-category": {
+            "title": "创建自定义分类",
+            "description": "按分类整理您的交易"
+          },
+          "create-tag": {
+            "title": "创建标签",
+            "description": "将标签添加到相关的交易"
+          },
+          "create-budget": {
+            "title": "设置预算",
+            "description": "为分类创建支出限制"
+          },
+          "create-subscription": {
+            "title": "创建订阅",
+            "description": "设置定期付款来追踪您的订阅"
+          },
+          "create-account-group": {
+            "title": "创建一个账户组",
+            "description": "按类型或目的整理帐户"
+          },
+          "setup-tag-reminder": {
+            "title": "设置标签提醒",
+            "description": "接收定期支出的通知"
+          },
+          "connect-bank": {
+            "title": "连接银行账户",
+            "description": "自动同步交易"
+          },
+          "import-csv": {
+            "title": "从任何文本源导入",
+            "description": "从 CSV、PDF 或银行对帐单导入"
+          },
+          "view-annual-overview": {
+            "title": "查看年度概览",
+            "description": "查看年度趋势和模式"
+          },
+          "view-cash-flow": {
+            "title": "查看现金流量分析",
+            "description": "了解您的收入与支出"
+          },
+          "review-ai-features": {
+            "title": "审核 AI 功能",
+            "description": "探索可用的 AI 功能"
+          },
+          "configure-ai": {
+            "title": "设置您自己的 API 密钥",
+            "description": "使用您的 AI API 密钥进行无限和不间断访问"
+          },
+          "invite-household-member": {
+            "title": "邀请家庭成员",
+            "description": "与对方分享您的财务生活——他们可以访问您现在和未来的所有帐户。"
+          },
+          "share-account": {
+            "title": "分享账户",
+            "description": "打开任何账户并使用共享授予单个用户读取或写入权限。"
+          }
+        },
+        "ui": {
+          "title": "快速开始",
+          "subtitle": "使用我们的快速启动指南，了解 MoneyMatter 可以为您做的一切。",
+          "dismissButton": "永久关闭",
+          "dismissConfirmTitle": "隐藏快速开始？",
+          "dismissConfirmDescription": "如果您改变主意，您随时可以从设置中重新打开“快速开始”指南。",
+          "dismissConfirmButton": "隐藏",
+          "triggerTooltip": "快速开始——剩 {count} 个任务",
+          "srDescription": "完成这些任务以开始应用",
+          "progressText": "已完成 {completed}/{total}",
+          "categoryProgress": "已完成 {completed}/{total}"
+        }
+      }
+    }
+  }
+}

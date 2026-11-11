@@ -1,0 +1,19 @@
+{
+  "settings": {
+    "language": {
+      "title": "Sprache",
+      "description": "Anzeigesprache für die App-Oberfläche.",
+      "community": {
+        "title": "Community-Übersetzungen",
+        "hint": "Übersetzt von Freiwilligen auf Crowdin. Alles, was noch nicht übersetzt ist, wird auf Englisch angezeigt."
+      },
+      "contribute": {
+        "title": "Fehlende oder falsche Übersetzungen?",
+        "description": "Community-Sprachen werden auf Crowdin übersetzt. Du kannst eine neue Sprache anfragen, Korrekturen vorschlagen oder Texte selbst übersetzen – ganz ohne Programmierkenntnisse.",
+        "requestNote": "Möchtest du Crowdin lieber nicht nutzen? Schlage eine Sprache auf unserem {boardLink} vor.",
+        "requestNoteLink": "Feature-Board",
+        "action": "Auf Crowdin mithelfen"
+      }
+    }
+  }
+}

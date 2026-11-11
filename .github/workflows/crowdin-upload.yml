@@ -1,0 +1,41 @@
+name: Crowdin Upload Sources
+
+# Pushes English source strings and the in-repo Ukrainian translations to
+# Crowdin. Every other locale only travels the other direction, in
+# crowdin-download.yml
+
+on:
+  push:
+    # dev is where features land, so sources reach Crowdin as they're written.
+    # main covers strings introduced by a hotfix that never passed through dev.
+    branches: [main, dev]
+    paths:
+      - 'packages/frontend/src/i18n/locales/chunks/en/**'
+      - 'packages/frontend/src/i18n/locales/chunks/uk/**'
+      - 'packages/backend/src/i18n/locales/en.json'
+      - 'packages/backend/src/i18n/locales/uk.json'
+      - 'crowdin.yml'
+  workflow_dispatch:
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - uses: crowdin/github-action@9c23991700c0ec5256fd41089b9d9d7d540e424e # v3.3.0
+        with:
+          upload_sources: true
+          # Ukrainian is maintained in the repo, never downloaded from Crowdin.
+          # Uploading it keeps Crowdin's copy in sync so contributor suggestions
+          # are made against the real text. Uploading any other locale would
+          # overwrite newer work done in the Crowdin editor.
+          upload_translations: true
+          upload_language: uk
+          # Marks the repo text as the approved translation, so a contributor's
+          # suggestion shows up as an unapproved alternative instead of replacing it.
+          auto_approve_imported: true
+          download_translations: false
+        env:
+          CROWDIN_PROJECT_ID: ${{ secrets.CROWDIN_PROJECT_ID }}
+          CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}

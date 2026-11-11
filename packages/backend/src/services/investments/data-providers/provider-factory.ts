@@ -1,0 +1,94 @@
+import { API_ERROR_CODES } from '@bt/shared/types';
+import { SECURITY_PROVIDER } from '@bt/shared/types/investments';
+import { EnvVar, isEnvConfigured } from '@common/utils/env';
+import { ServiceUnavailableError } from '@js/errors';
+
+import { AlphaVantageDataProvider } from './alphavantage-provider';
+import { BaseSecurityDataProvider } from './base-provider';
+import { CoinGeckoDataProvider } from './coingecko-provider';
+import { CompositeDataProvider } from './composite-provider';
+import { FmpDataProvider } from './fmp-provider';
+import { PolygonDataProvider } from './polygon-provider';
+import { YahooDataProvider } from './yahoo-provider';
+
+const COINGECKO_NOT_CONFIGURED_MESSAGE =
+  'Crypto search is unavailable. Set COINGECKO_API_KEY in your environment to enable crypto support.';
+
+const getCoinGeckoKey = (): string | undefined =>
+  isEnvConfigured(EnvVar.COINGECKO_API_KEY, process.env.COINGECKO_API_KEY) ? process.env.COINGECKO_API_KEY : undefined;
+
+class DataProviderFactory {
+  private providers = new Map<SECURITY_PROVIDER, BaseSecurityDataProvider>();
+
+  getProvider(providerName: SECURITY_PROVIDER = SECURITY_PROVIDER.composite): BaseSecurityDataProvider {
+    if (!this.providers.has(providerName)) {
+      this.providers.set(providerName, this.createProvider(providerName));
+    }
+    return this.providers.get(providerName)!;
+  }
+
+  private createProvider(providerName: SECURITY_PROVIDER): BaseSecurityDataProvider {
+    switch (providerName) {
+      case SECURITY_PROVIDER.alphavantage: {
+        const apiKey = process.env.ALPHA_VANTAGE_API_KEY as string;
+        if (!apiKey) {
+          throw new Error('Alpha Vantage API key not configured');
+        }
+        return new AlphaVantageDataProvider(apiKey);
+      }
+
+      case SECURITY_PROVIDER.polygon: {
+        const apiKey = process.env.POLYGON_API_KEY as string;
+        if (!apiKey) {
+          throw new Error('Polygon API key not configured');
+        }
+        return new PolygonDataProvider(apiKey);
+      }
+
+      case SECURITY_PROVIDER.fmp: {
+        const apiKey = process.env.FMP_API_KEY as string;
+        if (!apiKey) {
+          throw new Error('FMP API key not configured');
+        }
+        return new FmpDataProvider(apiKey);
+      }
+
+      case SECURITY_PROVIDER.yahoo: {
+        return new YahooDataProvider();
+      }
+
+      case SECURITY_PROVIDER.coingecko: {
+        const apiKey = getCoinGeckoKey();
+        if (!apiKey) {
+          throw new ServiceUnavailableError({
+            code: API_ERROR_CODES.cryptoProviderNotConfigured,
+            message: COINGECKO_NOT_CONFIGURED_MESSAGE,
+          });
+        }
+        return new CoinGeckoDataProvider({ apiKey });
+      }
+
+      case SECURITY_PROVIDER.composite: {
+        return new CompositeDataProvider({
+          fmpApiKey: process.env.FMP_API_KEY,
+          polygonApiKey: process.env.POLYGON_API_KEY,
+          alphaVantageApiKey: process.env.ALPHA_VANTAGE_API_KEY,
+          coingeckoApiKey: getCoinGeckoKey(),
+          yahooEnabled: process.env.YAHOO_FINANCE_ENABLED !== 'false',
+        });
+      }
+
+      default:
+        throw new Error(`Unsupported data provider: ${providerName}`);
+    }
+  }
+
+  /**
+   * Used in tests to clear cached providers to avoid mocking issues
+   */
+  public clearCache() {
+    this.providers.clear();
+  }
+}
+
+export const dataProviderFactory = new DataProviderFactory();

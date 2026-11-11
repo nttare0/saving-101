@@ -1,0 +1,351 @@
+import { ACCOUNT_STATUSES, SUBSCRIPTION_FREQUENCIES, TRANSACTION_TYPES } from '@bt/shared/types';
+import { describe, expect, it } from '@jest/globals';
+import * as helpers from '@tests/helpers';
+import { format, subDays } from 'date-fns';
+
+describe('Account archiving (PUT /accounts/:id)', () => {
+  it('walks one account through every status / excludeFromStats transition', async () => {
+    const account = await helpers.createAccount({
+      payload: helpers.buildAccountPayload(),
+      raw: true,
+    });
+
+    expect(account.status).toBe(ACCOUNT_STATUSES.active);
+    expect(account.excludeFromStats).toBe(false);
+
+    const invalidStatus = await helpers.makeRequest({
+      method: 'put',
+      url: `/accounts/${account.id}`,
+      payload: { status: 'invalid-status' },
+    });
+    expect(invalidStatus.statusCode).toBe(422);
+
+    const afterInvalid = await helpers.getAccount({ id: account.id, raw: true });
+    expect(afterInvalid.status).toBe(ACCOUNT_STATUSES.active);
+    expect(afterInvalid.excludeFromStats).toBe(false);
+
+    const excludeOn = await helpers.updateAccount({
+      id: account.id,
+      payload: { excludeFromStats: true },
+    });
+    expect(excludeOn.statusCode).toBe(200);
+    const afterExcludeOn = await helpers.getAccount({ id: account.id, raw: true });
+    expect(afterExcludeOn.excludeFromStats).toBe(true);
+    expect(afterExcludeOn.status).toBe(ACCOUNT_STATUSES.active);
+
+    await helpers.updateAccount({ id: account.id, payload: { excludeFromStats: false } });
+    expect((await helpers.getAccount({ id: account.id, raw: true })).excludeFromStats).toBe(false);
+
+    const archiveRes = await helpers.updateAccount({
+      id: account.id,
+      payload: { status: ACCOUNT_STATUSES.archived },
+    });
+    expect(archiveRes.statusCode).toBe(200);
+    expect((await helpers.getAccount({ id: account.id, raw: true })).status).toBe(ACCOUNT_STATUSES.archived);
+
+    await helpers.updateAccount({ id: account.id, payload: { status: ACCOUNT_STATUSES.active } });
+    expect((await helpers.getAccount({ id: account.id, raw: true })).status).toBe(ACCOUNT_STATUSES.active);
+
+    await helpers.updateAccount({
+      id: account.id,
+      payload: { status: ACCOUNT_STATUSES.archived, excludeFromStats: true },
+    });
+    const combined = await helpers.getAccount({ id: account.id, raw: true });
+    expect(combined.status).toBe(ACCOUNT_STATUSES.archived);
+    expect(combined.excludeFromStats).toBe(true);
+  }, 60_000);
+
+  describe('Archive side effects', () => {
+    describe('Account groups', () => {
+      it('removes archived account from all account groups', async () => {
+        const account = await helpers.createAccount({
+          payload: helpers.buildAccountPayload(),
+          raw: true,
+        });
+        const group = await helpers.createAccountGroup({ name: 'test-group', raw: true });
+
+        await helpers.addAccountToGroup({
+          accountId: account.id,
+          groupId: group.id,
+        });
+
+        // Verify account is in the group
+        const groupsBefore = await helpers.getAccountGroups({ raw: true });
+        const groupBefore = groupsBefore.find((g) => g.id === group.id);
+        expect(groupBefore!.accounts).toContainEqual(expect.objectContaining({ id: account.id }));
+
+        // Archive the account
+        await helpers.updateAccount({
+          id: account.id,
+          payload: { status: ACCOUNT_STATUSES.archived },
+        });
+
+        // Verify account is removed from the group
+        const groupsAfter = await helpers.getAccountGroups({ raw: true });
+        const groupAfter = groupsAfter.find((g) => g.id === group.id);
+        expect(groupAfter).toBeDefined();
+        expect(groupAfter!.accounts).not.toContainEqual(expect.objectContaining({ id: account.id }));
+      });
+
+      it('removes archived account from multiple groups', async () => {
+        const account = await helpers.createAccount({
+          payload: helpers.buildAccountPayload(),
+          raw: true,
+        });
+        const group1 = await helpers.createAccountGroup({ name: 'group-1', raw: true });
+        const group2 = await helpers.createAccountGroup({ name: 'group-2', raw: true });
+
+        await helpers.addAccountToGroup({ accountId: account.id, groupId: group1.id });
+        await helpers.addAccountToGroup({ accountId: account.id, groupId: group2.id });
+
+        await helpers.updateAccount({
+          id: account.id,
+          payload: { status: ACCOUNT_STATUSES.archived },
+        });
+
+        const groupsAfter = await helpers.getAccountGroups({ raw: true });
+        for (const group of groupsAfter) {
+          expect(group.accounts ?? []).not.toContainEqual(expect.objectContaining({ id: account.id }));
+        }
+      });
+
+      it('does not affect other accounts in the same group', async () => {
+        const account1 = await helpers.createAccount({
+          payload: helpers.buildAccountPayload({ name: 'account-1' }),
+          raw: true,
+        });
+        const account2 = await helpers.createAccount({
+          payload: helpers.buildAccountPayload({ name: 'account-2' }),
+          raw: true,
+        });
+        const group = await helpers.createAccountGroup({ name: 'shared-group', raw: true });
+
+        await helpers.addAccountToGroup({ accountId: account1.id, groupId: group.id });
+        await helpers.addAccountToGroup({ accountId: account2.id, groupId: group.id });
+
+        // Archive only account1
+        await helpers.updateAccount({
+          id: account1.id,
+          payload: { status: ACCOUNT_STATUSES.archived },
+        });
+
+        // account2 should still be in the group
+        const groupsAfter = await helpers.getAccountGroups({ raw: true });
+        const groupAfter = groupsAfter.find((g) => g.id === group.id);
+        expect(groupAfter!.accounts).toContainEqual(expect.objectContaining({ id: account2.id }));
+        expect(groupAfter!.accounts).not.toContainEqual(expect.objectContaining({ id: account1.id }));
+      });
+    });
+
+    describe('Subscriptions', () => {
+      it('unlinks subscriptions from archived account', async () => {
+        const account = await helpers.createAccount({
+          payload: helpers.buildAccountPayload(),
+          raw: true,
+        });
+
+        const subscription = await helpers.createSubscription({
+          name: 'Test Subscription',
+          frequency: SUBSCRIPTION_FREQUENCIES.monthly,
+          startDate: new Date().toISOString(),
+          accountId: account.id,
+          raw: true,
+        });
+
+        // Archive the account
+        await helpers.updateAccount({
+          id: account.id,
+          payload: { status: ACCOUNT_STATUSES.archived },
+        });
+
+        // Verify subscription's accountId is now null
+        const updatedSubscription = await helpers.getSubscriptionById({
+          id: String(subscription.id),
+          raw: true,
+        });
+        expect(updatedSubscription.accountId ?? null).toBeNull();
+      });
+
+      it('turns auto-record off when unlinking, since auto-record requires an account', async () => {
+        const account = await helpers.createAccount({
+          payload: helpers.buildAccountPayload(),
+          raw: true,
+        });
+
+        const subscription = await helpers.createSubscription({
+          name: 'Auto-record Subscription',
+          frequency: SUBSCRIPTION_FREQUENCIES.monthly,
+          startDate: new Date().toISOString(),
+          accountId: account.id,
+          expectedAmount: 10,
+          expectedCurrencyCode: account.currencyCode,
+          autoRecord: true,
+          raw: true,
+        });
+
+        const response = await helpers.updateAccount({
+          id: account.id,
+          payload: { status: ACCOUNT_STATUSES.archived },
+        });
+
+        expect(response.statusCode).toBe(200);
+
+        const updatedSubscription = await helpers.getSubscriptionById({
+          id: String(subscription.id),
+          raw: true,
+        });
+        expect(updatedSubscription.accountId ?? null).toBeNull();
+      });
+    });
+
+    describe('Idempotent archiving', () => {
+      it('archiving an already-archived account does not throw', async () => {
+        const account = await helpers.createAccount({
+          payload: helpers.buildAccountPayload(),
+          raw: true,
+        });
+
+        // Archive once
+        await helpers.updateAccount({
+          id: account.id,
+          payload: { status: ACCOUNT_STATUSES.archived },
+        });
+
+        // Archive again — should not throw
+        const response = await helpers.updateAccount({
+          id: account.id,
+          payload: { status: ACCOUNT_STATUSES.archived },
+        });
+
+        expect(response.statusCode).toBe(200);
+      });
+
+      it('archiving an already-archived account does not re-run side effects', async () => {
+        const account = await helpers.createAccount({
+          payload: helpers.buildAccountPayload(),
+          raw: true,
+        });
+        const activeAccount = await helpers.createAccount({
+          payload: helpers.buildAccountPayload({ name: 'stays-active' }),
+          raw: true,
+        });
+        const group = await helpers.createAccountGroup({ name: 'idempotent-group', raw: true });
+        await helpers.addAccountToGroup({ accountId: account.id, groupId: group.id });
+        await helpers.addAccountToGroup({ accountId: activeAccount.id, groupId: group.id });
+
+        // Archive once — removes from group
+        await helpers.updateAccount({
+          id: account.id,
+          payload: { status: ACCOUNT_STATUSES.archived },
+        });
+
+        // Re-add to group manually (simulates external change)
+        await helpers.addAccountToGroup({ accountId: account.id, groupId: group.id });
+
+        // Archive again — should NOT trigger side effects since status is already archived
+        await helpers.updateAccount({
+          id: account.id,
+          payload: { status: ACCOUNT_STATUSES.archived },
+        });
+
+        // Account should still be in the group because side effects were not re-run
+        const groups = await helpers.getAccountGroups({ includeArchived: true, raw: true });
+        const groupAfter = groups.find((g) => g.id === group.id);
+        expect(groupAfter!.accounts).toContainEqual(expect.objectContaining({ id: account.id }));
+        expect(groupAfter!.accounts).toContainEqual(expect.objectContaining({ id: activeAccount.id }));
+
+        const defaultGroups = await helpers.getAccountGroups({ raw: true });
+        const groupDefault = defaultGroups.find((g) => g.id === group.id);
+        expect(groupDefault!.accounts).not.toContainEqual(expect.objectContaining({ id: account.id }));
+        expect(groupDefault!.accounts).toContainEqual(expect.objectContaining({ id: activeAccount.id }));
+      });
+    });
+  });
+
+  describe('excludeFromStats effect on stats endpoints', () => {
+    it('excludes account with excludeFromStats=true from earliest transaction date', async () => {
+      const account1 = await helpers.createAccount({
+        payload: helpers.buildAccountPayload({ name: 'included', initialBalance: 0 }),
+        raw: true,
+      });
+      const account2 = await helpers.createAccount({
+        payload: helpers.buildAccountPayload({ name: 'excluded', initialBalance: 0 }),
+        raw: true,
+      });
+
+      const olderDate = subDays(new Date(), 60);
+      const newerDate = subDays(new Date(), 10);
+
+      // Create an older transaction on the excluded account
+      await helpers.createTransaction({
+        payload: helpers.buildTransactionPayload({
+          accountId: account2.id,
+          amount: 100,
+          transactionType: TRANSACTION_TYPES.expense,
+          time: olderDate.toISOString(),
+        }),
+        raw: true,
+      });
+
+      // Create a newer transaction on the included account
+      await helpers.createTransaction({
+        payload: helpers.buildTransactionPayload({
+          accountId: account1.id,
+          amount: 200,
+          transactionType: TRANSACTION_TYPES.expense,
+          time: newerDate.toISOString(),
+        }),
+        raw: true,
+      });
+
+      // Before excluding: earliest date should be the older one
+      const beforeExclude = await helpers.getEarliestTransactionDate({ raw: true });
+      expect(beforeExclude).toBe(format(olderDate, 'yyyy-MM-dd'));
+
+      // Exclude account2 from stats
+      await helpers.updateAccount({
+        id: account2.id,
+        payload: { excludeFromStats: true },
+      });
+
+      // After excluding: earliest date should be the newer one
+      const afterExclude = await helpers.getEarliestTransactionDate({ raw: true });
+      expect(afterExclude).toBe(format(newerDate, 'yyyy-MM-dd'));
+
+      // Balance history drops the excluded account too
+      const history = await helpers.getBalanceHistory({ raw: true });
+      for (const entry of history) {
+        expect(entry.accountId).toBe(account1.id);
+      }
+    });
+
+    it('archived account with excludeFromStats=false still contributes to stats', async () => {
+      const account = await helpers.createAccount({
+        payload: helpers.buildAccountPayload({ initialBalance: 0 }),
+        raw: true,
+      });
+
+      const txDate = subDays(new Date(), 20);
+
+      await helpers.createTransaction({
+        payload: helpers.buildTransactionPayload({
+          accountId: account.id,
+          amount: 500,
+          transactionType: TRANSACTION_TYPES.expense,
+          time: txDate.toISOString(),
+        }),
+        raw: true,
+      });
+
+      // Archive the account WITHOUT excludeFromStats
+      await helpers.updateAccount({
+        id: account.id,
+        payload: { status: ACCOUNT_STATUSES.archived, excludeFromStats: false },
+      });
+
+      // Stats should still include this account's transactions
+      const result = await helpers.getEarliestTransactionDate({ raw: true });
+      expect(result).toBe(format(txDate, 'yyyy-MM-dd'));
+    });
+  });
+});
