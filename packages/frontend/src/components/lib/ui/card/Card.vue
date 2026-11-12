@@ -14,7 +14,7 @@ withDefaults(
 </script>
 
 <template>
-  <component :is="as" :class="cn('bg-card text-card-foreground shadow-card rounded-lg border', attrs.class as string)">
+  <component :is="as" :class="cn('bg-card text-card-foreground shadow-card rounded-xl border', attrs.class as string)">
     <slot />
   </component>
 </template>

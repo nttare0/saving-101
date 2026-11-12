@@ -278,12 +278,12 @@ const savingsLineLabel = computed(() => {
           <div class="bg-muted flex h-3 w-full overflow-hidden rounded-full">
             <template v-if="flowBarTotal > 0">
               <div
-                class="bg-app-income-color transition-all duration-500 ease-out"
+                class="bg-chart-positive transition-all duration-500 ease-out"
                 :style="{ width: `${incomePercent}%` }"
               />
               <div class="bg-muted w-px shrink-0" />
               <div
-                class="bg-app-expense-color transition-all duration-500 ease-out"
+                class="bg-chart-negative transition-all duration-500 ease-out"
                 :style="{ width: `${expensePercent}%` }"
               />
             </template>
@@ -352,8 +352,8 @@ const savingsLineLabel = computed(() => {
                     class="min-h-1 w-full rounded-xs transition-all duration-500"
                     :class="{
                       'bg-muted': bar.value === 0,
-                      'bg-app-income-color/90': bar.value > 0,
-                      'bg-app-expense-color/90': bar.value < 0,
+                      'bg-chart-positive/90': bar.value > 0,
+                      'bg-chart-negative/90': bar.value < 0,
                     }"
                     :style="{ height: `${Math.max(bar.heightPercent, 4)}%` }"
                   />

@@ -65,6 +65,7 @@ import { useFormatCurrency } from '@/composable/formatters';
 import { useDateLocale } from '@/composable/use-date-locale';
 import type { NetWorthDriversGranularity } from '@bt/shared/types';
 import { useResizeObserver } from '@vueuse/core';
+import { styleGridRows } from '@/composable/charts/grid-style';
 import * as d3 from 'd3';
 import { parseISO } from 'date-fns';
 import { computed, reactive, ref, watch } from 'vue';
@@ -215,7 +216,7 @@ const renderChart = () => {
     )
     .call((gridAxis) => {
       gridAxis.select('.domain').remove();
-      gridAxis.selectAll('.tick line').attr('stroke', grid).attr('stroke-opacity', 0.5);
+      styleGridRows({ grid: gridAxis, color: grid });
     });
 
   const labelRotation = shouldRotateLabels ? -45 : 0;
@@ -225,7 +226,7 @@ const renderChart = () => {
     .attr('transform', `translate(0,${innerHeight})`)
     .call(d3.axisBottom(xScale).tickFormat((value) => formatAxisLabel(value as string)))
     .call((axis) => {
-      axis.select('.domain').attr('stroke', grid);
+      axis.select('.domain').remove();
       axis
         .selectAll('.tick text')
         .attr('fill', text)
@@ -234,7 +235,7 @@ const renderChart = () => {
         .attr('text-anchor', shouldRotateLabels ? 'end' : 'middle')
         .attr('dx', shouldRotateLabels ? '-0.5em' : '0')
         .attr('dy', shouldRotateLabels ? '0.5em' : '0.7em');
-      axis.selectAll('.tick line').attr('stroke', grid);
+      axis.selectAll('.tick line').remove();
     });
 
   g.append('g')
@@ -245,9 +246,9 @@ const renderChart = () => {
         .tickFormat((value) => formatAxisValue(value as number)),
     )
     .call((axis) => {
-      axis.select('.domain').attr('stroke', grid);
+      axis.select('.domain').remove();
       axis.selectAll('.tick text').attr('fill', text).attr('font-size', fontSize);
-      axis.selectAll('.tick line').attr('stroke', grid);
+      axis.selectAll('.tick line').remove();
     });
 
   g.append('line')

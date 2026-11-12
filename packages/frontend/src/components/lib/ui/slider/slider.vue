@@ -49,12 +49,12 @@ const sliderValue = computed({
       )
     "
   >
-    <SliderTrack class="bg-secondary relative h-2 w-full grow overflow-hidden rounded-full">
+    <SliderTrack class="bg-muted relative h-1.5 w-full grow overflow-hidden rounded-full">
       <SliderRange class="bg-primary absolute h-full" />
     </SliderTrack>
     <SliderThumb
       :aria-label="ariaLabel"
-      class="bg-background border-primary block size-5 rounded-full border-2 shadow transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
+      class="border-primary ring-ring/50 block size-5 shrink-0 rounded-full border bg-white shadow-sm transition-[color,box-shadow] hover:ring-4 focus-visible:ring-4 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50"
     />
   </SliderRoot>
 </template>

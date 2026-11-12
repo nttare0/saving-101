@@ -2,7 +2,7 @@
   <div class="flex flex-col items-center gap-2">
     <button
       :disabled="isDemoLoading"
-      class="border-primary/50 text-primary hover:bg-primary/10 flex w-full items-center justify-center gap-2 rounded-xl border-2 px-8 py-3.5 text-base font-semibold transition-all disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
+      class="border-input bg-input/30 hover:bg-input/50 flex h-11 w-full items-center justify-center gap-2 rounded-lg border px-6 text-sm font-medium shadow-xs transition-colors disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
       @click="handleTryDemo"
     >
       <!-- PlayCircle icon -->
@@ -16,7 +16,7 @@
         stroke-width="2"
         stroke-linecap="round"
         stroke-linejoin="round"
-        class="size-5"
+        class="size-4"
       >
         <circle cx="12" cy="12" r="10" />
         <polygon points="10 8 16 12 10 16 10 8" />

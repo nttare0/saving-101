@@ -29,15 +29,7 @@ const props = defineProps<{
       </span>
       <slot name="label-extra" />
     </span>
-    <span
-      :class="
-        cn(
-          'shrink-0 text-right whitespace-nowrap tabular-nums',
-          total ? 'font-semibold' : 'font-medium',
-          props.valueClass,
-        )
-      "
-    >
+    <span :class="cn('shrink-0 text-right whitespace-nowrap tabular-nums', 'font-medium', props.valueClass)">
       <slot name="value">{{ value }}</slot>
     </span>
   </div>

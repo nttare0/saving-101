@@ -154,7 +154,7 @@
           <div class="flex items-center gap-3">
             <slot name="account-label-right" />
             <CreateAccountDialog>
-              <div class="text-primary-text cursor-pointer hover:underline">
+              <div class="text-primary-text cursor-pointer font-medium underline underline-offset-4">
                 {{ $t('dialogs.manageTransaction.form.createAccountLink') }}
               </div>
             </CreateAccountDialog>

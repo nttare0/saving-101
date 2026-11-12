@@ -44,7 +44,7 @@ const describedByAttrs = useDescribedByAttrs();
   <DialogPortal>
     <DialogOverlay
       :class="[
-        'fixed inset-0 z-(--z-dialog) bg-black/80',
+        'fixed inset-0 z-(--z-dialog) bg-black/50',
         'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0',
       ]"
     />
@@ -57,8 +57,8 @@ const describedByAttrs = useDescribedByAttrs();
       <DialogClose
         as-child
         :class="[
-          'ring-offset-background absolute top-4 right-4 rounded-sm',
-          'focus:ring-ring focus:ring-2 focus:ring-offset-2 focus:outline-hidden',
+          'absolute top-4 right-4 rounded-sm',
+          'focus:ring-ring/50 focus:ring-[3px] focus:outline-hidden',
           'disabled:pointer-events-none',
           'data-[state=open]:bg-secondary',
         ]"

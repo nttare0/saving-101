@@ -59,6 +59,7 @@ import { getChartColors } from '@/composable/charts/chart-colors';
 import { formatAxisCurrency } from '@/composable/charts/format-axis-currency';
 import { useChartTooltipPosition } from '@/composable/charts/use-chart-tooltip-position';
 import type { CumulativeMonthData } from '@bt/shared/types';
+import { styleGridRows } from '@/composable/charts/grid-style';
 import * as d3 from 'd3';
 import { useResizeObserver } from '@vueuse/core';
 import { computed, reactive, ref, watch } from 'vue';
@@ -180,7 +181,7 @@ const renderChart = () => {
     )
     .call((grid) => {
       grid.select('.domain').remove();
-      grid.selectAll('.tick line').attr('stroke', colors.grid).attr('stroke-opacity', 0.5);
+      styleGridRows({ grid: grid, color: colors.grid });
     });
 
   const maxTicks = Math.max(2, Math.floor(innerWidth / 48));
@@ -197,9 +198,9 @@ const renderChart = () => {
         .tickFormat((d) => monthsInPeriod.get(d as number) || ''),
     )
     .call((axis) => {
-      axis.select('.domain').attr('stroke', colors.grid);
+      axis.select('.domain').remove();
       axis.selectAll('.tick text').attr('fill', colors.text).attr('font-size', fontSize);
-      axis.selectAll('.tick line').attr('stroke', colors.grid);
+      axis.selectAll('.tick line').remove();
     });
 
   // Y axis
@@ -212,9 +213,9 @@ const renderChart = () => {
         .tickFormat((d) => formatAxisValue(d as number)),
     )
     .call((axis) => {
-      axis.select('.domain').attr('stroke', colors.grid);
+      axis.select('.domain').remove();
       axis.selectAll('.tick text').attr('fill', colors.text).attr('font-size', fontSize);
-      axis.selectAll('.tick line').attr('stroke', colors.grid);
+      axis.selectAll('.tick line').remove();
     });
 
   // Zero line if we have negative values

@@ -4,20 +4,20 @@
     <TrialBanner />
     <div
       ref="headerBarRef"
-      class="shadow-header border-border @container/header-bar flex items-center justify-between border-b px-4 py-2 sm:px-6"
+      class="border-border @container/header-bar flex h-12 items-center justify-between gap-2 border-b px-4 lg:px-6"
     >
-      <div class="flex items-center gap-4">
+      <div class="flex items-center gap-1 lg:gap-2">
         <template v-if="isMobileView">
           <Sheet.Sheet :open="isMobileSheetOpen" @update:open="isMobileSheetOpen = $event">
             <Sheet.SheetTrigger as-child>
-              <Button size="icon-sm" variant="secondary" class="shrink-0">
+              <Button size="icon-sm" variant="ghost" class="-ml-1 size-7 shrink-0" :aria-label="$t('sidebar.expand')">
                 <MenuIcon class="size-4" />
               </Button>
             </Sheet.SheetTrigger>
             <Sheet.SheetContent
               side="left"
               :class="[
-                'xs:w-3/4 w-full overflow-y-auto px-0',
+                'bg-sidebar xs:w-3/4 w-full overflow-y-auto px-0',
                 'data-[state=closed]:duration-200 data-[state=open]:duration-300',
               ]"
             >
@@ -29,9 +29,24 @@
           </Sheet.Sheet>
         </template>
 
+        <template v-else>
+          <DesktopOnlyTooltip :content="isCollapsed ? $t('sidebar.expand') : $t('sidebar.collapse')">
+            <Button
+              variant="ghost"
+              size="icon-sm"
+              class="-ml-1 size-7"
+              :aria-label="isCollapsed ? $t('sidebar.expand') : $t('sidebar.collapse')"
+              @click="isCollapsed = !isCollapsed"
+            >
+              <PanelLeftIcon class="size-4" />
+            </Button>
+          </DesktopOnlyTooltip>
+        </template>
+        <div class="bg-border mx-2 h-4 w-px shrink-0" aria-hidden="true" />
+
         <div class="flex items-center gap-px">
           <ManageTransactionDialog v-model:open="isCreateTransactionDialogOpen" :prefill="createTransactionPrefill">
-            <Button variant="default" size="sm" class="rounded-r-none">
+            <Button variant="default" size="sm" class="h-8 rounded-r-none">
               <PlusIcon class="size-4" />
               {{ isMobileView ? $t('header.add') : $t('header.newTransaction') }}
             </Button>
@@ -39,7 +54,12 @@
 
           <Popover.Popover v-model:open="isAddMenuOpen">
             <Popover.PopoverTrigger as-child>
-              <Button variant="default" size="sm" class="rounded-l-none px-2" :aria-label="$t('header.moreActions')">
+              <Button
+                variant="default"
+                size="sm"
+                class="h-8 rounded-l-none px-2"
+                :aria-label="$t('header.moreActions')"
+              >
                 <ChevronDownIcon class="size-4" />
               </Button>
             </Popover.PopoverTrigger>
@@ -81,19 +101,19 @@
         <AttachInvoiceDialog v-if="isAttachInvoiceMounted" v-model:open="isAttachInvoiceOpen" />
       </div>
 
-      <div class="ml-auto flex items-center gap-2">
+      <div class="ml-auto flex items-center gap-1">
         <DesktopOnlyTooltip v-if="!isMobileView" :content="$t('header.feedback')" :disabled="!isHeaderBarCompact">
           <span class="inline-flex">
             <FeedbackDialog>
               <Button
-                variant="secondary"
-                :size="isHeaderBarCompact ? 'icon' : 'sm'"
-                :class="['flex items-center gap-1.5', { 'feedback-pulse': isFeedbackPulsing }]"
+                variant="ghost"
+                :size="isHeaderBarCompact ? 'icon-sm' : 'sm'"
+                :class="['flex h-8 items-center gap-1.5', { 'feedback-pulse': isFeedbackPulsing }]"
                 :aria-label="$t('header.feedback')"
                 @mouseenter="onFeedbackEnter"
                 @click="onFeedbackClick"
               >
-                <FeedbackIcon class="text-primary-text size-4" />
+                <FeedbackIcon class="size-4" />
                 <span class="hidden @[890px]/header-bar:inline">{{ $t('header.feedback') }}</span>
               </Button>
             </FeedbackDialog>
@@ -106,9 +126,9 @@
           :disabled="!isHeaderBarCompact"
         >
           <Button
-            variant="secondary"
-            :size="isHeaderBarCompact ? 'icon' : 'sm'"
-            class="flex items-center gap-1.5"
+            variant="ghost"
+            :size="isHeaderBarCompact ? 'icon-sm' : 'sm'"
+            class="flex h-8 items-center gap-1.5"
             :aria-label="$t('header.support')"
             @click="openSupport"
           >
@@ -123,7 +143,7 @@
         <template v-else>
           <Popover.Popover v-model:open="isPopoverOpen">
             <Popover.PopoverTrigger as-child>
-              <Button variant="secondary" size="icon" :aria-label="syncButtonLabel">
+              <Button variant="ghost" size="icon-sm" :aria-label="syncButtonLabel">
                 <RefreshCcw v-if="syncStatus.isSyncing.value" class="animate-spin" :size="16" />
                 <AlertTriangleIcon v-else-if="syncStatus.syncStuck.value" class="text-destructive-text" :size="16" />
                 <CloudAlertIcon v-else-if="syncStatus.hasSyncIssue.value" class="text-destructive-text size-4" />
@@ -166,7 +186,7 @@
 
         <RouterLink :to="{ name: ROUTES_NAMES.settings }">
           <DesktopOnlyTooltip :content="$t('header.settings')">
-            <Button variant="secondary" size="icon" :aria-label="$t('header.settings')">
+            <Button variant="ghost" size="icon-sm" :aria-label="$t('header.settings')">
               <SettingsIcon class="size-4" />
             </Button>
           </DesktopOnlyTooltip>
@@ -202,6 +222,7 @@ import { useDateLocale } from '@/composable/use-date-locale';
 import { useFeedbackAttention } from '@/composable/use-feedback-attention';
 import { useIdleEnabled } from '@/composable/use-idle-enabled';
 import { useSupportButton } from '@/composable/use-support-button';
+import { useSidebarCollapsed } from '@/components/sidebar/use-sidebar-collapsed';
 import { useSyncStatus } from '@/composable/use-sync-status';
 import { CUSTOM_BREAKPOINTS, useWindowBreakpoints } from '@/composable/window-breakpoints';
 import { ROUTES_NAMES } from '@/routes/constants';
@@ -214,6 +235,7 @@ import {
   HeartIcon,
   ImportIcon,
   MenuIcon,
+  PanelLeftIcon,
   PlusIcon,
   ReceiptTextIcon,
   RefreshCcw,
@@ -249,6 +271,7 @@ const { elementRef: headerRef } = useCssVarFromElementSize({
 const { t } = useI18n();
 const route = useRoute();
 const isMobileView = useWindowBreakpoints(CUSTOM_BREAKPOINTS.uiMobile);
+const { isCollapsed } = useSidebarCollapsed();
 const showConfirmDialog = ref(false);
 const isPopoverOpen = ref(false);
 

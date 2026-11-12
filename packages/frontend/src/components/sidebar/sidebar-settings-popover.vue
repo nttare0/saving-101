@@ -35,7 +35,7 @@ const goTo = (target: View) => {
 <template>
   <Popover v-model:open="isOpen">
     <PopoverTrigger as-child>
-      <Button size="icon-sm" variant="secondary" :aria-label="$t('sidebar.settings.title')">
+      <Button size="icon-sm" variant="ghost" class="size-7" :aria-label="$t('sidebar.settings.title')">
         <SettingsIcon class="size-3.5" />
       </Button>
     </PopoverTrigger>

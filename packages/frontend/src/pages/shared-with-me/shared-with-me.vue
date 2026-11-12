@@ -132,7 +132,7 @@ const isEverythingEmpty = computed(() => !pendingReceivedInvitations.value.lengt
 <template>
   <div>
     <div class="mb-6 flex flex-wrap items-center justify-between gap-x-8 gap-y-4">
-      <h1 class="text-2xl tracking-wider">{{ $t('pages.sharedWithMe.title') }}</h1>
+      <h1 class="text-2xl font-semibold tracking-tight">{{ $t('pages.sharedWithMe.title') }}</h1>
     </div>
 
     <template v-if="sharesQuery.isLoading.value || receivedInvitationsQuery.isLoading.value">

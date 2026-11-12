@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import BrandMark from '@/components/common/brand-mark.vue';
 import ResponsiveHoverCard from '@/components/common/responsive-hover-card.vue';
 import UiButton from '@/components/lib/ui/button/Button.vue';
-import { Card } from '@/components/lib/ui/card';
 import { DesktopOnlyTooltip } from '@/components/lib/ui/tooltip';
 import { cn } from '@/lib/utils';
 import { ROUTES_NAMES } from '@/routes/constants';
@@ -13,7 +13,6 @@ import {
   HandCoinsIcon,
   LayersIcon,
   LayoutDashboardIcon,
-  PanelLeftIcon,
   RocketIcon,
   TrendingUpIcon,
 } from '@lucide/vue';
@@ -34,12 +33,10 @@ import VenturesList from './accounts-view/ventures-list.vue';
 import { SIDEBAR_NAV_CHILDREN, type SidebarNavChild, useAccountsNavChildren } from './nav-items';
 import RailIconTrigger from './rail-icon-trigger.vue';
 import { useSidebarNavRoutes } from './use-nav-routes';
-import { useSidebarCollapsed } from './use-sidebar-collapsed';
 import UserMenu from './user-menu.vue';
 
 const { t } = useI18n();
 const route = useRoute();
-const { isCollapsed } = useSidebarCollapsed();
 const { isAccountsRoute, isTransactionsRoute, isPlannedRoute, isChildActive } = useSidebarNavRoutes();
 const accountsNavChildren = useAccountsNavChildren();
 
@@ -180,18 +177,13 @@ const sectionItems = computed<RailSectionItem[]>(() => {
 </script>
 
 <template>
-  <Card class="flex h-full w-16 flex-col rounded-none">
+  <aside class="text-sidebar-foreground flex h-full w-14 flex-col">
     <div class="flex h-14 shrink-0 items-center justify-center">
-      <div
-        class="bg-primary/10 text-primary-text flex size-8 items-center justify-center rounded-md text-sm font-semibold"
-        aria-hidden="true"
-      >
-        M
-      </div>
+      <BrandMark />
     </div>
 
-    <div class="flex min-h-0 grow flex-col gap-3 px-3 pt-0 pb-3">
-      <nav class="grid gap-0.5">
+    <div class="flex min-h-0 grow flex-col items-center gap-2 px-2 pt-0 pb-2">
+      <nav class="grid gap-1">
         <template v-for="item in navItems" :key="item.routeName">
           <ResponsiveHoverCard
             v-if="item.children"
@@ -200,14 +192,14 @@ const sectionItems = computed<RailSectionItem[]>(() => {
             @update:open="setFlyoutOpen({ key: item.routeName, open: $event })"
           >
             <RailIconTrigger :to="{ name: item.routeName }" :aria-label="item.label">
-              <ui-button variant="ghost" as="span" size="icon" :class="cn(item.active && 'bg-primary/10')">
-                <component :is="item.icon" :class="cn('size-4 shrink-0', item.active && 'text-primary-text')" />
+              <ui-button variant="ghost" as="span" size="icon-sm" :class="cn(item.active && 'bg-sidebar-accent')">
+                <component :is="item.icon" class="size-4 shrink-0" />
               </ui-button>
             </RailIconTrigger>
 
             <template #content>
               <div class="grid gap-0.5">
-                <div class="text-muted-foreground px-3 pb-1 text-[11px] font-semibold tracking-wider uppercase">
+                <div class="text-muted-foreground px-2 pb-1 text-xs font-medium">
                   {{ item.label }}
                 </div>
                 <router-link
@@ -221,14 +213,11 @@ const sectionItems = computed<RailSectionItem[]>(() => {
                     as="span"
                     size="sm"
                     :class="[
-                      'w-full justify-start gap-2 px-3',
-                      isChildActive({ child, isActive }) && 'bg-primary/10 text-foreground',
+                      'h-8 w-full justify-start gap-2 px-2 font-normal',
+                      isChildActive({ child, isActive }) && 'bg-accent text-accent-foreground font-medium',
                     ]"
                   >
-                    <component
-                      :is="child.icon"
-                      :class="['size-4 shrink-0', isChildActive({ child, isActive }) && 'text-primary-text']"
-                    />
+                    <component :is="child.icon" class="size-4 shrink-0" />
                     <span>{{ $t(child.labelKey) }}</span>
                   </ui-button>
                 </router-link>
@@ -241,23 +230,20 @@ const sectionItems = computed<RailSectionItem[]>(() => {
               <ui-button
                 variant="ghost"
                 as="span"
-                size="icon"
+                size="icon-sm"
                 :aria-label="item.label"
-                :class="cn((item.active ?? isActive) && 'bg-primary/10')"
+                :class="cn((item.active ?? isActive) && 'bg-sidebar-accent')"
               >
-                <component
-                  :is="item.icon"
-                  :class="cn('size-4 shrink-0', (item.active ?? isActive) && 'text-primary-text')"
-                />
+                <component :is="item.icon" class="size-4 shrink-0" />
               </ui-button>
             </router-link>
           </DesktopOnlyTooltip>
         </template>
       </nav>
 
-      <div class="bg-border/50 h-px" />
+      <div class="bg-sidebar-border h-px w-full" />
 
-      <div class="grid gap-0.5">
+      <div class="grid gap-1">
         <ResponsiveHoverCard
           v-for="section in sectionItems"
           :key="section.key"
@@ -266,7 +252,7 @@ const sectionItems = computed<RailSectionItem[]>(() => {
           @update:open="setFlyoutOpen({ key: section.key, open: $event })"
         >
           <RailIconTrigger :to="{ name: section.routeName }" :aria-label="section.label">
-            <ui-button variant="ghost" as="span" size="icon">
+            <ui-button variant="ghost" as="span" size="icon-sm">
               <component :is="section.icon" class="text-muted-foreground size-4 shrink-0" />
             </ui-button>
           </RailIconTrigger>
@@ -310,14 +296,8 @@ const sectionItems = computed<RailSectionItem[]>(() => {
       </div>
 
       <div class="mt-auto grid gap-1">
-        <DesktopOnlyTooltip :content="$t('sidebar.expand')" side="right">
-          <ui-button variant="ghost" size="icon" :aria-label="$t('sidebar.expand')" @click="isCollapsed = false">
-            <PanelLeftIcon class="size-4" />
-          </ui-button>
-        </DesktopOnlyTooltip>
-
         <UserMenu compact />
       </div>
     </div>
-  </Card>
+  </aside>
 </template>

@@ -96,6 +96,7 @@ import { useDateLocale } from '@/composable/use-date-locale';
 import { currentTheme } from '@/common/utils/color-theme';
 import type { NetWorthDriversGranularity } from '@bt/shared/types';
 import { useResizeObserver } from '@vueuse/core';
+import { styleGridRows } from '@/composable/charts/grid-style';
 import * as d3 from 'd3';
 import { TrendingDownIcon, TrendingUpIcon } from '@lucide/vue';
 import { parseISO } from 'date-fns';
@@ -236,7 +237,7 @@ const renderChart = () => {
     )
     .call((grid) => {
       grid.select('.domain').remove();
-      grid.selectAll('.tick line').attr('stroke', colors.grid).attr('stroke-opacity', 0.5);
+      styleGridRows({ grid: grid, color: colors.grid });
     });
 
   // Always drawn: it is the baseline both areas are anchored to, and the line a
@@ -301,9 +302,9 @@ const renderChart = () => {
         }),
     )
     .call((axis) => {
-      axis.select('.domain').attr('stroke', colors.grid);
+      axis.select('.domain').remove();
       axis.selectAll('.tick text').attr('fill', colors.text).attr('font-size', fontSize);
-      axis.selectAll('.tick line').attr('stroke', colors.grid);
+      axis.selectAll('.tick line').remove();
     });
 
   g.append('g')
@@ -314,9 +315,9 @@ const renderChart = () => {
         .tickFormat((value) => formatAxisValue(value as number)),
     )
     .call((axis) => {
-      axis.select('.domain').attr('stroke', colors.grid);
+      axis.select('.domain').remove();
       axis.selectAll('.tick text').attr('fill', colors.text).attr('font-size', fontSize);
-      axis.selectAll('.tick line').attr('stroke', colors.grid);
+      axis.selectAll('.tick line').remove();
     });
 
   const hoverLine = g

@@ -13,7 +13,7 @@
             step="any"
             min="0"
             :value="initialBalance"
-            class="text-amount border-input focus:ring-ring h-7 w-28 [appearance:textfield] rounded-md border bg-transparent px-1.5 text-right text-sm transition-colors outline-none focus:ring-1 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+            class="text-amount border-input focus:ring-ring/50 focus:border-ring h-7 w-28 [appearance:textfield] rounded-md border bg-transparent px-1.5 text-right text-sm transition-colors outline-none focus:ring-[3px] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
             @change="handleExactBalanceInput($event)"
           />
           <Popover>
@@ -329,7 +329,7 @@ const toNumber = (value: string | number | null): number => {
 };
 
 const compactInputClass =
-  'h-7 w-24 rounded-md border border-input bg-transparent px-1.5 text-right text-sm outline-none transition-colors focus:ring-1 focus:ring-ring [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none';
+  'h-7 w-24 rounded-md border border-input bg-transparent px-1.5 text-right text-sm outline-none transition-colors focus:border-ring focus:ring-[3px] focus:ring-ring/50 [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none';
 
 const parseInputEvent = (event: Event): number => {
   const raw = parseFloat((event.target as HTMLInputElement).value);

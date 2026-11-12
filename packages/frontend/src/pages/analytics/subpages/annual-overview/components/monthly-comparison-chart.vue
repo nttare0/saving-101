@@ -147,6 +147,7 @@ import { useCategoriesStore } from '@/stores';
 import { type CashFlowCategoryData, type CashFlowPeriodData } from '@bt/shared/types';
 import { EyeOffIcon } from '@lucide/vue';
 import { useResizeObserver } from '@vueuse/core';
+import { styleGridRows } from '@/composable/charts/grid-style';
 import * as d3 from 'd3';
 import { endOfMonth, parseISO, startOfMonth } from 'date-fns';
 import { storeToRefs } from 'pinia';
@@ -469,7 +470,7 @@ const renderChart = () => {
     )
     .call((grid) => {
       grid.select('.domain').remove();
-      grid.selectAll('.tick line').attr('stroke', colors.grid).attr('stroke-opacity', 0.5);
+      styleGridRows({ grid: grid, color: colors.grid });
     });
 
   // Zero line, drawn whenever the domain crosses zero
@@ -499,7 +500,7 @@ const renderChart = () => {
         .tickFormat((d) => formatPeriodLabel(d as string)),
     )
     .call((axis) => {
-      axis.select('.domain').attr('stroke', colors.grid);
+      axis.select('.domain').remove();
       axis
         .selectAll('.tick text')
         .attr('fill', colors.text)
@@ -508,7 +509,7 @@ const renderChart = () => {
         .attr('text-anchor', shouldRotateLabels ? 'end' : 'middle')
         .attr('dx', shouldRotateLabels ? '-0.5em' : '0')
         .attr('dy', shouldRotateLabels ? '0.5em' : '0.7em');
-      axis.selectAll('.tick line').attr('stroke', colors.grid);
+      axis.selectAll('.tick line').remove();
     });
 
   // Y axis
@@ -521,9 +522,9 @@ const renderChart = () => {
         .tickFormat((d) => formatAxisValue(d as number)),
     )
     .call((axis) => {
-      axis.select('.domain').attr('stroke', colors.grid);
+      axis.select('.domain').remove();
       axis.selectAll('.tick text').attr('fill', colors.text).attr('font-size', fontSize);
-      axis.selectAll('.tick line').attr('stroke', colors.grid);
+      axis.selectAll('.tick line').remove();
     });
 
   // Average line - rendered BEFORE bars so it appears below them.

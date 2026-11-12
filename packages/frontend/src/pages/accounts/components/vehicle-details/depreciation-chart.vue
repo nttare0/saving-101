@@ -12,7 +12,7 @@
         <ChartTooltip>
           <ChartTooltipHeader>{{ tooltip.dateLabel }}</ChartTooltipHeader>
           <div class="flex items-center gap-2">
-            <span class="size-2 shrink-0 rounded-full" :style="{ backgroundColor: 'var(--primary)' }" />
+            <span class="size-2 shrink-0 rounded-full" :style="{ backgroundColor: 'var(--chart-1)' }" />
             <span class="font-medium tabular-nums">{{ formatAmountByCurrencyCode(tooltip.value, currencyCode) }}</span>
           </div>
           <div class="text-card-tooltip-muted mt-0.5 text-xs">
@@ -56,6 +56,7 @@ import { formatAxisCurrency } from '@/composable/charts/format-axis-currency';
 import { useChartTooltipPosition } from '@/composable/charts/use-chart-tooltip-position';
 import { useResizeObserver } from '@vueuse/core';
 import { differenceInCalendarDays, format } from 'date-fns';
+import { styleGridRows } from '@/composable/charts/grid-style';
 import * as d3 from 'd3';
 import { computed, reactive, ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
@@ -169,7 +170,7 @@ const render = () => {
     )
     .call((grid) => {
       grid.select('.domain').remove();
-      grid.selectAll('.tick line').attr('stroke', colors.grid).attr('stroke-opacity', 0.45);
+      styleGridRows({ grid: grid, color: colors.grid });
     });
 
   // Y axis
@@ -197,8 +198,8 @@ const render = () => {
         .tickFormat((d) => d3.timeFormat('%Y')(d as Date)),
     )
     .call((axis) => {
-      axis.select('.domain').attr('stroke', colors.grid).attr('stroke-opacity', 0.5);
-      axis.selectAll('.tick line').attr('stroke', colors.grid).attr('stroke-opacity', 0.5);
+      axis.select('.domain').remove();
+      axis.selectAll('.tick line').remove();
       axis.selectAll('.tick text').attr('fill', colors.text).attr('font-size', fontSize);
     });
 

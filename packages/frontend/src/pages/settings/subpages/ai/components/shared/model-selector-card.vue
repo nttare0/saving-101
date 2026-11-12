@@ -78,7 +78,10 @@
           >
             <i18n-t keypath="settings.ai.modelSelector.allConnectionsDown" tag="p">
               <template #link>
-                <router-link :to="{ name: ROUTES_NAMES.settingsAiModels }" class="text-primary-text hover:underline">
+                <router-link
+                  :to="{ name: ROUTES_NAMES.settingsAiModels }"
+                  class="text-primary-text font-medium underline underline-offset-4"
+                >
                   {{ $t('settings.ai.modelSelector.allConnectionsDownLink') }}
                 </router-link>
               </template>

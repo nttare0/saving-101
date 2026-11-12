@@ -8,7 +8,7 @@
   >
     <Combobox.ComboboxAnchor>
       <Combobox.ComboboxTrigger
-        class="border-input bg-input-background ring-offset-background focus-visible:ring-ring flex h-10 w-full items-center justify-between rounded-md border px-3 text-sm focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+        class="border-input bg-input-background focus-visible:ring-ring/50 focus-visible:border-ring flex h-10 w-full items-center justify-between rounded-md border px-3 text-sm focus-visible:ring-[3px] focus-visible:outline-none"
       >
         <div class="flex min-w-0 flex-1 items-center gap-2">
           <span

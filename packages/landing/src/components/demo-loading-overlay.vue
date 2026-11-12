@@ -19,7 +19,7 @@
         </div>
 
         <!-- Main message -->
-        <h2 class="text-foreground mb-3 text-2xl font-bold">Setting up your demo...</h2>
+        <h2 class="text-foreground mb-3 text-2xl font-semibold">Setting up your demo...</h2>
 
         <!-- Progress dots -->
         <div class="mt-6 flex gap-2">

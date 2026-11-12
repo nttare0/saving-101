@@ -2,7 +2,7 @@
 import LegalLayout from '@/layouts/legal-layout.astro';
 import { GITHUB_URL } from '@/lib/github-api';
 
-const linkClass = 'text-primary hover:underline';
+const linkClass = 'text-foreground font-medium underline underline-offset-4';
 ---
 
 <LegalLayout
@@ -13,7 +13,7 @@ const linkClass = 'text-primary hover:underline';
     { href: '/terms-of-use', label: 'Terms of Service' },
   ]}
 >
-  <h1 class="mb-8 text-3xl font-bold tracking-tight sm:text-4xl">Support</h1>
+  <h1 class="mb-8 text-3xl font-semibold tracking-tight sm:text-4xl">Support</h1>
 
   <div class="space-y-8">
     <section>

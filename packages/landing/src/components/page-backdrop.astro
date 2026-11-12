@@ -1,0 +1,64 @@
+---
+/**
+ * Page backdrop - the one decorative layer of the landing pages.
+ *
+ * A faint area chart in the Bklit UI manner sits behind the top of the page: dashed grid rows
+ * that fade out at the edges, one 2px series line, a gradient fill that runs to transparent.
+ * The whole layer fades in below the page heading and out again above the first content block.
+ * It is a static SVG: no animation, blur or noise, so nothing is re-rasterized while scrolling.
+ * Page content sits above it through `relative z-10`.
+ */
+const GRID_ROWS = [64, 160, 256, 352, 448, 544, 640];
+const SERIES_LINE = 'M0 612C18.3 609.3 71.7 597.3 110 596C148.3 594.7 190.0 609.0 230 604C270.0 599.0 310.0 575.3 350 566C390.0 556.7 430.0 549.0 470 548C510.0 547.0 550.0 566.0 590 560C630.0 554.0 670.0 522.3 710 512C750.0 501.7 790.0 497.3 830 498C870.0 498.7 910.0 522.0 950 516C990.0 510.0 1030.0 474.7 1070 462C1110.0 449.3 1150.0 441.7 1190 440C1230.0 438.3 1268.3 460.0 1310 452C1351.7 444.0 1418.3 402.0 1440 392';
+const SERIES_AREA = `${SERIES_LINE}L1440 736L0 736Z`;
+---
+
+<div class="page-backdrop pointer-events-none absolute inset-x-0 top-0 z-0 h-184 overflow-hidden" aria-hidden="true">
+  <svg viewBox="0 0 1440 736" preserveAspectRatio="none" class="size-full">
+    <defs>
+      <linearGradient id="page-backdrop-area" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="var(--chart-1)" stop-opacity="0.4"></stop>
+        <stop offset="1" stop-color="var(--chart-1)" stop-opacity="0"></stop>
+      </linearGradient>
+    </defs>
+    <g class="page-backdrop-grid">
+      {GRID_ROWS.map((y) => <line x1="0" x2="1440" y1={y} y2={y} />)}
+    </g>
+    <path class="page-backdrop-area" d={SERIES_AREA} fill="url(#page-backdrop-area)"></path>
+    <path class="page-backdrop-line" d={SERIES_LINE}></path>
+  </svg>
+</div>
+
+<style>
+  /* Fades in from the top, out towards the bottom, and at the left and right edges */
+  .page-backdrop {
+    -webkit-mask-image:
+      linear-gradient(to bottom, transparent 12%, #000 52%, #000 62%, transparent 96%),
+      linear-gradient(to right, transparent, #000 16%, #000 84%, transparent);
+    -webkit-mask-composite: source-in;
+    mask-image:
+      linear-gradient(to bottom, transparent 12%, #000 52%, #000 62%, transparent 96%),
+      linear-gradient(to right, transparent, #000 16%, #000 84%, transparent);
+    mask-composite: intersect;
+  }
+
+  .page-backdrop-grid line {
+    stroke: var(--chart-grid);
+    stroke-width: 1;
+    stroke-dasharray: 4 4;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .page-backdrop-area {
+    opacity: 0.45;
+  }
+
+  .page-backdrop-line {
+    fill: none;
+    stroke: var(--chart-1);
+    stroke-width: 2;
+    stroke-linecap: round;
+    vector-effect: non-scaling-stroke;
+    opacity: 0.6;
+  }
+</style>

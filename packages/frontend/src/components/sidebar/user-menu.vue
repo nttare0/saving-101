@@ -9,7 +9,14 @@ import { cn } from '@/lib/utils';
 import { ROUTES_NAMES } from '@/routes/constants';
 import { useUserStore } from '@/stores';
 import { EXTERNAL_URLS } from '@bt/shared/const/external-urls';
-import { BookOpenIcon, ChevronUpIcon, CircleArrowUpIcon, ExternalLinkIcon, LogOutIcon, UserIcon } from '@lucide/vue';
+import {
+  BookOpenIcon,
+  ChevronsUpDownIcon,
+  CircleArrowUpIcon,
+  ExternalLinkIcon,
+  LogOutIcon,
+  UserIcon,
+} from '@lucide/vue';
 import { storeToRefs } from 'pinia';
 import { ref } from 'vue';
 import { useI18n } from 'vue-i18n';
@@ -34,14 +41,14 @@ const isRealCommit = /^[0-9a-f]{40}$/.test(commitHash);
         <button
           :class="
             cn(
-              'hover:bg-accent flex items-center rounded-md transition-colors',
-              compact ? 'size-10 justify-center' : 'min-w-0 flex-1 gap-2 px-3 py-2 text-left',
+              'hover:bg-sidebar-accent data-[state=open]:bg-sidebar-accent focus-visible:ring-ring/50 flex items-center rounded-md transition-colors outline-none focus-visible:ring-[3px]',
+              compact ? 'size-10 justify-center' : 'h-12 min-w-0 flex-1 gap-2 p-2 text-left',
             )
           "
           :aria-label="compact ? (user?.email ?? undefined) : undefined"
         >
           <div
-            class="bg-primary/20 text-primary-text relative flex size-8 shrink-0 items-center justify-center rounded-full text-xs font-semibold"
+            class="bg-muted text-foreground relative flex size-8 shrink-0 items-center justify-center rounded-lg text-xs font-medium"
           >
             {{ user?.email?.charAt(0).toUpperCase() || '?' }}
             <span
@@ -52,25 +59,23 @@ const isRealCommit = /^[0-9a-f]{40}$/.test(commitHash);
             </span>
           </div>
           <template v-if="!compact">
-            <span class="text-muted-foreground min-w-0 flex-1 truncate text-sm">
+            <span class="min-w-0 flex-1 truncate text-sm font-medium">
               {{ user?.email || 'User' }}
             </span>
-            <ChevronUpIcon
-              :class="['text-muted-foreground size-4 shrink-0 transition-transform', isOpen && 'rotate-180']"
-            />
+            <ChevronsUpDownIcon class="text-muted-foreground size-4 shrink-0" />
           </template>
         </button>
       </Popover.PopoverTrigger>
       <Popover.PopoverContent :side="compact ? 'right' : 'top'" :align="compact ? 'end' : 'start'" class="w-56 p-1">
         <router-link :to="{ name: ROUTES_NAMES.settingsSecurity }" @click="isOpen = false">
-          <UiButton variant="ghost" class="w-full justify-start gap-2 px-3" size="default">
+          <UiButton variant="ghost" class="h-8 w-full justify-start gap-2 px-2 font-normal" size="sm">
             <UserIcon class="size-4" />
             <span>{{ t('navigation.accountDetails') }}</span>
           </UiButton>
         </router-link>
 
         <a :href="config.docsUrl" target="_blank" rel="noopener noreferrer" @click="isOpen = false">
-          <UiButton variant="ghost" class="w-full justify-start gap-2 px-3" size="default">
+          <UiButton variant="ghost" class="h-8 w-full justify-start gap-2 px-2 font-normal" size="sm">
             <BookOpenIcon class="size-4" />
             <span>{{ t('navigation.helpAndDocs') }}</span>
             <ExternalLinkIcon class="text-muted-foreground ml-auto size-3" />
@@ -78,7 +83,7 @@ const isRealCommit = /^[0-9a-f]{40}$/.test(commitHash);
         </a>
 
         <a :href="EXTERNAL_URLS.redditCommunity" target="_blank" rel="noopener noreferrer" @click="isOpen = false">
-          <UiButton variant="ghost" class="w-full justify-start gap-2 px-3" size="default">
+          <UiButton variant="ghost" class="h-8 w-full justify-start gap-2 px-2 font-normal" size="sm">
             <RedditIcon class="size-4" />
             <span>{{ t('navigation.community') }}</span>
             <ExternalLinkIcon class="text-muted-foreground ml-auto size-3" />
@@ -92,7 +97,7 @@ const isRealCommit = /^[0-9a-f]{40}$/.test(commitHash);
           rel="noopener noreferrer"
           @click="isOpen = false"
         >
-          <UiButton variant="ghost-primary" class="w-full justify-start gap-2 px-3" size="default">
+          <UiButton variant="ghost-primary" class="h-8 w-full justify-start gap-2 px-2 font-normal" size="sm">
             <CircleArrowUpIcon class="size-4" />
             <span>{{ t('navigation.updateAvailable') }}</span>
             <span class="ml-auto font-mono text-xs">{{ availableUpdate.version }}</span>
@@ -101,8 +106,8 @@ const isRealCommit = /^[0-9a-f]{40}$/.test(commitHash);
 
         <UiButton
           variant="ghost-destructive"
-          class="w-full justify-start gap-2 px-3"
-          size="default"
+          class="h-8 w-full justify-start gap-2 px-2 font-normal"
+          size="sm"
           @click="
             logoutHandler();
             isOpen = false;
@@ -117,7 +122,7 @@ const isRealCommit = /^[0-9a-f]{40}$/.test(commitHash);
     <slot name="trailing" />
   </div>
 
-  <div v-if="config.isSelfHost && !compact" class="flex items-center justify-between gap-2 px-3 text-xs">
+  <div v-if="config.isSelfHost && !compact" class="flex items-center justify-between gap-2 px-2 text-xs">
     <i18n-t keypath="navigation.appVersion" tag="span" class="text-muted-foreground truncate">
       <template #version>
         <span class="text-foreground font-medium">{{ appRelease }}</span>

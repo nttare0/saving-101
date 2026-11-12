@@ -68,7 +68,7 @@ const handleDismiss = (id: string) => {
           <span>{{ t('notifications.title') }}</span>
           <span
             v-if="unreadCount && unreadCount > 0"
-            class="bg-primary ml-auto flex size-5 items-center justify-center rounded-full text-xs text-white"
+            class="bg-primary text-primary-foreground ml-auto flex size-5 items-center justify-center rounded-full text-xs"
           >
             {{ unreadCount > 9 ? '9+' : unreadCount }}
           </span>
@@ -76,11 +76,11 @@ const handleDismiss = (id: string) => {
       </template>
       <!-- Header mode: icon-only button -->
       <template v-else>
-        <Button variant="secondary" size="icon" class="relative">
+        <Button variant="ghost" size="icon-sm" class="relative">
           <BellIcon class="size-5" />
           <span
             v-if="unreadCount && unreadCount > 0"
-            class="bg-primary absolute -top-1 -right-1 flex size-5 items-center justify-center rounded-full text-xs text-white"
+            class="bg-primary text-primary-foreground absolute -top-1 -right-1 flex size-5 items-center justify-center rounded-full text-xs"
           >
             {{ unreadCount > 9 ? '9+' : unreadCount }}
           </span>

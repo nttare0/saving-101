@@ -1753,7 +1753,7 @@ onUnmounted(() => {
     <!-- Striped while planned, so the mode stays readable once the toggle scrolls away. -->
     <div
       :class="[
-        'h-3 rounded-t-lg transition-[background-color] duration-200 ease-out',
+        'h-2 rounded-t-lg transition-[background-color] duration-200 ease-out',
         currentTxType === FORM_TYPES.income && 'bg-app-income-color',
         currentTxType === FORM_TYPES.expense && 'bg-app-expense-color',
         currentTxType === FORM_TYPES.transfer && 'bg-app-transfer-color',

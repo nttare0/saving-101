@@ -90,7 +90,7 @@ const startTrialForTracker = async () => {
   if (await startTrial()) void queryClient.invalidateQueries({ queryKey: VUE_QUERY_CACHE_KEYS.trackerSuggestions });
 };
 
-const linkClass = 'text-primary-text underline-offset-2 hover:underline';
+const linkClass = 'text-primary-text font-medium underline underline-offset-4';
 </script>
 
 <template>

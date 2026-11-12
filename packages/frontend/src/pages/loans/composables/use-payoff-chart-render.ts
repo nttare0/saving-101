@@ -1,4 +1,5 @@
 import { getChartColors } from '@/composable/charts/chart-colors';
+import { styleGridRows } from '@/composable/charts/grid-style';
 import * as d3 from 'd3';
 import { addMonths } from 'date-fns';
 import { type ComputedRef, type Ref } from 'vue';
@@ -123,7 +124,7 @@ export function usePayoffChartRender({
       )
       .call((grid) => {
         grid.select('.domain').remove();
-        grid.selectAll('.tick line').attr('stroke', colors.grid).attr('stroke-opacity', 0.45);
+        styleGridRows({ grid: grid, color: colors.grid });
       });
 
     // Y axis
@@ -151,8 +152,8 @@ export function usePayoffChartRender({
           .tickFormat((d) => d3.timeFormat('%Y')(d as Date)),
       )
       .call((axis) => {
-        axis.select('.domain').attr('stroke', colors.grid).attr('stroke-opacity', 0.5);
-        axis.selectAll('.tick line').attr('stroke', colors.grid).attr('stroke-opacity', 0.5);
+        axis.select('.domain').remove();
+        axis.selectAll('.tick line').remove();
         axis.selectAll('.tick text').attr('fill', colors.text).attr('font-size', fontSize);
       });
 

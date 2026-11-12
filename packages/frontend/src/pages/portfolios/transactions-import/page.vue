@@ -94,7 +94,7 @@ function onImported() {
     </BackLink>
 
     <div class="mb-6">
-      <h1 class="text-2xl tracking-wider">{{ $t('investmentsImport.title') }}</h1>
+      <h1 class="text-2xl font-semibold tracking-tight">{{ $t('investmentsImport.title') }}</h1>
       <p class="text-muted-foreground mt-2 text-sm sm:text-base">
         {{ $t('investmentsImport.description') }}
       </p>

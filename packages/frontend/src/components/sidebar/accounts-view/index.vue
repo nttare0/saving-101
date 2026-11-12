@@ -154,16 +154,16 @@ const onSectionExpand = async ({ headerEl, wrapperEl }: { headerEl?: HTMLElement
 
 <template>
   <div class="flex min-h-25 flex-1 flex-col gap-1.5 overflow-y-hidden">
-    <div class="flex items-center justify-between px-1">
+    <div class="flex h-8 items-center justify-between px-2">
       <button
         type="button"
-        class="text-muted-foreground -mx-1 flex items-center gap-1 rounded px-1 py-0.5 transition-colors"
+        class="text-sidebar-foreground/70 -mx-1 flex items-center gap-1 rounded px-1 py-0.5 transition-colors"
         :class="hasAnyOpen ? 'cursor-pointer' : 'cursor-default'"
         :disabled="!hasAnyOpen"
         :aria-label="$t('sidebar.accountsView.collapseNavigation')"
         @click="collapseAll"
       >
-        <span class="text-[11px] font-semibold tracking-wider uppercase">
+        <span class="text-xs font-medium">
           {{ $t('sidebar.accountsView.title') }}
         </span>
         <ChevronsUpDownIcon v-if="hasAnyOpen" class="size-3" />
@@ -174,7 +174,7 @@ const onSectionExpand = async ({ headerEl, wrapperEl }: { headerEl?: HTMLElement
 
         <Popover.Popover :open="isPopoverOpen" @update:open="isPopoverOpen = $event">
           <Popover.PopoverTrigger as-child>
-            <Button size="icon-sm" variant="secondary">
+            <Button size="icon-sm" variant="ghost" class="size-7">
               <PlusIcon :class="['size-3.5 transition-transform', isPopoverOpen && '-rotate-45']" />
             </Button>
           </Popover.PopoverTrigger>

@@ -6,7 +6,7 @@
       <span class="flex w-full">
         <Popover.PopoverTrigger
           :disabled="isDisabled"
-          class="border-input bg-input-background ring-offset-background focus-visible:ring-ring flex h-10 w-full items-center justify-between gap-2 rounded-md border px-3 text-sm focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50"
+          class="border-input bg-input-background focus-visible:ring-ring/50 focus-visible:border-ring flex h-10 w-full items-center justify-between gap-2 rounded-md border px-3 text-sm focus-visible:ring-[3px] focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50"
         >
           <span class="min-w-0 flex-1 truncate text-left">{{ triggerLabel }}</span>
           <ChevronDownIcon class="text-muted-foreground size-4 shrink-0" />

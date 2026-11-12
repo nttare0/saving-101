@@ -34,7 +34,7 @@ const strokeDasharray = (progress: number) => {
               'fixed z-40 flex items-center justify-center',
               'bg-background rounded-full border shadow-lg',
               'transition-all duration-200 hover:scale-105',
-              'focus:ring-primary focus:ring-2 focus:ring-offset-2 focus:outline-none',
+              'focus-visible:ring-ring/50 outline-none focus-visible:ring-[3px]',
               // Desktop: right side, vertically centered
               'top-1/2 right-4 -translate-y-1/2',
               // Mobile: bottom right, above bottom navbar

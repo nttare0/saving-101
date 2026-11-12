@@ -21,7 +21,7 @@ const SEGMENT_LENGTH = CIRCUMFERENCE / SEGMENTS - SEGMENT_GAP;
 const SEGMENT_PCT = 100 / SEGMENTS;
 
 const TONE_CLASSES: Record<RingTone, string> = {
-  primary: 'stroke-primary-text',
+  primary: 'stroke-chart-1',
   success: 'stroke-success-text',
   warning: 'stroke-warning-text',
 };

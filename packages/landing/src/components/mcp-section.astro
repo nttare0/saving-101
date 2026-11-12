@@ -162,13 +162,13 @@ const tabBase =
     <!-- Section header -->
     <div class="mx-auto max-w-2xl text-center">
       <div
-        class="mb-6 inline-flex items-center gap-2 rounded-full border border-purple-500/20 bg-purple-500/10 px-3 py-1 text-sm text-purple-400"
+        class="border-border bg-muted/40 text-muted-foreground mb-6 inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-medium"
       >
         <!-- Sparkles -->
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/></svg>
         New
       </div>
-      <h2 class="text-2xl font-bold tracking-tight sm:text-3xl">Your finances, AI-ready</h2>
+      <h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">Your finances, AI-ready</h2>
       <p class="text-muted-foreground mt-4 text-lg">
         Connect Claude, ChatGPT, or any MCP-compatible AI to your financial data. Hand it a statement, a spreadsheet, or a
         receipt photo and it books the transactions. Ask questions the UI can't answer.
@@ -178,9 +178,9 @@ const tabBase =
     <!-- Agent session demo -->
     <div
       id="mcp-demo"
-      class="border-border/60 bg-card mx-auto mt-12 max-w-5xl overflow-hidden rounded-2xl border shadow-2xl shadow-purple-500/5"
+      class="border-border bg-card mx-auto mt-12 max-w-5xl overflow-hidden rounded-xl border shadow-2xl"
     >
-      <div class="border-border/50 bg-background/40 flex items-center gap-2 border-b px-4 py-3">
+      <div class="border-border bg-background/40 flex items-center gap-2 border-b px-4 py-3">
         <span class="size-3 rounded-full bg-red-500/80"></span>
         <span class="size-3 rounded-full bg-yellow-500/80"></span>
         <span class="size-3 rounded-full bg-green-500/80"></span>
@@ -195,7 +195,7 @@ const tabBase =
                 type="button"
                 data-scenario-tab={source.id}
                 aria-pressed={index === 0 ? 'true' : 'false'}
-                class:list={[tabBase, 'border-border bg-background/60 hover:border-purple-500/40']}
+                class:list={[tabBase, 'border-border bg-background/60 hover:border-foreground/30']}
               >
                 <span aria-hidden="true">{source.icon}</span>
                 {source.label}
@@ -209,7 +209,7 @@ const tabBase =
                 type="button"
                 data-scenario-tab={question.id}
                 aria-pressed="false"
-                class:list={[tabBase, 'border-border border-dashed hover:border-purple-500/40']}
+                class:list={[tabBase, 'border-border border-dashed hover:border-foreground/30']}
               >
                 <span aria-hidden="true">💬</span>
                 {question.label}
@@ -235,7 +235,7 @@ const tabBase =
                 <div class="flex flex-col gap-4">
                   <p
                     data-anim
-                    class="ml-auto max-w-[90%] rounded-xl rounded-br-sm border border-purple-500/20 bg-purple-500/10 px-4 py-3 text-sm leading-relaxed"
+                    class="border-chart-1/25 bg-chart-1/10 ml-auto max-w-[90%] rounded-xl rounded-br-sm border px-4 py-3 text-sm leading-relaxed"
                   >
                     {source.prompt}
                   </p>
@@ -244,13 +244,13 @@ const tabBase =
                     <div
                       data-anim
                       style="--d:150ms"
-                      class="border-border/50 bg-background/60 flex items-start justify-center rounded-xl border p-4 md:min-h-[380px]"
+                      class="border-border bg-background/60 flex items-start justify-center rounded-xl border p-4 md:min-h-[380px]"
                     >
                       {source.id === 'pdf' && (
                         <div class="w-full rounded-lg bg-white p-4 text-xs text-stone-800 shadow-lg">
                           <div class="flex items-start justify-between gap-3 border-b border-stone-200 pb-3">
                             <div class="flex items-center gap-2.5">
-                              <span class="flex size-8 items-center justify-center rounded-md bg-emerald-700 text-sm font-bold text-white">
+                              <span class="flex size-8 items-center justify-center rounded-md bg-emerald-700 text-sm font-semibold text-white">
                                 F
                               </span>
                               <div>
@@ -330,7 +330,7 @@ const tabBase =
                       {source.id === 'receipt' && (
                         <div class="w-60 font-mono text-xs text-stone-800 drop-shadow-lg">
                           <div class="bg-stone-50 px-5 pt-5 pb-3">
-                            <p class="text-center text-base font-bold tracking-[0.3em]">TRADER JOE'S</p>
+                            <p class="text-center text-base font-semibold tracking-[0.3em]">TRADER JOE'S</p>
                             <p class="mt-1 text-center text-[10px] text-stone-500">Brooklyn · Oct 08 2026 14:32</p>
                             <div class="my-3 border-t border-dashed border-stone-300" />
                             {RECEIPT_ITEMS.map(([item, price]) => (
@@ -340,7 +340,7 @@ const tabBase =
                               </p>
                             ))}
                             <div class="my-3 border-t border-dashed border-stone-300" />
-                            <p class="flex justify-between font-bold">
+                            <p class="flex justify-between font-semibold">
                               <span>TOTAL</span>
                               <span>$11.61</span>
                             </p>
@@ -360,7 +360,7 @@ const tabBase =
                           <div class="overflow-hidden rounded-[1.5rem] bg-white text-zinc-900">
                             <div class="bg-primary px-4 py-3 text-white">
                               <p class="text-[10px] tracking-wider uppercase opacity-80">Checking · ····4821</p>
-                              <p class="text-xl font-bold tabular-nums">$3,182.41</p>
+                              <p class="text-xl font-semibold tabular-nums">$3,182.41</p>
                             </div>
                             {source.txns.map((txn) => (
                               <div class="flex items-center gap-2.5 border-t border-zinc-100 px-3 py-2">
@@ -385,8 +385,8 @@ const tabBase =
                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-6 rotate-90 md:rotate-0"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                     </div>
 
-                    <div data-anim style="--d:350ms" class="border-border/50 bg-background/60 overflow-hidden rounded-xl border md:min-h-[380px]">
-                      <div class="border-border/50 flex items-center justify-between border-b px-4 py-2.5">
+                    <div data-anim style="--d:350ms" class="border-border bg-background/60 overflow-hidden rounded-xl border md:min-h-[380px]">
+                      <div class="border-border flex items-center justify-between border-b px-4 py-2.5">
                         <span class="flex items-center gap-2 font-mono text-xs text-green-400">
                           <span class="size-1.5 animate-pulse rounded-full bg-green-500" />
                           create_transaction
@@ -398,7 +398,7 @@ const tabBase =
                           <li
                             data-anim
                             style={rowDelay({ index: rowIndex })}
-                            class="border-border/40 flex items-center justify-between gap-3 border-b py-2.5 last:border-b-0"
+                            class="border-border flex items-center justify-between gap-3 border-b py-2.5 last:border-b-0"
                           >
                             <div class="min-w-0">
                               <p class="truncate text-sm font-medium">{txn.payee}</p>
@@ -436,13 +436,13 @@ const tabBase =
                 <div class="flex flex-col gap-4">
                   <p
                     data-anim
-                    class="ml-auto max-w-[90%] rounded-xl rounded-br-sm border border-purple-500/20 bg-purple-500/10 px-4 py-3 text-sm leading-relaxed"
+                    class="border-chart-1/25 bg-chart-1/10 ml-auto max-w-[90%] rounded-xl rounded-br-sm border px-4 py-3 text-sm leading-relaxed"
                   >
                     {question.prompt}
                   </p>
 
-                  <div data-anim style="--d:250ms" class="border-border/50 bg-background/60 overflow-hidden rounded-xl border md:min-h-[380px]">
-                    <div class="border-border/50 flex items-center justify-between border-b px-4 py-2.5">
+                  <div data-anim style="--d:250ms" class="border-border bg-background/60 overflow-hidden rounded-xl border md:min-h-[380px]">
+                    <div class="border-border flex items-center justify-between border-b px-4 py-2.5">
                       <span class="flex items-center gap-2 font-mono text-xs text-green-400">
                         <span class="size-1.5 animate-pulse rounded-full bg-green-500" />
                         {question.tool}
@@ -451,7 +451,7 @@ const tabBase =
                     </div>
                     <ul class="px-4">
                       {question.rows.map((row, rowIndex) => (
-                        <li data-anim style={rowDelay({ index: rowIndex })} class="border-border/40 border-b py-3 last:border-b-0">
+                        <li data-anim style={rowDelay({ index: rowIndex })} class="border-border border-b py-3 last:border-b-0">
                           <div class="flex items-baseline justify-between gap-3">
                             <div class="min-w-0">
                               <p class="truncate text-sm font-medium">{row.label}</p>
@@ -498,7 +498,7 @@ const tabBase =
                       <span aria-hidden="true">⏰</span>
                       {automation.title} · {automation.trigger}
                     </span>
-                    <div class="border-border/50 bg-background/60 max-w-[90%] rounded-xl rounded-bl-sm border px-4 py-3">
+                    <div class="border-border bg-background/60 max-w-[90%] rounded-xl rounded-bl-sm border px-4 py-3">
                       <span class="flex items-center gap-2 font-mono text-xs text-green-400">
                         <span class="size-1.5 rounded-full bg-green-500" />
                         {automation.tool}
@@ -515,11 +515,11 @@ const tabBase =
     </div>
 
     <!-- Connect -->
-    <div class="border-border/50 bg-card mx-auto mt-8 flex max-w-5xl flex-col gap-5 rounded-2xl border p-6 sm:p-8 md:flex-row md:items-center md:justify-between">
+    <div class="border-border bg-card mx-auto mt-8 flex max-w-5xl flex-col gap-5 rounded-xl border p-6 sm:p-8 md:flex-row md:items-center md:justify-between">
       <div class="flex items-start gap-3 md:max-w-md">
-        <div class="flex size-10 shrink-0 items-center justify-center rounded-lg bg-purple-500/10">
+        <div class="border-border bg-muted/50 flex size-10 shrink-0 items-center justify-center rounded-lg border">
           <!-- Plug -->
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-5 text-purple-500"><path d="M12 22v-5"/><path d="M9 8V2"/><path d="M15 8V2"/><path d="M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8Z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-5"><path d="M12 22v-5"/><path d="M9 8V2"/><path d="M15 8V2"/><path d="M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8Z"/></svg>
         </div>
         <div>
           <h3 class="text-lg font-semibold">Connect in a minute</h3>
@@ -529,7 +529,7 @@ const tabBase =
           </p>
         </div>
       </div>
-      <div class="border-border/50 bg-background flex items-center gap-3 rounded-xl border px-4 py-3 md:w-[420px] md:shrink-0">
+      <div class="border-border bg-background flex items-center gap-3 rounded-xl border px-4 py-3 md:w-[420px] md:shrink-0">
         <code id="mcp-endpoint" class="flex-1 overflow-x-auto font-mono text-sm whitespace-nowrap">https://mcp.moneymatter.app/mcp</code>
         <button
           id="mcp-copy-button"
@@ -552,19 +552,19 @@ const tabBase =
       <div class="flex flex-wrap items-center justify-center gap-3 sm:justify-start">
         <span class="text-muted-foreground text-xs font-medium uppercase tracking-wider">Works with</span>
         <div class="flex flex-wrap items-center justify-center gap-2 sm:justify-start">
-          <span class="border-border/50 bg-card inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium">
+          <span class="border-border bg-card inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium">
             Claude
           </span>
-          <span class="border-border/50 bg-card inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium">
+          <span class="border-border bg-card inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium">
             ChatGPT
           </span>
-          <span class="border-border/50 bg-card inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium">
+          <span class="border-border bg-card inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium">
             OpenClaw
           </span>
-          <span class="border-border/50 bg-card inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium">
+          <span class="border-border bg-card inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium">
             Any MCP client
           </span>
-          <span class="border-border/50 bg-card inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium">
+          <span class="border-border bg-card inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium">
             Your own model
           </span>
         </div>

@@ -40,19 +40,19 @@ const geometry = computed(() =>
         stroke-dasharray="5 4"
       />
 
-      <path v-if="geometry.historyArea" :d="geometry.historyArea" class="fill-primary-text/15" />
+      <path v-if="geometry.historyArea" :d="geometry.historyArea" class="fill-chart-1/15" />
       <path
         v-if="geometry.historyLine"
         :d="geometry.historyLine"
         fill="none"
-        class="stroke-primary-text"
+        class="stroke-chart-1"
         stroke-width="2.5"
         stroke-linejoin="round"
       />
       <path
         :d="geometry.projectionLine ?? undefined"
         fill="none"
-        class="stroke-primary-text"
+        class="stroke-chart-1"
         stroke-width="2.5"
         stroke-dasharray="5 4"
         stroke-linejoin="round"
@@ -85,7 +85,7 @@ const geometry = computed(() =>
       </text>
 
       <template v-for="dot in geometry.milestoneDots" :key="dot.pct">
-        <circle :cx="dot.x" :cy="dot.y" r="4" class="fill-card stroke-primary-text" stroke-width="2" />
+        <circle :cx="dot.x" :cy="dot.y" r="4" class="fill-card stroke-chart-1" stroke-width="2" />
         <text
           :x="dot.x"
           :y="dot.y - 9"
@@ -102,14 +102,14 @@ const geometry = computed(() =>
           :cx="geometry.fireDot.x"
           :cy="geometry.fireDot.y"
           r="6"
-          class="fill-primary-text stroke-card"
+          class="fill-chart-1 stroke-card"
           stroke-width="2"
         />
         <text
           :x="geometry.fireDot.x"
           :y="geometry.fireDot.y + 20"
           :text-anchor="labelAnchor({ x: geometry.fireDot.x, width })"
-          class="fill-primary-text stroke-card text-[10px] font-bold [paint-order:stroke]"
+          class="fill-chart-1 stroke-card text-[10px] font-bold [paint-order:stroke]"
           stroke-width="4"
         >
           {{ format(geometry.fireDot.date, 'LLL yyyy') }}

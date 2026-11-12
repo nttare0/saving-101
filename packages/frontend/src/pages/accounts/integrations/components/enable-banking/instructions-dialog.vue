@@ -168,19 +168,21 @@
               <li>
                 2.1
                 {{ t('pages.integrations.instructionsDialog.step2.steps.country') }}
-                <span class="text-white">{{
+                <span class="text-foreground font-medium">{{
                   t('pages.integrations.instructionsDialog.step2.steps.countryValue')
                 }}</span>
               </li>
               <li>
                 2.2
                 {{ t('pages.integrations.instructionsDialog.step2.steps.aspsp') }}
-                <span class="text-white">{{ t('pages.integrations.instructionsDialog.step2.steps.aspspValue') }}</span>
+                <span class="text-foreground font-medium">{{
+                  t('pages.integrations.instructionsDialog.step2.steps.aspspValue')
+                }}</span>
               </li>
               <li>
                 2.3
                 {{ t('pages.integrations.instructionsDialog.step2.steps.usageType') }}
-                <span class="text-white">{{
+                <span class="text-foreground font-medium">{{
                   t('pages.integrations.instructionsDialog.step2.steps.usageTypeValue')
                 }}</span>
               </li>

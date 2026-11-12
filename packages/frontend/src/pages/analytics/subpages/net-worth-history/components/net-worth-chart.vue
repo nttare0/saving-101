@@ -99,6 +99,7 @@ import {
   NET_WORTH_LIABILITY_KINDS,
 } from '@bt/shared/types';
 import { useResizeObserver } from '@vueuse/core';
+import { styleGridRows } from '@/composable/charts/grid-style';
 import * as d3 from 'd3';
 import { parseISO } from 'date-fns';
 import { computed, reactive, ref, watch } from 'vue';
@@ -298,16 +299,16 @@ const renderChart = () => {
       .call(gridAxis)
       .call((grid) => {
         grid.select('.domain').remove();
-        grid.selectAll('.tick line').attr('stroke', colors.grid).attr('stroke-opacity', 0.5);
+        styleGridRows({ grid: grid, color: colors.grid });
       });
 
     g.append('g')
       .attr('class', 'y-axis')
       .call(labelAxis)
       .call((axis) => {
-        axis.select('.domain').attr('stroke', colors.grid);
+        axis.select('.domain').remove();
         axis.selectAll('.tick text').attr('fill', colors.text).attr('font-size', fontSize);
-        axis.selectAll('.tick line').attr('stroke', colors.grid);
+        axis.selectAll('.tick line').remove();
         // The "$0" label anchors the whole read of the chart — assets above it,
         // liabilities below — so it gets full-contrast text while the rest stay muted.
         axis
@@ -393,9 +394,9 @@ const renderChart = () => {
         .tickFormat((value) => formatAxisLabel(value as string)),
     )
     .call((axis) => {
-      axis.select('.domain').attr('stroke', colors.grid);
+      axis.select('.domain').remove();
       axis.selectAll('.tick text').attr('fill', colors.text).attr('font-size', fontSize);
-      axis.selectAll('.tick line').attr('stroke', colors.grid);
+      axis.selectAll('.tick line').remove();
     });
 
   const bandwidth = xScale.bandwidth();

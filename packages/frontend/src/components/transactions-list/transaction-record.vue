@@ -53,14 +53,14 @@
             <div v-if="ownLegIsIncome" class="h-4 w-20 animate-pulse rounded bg-white/10"></div>
             <template v-else>
               <AccountLogo v-if="accountFrom" :account="accountFrom" class="size-5 shrink-0" />
-              <span class="text-sm font-medium tracking-wide">
+              <span class="text-sm font-medium">
                 {{ accountFrom?.name }}
               </span>
             </template>
             <ArrowRight :size="14" class="opacity-60" />
             <template v-if="ownLegIsIncome">
               <AccountLogo v-if="accountFrom" :account="accountFrom" class="size-5 shrink-0" />
-              <span class="text-sm font-medium tracking-wide">
+              <span class="text-sm font-medium">
                 {{ accountFrom?.name }}
               </span>
             </template>
@@ -75,7 +75,7 @@
           </div>
         </template>
         <div v-else-if="shouldShowGroupedTransfer && compact" class="min-w-0">
-          <div class="flex min-w-0 items-center gap-1.5 text-sm tracking-wider">
+          <div class="flex min-w-0 items-center gap-1.5 text-sm">
             <AccountLogo v-if="transferFromAccount" :account="transferFromAccount" class="size-5 shrink-0" />
             <span class="truncate">{{ transferFromAccount?.name }}</span>
             <ArrowRight :size="14" class="shrink-0 opacity-60" />
@@ -95,7 +95,7 @@
           <div class="mb-1 flex items-center gap-1.5">
             <div class="flex min-w-17 items-center gap-1.5">
               <AccountLogo v-if="transferFromAccount" :account="transferFromAccount" class="size-5 shrink-0" />
-              <span class="line-clamp-1 text-sm font-medium tracking-wide">
+              <span class="line-clamp-1 text-sm font-medium">
                 {{ transferFromAccount?.name }}
               </span>
             </div>
@@ -103,7 +103,7 @@
             <HandCoinsIcon v-if="isLoanDestination" :size="14" class="text-app-transfer-color shrink-0" />
             <div class="flex min-w-17 items-center gap-1.5">
               <AccountLogo v-if="transferToAccount" :account="transferToAccount" class="size-5 shrink-0" />
-              <span class="line-clamp-1 text-sm font-medium tracking-wide">
+              <span class="line-clamp-1 text-sm font-medium">
                 {{ transferToAccount?.name }}
               </span>
             </div>
@@ -118,7 +118,7 @@
         <template v-else-if="linkTarget">
           <div :class="['flex items-center gap-1.5', compact && 'min-w-0']">
             <AccountLogo v-if="accountFrom" :account="accountFrom" class="size-5 shrink-0" />
-            <span class="line-clamp-1 text-sm tracking-wider">
+            <span class="line-clamp-1 text-sm">
               {{ accountFrom?.name }}
             </span>
             <ArrowRight :size="14" :class="['shrink-0 opacity-60', linkTarget.flowsToAccount && 'rotate-180']" />
@@ -132,7 +132,7 @@
             <div v-if="linkTarget.isLoading" class="h-4 w-16 animate-pulse rounded bg-white/10" />
             <template v-else>
               <span
-                class="line-clamp-1 text-sm tracking-wider"
+                class="line-clamp-1 text-sm"
                 :class="{ 'text-muted-foreground line-through': linkTarget.isDeleted }"
               >
                 {{ linkTarget.name }}
@@ -142,7 +142,7 @@
           </div>
         </template>
         <template v-else-if="isTransferTransaction">
-          <div :class="['flex items-center gap-1.5 text-sm tracking-wider', compact && 'min-w-0']">
+          <div :class="['flex items-center gap-1.5 text-sm', compact && 'min-w-0']">
             <AccountLogo v-if="accountFrom" :account="accountFrom" class="size-5 shrink-0" />
             <span class="line-clamp-1">{{ transferFromLabel }}</span>
             <ArrowRight :size="14" :class="['shrink-0 opacity-60', ownLegIsIncome && 'rotate-180']" />
@@ -152,7 +152,7 @@
         </template>
         <template v-else>
           <div :class="['flex items-center gap-2', compact && 'shrink-0']">
-            <span class="text-sm tracking-wider whitespace-nowrap">
+            <span class="text-sm whitespace-nowrap">
               {{ category ? category.name : t('common.ui.other') }}
             </span>
             <ResponsiveTooltip v-if="aiMatchReason" content-class-name="max-w-64" :delay-duration="100">
@@ -235,7 +235,7 @@
           :class="
             compact
               ? 'text-muted-foreground min-w-0 truncate text-sm'
-              : 'text-muted-foreground line-clamp-1 text-sm tracking-wider [word-break:break-word]'
+              : 'text-muted-foreground line-clamp-1 text-sm [word-break:break-word]'
           "
         >
           {{ transaction.note }}

@@ -32,7 +32,12 @@ const needsReauth = computed(() => isAccountNeedingReauth(props.account));
     :to="{ name: ROUTES_NAMES.account, params: { id: account.id } }"
     class="flex w-full"
   >
-    <Button :variant="isActive ? 'secondary' : 'ghost'" as="div" size="default" class="h-auto w-full px-2">
+    <Button
+      :variant="isActive ? 'secondary' : 'ghost'"
+      as="div"
+      size="default"
+      class="h-8 w-full px-2 py-0 font-normal"
+    >
       <div class="flex w-full items-center justify-between gap-x-2">
         <div class="flex min-w-0 items-center gap-1.5">
           <DesktopOnlyTooltip

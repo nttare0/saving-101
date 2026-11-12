@@ -62,7 +62,10 @@
 
             <i18n-t keypath="analytics.fire.assumptions.savingsNote" tag="p" class="text-muted-foreground text-xs">
               <template #link>
-                <RouterLink :to="{ name: ROUTES_NAMES.settingsGeneral }" class="text-primary-text hover:underline">
+                <RouterLink
+                  :to="{ name: ROUTES_NAMES.settingsGeneral }"
+                  class="text-primary-text font-medium underline underline-offset-4"
+                >
                   {{ $t('analytics.fire.assumptions.savingsNoteLink') }}
                 </RouterLink>
               </template>
@@ -145,7 +148,10 @@
               <template #count>{{ archivedHeld.count }}</template>
               <template #amount>{{ formatBaseCurrency(archivedHeld.amount) }}</template>
               <template #link>
-                <RouterLink :to="{ name: ROUTES_NAMES.accounts }" class="text-primary-text hover:underline">
+                <RouterLink
+                  :to="{ name: ROUTES_NAMES.accounts }"
+                  class="text-primary-text font-medium underline underline-offset-4"
+                >
                   {{ $t('analytics.fire.assumptions.archivedNoteLink') }}
                 </RouterLink>
               </template>

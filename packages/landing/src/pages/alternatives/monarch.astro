@@ -322,30 +322,30 @@ const SOURCES = [
   <p slot="import-note" class="text-muted-foreground mt-8 max-w-2xl text-sm">
     After the import, open <a
       href={DOCS_LINK_TRANSFERS_URL}
-      class="text-primary-text hover:underline"
+      class="text-foreground font-medium underline underline-offset-4"
       target="_blank"
       rel="noopener noreferrer">Transfer matching</a
     > to join the two sides of each transfer. Until they are linked, a transfer counts once as spending and once as income.
   </p>
 
   <section class="mt-20">
-    <h2 class="text-2xl font-bold tracking-tight sm:text-3xl">Second route: an AI assistant over MCP</h2>
+    <h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">Second route: an AI assistant over MCP</h2>
     <p class="text-muted-foreground mt-4 max-w-2xl">
       MoneyMatter has a built-in MCP server, included in every plan and in the trial. It works with assistants that
       support remote MCP servers with OAuth sign-in. The <a
         href={DOCS_MCP_URL}
-        class="text-primary-text hover:underline"
+        class="text-foreground font-medium underline underline-offset-4"
         target="_blank"
         rel="noopener noreferrer">connection guide</a
       > covers Claude, ChatGPT and Claude Code. You connect the assistant, give it your Monarch CSV, and it creates the
       records through the server's tools. Monarch's own <a
         href={MONARCH_MCP_URL}
-        class="text-primary-text hover:underline"
+        class="text-foreground font-medium underline underline-offset-4"
         target="_blank"
         rel="noopener noreferrer nofollow">help page</a
       > says you can upload your export to an AI model of your choice.
     </p>
-    <dl class="border-border/50 bg-card divide-border/40 mt-8 divide-y overflow-hidden rounded-2xl border">
+    <dl class="border-border bg-card divide-border mt-8 divide-y overflow-hidden rounded-xl border">
       {
         [
           {
@@ -378,7 +378,7 @@ const SOURCES = [
           },
         ].map((item) => (
           <div class="grid sm:grid-cols-[13rem_1fr]">
-            <dt class="border-border/40 sm:bg-background/60 px-5 pt-2.5 text-sm font-medium sm:border-r sm:py-2.5">
+            <dt class="border-border sm:bg-background/60 px-5 pt-2.5 text-sm font-medium sm:border-r sm:py-2.5">
               {item.lead}
             </dt>
             <dd class="text-muted-foreground px-5 pt-0.5 pb-2.5 text-sm leading-relaxed sm:py-2.5">{item.text}</dd>
@@ -396,7 +396,7 @@ const SOURCES = [
     Both run the same app. Self-host if you want your data on your own machine. Use the cloud if you would rather not
     run a server. The <a
       href={DOCS_SELF_HOSTING_URL}
-      class="text-primary-text hover:underline">self-hosting guide</a
+      class="text-foreground font-medium underline underline-offset-4">self-hosting guide</a
     > lists what a server needs.
   </Fragment>
 </AlternativeLayout>

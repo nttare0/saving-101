@@ -553,7 +553,7 @@ const [DefineSkeletonDots, ReuseSkeletonDots] = createReusableTemplate();
       :to="fireRoute"
       :class="
         cn(
-          'focus-visible:ring-ring flex h-full flex-col justify-center gap-4 rounded-md outline-none focus-visible:ring-2',
+          'focus-visible:ring-ring/50 flex h-full flex-col justify-center gap-4 rounded-md outline-none focus-visible:ring-[3px]',
           showPath && '@2xl:grid @2xl:grid-cols-[18rem_minmax(0,1fr)] @2xl:gap-7',
         )
       "
@@ -601,7 +601,7 @@ const [DefineSkeletonDots, ReuseSkeletonDots] = createReusableTemplate();
       :to="fireRoute"
       :class="
         cn(
-          'focus-visible:ring-ring flex h-full flex-col justify-center gap-4 rounded-md outline-none focus-visible:ring-2',
+          'focus-visible:ring-ring/50 flex h-full flex-col justify-center gap-4 rounded-md outline-none focus-visible:ring-[3px]',
           isWide && '@3xl:grid @3xl:grid-cols-[auto_minmax(0,1fr)_minmax(0,1.1fr)] @3xl:items-center @3xl:gap-8',
         )
       "

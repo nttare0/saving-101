@@ -7,7 +7,7 @@
         <SearchXIcon class="text-muted-foreground size-8" />
       </slot>
     </div>
-    <h2 class="mb-2 text-xl font-semibold tracking-wide">{{ title }}</h2>
+    <h2 class="mb-2 text-xl font-semibold tracking-tight">{{ title }}</h2>
     <p v-if="description" class="text-muted-foreground mb-6 max-w-md">{{ description }}</p>
     <RouterLink :to="linkTo">
       <UiButton variant="secondary">

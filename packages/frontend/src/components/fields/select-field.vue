@@ -207,7 +207,7 @@ watch(
             type="button"
             :disabled="disabled"
             :aria-label="t('common.components.selectField.clearSelection')"
-            class="text-muted-foreground hover:text-foreground focus-visible:ring-ring absolute end-8 top-1/2 -translate-y-1/2 rounded focus:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50"
+            class="text-muted-foreground hover:text-foreground focus-visible:ring-ring/50 absolute end-8 top-1/2 -translate-y-1/2 rounded focus:outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50"
             @click="clearSelection"
           >
             <XIcon class="size-3.5" />

@@ -20,7 +20,7 @@
         </p>
         <button
           @click="goToIntegrations"
-          class="bg-primary hover:bg-primary/90 rounded-md px-4 py-2 text-sm font-medium text-white"
+          class="bg-primary hover:bg-primary/90 text-primary-foreground rounded-md px-4 py-2 text-sm font-medium shadow-xs"
         >
           {{ t('pages.bankCallback.error.backToIntegrations') }}
         </button>
@@ -35,7 +35,7 @@
 
         <button
           @click="goToAccounts"
-          class="bg-primary hover:bg-primary/90 rounded-md px-4 py-2 text-sm font-medium text-white"
+          class="bg-primary hover:bg-primary/90 text-primary-foreground rounded-md px-4 py-2 text-sm font-medium shadow-xs"
         >
           {{ t('pages.bankCallback.success.viewAccounts') }}
         </button>

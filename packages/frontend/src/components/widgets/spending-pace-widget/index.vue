@@ -76,8 +76,8 @@ const TONES: Record<PaceTone, { stroke: string; fill: string; border: string; pi
     pill: 'bg-app-income-color/15 text-app-income-color',
   },
   neutral: {
-    stroke: 'stroke-primary',
-    fill: 'fill-primary',
+    stroke: 'stroke-chart-1',
+    fill: 'fill-chart-1',
     border: 'border-primary',
     pill: 'bg-muted text-muted-foreground',
   },
@@ -495,12 +495,12 @@ const isEmpty = computed(() => !hasHistory.value && pace.value.spent === 0);
               stroke-opacity="0.4"
               stroke-width="1.5"
             />
-            <path v-if="geometry.spentArea" :d="geometry.spentArea" class="fill-primary" fill-opacity="0.08" />
+            <path v-if="geometry.spentArea" :d="geometry.spentArea" class="fill-chart-1" fill-opacity="0.08" />
             <path
               v-if="geometry.spentLine"
               :d="geometry.spentLine"
               fill="none"
-              class="stroke-primary"
+              class="stroke-chart-1"
               stroke-width="2.25"
               stroke-linejoin="round"
             />
@@ -527,7 +527,7 @@ const isEmpty = computed(() => !hasHistory.value && pace.value.spent === 0);
               :cx="geometry.todayDot.x"
               :cy="geometry.todayDot.y"
               r="4.5"
-              class="fill-primary stroke-card"
+              class="fill-chart-1 stroke-card"
               stroke-width="2"
             />
             <circle

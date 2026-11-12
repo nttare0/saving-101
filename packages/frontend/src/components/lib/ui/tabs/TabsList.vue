@@ -18,7 +18,7 @@ provide(TabsVariantKey, variant);
       cn(
         variant === 'underline'
           ? 'border-border no-scrollbar relative flex w-full items-center gap-4 overflow-x-auto border-b'
-          : 'bg-muted text-muted-foreground inline-flex h-10 items-center justify-center rounded-md p-1',
+          : 'bg-muted text-muted-foreground inline-flex h-10 items-center justify-center rounded-lg p-[3px]',
         props.class,
       )
     "

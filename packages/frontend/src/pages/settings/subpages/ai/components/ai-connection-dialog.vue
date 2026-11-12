@@ -96,7 +96,7 @@
               :href="selectedPreset.keyUrl"
               target="_blank"
               rel="noopener noreferrer"
-              class="text-primary-text hover:underline"
+              class="text-primary-text font-medium underline underline-offset-4"
             >
               {{ keyUrlHost }}
             </a>

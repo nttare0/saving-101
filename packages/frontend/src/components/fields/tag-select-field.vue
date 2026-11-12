@@ -11,8 +11,8 @@
               ref="wrapperRef"
               :class="
                 cn(
-                  'border-input bg-input-background ring-offset-background flex min-h-10 w-full cursor-text items-center gap-2 rounded-md border px-3 py-2 text-sm md:min-h-9',
-                  'focus-within:ring-ring focus-within:ring-2 focus-within:ring-offset-2',
+                  'border-input bg-input-background flex min-h-10 w-full cursor-text items-center gap-2 rounded-md border px-3 py-2 text-sm md:min-h-9',
+                  'focus-within:border-ring focus-within:ring-ring/50 focus-within:ring-[3px]',
                   disabled && 'cursor-not-allowed opacity-50',
                 )
               "

@@ -510,7 +510,7 @@ const closeTransactionModal = () => {
               tabindex="0"
               :class="
                 cn(
-                  'focus-visible:ring-ring ring-offset-background grid gap-2 rounded-lg border p-2 transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-hidden',
+                  'focus-visible:ring-ring/50 grid gap-2 rounded-lg border p-2 transition-colors focus-visible:ring-[3px] focus-visible:outline-hidden',
                   candidate.transaction.id === selectedId
                     ? 'border-primary bg-primary/10'
                     : 'hover:bg-muted/50 cursor-pointer',

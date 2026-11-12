@@ -23,7 +23,7 @@
       <div class="mr-2 mb-2 inline-block align-top">
         <Popover.Popover>
           <Popover.PopoverTrigger
-            class="border-input bg-input-background hover:bg-accent ring-offset-background focus-visible:ring-ring inline-flex h-10 items-center gap-2 rounded-md border px-3 text-sm focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+            class="border-input bg-input-background hover:bg-accent focus-visible:ring-ring/50 focus-visible:border-ring inline-flex h-10 items-center gap-2 rounded-md border px-3 text-sm focus-visible:ring-[3px] focus-visible:outline-none"
           >
             {{ $t('transactions.filters.filtersLabel') }}
             <ChevronDownIcon class="text-muted-foreground size-4" />

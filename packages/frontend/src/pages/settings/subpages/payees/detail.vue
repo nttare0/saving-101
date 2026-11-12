@@ -50,7 +50,7 @@
         <button
           type="button"
           :disabled="payeeData.stats.transactionCount === 0"
-          class="enabled:hover:bg-muted/40 focus-visible:ring-ring flex flex-row items-center justify-between gap-3 px-4 py-3 text-left transition-colors focus-visible:ring-2 focus-visible:outline-none enabled:cursor-pointer disabled:cursor-default @[650px]/detail:flex-col @[650px]/detail:items-start @[650px]/detail:gap-1.5"
+          class="enabled:hover:bg-muted/40 focus-visible:ring-ring/50 flex flex-row items-center justify-between gap-3 px-4 py-3 text-left transition-colors focus-visible:ring-[3px] focus-visible:outline-none enabled:cursor-pointer disabled:cursor-default @[650px]/detail:flex-col @[650px]/detail:items-start @[650px]/detail:gap-1.5"
           @click="openTransactionsDialog"
         >
           <span class="text-muted-foreground text-[11px] font-semibold tracking-[0.07em] uppercase">

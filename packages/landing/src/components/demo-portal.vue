@@ -19,10 +19,10 @@
       class="pointer-events-none absolute inset-0 transition-opacity duration-500"
       :class="showAffordances ? 'opacity-100' : 'opacity-0'"
     >
-      <span class="border-primary/60 absolute top-3 left-3 size-6 rounded-tl-sm border-t-2 border-l-2" />
-      <span class="border-primary/60 absolute top-3 right-3 size-6 rounded-tr-sm border-t-2 border-r-2" />
-      <span class="border-primary/60 absolute bottom-3 left-3 size-6 rounded-bl-sm border-b-2 border-l-2" />
-      <span class="border-primary/60 absolute right-3 bottom-3 size-6 rounded-br-sm border-r-2 border-b-2" />
+      <span class="border-foreground/40 absolute top-3 left-3 size-6 rounded-tl-sm border-t-2 border-l-2" />
+      <span class="border-foreground/40 absolute top-3 right-3 size-6 rounded-tr-sm border-t-2 border-r-2" />
+      <span class="border-foreground/40 absolute bottom-3 left-3 size-6 rounded-bl-sm border-b-2 border-l-2" />
+      <span class="border-foreground/40 absolute right-3 bottom-3 size-6 rounded-br-sm border-r-2 border-b-2" />
     </div>
 
     <div
@@ -34,7 +34,7 @@
     >
       <div class="flex flex-col items-center gap-2">
         <button
-          class="bg-primary text-primary-foreground shadow-primary/25 hover:bg-primary/90 focus-visible:ring-primary/70 focus-visible:ring-offset-background flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold shadow-lg transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+          class="bg-primary text-primary-foreground hover:bg-primary/90 focus-visible:ring-ring/50 flex h-10 items-center gap-2 rounded-full px-5 text-sm font-medium shadow-lg transition-colors outline-none focus-visible:ring-[3px]"
           @click="handleStart"
         >
           <!-- Play icon -->
@@ -82,7 +82,7 @@
           <template v-else>
             <p class="text-destructive-text max-w-sm text-sm" role="alert">{{ errorMessage }}</p>
             <button
-              class="text-foreground hover:bg-muted focus-visible:ring-primary/70 focus-visible:ring-offset-background mt-4 rounded-full px-4 py-2 text-sm font-medium transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+              class="text-foreground hover:bg-muted focus-visible:ring-ring/50 mt-4 rounded-md px-4 py-2 text-sm font-medium transition-colors outline-none focus-visible:ring-[3px]"
               @click.stop="handleStart"
             >
               Try again

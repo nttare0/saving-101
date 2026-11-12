@@ -1,17 +1,19 @@
-// Tailwind's ~500-weight shades, chosen because that lightness step is the common
+// The Bklit UI chart hues (its "Primary" palette first, then steps from its Vivid, Ocean and
+// Sunset palettes), as sRGB literals because consumers derive sibling shades with d3-color,
+// which does not parse oklch(). All sit around Tailwind's ~500 lightness step, the common
 // heuristic for a hue that stays legible on both a near-white and a near-black surface.
 export const CATEGORICAL_SERIES_PALETTE: string[] = [
-  'rgb(139, 92, 246)', // violet
-  'rgb(59, 130, 246)', // blue
-  'rgb(16, 185, 129)', // emerald
-  'rgb(245, 158, 11)', // amber
-  'rgb(236, 72, 153)', // pink
-  'rgb(20, 184, 166)', // teal
-  'rgb(249, 115, 22)', // orange
-  'rgb(168, 85, 247)', // purple
-  'rgb(6, 182, 212)', // cyan
-  'rgb(239, 68, 68)', // red
+  'rgb(97, 95, 255)', // indigo-500   (--chart-1)
+  'rgb(253, 199, 0)', // yellow-400   (--chart-2)
+  'rgb(0, 188, 125)', // emerald-500
+  'rgb(0, 184, 219)', // cyan-500
+  'rgb(255, 32, 86)', // rose-500
+  'rgb(255, 105, 0)', // orange-500
+  'rgb(142, 81, 255)', // violet-500
+  'rgb(124, 207, 0)', // lime-500
+  'rgb(246, 51, 154)', // pink-500
+  'rgb(103, 120, 124)', // mist-500    (--chart-4)
 ];
 
 /** Muted slate for the folded tail of a series list, so "Others" never competes with a named series. */
-export const OTHERS_SERIES_COLOR = 'rgb(148, 163, 184)';
+export const OTHERS_SERIES_COLOR = 'rgb(166, 160, 155)';

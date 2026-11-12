@@ -52,6 +52,7 @@ import type { FireChart, FireChartPoint } from '@/composable/fire/build-fire-pla
 import { type FireChartPace, PACE_SWATCH_CLASS } from '@/composable/fire/fire-pace-display';
 import { useDateLocale } from '@/composable/use-date-locale';
 import { useResizeObserver } from '@vueuse/core';
+import { styleGridRows } from '@/composable/charts/grid-style';
 import * as d3 from 'd3';
 import { cn } from '@/lib/utils';
 import { differenceInCalendarYears, startOfMonth } from 'date-fns';
@@ -148,7 +149,7 @@ const renderChart = () => {
     )
     .call((grid) => {
       grid.select('.domain').remove();
-      grid.selectAll('.tick line').attr('stroke', colors.grid).attr('stroke-opacity', 0.5);
+      styleGridRows({ grid: grid, color: colors.grid });
     });
 
   if (band.length > 0) {
@@ -343,9 +344,9 @@ const renderChart = () => {
         .tickFormat((date) => format(date, 'yyyy')),
     )
     .call((axis) => {
-      axis.select('.domain').attr('stroke', colors.grid);
+      axis.select('.domain').remove();
       axis.selectAll('.tick text').attr('fill', colors.text).attr('font-size', fontSize);
-      axis.selectAll('.tick line').attr('stroke', colors.grid);
+      axis.selectAll('.tick line').remove();
     });
 
   g.append('g')

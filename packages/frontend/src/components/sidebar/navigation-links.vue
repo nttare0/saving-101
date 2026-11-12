@@ -16,12 +16,16 @@ import { SIDEBAR_NAV_CHILDREN, useAccountsNavChildren } from './nav-items';
 import { useSidebarNavCollapse } from './use-nav-collapse';
 import { useSidebarNavRoutes } from './use-nav-routes';
 
-withDefaults(defineProps<{ bottomNav?: boolean }>(), { bottomNav: false });
+const props = withDefaults(defineProps<{ bottomNav?: boolean }>(), { bottomNav: false });
 
-const navItemBase = 'w-full gap-2 px-3';
-const navItemActive = 'bg-primary/10 text-foreground';
+// shadcn/ui sidebar menu metrics (h-8 rows, h-7 sub-rows); the mobile bottom bar keeps touch-sized targets.
+const navItemBase = props.bottomNav ? 'w-full gap-2 px-3' : 'h-8 w-full gap-2 px-2 font-normal';
+const navItemActive = 'bg-sidebar-accent text-sidebar-accent-foreground font-medium';
+const navGroupActive = 'text-sidebar-accent-foreground font-medium';
+const navSubItemBase = 'h-7 w-full justify-start gap-2 px-2 font-normal';
+const navSubList = 'border-sidebar-border mx-3.5 mt-1 grid gap-1 border-l px-2.5 py-0.5';
 const navIconBase = 'size-4 shrink-0';
-const navIconActive = 'text-primary-text';
+const navIconActive = '';
 
 const { isAccountsOpen, isTransactionsOpen, isPlannedOpen } = useSidebarNavCollapse();
 const { isAccountsRoute, isTransactionsRoute, isPlannedRoute, isChildActive } = useSidebarNavRoutes();
@@ -89,7 +93,7 @@ watch(
       <ui-button
         variant="ghost"
         as="div"
-        :class="['w-full justify-start gap-2 px-3', isAccountsRoute && 'bg-primary/10']"
+        :class="[navItemBase, 'justify-start', isAccountsRoute && navGroupActive]"
         size="default"
       >
         <LayersIcon :class="[navIconBase, isAccountsRoute && navIconActive]" />
@@ -100,7 +104,7 @@ watch(
       </ui-button>
     </CollapsibleTrigger>
     <CollapsibleContent>
-      <div class="border-border/40 mt-1 ml-2 grid gap-0.5 border-l pl-2">
+      <div :class="navSubList">
         <router-link
           v-for="child in accountsNavChildren"
           :key="child.routeName"
@@ -110,7 +114,7 @@ watch(
           <ui-button
             variant="ghost"
             as="span"
-            :class="['w-full justify-start gap-2 px-3', isChildActive({ child, isActive }) && navItemActive]"
+            :class="[navSubItemBase, isChildActive({ child, isActive }) && navItemActive]"
             size="sm"
           >
             <component :is="child.icon" :class="[navIconBase, isChildActive({ child, isActive }) && navIconActive]" />
@@ -134,7 +138,7 @@ watch(
       <ui-button
         variant="ghost"
         as="div"
-        :class="['w-full justify-start gap-2 px-3', isTransactionsRoute && 'bg-primary/10']"
+        :class="[navItemBase, 'justify-start', isTransactionsRoute && navGroupActive]"
         size="default"
       >
         <CreditCardIcon :class="[navIconBase, isTransactionsRoute && navIconActive]" />
@@ -145,7 +149,7 @@ watch(
       </ui-button>
     </CollapsibleTrigger>
     <CollapsibleContent>
-      <div class="border-border/40 mt-1 ml-2 grid gap-0.5 border-l pl-2">
+      <div :class="navSubList">
         <router-link
           v-for="child in SIDEBAR_NAV_CHILDREN.transactions"
           :key="child.routeName"
@@ -155,7 +159,7 @@ watch(
           <ui-button
             variant="ghost"
             as="span"
-            :class="['w-full justify-start gap-2 px-3', isChildActive({ child, isActive }) && navItemActive]"
+            :class="[navSubItemBase, isChildActive({ child, isActive }) && navItemActive]"
             size="sm"
           >
             <component :is="child.icon" :class="[navIconBase, isChildActive({ child, isActive }) && navIconActive]" />
@@ -171,7 +175,7 @@ watch(
       <ui-button
         variant="ghost"
         as="div"
-        :class="['w-full justify-start gap-2 px-3', isPlannedRoute && 'bg-primary/10']"
+        :class="[navItemBase, 'justify-start', isPlannedRoute && navGroupActive]"
         size="default"
       >
         <CalendarClockIcon :class="[navIconBase, isPlannedRoute && navIconActive]" />
@@ -182,7 +186,7 @@ watch(
       </ui-button>
     </CollapsibleTrigger>
     <CollapsibleContent>
-      <div class="border-border/40 mt-1 ml-2 grid gap-0.5 border-l pl-2">
+      <div :class="navSubList">
         <router-link
           v-for="child in SIDEBAR_NAV_CHILDREN.planned"
           :key="child.routeName"
@@ -192,7 +196,7 @@ watch(
           <ui-button
             variant="ghost"
             as="span"
-            :class="['w-full justify-start gap-2 px-3', isChildActive({ child, isActive }) && navItemActive]"
+            :class="[navSubItemBase, isChildActive({ child, isActive }) && navItemActive]"
             size="sm"
           >
             <component :is="child.icon" :class="[navIconBase, isChildActive({ child, isActive }) && navIconActive]" />

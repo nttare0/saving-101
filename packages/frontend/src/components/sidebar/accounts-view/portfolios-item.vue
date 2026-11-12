@@ -31,7 +31,7 @@ const currencyCode = computed(() => summary.value?.currencyCode ?? 'USD');
       :variant="isActive ? 'secondary' : 'ghost'"
       as="div"
       size="default"
-      class="h-auto w-full px-2"
+      class="h-8 w-full px-2 py-0 font-normal"
       :class="!portfolio.isEnabled && 'opacity-60'"
     >
       <div class="flex w-full items-center justify-between gap-x-2">

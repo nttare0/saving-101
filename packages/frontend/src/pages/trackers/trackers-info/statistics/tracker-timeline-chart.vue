@@ -17,7 +17,7 @@
         <ChartTooltip>
           <ChartTooltipHeader>{{ tooltip.period }}</ChartTooltipHeader>
           <ChartTooltipRow
-            color="var(--primary)"
+            color="var(--chart-1)"
             :label="
               isSpending
                 ? $t('pages.budgetDetails.statistics.expensesLabel')
@@ -69,6 +69,7 @@ import { useChartTooltipPosition } from '@/composable/charts/use-chart-tooltip-p
 import { useDateLocale } from '@/composable/use-date-locale';
 import { TRACKER_LIMIT_KINDS, type TrackerSpendingGranularity } from '@bt/shared/types';
 import { useResizeObserver } from '@vueuse/core';
+import { styleGridRows } from '@/composable/charts/grid-style';
 import * as d3 from 'd3';
 import { addDays, isSameMonth, max as maxDate, min as minDate, parseISO } from 'date-fns';
 import { computed, reactive, ref, watch } from 'vue';
@@ -178,7 +179,7 @@ const renderChart = () => {
     )
     .call((axis) => {
       axis.select('.domain').remove();
-      axis.selectAll('.tick line').attr('stroke', colors.grid).attr('stroke-opacity', 0.5);
+      styleGridRows({ grid: axis, color: colors.grid });
       axis.selectAll('.tick text').attr('fill', colors.text).style('font-size', '14px');
     });
 
@@ -192,7 +193,7 @@ const renderChart = () => {
         .tickFormat((d) => format(d, props.granularity === 'monthly' ? 'MMM yy' : 'MMM d')),
     )
     .call((axis) => {
-      axis.select('.domain').attr('stroke', colors.grid);
+      axis.select('.domain').remove();
       axis.selectAll('.tick line').remove();
       axis.selectAll('.tick text').attr('fill', colors.text).style('font-size', '14px');
     });

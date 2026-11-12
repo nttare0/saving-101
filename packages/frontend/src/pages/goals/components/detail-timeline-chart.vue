@@ -12,7 +12,7 @@
         <ChartTooltip>
           <ChartTooltipHeader>{{ tooltip.dateLabel }}</ChartTooltipHeader>
           <ChartTooltipRow
-            color="var(--primary)"
+            color="var(--chart-1)"
             :label="
               tooltip.projected
                 ? $t('goals.details.progress.legend.projection')
@@ -56,6 +56,7 @@ import { formatAxisCurrency } from '@/composable/charts/format-axis-currency';
 import { useChartTooltipPosition } from '@/composable/charts/use-chart-tooltip-position';
 import { useDateLocale } from '@/composable/use-date-locale';
 import { useResizeObserver } from '@vueuse/core';
+import { styleGridRows } from '@/composable/charts/grid-style';
 import * as d3 from 'd3';
 import { reactive, ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
@@ -132,7 +133,7 @@ const renderChart = () => {
     )
     .call((axis) => {
       axis.select('.domain').remove();
-      axis.selectAll('.tick line').attr('stroke', colors.grid).attr('stroke-opacity', 0.5);
+      styleGridRows({ grid: axis, color: colors.grid });
       axis.selectAll('.tick text').attr('fill', colors.text).style('font-size', '12px');
     });
 
@@ -146,7 +147,7 @@ const renderChart = () => {
         .tickFormat((d) => format(d, 'MMM yy')),
     )
     .call((axis) => {
-      axis.select('.domain').attr('stroke', colors.grid);
+      axis.select('.domain').remove();
       axis.selectAll('.tick line').remove();
       axis.selectAll('.tick text').attr('fill', colors.text).style('font-size', '12px');
     });

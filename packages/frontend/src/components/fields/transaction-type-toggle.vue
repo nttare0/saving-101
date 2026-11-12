@@ -12,7 +12,7 @@ defineProps<{
 }>();
 
 const BASE_CLASSES =
-  'focus-visible:ring-ring flex flex-1 items-center justify-center gap-2 rounded-md py-2 text-sm font-medium transition-all duration-200 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50';
+  'focus-visible:ring-ring/50 flex flex-1 items-center justify-center gap-2 rounded-md py-2 text-sm font-medium transition-all duration-200 focus-visible:ring-[3px] focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50';
 </script>
 
 <template>

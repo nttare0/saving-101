@@ -10,10 +10,10 @@
     <div class="text-center">
       <!-- Badge -->
       <div
-        class="hero-fade-in border-border/60 bg-card/50 mb-8 inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-sm backdrop-blur-sm"
+        class="hero-fade-in border-border bg-muted/40 mb-6 inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-medium backdrop-blur-sm"
         style="animation-delay: 0.1s"
       >
-        <span class="size-2 shrink-0 animate-pulse rounded-full bg-green-500"></span>
+        <span class="bg-chart-positive size-1.5 shrink-0 rounded-full"></span>
         <span class="text-muted-foreground">
           <span>Open source &bull; AGPL-3.0</span>
         </span>
@@ -21,17 +21,15 @@
 
       <!-- Headline -->
       <h1
-        class="hero-fade-in hero-title mx-auto max-w-5xl text-3xl font-bold tracking-tight sm:text-6xl lg:text-7xl"
+        class="hero-fade-in mx-auto max-w-5xl text-4xl font-semibold tracking-tighter sm:text-6xl lg:text-7xl"
       >
-        Your finances. Your server.
-        <span class="hero-gradient-text inline-block bg-clip-text leading-tight text-transparent">
-          Your rules.
-        </span>
+        Your finances. Your server.{' '}
+        <span class="text-muted-foreground sm:block">Your rules.</span>
       </h1>
 
       <!-- Subheadline -->
       <p
-        class="hero-fade-in text-muted-foreground mx-auto mt-6 max-w-2xl text-lg sm:text-xl"
+        class="hero-fade-in text-muted-foreground mx-auto mt-6 max-w-2xl text-base text-balance sm:text-lg"
         style="animation-delay: 0.35s"
       >
         Open-source personal finance tracking. Self-host it for free with Docker, or use our cloud from $2.50/mo, billed
@@ -40,13 +38,13 @@
 
       <!-- CTA Buttons -->
       <div
-        class="hero-fade-in mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
+        class="hero-fade-in mt-8 flex flex-col items-center justify-center gap-x-6 gap-y-4 sm:flex-row sm:items-start"
         style="animation-delay: 0.45s"
       >
         <div class="flex flex-col items-center gap-2">
           <a
             href="/sign-up"
-            class="group bg-primary text-primary-foreground shadow-primary/25 hover:bg-primary/90 hover:shadow-primary/30 flex w-full items-center justify-center gap-2 rounded-xl px-8 py-3.5 text-base font-semibold shadow-lg transition-all hover:shadow-xl sm:w-auto"
+            class="group bg-primary text-primary-foreground hover:bg-primary/90 flex h-11 w-full items-center justify-center gap-2 rounded-lg px-6 text-sm font-medium shadow-xs transition-colors sm:w-auto"
             data-track="landing_cta_clicked"
             data-track-location="hero"
           >
@@ -66,7 +64,7 @@
         href="https://testflight.apple.com/join/tm5q4V5H"
         target="_blank"
         rel="noopener noreferrer"
-        class="hero-fade-in mt-8 inline-flex items-center gap-3 rounded-xl border border-white/25 bg-black px-5 py-2.5 text-left text-white transition-colors hover:border-white/60"
+        class="hero-fade-in border-input hover:border-foreground/40 mt-8 inline-flex items-center gap-3 rounded-lg border bg-black px-4 py-2 text-left text-white transition-colors"
         style="animation-delay: 0.5s"
         data-track="landing_testflight_clicked"
         data-track-location="hero"
@@ -74,7 +72,7 @@
         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" class="size-7 shrink-0" aria-hidden="true"><path fill="currentColor" d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04c-2.04.027-3.91 1.183-4.961 3.014c-2.117 3.675-.546 9.103 1.519 12.09c1.013 1.454 2.208 3.09 3.792 3.039c1.52-.065 2.09-.987 3.935-.987c1.831 0 2.35.987 3.96.948c1.637-.026 2.676-1.48 3.676-2.948c1.156-1.688 1.636-3.325 1.662-3.415c-.039-.013-3.182-1.221-3.22-4.857c-.026-3.04 2.48-4.494 2.597-4.559c-1.429-2.09-3.623-2.324-4.39-2.376c-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83c-1.207.052-2.662.805-3.532 1.818c-.78.896-1.454 2.338-1.273 3.714c1.338.104 2.715-.688 3.559-1.701"/></svg>
         <span class="flex flex-col leading-tight">
           <span class="text-xs">Get the iPhone app beta on</span>
-          <span class="text-xl font-semibold">TestFlight</span>
+          <span class="text-lg font-semibold tracking-tight">TestFlight</span>
         </span>
       </a>
 
@@ -95,16 +93,16 @@
       <div class="hero-fade-in relative mx-auto mt-16 max-w-5xl" style="animation-delay: 0.7s">
         <div
           data-hero-frame
-          class="border-border/50 from-card to-card/50 relative overflow-hidden rounded-2xl border bg-linear-to-b shadow-2xl"
+          class="border-border bg-card relative overflow-hidden rounded-xl border shadow-2xl"
         >
           <!-- Browser chrome -->
-          <div class="border-border/50 bg-card flex items-center gap-2 border-b px-4 py-3">
+          <div class="border-border bg-card flex items-center gap-2 border-b px-4 py-2.5">
             <div class="flex gap-1.5">
-              <div class="size-3 rounded-full bg-red-500/80"></div>
-              <div class="size-3 rounded-full bg-yellow-500/80"></div>
-              <div class="size-3 rounded-full bg-green-500/80"></div>
+              <div class="bg-foreground/15 size-2.5 rounded-full"></div>
+              <div class="bg-foreground/15 size-2.5 rounded-full"></div>
+              <div class="bg-foreground/15 size-2.5 rounded-full"></div>
             </div>
-            <div class="bg-muted text-muted-foreground ml-4 flex-1 rounded-md px-3 py-1 text-xs">
+            <div class="bg-muted/60 text-muted-foreground ml-3 flex-1 rounded-md px-3 py-1 font-mono text-xs">
               https://moneymatter.app
             </div>
           </div>
@@ -114,17 +112,17 @@
             <picture>
               <source
                 media="(max-width: 639px)"
-                srcset="/img/landing/dashboard-screenshot/dashboard-mobile-v2@1x.webp 1x, /img/landing/dashboard-screenshot/dashboard-mobile-v2@2x.webp 2x"
+                srcset="/img/landing/dashboard-screenshot/dashboard-mobile-v3@1x.webp 1x, /img/landing/dashboard-screenshot/dashboard-mobile-v3@2x.webp 2x"
                 width="1170"
                 height="2532"
               />
               <source
-                srcset="/img/landing/dashboard-screenshot/dashboard-desktop-v2@1x.webp 1x, /img/landing/dashboard-screenshot/dashboard-desktop-v2@2x.webp 2x"
+                srcset="/img/landing/dashboard-screenshot/dashboard-desktop-v3@1x.webp 1x, /img/landing/dashboard-screenshot/dashboard-desktop-v3@2x.webp 2x"
                 width="1612"
                 height="935"
               />
               <img
-                src="/img/landing/dashboard-screenshot/dashboard-desktop-v2@1x.webp"
+                src="/img/landing/dashboard-screenshot/dashboard-desktop-v3@1x.webp"
                 alt="MoneyMatter budget tracker dashboard showing expense overview and financial analytics"
                 width="1612"
                 height="935"
@@ -155,13 +153,6 @@
 </section>
 
 <style>
-  /* Gradient text */
-  .hero-gradient-text {
-    background-image: linear-gradient(90deg, #8b5cf6 0%, #a855f7 25%, #ec4899 50%, #a855f7 75%, #8b5cf6 100%) !important;
-    background-size: 200% 100% !important;
-    background-position: 50% 50% !important;
-  }
-
   /* Hero content slide-up animation */
   .hero-fade-in {
     animation: hero-slide-up 0.8s ease-out both;

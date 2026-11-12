@@ -18,7 +18,9 @@ const [UseBodyTemplate, BodyContent] = createReusableTemplate();
 
 <template>
   <UseTriggerTemplate>
-    <span class="text-primary-text inline-flex cursor-pointer items-center gap-1 hover:underline">
+    <span
+      class="text-primary-text inline-flex cursor-pointer items-center gap-1 font-medium underline underline-offset-4"
+    >
       {{ t('dialogs.manageTransaction.refundInfo.trigger') }} <InfoIcon :size="16" />
     </span>
   </UseTriggerTemplate>

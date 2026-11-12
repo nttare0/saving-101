@@ -225,7 +225,7 @@ function applyIcon() {
             <input
               v-model="searchQuery"
               type="text"
-              class="border-input bg-input-background focus-visible:ring-ring h-9 w-full rounded-md border pr-2 pl-8 text-sm focus-visible:ring-2 focus-visible:outline-hidden"
+              class="border-input bg-input-background focus-visible:ring-ring/50 focus-visible:border-ring h-9 w-full rounded-md border pr-2 pl-8 text-sm focus-visible:ring-[3px] focus-visible:outline-hidden"
               :placeholder="$t('common.logo.searchPlaceholder')"
               data-test="logo-search-input"
               @focus="selectAllOnFocus"
@@ -330,7 +330,7 @@ function applyIcon() {
               autocomplete="off"
               autocapitalize="characters"
               spellcheck="false"
-              class="border-input bg-input-background focus-visible:ring-ring h-9 w-full rounded-md border px-2 text-sm uppercase focus-visible:ring-2 focus-visible:outline-hidden"
+              class="border-input bg-input-background focus-visible:ring-ring/50 focus-visible:border-ring h-9 w-full rounded-md border px-2 text-sm uppercase focus-visible:ring-[3px] focus-visible:outline-hidden"
               :placeholder="$t('common.logo.lettersPlaceholder')"
               data-test="logo-letters-input"
               @input="handleLettersInput"

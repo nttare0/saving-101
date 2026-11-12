@@ -106,7 +106,7 @@ watch(
 
 const chipClass =
   'bg-secondary flex h-9 cursor-pointer items-center gap-2 rounded-lg border border-transparent px-3 text-sm font-medium';
-const linkClass = 'text-primary-text underline-offset-2 hover:underline';
+const linkClass = 'text-primary-text font-medium underline underline-offset-4';
 
 const quickPresets = computed<DateSelectorPreset[]>(() => [
   {

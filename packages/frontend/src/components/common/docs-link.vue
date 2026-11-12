@@ -13,7 +13,7 @@ defineProps<{
     :href="`${config.docsUrl}${path}`"
     target="_blank"
     rel="noopener noreferrer"
-    class="text-primary-text inline-flex items-center gap-1 underline-offset-4 hover:underline"
+    class="text-primary-text inline-flex items-center gap-1 font-medium underline underline-offset-4"
   >
     <slot>{{ $t('common.actions.learnMore') }}</slot>
     <ExternalLinkIcon class="size-3 shrink-0" />

@@ -36,7 +36,7 @@ const onHeaderClick = () => {
   <button
     ref="headerRef"
     type="button"
-    class="bg-card hover:bg-accent sticky z-(--z-over-default) flex w-full items-center gap-2 rounded-md px-2 py-2 text-left text-sm font-semibold transition-colors"
+    class="bg-sidebar hover:bg-sidebar-accent sticky z-(--z-over-default) flex h-9 w-full items-center gap-2 rounded-md px-2 text-left text-sm font-medium transition-colors"
     :class="[topClass, bottomClass]"
     @click="onHeaderClick"
   >

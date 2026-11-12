@@ -40,7 +40,7 @@ const groupTotal = computed(() => sumBaseBalance({ accounts: collectGroupAccount
 <template>
   <Collapsible v-model:open="isOpen">
     <CollapsibleTrigger class="w-full">
-      <Button variant="ghost" as="div" size="default" class="w-full px-2">
+      <Button variant="ghost" as="div" size="default" class="h-8 w-full px-2 py-0 font-normal">
         <div class="flex w-full items-center gap-2">
           <ChevronRightIcon :class="['size-4 shrink-0 transition-transform duration-200', { 'rotate-90': isOpen }]" />
           <AccountGroupName :group="group" class="min-w-0 text-sm" />
@@ -65,7 +65,7 @@ const groupTotal = computed(() => sumBaseBalance({ accounts: collectGroupAccount
       </Button>
     </CollapsibleTrigger>
     <CollapsibleContent>
-      <div class="border-border/40 ml-2 border-l pl-2">
+      <div class="border-sidebar-border ml-4 border-l pl-1.5">
         <AccountsList :accounts="group.accounts" />
         <AccountGroupsList v-if="group.childGroups.length" :groups="group.childGroups" />
       </div>

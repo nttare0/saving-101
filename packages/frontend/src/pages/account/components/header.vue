@@ -232,7 +232,7 @@ watch([formEditingPopoverOpen, () => props.account.id], () => {
             {{ toLocalCurrencyNumber(displayBalance, { currency: account.currencyCode }) }}
             {{ currenciesMap[account.currencyCode]?.currency?.code }}
           </span>
-          <span v-if="baseCurrency && account.currencyCode !== baseCurrency.currencyCode" class="text-white opacity-50">
+          <span v-if="baseCurrency && account.currencyCode !== baseCurrency.currencyCode" class="text-muted-foreground">
             ~
             {{ toLocalCurrencyNumber(displayRefBalance, { currency: baseCurrency.currencyCode }) }}
             {{ baseCurrency.currency?.code }}
@@ -243,7 +243,7 @@ watch([formEditingPopoverOpen, () => props.account.id], () => {
             {{ toLocalCurrencyNumber(displayBalance, { currency: account.currencyCode }) }}
             {{ currenciesMap[account.currencyCode]?.currency?.code }}
           </span>
-          <span v-if="baseCurrency && account.currencyCode !== baseCurrency.currencyCode" class="text-white opacity-50">
+          <span v-if="baseCurrency && account.currencyCode !== baseCurrency.currencyCode" class="text-muted-foreground">
             ~
             {{ toLocalCurrencyNumber(displayRefBalance, { currency: baseCurrency.currencyCode }) }}
             {{ baseCurrency.currency?.code }}

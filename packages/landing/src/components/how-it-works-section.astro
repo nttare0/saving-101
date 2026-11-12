@@ -26,20 +26,20 @@ const STEPS = [
 <section id="how-it-works" class="relative z-10 py-16 sm:py-24">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="mx-auto max-w-2xl text-center">
-      <h2 class="text-2xl font-bold tracking-tight sm:text-3xl">How it works</h2>
+      <h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">How it works</h2>
       <p class="text-muted-foreground mt-4 text-lg">From bank statement to the full picture in three steps.</p>
     </div>
 
-    <ol class="mt-16 grid gap-8 lg:grid-cols-3">
+    <ol class="mt-12 grid gap-4 lg:grid-cols-3">
       {
         STEPS.map((step, index) => (
-          <li class="border-border/50 bg-card overflow-hidden rounded-2xl border">
+          <li class="border-border bg-card overflow-hidden rounded-xl border">
             <div class="bg-background relative aspect-3/2 overflow-hidden">
               <Screenshot {...step.image} alt={step.alt} class="h-full object-cover object-top-left" />
               <div class="from-card pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-linear-to-t to-transparent" />
             </div>
             <div class="p-6">
-              <p class="text-primary text-sm font-semibold">Step {index + 1}</p>
+              <p class="text-muted-foreground font-mono text-xs">Step {index + 1}</p>
               <h3 class="mt-1 mb-2 text-lg font-semibold">{step.title}</h3>
               <p class="text-muted-foreground text-sm">{step.text}</p>
             </div>

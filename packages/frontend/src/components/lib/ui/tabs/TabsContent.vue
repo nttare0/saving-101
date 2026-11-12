@@ -7,12 +7,7 @@ const props = defineProps<TabsContentProps & { class?: string }>();
 
 <template>
   <TabsContent
-    :class="
-      cn(
-        'ring-offset-background focus-visible:ring-ring mt-2 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-hidden',
-        props.class,
-      )
-    "
+    :class="cn('focus-visible:ring-ring/50 mt-2 focus-visible:ring-[3px] focus-visible:outline-hidden', props.class)"
     v-bind="props"
   >
     <slot />

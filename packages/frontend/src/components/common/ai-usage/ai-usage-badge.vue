@@ -29,7 +29,7 @@ const label = computed(() =>
       type="button"
       aria-haspopup="dialog"
       :aria-label="`${$t('aiUsage.title')}: ${label}`"
-      class="focus-visible:ring-ring inline-flex rounded-full transition-opacity hover:opacity-80 focus-visible:ring-2 focus-visible:outline-hidden"
+      class="focus-visible:ring-ring/50 inline-flex rounded-full transition-opacity hover:opacity-80 focus-visible:ring-[3px] focus-visible:outline-hidden"
       @click.stop="isDialogOpen = true"
     >
       <StatusBadge :variant="tone === 'danger' ? 'destructive' : 'warning'">{{ label }}</StatusBadge>

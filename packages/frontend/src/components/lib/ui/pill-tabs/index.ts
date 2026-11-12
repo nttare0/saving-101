@@ -18,13 +18,13 @@ export type PillTabItem = {
 } & ({ icon?: undefined; iconClass?: never } | { icon: Component; iconClass?: string });
 
 export const pillTabsContainerVariants = cva(
-  'bg-muted border-border/50 relative inline-flex items-center self-start overflow-x-auto border no-scrollbar max-w-full',
+  'bg-muted relative inline-flex items-center self-start overflow-x-auto border border-transparent no-scrollbar max-w-full',
   {
     variants: {
       size: {
         sm: 'rounded-lg px-1 py-0.5',
-        default: 'rounded-md p-1',
-        lg: 'h-10 rounded-xl px-1',
+        default: 'rounded-lg p-1',
+        lg: 'h-10 rounded-lg px-1',
       },
     },
     defaultVariants: { size: 'default' },
@@ -32,7 +32,7 @@ export const pillTabsContainerVariants = cva(
 );
 
 export const pillTabsIndicatorVariants = cva(
-  'bg-card dark:bg-background absolute rounded-md shadow-sm transition-all duration-200 ease-out',
+  'bg-background dark:bg-input/30 dark:border-input absolute rounded-md border border-transparent shadow-sm transition-all duration-200 ease-out',
   {
     variants: {
       size: {

@@ -68,7 +68,7 @@ const optimizations: OptimizationCard[] = [
       <Card
         v-for="item in optimizations"
         :key="item.titleKey"
-        class="hover:border-primary/50 focus-visible:ring-ring cursor-pointer p-5 transition-colors focus-visible:ring-2 focus-visible:outline-hidden"
+        class="hover:border-primary/50 focus-visible:ring-ring/50 cursor-pointer p-5 transition-colors focus-visible:ring-[3px] focus-visible:outline-hidden"
         role="button"
         tabindex="0"
         @click="item.onClick()"

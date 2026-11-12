@@ -42,29 +42,29 @@ const cards = [
 <section id="community" class="relative z-10 py-16 sm:py-24">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="mx-auto max-w-2xl text-center">
-      <h2 class="text-2xl font-bold tracking-tight sm:text-3xl">Built in the open</h2>
+      <h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">Built in the open</h2>
       <p class="text-muted-foreground mt-4 text-lg">
         One developer, a public roadmap, and a changelog you can check. Your feedback decides what gets built next.
       </p>
     </div>
 
-    <div class="mt-12 grid gap-6 md:grid-cols-[8fr_9fr_8fr]">
+    <div class="mt-12 grid gap-4 md:grid-cols-[8fr_9fr_8fr]">
       {
         cards.map((card) => (
           <a
             href={card.href}
             target="_blank"
             rel="noopener noreferrer"
-            class="group border-border/50 bg-card hover:border-primary/50 flex min-w-0 flex-col rounded-2xl border p-6 transition-all hover:shadow-lg"
+            class="group border-border bg-card hover:border-foreground/25 flex min-w-0 flex-col rounded-xl border p-6 transition-colors"
             data-track={card.track}
             data-track-location="community"
           >
-            <div class="bg-primary/10 text-primary mb-4 flex size-12 items-center justify-center rounded-xl">
+            <div class="border-border bg-muted/50 text-foreground mb-4 flex size-10 items-center justify-center rounded-lg border [&>svg]:size-5">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-6" set:html={card.icon} />
             </div>
             <h3 class="mb-2 text-lg font-semibold">{card.title}</h3>
             {card.releases?.length ? (
-              <ul class="divide-border/50 divide-y text-sm">
+              <ul class="divide-border divide-y text-sm">
                 {card.releases.map((release) => (
                   <li class="flex items-baseline gap-2 py-1.5">
                     <span class="text-foreground shrink-0 font-mono text-xs">{release.version}</span>

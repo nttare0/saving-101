@@ -24,15 +24,15 @@ const model = computed({
     :id="props.id"
     :class="
       cn(
-        'border-primary ring-offset-background focus-visible:ring-ring data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground data-[state=indeterminate]:bg-primary data-[state=indeterminate]:text-primary-foreground peer size-4 shrink-0 rounded-[3px] border focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-hidden disabled:cursor-not-allowed disabled:opacity-50',
+        'border-input dark:bg-input/30 focus-visible:border-ring focus-visible:ring-ring/50 data-[state=checked]:border-primary data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground data-[state=indeterminate]:border-primary data-[state=indeterminate]:bg-primary data-[state=indeterminate]:text-primary-foreground peer size-4 shrink-0 rounded-[4px] border shadow-xs transition-shadow outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50',
         props.class,
       )
     "
   >
     <CheckboxIndicator class="flex h-full w-full items-center justify-center text-current">
       <slot>
-        <MinusIcon v-if="model === 'indeterminate'" class="size-4" />
-        <CheckIcon v-else class="size-4" />
+        <MinusIcon v-if="model === 'indeterminate'" class="size-3.5" />
+        <CheckIcon v-else class="size-3.5" />
       </slot>
     </CheckboxIndicator>
   </CheckboxRoot>

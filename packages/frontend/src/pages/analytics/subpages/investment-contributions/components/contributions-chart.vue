@@ -68,6 +68,7 @@ import { useChartTooltipPosition } from '@/composable/charts/use-chart-tooltip-p
 import { useDateLocale } from '@/composable/use-date-locale';
 import type { InvestmentContributionsGranularity } from '@bt/shared/types';
 import { useResizeObserver } from '@vueuse/core';
+import { styleGridRows } from '@/composable/charts/grid-style';
 import * as d3 from 'd3';
 import { parseISO } from 'date-fns';
 import { computed, reactive, ref, watch } from 'vue';
@@ -228,7 +229,7 @@ const renderChart = () => {
     )
     .call((gridAxis) => {
       gridAxis.select('.domain').remove();
-      gridAxis.selectAll('.tick line').attr('stroke', grid).attr('stroke-opacity', 0.5);
+      styleGridRows({ grid: gridAxis, color: grid });
     });
 
   // X axis
@@ -240,7 +241,7 @@ const renderChart = () => {
     .attr('transform', `translate(0,${innerHeight})`)
     .call(d3.axisBottom(xScale).tickFormat((d) => formatAxisLabel(d as string)))
     .call((axis) => {
-      axis.select('.domain').attr('stroke', grid);
+      axis.select('.domain').remove();
       axis
         .selectAll('.tick text')
         .attr('fill', text)
@@ -249,7 +250,7 @@ const renderChart = () => {
         .attr('text-anchor', shouldRotateLabels ? 'end' : 'middle')
         .attr('dx', shouldRotateLabels ? '-0.5em' : '0')
         .attr('dy', shouldRotateLabels ? '0.5em' : '0.7em');
-      axis.selectAll('.tick line').attr('stroke', grid);
+      axis.selectAll('.tick line').remove();
     });
 
   // Y axis
@@ -262,9 +263,9 @@ const renderChart = () => {
         .tickFormat((d) => formatAxisValue(d as number)),
     )
     .call((axis) => {
-      axis.select('.domain').attr('stroke', grid);
+      axis.select('.domain').remove();
       axis.selectAll('.tick text').attr('fill', text).attr('font-size', fontSize);
-      axis.selectAll('.tick line').attr('stroke', grid);
+      axis.selectAll('.tick line').remove();
     });
 
   // Zero baseline

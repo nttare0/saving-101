@@ -96,7 +96,7 @@ const renderChart = () => {
     .value((d) => d.amount)
     .sort(null);
 
-  const arc = d3.arc<d3.PieArcDatum<DonutChartItem>>().innerRadius(innerRadius).outerRadius(radius);
+  const arc = d3.arc<d3.PieArcDatum<DonutChartItem>>().innerRadius(innerRadius).outerRadius(radius).cornerRadius(4);
 
   const glowArc = d3
     .arc<d3.PieArcDatum<DonutChartItem>>()

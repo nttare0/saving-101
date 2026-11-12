@@ -185,6 +185,7 @@ import { useAccountsStore, useCurrenciesStore } from '@/stores';
 import { SORT_DIRECTIONS } from '@bt/shared/types';
 import { useQuery } from '@tanstack/vue-query';
 import { useResizeObserver } from '@vueuse/core';
+import { styleGridRows } from '@/composable/charts/grid-style';
 import * as d3 from 'd3';
 import { differenceInDays, endOfDay, format, isSameMonth, min, startOfDay, subDays } from 'date-fns';
 import { ChartLineIcon } from '@lucide/vue';
@@ -820,7 +821,12 @@ const renderChart = () => {
   const svg = d3.select(svgRef.value);
   svg.selectAll('*').remove();
 
-  const width = containerRef.value.clientWidth;
+  // The svg fills the container's content box; on narrow screens the container has horizontal
+  // padding, which `clientWidth` includes. Drawing to the padded width cut off the last x label.
+  const containerStyle = getComputedStyle(containerRef.value);
+  const horizontalPadding =
+    (parseFloat(containerStyle.paddingLeft) || 0) + (parseFloat(containerStyle.paddingRight) || 0);
+  const width = containerRef.value.clientWidth - horizontalPadding;
   const height = containerRef.value.clientHeight;
   const isMobile = width < 500;
 
@@ -829,7 +835,7 @@ const renderChart = () => {
     top: 10,
     right: isMobile ? 30 : 40,
     bottom: 35,
-    left: isMobile ? 40 : 48,
+    left: isMobile ? 44 : 48,
   };
   const innerWidth = width - margin.left - margin.right;
   const innerHeight = height - margin.top - margin.bottom;
@@ -879,7 +885,7 @@ const renderChart = () => {
     )
     .call((grid) => {
       grid.select('.domain').remove();
-      grid.selectAll('.tick line').attr('stroke', colors.grid).attr('stroke-opacity', 0.4);
+      styleGridRows({ grid: grid, color: colors.grid });
     });
 
   // Create gradient for area fill
@@ -893,9 +899,9 @@ const renderChart = () => {
     .attr('x2', '0%')
     .attr('y2', '100%');
 
-  gradient.append('stop').attr('offset', '0%').attr('stop-color', 'var(--primary)').attr('stop-opacity', 0.35);
+  gradient.append('stop').attr('offset', '0%').attr('stop-color', 'var(--chart-1)').attr('stop-opacity', 0.4);
 
-  gradient.append('stop').attr('offset', '100%').attr('stop-color', 'var(--primary)').attr('stop-opacity', 0);
+  gradient.append('stop').attr('offset', '100%').attr('stop-color', 'var(--chart-1)').attr('stop-opacity', 0);
 
   // Area generator
   const area = d3
@@ -920,7 +926,7 @@ const renderChart = () => {
     .datum(chartData.value)
     .attr('class', 'line')
     .attr('fill', 'none')
-    .attr('stroke', 'var(--primary)')
+    .attr('stroke', 'var(--chart-1)')
     .attr('stroke-width', 2)
     .attr('d', line);
 
@@ -939,8 +945,8 @@ const renderChart = () => {
         }),
     )
     .call((axis) => {
-      axis.select('.domain').attr('stroke', colors.grid).attr('stroke-opacity', 0.4);
-      axis.selectAll('.tick line').attr('stroke', colors.grid).attr('stroke-opacity', 0.4);
+      axis.select('.domain').remove();
+      axis.selectAll('.tick line').remove();
       axis.selectAll('.tick text').attr('fill', colors.text).attr('font-size', '11px').attr('dy', '1em');
     });
 
@@ -951,12 +957,14 @@ const renderChart = () => {
       d3
         .axisLeft(yScale)
         .tickValues(yTickValues)
+        .tickSize(0)
+        .tickPadding(8)
         .tickFormat((d) => formatAxisValue(d as number)),
     )
     .call((axis) => {
       axis.select('.domain').remove();
       axis.selectAll('.tick line').remove();
-      axis.selectAll('.tick text').attr('fill', colors.text).attr('font-size', '11px').attr('dx', '-0.3em');
+      axis.selectAll('.tick text').attr('fill', colors.text).attr('font-size', '11px');
     });
 
   // Invisible overlay for mouse tracking
@@ -967,7 +975,7 @@ const renderChart = () => {
     .append('circle')
     .attr('class', 'hover-dot')
     .attr('r', 5)
-    .attr('fill', 'var(--primary)')
+    .attr('fill', 'var(--chart-1)')
     .attr('stroke', 'var(--card)')
     .attr('stroke-width', 2)
     .style('opacity', 0);
@@ -976,9 +984,9 @@ const renderChart = () => {
   const hoverLine = g
     .append('line')
     .attr('class', 'hover-line')
-    .attr('stroke', 'var(--primary)')
+    .attr('stroke', 'var(--chart-crosshair)')
     .attr('stroke-width', 1)
-    .attr('stroke-dasharray', '4,4')
+    .attr('stroke-dasharray', '3,3')
     .attr('y1', 0)
     .attr('y2', innerHeight)
     .style('opacity', 0);
@@ -991,7 +999,7 @@ const renderChart = () => {
     .attr('cursor', 'crosshair')
     .on('mouseenter', () => {
       hoverDot.style('opacity', 1);
-      hoverLine.style('opacity', 0.5);
+      hoverLine.style('opacity', 1);
     })
     .on('mousemove', (event: MouseEvent) => {
       const [mouseX] = d3.pointer(event);
@@ -1124,7 +1132,7 @@ const renderChart = () => {
       .append('path')
       .datum(projection.value.points)
       .attr('fill', 'none')
-      .attr('stroke', 'var(--primary)')
+      .attr('stroke', 'var(--chart-1)')
       .attr('stroke-width', 1.5)
       .attr('stroke-opacity', 0.85)
       .attr('stroke-dasharray', '5,4')
@@ -1139,7 +1147,7 @@ const renderChart = () => {
       .attr('cy', (d) => yScale(d.value))
       .attr('r', 3.5)
       .attr('fill', 'var(--card)')
-      .attr('stroke', 'var(--primary)')
+      .attr('stroke', 'var(--chart-1)')
       .attr('stroke-width', 1.5)
       .append('title')
       .text((d) =>

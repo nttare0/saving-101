@@ -17,7 +17,7 @@
       <div class="bg-muted mb-4 flex size-16 items-center justify-center rounded-full">
         <SearchXIcon class="text-muted-foreground size-8" />
       </div>
-      <h2 class="mb-2 text-xl font-semibold tracking-wide">
+      <h2 class="mb-2 text-xl font-semibold tracking-tight">
         {{ $t('pages.integrations.details.error.unexpectedTitle') }}
       </h2>
       <p class="text-muted-foreground mb-6 max-w-md">

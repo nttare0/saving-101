@@ -1,5 +1,7 @@
 <template>
-  <div class="border-border/50 bg-card rounded-xl border px-5 py-4">
+  <div
+    class="border-border bg-card focus-within:border-ring focus-within:ring-ring/50 rounded-lg border px-5 py-3 transition-shadow focus-within:ring-[3px]"
+  >
     <form class="flex items-center gap-3" @submit.prevent="submit">
       <input
         v-model="question"
@@ -9,13 +11,13 @@
         required
         placeholder="Ask anything else…"
         aria-label="Ask a question about MoneyMatter"
-        class="placeholder:text-muted-foreground min-w-0 flex-1 bg-transparent font-semibold outline-none"
+        class="placeholder:text-muted-foreground min-w-0 flex-1 bg-transparent text-[15px] font-medium outline-none"
       />
       <button
         type="submit"
         :disabled="isLoading"
         aria-label="Ask"
-        class="bg-primary text-primary-foreground hover:bg-primary/90 flex size-8 shrink-0 items-center justify-center rounded-full transition-colors disabled:opacity-50"
+        class="bg-primary text-primary-foreground hover:bg-primary/90 flex size-8 shrink-0 items-center justify-center rounded-md shadow-xs transition-colors disabled:opacity-50"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -47,7 +49,7 @@
               :href="part.includes('://') ? part : `mailto:${part}`"
               :target="part.includes('://') ? '_blank' : undefined"
               rel="noopener noreferrer nofollow"
-              class="text-primary hover:underline"
+              class="text-foreground font-medium underline underline-offset-4"
             >
               {{ part }}
             </a>
@@ -56,7 +58,9 @@
         </p>
         <p class="text-muted-foreground/60 mt-2 text-xs">
           AI-generated, may be wrong. For anything important, email us at
-          <a href="mailto:support@moneymatter.app" class="text-primary hover:underline">support@moneymatter.app</a>.
+          <a href="mailto:support@moneymatter.app" class="text-foreground font-medium underline underline-offset-4"
+            >support@moneymatter.app</a
+          >.
         </p>
       </template>
     </div>

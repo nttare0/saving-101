@@ -5,7 +5,7 @@
       <div
         v-for="(commits, index) in activity.recentWeeksActivity"
         :key="index"
-        class="size-3 rounded-sm transition-colors"
+        class="size-3 rounded-[3px] transition-colors"
         :class="getActivityColor(commits)"
         :title="`Week ${index + 1}: ${commits} commits`"
       />
@@ -29,7 +29,7 @@
           rel="noopener noreferrer"
           class="hover:text-foreground inline-flex items-center gap-1 transition-colors"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="#e3b341" class="size-3">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="text-chart-2 size-3">
             <path
               d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"
             />
@@ -64,10 +64,10 @@ const RETRY_DELAY_MS = 2000;
 
 function getActivityColor(commits: number): string {
   if (commits === 0) return 'bg-muted';
-  if (commits <= 5) return 'bg-green-500/30';
-  if (commits <= 15) return 'bg-green-500/50';
-  if (commits <= 30) return 'bg-green-500/70';
-  return 'bg-green-500';
+  if (commits <= 5) return 'bg-chart-1/30';
+  if (commits <= 15) return 'bg-chart-1/50';
+  if (commits <= 30) return 'bg-chart-1/75';
+  return 'bg-chart-1';
 }
 
 function formatDate(dateString: string): string {

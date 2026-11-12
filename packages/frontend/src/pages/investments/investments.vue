@@ -1,7 +1,7 @@
 <template>
   <PageWrapper>
     <div class="mb-6 flex flex-wrap items-center justify-between gap-x-8 gap-y-4">
-      <h1 class="text-2xl tracking-wider">{{ $t('investments.title') }}</h1>
+      <h1 class="text-2xl font-semibold tracking-tight">{{ $t('investments.title') }}</h1>
 
       <DemoRestricted feature="create_portfolio_header" :message="$t('demo.featureNotAvailable')">
         <CreatePortfolioDialog v-if="!isDemo">

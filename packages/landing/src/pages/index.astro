@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '@/layouts/base-layout.astro';
-import BackgroundOrbs from '@/components/background-orbs.astro';
+import PageBackdrop from '@/components/page-backdrop.astro';
 import LandingHeader from '@/components/landing-header.astro';
 import HeroSection from '@/components/hero-section.astro';
 import HowItWorksSection from '@/components/how-it-works-section.astro';
@@ -86,7 +86,7 @@ const starsLabel = await getGitHubStarsLabel();
   })} />
 
   <div class="bg-background text-foreground landing-page min-h-screen">
-    <BackgroundOrbs />
+    <PageBackdrop />
     <LandingHeader />
 
     <HeroSection>
@@ -110,7 +110,7 @@ const starsLabel = await getGitHubStarsLabel();
 
 <style>
   .landing-page {
-    font-family: 'Montserrat', system-ui, sans-serif;
+    font-family: var(--font-sans);
     overflow-y: auto;
   }
 </style>

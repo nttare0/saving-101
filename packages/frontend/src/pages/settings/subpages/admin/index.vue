@@ -22,7 +22,7 @@
             <Button :disabled="isPriceSyncLoading" @click="triggerPriceSync">
               <span
                 v-if="isPriceSyncLoading"
-                class="size-4 animate-spin rounded-full border-2 border-white border-t-transparent"
+                class="size-4 animate-spin rounded-full border-2 border-current border-t-transparent"
               />
               {{
                 isPriceSyncLoading
