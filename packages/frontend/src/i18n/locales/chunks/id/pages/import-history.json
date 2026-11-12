@@ -1,0 +1,29 @@
+{
+  "pages": {
+    "importExport": {
+      "importHistory": {
+        "pageTitle": "Riwayat Impor",
+        "pageDescription": "Lihat impor sebelumnya dan telusuri persis akun serta transaksi apa saja yang dibuat oleh masing-masing impor.",
+        "loadError": "Tidak dapat memuat riwayat impor Anda.",
+        "emptyTitle": "Belum ada impor",
+        "emptyDescription": "Setelah Anda mengimpor transaksi, semuanya akan muncul di sini.",
+        "emptyAction": "Impor data",
+        "transactionCount": "{count} transaksi | {count} transaksi",
+        "accountCount": "{count} akun | {count} akun",
+        "deleteButton": "Hapus impor",
+        "deleteConfirmTitle": "Hapus batch impor ini?",
+        "deleteConfirmDescription": "Ini akan menghapus {count} transaksi dari impor ini secara permanen. Tindakan ini tidak dapat dibatalkan. | Ini akan menghapus {count} transaksi dari impor ini secara permanen. Tindakan ini tidak dapat dibatalkan.",
+        "deleteConfirmDescriptionNoTransactions": "The transactions from this import are already deleted. This removes what is left of the import, including any balance adjustment it made to your accounts.",
+        "deleteConfirmCreatedAccountsNote": "Accounts created by this import are also removed if they have no other transactions.",
+        "deleteSuccessMessage": "{count} transaksi dihapus | {count} transaksi dihapus",
+        "deleteSuccessNoTransactions": "Import deleted",
+        "deleteUnexpectedError": "Terjadi kesalahan saat menghapus batch impor. Silakan coba lagi.",
+        "deleteLinkedTransfersWarningTitle": "Impor ini tertaut ke transaksi lain",
+        "deleteLinkedTransfersCheckbox": "Juga hapus transaksi transfer yang tertaut",
+        "deleteLinkedTransfersDescription": "Secara bawaan, transaksi mana pun yang tertaut ke impor ini sebagai transfer hanya akan dilepas tautannya, bukan dihapus. Mencentang kotak ini akan turut menghapusnya secara permanen — ini tidak dapat dibatalkan.",
+        "deleteLinkedTransfersConfirmTitle": "Hapus juga transaksi yang tertaut?",
+        "deleteLinkedTransfersConfirmDescription": "Anda akan menghapus transaksi di luar batch impor ini secara permanen, bukan hanya melepas tautannya. Tindakan ini tidak dapat dibatalkan."
+      }
+    }
+  }
+}

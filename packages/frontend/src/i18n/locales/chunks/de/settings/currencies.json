@@ -1,0 +1,108 @@
+{
+  "settings": {
+    "currencies": {
+      "page": {
+        "title": "Währungen",
+        "description": "Verwalte die Währungen, die du verfolgst, und die Wechselkurse, die für deine Konten verwendet werden."
+      },
+      "addNew": {
+        "loading": "Laden...",
+        "selectCurrency": "Währung auswählen",
+        "addButton": "Hinzufügen",
+        "sectionLabel": "Währung hinzufügen",
+        "successfullyAdded": "Währung hinzugefügt",
+        "errors": {
+          "addFailed": "Unerwarteter Fehler. Währung wurde nicht hinzugefügt."
+        }
+      },
+      "howItWorks": {
+        "trigger": "Wie funktioniert das?",
+        "body": "Deine Basiswährung ist die Währung, in die jeder Saldo für Gesamtsummen und Berichte umgerechnet wird. Jede hinzugefügte Währung wird automatisch anhand aktueller Marktkurse aktualisiert, oder du kannst einen benutzerdefinierten Kurs festlegen, um ihn zu überschreiben."
+      },
+      "row": {
+        "baseBadge": "Basis",
+        "custom": "Benutzerdefiniert",
+        "live": "Live",
+        "unused": "Ungenutzt",
+        "accountsCount": "{count} Konto | {count} Konten"
+      },
+      "empty": {
+        "title": "Noch keine weiteren Währungen",
+        "description": "Füge oben eine Währung hinzu, um Salden und Wechselkurse neben deiner Basiswährung zu verfolgen."
+      },
+      "exchangeRate": {
+        "disableLiveUpdate": "Deaktiviere Live-Aktualisierung, um einen benutzerdefinierten Wechselkurs festlegen zu können.",
+        "liveUpdateInfo": "Wenn aktiviert, wird der benutzerdefinierte Kurs ignoriert.",
+        "liveUpdateLabel": "Live-Aktualisierung",
+        "ratePlaceholder": "0.00",
+        "saveButton": "Speichern",
+        "successfullyUpdated": "Erfolgreich aktualisiert.",
+        "balancesNotRefreshed": "{count} Kontostand/Kontostände konnten noch nicht mit dem neuen Kurs aktualisiert werden — sie werden automatisch aktualisiert, sobald ein Kurs verfügbar ist.",
+        "errors": {
+          "unexpectedError": "Unerwarteter Fehler",
+          "updateFailed": "Unerwarteter Fehler. Währung wurde nicht aktualisiert."
+        }
+      },
+      "delete": {
+        "confirmTitle": "Währung löschen?",
+        "description": "Eine Währung kann nur gelöscht/getrennt werden, wenn ihr keine Konten und/oder Transaktionen zugeordnet sind.",
+        "button": "Währung löschen",
+        "buttonShort": "Löschen",
+        "disabledTooltip": "Du kannst diese Währung nicht löschen, da sie noch mit Konten verbunden ist.",
+        "successfullyDeleted": "Erfolgreich gelöscht.",
+        "foreignAmountsWarning": "In dieser Währung erfasste Fremdbeträge werden aus deinen Transaktionen entfernt. Beträge in der Kontowährung bleiben unverändert.",
+        "inUse": {
+          "title": "Diese Währung wird noch verwendet. Bitte zuerst entfernen oder ändern:",
+          "trashed": "(im Papierkorb)",
+          "types": {
+            "account": "Konten",
+            "portfolio": "Portfolio-Anzeigewährung",
+            "holding": "Positionen",
+            "portfolioCash": "Cash-Bestände",
+            "portfolioTransfer": "Portfolio-Umbuchungen",
+            "investmentTransaction": "Investitionstransaktionen",
+            "subscription": "Wiederkehrende Zahlungen",
+            "transactionTemplate": "Transaktionsvorlagen",
+            "budget": "Budgets",
+            "goal": "Ziele",
+            "ventureDeal": "Beteiligungen"
+          }
+        },
+        "errors": {
+          "deleteFailed": "Unerwarteter Fehler. Währung wurde nicht gelöscht."
+        }
+      },
+      "setBase": {
+        "button": "Als Basiswährung festlegen",
+        "buttonShort": "Als Basis festlegen",
+        "processing": "Wird verarbeitet...",
+        "tooltip": "Als Basiswährung festlegen. Alle Statistiken und Dashboard-Informationen werden in dieser Währung angezeigt.\n\nTransaktionen werden anhand des Wechselkurses zum Zeitpunkt der Erfassung neu berechnet.",
+        "dialog": {
+          "title": "Basiswährung ändern?",
+          "warningTitle": "Warnung:",
+          "warningText": "Das Ändern der Basiswährung sollte eine sehr gut überlegte Entscheidung sein. Idealerweise sollte diese Aktion nur einmal durchgeführt werden, auch wenn es keine tatsächlichen Einschränkungen gibt.",
+          "descriptionText": "Jedes Mal, wenn du die Basiswährung änderst, werden alle Transaktionen unter Verwendung historischer Wechselkurse neu berechnet. Aufgrund von Fließkomma-Arithmetik und normalen Schwankungen zwischen Basis- und Zielwährungskursen können wiederholte Neuberechnungen im Laufe der Zeit kleine Abweichungen in deinen Referenzbeträgen verursachen. Referenzbeträge werden verwendet, um Statistiken anzuzeigen und deine Budgetgrenzen festzulegen.",
+          "roundingTitle": "Wie genau wird die Rundung berechnet?",
+          "roundingIntro": "Währungsumrechnungen nutzen das Mathematische Runden / Bankiersrunden (IEEE 754-Standard), auch bekannt als \"Ganzzahliges Runden zur nächsten geraden Zahl\". Dies minimiert kumulative Rundungsfehler über viele Berechnungen hinweg.",
+          "roundingHow": "Wie es funktioniert:",
+          "roundingRule1": "Wenn ein Wert genau in der Mitte liegt (z.B. 0,5), wird er auf die nächste gerade Zahl gerundet",
+          "roundingRule2": "Beispiel: 0,5 → 0, 1,5 → 2, 2,5 → 2, 3,5 → 4",
+          "roundingStandard": "Diese Methode wird von den Rechnungslegungsstandards IFRS/GAAP empfohlen und von großen Finanzsystemen verwendet, um systematische Verzerrungen bei Währungsumrechnungen zu vermeiden.",
+          "untouchedWarning": "Der ursprüngliche Transaktionsbetrag bleibt immer unverändert!",
+          "processingTimeInfo": "Dies kann eine Weile dauern, wenn deine Währung nicht sehr gebräuchlich ist.",
+          "restrictionWarning": "Du kannst keine neuen Konten, Transaktionen oder andere Dinge, die mit \"Beträgen\" zusammenhängen, erstellen, während der Prozess läuft.",
+          "confirmation": "Möchtest du wirklich fortfahren?",
+          "changeButton": "Basiswährung ändern",
+          "cancelButton": "Abbrechen"
+        },
+        "successMessage": "Basiswährung erfolgreich geändert.",
+        "errors": {
+          "changeFailed": "Unerwarteter Fehler. Basiswährung konnte nicht geändert werden.",
+          "lockedHousehold": "Du bist Mitglied in {count} aktiven Haushalt. Verlasse diesen zuerst unter Einstellungen → Haushalt. | Du bist Mitglied in {count} aktiven Haushalten. Verlasse diese zuerst unter Einstellungen → Haushalt.",
+          "lockedShares": "Du hast {count} aktive Kontofreigabe. Widerrufe diese zuerst im Konto. | Du hast {count} aktive Kontofreigaben. Widerrufe diese zuerst in jedem Konto.",
+          "lockedBudgetPlan": "Ein aktiver Budgetplan blockiert die Änderung. Lösche ihn zuerst. | {count} aktive Budgetpläne blockieren die Änderung. Lösche sie zuerst."
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,296 @@
+{
+  "settings": {
+    "security": {
+      "title": "Sicherheitseinstellungen",
+      "description": "Verwalte deine Anmeldemethoden, aktiven Sitzungen und dein Passwort",
+      "tabs": {
+        "loginMethods": "Anmeldemethoden",
+        "activeSessions": "Aktive Sitzungen",
+        "password": "Passwort",
+        "backup": "Sicherung & Wiederherstellung",
+        "dangerZone": "Gefahrenzone"
+      },
+      "loginMethods": {
+        "title": "Anmeldemethoden",
+        "description": "Verwalte, wie du dich in deinem Konto anmeldest",
+        "oauth": {
+          "connectedAs": "Verbunden als {email}",
+          "accountName": "{provider}-Konto",
+          "notConnected": "Nicht verbunden",
+          "disconnect": "Trennen",
+          "disconnectConfirmTitle": "{provider} trennen?",
+          "disconnectConfirmDescription": "Du kannst dich nicht mehr mit diesem {provider}-Konto anmelden. Du kannst es jederzeit wieder verbinden.",
+          "connect": "Verbinden"
+        },
+        "password": {
+          "title": "Passwort",
+          "passwordSet": "Passwort ist festgelegt",
+          "noPassword": "Kein Passwort festgelegt",
+          "manageInTab": "Im Tab Passwort verwalten",
+          "setupInTab": "Im Tab Passwort einrichten"
+        },
+        "passkeys": {
+          "title": "Passkeys",
+          "noPasskeys": "Keine Passkeys registriert",
+          "passkeyCount": "{count} Passkey(s) registriert",
+          "addButton": "Passkey hinzufügen",
+          "passkeyName": "Passkey",
+          "added": "Hinzugefügt am {date}",
+          "rename": "Umbenennen",
+          "renamePlaceholder": "Passkey-Name eingeben",
+          "deleteConfirmTitle": "Passkey entfernen?",
+          "deleteConfirmDescription": "\"{name}\" kann sich nicht mehr in deinem Konto anmelden. Dies kann nicht rückgängig gemacht werden."
+        },
+        "warningOneMethod": "Füge eine weitere Anmeldemethode hinzu, bevor du dein OAuth-Konto trennst.",
+        "notifications": {
+          "oauthConnectFailed": "{provider}-Konto konnte nicht verbunden werden",
+          "oauthDisconnectSuccess": "{provider}-Konto getrennt",
+          "oauthDisconnectFailed": "{provider}-Konto konnte nicht getrennt werden",
+          "passkeyAddSuccess": "Passkey erfolgreich hinzugefügt",
+          "passkeyAddFailed": "Passkey konnte nicht hinzugefügt werden. Stelle sicher, dass dein Gerät Passkeys unterstützt.",
+          "passkeyRemoveSuccess": "Passkey entfernt",
+          "passkeyRemoveFailed": "Passkey konnte nicht entfernt werden",
+          "passkeyRenameFailed": "Passkey konnte nicht umbenannt werden"
+        }
+      },
+      "activeSessions": {
+        "title": "Aktive Sitzungen",
+        "description": "Verwalte Geräte, auf denen du derzeit angemeldet bist",
+        "currentBadge": "Aktuell",
+        "unknownLocation": "Unbekannter Standort",
+        "lastActive": "Zuletzt aktiv: {date}",
+        "noSessions": "Keine aktiven Sitzungen gefunden",
+        "loadError": "Deine aktiven Sitzungen konnten nicht geladen werden.",
+        "revokeAllButton": "Aus allen anderen Sitzungen abmelden",
+        "deviceTypes": {
+          "unknownDevice": "Unbekanntes Gerät",
+          "unknownBrowser": "Unbekannter Browser"
+        },
+        "timeAgo": {
+          "justNow": "Gerade eben",
+          "minutesAgo": "Vor {count} Minute | Vor {count} Minuten",
+          "hoursAgo": "Vor {count} Stunde | Vor {count} Stunden",
+          "daysAgo": "Vor {count} Tag | Vor {count} Tagen"
+        },
+        "notifications": {
+          "revokeSuccess": "Sitzung beendet",
+          "revokeFailed": "Sitzung konnte nicht beendet werden",
+          "revokeAllSuccess": "Du wurdest aus allen anderen Sitzungen abgemeldet",
+          "revokeAllFailed": "Sitzungen konnten nicht beendet werden"
+        }
+      },
+      "passwordSection": {
+        "title": "Passwort",
+        "descriptionChange": "Ändere dein Passwort",
+        "descriptionSet": "Richte ein Passwort für dein Konto ein",
+        "labels": {
+          "currentPassword": "Aktuelles Passwort",
+          "newPassword": "Neues Passwort",
+          "password": "Passwort",
+          "confirmPassword": "Passwort bestätigen"
+        },
+        "placeholders": {
+          "currentPassword": "Aktuelles Passwort eingeben",
+          "newPassword": "Neues Passwort eingeben",
+          "confirmPassword": "Neues Passwort bestätigen"
+        },
+        "buttons": {
+          "change": "Passwort ändern",
+          "set": "Passwort festlegen"
+        },
+        "strength": {
+          "veryWeak": "Sehr schwach",
+          "weak": "Schwach",
+          "fair": "Mittel",
+          "strong": "Stark",
+          "veryStrong": "Sehr stark"
+        },
+        "requirements": {
+          "title": "Passwort-Anforderungen",
+          "minLength": "Mindestens 8 Zeichen",
+          "mixedCase": "Mischung aus Groß- und Kleinbuchstaben empfohlen",
+          "specialChars": "Füge Zahlen und Sonderzeichen für höhere Sicherheit hinzu"
+        },
+        "validation": {
+          "minLength": "Das Passwort muss mindestens 8 Zeichen lang sein",
+          "passwordsNoMatch": "Die Passwörter stimmen nicht überein"
+        },
+        "notifications": {
+          "changeSuccess": "Passwort erfolgreich geändert",
+          "changeFailed": "Passwort konnte nicht geändert werden",
+          "setSuccess": "Passwort erfolgreich festgelegt",
+          "setFailed": "Passwort konnte nicht festgelegt werden",
+          "unexpectedError": "Ein unerwarteter Fehler ist aufgetreten",
+          "updateFailed": "Passwort konnte nicht aktualisiert werden"
+        },
+        "errors": {
+          "incorrectCurrentPassword": "Das aktuelle Passwort ist falsch.",
+          "passwordAlreadySet": "Dein Konto hat bereits ein Passwort. Verwende das Formular, um es zu ändern."
+        }
+      },
+      "dangerZone": "Gefahrenzone",
+      "wipeData": {
+        "title": "Alle Daten löschen",
+        "warningFull": "{strong} Diese Aktion entfernt alles in deinem Arbeitsbereich. Deine Anmeldung bleibt bestehen, sodass du neu anfangen kannst.",
+        "warningStrong": "Warnung:",
+        "button": "Daten löschen",
+        "dialog": {
+          "title": "Alle deine Daten löschen?",
+          "description": "Dadurch wird alles in deinem Arbeitsbereich dauerhaft gelöscht, einschließlich:",
+          "list": {
+            "accounts": "Konten und Kontostände",
+            "transactions": "Transaktionen, Rückerstattungen und Umbuchungen",
+            "budgets": "Budgets, Tracker, Tags und Kategorien",
+            "portfolios": "Investments, Portfolios und Positionen",
+            "settings": "Benutzereinstellungen, KI-Schlüssel und Onboarding-Status",
+            "baseCurrency": "Basiswährung und Wechselkurse"
+          },
+          "kept": "Deine Anmeldung und dein Profil bleiben erhalten. Du startest erneut beim Onboarding-Prozess.",
+          "typeConfirm": "Gib zur Bestätigung unten {phrase} ein:",
+          "confirmLabel": "Daten löschen",
+          "confirmLoading": "Wird gelöscht…"
+        },
+        "sharingDialog": {
+          "title": "Du teilst Daten mit anderen Benutzern",
+          "warning": "Andere verlieren sofort den Zugriff",
+          "description": "Das Löschen deiner Daten entzieht den Zugriff auf die folgenden geteilten Ressourcen:",
+          "householdsCount": "Und {count} Haushaltsmitglied verliert den Zugriff. | Und {count} Haushaltsmitglieder verlieren den Zugriff.",
+          "confirmLabel": "Trotzdem löschen"
+        },
+        "notifications": {
+          "success": "Alle Daten gelöscht. Neuanfang gestartet.",
+          "failed": "Daten konnten nicht gelöscht werden. Bitte versuche es erneut."
+        }
+      },
+      "deleteAccount": {
+        "title": "Konto löschen",
+        "warningFull": "Sobald du dein Konto löschst, gibt es kein Zurück mehr. {strong} Bitte sei dir ganz sicher.",
+        "warningStrong": "Alle deine Daten werden dauerhaft gelöscht.",
+        "button": "Mein Konto löschen",
+        "dialog": {
+          "title": "Bist du absolut sicher?",
+          "description": "Diese Aktion kann nicht rückgängig gemacht werden. Dadurch wird dein Konto dauerhaft gelöscht und alle deine Daten werden entfernt, einschließlich:",
+          "dataList": {
+            "accounts": "Alle Konten und Transaktionen",
+            "categories": "Alle Kategorien, Budgets und Tracker",
+            "portfolios": "Alle Investment-Portfolios",
+            "settings": "Alle Einstellungen und Präferenzen"
+          },
+          "confirmFull": "Bitte gib {email} ein, um zu bestätigen",
+          "placeholder": "Gib deine E-Mail-Adresse ein",
+          "acceptButton": "Mein Konto löschen",
+          "acceptButtonLoading": "Wird gelöscht...",
+          "appStoreWarning": "Das Löschen deines Kontos kündigt dein App-Store-Abo nicht und Apple wird dir weiterhin Kosten berechnen. Kündige es zuerst in deinen {link}.",
+          "appStoreWarningLink": "App-Store-Abonnements"
+        },
+        "notifications": {
+          "success": "Dein Konto wurde erfolgreich gelöscht",
+          "failed": "Beim Versuch, dein Konto zu löschen, ist ein Fehler aufgetreten"
+        }
+      },
+      "backup": {
+        "download": {
+          "title": "Sicherung herunterladen",
+          "description": "Speichere eine vollständige, wiederherstellbare Kopie all deiner Daten als ZIP-Datei.",
+          "button": "Herunterladen",
+          "loading": "Wird vorbereitet...",
+          "success": "Sicherung heruntergeladen",
+          "failed": "Sicherung konnte nicht erstellt werden. Bitte versuche es erneut.",
+          "downloadBlocked": "Die Sicherung wurde erstellt, aber dein Browser hat den Download blockiert. Überprüfe deine Download-Einstellungen und versuche es erneut.",
+          "limitations": {
+            "trigger": "Hat Einschränkungen",
+            "title": "Was in der Sicherung nicht enthalten ist",
+            "intro": "Deine Sicherung enthält alle deine Daten. Aus Sicherheitsgründen können einige verschlüsselte Elemente nicht mitgesichert werden und müssen nach der Wiederherstellung erneut eingerichtet werden:",
+            "items": {
+              "bankConnectionsTerm": "Bankverbindungen",
+              "bankConnections": "{term} — Zugriffs-Token sind verschlüsselt und an diesen Server gebunden, daher musst du jede Bank nach der Wiederherstellung neu verbinden.",
+              "aiKeysTerm": "KI-API-Schlüssel",
+              "aiKeys": "{term} — verschlüsselt gespeichert, daher musst du sie nach der Wiederherstellung erneut eingeben."
+            },
+            "included": "Alles andere — Konten, Transaktionen, Kategorien, Budgets, Tracker, Investitionen, Kredite, Tags, Zahlungsempfänger und geplante Zahlungen — ist enthalten."
+          }
+        },
+        "restore": {
+          "title": "Aus Sicherung wiederherstellen",
+          "description": "Ersetze alle aktuellen Daten durch den Inhalt einer Sicherungs-ZIP-Datei.",
+          "button": "Sicherungsdatei auswählen",
+          "reading": "Datei wird gelesen...",
+          "failedGeneric": "Wiederherstellung aus Sicherung fehlgeschlagen",
+          "invalidFileType": "Bitte wähle eine .zip-Sicherungsdatei aus.",
+          "fileTooLarge": "Diese Sicherung ist zu groß für eine Wiederherstellung (max. {max}).",
+          "readFailed": "Diese Datei konnte nicht gelesen werden. Bitte versuche es erneut.",
+          "confirm": {
+            "title": "Aus Sicherung wiederherstellen?",
+            "warning": "Dies ersetzt ALLE deine aktuellen Daten",
+            "description": "Alles, was sich derzeit in deinem Konto befindet, wird dauerhaft gelöscht und durch den Inhalt dieser Sicherung ersetzt. Dies kann nicht rückgängig gemacht werden.",
+            "selectedFile": "Ausgewählte Datei: {name}",
+            "confirmLabel": "Wiederherstellen",
+            "reconnectTitle": "Richte dies nach der Wiederherstellung erneut ein",
+            "reconnectBankConnections": "Verbinde deine Bankverbindungen neu",
+            "reconnectAiKeys": "Gib deine KI-API-Schlüssel erneut ein (falls du welche nutzt)"
+          },
+          "acknowledge": {
+            "title": "Geteilte Ressourcen verlieren ihren Zugriff",
+            "description": "Du besitzt Ressourcen, auf die andere Personen derzeit Zugriff haben. Die Wiederherstellung entfernt diesen Zugriff.",
+            "householdsCount": "{count} geteilter Haushalt | {count} geteilte Haushalte",
+            "checkbox": "Ich verstehe, dass diese geteilten Ressourcen ihren Zugriff verlieren.",
+            "confirmLabel": "Trotzdem wiederherstellen"
+          },
+          "progress": {
+            "title": "Deine Daten werden wiederhergestellt",
+            "description": "Dies kann ein wenig dauern. Bitte halte dieses Fenster geöffnet.",
+            "inserted": "{count} Datensätze wiederhergestellt",
+            "phases": {
+              "validating": "Sicherung wird überprüft...",
+              "preparingSecurities": "Wertpapiere werden vorbereitet...",
+              "wiping": "Aktuelle Daten werden gelöscht...",
+              "restoring": "Datensätze werden wiederhergestellt...",
+              "finalizing": "Wird abgeschlossen..."
+            }
+          },
+          "summary": {
+            "title": "Wiederherstellung abgeschlossen",
+            "description": "Deine Daten wurden aus der Sicherung wiederhergestellt.",
+            "recordsHeading": "Wiederhergestellte Datensätze",
+            "warningsHeading": "Warnungen",
+            "noRecords": "Es wurden keine Datensätze wiederhergestellt.",
+            "doneButton": "Fertig"
+          },
+          "warnings": {
+            "sharesSkipped": "{count} \"{table}\"-Zeile übersprungen: Freigegebene Ressourcen verweisen auf Benutzer, die auf dieser Instanz nicht existieren. | {count} \"{table}\"-Zeilen übersprungen: Freigegebene Ressourcen verweisen auf Benutzer, die auf dieser Instanz nicht existieren.",
+            "currencyMissing": "{count} Währung übersprungen, die auf dieser Instanz nicht verfügbar ist. | {count} Währungen übersprungen, die auf dieser Instanz nicht verfügbar sind.",
+            "unknownTableIgnored": "Das Backup enthält eine unbekannte Tabelle \"{table}\"; sie wurde ignoriert.",
+            "unknownColumnDropped": "Eine unbekannte Spalte in \"{table}\" wurde verworfen: {columns}. | Unbekannte Spalten in \"{table}\" wurden verworfen: {columns}.",
+            "tableMissingTreatedEmpty": "Das Backup enthält keine Datei für \"{table}\"; sie wurde als leer behandelt.",
+            "settingsReset": "Die gespeicherten Einstellungen entsprachen nicht dem aktuellen Format und wurden auf die Standardwerte zurückgesetzt.",
+            "fireSettingsReset": "Die gespeicherten FIRE-Einstellungen entsprachen nicht dem aktuellen Format und wurden auf die Standardwerte zurückgesetzt.",
+            "noSettings": "Das Backup enthielt keine gespeicherten Einstellungen; Standardwerte wurden angewendet.",
+            "foreignReferenceDropped": "{count} Zeile aus \"{table}\" verworfen, deren \"{column}\" auf Daten außerhalb dieses Backups verwies. | {count} Zeilen aus \"{table}\" verworfen, deren \"{column}\" auf Daten außerhalb dieses Backups verwiesen.",
+            "invalidRowDropped": "{count} \"{table}\"-Zeile verworfen, die die Validierung nicht bestanden hat. | {count} \"{table}\"-Zeilen verworfen, die die Validierung nicht bestanden haben.",
+            "foreignReferenceNulled": "\"{column}\" bei {count} Zeile in \"{table}\" geleert, die auf Daten außerhalb dieses Backups verwies. | \"{column}\" bei {count} Zeilen in \"{table}\" geleert, die auf Daten außerhalb dieses Backups verwiesen.",
+            "unknown": "Einige Daten im Backup wurden während der Wiederherstellung übersprungen oder angepasst."
+          },
+          "failed": {
+            "title": "Wiederherstellung fehlgeschlagen",
+            "genericError": "Beim Wiederherstellen deiner Sicherung ist etwas schiefgelaufen.",
+            "unconfirmed": "Der Wiederherstellungsstatus konnte nicht bestätigt werden. Lade die Seite neu und überprüfe deine Daten.",
+            "closeButton": "Schließen",
+            "technicalDetails": "Technische Details"
+          },
+          "overlay": {
+            "title": "Deine Daten werden wiederhergestellt",
+            "description": "Bitte halte diesen Tab geöffnet. Wir ersetzen deine Daten mit deiner Sicherung — dies kann einen Moment dauern.",
+            "preparing": "Wird vorbereitet…",
+            "finishing": "Wird abgeschlossen",
+            "takingLong": "Dies dauert länger als gewöhnlich. Deine Daten werden weiterhin wiederhergestellt — bitte halte diesen Tab geöffnet.",
+            "unreachableTitle": "Server kann nicht erreicht werden",
+            "unreachableDescription": "Die Verbindung ging während der Wiederherstellung verloren. Möglicherweise wird sie noch abgeschlossen. Du kannst dies schließen und die Seite neu laden, um es zu überprüfen.",
+            "failedTitle": "Wiederherstellung fehlgeschlagen",
+            "dismiss": "Schließen"
+          }
+        },
+        "attachmentsNotIncluded": "Transaktionsanhänge (Belege, Rechnungen und andere Dateien) sind nicht in Sicherungen enthalten und werden nicht wiederhergestellt."
+      }
+    }
+  }
+}

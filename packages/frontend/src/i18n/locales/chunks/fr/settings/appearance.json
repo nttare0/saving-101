@@ -1,0 +1,31 @@
+{
+  "settings": {
+    "appearance": {
+      "title": "Apparence",
+      "description": "Personnalisez l'affichage de l'application et les sections de la barre latérale.",
+      "theme": {
+        "title": "Thème",
+        "description": "Choisissez l'apparence de l'application. L'option Système s'adapte aux réglages de votre appareil."
+      },
+      "sidebar": {
+        "title": "Sections de la barre latérale",
+        "description": "Sélectionnez les sections à afficher dans la barre latérale.",
+        "alwaysVisibleTooltip": "Cette section est toujours visible."
+      },
+      "sidebarNav": {
+        "title": "Navigation latérale",
+        "description": "Sélectionnez les pages à afficher sous Comptes dans la barre latérale."
+      },
+      "header": {
+        "title": "En-tête",
+        "description": "Choisissez les actions visibles dans l'en-tête.",
+        "supportButton": "Bouton d'assistance"
+      },
+      "currency": {
+        "title": "Symboles monétaires",
+        "description": "Format d'affichage des devises pour les montants. Les symboles courts affichent Rp, ₴ ou zł au lieu de IDR, UAH ou PLN, mais les devises partageant un même symbole (USD, CAD, AUD, SGD) afficheront toutes $.",
+        "narrowSymbol": "Utiliser les symboles monétaires courts"
+      }
+    }
+  }
+}

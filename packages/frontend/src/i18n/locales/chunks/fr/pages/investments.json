@@ -1,0 +1,41 @@
+{
+  "investments": {
+    "title": "Investissements",
+    "createButton": "Créer un portefeuille",
+    "loadError": "Impossible de charger les portefeuilles",
+    "tryAgain": "Réessayer",
+    "menu": {
+      "view": "Afficher",
+      "delete": "Supprimer"
+    },
+    "card": {
+      "hidden": "Masqué",
+      "portfolioType": "Portefeuille {type}",
+      "costBasis": "Prix de revient"
+    },
+    "empty": {
+      "title": "Aucun portefeuille pour le moment",
+      "description": "Créez votre premier portefeuille d'investissement pour commencer à suivre vos avoirs, vos opérations et vos performances.",
+      "createFirstButton": "Créer votre premier portefeuille"
+    },
+    "trash": {
+      "title": "Corbeille",
+      "retentionHint": "Les éléments ici sont définitivement supprimés après {days} jours",
+      "loadError": "Impossible de charger les portefeuilles supprimés.",
+      "deletedAgo": "Supprimé il y a {time}",
+      "restoreButton": "Restaurer",
+      "restoringButton": "Restauration…",
+      "purgeButton": "Supprimer maintenant",
+      "purgingButton": "Suppression…",
+      "confirmPurgeTitle": "Supprimer définitivement le portefeuille ?",
+      "confirmPurge": "Supprimer définitivement « {name} » ? Cette action est irréversible.",
+      "tryAgain": "Réessayer",
+      "notifications": {
+        "restored": "Portefeuille restauré",
+        "restoreError": "Impossible de restaurer le portefeuille",
+        "purged": "Portefeuille définitivement supprimé",
+        "purgeError": "Impossible de supprimer le portefeuille"
+      }
+    }
+  }
+}

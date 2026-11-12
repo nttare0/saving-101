@@ -1,0 +1,63 @@
+{
+  "oauth": {
+    "authorize": {
+      "title": "{name} žiada o prístup k vašim údajom v MoneyMatter",
+      "redirect_notice": "Po schválení budete presmerovaní na {host}. Pokračujte len vtedy, ak túto adresu poznáte.",
+      "description": "Táto aplikácia žiada o tieto oprávnenia:",
+      "approve": "Schváliť",
+      "deny": "Zamietnuť",
+      "footer": "Prístup môžete kedykoľvek zrušiť v časti Nastavenia → AI → Konektory (MCP).",
+      "error": "Spracovanie požiadavky sa nepodarilo. Skúste to znovu, prosím.",
+      "unexpected_response": "Neočakávaná odpoveď zo servera. Skúste to znovu, prosím.",
+      "always_granted": "Vždy povolené",
+      "optional": "Voliteľné",
+      "delete_warning": "Udeľujte povolenia len aplikáciám, ktorým plne dôverujete",
+      "unknown_app": "Aplikácia",
+      "steps": {
+        "permissions": "Oprávnenia",
+        "tools": "Nástroje"
+      },
+      "continue": "Pokračovať",
+      "back": "Späť",
+      "toolsets": {
+        "intro": "Vyberte, s čím môže {name} pracovať. Každá ďalšia sada pridáva nástroje, ktoré {name} načíta do každého chatu.",
+        "add_all": "Pridať všetky",
+        "core_only": "Len základné",
+        "always_on": "{count} nástroj, vždy zapnutý | {count} nástroje, vždy zapnuté | {count} nástrojov, vždy zapnuté",
+        "tool_count": "{count} nástroj | {count} nástroje | {count} nástrojov",
+        "selected": "{count} vybraný nástroj | {count} vybrané nástroje | {count} vybraných nástrojov",
+        "of_total": "z {total}",
+        "counter_label": "Vybrané nástroje",
+        "fits_cap": "Hodí sa pre všetky aplikácie vrátane ChatGPT a VS Code Copilot (max. {cap} nástrojov).",
+        "over_cap": "Viac než {cap} nástrojov. ChatGPT a VS Code Copilot toľko nenačítajú.",
+        "load_error": "Sady nástrojov sa nepodarilo načítať. Povoľte prístup, aby ste mohli používať základné nástroje, a neskôr sa pripojte znova a pridajte ďalšie."
+      }
+    },
+    "scopes": {
+      "finance_read": {
+        "label": "Zobraziť vaše finančné údaje",
+        "desc": "Čítanie účtov, transakcií, sledovačov, kategórií, značiek, portfólií a štatistík výdavkov."
+      },
+      "finance_write": {
+        "label": "Vytvárať a upravovať vaše finančné údaje",
+        "desc": "Pridávať a aktualizovať transakcie, sledovače, predplatné, investičné pozície a ďalšie položky."
+      },
+      "finance_delete": {
+        "label": "Vymazať vaše finančné údaje",
+        "desc": "Trvalo vymazať transakcie, účty, sledovače a ďalšie záznamy."
+      },
+      "profile_read": {
+        "label": "Zobraziť váš profil",
+        "desc": "Zobrazovať vaše meno, email a predvolenú menu."
+      },
+      "offline_access": {
+        "label": "Udržiavať pripojenie na pozadí",
+        "desc": "Udržiava prístup aktívny bez toho, aby sa vás pri každom prihlásení opäť pýtala na súhlas."
+      },
+      "unknown": {
+        "label": "Dodatočné oprávnenia",
+        "desc": "Aplikácia požiadala o povolenie, ktoré aplikácia MoneyMatter nerozpoznáva."
+      }
+    }
+  }
+}

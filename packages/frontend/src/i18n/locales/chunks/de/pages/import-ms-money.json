@@ -1,0 +1,145 @@
+{
+  "pages": {
+    "importExport": {
+      "msMoneyImport": {
+        "pageTitle": "Import aus Microsoft Money",
+        "pageDescription": "Übernahme deiner Konten, Kategorien und Transaktionen aus einer .mny-Datei von Microsoft Money.",
+        "stepper": {
+          "steps": {
+            "upload": "Hochladen",
+            "resolve": "Daten zuordnen",
+            "review": "Überprüfen",
+            "execute": "Importieren",
+            "done": "Fertig"
+          }
+        },
+        "fileUpload": {
+          "stepTitle": "Lade deine Money-Datei hoch",
+          "description": "Wähle die .mny-Datei aus, die Microsoft Money auf deinem Computer gespeichert hat.",
+          "maxSize": ".mny-Datei, bis zu 50 MB",
+          "passwordLabel": "Dateipasswort (optional)",
+          "passwordPlaceholder": "Dateipasswort eingeben",
+          "passwordHint": "Leer lassen, außer du hast ein Passwort in Microsoft Money festgelegt.",
+          "parsing": "Lese Datei…",
+          "continue": "Weiter",
+          "errors": {
+            "invalidFormatNamed": "\"{name}\" ist keine .mny-Datei.",
+            "passwordUnsupportedChars": "Dieses Passwort enthält Zeichen, die wir nicht senden können. Versuche ein Passwort ohne Emojis oder nicht-lateinische Buchstaben."
+          }
+        },
+        "errors": {
+          "uploadUnavailable": "Die hochgeladene Datei ist nicht mehr verfügbar. Bitte lade deine Money-Datei erneut hoch."
+        },
+        "resolve": {
+          "prepareFailed": "Die Konten- und Kategorie-Zuordnung konnte nicht vorbereitet werden. Lade die Seite neu und versuche es erneut.",
+          "accounts": {
+            "sectionTitle": "Konten",
+            "currentBalanceLabel": "Aktueller Saldo",
+            "currentBalancePlaceholder": "Leer lassen, um die importierte Gesamtsumme zu verwenden",
+            "willCreateHint": "Wird in {currency} erstellt.",
+            "currencyNotInFile": "Nicht in der Datei",
+            "skippedNote": "{count} Konto/Konten werden übersprungen. Ihre Transaktionen – und alle Umbuchungen zu oder von ihnen – werden nicht importiert."
+          },
+          "categories": {
+            "sectionTitle": "Kategorien"
+          },
+          "quickActions": {
+            "mapExactMatches": "Exakte Übereinstimmungen zuordnen",
+            "createNewForUnmatched": "Neue für nicht zugeordnete erstellen",
+            "reset": "Zurücksetzen",
+            "tooltips": {
+              "mapExactMatchesAccounts": "Verknüpfe jedes Konto, dessen Name exakt mit einem deiner bestehenden Konten übereinstimmt.",
+              "mapExactMatchesCategories": "Verknüpfe jede Kategorie, deren Name exakt mit einer deiner bestehenden Kategorien übereinstimmt.",
+              "createNewForUnmatched": "Setze alle nicht zugeordneten Zeilen auf \"Neu erstellen\".",
+              "reset": "Lösche alle Auswahlen und ordne erneut zu."
+            }
+          },
+          "footer": {
+            "back": "Zurück",
+            "continue": "Weiter"
+          }
+        },
+        "review": {
+          "transactions": "Transaktionen",
+          "transfersDetected": "Umbuchungen",
+          "outOfWallet": "Extern",
+          "duplicatesSkipped": "Duplikate übersprungen",
+          "willImport": "Zu importieren",
+          "dateRange": "Zeitraum: {from} — {to}",
+          "warningsTitle": "Einige Dinge wurden ausgelassen",
+          "warningsHint": "Diese Zeilen sind nicht Teil des Imports.",
+          "warnings": {
+            "accountTypeUnsupported": "{count} Konto/Konten übersprungen",
+            "orphanRowSkipped": "{count} Transaktion(en) übersprungen",
+            "transferCounterpartNotImported": "{count} Buchungsteil(e) als extern importiert",
+            "rowLimitReached": "{count} Transaktion(en) über dem Limit wurden verworfen",
+            "accountCurrencyMissing": "Bei {count} Konto/Konten fehlte die Währung in der Datei, daher wurde deine Basiswährung verwendet – ändere sie im Schritt \"Konten\", falls das falsch ist",
+            "rowMissingDate": "{count} Transaktion(en) ohne lesbares Datum wurden übersprungen",
+            "accountNameMissing": "{count} Konto/Konten hatten keinen Namen",
+            "accountNameDuplicated": "{count} Konto/Konten teilten sich einen Namen",
+            "rowAmountUnreadable": "{count} Transaktion(en) ohne lesbaren Betrag wurden übersprungen",
+            "fileSchemaUnexpected": "{count} unerwartetes Problem/Unerwartete Probleme mit der Dateistruktur gefunden"
+          },
+          "includeVoided": {
+            "label": "{count} stornierte Transaktion(en) importieren",
+            "hint": "Microsoft Money behält stornierte Einträge im Register, rechnet sie aber nie auf deinen Saldo an. Sie werden daher mit Null importiert und als \"Storniert\" getaggt – wobei Datum, Zahlungsempfänger, Kategorie, Notiz und Schecknummer erhalten bleiben."
+          },
+          "duplicatesTitle": "{count} mögliche(s) Duplikat(e)",
+          "duplicatesHint": "Diese sehen bereits aus wie Transaktionen, die du hast. Wähle eine Zeile aus, um sie trotzdem zu importieren; nicht ausgewählte Duplikate werden übersprungen.",
+          "back": "Zurück",
+          "importing": "Starte Import…",
+          "importButton": "{count} Transaktionen importieren"
+        },
+        "execute": {
+          "starting": "Starte den Import…",
+          "progressCount": "{processed} von {total}",
+          "failed": "Der Import ist fehlgeschlagen.",
+          "partialImportNote": "Einige Transaktionen wurden möglicherweise bereits importiert.",
+          "statusQueued": "In Warteschlange",
+          "statusRunning": "Importiere",
+          "statusCompleted": "Abgeschlossen",
+          "statusFailed": "Fehlgeschlagen"
+        },
+        "done": {
+          "successTitle": "Import beendet",
+          "successDescription": "Alles aus deiner Money-Datei befindet sich jetzt in deinem Konto.",
+          "partialTitle": "Mit {count} Problem(en) importiert",
+          "partialDescription": "Die meisten Zeilen wurden übernommen. Die Liste unten zeigt, was nicht importiert wurde.",
+          "emptyTitle": "Nichts Neues zu importieren",
+          "emptyDescription": "Jede Zeile wurde entweder übersprungen oder befand sich bereits in deinem Buch, sodass keine Transaktionen erstellt wurden.",
+          "allFailedTitle": "Es wurde nichts importiert",
+          "allFailedDescription": "Es konnten keine Transaktionen erstellt werden. Siehe die Fehler unten.",
+          "accountsCreated": "Konten erstellt",
+          "accountsLinked": "Konten verknüpft",
+          "accountsSkipped": "Konten übersprungen",
+          "categoriesCreated": "Kategorien erstellt",
+          "payeesCreated": "Zahlungsempfänger erstellt",
+          "transactionsImported": "Transaktionen importiert",
+          "transfersImported": "Umbuchungen importiert",
+          "outOfWalletImported": "Externe Umbuchungen",
+          "duplicatesSkipped": "Duplikate übersprungen",
+          "voidedImported": "Stornierte importiert",
+          "mergedIntoPlanned": "Mit geplanten zusammengeführt",
+          "balanceWarningTitle": "Einige Salden könnten fehlerhaft sein",
+          "balanceWarningBody": "Wir konnten den Endsaldo nicht für jedes Konto festlegen. Überprüfe sie und passe sie bei Bedarf an.",
+          "errorsTitle": "{count} Zeile(n) konnte(n) nicht importiert werden",
+          "errorsOverflow": "…und {count} weitere",
+          "rowPrefix": "Zeile {rowIndex}:",
+          "errors": {
+            "rowsSuppressed": "Ab dieser Zeile konnte {count} weitere Zeile nicht importiert werden. Nur die ersten {listed} Fehler werden angezeigt. | Ab dieser Zeile konnten {count} weitere Zeilen nicht importiert werden. Nur die ersten {listed} Fehler werden angezeigt.",
+            "accountBalanceDesync": "Ein Kontostand konnte nach dem Import nicht aktualisiert werden. Überprüfe und korrigiere ihn manuell.",
+            "rowImportFailed": "Diese Zeile konnte nicht importiert werden."
+          },
+          "viewTransactions": "Transaktionen anzeigen",
+          "importAnother": "Weitere Datei importieren"
+        },
+        "leaseExpired": {
+          "title": "Deine hochgeladene Datei ist nicht mehr verfügbar",
+          "description": "Die verarbeitete Kopie deiner Money-Datei wurde nach einer Phase der Inaktivität freigegeben. Deine Zuordnungsauswahl konnte nicht beibehalten werden, daher muss der Import erneut ab dem Schritt Hochladen gestartet werden.",
+          "action": "Von vorn beginnen"
+        },
+        "leaseResourceLabel": "Deine hochgeladene Datei"
+      }
+    }
+  }
+}

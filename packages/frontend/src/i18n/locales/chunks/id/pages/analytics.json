@@ -1,0 +1,696 @@
+{
+  "analytics": {
+    "backToAnalytics": "Kembali ke Analitik",
+    "timePeriods": {},
+    "navigation": {
+      "cashFlow": "Arus Kas",
+      "trendsComparison": "Perbandingan Tren",
+      "investmentCalculator": "Kalkulator Investasi",
+      "pivotReport": "Pivot",
+      "netWorthDrivers": "Pendorong Kekayaan Bersih",
+      "investmentContributions": "Kontribusi",
+      "netWorthHistory": "Riwayat Kekayaan Bersih",
+      "collapse": "Tutup",
+      "sections": {
+        "investments": "Investasi"
+      },
+      "fire": "FIRE"
+    },
+    "controls": {
+      "options": "Options"
+    },
+    "cashFlow": {
+      "subtitle": "Income against expenses over time, and where the money went.",
+      "income": "Pemasukan",
+      "expenses": "Pengeluaran",
+      "netSavings": "Tabungan Bersih",
+      "netFlow": "Arus Bersih",
+      "savingsRate": "Rasio Tabungan",
+      "loadError": "Gagal memuat data arus kas",
+      "noData": "Tidak ada transaksi ditemukan",
+      "noDataHint": "Coba pilih periode yang berbeda atau periksa apakah Anda memiliki transaksi",
+      "showTrendLine": "Tampilkan garis tren",
+      "showTrendLineHint": "Rata-rata halus dari arus kas bersih",
+      "trendLine": "Garis Tren",
+      "vsPreviousPeriod": "vs periode sebelumnya",
+      "chartTypes": {
+        "stacked": "Bertumpuk",
+        "mirrored": "Tercermin",
+        "grouped": "Berkelompok"
+      },
+      "granularity": {
+        "monthly": "Bulanan",
+        "biweekly": "Dua Mingguan",
+        "weekly": "Mingguan"
+      },
+      "periods": {
+        "last3Months": "3 bulan terakhir",
+        "last6Months": "6 bulan terakhir",
+        "last12Months": "12 bulan terakhir",
+        "thisYear": "Tahun ini",
+        "previousYear": "Tahun sebelumnya",
+        "allTime": "Sepanjang waktu",
+        "currentPayPeriod": "Current pay period"
+      },
+      "composition": {
+        "detail": "Detail",
+        "levelsSummary": "Sources L{sources} · Expenses L{expenses}",
+        "levelsHint": "Category nesting level per side: higher levels break flows into subcategories.",
+        "sources": "Sources",
+        "level": "Level {level}",
+        "topN": "Top {count}",
+        "totalIncome": "Total income",
+        "incomePlusDeficit": "Income + deficit",
+        "savings": "Tabungan",
+        "taxes": "Pajak",
+        "deficit": "Deficit",
+        "other": "Lainnya",
+        "noData": "No transactions in this period",
+        "noDataHint": "Pick another period or click a bar in the chart above",
+        "loadError": "Failed to load composition",
+        "amount": "Jumlah",
+        "shareOfIncome": "Share of income",
+        "shareOfExpenses": "Share of expenses",
+        "saved": "Ditabung",
+        "pctOfIncome": "{pct} of income",
+        "pctSavingsRate": "{pct} savings rate",
+        "keptAsCash": "Kept as cash",
+        "shareOfSavings": "Porsi dari tabungan",
+        "deficitOverspend": "Expenses exceeded income by {amount}. The gap was covered from existing account balances.",
+        "deficitInvested": "Portfolio contributions ({invested}) exceeded this period's net savings ({saved}). The difference came from existing account balances.",
+        "deficitBoth": "Expenses exceeded income by {overspend}, and {invested} was still moved into portfolios. Both were covered from existing account balances.",
+        "andMore": "+{count} lagi",
+        "settings": "Pengaturan grafik"
+      }
+    },
+    "trends": {
+      "subtitle": "Compare spending and income with the previous period.",
+      "metrics": {
+        "expenses": "Pengeluaran",
+        "income": "Pemasukan",
+        "savings": "Tabungan"
+      },
+      "chart": {
+        "selectedPeriod": "Periode dipilih",
+        "comparisonPeriod": "Periode sebelumnya",
+        "cumulativeNote": "Total kumulatif hingga titik ini"
+      },
+      "scope": {
+        "label": "Category scope",
+        "all": "Semua Kategori",
+        "up": "Up one level",
+        "transactions": "Transaksi",
+        "count": "{count} category | {count} categories",
+        "more": "+{count}",
+        "allExcept": "All except {list}",
+        "clear": "Bersihkan"
+      },
+      "categoryBreakdown": {
+        "title": "Rincian Kategori",
+        "noData": "Tidak ada data untuk periode ini",
+        "viewAll": "Lihat semua kategori",
+        "moreCount": "{count} lainnya",
+        "noSubcategory": "{name} · no subcategory",
+        "byLevel": "By level",
+        "detail": "Detail",
+        "others": "Lainnya"
+      },
+      "hero": {
+        "vsPrevious": "{percent}% vs previous period",
+        "same": "Same as previous period"
+      },
+      "overTime": {
+        "title": "Over time",
+        "cumulative": "Cumulative",
+        "perPeriod": "Per period",
+        "granularity": {
+          "monthly": "Bulanan",
+          "quarterly": "Triwulan",
+          "yearly": "Tahunan"
+        }
+      },
+      "transactionsCard": {
+        "title": "Transaksi",
+        "largest": "Largest",
+        "recent": "Recent"
+      },
+      "monthlyComparison": {
+        "allCategories": "Semua Kategori",
+        "average": "Rata-rata",
+        "total": "Total",
+        "vsPrevious": {
+          "monthly": "vs last month",
+          "quarterly": "vs last quarter",
+          "yearly": "vs last year"
+        },
+        "show": {
+          "monthly": "Show this month",
+          "quarterly": "Show quarter",
+          "yearly": "Show year"
+        }
+      },
+      "filters": {
+        "button": "Filter",
+        "title": "Filter",
+        "include": "Include",
+        "exclude": "Kecualikan",
+        "accounts": "Akun",
+        "payees": "Penerima",
+        "tags": "Tag",
+        "reset": "Setel ulang"
+      },
+      "legend": {
+        "hide": "Hide from chart",
+        "show": "Show in chart"
+      },
+      "vsPreviousPeriod": "vs periode sebelumnya",
+      "loadError": "Gagal memuat data",
+      "noData": "Tidak ada data tersedia",
+      "noDataHint": "Tidak ada transaksi yang dicatat untuk periode ini"
+    },
+    "investmentCalculator": {
+      "subtitle": "Project how your portfolio could grow with regular contributions.",
+      "initialBalance": "Saldo awal",
+      "useCurrentBalance": "Gunakan saldo saat ini",
+      "monthlyContribution": "Kontribusi bulanan",
+      "useAvgNetIncome": "Gunakan rata-rata pemasukan bersih →",
+      "timeHorizon": "Cakrawala waktu (tahun)",
+      "annualReturn": "Pengembalian tahunan (%)",
+      "annualReturnPlaceholder": "Pilih prasetel",
+      "annualInflation": "Inflasi tahunan (%)",
+      "totalInvested": "Total diinvestasikan",
+      "nominalFinalValue": "Nilai akhir nominal",
+      "growth": "pertumbuhan",
+      "realFinalValue": "Nilai akhir riil",
+      "realGrowth": "pertumbuhan riil",
+      "realMultiplier": "Pengganda riil",
+      "realMultiplierTooltip": "Seberapa besar total investasi Anda tumbuh setelah memperhitungkan inflasi. Berbeda dengan pengembalian nominal, ini menunjukkan daya beli riil. 1,5x berarti setiap $1 yang diinvestasikan menjadi $1,50 dalam nilai uang hari ini.",
+      "ofMoneyInvested": "dari uang yang diinvestasikan",
+      "customIndicator": "Kustom",
+      "customReturnRate": "Masukkan tingkat (%)",
+      "inflationAdjustedSuffix": "(Disesuaikan dengan Inflasi)",
+      "yearN": "Tahun {n}",
+      "disclaimer": "Berdasarkan pengembalian konstan {rate}%/tahun. Rata-rata historis S&P 500 adalah ~10%/tahun. Tidak memperhitungkan pajak atau biaya.",
+      "useAvgNetIncomeTooltip": "Rata-rata pemasukan bersih bulanan Anda (pemasukan dikurangi pengeluaran) selama periode yang dipilih, berdasarkan riwayat transaksi Anda",
+      "inflationTooltip": "Seberapa cepat harga naik setiap tahun, mengurangi nilai riil uang Anda.\n\n~1–2% — sangat rendah, ekonomi stabil\n~2–3% — normal (target tipikal)\n~4–6% — di atas rata-rata\n~7%+ — inflasi level krisis",
+      "totalInvestedBreakdown": "{initial} awal + {contributions} kontribusi",
+      "configure": "Konfigurasi",
+      "hideInputs": "Sembunyikan",
+      "portfolioReturnOption": "{name} (~{rate}%/tahun Anda)",
+      "portfolioNoHistoryOption": "{name} — riwayat tidak mencukupi",
+      "presetReturnOption": "{label} (~{rate}%/yr)",
+      "rangeMin": "Min",
+      "rangeMax": "Maks",
+      "indicators": {
+        "worldStock": "Total world stock",
+        "usTreasury": "US Treasury bonds",
+        "corporateBonds": "Corporate bonds"
+      }
+    },
+    "portfolioFilter": {
+      "all": "Semua portofolio",
+      "selectedOne": "1 portofolio",
+      "selectedMany": "{n} portofolio",
+      "searchPlaceholder": "Cari portofolio",
+      "noResults": "Tidak ada portofolio yang cocok dengan pencarian Anda"
+    },
+    "fire": {
+      "subtitle": "When your savings could cover your spending for good",
+      "planLink": "Plan for FIRE",
+      "addToDashboard": "Add to dashboard",
+      "addedToDashboard": "FIRE progress added to your dashboard",
+      "addToDashboardFailed": "Couldn't add the widget. Try again.",
+      "saveFailed": "Couldn't save your FIRE assumptions. Try again to keep your changes.",
+      "loading": "Loading FIRE plan",
+      "loadFailed": "Couldn't load the data for your FIRE plan.",
+      "adjustAssumptions": "Adjust assumptions",
+      "disclaimer": "Projections use historical market averages and your recent spending. They are estimates, not advice. Returns will vary.",
+      "callouts": {
+        "contributionClamped": "You spent more than you earned over the last 12 months, so the projection assumes no new savings.",
+        "enterContribution": "Enter a contribution",
+        "returnBelowInflation": "Your return assumption doesn't beat inflation ({real} real), so the balance shrinks in today's money.",
+        "portfolioShortHistory": "Your portfolio's return is based on only {years} years. Short or bull-market history rarely repeats. Consider a market preset.",
+        "portfolioUnavailable": "The portfolio this plan used is gone or has too little history. Return switched to world stocks.",
+        "customMissing": "Enter a custom return. Until then, the plan uses world stocks.",
+        "historyDegraded": "Some holdings are valued at cost, or an exchange rate is missing. Your balance may be understated until prices sync.",
+        "hide": "Hide warning",
+        "hideTitle": "Hide this warning?",
+        "hideDescription": "It comes back the next time you open the planner.",
+        "dontShowAgain": "Don't show again",
+        "hideConfirm": "Sembunyikan"
+      },
+      "assumptions": {
+        "title": "Asumsi",
+        "spendingLabel": "Yearly spending in retirement",
+        "spendingPlaceholder": "e.g. 40000",
+        "requiredBadge": "Required",
+        "autoSpendingHint": "Average of the last {n} full month × 12, only accounts you own, transfers and savings categories excluded. Typical month: {typical}. Includes loan and mortgage payments. | Average of the last {n} full months × 12, only accounts you own, transfers and savings categories excluded. Typical month: {typical}. Includes loan and mortgage payments.",
+        "backToAuto": "Back to auto ({amount})",
+        "excludedLabel": "Not counted as spending",
+        "excludedPlaceholder": "Kecualikan kategori",
+        "savingsNote": "Savings categories are excluded too. {link}",
+        "savingsNoteLink": "Sunting",
+        "contributionLabel": "Kontribusi bulanan",
+        "contributionPlaceholder": "e.g. 1500",
+        "autoContributionHint": "Average net flow over the same {n} month. Deposits made straight into a portfolio aren't in cash flow, so add them here. Dividends paid to a bank account count twice (income and return). | Average net flow over the same {n} months. Deposits made straight into a portfolio aren't in cash flow, so add them here. Dividends paid to a bank account count twice (income and return).",
+        "savingsRate": "You save {pct} of your income",
+        "countsTitle": "What counts toward FIRE",
+        "countsCash": "Cash & bank accounts",
+        "countsPortfolios": "Investment portfolios",
+        "countsVentures": "Ventura",
+        "countsVehicles": "Kendaraan",
+        "countsLoans": "Pinjaman",
+        "countsHint": "Cash and portfolios always count. Loan payments already count as spending, so loans are off by default.",
+        "archivedNote": "{count} archived account excluded from stats still holds {amount}. {link} | {count} archived accounts excluded from stats still hold {amount}. {link}",
+        "archivedNoteLink": "Tinjau",
+        "presetLabel": "{label} · ≈{real} real ({nominal} nominal, {inflation} US inflation)",
+        "inflationLabel": "Inflation",
+        "inflationBuiltIn": "{pct}% · built into this preset",
+        "inflationBuiltInHint": "Market presets are US and global nominal returns, so they come with US inflation. Pairing them with your local inflation would give misleading numbers. Pick a custom return or your portfolio to set inflation yourself.",
+        "withdrawalLabel": "Withdrawal rate",
+        "withdrawalCustom": "Kustom",
+        "withdrawalPlaceholder": "e.g. 3.8",
+        "withdrawalHint": "The share of your savings you withdraw each year. A higher rate means a smaller FIRE number but a bigger risk of running out. The 4% rule comes from US data for 30-year retirements.",
+        "more": "Lainnya",
+        "moreSummary": "Lean {lean}× · Fat {fat}× · coast at {age}",
+        "leanLabel": "Lean FIRE multiplier",
+        "leanPlaceholder": "e.g. 0.7",
+        "fatLabel": "Fat FIRE multiplier",
+        "fatPlaceholder": "e.g. 1.5",
+        "baristaLabel": "Part-time income per month",
+        "baristaPlaceholder": "e.g. 1000",
+        "birthYearLabel": "Birth year",
+        "birthYearPlaceholder": "e.g. 1990",
+        "coastAgeLabel": "Coast FIRE target age",
+        "coastAgePlaceholder": "e.g. 65"
+      },
+      "auto": "Otomatis",
+      "perYear": "{amount}/yr",
+      "perMonth": "{amount}/mo",
+      "notWithinHorizon": "not within 50 yrs",
+      "hero": {
+        "timeTo": "Time to {type}",
+        "unitYears": "{n} yrs | {n} yr | {n} yrs",
+        "unitMonths": "{n} mos | {n} mo | {n} mos",
+        "atAge": "at age {age}",
+        "alwaysCounted": "Always counted",
+        "range": "{earliest} to {latest} if returns run 2 points higher or lower",
+        "rangeOpen": "{earliest} to after {year} if returns run 2 points higher or lower",
+        "basedOn": {
+          "spending": "Spending: {amount}",
+          "saving": "Saving: {amount}",
+          "counting": "Counting: {buckets}"
+        },
+        "reached": {
+          "eyebrowFor": "{type} reached",
+          "title": "You're financially independent",
+          "supports": "Your money supports {amount}/mo",
+          "pctOfSpending": "{pct}% of your spending · at {rate}% withdrawal",
+          "yearsCovered": "Less than a year of spending covered | 1 year of spending covered | {n} years of spending covered",
+          "drawdown": "You're drawing down about {amount}/mo.",
+          "noNewSavings": "Projections assume no new savings."
+        },
+        "unreachable": {
+          "title": "Not reachable at current savings",
+          "noSavingsTitle": "No new savings.",
+          "noSavingsClamped": "You spent more than you earned over the last 12 months, so the contribution is set to 0.",
+          "noSavings": "Your monthly contribution is 0 or less.",
+          "enterContribution": "Enter a contribution",
+          "lowReturnTitle": "Return doesn't beat inflation.",
+          "lowReturn": "The balance shrinks in today's money.",
+          "tooSlow": "At this pace it takes more than 50 years.",
+          "whatItTakes": "What it would take",
+          "whatItTakesDetail": "to reach {target} in {duration} at the current return."
+        }
+      },
+      "progress": {
+        "progressTo": "Progress to {type}",
+        "amountOfTarget": "{balance} of {target}",
+        "next": "Next: {goal} · {date}",
+        "nextGoal": "{goal} in {duration}",
+        "nextUnreachable": "Next: {goal} · not reached at these numbers",
+        "targetReached": "FIRE target reached",
+        "supportsToday": "Supports {amount}/mo today",
+        "negativeNetWorth": "Net worth is below zero. Your contributions pay down the gap first, then grow."
+      },
+      "chips": {
+        "lean": {
+          "name": "Lean FIRE",
+          "description": "{pct}% of your spending"
+        },
+        "regular": {
+          "name": "Regular FIRE",
+          "description": "current lifestyle"
+        },
+        "fat": {
+          "name": "Fat FIRE",
+          "description": "{pct}% of your spending"
+        },
+        "barista": {
+          "name": "Barista FIRE",
+          "description": "part-time income covers part",
+          "withIncome": "with {amount}/mo part-time"
+        },
+        "coast": {
+          "name": "Coast FIRE",
+          "description": "needed today to retire at {age}",
+          "needsBirthYear": "needs your birth year",
+          "pastAge": "you're past your coast age of {age}",
+          "notMeaningful": "growth alone can't get there at 0% real return or less"
+        },
+        "others": "Lainnya",
+        "nextGoal": "{name} · next",
+        "eta": "in {duration}",
+        "growthOnly": "growth only",
+        "reached": "Tercapai",
+        "reachedCoast": "Reached · saving is optional now",
+        "reachedBaristaCovers": "Part-time income covers your spending",
+        "actions": {
+          "enterSpending": "enter spending first",
+          "changeCoastAge": "Change coast age",
+          "changeReturn": "Change return",
+          "addPartTimeIncome": "Add part-time income",
+          "addBirthYear": "Add birth year"
+        }
+      },
+      "pace": {
+        "row": "{status} vs {anchor}",
+        "noHistory": "Not enough history before {month}",
+        "loadFailed": "Couldn't load the comparison",
+        "compareWith": "Compare with {month}",
+        "picker": {
+          "title": "Compare with",
+          "rollingLabel": "{month} · 1 year ago",
+          "rolling": "1 year ago",
+          "rollingHint": "Rolling · currently {month}",
+          "specific": "Specific month",
+          "specificHint": "Stays fixed",
+          "prevYear": "Tahun sebelumnya",
+          "nextYear": "Tahun depan",
+          "earliest": "Earliest is {month}. FIRE needs 3 months of tracked spending before it."
+        },
+        "details": {
+          "title": "Pace since {month}",
+          "moved": "Your FIRE date moved from {from} to {to}.",
+          "withinBand": "Your FIRE date is within {tolerance} of the {month} forecast ({date}).",
+          "backInReach": "On {month}'s numbers FIRE was out of reach. Now it's {date}.",
+          "offTrack": "The {month} forecast was {date}. On today's numbers FIRE is out of reach.",
+          "metric": "Metric",
+          "today": "Hari ini",
+          "change": "Ganti",
+          "fireDate": "FIRE date",
+          "saved": "Saved by now",
+          "spending": "Spending",
+          "saving": "Saving",
+          "expected": "{amount} expected",
+          "sooner": "{duration} sooner",
+          "later": "{duration} later",
+          "sameMonth": "Same month",
+          "outOfReach": "Out of reach",
+          "band": "On pace means within {tolerance} (2% of the time left to FIRE).",
+          "recorded": "Balance, cash flow and assumptions as of {date} are recomputed live from your data.",
+          "notRecorded": "Balance and cash flow as of {date} are recomputed live from your data. Your assumptions from then weren't recorded, so today's are used."
+        }
+      },
+      "chart": {
+        "ariaLabel": "Net worth history and projected path to your FIRE number",
+        "actual": "Actual",
+        "projected": "Projected",
+        "range": "±2 pts return",
+        "today": "Hari ini",
+        "typeTarget": "{type} · {amount}",
+        "typeLabel": "{type} · {date}",
+        "forecast": "{month} forecast",
+        "forecastLabel": "{month} forecast · {date}",
+        "actualSince": "Actual since {month}"
+      },
+      "milestones": {
+        "reached": "Tercapai",
+        "reachedOn": "Reached {date}",
+        "eta": "in {duration} · {date}"
+      },
+      "empty": {
+        "noData": {
+          "title": "Plan your path to financial independence",
+          "description": "This page fills in from your accounts and transactions. Nothing is tracked yet, so start with your yearly spending. Once you add accounts, the plan switches to live figures."
+        },
+        "shortHistory": {
+          "title": "No full months of transactions yet | Only 1 full month of transactions | Only {n} full months of transactions",
+          "description": "Spending can't be worked out yet. It switches to Auto after 3 full months. Until then, enter it by hand."
+        },
+        "noSpending": {
+          "title": "No spending recorded yet",
+          "description": "Your recent months have no expenses we can use. Enter your yearly spending to see your plan."
+        },
+        "enterSpending": "Enter spending",
+        "addAccount": "Add an account"
+      },
+      "trial": {
+        "daysLeft": "FIRE planner trial · {n} day left | FIRE planner trial · {n} days left",
+        "ended": "Your 14-day FIRE planner trial has ended. Upgrade to Plus to keep planning your path to FIRE.",
+        "startFailed": "Couldn't start the FIRE planner trial. Reload the page to try again."
+      }
+    }
+  },
+  "pivotReport": {
+    "subtitle": "Uraikan pengeluaran berdasarkan dimensi apa pun, bentangkan sepanjang waktu, dan bandingkan.",
+    "controls": {
+      "rows": "Baris",
+      "columns": "Kolom",
+      "measure": "Ukuran",
+      "settings": "Pengaturan"
+    },
+    "dimensions": {
+      "category": "Kategori",
+      "subcategory": "+ Subkategori",
+      "payee": "Penerima",
+      "tag": "Tag"
+    },
+    "granularity": {
+      "yearly": "Tahunan",
+      "quarterly": "Triwulan",
+      "monthly": "Bulanan",
+      "weekly": "Mingguan"
+    },
+    "measure": {
+      "expense": "Pengeluaran",
+      "income": "Pemasukan"
+    },
+    "display": {
+      "title": "Opsi tampilan"
+    },
+    "toggles": {
+      "heatmap": "Peta Panas",
+      "percentChange": "% perubahan"
+    },
+    "filters": {
+      "period": "Periode",
+      "allCategories": "Semua",
+      "button": "Filter",
+      "categories": "Kategori",
+      "payees": "Penerima",
+      "accounts": "Akun",
+      "reset": "Atur Ulang",
+      "resetTooltip": "Kembalikan ke bawaan"
+    },
+    "periods": {
+      "last6Months": "6 bulan terakhir",
+      "last12Months": "12 bulan terakhir",
+      "thisYear": "Tahun ini",
+      "previousYear": "Tahun sebelumnya",
+      "last3Years": "3 tahun terakhir",
+      "last5Years": "5 tahun terakhir",
+      "allTime": "Sepanjang waktu"
+    },
+    "savedViews": {
+      "trigger": "Tampilan",
+      "empty": "Belum ada tampilan tersimpan",
+      "saveCurrent": "Simpan tampilan saat ini",
+      "customView": "Tampilan kustom",
+      "dialogTitle": "Simpan tampilan",
+      "dialogDescription": "Simpan tata letak dan filter saat ini sebagai tampilan yang dapat digunakan kembali.",
+      "nameLabel": "Nama tampilan",
+      "namePlaceholder": "mis. Pantauan Belanja",
+      "savedToast": "Tampilan disimpan",
+      "deletedToast": "Tampilan dihapus",
+      "saveError": "Tidak dapat menyimpan tampilan"
+    },
+    "table": {
+      "total": "Total",
+      "net": "Bersih",
+      "collapseAll": "Tutup semua",
+      "expandAll": "Buka semua",
+      "expandRow": "Buka",
+      "collapseRow": "Tutup"
+    },
+    "states": {
+      "emptyTitle": "Tidak ada data untuk pilihan ini",
+      "emptyHint": "Coba periode yang lebih luas atau filter yang berbeda.",
+      "errorTitle": "Tidak dapat memuat laporan",
+      "errorHint": "Terjadi kesalahan. Silakan coba lagi."
+    }
+  },
+  "netWorthDrivers": {
+    "subtitle": "Seberapa besar pertumbuhan Anda berasal dari uang yang Anda tabung, dan seberapa besar dari hasil pasar. Transfer antar akun Anda sendiri tidak dihitung sebagai keduanya.",
+    "portfolioFilter": {
+      "scopeHint": "Hanya memfilter kepemilikan investasi dan pertumbuhannya. Jumlah yang ditabung dan saldo kas akun tidak terpengaruh."
+    },
+    "calcInfo": {
+      "trigger": "Bagaimana ini dihitung",
+      "title": "Bagaimana ini dihitung",
+      "savedHeading": "Ditabung",
+      "savedBody": "Uang yang Anda sisihkan — pemasukan dikurangi pengeluaran. Memindahkan uang antar akun Anda sendiri, atau ke portofolio investasi, tidak dihitung sebagai tabungan.",
+      "grownHeading": "Bertumbuh",
+      "grownBody": "Apa yang pasar lakukan terhadap kepemilikan Anda — perubahan harga, ditambah dividen, dikurangi biaya. Uang yang Anda setorkan tidak pernah dihitung sebagai pertumbuhan.",
+      "exampleHeading": "Contoh",
+      "exampleBody": "Anda mendapatkan $10.000, menginvestasikannya, dan tumbuh menjadi $12.000. Itu berarti $10.000 Ditabung dan $2.000 Bertumbuh — $10.000 dihitung satu kali sebagai Ditabung, dan hanya $2.000 yang dihitung sebagai Bertumbuh.",
+      "noteBody": "Pertumbuhan dihitung saat harga berubah setiap periode, tidak hanya saat Anda menjual. Menjual sesuatu yang harganya sudah naik tidak menambah Bertumbuh untuk kedua kalinya."
+    },
+    "granularity": {
+      "monthly": "Bulanan",
+      "quarterly": "Triwulan",
+      "yearly": "Tahunan"
+    },
+    "chart": {
+      "title": "Ditabung vs. bertumbuh",
+      "subtitle": "Total kumulatif selama periode yang dipilih.",
+      "saved": "Ditabung",
+      "grown": "Bertumbuh",
+      "totalGained": "Total diperoleh",
+      "thisPeriod": "Periode ini",
+      "periodSavings": "Tabungan",
+      "periodGrowth": "Pertumbuhan",
+      "allocationContext": "{share}% dari kekayaan bersih Anda berada dalam investasi (sebelumnya {reference}% pada {date})",
+      "allocationContextNoReference": "{share}% dari kekayaan bersih Anda berada dalam investasi"
+    },
+    "breakdownChart": {
+      "title": "Rincian per periode",
+      "subtitle": "Seberapa besar yang Anda tabung dan seberapa besar hasil pasar di setiap periode.",
+      "periodTotal": "Diperoleh pada periode ini",
+      "others": "Lainnya",
+      "grownTotal": "Total bertumbuh"
+    },
+    "degraded": {
+      "title": "Beberapa nilai diperkirakan",
+      "unpricedSecurities": "Tidak ada data harga terbaru untuk {securities}, sehingga pertumbuhannya diperkirakan dari biaya perolehan.",
+      "unpricedSecuritiesTruncated": "Tidak ada data harga terbaru untuk {securities} dan lainnya (total {count} sekuritas); pertumbuhannya diperkirakan dari biaya perolehan.",
+      "fxFallback": "Nilai tukar tidak tersedia untuk {currencies}; jumlah tersebut menggunakan rasio 1:1."
+    },
+    "states": {
+      "loadError": "Laporan gagal dimuat",
+      "noData": "Tidak ada yang bisa ditampilkan untuk periode ini",
+      "noDataHint": "Setelah Anda memiliki pemasukan, pengeluaran, atau investasi dalam rentang ini, semuanya akan muncul di sini.",
+      "noPortfoliosHint": "Pertumbuhan investasi akan muncul setelah Anda menambahkan portofolio dengan kepemilikan yang memiliki harga.",
+      "noPortfoliosTitle": "Belum ada investasi",
+      "noPortfoliosPlaceholder": "Laporan ini memisahkan perubahan kekayaan bersih Anda menjadi apa yang Anda tabung dan seberapa besar investasi Anda bertumbuh. Tambahkan portofolio untuk mulai melacak pertumbuhan.",
+      "noPortfoliosAction": "Tambahkan portofolio"
+    },
+    "target": {
+      "title": "Titik silang pertumbuhan",
+      "subtitle": "Ukuran portofolio di mana pertumbuhan pasar — bukan tabungan Anda — melakukan sebagian besar pekerjaan.",
+      "targetShareLabel": "Porsi pertumbuhan dari keuntungan bulanan Anda",
+      "savingsLabel": "Perkiraan tabungan bulanan",
+      "savingsPlaceholder": "mis. 1.000",
+      "savingsResetToAverage": "Gunakan rata-rata saya ({amount})",
+      "currentShareLine": "Saat ini pertumbuhan mencakup ~{current}% dari keuntungan bulanan Anda — Anda menargetkan {target}%.",
+      "valueNeeded": "Nilai portofolio yang dibutuhkan",
+      "progressLine": "Anda sudah {pct}% dari target — {current} dari {needed}.",
+      "progressReached": "Target tercapai — portofolio Anda sudah sampai di sana.",
+      "gapLabel": "Selisih",
+      "gapValue": "{amount} lagi dibutuhkan",
+      "reached": "Target tercapai",
+      "timeLabel": "Waktu menuju target",
+      "etaValue": "~{years} thn",
+      "etaReached": "Tercapai",
+      "etaHint": "Jika Anda terus menabung dan imbal hasil tetap stabil.",
+      "noReturn": "Pilih perkiraan imbal hasil positif untuk melihat nilai target.",
+      "assumptionsLabel": "Asumsi",
+      "disclaimer": "Proyeksi langsung dari nilai saat ini dan asumsi Anda — bukan nasihat keuangan."
+    }
+  },
+  "investmentContributions": {
+    "subtitle": "Berapa banyak uang tunai yang telah Anda pindahkan ke portofolio Anda dari waktu ke waktu, dan ke mana perginya.",
+    "average": "Rata-rata",
+    "portfolioFilter": {
+      "scopeHint": "Memfilter portofolio mana yang dihitung dalam kontribusi."
+    },
+    "granularity": {
+      "monthly": "Bulanan",
+      "quarterly": "Triwulan",
+      "yearly": "Tahunan"
+    },
+    "cards": {
+      "totalContributed": "Total kontribusi",
+      "shareOfSavings": "Porsi dari tabungan",
+      "averagePerPeriod": "Rata-rata per periode"
+    },
+    "chart": {
+      "vsPrevious": "vs sebelumnya"
+    },
+    "states": {
+      "noData": "Tidak ada kontribusi dalam rentang ini",
+      "noDataHint": "Pindahkan uang ke portofolio selama periode ini untuk melihatnya di sini.",
+      "noPortfoliosTitle": "Belum ada portofolio",
+      "noPortfoliosPlaceholder": "Buat portofolio dan mulai berinvestasi untuk melacak kontribusi Anda di sini.",
+      "noPortfoliosAction": "Tambahkan portofolio",
+      "loadError": "Kontribusi gagal dimuat"
+    }
+  },
+  "netWorthHistory": {
+    "subtitle": "Bagaimana aset, kewajiban, dan kekayaan bersih Anda berubah dari waktu ke waktu",
+    "granularity": {
+      "weekly": "Mingguan",
+      "monthly": "Bulanan",
+      "quarterly": "Triwulan",
+      "yearly": "Tahunan"
+    },
+    "kindFilter": {
+      "all": "Semua kewajiban",
+      "scopeHint": "Pilih jenis utang yang dihitung sebagai kewajiban dalam laporan ini.",
+      "selectedOne": "1 jenis",
+      "selectedMany": "{n} jenis"
+    },
+    "assetKinds": {
+      "cash": "Kas & akun",
+      "investments": "Investasi",
+      "vehicles": "Kendaraan",
+      "ventures": "Ventura"
+    },
+    "assetFilter": {
+      "all": "Semua aset",
+      "scopeHint": "Pilih jenis aset yang dihitung dalam laporan ini.",
+      "selectedOne": "1 jenis",
+      "selectedMany": "{n} jenis"
+    },
+    "cards": {
+      "currentNetWorth": "Kekayaan bersih saat ini",
+      "periodChange": "Perubahan periode",
+      "annualized": "≈ {pct} / thn",
+      "averageLiabilities": "Anda memiliki rata-rata {amount} kewajiban selama periode yang dipilih.",
+      "noLiabilities": "Anda tidak memiliki kewajiban selama periode yang dipilih."
+    },
+    "chart": {
+      "assets": "Aset",
+      "liabilities": "Kewajiban",
+      "netWorth": "Kekayaan bersih",
+      "averageLiabilities": "Rata-rata kewajiban",
+      "liabilitiesZoomed": "Skala kewajiban diperbesar"
+    },
+    "settings": {
+      "title": "Pengaturan grafik",
+      "zoomLiabilities": "Perbesar skala kewajiban",
+      "zoomLiabilitiesHint": "Perbesar utang kecil agar tetap terlihat di samping aset besar."
+    },
+    "degraded": {
+      "title": "Beberapa nilai diperkirakan",
+      "unpricedSecurities": "Tidak ada data harga terbaru untuk {securities}, sehingga ditampilkan berdasarkan biaya perolehan dan mungkin meremehkan kekayaan bersih Anda.",
+      "unpricedSecuritiesTruncated": "Tidak ada data harga terbaru untuk {securities} dan lainnya (total {count} sekuritas); ditampilkan berdasarkan biaya perolehan dan mungkin meremehkan kekayaan bersih Anda.",
+      "fxFallback": "Nilai tukar tidak tersedia untuk {currencies}; jumlah tersebut menggunakan rasio 1:1."
+    },
+    "states": {
+      "loadError": "Gagal memuat riwayat kekayaan bersih. Silakan coba lagi nanti.",
+      "noData": "Tidak ada riwayat untuk periode ini",
+      "noDataHint": "Coba periode yang lebih panjang, atau tambahkan akun dan transaksi agar ada saldo untuk direkam."
+    }
+  }
+}

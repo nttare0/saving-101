@@ -1,0 +1,65 @@
+{
+  "settings": {
+    "aiIntegrations": {
+      "mcpServer": {
+        "title": "Server MCP",
+        "description": "Usare questo URL per collegare gli assistenti IA al profilo MoneyMatter. I dati sono condivisi in sola lettura.",
+        "copyTooltip": "Copia URL",
+        "copiedNotification": "URL del server MCP copiato negli appunti"
+      },
+      "quickConnect": {
+        "title": "Connessione rapida",
+        "description": "Scegliere un assistente IA qui sotto. Fare clic sul pulsante per aprirne le impostazioni, poi seguire i passaggi.",
+        "openSettings": "Apri impostazioni",
+        "claude": {
+          "steps": {
+            "createConnector": "Fare clic sull'icona {icon} accanto a \"Connectors\" per creare un nuovo connettore",
+            "selectCustom": "Selezionare {action}",
+            "enterName": "In \"Name\" inserire {value}",
+            "pasteUrl": "In \"Remote MCP server URL\" incollare {value}",
+            "finish": "Lasciare le impostazioni avanzate vuote e clicca su {action}",
+            "authorize": "Si verrà reindirizzati a MoneyMatter per autorizzare l'accesso"
+          }
+        },
+        "chatgpt": {
+          "steps": {
+            "addConnector": "Fare clic su {action}",
+            "pasteUrl": "In \"URL\" incollare {value}",
+            "clickAdd": "Fare clic su {action}",
+            "authorize": "Si verrà reindirizzati a MoneyMatter per autorizzare l'accesso"
+          }
+        }
+      },
+      "actions": {
+        "addCustomConnector": "Add custom connector",
+        "addConnector": "Add connector",
+        "add": "Aggiungi"
+      },
+      "connectedApps": {
+        "title": "Connettori attivi",
+        "description": "App con accesso ai dati finanziari. È possibile revocare l'accesso in qualsiasi momento.",
+        "emptyTitle": "Ancora nessuna app collegata.",
+        "emptyDescription": "Usare i pulsanti qui sopra per collegare un assistente IA.",
+        "connectedAt": "Collegata: {date}",
+        "lastUsed": "Ultimo utilizzo: {time}",
+        "scope": "Ambito: {scopes}",
+        "revoke": "Revoca"
+      },
+      "revokeDialog": {
+        "title": "Revoca accesso?",
+        "description": "L'app verrà disconnessa immediatamente e tutti i suoi token verranno invalidati. Sarà possibile ricollegarla in seguito.",
+        "confirm": "Revoca accesso",
+        "successNotification": "Accesso dell'app revocato con successo",
+        "errorNotification": "Revoca dell'accesso dell'app non riuscita"
+      },
+      "scopes": {
+        "financeRead": "Lettura dei dati finanziari",
+        "financeWrite": "Modifica dei dati finanziari",
+        "financeDelete": "Eliminazione dei dati finanziari",
+        "profileRead": "Lettura del profilo",
+        "offlineAccess": "Accesso offline",
+        "toolset": "Strumenti: {name}"
+      }
+    }
+  }
+}

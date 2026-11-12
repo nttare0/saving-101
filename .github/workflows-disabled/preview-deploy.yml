@@ -1,0 +1,502 @@
+name: Preview Deploy
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, labeled]
+
+permissions:
+  pull-requests: write
+
+concurrency:
+  group: preview-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+env:
+  PR_NUMBER: ${{ github.event.pull_request.number }}
+  # Total number of Playwright shards. Keep in sync with the
+  # `shardIndex` matrix list in the test-preview job below.
+  SHARD_TOTAL: 3
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    # Keep the base.ref list in sync with preview-teardown.yml, or previews for
+    # the missing branch deploy and never tear down.
+    if: >-
+      contains(fromJSON('["main", "dev"]'), github.event.pull_request.base.ref)
+      && github.event.pull_request.head.repo.full_name == github.repository
+      && contains(github.event.pull_request.labels.*.name, 'preview')
+
+    steps:
+      # A `synchronize` webhook can arrive after the PR was merged and torn down;
+      # deploying then leaves a preview nothing will ever remove.
+      - name: Stop if the PR is no longer open
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          state=$(gh pr view "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --json state -q .state)
+          [ "$state" = "OPEN" ] || { echo "PR #$PR_NUMBER is $state, not deploying"; exit 1; }
+
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      # ── Disk space check ──────────────────────────────────────────────
+      - name: Check VPS disk space
+        id: disk-check
+        uses: appleboy/ssh-action@0ff4204d59e8e51228ff73bce53f80d53301dee2 # v1.2.5
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USERNAME }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          passphrase: ${{ secrets.VPS_SSH_KEY_PASSPHRASE }}
+          script: |
+            AVAIL_KB=$(df / --output=avail | tail -1 | tr -d ' ')
+            AVAIL_GB=$(echo "scale=2; $AVAIL_KB / 1024 / 1024" | bc)
+            echo "Available disk space: ${AVAIL_GB}GB"
+            if [ "$AVAIL_KB" -lt 2097152 ]; then
+              echo "ERROR: Less than 2GB free disk space!"
+              exit 1
+            fi
+
+      - name: Comment on PR if disk space low
+        if: failure() && steps.disk-check.outcome == 'failure'
+        uses: marocchino/sticky-pull-request-comment@5770ad5eb8f42dd2c4f34da00c94c5381e49af88 # v3.0.5
+        with:
+          header: preview-env
+          message: |
+            ## Preview Environment
+
+            :x: **Deploy failed** – VPS has less than 2GB free disk space. Please clean up before retrying.
+
+      # ── Build and push Docker images ──────────────────────────────────
+      # Deployment values (API origin, CSP hosts, logo token) are injected as
+      # runtime env on the frontend container in docker-compose.preview.yml,
+      # not baked into the image.
+      - name: Build and push frontend image
+        uses: ./.github/actions/frontend-docker-build
+        with:
+          app-commit-hash: ${{ github.sha }}
+          image-tag: pr-${{ env.PR_NUMBER }}
+          docker-hub-username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          docker-hub-access-token: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+          push: 'true'
+
+      - name: Build and push backend image
+        uses: ./.github/actions/backend-docker-build
+        with:
+          image-tag: pr-${{ env.PR_NUMBER }}
+          docker-hub-username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          docker-hub-access-token: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+          push: 'true'
+
+      - name: Build and push docs image
+        uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
+        with:
+          context: ./packages/docs
+          push: true
+          tags: letehaha/budget-tracker-docs:pr-${{ env.PR_NUMBER }}
+
+      # ── Copy compose file to VPS ──────────────────────────────────────
+      - name: Create PR directory on VPS
+        uses: appleboy/ssh-action@0ff4204d59e8e51228ff73bce53f80d53301dee2 # v1.2.5
+        env:
+          VPS_PREVIEW_BASE_PATH: ${{ secrets.VPS_PREVIEW_BASE_PATH }}
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USERNAME }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          passphrase: ${{ secrets.VPS_SSH_KEY_PASSPHRASE }}
+          envs: PR_NUMBER,VPS_PREVIEW_BASE_PATH
+          script: mkdir -p "$VPS_PREVIEW_BASE_PATH/pr-$PR_NUMBER"
+
+      - name: Copy compose file to VPS
+        uses: appleboy/scp-action@ff85246acaad7bdce478db94a363cd2bf7c90345 # v1.0.0
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USERNAME }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          passphrase: ${{ secrets.VPS_SSH_KEY_PASSPHRASE }}
+          source: docker/preview/docker-compose.preview.yml
+          target: ${{ secrets.VPS_PREVIEW_BASE_PATH }}/pr-${{ env.PR_NUMBER }}/
+          strip_components: 2
+
+      # ── Deploy ────────────────────────────────────────────────────────
+      - name: Deploy preview environment
+        uses: appleboy/ssh-action@0ff4204d59e8e51228ff73bce53f80d53301dee2 # v1.2.5
+        env:
+          VPS_PREVIEW_BASE_PATH: ${{ secrets.VPS_PREVIEW_BASE_PATH }}
+          PREVIEW_DB_PASSWORD: ${{ secrets.PREVIEW_DB_PASSWORD }}
+          PREVIEW_JWT_SECRET: ${{ secrets.PREVIEW_JWT_SECRET }}
+          PREVIEW_SESSION_SECRET: ${{ secrets.PREVIEW_SESSION_SECRET }}
+          PREVIEW_BETTER_AUTH_SECRET: ${{ secrets.PREVIEW_BETTER_AUTH_SECRET }}
+          R2_ENDPOINT: ${{ secrets.R2_ENDPOINT }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_BUCKET: ${{ secrets.R2_BUCKET }}
+          ATTACHMENTS_S3_ENDPOINT: ${{ secrets.ATTACHMENTS_S3_ENDPOINT }}
+          ATTACHMENTS_S3_BUCKET: ${{ secrets.ATTACHMENTS_S3_BUCKET }}
+          ATTACHMENTS_S3_ACCESS_KEY_ID: ${{ secrets.ATTACHMENTS_S3_ACCESS_KEY_ID }}
+          ATTACHMENTS_S3_SECRET_ACCESS_KEY: ${{ secrets.ATTACHMENTS_S3_SECRET_ACCESS_KEY }}
+          COINGECKO_API_KEY: ${{ secrets.COINGECKO_API_KEY }}
+          LOGO_DEV_SECRET_KEY: ${{ secrets.LOGO_DEV_SECRET_KEY }}
+          LOGO_DEV_TOKEN: ${{ secrets.VITE_LOGO_DEV_TOKEN }}
+          STRIPE_ENV: ${{ vars.STRIPE_ENV }}
+          STRIPE_SECRET_KEY: ${{ secrets.PREVIEW_STRIPE_SECRET_KEY }}
+          STRIPE_WEBHOOK_SECRET: ${{ secrets.PREVIEW_STRIPE_WEBHOOK_SECRET }}
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USERNAME }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          passphrase: ${{ secrets.VPS_SSH_KEY_PASSPHRASE }}
+          envs: PR_NUMBER,VPS_PREVIEW_BASE_PATH,PREVIEW_DB_PASSWORD,PREVIEW_JWT_SECRET,PREVIEW_SESSION_SECRET,PREVIEW_BETTER_AUTH_SECRET,R2_ENDPOINT,R2_ACCESS_KEY_ID,R2_SECRET_ACCESS_KEY,R2_BUCKET,ATTACHMENTS_S3_ENDPOINT,ATTACHMENTS_S3_BUCKET,ATTACHMENTS_S3_ACCESS_KEY_ID,ATTACHMENTS_S3_SECRET_ACCESS_KEY,COINGECKO_API_KEY,LOGO_DEV_SECRET_KEY,LOGO_DEV_TOKEN,STRIPE_ENV,STRIPE_SECRET_KEY,STRIPE_WEBHOOK_SECRET
+          command_timeout: 10m
+          script: |
+            set -eo pipefail
+            cd "$VPS_PREVIEW_BASE_PATH/pr-$PR_NUMBER"
+
+            # Ensure backup file is cleaned up on failure
+            BACKUP_FILE="/tmp/preview-pr-${PR_NUMBER}-backup.sql.gz"
+            trap "rm -f '$BACKUP_FILE'" EXIT
+
+            # LOGO_DEV_TOKEN is consumed by the frontend service's environment block
+            # in docker-compose.preview.yml (compose interpolation).
+            export PR_NUMBER PREVIEW_DB_PASSWORD LOGO_DEV_TOKEN
+
+            # ── Detect first deploy vs update ──
+            if [ -f .env ]; then
+              echo "=== UPDATE DEPLOY ==="
+
+              # Pull new images
+              docker compose -f docker-compose.preview.yml -p preview-pr-$PR_NUMBER pull frontend backend docs
+
+              # Restart only the app services (DB stays untouched)
+              docker compose -f docker-compose.preview.yml -p preview-pr-$PR_NUMBER up -d --no-deps frontend backend docs
+
+              echo "Preview environment updated successfully!"
+            else
+              echo "=== FIRST DEPLOY ==="
+
+              # Discover shared service container names dynamically
+              CURRENCY_RATES_CONTAINER=$(docker ps --format '{{.Names}}' | grep -E 'currency-rates-api' | head -1)
+
+              if [ -z "$CURRENCY_RATES_CONTAINER" ]; then
+                echo "ERROR: Could not find shared service containers"
+                echo "  currency-rates-api: ${CURRENCY_RATES_CONTAINER:-NOT FOUND}"
+                exit 1
+              fi
+
+              echo "Found shared services:"
+              echo "  currency-rates-api: $CURRENCY_RATES_CONTAINER"
+
+              # Generate .env file
+              printf '%s\n' \
+                "NODE_ENV=production" \
+                "APPLICATION_HOST=0.0.0.0" \
+                "APPLICATION_PORT=8080" \
+                "APPLICATION_JWT_SECRET=$PREVIEW_JWT_SECRET" \
+                "APPLICATION_DB_HOST=preview-pr-${PR_NUMBER}-db" \
+                "APPLICATION_DB_PORT=5432" \
+                "APPLICATION_DB_USERNAME=preview" \
+                "APPLICATION_DB_PASSWORD=$PREVIEW_DB_PASSWORD" \
+                "APPLICATION_DB_DATABASE=budget_tracker_preview" \
+                "APPLICATION_DB_DIALECT=postgres" \
+                "APPLICATION_REDIS_HOST=preview-pr-${PR_NUMBER}-redis" \
+                "ALLOWED_ORIGINS=https://pr-${PR_NUMBER}.preview.moneymatter.app" \
+                "APP_SESSION_ID_SECRET=$PREVIEW_SESSION_SECRET" \
+                "BETTER_AUTH_SECRET=$PREVIEW_BETTER_AUTH_SECRET" \
+                "BETTER_AUTH_URL=https://api-pr-${PR_NUMBER}.preview.moneymatter.app" \
+                "MCP_BASE_URL=https://mcp-pr-${PR_NUMBER}.preview.moneymatter.app" \
+                "AUTH_RP_ID=pr-${PR_NUMBER}.preview.moneymatter.app" \
+                "AUTH_ORIGIN=https://pr-${PR_NUMBER}.preview.moneymatter.app" \
+                "AUTH_RP_NAME=MoneyMatter-Preview" \
+                "CURRENCY_RATES_API_URL=http://${CURRENCY_RATES_CONTAINER}:8080" \
+                "PREVIEW_DB_PASSWORD=$PREVIEW_DB_PASSWORD" \
+                "DISABLE_AUTH_RATE_LIMIT=true" \
+                "ENABLE_TEST_SEEDING_ENDPOINTS=true" \
+                "COINGECKO_API_KEY=$COINGECKO_API_KEY" \
+                "LOGO_DEV_SECRET_KEY=$LOGO_DEV_SECRET_KEY" \
+                "STRIPE_ENV=${STRIPE_ENV:-test}" \
+                "STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY:-}" \
+                "STRIPE_WEBHOOK_SECRET=${STRIPE_WEBHOOK_SECRET:-}" \
+                "ATTACHMENTS_S3_ENDPOINT=${ATTACHMENTS_S3_ENDPOINT:-}" \
+                "ATTACHMENTS_S3_BUCKET=${ATTACHMENTS_S3_BUCKET:-}" \
+                "ATTACHMENTS_S3_ACCESS_KEY_ID=${ATTACHMENTS_S3_ACCESS_KEY_ID:-}" \
+                "ATTACHMENTS_S3_SECRET_ACCESS_KEY=${ATTACHMENTS_S3_SECRET_ACCESS_KEY:-}" \
+                > .env
+
+              # Start DB + Redis first
+              docker compose -f docker-compose.preview.yml -p preview-pr-$PR_NUMBER up -d db redis
+
+              # Wait for DB to be healthy
+              echo "Waiting for database to be healthy..."
+              for i in $(seq 1 30); do
+                if docker exec preview-pr-${PR_NUMBER}-db pg_isready -U preview -d budget_tracker_preview > /dev/null 2>&1; then
+                  echo "Database is ready!"
+                  break
+                fi
+                if [ "$i" = "30" ]; then
+                  echo "ERROR: Database failed to start within 150s"
+                  exit 1
+                fi
+                sleep 5
+              done
+
+              # Download latest valid R2 backup and restore (skip files < 1KB)
+              echo "Downloading latest database backup from R2..."
+              LATEST_BACKUP=$(AWS_ACCESS_KEY_ID="$R2_ACCESS_KEY_ID" \
+                AWS_SECRET_ACCESS_KEY="$R2_SECRET_ACCESS_KEY" \
+                aws s3 ls "s3://${R2_BUCKET}/backups/" \
+                  --endpoint-url "$R2_ENDPOINT" \
+                | sort | awk '$3 > 1024 {file=$4} END {print file}')
+
+              if [ -z "$LATEST_BACKUP" ]; then
+                echo "WARNING: No backup found in R2. Starting with empty database."
+              else
+                echo "Restoring backup: $LATEST_BACKUP"
+                AWS_ACCESS_KEY_ID="$R2_ACCESS_KEY_ID" \
+                AWS_SECRET_ACCESS_KEY="$R2_SECRET_ACCESS_KEY" \
+                aws s3 cp "s3://${R2_BUCKET}/backups/${LATEST_BACKUP}" "$BACKUP_FILE" \
+                  --endpoint-url "$R2_ENDPOINT"
+
+                # Drop and recreate DB to ensure clean restore
+                docker exec -i preview-pr-${PR_NUMBER}-db psql -U preview -d postgres \
+                  -c "DROP DATABASE IF EXISTS budget_tracker_preview;" \
+                  -c "CREATE DATABASE budget_tracker_preview OWNER preview;"
+
+                gunzip -c "$BACKUP_FILE" | \
+                  docker exec -i preview-pr-${PR_NUMBER}-db psql -U preview -d budget_tracker_preview
+
+                echo "Database restore completed!"
+
+                # JWKS private keys in the backup are AES-encrypted with the prod
+                # BETTER_AUTH_SECRET. Preview uses a different secret, so better-auth
+                # would throw on every getSession (oauth-provider plugin forces the jwt
+                # code path). Clear them so better-auth regenerates with the preview secret.
+                docker exec -i preview-pr-${PR_NUMBER}-db \
+                  psql -U preview -d budget_tracker_preview -c 'TRUNCATE ba_jwks;'
+              fi
+
+              # Start the full stack (backend will auto-run migrations)
+              docker compose -f docker-compose.preview.yml -p preview-pr-$PR_NUMBER up -d
+
+              echo "Preview environment deployed successfully!"
+            fi
+
+      # ── Comment on PR ─────────────────────────────────────────────────
+      - name: Comment on PR with preview URLs
+        if: success()
+        uses: marocchino/sticky-pull-request-comment@5770ad5eb8f42dd2c4f34da00c94c5381e49af88 # v3.0.5
+        with:
+          header: preview-env
+          message: |
+            ## Preview Environment
+
+            :white_check_mark: Preview deployed successfully!
+
+            | Service | URL |
+            |---------|-----|
+            | Frontend | https://pr-${{ env.PR_NUMBER }}.preview.moneymatter.app |
+            | API | https://api-pr-${{ env.PR_NUMBER }}.preview.moneymatter.app |
+            | MCP | https://mcp-pr-${{ env.PR_NUMBER }}.preview.moneymatter.app/mcp |
+            | Docs | https://docs-pr-${{ env.PR_NUMBER }}.preview.moneymatter.app |
+
+            _Last deployed: ${{ github.sha }} at ${{ github.event.pull_request.updated_at }}_
+
+      - name: Comment on PR if deploy failed
+        if: failure() && steps.disk-check.outcome != 'failure'
+        uses: marocchino/sticky-pull-request-comment@5770ad5eb8f42dd2c4f34da00c94c5381e49af88 # v3.0.5
+        with:
+          header: preview-env
+          message: |
+            ## Preview Environment
+
+            :x: **Deploy failed.** Check the [workflow logs](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) for details.
+
+  # ── E2E Tests against preview ────────────────────────────────────
+  test-preview:
+    name: Test preview (shard ${{ matrix.shardIndex }})
+    runs-on: ubuntu-latest
+    needs: deploy
+    if: success()
+    strategy:
+      fail-fast: false
+      matrix:
+        # Keep in sync with the SHARD_TOTAL workflow env
+        shardIndex: [1, 2, 3]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - id: prepare-env
+        uses: ./.github/actions/prepare-local-env
+
+      - name: Install dependencies
+        if: steps.prepare-env.outputs.cache-hit != 'true'
+        run: npm ci --ignore-scripts
+
+      - name: Resolve Playwright version
+        id: playwright-version
+        shell: bash
+        run: |
+          VERSION=$(node -p "require('./package-lock.json').packages['node_modules/@playwright/test'].version")
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Cache Playwright browsers
+        id: playwright-cache
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ steps.playwright-version.outputs.version }}
+
+      - name: Install Playwright browsers
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+        run: npx playwright install --with-deps chromium
+        working-directory: packages/frontend
+
+      - name: Install Playwright OS deps (cache hit)
+        if: steps.playwright-cache.outputs.cache-hit == 'true'
+        run: npx playwright install-deps chromium
+        working-directory: packages/frontend
+
+      - name: Run Playwright tests
+        id: playwright
+        continue-on-error: true
+        run: npm run test:e2e -w packages/frontend -- --shard=${{ matrix.shardIndex }}/${{ env.SHARD_TOTAL }}
+        env:
+          CI: true
+          PLAYWRIGHT_BASE_URL: https://pr-${{ env.PR_NUMBER }}.preview.moneymatter.app
+          PLAYWRIGHT_API_BASE_URL: https://api-pr-${{ env.PR_NUMBER }}.preview.moneymatter.app
+
+      - name: Check if failure was due to teardown
+        if: steps.playwright.outcome == 'failure'
+        id: teardown-check
+        run: |
+          HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" \
+            "https://pr-${{ env.PR_NUMBER }}.preview.moneymatter.app" || echo "000")
+          if [ "$HTTP_CODE" = "000" ] || [ "$HTTP_CODE" = "502" ] || [ "$HTTP_CODE" = "503" ]; then
+            echo "teardown_detected=true" >> $GITHUB_OUTPUT
+          else
+            echo "teardown_detected=false" >> $GITHUB_OUTPUT
+          fi
+
+      # Consumed by the report-e2e-results job to build a single PR comment
+      - name: Write shard status
+        if: always()
+        run: |
+          mkdir -p shard-status
+          STATS=$(jq -c '.stats // {}' packages/frontend/playwright-results.json 2>/dev/null || echo '{}')
+          cat > "shard-status/shard-${{ matrix.shardIndex }}.json" <<EOF
+          {
+            "shard": ${{ matrix.shardIndex }},
+            "outcome": "${{ steps.playwright.outcome }}",
+            "teardown": "${{ steps.teardown-check.outputs.teardown_detected || 'false' }}",
+            "stats": $STATS
+          }
+          EOF
+
+      - name: Upload shard status
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: shard-status-${{ matrix.shardIndex }}
+          path: shard-status/
+          retention-days: 7
+          # Re-runs must replace the failed attempt's artifact, or the report job reads stale statuses.
+          overwrite: true
+
+      - name: Upload test report
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: playwright-report-pr-${{ env.PR_NUMBER }}-shard-${{ matrix.shardIndex }}
+          path: packages/frontend/playwright-report/
+          retention-days: 7
+          # Re-runs must replace the failed attempt's artifact, or the report job reads stale statuses.
+          overwrite: true
+
+      - name: Fail if real test failures
+        if: steps.playwright.outcome == 'failure' && steps.teardown-check.outputs.teardown_detected != 'true'
+        run: exit 1
+
+  # ── Aggregate shard results into one PR comment ───────────────────
+  report-e2e-results:
+    name: Report E2E results
+    runs-on: ubuntu-latest
+    needs: test-preview
+    if: always() && needs.test-preview.result != 'skipped' && needs.test-preview.result != 'cancelled'
+
+    steps:
+      - name: Download shard statuses
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        # Tolerate missing artifacts (e.g. a shard died before uploading);
+        # the summary below renders such shards as "no status"
+        continue-on-error: true
+        with:
+          pattern: shard-status-*
+          merge-multiple: true
+          path: shard-status
+
+      - name: Build summary
+        id: summary
+        run: |
+          REAL_FAILURES=0
+          TEARDOWNS=0
+          MISSING=0
+          ROWS=""
+
+          for i in $(seq 1 "$SHARD_TOTAL"); do
+            FILE="shard-status/shard-$i.json"
+            if [ ! -f "$FILE" ]; then
+              ROWS="$ROWS| $i/$SHARD_TOTAL | :grey_question: no status (job error) | – | – | – | – |"$'\n'
+              MISSING=$((MISSING + 1))
+              continue
+            fi
+            OUTCOME=$(jq -r '.outcome' "$FILE")
+            TEARDOWN=$(jq -r '.teardown' "$FILE")
+            PASSED=$(jq -r '.stats.expected // "–"' "$FILE")
+            FAILED=$(jq -r '.stats.unexpected // "–"' "$FILE")
+            FLAKY=$(jq -r '.stats.flaky // "–"' "$FILE")
+            SKIPPED=$(jq -r '.stats.skipped // "–"' "$FILE")
+            if [ "$OUTCOME" = "success" ]; then
+              RESULT=":white_check_mark: pass"
+            elif [ "$TEARDOWN" = "true" ]; then
+              RESULT=":warning: torn down"
+              TEARDOWNS=$((TEARDOWNS + 1))
+            else
+              RESULT=":x: fail"
+              REAL_FAILURES=$((REAL_FAILURES + 1))
+            fi
+            ROWS="$ROWS| $i/$SHARD_TOTAL | $RESULT | $PASSED | $FAILED | $FLAKY | $SKIPPED |"$'\n'
+          done
+
+          {
+            echo "## Playwright E2E Tests"
+            echo ""
+            if [ "$REAL_FAILURES" -gt 0 ] || [ "$MISSING" -gt 0 ]; then
+              echo ":x: **Some tests failed.** Check the [workflow logs](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) and the per-shard \`playwright-report\` artifacts for details."
+            elif [ "$TEARDOWNS" -gt 0 ]; then
+              echo ":warning: **Tests interrupted** – preview environment was torn down during the test run."
+            else
+              echo ":white_check_mark: **All tests passed!**"
+            fi
+            echo ""
+            echo "| Shard | Result | Passed | Failed | Flaky | Skipped |"
+            echo "|-------|--------|--------|--------|-------|---------|"
+            printf '%s' "$ROWS"
+            echo ""
+            echo "_Tested against: \`pr-${PR_NUMBER}.preview.moneymatter.app\` · Commit: ${{ github.sha }}_"
+          } > comment.md
+
+          echo "real_failures=$REAL_FAILURES" >> "$GITHUB_OUTPUT"
+          echo "missing=$MISSING" >> "$GITHUB_OUTPUT"
+
+      - name: Comment test results on PR
+        uses: marocchino/sticky-pull-request-comment@5770ad5eb8f42dd2c4f34da00c94c5381e49af88 # v3.0.5
+        with:
+          header: playwright-tests
+          path: comment.md
+
+      - name: Fail if real test failures
+        if: steps.summary.outputs.real_failures != '0' || steps.summary.outputs.missing != '0'
+        run: exit 1

@@ -1,0 +1,168 @@
+<script setup lang="ts">
+import ResponsiveDialog from '@/components/common/responsive-dialog.vue';
+import { ScrollArea } from '@/components/lib/ui/scroll-area';
+import RecordsFiltersDialog from '@/components/records-filters/filters-dialog.vue';
+import RecordsFilters from '@/components/records-filters/index.vue';
+import { useTransactionsWithFilters } from '@/components/records-filters/transactions-with-filters';
+import TransactionRecord from '@/components/transactions-list/transaction-record.vue';
+import { useVirtualizedInfiniteScroll } from '@/composable/virtualized-infinite-scroll';
+import { useWindowBreakpoints } from '@/composable/window-breakpoints';
+import { FILTER_OPERATION, TRANSACTION_TYPES, TransactionModel } from '@bt/shared/types';
+import { computed, ref, watch } from 'vue';
+import { useI18n } from 'vue-i18n';
+
+const props = withDefaults(
+  defineProps<{
+    open: boolean;
+    transactionType?: TRANSACTION_TYPES;
+    /** IDs to hide from the list (e.g. already-selected txs in a multi-pick flow). */
+    excludeIds?: TransactionModel['id'][];
+  }>(),
+  {
+    transactionType: undefined,
+    excludeIds: () => [],
+  },
+);
+
+const emit = defineEmits<{
+  'update:open': [value: boolean];
+  select: [tx: TransactionModel];
+}>();
+
+const { t } = useI18n();
+
+const isOpen = computed({
+  get: () => props.open,
+  set: (value: boolean) => emit('update:open', value),
+});
+
+const {
+  isResetButtonDisabled,
+  isFiltersOutOfSync,
+  resetFilters,
+  applyFilters,
+  appliedFilters,
+  isAnyFiltersApplied,
+  filters,
+  transactionsPages,
+  fetchNextPage,
+  hasNextPage,
+  isFetchingNextPage,
+} = useTransactionsWithFilters({
+  queryEnabled: isOpen,
+  staticFilters: { transferFilter: FILTER_OPERATION.exclude },
+});
+
+// Pre-set transaction type filter from prop
+watch(
+  () => props.open,
+  (open) => {
+    if (open && props.transactionType) {
+      filters.value.transactionType = props.transactionType;
+      appliedFilters.value.transactionType = props.transactionType;
+    }
+  },
+);
+
+const handleSelect = ([tx]: [TransactionModel, TransactionModel | undefined]) => {
+  emit('select', tx);
+  isOpen.value = false;
+};
+
+const scrollAreaRef = ref<InstanceType<typeof ScrollArea> | null>(null);
+const parentRef = computed<HTMLElement | null>(() => scrollAreaRef.value?.viewportRef?.viewportElement ?? null);
+const flatTransactions = computed(() => {
+  const all = transactionsPages.value?.pages?.flat() ?? [];
+  if (props.excludeIds.length === 0) return all;
+  const skip = new Set(props.excludeIds);
+  return all.filter((tx) => !skip.has(tx.id));
+});
+
+const { virtualRows, totalSize } = useVirtualizedInfiniteScroll({
+  items: flatTransactions,
+  hasNextPage,
+  fetchNextPage,
+  isFetchingNextPage,
+  parentRef,
+  enabled: isOpen,
+  getItemKey: (index) => flatTransactions.value[index]!.id,
+});
+
+const isFiltersDialogOpen = ref(false);
+
+watch(appliedFilters, () => {
+  isFiltersDialogOpen.value = false;
+});
+
+const isMobileView = useWindowBreakpoints(1024);
+</script>
+
+<template>
+  <ResponsiveDialog v-model:open="isOpen" dialog-content-class="max-w-[900px] h-[85vh]" no-internal-scroll>
+    <template #title>
+      <span>{{ t('dialogs.pickTransaction.title') }}</span>
+    </template>
+
+    <!-- The row tracks need a definite height to scroll each column on its own: under a bare
+         max-height an auto track grows to its content and the whole dialog scrolls instead. -->
+    <div
+      class="grid min-h-0 flex-1 grid-cols-1 grid-rows-[auto_minmax(0,1fr)] gap-4 lg:grid-cols-[max-content_minmax(0,1fr)] lg:grid-rows-[minmax(0,1fr)]"
+    >
+      <ScrollArea class="relative min-h-0 px-1">
+        <template v-if="isMobileView">
+          <RecordsFiltersDialog v-model:open="isFiltersDialogOpen" :isAnyFiltersApplied="isAnyFiltersApplied">
+            <RecordsFilters
+              v-model:filters="filters"
+              :is-reset-button-disabled="isResetButtonDisabled"
+              :is-filters-out-of-sync="isFiltersOutOfSync"
+              @reset-filters="resetFilters"
+              @apply-filters="applyFilters"
+            />
+          </RecordsFiltersDialog>
+        </template>
+        <template v-else>
+          <RecordsFilters
+            v-model:filters="filters"
+            :is-reset-button-disabled="isResetButtonDisabled"
+            :is-filters-out-of-sync="isFiltersOutOfSync"
+            @reset-filters="resetFilters"
+            @apply-filters="applyFilters"
+          />
+        </template>
+      </ScrollArea>
+
+      <ScrollArea
+        v-if="transactionsPages"
+        ref="scrollAreaRef"
+        class="min-h-0 w-full"
+        viewport-class="max-lg:max-h-[60vh]"
+      >
+        <div :style="{ height: `${totalSize}px`, position: 'relative' }">
+          <div
+            v-for="virtualRow in virtualRows"
+            :key="String(virtualRow.key)"
+            :style="{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              transform: `translateY(${virtualRow.start}px)`,
+            }"
+          >
+            <TransactionRecord
+              v-if="flatTransactions[virtualRow.index]"
+              :tx="flatTransactions[virtualRow.index]!"
+              @record-click="handleSelect"
+            />
+            <div v-else class="flex h-13 items-center justify-center">
+              {{ t('transactions.list.loadingMore') }}
+            </div>
+          </div>
+        </div>
+        <template v-if="!hasNextPage">
+          <p class="flex justify-center">{{ t('transactions.list.noMoreData') }}</p>
+        </template>
+      </ScrollArea>
+    </div>
+  </ResponsiveDialog>
+</template>

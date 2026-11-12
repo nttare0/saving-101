@@ -1,0 +1,48 @@
+import { SUBSCRIPTION_LINK_STATUS, SUBSCRIPTION_MATCH_SOURCE, RecordId } from '@bt/shared/types';
+import { Table, Column, Model, ForeignKey, DataType } from 'sequelize-typescript';
+
+import Subscriptions from './subscriptions.model';
+import Transactions from './transactions.model';
+
+@Table({
+  tableName: 'SubscriptionTransactions',
+  timestamps: false,
+  freezeTableName: true,
+})
+export default class SubscriptionTransactions extends Model {
+  @ForeignKey(() => Subscriptions)
+  @Column({
+    type: DataType.UUID,
+    allowNull: false,
+    primaryKey: true,
+  })
+  subscriptionId!: RecordId;
+
+  @ForeignKey(() => Transactions)
+  @Column({
+    type: DataType.UUID,
+    allowNull: false,
+    primaryKey: true,
+  })
+  transactionId!: RecordId;
+
+  @Column({
+    type: DataType.ENUM(...Object.values(SUBSCRIPTION_MATCH_SOURCE)),
+    allowNull: false,
+  })
+  matchSource!: SUBSCRIPTION_MATCH_SOURCE;
+
+  @Column({
+    type: DataType.DATE,
+    allowNull: false,
+    defaultValue: DataType.NOW,
+  })
+  matchedAt!: Date;
+
+  @Column({
+    type: DataType.ENUM(...Object.values(SUBSCRIPTION_LINK_STATUS)),
+    allowNull: false,
+    defaultValue: SUBSCRIPTION_LINK_STATUS.active,
+  })
+  status!: SUBSCRIPTION_LINK_STATUS;
+}

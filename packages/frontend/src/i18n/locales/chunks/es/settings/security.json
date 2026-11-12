@@ -1,0 +1,296 @@
+{
+  "settings": {
+    "security": {
+      "title": "Ajustes de seguridad",
+      "description": "Gestione sus métodos de inicio de sesión, sesiones activas y contraseña",
+      "tabs": {
+        "loginMethods": "Métodos de inicio de sesión",
+        "activeSessions": "Sesiones activas",
+        "password": "Contraseña",
+        "backup": "Copia de seguridad y restauración",
+        "dangerZone": "Zona de peligro"
+      },
+      "loginMethods": {
+        "title": "Métodos de inicio de sesión",
+        "description": "Gestione cómo inicia sesión en su cuenta",
+        "oauth": {
+          "connectedAs": "Conectado como {email}",
+          "accountName": "Cuenta de {provider}",
+          "notConnected": "No conectado",
+          "disconnect": "Desconectar",
+          "disconnectConfirmTitle": "¿Desconectar {provider}?",
+          "disconnectConfirmDescription": "Ya no podrás iniciar sesión con esta cuenta {provider} . Puedes volver a conectarla en cualquier momento.",
+          "connect": "Conectar"
+        },
+        "password": {
+          "title": "Contraseña",
+          "passwordSet": "Contraseña establecida",
+          "noPassword": "Sin contraseña establecida",
+          "manageInTab": "Gestionar en la pestaña Contraseña",
+          "setupInTab": "Configurar en la pestaña Contraseña"
+        },
+        "passkeys": {
+          "title": "Claves de acceso",
+          "noPasskeys": "No hay claves de acceso registradas",
+          "passkeyCount": "{count} clave(s) de acceso registrada(s)",
+          "addButton": "Añadir clave de acceso",
+          "passkeyName": "Clave de acceso",
+          "added": "Añadida el {date}",
+          "rename": "Renombrar",
+          "renamePlaceholder": "Ingresa el passkey",
+          "deleteConfirmTitle": "¿Eliminar passkey?",
+          "deleteConfirmDescription": "\"{name}\" ya no podrá iniciar sesión en su cuenta. Esto no se puede deshacer."
+        },
+        "warningOneMethod": "Añada otro método de inicio de sesión antes de desconectar su cuenta OAuth.",
+        "notifications": {
+          "oauthConnectFailed": "Error al conectar la cuenta de {provider}",
+          "oauthDisconnectSuccess": "Cuenta de {provider} desconectada",
+          "oauthDisconnectFailed": "Error al desconectar la cuenta de {provider}",
+          "passkeyAddSuccess": "Clave de acceso añadida correctamente",
+          "passkeyAddFailed": "Error al añadir la clave de acceso. Asegúrese de que su dispositivo admite claves de acceso.",
+          "passkeyRemoveSuccess": "Clave de acceso eliminada",
+          "passkeyRemoveFailed": "Error al eliminar la clave de acceso",
+          "passkeyRenameFailed": "Error al renombrar passkey"
+        }
+      },
+      "activeSessions": {
+        "title": "Sesiones activas",
+        "description": "Gestione los dispositivos en los que tiene sesión iniciada actualmente",
+        "currentBadge": "Actual",
+        "unknownLocation": "Ubicación desconocida",
+        "lastActive": "Última actividad: {date}",
+        "noSessions": "No se encontraron sesiones activas",
+        "loadError": "No pudimos cargar tus sesiones activas.",
+        "revokeAllButton": "Cerrar sesión en todos los demás dispositivos",
+        "deviceTypes": {
+          "unknownDevice": "Dispositivo desconocido",
+          "unknownBrowser": "Navegador desconocido"
+        },
+        "timeAgo": {
+          "justNow": "Ahora mismo",
+          "minutesAgo": "Hace {count} minuto | Hace {count} minutos",
+          "hoursAgo": "Hace {count} hora | Hace {count} horas",
+          "daysAgo": "Hace {count} día | Hace {count} días"
+        },
+        "notifications": {
+          "revokeSuccess": "Sesión revocada",
+          "revokeFailed": "Error al revocar la sesión",
+          "revokeAllSuccess": "Se han cerrado todas las demás sesiones",
+          "revokeAllFailed": "Error al revocar las sesiones"
+        }
+      },
+      "passwordSection": {
+        "title": "Contraseña",
+        "descriptionChange": "Cambie su contraseña",
+        "descriptionSet": "Establezca una contraseña para su cuenta",
+        "labels": {
+          "currentPassword": "Contraseña actual",
+          "newPassword": "Nueva contraseña",
+          "password": "Contraseña",
+          "confirmPassword": "Confirmar contraseña"
+        },
+        "placeholders": {
+          "currentPassword": "Introduzca la contraseña actual",
+          "newPassword": "Introduzca la nueva contraseña",
+          "confirmPassword": "Confirme la nueva contraseña"
+        },
+        "buttons": {
+          "change": "Cambiar contraseña",
+          "set": "Establecer contraseña"
+        },
+        "strength": {
+          "veryWeak": "Muy débil",
+          "weak": "Débil",
+          "fair": "Regular",
+          "strong": "Fuerte",
+          "veryStrong": "Muy fuerte"
+        },
+        "requirements": {
+          "title": "Requisitos de la contraseña",
+          "minLength": "Mínimo 8 caracteres",
+          "mixedCase": "Se recomienda combinar letras mayúsculas y minúsculas",
+          "specialChars": "Incluya números y caracteres especiales para mayor seguridad"
+        },
+        "validation": {
+          "minLength": "La contraseña debe tener al menos 8 caracteres",
+          "passwordsNoMatch": "Las contraseñas no coinciden"
+        },
+        "notifications": {
+          "changeSuccess": "Contraseña cambiada correctamente",
+          "changeFailed": "Error al cambiar la contraseña",
+          "setSuccess": "Contraseña establecida correctamente",
+          "setFailed": "Error al establecer la contraseña",
+          "unexpectedError": "Se ha producido un error inesperado",
+          "updateFailed": "Error al actualizar la contraseña"
+        },
+        "errors": {
+          "incorrectCurrentPassword": "La contraseña actual es incorrecta.",
+          "passwordAlreadySet": "Tu cuenta ya tiene una contraseña. Usa el formulario para cambiarla."
+        }
+      },
+      "dangerZone": "Zona de peligro",
+      "wipeData": {
+        "title": "Borrar todos los datos",
+        "warningFull": "{strong} Esta acción elimina todo lo que hay en su espacio de trabajo. Su inicio de sesión se conserva para que pueda volver a empezar.",
+        "warningStrong": "Advertencia:",
+        "button": "Borrar datos",
+        "dialog": {
+          "title": "¿Borrar todos sus datos?",
+          "description": "Esto eliminará permanentemente todo lo que hay en su espacio de trabajo, incluyendo:",
+          "list": {
+            "accounts": "Cuentas y saldos",
+            "transactions": "Transacciones, reembolsos y transferencias",
+            "budgets": "Presupuestos, etiquetas y categorías",
+            "portfolios": "Inversiones, carteras y posiciones",
+            "settings": "Ajustes de usuario, claves de IA y estado de incorporación",
+            "baseCurrency": "Moneda base y tipos de cambio"
+          },
+          "kept": "Su inicio de sesión y perfil se conservan. Comenzará de nuevo desde el flujo de incorporación.",
+          "typeConfirm": "Para confirmar, escriba {phrase} a continuación:",
+          "confirmLabel": "Borrar datos",
+          "confirmLoading": "Borrando…"
+        },
+        "sharingDialog": {
+          "title": "Está compartiendo datos con otros usuarios",
+          "warning": "Los demás perderán el acceso inmediatamente",
+          "description": "Borrar sus datos revoca el acceso a los siguientes recursos compartidos:",
+          "householdsCount": "Y {count} miembro del hogar perderá el acceso. | Y {count} miembros del hogar perderán el acceso.",
+          "confirmLabel": "Borrar de todos modos"
+        },
+        "notifications": {
+          "success": "Todos los datos borrados. Empezando de cero.",
+          "failed": "No se pudieron borrar los datos. Inténtelo de nuevo."
+        }
+      },
+      "deleteAccount": {
+        "title": "Eliminar su cuenta",
+        "warningFull": "Una vez que elimine su cuenta, no hay marcha atrás. {strong} Por favor, asegúrese antes de continuar.",
+        "warningStrong": "Todos sus datos se borrarán permanentemente.",
+        "button": "Eliminar mi cuenta",
+        "dialog": {
+          "title": "¿Está completamente seguro?",
+          "description": "Esta acción no se puede deshacer. Eliminará permanentemente su cuenta y borrará todos sus datos, incluyendo:",
+          "dataList": {
+            "accounts": "Todas las cuentas y transacciones",
+            "categories": "Todas las categorías y presupuestos",
+            "portfolios": "Todas las carteras de inversión",
+            "settings": "Todos los ajustes y preferencias"
+          },
+          "confirmFull": "Escriba {email} para confirmar",
+          "placeholder": "Introduzca su correo electrónico",
+          "acceptButton": "Eliminar mi cuenta",
+          "acceptButtonLoading": "Eliminando...",
+          "appStoreWarning": "Eliminar tu cuenta no cancela la suscripción en la App Store y Apple seguirá efectuando el pago. Cancela primero en {link}.",
+          "appStoreWarningLink": "Suscripción desde la App Store"
+        },
+        "notifications": {
+          "success": "Su cuenta ha sido eliminada correctamente",
+          "failed": "Se ha producido un error al intentar eliminar su cuenta"
+        }
+      },
+      "backup": {
+        "download": {
+          "title": "Descargar copia de seguridad",
+          "description": "Guarde una copia completa y restaurable de todos sus datos en un archivo zip.",
+          "button": "Descargar",
+          "loading": "Preparando...",
+          "success": "Copia de seguridad descargada",
+          "failed": "No se pudo crear la copia de seguridad. Inténtelo de nuevo.",
+          "downloadBlocked": "La copia de seguridad se creó, pero su navegador bloqueó la descarga. Revise su configuración de descargas e inténtelo de nuevo.",
+          "limitations": {
+            "trigger": "Tiene limitaciones",
+            "title": "Qué queda fuera de la copia de seguridad",
+            "intro": "Su copia de seguridad incluye todos sus datos. Por seguridad, un par de elementos cifrados no pueden incluirse en ella y deberá configurarlos de nuevo después de restaurar:",
+            "items": {
+              "bankConnectionsTerm": "Conexiones bancarias",
+              "bankConnections": "{term} — los tokens de acceso están cifrados y vinculados a este servidor, así que deberá reconectar cada banco después de restaurar.",
+              "aiKeysTerm": "Claves de API de IA",
+              "aiKeys": "{term} — se almacenan cifradas, así que deberá volver a introducirlas después de restaurar."
+            },
+            "included": "Todo lo demás — cuentas, transacciones, categorías, presupuestos, inversiones, préstamos, etiquetas, beneficiarios y suscripciones — está incluido."
+          }
+        },
+        "restore": {
+          "title": "Restaurar desde una copia de seguridad",
+          "description": "Reemplace todos los datos actuales con el contenido de un archivo zip de copia de seguridad.",
+          "button": "Seleccionar archivo de copia de seguridad",
+          "reading": "Leyendo archivo...",
+          "failedGeneric": "Error al restaurar la copia de seguridad",
+          "invalidFileType": "Elija un archivo de copia de seguridad .zip.",
+          "fileTooLarge": "Esa copia de seguridad es demasiado grande para restaurarla (máx. {max}).",
+          "readFailed": "No se pudo leer ese archivo. Inténtelo de nuevo.",
+          "confirm": {
+            "title": "¿Restaurar desde la copia de seguridad?",
+            "warning": "Esto reemplaza TODOS sus datos actuales",
+            "description": "Todo lo que hay actualmente en su cuenta se eliminará permanentemente y se reemplazará con el contenido de esta copia de seguridad. Esta acción no se puede deshacer.",
+            "selectedFile": "Archivo seleccionado: {name}",
+            "confirmLabel": "Restaurar",
+            "reconnectTitle": "Después de restaurar, configure de nuevo lo siguiente",
+            "reconnectBankConnections": "Reconecte sus conexiones bancarias",
+            "reconnectAiKeys": "Vuelva a introducir sus claves de API de IA (si usa alguna)"
+          },
+          "acknowledge": {
+            "title": "Los recursos compartidos perderán el acceso",
+            "description": "Usted posee recursos a los que otras personas tienen acceso actualmente. Restaurar eliminará ese acceso.",
+            "householdsCount": "{count} hogar compartido | {count} hogares compartidos",
+            "checkbox": "Entiendo que estos recursos compartidos perderán el acceso.",
+            "confirmLabel": "Restaurar de todos modos"
+          },
+          "progress": {
+            "title": "Restaurando sus datos",
+            "description": "Esto puede tardar un poco. Mantenga esta ventana abierta.",
+            "inserted": "{count} registros restaurados",
+            "phases": {
+              "validating": "Validando copia de seguridad...",
+              "preparingSecurities": "Preparando valores...",
+              "wiping": "Borrando datos actuales...",
+              "restoring": "Restaurando registros...",
+              "finalizing": "Finalizando..."
+            }
+          },
+          "summary": {
+            "title": "Restauración completa",
+            "description": "Sus datos se han restaurado desde la copia de seguridad.",
+            "recordsHeading": "Registros restaurados",
+            "warningsHeading": "Advertencias",
+            "noRecords": "No se restauró ningún registro.",
+            "doneButton": "Hecho"
+          },
+          "warnings": {
+            "sharesSkipped": "Se omitió la fila {count} \"{table}: los usuarios de referencia de recursos compartidos que no existen en esta instancia. | Filas omitidas {count} \"{table}: usuarios de referencia de recursos compartidos que no existen en esta instancia.",
+            "currencyMissing": "Moneda omitida {count} que no está disponible en esta instancia. | Monedas omitidas {count} que no están disponibles en esta instancia.",
+            "unknownTableIgnored": "La copia de seguridad contiene una tabla desconocida \"{table}\"; fue ignorada.",
+            "unknownColumnDropped": "Se eliminó una columna desconocida en \"{table}\": {columns}. | Se eliminaron columnas desconocidas en \"{table}\": {columns}.",
+            "tableMissingTreatedEmpty": "La copia de seguridad no tiene ningún archivo para \"{table}\"; fue tratada como vacía.",
+            "settingsReset": "Los ajustes guardados no coinciden con el formato actual y se restablecieron a los valores predeterminados.",
+            "fireSettingsReset": "Los ajustes guardados de FIRE no coinciden con el formato actual y se restablecieron a los valores predeterminados.",
+            "noSettings": "La copia de seguridad no tenía ajustes guardados; los valores por defecto fueron aplicados.",
+            "foreignReferenceDropped": "Se eliminó la fila {count} de \"{table}\" cuyos datos referenciaban \"{column}\" fuera de esta copia de seguridad. | Eliminadas filas {count} de \"{table}\" cuyas \"{column}\" referían datos fuera de esta copia de seguridad.",
+            "invalidRowDropped": "Se eliminó la fila {count} \"{table}\" que falló la validación. | Se eliminaron registros {count} \"{table}\" que fallaron la validación.",
+            "foreignReferenceNulled": "Se limpió \"{column}\" en la fila {count} en \"{table}\" que refería datos fuera de esta copia de seguridad. | Limpiado \"{column}\" en filas {count} en \"{table}\" que referían datos fuera de esta copia de seguridad.",
+            "unknown": "Algunos datos de la copia de seguridad fueron omitidos o ajustados durante la restauración."
+          },
+          "failed": {
+            "title": "Error al restaurar",
+            "genericError": "Se produjo un error al restaurar su copia de seguridad.",
+            "unconfirmed": "No se pudo confirmar el estado de la restauración. Recargue la página y compruebe sus datos.",
+            "closeButton": "Cerrar",
+            "technicalDetails": "Detalles técnicos"
+          },
+          "overlay": {
+            "title": "Restaurando sus datos",
+            "description": "Mantenga esta pestaña abierta. Estamos reemplazando sus datos con su copia de seguridad — esto puede tardar un momento.",
+            "preparing": "Preparando…",
+            "finishing": "Finalizando",
+            "takingLong": "Esto está tardando más de lo habitual. Sus datos todavía se están restaurando — mantenga esta pestaña abierta.",
+            "unreachableTitle": "No se puede contactar con el servidor",
+            "unreachableDescription": "Perdimos el contacto mientras la restauración estaba en curso. Puede que todavía esté terminando. Puede cerrar esto y recargar la página para comprobarlo.",
+            "failedTitle": "Error al restaurar",
+            "dismiss": "Descartar"
+          }
+        },
+        "attachmentsNotIncluded": "Los archivos adjuntos de la transacción (recibos, facturas y otros archivos) no están incluidos en las copias de seguridad y no se restauran."
+      }
+    }
+  }
+}

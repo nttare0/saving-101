@@ -1,0 +1,80 @@
+{
+  "pages": {
+    "importExport": {
+      "ynabImport": {
+        "pageTitle": "Importer depuis YNAB",
+        "pageDescription": "Importez votre fichier d'export YNAB Register.csv pour intégrer vos comptes, opérations, catégories, tiers et étiquettes dans MoneyMatter.",
+        "stepper": {
+          "steps": {
+            "upload": "Téléverser",
+            "preview": "Vérifier",
+            "results": "Terminé"
+          }
+        },
+        "fileUpload": {
+          "stepTitle": "Déposez votre fichier Register.csv ici",
+          "description": "YNAB → Budget → Exporter le budget → dézipper → utiliser le fichier Register.csv.",
+          "maxSize": "Jusqu'à 10 Mo.",
+          "parsing": "Analyse en cours…",
+          "continueToPreview": "Continuer",
+          "errors": {
+            "invalidFormat": "Veuillez téléverser un fichier .csv."
+          }
+        },
+        "preview": {
+          "emptyList": "Rien à importer ici.",
+          "accounts": "Comptes",
+          "categories": "Catégories",
+          "payees": "Tiers",
+          "tags": "Étiquettes",
+          "transactions": "Opérations",
+          "transfers": "Virements",
+          "dateRange": "Période : {from} → {to}",
+          "accountsHelper": "Pour chaque compte YNAB, confirmez la devise.",
+          "skippedNote": "{count} compte(s) ignoré(s). Leurs opérations — ainsi que tout virement lié — ne seront pas importés.",
+          "warningsTitle": "Avertissements",
+          "rowPrefix": "Ligne {rowIndex} :",
+          "startOver": "Recommencer",
+          "continueToImport": "Lancer l'import"
+        },
+        "accountRow": {
+          "transactionsCount": "{count} opérations",
+          "startingBalance": "Solde initial",
+          "currencyPlaceholder": "EUR",
+          "currencyLabel": "Devise",
+          "currencyInvalid": "Saisissez un code devise à 3 lettres (ex. EUR)",
+          "autoDetected": "détecté automatiquement : {code}",
+          "undoSkip": "Inclure dans l'import"
+        },
+        "execute": {
+          "starting": "Démarrage de l'import…",
+          "progressCount": "{processed} / {total}",
+          "statusQueued": "En attente",
+          "statusRunning": "Import en cours…",
+          "statusCompleted": "Terminé",
+          "statusFailed": "Échec",
+          "failed": "L'import n'a pas pu se terminer."
+        },
+        "done": {
+          "successTitle": "Import terminé",
+          "successDescription": "Vos données YNAB sont maintenant dans MoneyMatter.",
+          "accountsCreated": "Comptes créés",
+          "accountsSkipped": "Comptes ignorés",
+          "categoriesCreated": "Catégories créées",
+          "payeesCreated": "Tiers créés",
+          "tagsCreated": "Étiquettes créées",
+          "transactionsImported": "Opérations importées",
+          "transfersImported": "Virements importés",
+          "splitsDetected": "Opérations ventilées détectées",
+          "errorsTitle": "Échec de l'importation de {count} lignes",
+          "errors": {
+            "payeeCreateFailed": "Impossible de créer le tiers « {payeeName} ». Ses opérations ont été importées sans tiers.",
+            "rowImportFailed": "Cette ligne n'a pas pu être importée."
+          },
+          "viewTransactions": "Afficher les opérations",
+          "importAnother": "Importer un autre fichier"
+        }
+      }
+    }
+  }
+}

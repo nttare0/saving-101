@@ -1,0 +1,25 @@
+{
+  "settings": {
+    "navigation": {
+      "currencies": "Currencies",
+      "categories": "分类",
+      "tags": "Tags",
+      "accountsGroups": "Accounts groups",
+      "importData": "Import/Export",
+      "ai": "AI",
+      "security": "Security",
+      "admin": "Admin",
+      "sharedWithMe": "Shared with me",
+      "household": "Household",
+      "personalGroup": "Personal",
+      "workspaceGroup": "Workspace",
+      "appearance": "外观",
+      "language": "语言",
+      "general": "General",
+      "payees": "Payees",
+      "planBilling": "订阅与支付",
+      "collapse": "Collapse"
+    },
+    "backToSettings": "Back to settings"
+  }
+}

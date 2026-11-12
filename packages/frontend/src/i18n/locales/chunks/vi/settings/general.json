@@ -1,0 +1,131 @@
+{
+  "settings": {
+    "general": {
+      "title": "Tổng quan",
+      "description": "Kiểm soát cách dữ liệu tài chính của bạn được tính toán và hiển thị trong toàn bộ ứng dụng.",
+      "creditLimit": {
+        "label": "Tính hạn mức tín dụng vào số dư",
+        "description": "Khi bật, hạn mức tín dụng sẽ được trừ khỏi số dư tài khoản trong phần thống kê và biểu đồ xu hướng số dư. Nhờ đó bạn thấy được tình hình tài chính thực tế thay vì hạn mức khả dụng.",
+        "successNotification": "Đã cập nhật cài đặt thành công",
+        "errorNotification": "Không cập nhật được cài đặt"
+      },
+      "payday": {
+        "label": "Pay cycle starts on",
+        "description": "Day of the month your pay cycle starts. The dashboard's default period runs from this day to the day before it next month.",
+        "placeholder": "Chọn ngày",
+        "successNotification": "Pay cycle start updated"
+      },
+      "unrealizedLossAlert": {
+        "label": "Unrealized loss alerts",
+        "description": "Get one notification when a holding's loss crosses either threshold. Checked daily after market prices update; it won't repeat until the holding recovers.",
+        "percentLabel": "Loss percentage",
+        "percentDescription": "Alert when a holding is down at least this much from its cost.",
+        "amountLabel": "Loss amount",
+        "amountDescription": "Or when the loss reaches this amount in your base currency, whatever the percentage.",
+        "successNotification": "Loss alert settings saved"
+      },
+      "manualTransferMatching": {
+        "label": "Tự động đối chiếu giao dịch chuyển khoản với tài khoản thủ công",
+        "description": "Cho phép các giao dịch chuyển khoản được phát hiện tự động liên kết các giao dịch ngân hàng đã đồng bộ với các giao dịch bạn tạo thủ công.",
+        "successNotification": "Đã cập nhật cài đặt đối chiếu giao dịch chuyển khoản",
+        "errorNotification": "Không cập nhật được cài đặt đối chiếu giao dịch chuyển khoản"
+      },
+      "pendingBankTransactions": {
+        "label": "Nhập giao dịch ngân hàng đang chờ xử lý",
+        "description": "Lưu các giao dịch từ Enable Banking trước khi ngân hàng hạch toán. Các giao dịch này được đánh dấu là đang chờ xử lý, không làm thay đổi số dư tài khoản và thường chưa có thông tin người bán cho đến khi được hạch toán. Cài đặt này không ảnh hưởng đến các nhà cung cấp khác: SimpleFIN và LunchFlow chỉ nhập giao dịch đã hạch toán, còn Monobank nhập mọi giao dịch như giao dịch thông thường.",
+        "descriptionSelfHost": "Store Enable Banking transactions before the bank books them. They're marked as pending, never change the account balance, and often lack merchant details until booked. Other providers aren't affected: SimpleFIN and LunchFlow always import booked transactions only, and Monobank imports every transaction as a regular one.",
+        "successNotification": "Đã cập nhật cài đặt giao dịch đang chờ xử lý",
+        "errorNotification": "Không cập nhật được cài đặt giao dịch đang chờ xử lý"
+      },
+      "bankSyncSchedule": {
+        "label": "Bank sync schedule",
+        "description": "Connected bank accounts sync automatically at these times, shown in your local time. Pick the same time twice to sync once a day.",
+        "placeholder": "Select time",
+        "successNotification": "Bank sync schedule updated",
+        "errorNotification": "Failed to update bank sync schedule"
+      },
+      "quickStart": {
+        "label": "Hướng dẫn bắt đầu nhanh",
+        "description": "Hiển thị danh sách kiểm tra thiết lập ban đầu trên bảng điều khiển. Tắt để ẩn hướng dẫn hoặc bật lại bất cứ lúc nào để hiển thị lại."
+      },
+      "savingsCategories": {
+        "label": "Tính các danh mục là khoản tiết kiệm",
+        "description": "Khoản chi trong các danh mục này (và danh mục con) sẽ không được tính là chi tiêu trong phân tích dòng tiền, nhờ đó được tính vào khoản tiết kiệm hàng tháng và tỷ lệ tiết kiệm.",
+        "successNotification": "Đã cập nhật danh mục tiết kiệm",
+        "errorNotification": "Không cập nhật được danh mục tiết kiệm"
+      },
+      "taxCategories": {
+        "label": "Tax categories",
+        "description": "Spending in these categories is shown as taxes in the money flow chart instead of as an expense. Subcategories are included.",
+        "successNotification": "Tax categories updated",
+        "errorNotification": "Failed to update tax categories"
+      },
+      "filterCategoriesByType": {
+        "label": "Match categories to transaction type",
+        "description": "The transaction form lists only income categories for income and all other categories for expenses. Search still finds every category.",
+        "successNotification": "Category list setting updated",
+        "errorNotification": "Failed to update the category list setting"
+      },
+      "incomeCategories": {
+        "label": "Income categories",
+        "description": "Categories that count as income. Subcategories are included.",
+        "successNotification": "Income categories updated",
+        "errorNotification": "Failed to update income categories"
+      },
+      "accountDropdowns": {
+        "defaultAccount": {
+          "label": "Tài khoản mặc định",
+          "description": "Được chọn sẵn khi bạn tạo giao dịch.",
+          "placeholder": "Không đặt mặc định — tài khoản đầu tiên"
+        },
+        "showArchived": {
+          "label": "Hiển thị tài khoản đã lưu trữ",
+          "description": "Khi tắt, các tài khoản đã lưu trữ sẽ bị ẩn khỏi danh sách chọn tài khoản."
+        },
+        "successNotification": "Đã cập nhật cài đặt danh sách tài khoản",
+        "errorNotification": "Không cập nhật được cài đặt danh sách tài khoản"
+      },
+      "showUpcomingTransactions": {
+        "label": "Hiển thị giao dịch sắp tới",
+        "description": "Ghim một mục ở đầu danh sách giao dịch, gồm các khoản thanh toán định kỳ quá hạn và sắp đến hạn trong 3 ngày tới.",
+        "successNotification": "Đã cập nhật cài đặt giao dịch sắp tới",
+        "errorNotification": "Không cập nhật được cài đặt giao dịch sắp tới"
+      },
+      "transactionFields": {
+        "label": "Trường giao dịch tùy chọn",
+        "description": "Các trường bổ sung hiển thị trong biểu mẫu giao dịch. Trường đã có giá trị sẽ luôn được hiển thị.",
+        "successNotification": "Đã cập nhật các trường giao dịch",
+        "errorNotification": "Đã xảy ra lỗi ngoài dự kiến. Cài đặt chưa được lưu",
+        "fields": {
+          "externalUrl": {
+            "label": "URL bên ngoài",
+            "description": "Liên kết giao dịch với trang đặt hàng, xác nhận đặt chỗ hoặc biên lai."
+          },
+          "externalReference": {
+            "label": "Mã tham chiếu bên ngoài",
+            "description": "Lưu số đơn hàng, số hóa đơn hoặc mã đặt chỗ cùng với giao dịch."
+          },
+          "originalAmount": {
+            "label": "Số tiền ban đầu",
+            "description": "Số tiền thực tế được tính bằng loại tiền tệ khác với loại tiền tệ của tài khoản."
+          },
+          "location": {
+            "label": "Vị trí",
+            "description": "Tọa độ GPS của nơi giao dịch mua hàng diễn ra. Lấy vị trí từ thiết bị hoặc nhập tọa độ."
+          }
+        },
+        "mapPicker": {
+          "label": "Chọn vị trí trên bản đồ",
+          "description": "Chọn vị trí giao dịch trên bản đồ và tìm kiếm địa chỉ. OpenStreetMap cung cấp dữ liệu bản đồ và chức năng tìm kiếm, đồng thời nhận địa chỉ IP của bạn khi bản đồ mở."
+        }
+      },
+      "defaultPaymentType": {
+        "label": "Loại thanh toán mặc định",
+        "description": "Được chọn sẵn khi bạn thêm giao dịch mới.",
+        "placeholder": "Chọn loại thanh toán",
+        "successNotification": "Đã cập nhật loại thanh toán mặc định",
+        "errorNotification": "Không cập nhật được loại thanh toán mặc định"
+      }
+    }
+  }
+}

@@ -1,0 +1,338 @@
+{
+  "pages": {
+    "importExport": {
+      "csvImport": {
+        "pageTitle": "Importer des opérations depuis un fichier CSV",
+        "pageDescription": "Importez votre fichier d'export CSV ou d'historique bancaire pour ajouter des opérations à votre compte.",
+        "stepper": {
+          "stepOf": "Étape {current} sur {total}",
+          "steps": {
+            "upload": "Fichier",
+            "map": "Colonnes",
+            "resolveAccounts": "Comptes",
+            "resolveCategories": "Catégories",
+            "review": "Vérification",
+            "results": "Terminé"
+          }
+        },
+        "steps": {
+          "uploadTitle": "Importer un fichier CSV",
+          "uploadDescription": "Sélectionnez votre fichier CSV pour commencer",
+          "mappingTitle": "Associer les colonnes",
+          "mappingDescription": "Faites correspondre les colonnes du CSV aux champs de l'opération",
+          "reviewTitle": "Vérifier les doublons",
+          "reviewDescription": "Rechercher les opérations en double",
+          "completeTitle": "Importation terminée",
+          "completeDescription": "Consulter le récapitulatif de l'importation"
+        },
+        "fileUpload": {
+          "stepTitle": "Importer un fichier CSV",
+          "description": "Importez un ou plusieurs fichiers CSV pour ajouter des opérations. Tous les fichiers doivent comporter les mêmes colonnes.",
+          "dragDrop": "Glissez-déposez votre fichier CSV ici",
+          "orBrowse": "ou cliquez pour parcourir",
+          "maxSize": "Taille maximale du fichier : 50 Mo",
+          "removeFile": "Supprimer le fichier",
+          "parsing": "Analyse en cours…",
+          "continueToMapping": "Continuer vers l'association",
+          "errors": {
+            "invalidFormat": "Format de fichier non valide. Veuillez importer un fichier CSV.",
+            "invalidFormatNamed": "{name} n'est pas un fichier CSV",
+            "fileTooLarge": "La taille du fichier ({size}) dépasse la limite autorisée (50 Mo)",
+            "parseFailed": "Échec de l'analyse du fichier. Veuillez vérifier le format et réessayer.",
+            "merge": {
+              "emptySelection": "Sélectionnez au moins un fichier CSV",
+              "fileReadFailed": "Impossible de lire « {file} »",
+              "fileEmpty": "« {file} » est vide",
+              "fileNoDataRows": "« {file} » ne contient aucune ligne de données",
+              "headerMismatch": "Les colonnes de « {file} » ne correspondent pas au premier fichier. Tous les fichiers doivent comporter les mêmes colonnes dans le même ordre.",
+              "forbiddenHeader": "« {file} » utilise un nom de colonne réservé",
+              "tooManyRows": "Les fichiers sélectionnés contiennent au total plus de {max} lignes. Supprimez des fichiers ou des lignes et réessayez.",
+              "parseError": "Impossible d'analyser « {file} ». Vérifiez qu'il s'agit d'un fichier CSV valide."
+            }
+          }
+        },
+        "columnMapping": {
+          "stepTitle": "Associer les colonnes",
+          "description": "Associez les colonnes de votre CSV aux champs requis",
+          "file": "Fichier",
+          "filesCount": "{count} fichier | {count} fichiers",
+          "totalRows": "Total des lignes",
+          "delimiter": "Délimiteur",
+          "extracting": "Extraction en cours...",
+          "detecting": "Détection des doublons…",
+          "nextExtract": "Suivant : Extraire les valeurs",
+          "continueToDuplicates": "Passer à la vérification des doublons"
+        },
+        "execute": {
+          "starting": "Démarrage de l'import…",
+          "progressCount": "{processed} / {total}",
+          "statusQueued": "En attente",
+          "statusRunning": "Import en cours…",
+          "statusCompleted": "Terminé",
+          "statusFailed": "Échec",
+          "failed": "Échec de l'import.",
+          "partialImportNote": "Certaines lignes ont peut-être déjà été importées avant cet échec. Réimporter le fichier pourrait créer des doublons."
+        },
+        "review": {
+          "stepTitle": "Vérifier l'import",
+          "description": "Vérifiez les données avant l'importation",
+          "totalRows": "Total des lignes",
+          "validRows": "Lignes valides",
+          "invalidRows": "Lignes non valides",
+          "duplicates": "Doublons",
+          "invalidRowsTitle": "Lignes non valides",
+          "rowNumber": "N° de ligne",
+          "errors": "Erreurs",
+          "rawData": "Données brutes",
+          "duplicatesTitle": "{count} doublons potentiels détectés",
+          "duplicatesHint": "Cochez les lignes que vous souhaitez importer malgré tout ; les doublons non cochés seront ignorés.",
+          "skip": "Ignorer",
+          "match": "Correspondance",
+          "csvTransaction": "Opération du CSV",
+          "existingTransaction": "Opération existante",
+          "importSummary": "Récapitulatif de l'import",
+          "willBeImported": "opérations seront importées.",
+          "invalidWillBeSkipped": "lignes non valides seront ignorées.",
+          "duplicatesWillBeSkipped": "doublons seront ignorés.",
+          "backToMapping": "Retour à la correspondance",
+          "importing": "Import en cours...",
+          "importButton": "Importer {count} opérations",
+          "unpriceableTitle": "Impossible d'évaluer {count} ligne(s) — aucun taux de change trouvé",
+          "unpriceableDescription": "Ces lignes utilisent une devise sans taux de change enregistré et ne peuvent pas être converties dans votre devise de référence. Vous devez les ignorer ou annuler l'import.",
+          "unpriceableWillBeSkipped": "non évaluables seront ignorées",
+          "currency": "Devise",
+          "skipAndImport": "Ignorer et importer",
+          "cancelImport": "Annuler l'import",
+          "noInvalidRows": "Aucune ligne non valide",
+          "noDuplicates": "Aucun doublon",
+          "expand": "Afficher toutes les données",
+          "collapse": "Masquer les données"
+        },
+        "results": {
+          "completeTitle": "Import terminé !",
+          "completeWithIssuesTitle": "Import terminé avec des erreurs",
+          "successDescription": "Toutes les opérations ont été importées avec succès.",
+          "partialDescription": "Certaines opérations n'ont pas pu être importées.",
+          "imported": "Importées",
+          "skippedDuplicates": "Ignorées (doublons)",
+          "accountsCreated": "Comptes créés",
+          "accountsSkipped": "Comptes ignorés",
+          "categoriesCreated": "Catégories créées",
+          "tagsCreated": "Étiquettes créées",
+          "payeesCreated": "Tiers créés",
+          "importErrors": "Erreurs d'import",
+          "rowNumber": "Ligne n°",
+          "error": "Erreur",
+          "batchIdLabel": "ID du lot",
+          "batchIdDescription": "Utilisez cet identifiant pour retrouver toutes les opérations de cet import.",
+          "viewTransactions": "Voir les opérations",
+          "startNewImport": "Nouvel import",
+          "skippedUnpriceable": "Ignorées (sans taux)",
+          "importFailed": "Échec de l'import des opérations. Veuillez réessayer.",
+          "successCallout": "{count} opérations importées avec succès",
+          "failed": "Échecs",
+          "noErrors": "Aucune erreur",
+          "balanceWarningTitle": "Les soldes des comptes peuvent ne pas être synchronisés",
+          "balanceWarningBody": "Les opérations ont été importées, mais certains soldes de comptes n'ont pas pu être actualisés par la suite. Vérifiez ces comptes et ajustez leurs soldes manuellement si nécessaire."
+        }
+      },
+      "columnMapping": {
+        "stepTitle": "Associer les colonnes",
+        "description": "Associez les colonnes de votre CSV aux champs requis",
+        "file": "Fichier",
+        "totalRows": "Total des lignes",
+        "delimiter": "Séparateur",
+        "detecting": "Détection des doublons…"
+      },
+      "common": {
+        "selectOption": "Sélectionner une option...",
+        "selectColumn": "Sélectionner une colonne...",
+        "noneOptional": "Aucun (facultatif)",
+        "selectAction": "Sélectionner une action..."
+      },
+      "transactionTypeMapping": {
+        "columnLabel": "Colonne type d'opération",
+        "incomeValuesLabel": "Valeurs pour les revenus",
+        "expenseValuesLabel": "Valeurs pour les dépenses",
+        "commaSeparatedHint": "Valeurs séparées par des virgules",
+        "uncoveredValues": "Ces valeurs de la colonne type ne sont pas encore associées à Revenu ou Dépense : {values}. Ajoutez chacune d'elles à une liste ci-dessus pour continuer.",
+        "selectColumn": "Sélectionner une colonne...",
+        "incomeValuesPlaceholder": "ex. Crédit, Dépôt, Revenu",
+        "expenseValuesPlaceholder": "ex. Débit, Retrait, Dépense",
+        "methodOptions": {
+          "amountSign": "Selon le signe du montant (négatif = dépense, positif = revenu)",
+          "dataSourceColumn": "Depuis une colonne (définir les valeurs)"
+        },
+        "amountSignInfo": "ℹ️ Les types d'opérations seront déterminés automatiquement : montants négatifs = dépenses, montants positifs = revenus"
+      },
+      "currencyMapping": {
+        "selectCurrency": "Sélectionner une devise...",
+        "methodOptions": {
+          "dataSourceColumn": "Mapper depuis une colonne CSV",
+          "existingCurrency": "Utiliser la même devise pour toutes les opérations"
+        }
+      },
+      "categoryMapping": {
+        "selectCategory": "Sélectionner une catégorie..."
+      },
+      "accountMapping": {
+        "selectAccount": "Sélectionner un compte..."
+      },
+      "accountAssignment": {
+        "title": "Attribution des comptes",
+        "howToAssign": "Comment souhaitez-vous attribuer les comptes ?",
+        "description": "Choisissez la manière dont les comptes doivent être attribués aux opérations importées",
+        "accountColumn": "Colonne du compte",
+        "columnDescription": "Sélectionnez la colonne CSV contenant les noms de compte",
+        "accountLabel": "Compte",
+        "singleAccountDescription": "Toutes les opérations importées seront attribuées à ce compte",
+        "mapOnNextStep": "Vous associerez chaque compte du fichier CSV à vos comptes existants à l'étape suivante",
+        "options": {
+          "mapToExisting": "Associer chaque compte CSV à un compte existant (étape suivante)",
+          "assignToSingle": "Tout attribuer à un seul compte existant"
+        }
+      },
+      "accountMappingTable": {
+        "title": "Mappage des comptes",
+        "description": "Associez les noms de comptes du CSV à vos comptes existants ou créez-en de nouveaux. Seuls les comptes avec la même devise seront affichés.",
+        "csvAccountName": "Nom du compte (CSV)",
+        "currency": "Devise",
+        "action": "Action",
+        "targetAccount": "Compte de destination",
+        "actions": {
+          "createNew": "Créer un nouveau compte",
+          "mapToExisting": "Associer à un compte existant"
+        },
+        "noMatchingCurrency": "Aucun compte disponible dans la devise correspondante ({currency})",
+        "willBeCreated": "Le nouveau compte « {name} » sera créé en {currency}",
+        "defaultCurrency": "par défaut",
+        "mappedTo": "associé à « {name} »",
+        "selectAccount": "Sélectionner un compte..."
+      },
+      "categoryMappingTable": {
+        "csvCategoryName": "Nom de la catégorie (CSV)"
+      },
+      "categoryAssignment": {
+        "options": {
+          "mapToExisting": "Associer chaque catégorie du CSV à une catégorie existante (à l'étape suivante)",
+          "createNew": "Créer de nouvelles catégories à partir des valeurs du CSV",
+          "assignToSingle": "Tout attribuer à une seule catégorie existante"
+        }
+      },
+      "tagMappingTable": {
+        "csvTagName": "Valeur de l'étiquette (CSV)"
+      },
+      "resolveValues": {
+        "selectAction": "Sélectionner une action",
+        "actions": {
+          "createNew": "Créer",
+          "linkExisting": "Lier à l'existant",
+          "skip": "Ignorer"
+        },
+        "quickActions": {
+          "mapExactMatches": "Associer les correspondances exactes",
+          "createNewForUnmatched": "Créer pour les éléments sans correspondance",
+          "skipAll": "Tout ignorer",
+          "reset": "Réinitialiser",
+          "tooltips": {
+            "mapExactMatchesAccounts": "Associe chaque compte du CSV à un compte existant portant le même nom et la même devise. Les comptes sans correspondance exacte restent inchangés.",
+            "mapExactMatchesCategories": "Associe chaque catégorie du CSV à une catégorie existante portant le même nom. Les catégories sans correspondance exacte restent inchangées.",
+            "mapExactMatchesTags": "Associe chaque étiquette du CSV à une étiquette existante portant le même nom. Les étiquettes sans correspondance exacte restent inchangées.",
+            "createNewForUnmatched": "Définit chaque ligne non liée à une entrée existante sur « Créer ». Les lignes déjà associées restent inchangées.",
+            "skipAll": "Ignore toutes les étiquettes : aucune ne sera importée ni créée.",
+            "reset": "Efface tous les choix et relance la mise en correspondance automatique."
+          }
+        },
+        "accounts": {
+          "sectionTitle": "Association des comptes",
+          "resolvedCount": "{resolved} sur {total} résolus",
+          "csvName": "Compte CSV",
+          "currency": "Devise",
+          "action": "Action",
+          "target": "Compte cible",
+          "selectTarget": "Sélectionner un compte",
+          "noMatchingCurrency": "Aucun compte ne correspond à la devise {currency}",
+          "willCreate": "Créera « {name} » ({currency})",
+          "empty": "Aucun compte trouvé dans le CSV",
+          "currentBalanceLabel": "Solde actuel",
+          "currentBalancePlaceholder": "0.00",
+          "currentBalanceHint": "Le solde actuel de ce compte — l'importation lui affectera exactement cette valeur. Laissez vide pour utiliser la somme des opérations importées.",
+          "skippedNote": "{count} compte(s) seront ignorés. Leurs opérations ne seront pas importées."
+        },
+        "categories": {
+          "sectionTitle": "Correspondance des catégories",
+          "csvName": "Catégorie CSV"
+        },
+        "tags": {
+          "sectionTitle": "Correspondance des étiquettes",
+          "resolvedCount": "{resolved} sur {total} résolues",
+          "csvName": "Étiquette CSV",
+          "action": "Action",
+          "target": "Étiquette cible",
+          "selectTarget": "Sélectionner une étiquette",
+          "willCreate": "Créera « {name} »",
+          "willSkip": "Sera ignorée",
+          "noExistingTags": "Aucune étiquette existante à associer",
+          "loadFailed": "Échec du chargement des étiquettes",
+          "empty": "Aucune étiquette trouvée dans le CSV"
+        },
+        "detectError": "Impossible de continuer. Veuillez réessayer.",
+        "extractFailed": "Impossible de charger les valeurs à faire correspondre. Veuillez revenir en arrière et réessayer.",
+        "retry": "Réessayer",
+        "footer": {
+          "back": "Retour",
+          "next": "Suivant"
+        }
+      },
+      "mapColumns": {
+        "columnsTitle": "Colonnes",
+        "assignmentsTitle": "Attributions",
+        "fieldHeader": "Champ",
+        "csvColumnHeader": "Colonne CSV",
+        "exampleHeader": "Données d'exemple",
+        "howToAssignHeader": "Mode d'attribution",
+        "usingHeader": "Valeur",
+        "optionalSuffix": "(facultatif)",
+        "choosePlaceholder": "Choisir…",
+        "alreadyMatchedSuffix": "(déjà associée)",
+        "amountSignNote": "Déterminé par le signe du montant",
+        "back": "Retour",
+        "next": "Suivant",
+        "missingHint": "Encore requis : {fields}",
+        "fields": {
+          "date": "Date",
+          "amount": "Montant",
+          "description": "Description",
+          "category": "Catégorie",
+          "account": "Compte",
+          "currency": "Devise",
+          "transactionType": "Type d'opération",
+          "payee": "Tiers"
+        },
+        "dateFormat": {
+          "label": "Format de date",
+          "placeholder": "Sélectionner le format de date",
+          "dayFirstOption": "Jour en premier — {example}",
+          "monthFirstOption": "Mois en premier — {example}",
+          "suggestedBadge": "Suggéré",
+          "isoDetected": "Format de date ISO détecté : les dates de cette colonne commencent par l'année, aucun choix jour/mois n'est requis.",
+          "previewLabel": "Aperçu",
+          "previewUnrecognized": "non reconnu",
+          "mismatchWarning": "{count} ligne ne correspond pas à ce format et sera marquée comme non valide. | {count} lignes ne correspondent pas à ce format et seront marquées comme non valides."
+        }
+      },
+      "importResults": {
+        "errorColumns": {
+          "row": "Ligne",
+          "error": "Erreur"
+        },
+        "rowErrors": {
+          "payeeDefaultTagsFailed": "L'opération a été importée, mais les étiquettes par défaut du tiers n'ont pas pu être appliquées.",
+          "accountUnresolved": "Le compte associé à cette ligne n'a pas pu être identifié, la ligne a donc été ignorée.",
+          "readBackFailed": "L'opération a été créée mais n'a pas pu être relue ; elle n'est donc pas incluse dans le nombre d'opérations importées.",
+          "generic": "Cette ligne n'a pas pu être importée."
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,896 @@
+{
+  "common": {
+    "processAlreadyLocked": "Proces synchronizácie pre „{{lockKey}}\" je už uzamknutý.",
+    "serviceTemporarilyUnavailable": "Služba je dočasne nedostupná. Skúste to znova, prosím.",
+    "jobInterruptedByServerUpdate": "Aktualizácia servera toto prerušila pred dokončením, preto sa nič nezmenilo."
+  },
+  "accounts": {
+    "groupNotFound": "Skupina alebo účet sa nenašli",
+    "accountNotFound": "Účet sa nenašiel!",
+    "accountUpdateFailed": "Aktualizácia účtu nebola úspešná",
+    "accountNoExternalId": "Účet nemá externé ID",
+    "accountNoExternalIdMonobank": "Účet nemá externé ID z Monobank",
+    "accountNoExternalIdEnableBanking": "Účet nemá externé ID z Enable Banking",
+    "accountNotFoundForTransaction": "Pre túto transakciu sa nenašiel účet",
+    "deleteBlockedByLoanPayments": "Tento účet má splátky pôžičky. Pred zmazaním účtu ich zmažte alebo preraďte.",
+    "deleteBlockedByTrashedLoanPayments": "Tento účet má splátky úveru v koši. Pred odstránením účtu ich natrvalo odstráňte z koša.",
+    "loanBalanceUseUpdateLoan": "Nesplatený zostatok pôžičky zmeňte na jej stránke, nie v nastaveniach účtu.",
+    "loanCategoryImmutable": "Kategóriu účtu pôžičky nemožno zmeniť.",
+    "dedicatedFlowCategoryNotAllowed": "Účty pôžičiek a vozidiel sa musia vytvárať cez svoje vyhradené rozhrania, nie cez všeobecné rozhranie účtov.",
+    "initialBalanceOnlySystem": "Počiatočný zostatok možno zmeniť len pri manuálnych účtoch",
+    "initialAndCurrentBalanceTogether": "Počiatočný zostatok a aktuálny zostatok nemožno zmeniť v rámci jednej požiadavky"
+  },
+  "balanceAdjustment": {
+    "defaultNote": "Úprava zostatku",
+    "accountNotFound": "Účet s ID „{{accountId}}\" sa nenašiel.",
+    "vehicleUseOverride": "Hodnotu vozidla možno zmeniť len na jeho stránke.",
+    "vehicleNegativeValue": "Hodnota vozidla nemôže byť záporná."
+  },
+  "accountGroups": {
+    "groupNotFound": "Skupina sa nenašla",
+    "groupUpdateFailed": "Aktualizácia skupiny nebola úspešná",
+    "parentGroupNotExist": "Nadradená skupina s týmto ID neexistuje.",
+    "parentGroupCycle": "Skupinu nemožno umiestniť do nej samej ani do niektorej z jej vlastných podskupín.",
+    "parentGroupDoesNotExist": "Nadradená skupina neexistuje.",
+    "accountNotFound": "Účet s týmto ID sa nenašiel.",
+    "accountGroupNotFound": "Skupina účtov s týmto ID sa nenašla."
+  },
+  "categories": {
+    "notFound": "Kategória so zadaným ID neexistuje.",
+    "systemCannotBeMoved": "Systémové kategórie nemožno presúvať.",
+    "parentNotFound": "Kategória s týmto nadradeným ID neexistuje.",
+    "systemParentForbidden": "Systémové kategórie nemožno použiť ako nadradené.",
+    "ownParent": "Kategória nemôže byť sama sebe nadradená.",
+    "underOwnSubcategory": "Kategóriu nemožno presunúť pod jej vlastnú podkategóriu.",
+    "nestingTooDeep": "Kategórie nemožno vnárať hlbšie než na {{max}} úrovní."
+  },
+  "transactions": {
+    "notFound": "Transakcia sa nenašla",
+    "missingRequiredFields": "Chýba jedno z povinných polí: destinationAmount, destinationAccountId.",
+    "destinationAmountRequiredCrossCurrency": "Pri zmene sumy medzimenového prevodu je destinationAmount povinné.",
+    "refundAndTransferNotAllowed": "Nie je možné vytvoriť transakciu, ktorá je zároveň vrátením platby aj prevodom",
+    "notOwnTransaction": "Na tomto zdieľanom účte môžete upravovať alebo mazať len transakcie, ktoré ste vytvorili vy.",
+    "sharedAccountChangeNotSupported": "Presun transakcie na iný účet je povolený len vlastníkovi účtu.",
+    "sharedTransfersNotSupported": "Prevody na zdieľanom účte zatiaľ nie sú podporované.",
+    "sharedRefundsNotSupported": "Prepájanie vrátení platby na zdieľanom účte zatiaľ nie je podporované.",
+    "cannotCreateWithParams": "Transakciu so zadanými parametrami sa nepodarilo vytvoriť",
+    "idCannotBeChanged": "ID nemožno zmeniť",
+    "editReadonlyFields": "Pokus o úpravu polí externého účtu, ktoré sú len na čítanie",
+    "changeTypeNotAllowed": "Zmena „transactionType\" pri nesystémovom účte nie je povolená",
+    "bothRefundFieldsNotAllowed": "Nemožno použiť súčasne „refundedByTxIds\" aj „refundsTargets\". Vyberte jedno z nich, prosím.",
+    "oppositeTransactionNotFound": "Opačnú transakciu na aktualizáciu sa nepodarilo nájsť",
+    "transactionIdNotExist": "Transakcia so zadaným id neexistuje!",
+    "notAuthorizedToEdit": "Nemáte oprávnenie upravovať túto transakciu.",
+    "cannotDeleteExternal": "Ručné mazanie externých transakcií nie je povolené",
+    "bulkDeleteLimitExceeded": "Naraz môžete zmazať najviac 500 transakcií. Zúžte výber a skúste to znova.",
+    "unexpectedDeleteIssue": "Pri pokuse o zmazanie transakcie nastal neočakávaný problém",
+    "linkSelfNotAllowed": "Pokus o prepojenie transakcie so sebou samou.",
+    "linkSameTypeNotAllowed": "Pokus o prepojenie s transakciou rovnakého „transactionType\".",
+    "linkSameAccountNotAllowed": "Pokus o prepojenie s transakciou na tom istom účte. Prepájať možno len medzi rôznymi účtami",
+    "linkAlreadyTransferNotAllowed": "Pokus o prepojenie transakcie, ktorá je už prevodom.",
+    "linkUnexpectedError": "Neočakávaná chyba. Požadované transakcie sa nepodarilo prepojiť.",
+    "linkCannotFind": "Základnú alebo opačnú transakciu sa nepodarilo nájsť",
+    "linkPlannedNotAllowed": "Plánovanú transakciu nemožno prepojiť ako prevod.",
+    "linkSplitTransactionNotAllowed": "Transakciu s rozdelením nemožno prepojiť ako prevod.",
+    "invalidTagIds": "Jedno alebo viac ID značiek je neplatných, alebo nepatrí tomuto používateľovi",
+    "cannotEditPortfolioLinkedTransaction": "Transakciu prepojenú s portfóliom nemožno upraviť. Najprv ju odpojte.",
+    "refFieldsRequiredForTransferToPortfolio": "Pri prevodoch do portfólia musia byť nastavené referenčná mena a referenčná suma.",
+    "vehicleAccountReadonly": "Tento účet sleduje vozidlo. Jeho hodnotu možno zmeniť len na stránke vozidla.",
+    "transferNatureChangeNotAllowed": "Druh existujúceho prevodu nemožno zmeniť. Najprv prevod odpojte a potom transakciu označte znova.",
+    "transferToLoanRequiresLoanDestination": "Splátka pôžičky vyžaduje, aby cieľom bol účet pôžičky.",
+    "transferToLoanRelinkRequired": "Cieľom tohto prevodu je účet pôžičky. Najprv prevod odpojte a potom výdavok označte ako splátku pôžičky.",
+    "loanPaymentOverpay": "Platba prevyšuje zostávajúci zostatok pôžičky.",
+    "loanAccountReadonly": "Účty pôžičiek možno meniť len zaznamenaním platby. Použite na to stránku pôžičky.",
+    "loanPaymentMustBeExpense": "Splátka pôžičky musí byť výdavok — príjmové transakcie nemožno previesť na pôžičku.",
+    "plannedMustBeStandalone": "Plánovaná transakcia musí byť jednoduchý príjem alebo výdavok — prevody, vrátenia platby a importované záznamy nie sú podporované.",
+    "plannedAmountMustBePositive": "Plánovaná transakcia musí mať sumu väčšiu než nula.",
+    "plannedAccountNotSupported": "Plánované transakcie nie sú dostupné na účtoch pôžičiek a vozidiel.",
+    "plannedOwnerOnly": "Plánované transakcie môže vytvárať len vlastník účtu.",
+    "plannedFlipNotAllowed": "Túto transakciu nemožno zmeniť na plánovanú.",
+    "plannedCreatorOnly": "Plánovanú transakciu môže upraviť alebo zmazať len jej tvorca.",
+    "manualOnConnectedAccount": "Na účet prepojený s bankou možno pridávať len plánované transakcie. Skutočné transakcie prichádzajú z vašej banky.",
+    "plannedUnflipOnConnectedAccount": "Tento plán je na účte prepojenom s bankou, preto ho vaša banka potvrdí automaticky. Ak ho už neočakávate, zmažte ho.",
+    "plannedCannotConfirmPayment": "Plánovaná transakcia nemôže potvrdiť platbu. Počkajte, kým bude potvrdená, a potom ju prepojte.",
+    "plannedCannotBeRefundLinked": "Plánovaná transakcia nemôže byť súčasťou prepojenia na vrátenie platby.",
+    "paymentLegsNotAllowed": "Medzi viacero účtov možno rozdeliť len bežný príjem alebo výdavok na vlastnom účte. Prevody, vrátenia platieb, plánované transakcie a transakcie rozdelené podľa kategórie nemožno.",
+    "inPaymentNotAllowed": "Táto transakcia je súčasťou platby z viacerých účtov. Najprv ju z platby odstráňte.",
+    "paymentLegInvalidAccount": "Každá nová časť musí byť na niektorom z vašich ostatných manuálnych účtov.",
+    "paymentLegDuplicateAccount": "Každá nová časť musí byť na inom účte.",
+    "paymentLegEditThroughMain": "Toto je súčasť platby z viacerých účtov. Upravte hlavnú transakciu, prosím.",
+    "paymentAmountRequired": "Pre každú časť v inej mene zadajte sumu v mene hlavnej transakcie.",
+    "paymentLinkNotAllowed": "Táto transakcia sa nedá prepojiť s platbou. Prepojiť možno len vlastný príjem alebo výdavok rovnakého typu – nie prevod, vrátenie platby, rozdelenú transakciu, nezaúčtovanú transakciu ani súčasť inej platby.",
+    "paymentLinkedAmountFixed": "Sumu prepojenej transakcie nemožno zmeniť.",
+    "paymentLinkedTypeMismatch": "Prepojené transakcie musia mať rovnaký typ ako platba. Najprv ich odpojte.",
+    "refunds": {
+      "wholeLinkWithPartials": "Prepojenie celého vrátenia platby nemožno kombinovať s čiastočnými prepojeniami",
+      "externalLinkWithOthers": "Vrátenie platby za nákup mimo aplikácie nemožno kombinovať s inými prepojeniami vrátenia",
+      "externalLinkWithAmount": "Vrátenie platby za transakciu mimo aplikácie nemôže mať čiastočnú sumu; vždy pokrýva celé vrátenie.",
+      "totalExceedsRefund": "Súčet súm prepojení vrátenia nemôže byť vyšší ako suma transakcie vrátenia",
+      "totalExceedsSplit": "Celková suma vrátenia nemôže byť vyššia ako suma rozdelenej časti",
+      "totalExceedsOriginal": "Celková suma vrátenia nemôže byť vyššia ako suma pôvodnej transakcie",
+      "refundOfRefund": "Transakciu typu „vrátenie platby“ nemožno vrátiť",
+      "duplicateLink": "Toto vrátenie platby je už prepojené s touto transakciou"
+    },
+    "splits": {
+      "splitsOnTransfer": "K prevodovým transakciám nemožno pridať rozdelenie",
+      "splitLimitExceeded": "Povolený je najviac {{max}} rozdelení na transakciu",
+      "missingCategory": "Pre každé rozdelenie je povinná kategória",
+      "missingAmount": "Pre každé rozdelenie je povinná suma",
+      "amountNegative": "Suma rozdelenia nemôže byť záporná",
+      "amountTooSmall": "Suma rozdelenia musí byť aspoň {{min}} (systémové minimum)",
+      "noteTooLong": "Poznámka k rozdeleniu nesmie presiahnuť {{max}} znakov",
+      "invalidCategory": "Kategória s ID {{categoryId}} sa nenašla, alebo nepatrí používateľovi",
+      "duplicateCategory": "Každé rozdelenie musí použiť inú kategóriu",
+      "exceedTotal": "Celková suma rozdelenia ({{total}}) prevyšuje sumu transakcie ({{transactionAmount}})",
+      "invalidData": "Neplatné údaje rozdelenia",
+      "splitNotFound": "Rozdelenie sa nenašlo",
+      "cannotDeleteWithRefunds": "Rozdelenie, na ktoré mieria vrátenia platby, nemožno zmazať"
+    },
+    "reconciliation": {
+      "systemNotAllowed": "Zlučovať alebo odstraňovať možno len transakcie prepojené s bankou.",
+      "plannedNotAllowed": "Plánované transakcie nemožno zlučovať ani odstraňovať.",
+      "transferNotAllowed": "Prepojené prevody nemožno zlučovať ani odstraňovať. Najprv prevod odpojte.",
+      "refundNotAllowed": "Transakcie prepojené s vrátením platby nemožno zlučovať ani odstraňovať. Najprv vrátenie platby odpojte.",
+      "survivorPending": "Ako ponechanú vyberte zaúčtovanú transakciu. Ak by zostala čakajúca, natrvalo by tak aj ostala.",
+      "survivorNotSelected": "Ponechaná transakcia musí byť jednou z vybraných transakcií.",
+      "differentAccounts": "Zlučovať možno len transakcie z rovnakého účtu.",
+      "budgetConflict": "Vybrané transakcie patria k rôznym sledovačom. Pred zlúčením zjednoťte ich sledovače.",
+      "groupConflict": "Vybrané transakcie patria k rôznym skupinám transakcií. Pred zlúčením zjednoťte ich skupiny.",
+      "subscriptionConflict": "Vybrané transakcie sú prepojené s rôznymi predplatnými. Pred zlúčením zjednoťte ich predplatné.",
+      "accountDisconnected": "Nemožno obnoviť: účet už nie je pripojený k banke.",
+      "bankCheckUnsupported": "Overenie v banke je dostupné len pre účty Enable Banking.",
+      "notPending": "Ako zaúčtované možno ponechať len čakajúce transakcie.",
+      "stuckPendingNotification": {
+        "title": "Niektoré platby kartou sa ešte nezúčtovali",
+        "message_one": "1 transakcia čaká už viac než týždeň. Overte ju v banke, aby bol váš zostatok presný.",
+        "message_other": "{{count}} transakcií čaká už viac než týždeň. Overte ich v banke, aby bol váš zostatok presný."
+      }
+    },
+    "trash": {
+      "paymentNotTrashable": "Najprv ju odstráňte z platby, aby ju bolo možné odstrániť.",
+      "portfolioNotTrashable": "Najprv ju odpojte od portfólia, aby ju bolo možné odstrániť.",
+      "ventureNotTrashable": "Najprv ju odpojte od venture, aby ju bolo možné odstrániť.",
+      "accountTypeChanged": "Túto transakciu nemožno obnoviť, pretože sa zmenil typ jej účtu.",
+      "loanPaymentLegMissing": "Túto splátku úveru nemožno obnoviť, pretože jej druhá strana bola odstránená."
+    }
+  },
+  "budgets": {
+    "budgetNotFound": "Sledovač sa nenašiel",
+    "lineNotFound": "Riadok sledovača sa nenašiel",
+    "onlyOwnerCanDuplicate": "Tento sledovač môže duplikovať len jeho vlastník",
+    "someTransactionIdsInvalid": "Niektoré ID transakcií sú neplatné",
+    "transactionsAddedSuccessfully": "Transakcie boli úspešne pridané",
+    "someCategoryIdsInvalid": "Niektoré ID kategórií sú neplatné, alebo neexistujú",
+    "startDateAfterEndDate": "Dátum začiatku musí byť pred dátumom konca alebo sa s ním zhodovať",
+    "rulesNeedCategoryOrTag": "Vyberte aspoň jednu kategóriu alebo značku, aby sa transakcie pridávali automaticky.",
+    "smartTracking": {
+      "ownerOnly": "Inteligentné sledovanie môže zmeniť len vlastník sledovača.",
+      "descriptionRequired": "Ak chcete zapnúť inteligentné sledovanie, opíšte, na čo tento sledovač slúži.",
+      "startDateRequired": "Ak chcete zapnúť inteligentné sledovanie, nastavte dátum začiatku.",
+      "scanRunning": "Pre tento sledovač prebieha priraďovanie. Skúste to znova, keď sa dokončí.",
+      "suggestionNotFound": "Návrh sa nenašiel.",
+      "suggestionAlreadyResolved": "Tento návrh je už {{status}}."
+    }
+  },
+  "budgetPlans": {
+    "planNotFound": "Plán rozpočtu sa nenašiel.",
+    "activePlanExists": "Už máte aktívny plán rozpočtu.",
+    "baseCurrencyChanged": "Vaša základná mena sa zmenila v čase, keď bol tento plán rozpočtu zmazaný, preto ho už nemožno obnoviť.",
+    "epochInFuture": "Plán rozpočtu nemôže začínať v budúcnosti.",
+    "epochTooFarBack": "Plán rozpočtu nemôže začínať viac než {{max}} období pred dneškom.",
+    "intervalOutOfRange": "Tento interval je pre túto periodicitu príliš dlhý.",
+    "secondAnchorDayRequired": "Plán s periodicitou dvakrát mesačne potrebuje druhý deň v mesiaci.",
+    "secondAnchorDayNotAllowed": "Druhý deň v mesiaci sa vzťahuje len na plány s periodicitou dvakrát mesačne.",
+    "semiMonthlyDaysTooClose": "Oba dni plánu s periodicitou dvakrát mesačne musia byť od seba vzdialené aspoň 10 dní.",
+    "accountNotFound": "Jeden z vybraných účtov sa nenašiel.",
+    "lineNotFound": "Riadok rozpočtu sa nenašiel.",
+    "goalNotFound": "Cieľ rozpočtu sa nenašiel.",
+    "lineAlreadyArchived": "Tento riadok rozpočtu je už archivovaný.",
+    "lineNotArchived": "Tento riadok rozpočtu nie je archivovaný.",
+    "activeFromNotPeriodStart": "Dátum začiatku musí byť začiatkom minulého alebo aktuálneho obdobia tohto plánu.",
+    "effectiveFromOutsideLifetime": "Dátum účinnosti musí byť začiatkom minulého alebo aktuálneho obdobia v rámci trvania tohto riadku.",
+    "categoryNotFound": "Jedna z kategórií neexistuje.",
+    "lineCategoriesOverlap": "Inú z týchto kategórií v danom období už pokrýva iný riadok tohto plánu.",
+    "periodNotFound": "Obdobie rozpočtu sa nenašlo.",
+    "periodOutsideLifetime": "Toto obdobie je mimo trvania riadku rozpočtu.",
+    "groupNotFound": "Skupina riadkov sa nenašla.",
+    "groupNotEmpty": "Pred zmazaním tejto skupiny presuňte alebo archivujte jej riadky.",
+    "layoutInvalid": "Rozloženie musí obsahovať každú skupinu plánu práve raz a každý riadok plánu najviac raz.",
+    "openEndedGoalCannotSnooze": "Cieľ bez konečného dátumu nemožno odložiť.",
+    "zeroSumNeedsPool": "Udržanie hodnoty Pripravené na priradenie na 0 vyžaduje plán financovaný zo spoločného fondu.",
+    "suggestedGroups": {
+      "bills": "Účty",
+      "everyday": "Každodenné",
+      "life": "Život"
+    }
+  },
+  "tags": {
+    "tagNotFound": "Značka sa nenašla",
+    "tagNameAlreadyExists": "Značka s týmto názvom už existuje",
+    "someTransactionIdsInvalid": "Niektoré ID transakcií sú neplatné",
+    "transactionsAddedSuccessfully": "Transakcie boli úspešne pridané k značke",
+    "transactionsRemovedSuccessfully": "Transakcie boli úspešne odstránené zo značky"
+  },
+  "tagReminders": {
+    "reminderNotFound": "Pripomienka značky sa nenašla",
+    "reminderAlreadyExists": "Pre túto značku už existuje rovnaká pripomienka",
+    "amountThresholdRequired": "Pri pripomienkach hraničnej sumy je hraničná suma povinná",
+    "maxRemindersReached": "Dosiahnutý maximálny počet pripomienok (50)",
+    "notifications": {
+      "thresholdExceeded": {
+        "title": "Upozornenie na výdavky pri značke",
+        "message": "Vaše výdavky pri „{{tagName}}\" ({{actualAmount}}) prekročili hranicu {{thresholdAmount}}"
+      },
+      "existenceCheck": {
+        "title": "Súhrn aktivity pri značke",
+        "message": "Máte {{count}} transakcií so značkou „{{tagName}}\""
+      }
+    }
+  },
+  "defaultTags": {
+    "want": {
+      "name": "Chcem",
+      "description": "Nákupy navyše a výdavky podľa uváženia"
+    },
+    "need": {
+      "name": "Potrebujem",
+      "description": "Dôležité, ale nie naliehavé výdavky"
+    },
+    "must": {
+      "name": "Musím",
+      "description": "Nevyhnutné výdavky, ktorým sa nedá vyhnúť"
+    }
+  },
+  "investments": {
+    "portfolioNotFound": "Portfólio sa nenašlo",
+    "portfolioIdRequired": "ID portfólia je povinné.",
+    "holdingNotFound": "Pozícia sa nenašla",
+    "holdingNotFoundAddSecurity": "Pozícia sa nenašla. Najprv pridajte cenný papier do portfólia, prosím.",
+    "holdingNotFoundForRecalculation": "Pozícia na prepočet sa nenašla.",
+    "securityAlreadyInPortfolio": "Tento cenný papier už je v portfóliu.",
+    "securityNotFound": "Cenný papier sa nenašiel.",
+    "securitySearchResultNotRecognized": "Výsledok vyhľadávania cenného papiera nie je rozpoznaný, alebo vypršal. Vyhľadajte cenný papier znova.",
+    "currencyForSecurityNotFound": "Mena pre cenný papier sa nenašla.",
+    "currencyNotFound": "Mena sa nenašla",
+    "transactionNotFound": "Investičná transakcia sa nenašla",
+    "userBaseCurrencyNotFound": "Základná mena používateľa sa nenašla",
+    "insufficientSharesToSell": "Nedostatok akcií na predaj. Po tejto aktualizácii by ste mali {{adjustedQuantity}} akcií, no pokúšate sa predať {{sellQuantity}} akcií.",
+    "sourceAndDestinationMustDiffer": "Zdrojové a cieľové portfólio musia byť rôzne",
+    "transferAmountMustBePositive": "Suma prevodu musí byť väčšia než nula",
+    "sourcePortfolioNotFound": "Zdrojové portfólio sa nenašlo",
+    "destinationPortfolioNotFound": "Cieľové portfólio sa nenašlo",
+    "sourceAccountNotFound": "Zdrojový účet sa nenašiel",
+    "destinationAccountNotFound": "Cieľový účet sa nenašiel",
+    "cannotDeleteHoldingWithActivePosition": "Pozíciu s aktívnym podielom nemožno zmazať. Najprv predajte alebo previeďte všetky akcie, prosím.",
+    "transactionAlreadyTransfer": "Transakcia je už označená ako prevod a nemožno ju prepojiť s portfóliom.",
+    "transactionAlreadyLinkedToPortfolio": "Transakcia je už prepojená s prevodom do portfólia.",
+    "linkedTransactionMustBelongToDestinationAccount": "Prepojená transakcia musí patriť do cieľového účtu.",
+    "transactionAlreadyLinkedToVenture": "Transakcia je už prepojená s obchodom v rizikovom kapitáli",
+    "portfolioTransferNotFound": "Prevod do portfólia sa nenašiel",
+    "exchangeCurrenciesMustDiffer": "Meny pri výmene musia byť rôzne",
+    "importNoTransactionsFound": "V súbore sa nenašli žiadne transakcie.",
+    "import": {
+      "tokenLimitExceededSuggestion": "Rozdeľte nahrávaný súbor na menšie časti, alebo použite model s väčším kontextovým oknom.",
+      "extractFailed": "Investičné transakcie z tohto súboru sa nepodarilo vyťažiť. Skúste to znova, prosím.",
+      "csvColumnNotFound": "Stĺpec „{{column}}” sa v hlavičkách CSV nenašiel."
+    },
+    "unrealizedLossAlert": {
+      "title_one": "{{count}} pozícia prekročila vaše upozornenie na stratu",
+      "title_other": "{{count}} pozícií prekročilo vaše upozornenie na stratu"
+    }
+  },
+  "landingFaq": {
+    "unavailable": "Asistent je momentálne nedostupný. Skúste to znova neskôr, alebo napíšte na support@moneymatter.app."
+  },
+  "loans": {
+    "loanNotFound": "Pôžička sa nenašla.",
+    "createAccountFailed": "Účet pôžičky sa nepodarilo vytvoriť",
+    "deleteBlockedByPayments": "Táto pôžička má zaznamenané platby. Pred zmazaním pôžičky zmažte platby.",
+    "linkPaymentsInvalidSelection": "Niektoré vybrané transakcie nemožno prepojiť s touto pôžičkou.",
+    "linkPaymentsOverpayConfirmation": "Tieto platby prevyšujú zostávajúci zostatok. Potvrdením sa pôžička splatí; rozdiel sa nevráti späť.",
+    "unlinkPaymentNotFound": "Splátka pôžičky sa nenašla.",
+    "unlinkPaymentInvalidSelection": "Táto transakcia nie je splátkou tejto pôžičky.",
+    "correctionAsOfBeforeStartDate": "currentBalanceAsOf nemôže byť skorší než dátum vzniku pôžičky",
+    "correctionOverpay": "Upravený zostatok by preplatil pôžičku o {{overpayAmount}}: platby v celkovej výške {{paymentsTotal}} sú datované na/po {{asOfDate}}"
+  },
+  "errors": {
+    "connectionNotFound": "Pripojenie sa nenašlo",
+    "connectionNotFoundOrNotYours": "Pripojenie sa nenašlo alebo vám nepatrí",
+    "providerNoReauthorization": "Poskytovateľ {{providerType}} nepodporuje opätovnú autorizáciu",
+    "providerNotFoundInRegistry": "Poskytovateľ {{providerType}} sa v registri nenašiel",
+    "connectionIdNotFound": "Pripojenie poskytovateľa bankových údajov {{connectionId}} sa nenašlo",
+    "accountIdNotFound": "Účet {{accountId}} sa nenašiel",
+    "providerTypeMismatch": "Pripojenie {{connectionId}} je pre poskytovateľa {{actualType}}, nie {{expectedType}}",
+    "providerAlreadyRegistered": "Poskytovateľ {{providerType}} je už zaregistrovaný. Duplicitných poskytovateľov nemožno registrovať.",
+    "providerNotRegistered": "Poskytovateľ {{providerType}} nie je zaregistrovaný. Dostupní poskytovatelia: {{available}}",
+    "unexpected": "Neočakávaná chyba."
+  },
+  "validation": {
+    "dateInvalid": "„date\" je neplatný dátum."
+  },
+  "urlGuard": {
+    "invalidUrl": "Toto nie je platná URL adresa.",
+    "unsupportedProtocol": "Povolené sú len URL adresy http:// a https://.",
+    "credentialsInUrlNotAllowed": "URL adresa nesmie obsahovať používateľské meno ani heslo. Namiesto toho použite pole API kľúča.",
+    "privateAddressBlocked": "{{host}} smeruje na súkromnú alebo vyhradenú sieťovú adresu, čo nie je povolené.",
+    "hostnameNotResolvable": "{{host}} sa nepodarilo preložiť. Skontrolujte adresu, či neobsahuje preklep.",
+    "redirectNotAllowed": "Rozhranie odpovedalo presmerovaním. Namiesto toho zadajte konečnú URL adresu.",
+    "hostnameLookupUnavailable": "{{host}} sa momentálne nepodarilo overiť. Skúste to znova o chvíľu, prosím."
+  },
+  "bankDataProviders": {
+    "reauthorizationStarted": "Opätovná autorizácia spustená. Dokončite proces OAuth, prosím.",
+    "connectionEstablished": "Pripojenie bolo úspešne nadviazané",
+    "failedToFetchBanks": "Banky sa nepodarilo načítať. Skontrolujte svoje prístupové údaje a kód krajiny, prosím.",
+    "failedToFetchCountries": "Krajiny sa nepodarilo načítať. Skontrolujte svoje prístupové údaje, prosím.",
+    "accountNotLinkedToConnection": "Účet sa nenašiel, alebo nie je prepojený s týmto pripojením",
+    "accountAlreadyConnectedToAnotherConnection": "Účet „{{account}}\" je už pripojený cez „{{connection}}\". Najprv ho tam odpojte.",
+    "cannotLoadBeforeLinkDate": "Transakcie spred dátumu prepojenia účtu ({{linkedAt}}) sa nedajú načítať. Tento účet bol prepojený stratégiou „len dopredu\", aby sa predišlo duplicite údajov.",
+    "dateRangeExceedsLimit": "Rozsah dátumov nesmie presiahnuť 1 rok.",
+    "fromAfterTo": "Dátum „from\" musí byť pred dátumom „to\"",
+    "fromMustBeValidDate": "„from\" musí byť platný textový reťazec dátumu",
+    "toMustBeValidDate": "„to\" musí byť platný textový reťazec dátumu",
+    "reconciliationOnlyForEnableBanking": "Zosúladenie je dostupné len pre pripojenia Enable Banking",
+    "transactionLoadingQueued": "Načítavanie transakcií zaradené do radu. Odhadovaný čas: {{minutes}} min",
+    "noValidAccountIds": "Žiadne z vybraných ID účtov nie je platné",
+    "accountCurrencyNotSupported": "Mena účtu „{{currency}}\" nie je týmto systémom podporovaná.",
+    "periodLoadNotSupported": "Tento poskytovateľ nepodporuje načítavanie transakcií za vlastné obdobie.",
+    "transactionsLoadedCount": "Načítaných {{count}} transakcií.",
+    "transactionsAllDuplicates": "Za toto obdobie sa našlo {{count}} transakcií — všetky boli už importované.",
+    "transactionsNoneInPeriod": "Poskytovateľ za toto obdobie nevrátil žiadne transakcie.",
+    "apiError": "Chyba {{provider}} API: {{message}}",
+    "simplefinUnreachable": "SimpleFIN je dočasne nedostupný. Skúste to znova neskôr, prosím.",
+    "currencySelectionRequired": "Účet „{{account}}\" nemá od banky uvedenú menu — pred pripojením mu menu vyberte.",
+    "providerNotAvailable": "Tento bankový poskytovateľ nie je pre nové pripojenia dostupný.",
+    "monobank": {
+      "invalidCredentialsFormat": "Neplatný formát prístupových údajov pre Monobank",
+      "invalidApiToken": "Neplatný API token pre Monobank",
+      "rateLimitExceeded": "Prekročený limit požiadaviek API Monobank. Skúste to znova o minútu, prosím.",
+      "accountNotFound": "Účet {{accountExternalId}} sa v Monobank nenašiel",
+      "accountReconnectRequired": "Tento účet už v Monobank nie je dostupný. Ak chcete obnoviť synchronizáciu, pripojte svoje pripojenie Monobank znova, prosím.",
+      "webhookNotImplemented": "handleWebhook pre Monobank zatiaľ nie je implementovaný",
+      "unknownCurrencyCode": "Neznámy kód meny: {{numericCode}}",
+      "geoBlocked": "Monobank blokuje požiadavky z IP adresy tohto servera. Vypnite VPN, alebo použite ukrajinskú IP adresu.",
+      "geoBlockedProduction": "Synchronizácia s Monobank je dočasne nedostupná. Boli sme upozornení a pracujeme na tom. Ak je to naliehavé, kontaktujte podporu, prosím."
+    },
+    "enableBanking": {
+      "invalidCredentialsFormat": "Neplatný formát prístupových údajov pre Enable Banking",
+      "invalidRsaKey": "Neplatný formát súkromného RSA kľúča",
+      "invalidCredentials": "Neplatné prístupové údaje pre Enable Banking",
+      "authUrlNotFound": "Autorizačná URL adresa pre toto pripojenie sa nenašla",
+      "invalidOAuthState": "Neplatný parameter stavu OAuth",
+      "oAuthStateExpired": "Stav OAuth vypršal, alebo je neplatný",
+      "oAuthAuthorizationFailed": "Autorizácia OAuth zlyhala: {{error}}",
+      "invalidStoredCredentials": "Neplatné uložené prístupové údaje",
+      "bankInfoNotFound": "Informácie o banke sa v metaúdajoch pripojenia nenašli",
+      "noActiveSession": "Žiadna aktívna relácia. Najprv dokončite proces OAuth, prosím.",
+      "noActiveSessionGeneric": "Žiadna aktívna relácia",
+      "noBalanceInfo": "Nie sú dostupné žiadne informácie o zostatku",
+      "authenticationFailed": "Overenie v Enable Banking zlyhalo: {{message}}",
+      "sessionExpiredReconnect": "Platnosť bankovej relácie vypršala. Ak chcete pokračovať v synchronizácii, pripojte svoj bankový účet znova, prosím.",
+      "apiBadRequestError": "Chyba API Enable Banking: {{message}}",
+      "apiGeneralError": "Chyba API Enable Banking: {{message}}",
+      "rateLimitExceeded": "Dosiahnutý limit požiadaviek banky. Niektoré banky povoľujú len niekoľko požiadaviek na údaje za deň a limit obnovujú o polnoci. Skúste to znova neskôr, prosím.",
+      "redirectUriNotAllowed": "Vašej aplikácii Enable Banking chýba požadovaná presmerovacia URL adresa. Prihláste sa do portálu Enable Banking, upravte svoju aplikáciu a pridajte túto adresu medzi povolené presmerovacie URL adresy: {{redirectUrl}}"
+    },
+    "lunchflow": {
+      "invalidCredentialsFormat": "Neplatný formát prístupových údajov pre LunchFlow. Zadajte platný API kľúč, prosím.",
+      "invalidApiKey": "Neplatný API kľúč pre LunchFlow. Skontrolujte svoje prístupové údaje, prosím.",
+      "accountNoExternalId": "Účet nemá externé ID pre synchronizáciu s LunchFlow.",
+      "accountNotFound": "Účet LunchFlow sa nenašiel."
+    },
+    "akahu": {
+      "invalidCredentialsFormat": "Nesprávny formát prihlasovacích údajov Akahu. Vyžaduje sa User Access Token a App ID Token.",
+      "invalidTokens": "Nesprávne tokeny Akahu. Skontrolujte User Access Token a App ID Token na stránke vašej aplikácie Akahu.",
+      "accountNoExternalId": "Účet nemá externé ID pre synchronizáciu s Akahu.",
+      "accountNotFound": "Akahu účet sa nenašiel.",
+      "rateLimited": "Akahu momentálne obmedzuje počet požiadaviek. Skúste to o chvíľu znova, prosím.",
+      "missingCurrency": "Akahu nevrátilo pre tento účet žiadnu menu."
+    },
+    "simplefin": {
+      "invalidCredentialsFormat": "Neplatný formát prístupových údajov pre SimpleFIN.",
+      "invalidSetupToken": "Neplatný alebo už použitý setup token pre SimpleFIN. Vygenerujte nový v SimpleFIN Bridge a skúste to znova.",
+      "invalidAccessUrl": "Neplatná alebo neautorizovaná prístupová URL adresa SimpleFIN.",
+      "claimFailed": "Prístupovú URL adresu SimpleFIN sa nepodarilo získať zo setup tokenu.",
+      "accountNotFound": "Účet SimpleFIN sa nenašiel.",
+      "accountNoExternalId": "Tento účet nie je prepojený s účtom SimpleFIN.",
+      "accountAbsentFromResponse": "SimpleFIN pri poslednej synchronizácii nevrátil pre tento účet žiadne údaje. Účet mohol byť v banke deaktivovaný – skúste synchronizovať znova, alebo sa pripojte znova, ak problém pretrváva.",
+      "rateLimited": "SimpleFIN práve prijíma príliš veľa požiadaviek. Chvíľu počkajte a skúste to znova, prosím."
+    },
+    "walutomat": {
+      "invalidCredentialsFormat": "Neplatný formát prístupových údajov pre Walutomat. API kľúč aj súkromný kľúč sú povinné.",
+      "invalidApiKey": "Neplatný API kľúč alebo súkromný kľúč pre Walutomat.",
+      "accountNoExternalId": "Účet Walutomat nemá externé ID.",
+      "walletNotFound": "Peňaženka Walutomat pre menu {{currency}} sa nenašla"
+    }
+  },
+  "csvImport": {
+    "headersCannotBeParsed": "Hlavičky sa nepodarilo spracovať",
+    "csvFileEmpty": "Súbor CSV je prázdny",
+    "csvFileNoHeaders": "Súbor CSV nemá hlavičky",
+    "csvFileMalformed": "Súbor CSV sa nepodarilo spracovať. Skontrolujte nespárované úvodzovky alebo neočakávaný oddeľovač, alebo skúste súbor znova exportovať.",
+    "csvFileTooManyRows": "Súbor CSV prekračuje maximálny povolený počet {{max}} riadkov.",
+    "csvFileForbiddenHeader": "Súbor CSV obsahuje nepovolený názov hlavičky.",
+    "invalidDateFormat": "Neplatný formát dátumu: „{{dateStr}}\". Očakáva sa formát ISO (RRRR-MM-DD).",
+    "invalidAmount": "Neplatná suma: „{{amountStr}}\". Očakáva sa číselná hodnota.",
+    "accountNameEmpty": "Názov účtu je prázdny",
+    "currencyCodeEmpty": "Kód meny je prázdny",
+    "unknownTransactionType": "Neznáma hodnota typu transakcie: „{{typeValue}}\"",
+    "dateColumnNotFound": "Stĺpec dátumu „{{columnName}}\" sa v CSV nenašiel",
+    "amountColumnNotFound": "Stĺpec sumy „{{columnName}}\" sa v CSV nenašiel",
+    "invalidDefaultCurrency": "Neplatný kód predvolenej meny: „{{defaultCurrency}}\"",
+    "payeeColumnNotFound": "Stĺpec protistrany „{{column}}\" sa v hlavičkách CSV nenašiel",
+    "currencyColumnNotFound": "Stĺpec meny „{{columnName}}” sa v CSV nenašiel",
+    "invalidCurrencyRow": "Riadok {{row}}: neplatná mena „{{currency}}”",
+    "andMoreRows": "…a {{count}} ďalších",
+    "invalidCurrencyCodes": "Nájdené neplatné kódy mien:\n{{rows}}",
+    "unknownCurrencyCodes": "Neznáme kódy mien v CSV: {{codes}}. Tieto meny nie sú systémom podporované.",
+    "currencyMismatchWarning": "Váš CSV súbor obsahuje transakcie v {{currencies}}, no vybraný účet používa {{accountCurrency}}. Všetky transakcie sa importujú v mene {{accountCurrency}}.",
+    "currencyNotSupported": "Mena „{{currency}}” nie je systémom podporovaná.",
+    "accountColumnNotFound": "Stĺpec účtu „{{columnName}}” sa v CSV nenašiel",
+    "categoryColumnNotFound": "Stĺpec kategórie „{{columnName}}” sa v CSV nenašiel",
+    "tagColumnNotFound": "Stĺpec značky „{{columnName}}” sa v CSV nenašiel",
+    "transactionTypeColumnNotFound": "Stĺpec typu transakcie „{{columnName}}” sa v CSV nenašiel",
+    "accountMultipleCurrencies": "Účet „{{accountName}}” má transakcie vo viacerých menách: {{currencies}}. Systémové účty môžu mať len jednu menu.",
+    "transactionTypeValuesNotCovered": "Stĺpec typu transakcie obsahuje hodnoty, ktoré nepokrývajú zoznamy príjmov/výdavkov: {{uncovered}}. Nájdené hodnoty: {{found}}",
+    "selectedAccountNotFound": "Vybraný účet sa nenašiel, alebo vám nepatrí.",
+    "selectedCategoryNotFound": "Vybraná kategória sa nenašla, alebo vám nepatrí.",
+    "linkedAccountCurrencyMismatch": "Na prepojenie s existujúcim účtom sa musia zhodovať meny: {{mismatches}}. Prepojte účet s rovnakou menou, alebo vytvorte nový."
+  },
+  "ofxImport": {
+    "noFileUploaded": "Nebol nahraný žiadny súbor. Odošlite súbor OFX alebo QFX ako surové telo požiadavky.",
+    "errors": {
+      "emptyFile": "Súbor OFX je prázdny.",
+      "xmlDeclarationIncomplete": "Deklarácia XML súboru OFX je neúplná.",
+      "headerMissing": "Hlavička OFX chýba, alebo je príliš veľká.",
+      "headerFieldMissing": "V hlavičke OFX chýba pole {{field}}.",
+      "invalidVersion": "Verzia OFX je neplatná.",
+      "unsupportedData": "Typ údajov OFX {{data}} nie je podporovaný.",
+      "compressedFile": "Komprimované súbory OFX nie sú podporované.",
+      "prohibitedDeclaration": "Deklarácie DTD a entít v OFX nie sú podporované.",
+      "markupIncomplete": "Značkovanie OFX je neúplné.",
+      "tagsMismatch": "Značky XML v OFX sa nezhodujú.",
+      "unclosedTags": "XML súboru OFX má neuzavreté značky.",
+      "missingRoot": "Koreňový prvok OFX chýba.",
+      "malformedOfx": "Dokument OFX sa nepodarilo spracovať.",
+      "unsupportedEncoding": "Kódovanie OFX {{encoding}}/{{charset}} nie je podporované.",
+      "fileTooLarge": "Súbor OFX je väčší než 10 MB.",
+      "emptyBody": "Súbor OFX nemá telo.",
+      "invalidDate": "Neplatný dátum OFX: {{value}}",
+      "invalidAmount": "Neplatná suma OFX: {{value}}",
+      "textTooLong": "Hodnota poľa OFX {{field}} presahuje {{max}} znakov.",
+      "unsupportedMessageSet": "Súbor neobsahuje žiadne podporované bankové ani kreditné výpisy.",
+      "missingAccount": "Sekcia {{tag}} chýba.",
+      "missingAccountId": "ID zdrojového účtu chýba.",
+      "correctionRecord": "Opravné záznamy OFX nie sú podporované.",
+      "missingAmount": "Suma transakcie OFX chýba.",
+      "missingDate": "Dátum transakcie OFX chýba.",
+      "invalidCurrency": "Mena výpisu chýba, alebo je neplatná.",
+      "rowLimit": "Súbor OFX má viac než {{max}} transakcií.",
+      "conflictingFitid": "Opakované FITID má protichodné údaje transakcie."
+    },
+    "uploadUnavailable": "Tento nahraný súbor OFX už nie je dostupný. Nahrajte súbor znova, prosím.",
+    "importInProgress": "Import tohto súboru už prebieha.",
+    "missingAccountMapping": "Chýba priradenie účtu pre: {{accounts}}",
+    "accountCurrencyMismatch": "Účet {{account}} musí používať {{currency}}.",
+    "linkedAccountNotFound": "Prepojený účet pre {{account}} sa nenašiel.",
+    "crossCurrencyLink": "Účet {{account}} nemožno prepojiť naprieč menami."
+  },
+  "importExport": {
+    "batchDeleteBankLinkedAccount": "Tento import už nemožno vrátiť späť, keďže jeho účet je teraz pripojený k banke. Zmazanie týchto transakcií by mohlo narušiť synchronizovaný zostatok.",
+    "batchDeleteLinkedLoanTransfer": "Tento import je prepojený so splátkou pôžičky a samostatne ho nemožno vrátiť späť. Ak ho chcete odstrániť, zapnite „zmazať aj prepojené prevodové transakcie\".",
+    "batchDeleteInProgress": "Dávka importu sa už maže. Pred spustením ďalšej počkajte, kým sa dokončí.",
+    "batchDeleteImportStillRunning": "Tento import ešte prebieha. Pred jeho vrátením počkajte, kým sa dokončí.",
+    "importIntoBankLinkedAccount": "Účet „{{accountName}}\" je pripojený k banke, preto doň nemožno importovať transakcie. Vyberte iný účet, alebo vytvorte nový.",
+    "statementImportInProgress": "Import výpisu už prebieha. Pred spustením ďalšieho počkajte, kým sa dokončí.",
+    "importInterruptedByServerUpdate": "Aktualizácia servera prerušila tento import. Už uložené transakcie zostali zachované. Pred opätovným importom súboru tento import zmažte v sekcii „História importov\", inak sa transakcie zduplikujú.",
+    "categoryNameTooLong": "Názov kategórie „{{name}}” je príliš dlhý ({{length}} znakov); maximum je {{max}}.",
+    "payeeNameTooLong": "Názov protistrany „{{name}}” je príliš dlhý ({{length}} znakov); maximum je {{max}}.",
+    "categoryIdNotFound": "Kategória s ID {{id}} sa nenašla",
+    "tagIdNotFound": "Značka s ID {{id}} sa nenašla",
+    "accountIdNotFound": "Účet s ID {{id}} sa nenašiel",
+    "newAccountCurrencyUnknown": "Menu pre nový účet „{{accountName}}” sa nepodarilo určiť",
+    "accountCreateFailed": "Účet „{{accountName}}” sa nepodarilo vytvoriť.",
+    "accountMappingMissing": "Pre účet „{{accountName}}” sa nenašlo žiadne priradenie",
+    "aiUnparseableResponse": "Odpoveď AI sa nepodarilo spracovať. Výstup nemal očakávaný formát.",
+    "aiTemporarilyUnavailable": "Poskytovateľ AI je dočasne nedostupný. Skúste to znova neskôr, prosím.",
+    "aiRateLimited": "Dosiahnutý limit požiadaviek poskytovateľa AI. Skúste to znova o pár minút, prosím.",
+    "aiExtractionFailed": "Vyťaženie pomocou AI zlyhalo. Skúste to znova, prosím.",
+    "ynab": {
+      "importAlreadyInProgress": "Import z YANB už prebieha. Pred spustením ďalšieho počkajte, kým sa dokončí.",
+      "parse": {
+        "fileEmpty": "Súbor YNAB Register.csv je prázdny.",
+        "unparseable": "Súbor YNAB Register.csv sa nepodarilo spracovať ako súbor CSV.",
+        "noTransactions": "Súbor YNAB Register.csv neobsahuje žiadne transakcie.",
+        "tooManyRows": "Súbor YNAB Register.csv má {{rows}} riadkov; podporované maximum je {{max}}.",
+        "missingColumns": "V súbore YNAB Register.csv chýbajú povinné stĺpce: {{columns}}. Formát exportu sa možno zmenil.",
+        "mixedDateOrders": "Stĺpec Date v súbore YNAB Register.csv kombinuje protichodné poradia dňa a mesiaca — niektoré riadky dávajú zmysel len vo formáte DD/MM/YYYY a iné len vo formáte MM/DD/YYYY. Exportujte rozpočet znova s jednotným formátom dátumu.",
+        "noUsableRows": "V súbore YNAB Register.csv sa nenašli žiadne použiteľné riadky (všetky boli preskočené alebo nespracovateľné).",
+        "noUsableRowsWithProblem": "V súbore YNAB Register.csv sa nenašli žiadne použiteľné riadky (všetky boli preskočené alebo nespracovateľné). Prvý problém: {{problem}}"
+      },
+      "warnings": {
+        "ambiguousDateOrder": "Žiadny riadok v stĺpci Date nerozhoduje, či ide o poradie deň-najprv, alebo mesiac-najprv; dátumy boli interpretované ako MM/DD/YYYY. Po importe skontrolujte pár transakcií.",
+        "noAccount": "Riadok nemá Account; preskočený.",
+        "unparseableDate": "Dátum „{{value}}” sa nepodarilo spracovať; riadok preskočený.",
+        "unparseableOutflow": "Outflow „{{value}}” sa nepodarilo spracovať; riadok preskočený.",
+        "unparseableInflow": "Inflow „{{value}}” sa nepodarilo spracovať; riadok preskočený.",
+        "unknownFlag": "Neznáma hodnota príznaku „{{value}}”; ignorovaná.",
+        "transferNoInflow": "Prevod na „{{account}}” nemá zodpovedajúci riadok Inflow; importuje sa ako bežný výdavok.",
+        "transferNoOutflow": "Prevod z „{{account}}” nemá zodpovedajúci riadok Outflow; importuje sa ako bežný príjem.",
+        "currencyUndetected": "Menu pre účet „{{account}}” sa nepodarilo rozpoznať; vyberte ju v náhľade, prosím."
+      }
+    },
+    "budgetBakersWallet": {
+      "parse": {
+        "fileEmpty": "Súbor CSV z Wallet je prázdny.",
+        "unparseable": "Súbor CSV z Wallet sa nepodarilo spracovať ako súbor CSV.",
+        "noTransactions": "Súbor CSV z Wallet neobsahuje žiadne transakcie.",
+        "tooManyRows": "Súbor CSV z Wallet má {{rows}} riadkov; podporované maximum je {{max}}.",
+        "missingColumns": "V súbore CSV z Wallet chýbajú povinné stĺpce: {{columns}}. Formát exportu sa možno zmenil.",
+        "unsupportedLanguage": "Hodnoty typu transakcie (príjem/výdavok) v tomto exporte z Wallet sa nepodarilo rozpoznať. Zatiaľ sú podporované len exporty v angličtine a španielčine. Ďalší jazyk si môžete vyžiadať na stránke plánovaných funkcií: {{url}}",
+        "noUsableRows": "V súbore CSV z Wallet sa nenašli žiadne použiteľné riadky (všetky boli preskočené alebo nespracovateľné)."
+      },
+      "warnings": {
+        "noAccount": "Riadok nemá účet; preskočený.",
+        "unparseableDate": "Dátum „{{value}}” sa nepodarilo spracovať; riadok preskočený.",
+        "unparseableAmount": "Suma „{{value}}” sa nepodarila spracovať; riadok preskočený.",
+        "unparseableRefAmount": "ref_currency_amount „{{value}}” sa nepodarilo spracovať; riadok preskočený.",
+        "unknownType": "Neznámy typ „{{value}}”; riadok preskočený.",
+        "transferNoIncome": "Výdavok z prevodu z „{{account}}” dňa {{date}} nemá zodpovedajúcu príjmovú stranu; importovaný ako prevod mimo peňaženky.",
+        "transferNoExpense": "Príjem z prevodu na „{{account}}” dňa {{date}} nemá zodpovedajúcu výdavkovú stranu; importovaný ako prevod mimo peňaženky."
+      }
+    },
+    "msMoney": {
+      "notMsMoneyFile": "Tento súbor nie je databáza Microsoft Money. Očakával sa súbor .mny uložený programom Microsoft Money.",
+      "incorrectPassword": "Nesprávne heslo pre tento súbor Microsoft Money.",
+      "passwordRequired": "Tento súbor Microsoft Money je chránený heslom. Ak chcete pokračovať, zadajte jeho heslo.",
+      "unreadableFile": "Tento súbor Microsoft Money sa nepodarilo prečítať — môže byť poškodený, alebo uložený nepodporovanou verziou.",
+      "missingTables": "Tomuto súboru Microsoft Money chýbajú tabuľky účtov alebo transakcií — môže byť poškodený, alebo uložený nepodporovanou verziou.",
+      "noFileUploaded": "Nebol nahraný žiadny súbor. Odošlite súbor .mny ako surové telo požiadavky.",
+      "invalidPasswordHeader": "Zadané heslo súboru nie je platné.",
+      "warnings": {
+        "accountTypeUnsupported": "Investičné účty a účty pôžičiek boli preskočené. Investície patria do portfólií a pôžičky používajú vyhradený postup, ktorý neprijíma importované transakcie.",
+        "accountCurrencyDefaulted": "Niektoré účty nemajú v tomto súbore menu, ktorú by bolo možné určiť, preto sa predvolene použila vaša základná mena. Ak to nie je správne, vyberte inú v kroku s účtami.",
+        "accountNameMissing": "Niektoré účty nemajú v tomto súbore názov a importujú sa ako „Účet <number>”. Premenujte ich po importe.",
+        "accountNameDuplicated": "Niekoľko účtov v tomto súbore zdieľa rovnaký názov. Opakovania sú očíslované — „Sporiaci účet (2)” a podobne — aby zostali samostatnými účtami.",
+        "transferCounterpartNotImported": "Niektoré prevody presunuli peniaze na účet, ktorý nie je súčasťou tohto importu. Tieto riadky sa importujú ako prevody zo sledovaných účtov.",
+        "rowLimitReached": "Tento súbor obsahuje viac než {{max}} transakcií. Nadbytočné riadky sa neimportovali.",
+        "rowMissingDate": "Niektoré riadky nemali čitateľný dátum a boli preskočené.",
+        "rowAmountUnreadable": "Niektoré riadky nemali čitateľnú sumu. Namiesto importu s nulovou sumou (čo by vytvorilo transakciu, ktorá nič nepresúva) boli preskočené.",
+        "orphanRowSkipped": "Niektoré transakcie odkazovali na účet, ktorý v súbore už neexistuje, a boli preskočené.",
+        "fileSchemaUnexpected": "Časti tohto súboru nemajú štruktúru, akú Microsoft Money zvyčajne zapisuje, preto sa niektoré údaje nepodarilo prečítať: {{details}}."
+      },
+      "schemaGapTableMissing": "{{table}} (chýba)",
+      "schemaGapColumnsMissing": "{{table}} (chýbajúce stĺpce: {{columns}})"
+    }
+  },
+  "statementParser": {
+    "imageTooLarge": "Tento obrázok má viac než 3,75 MB. Nahrajte menší obrázok alebo s nižším rozlíšením.",
+    "textExtractionFailed": "Toto PDF neobsahuje čitateľný text, pravdepodobne ide o sken. Namiesto neho nahrajte snímky obrazovky alebo fotografie jeho stránok (JPG, PNG alebo WebP).",
+    "failedToExtractText": "Text zo súboru sa nepodarilo vyťažiť.",
+    "fileContentRequired": "Obsah súboru je povinný",
+    "pdfPasswordRequired": "Toto PDF je chránené heslom. Ak chcete pokračovať, zadajte heslo dokumentu.",
+    "pdfPasswordInvalid": "Zadané heslo je nesprávne. Skontrolujte ho a skúste to znova.",
+    "pdfParseFailed": "Toto PDF sa nepodarilo prečítať. Súbor môže byť poškodený, alebo používa nepodporovaný formát.",
+    "noTransactionsFound": "V súbore sa nenašli žiadne transakcie. Možno nejde o bankový výpis, účtenku ani snímku obrazovky bankovej aplikácie.",
+    "fileTooLarge": "Súbor presahuje maximálnu veľkosť {{maxMb}} MB.",
+    "fileTooSmall": "Súbor je príliš malý na to, aby bol platným výpisom.",
+    "unsupportedFileType": "Nepodporovaný typ súboru. Nahrajte súbor PDF, CSV alebo TXT, prosím.",
+    "unsupportedFileTypeWithImages": "Nepodporovaný typ súboru. Nahrajte súbor PDF, CSV, TXT, JPG, PNG alebo WebP, prosím.",
+    "aiResponseUnparseable": "Odpoveď AI nemala očakávaný formát. Skúste vyťažiť znova, alebo prepnite na iný model.",
+    "allRowsDropped_one": "Model vrátil {{count}} riadok, no nemal čitateľný dátum ani kladnú sumu. Skúste vyťažiť znova, alebo prepnite na iný model.",
+    "allRowsDropped_other": "Model vrátil {{count}} riadkov, no žiadny z nich nemal čitateľný dátum spolu s kladnou sumou. Skúste vyťažiť znova, alebo prepnite na iný model.",
+    "tokenLimitExceeded": "Súbor je pre vybraný model príliš veľký ({{modelName}}). Odhadovaných {{estimatedTokens, number}} tokenov, no limit je {{maxTokens, number}} tokenov.",
+    "tokenLimitExceededSuggestion": "Použite menší súbor, alebo rozdeľte svoj výpis na viac častí. Odporúčané: výpisy s maximálne ~{{maxTransactions, number}} transakciami."
+  },
+  "currencies": {
+    "notSupportedForBaseCurrency": "Zmena základnej meny na {{currency}} nie je podporovaná. Podporované sú len tieto meny: {{supportedCurrencies}}.",
+    "listIsEmpty": "Zoznam mien je prázdny",
+    "noBaseCurrency": "Používateľ nemá nastavenú základnú menu",
+    "alreadyBaseCurrency": "Vybraná mena je už základnou menou",
+    "baseCurrencyLockedByShares": "Základnú menu nemožno zmeniť, kým máte aktívne zdieľané zdroje. Najprv ich odoberte alebo opustite.",
+    "baseCurrencyLockedByBudgetPlan": "Základnú menu nemožno zmeniť, kým máte aktívny plán rozpočtu. Najprv plán zmažte.",
+    "baseCurrencyLockedByHousehold": "Základnú menu nemožno zmeniť, kým ste súčasťou aktívnej domácnosti. Najprv odoberte alebo opustite svoje členstvo v domácnosti.",
+    "baseCurrencyChangeInProgress": "Zmena základnej meny prebieha. Počkajte, prosím, kým sa dokončí.",
+    "baseCurrencyChangeSyncInProgress": "Banková synchronizácia sa ešte dokončuje. Skúste zmeniť základnú menu znova o niekoľko minút, prosím.",
+    "baseCurrencyChangeDrainCheckFailed": "Nepodarilo sa overiť, či sú bankové synchronizácie neaktívne. Skúste to znova, prosím.",
+    "baseCurrencyChangeInProgressOtherUser": "Druhý účastník práve mení svoju základnú menu. Skúste to znova, keď sa jeho migrácia dokončí, prosím.",
+    "cannotFindForRefAmount": "Menu na výpočet referenčnej sumy sa nepodarilo nájsť!",
+    "cannotCalculateRefAmount": "Referenčnú sumu sa nepodarilo vypočítať",
+    "currencyNotConnected": "Požadovaná mena nie je pripojená",
+    "exchangeRateNotAvailable": "Výmenný kurz pre {{baseCode}}/{{quoteCode}} k {{date}} nie je dostupný"
+  },
+  "userSettings": {
+    "userSettingsNotFound": "Nastavenia používateľa sa nenašli"
+  },
+  "users": {
+    "usernameAlreadyTaken": "Používateľské meno „{{username}}\" je už obsadené"
+  },
+  "userCurrencies": {
+    "baseCurrencyExists": "Základná mena už existuje!",
+    "currencyCodeNotExist": "Mena so zadaným kódom neexistuje.",
+    "currencyNotExist": "Mena s kódom „{{currencyCode}}\" neexistuje.",
+    "cannotDeleteDefaultCurrency": "Predvolenú menu nemožno zmazať. Najprv jej zrušte štatút predvolenej.",
+    "currencyInUse": "{{currencyCode}} sa nedá odstrániť, pretože sa stále používa."
+  },
+  "ai": {
+    "connectionNotFound": "Model AI sa nenašiel.",
+    "connectionNameTaken": "Model AI s týmto názvom už máte.",
+    "connectionLimitReached": "Môžete pridať najviac {{max}} modelov AI.",
+    "connectionNameInvalidLength": "Názov musí mať 1 až {{max}} znakov.",
+    "connectionModelRequired": "Zadajte názov modelu.",
+    "connectionBaseUrlRequired": "Zadajte základnú URL adresu svojho servera kompatibilného s OpenAI.",
+    "connectionBaseUrlNotAllowed": "Tento poskytovateľ vždy používa svoju oficiálnu adresu API, preto základnú URL adresu nevyžaduje.",
+    "connectionApiKeyRequired": "Zadajte API kľúč.",
+    "connectionProviderMismatch": "Tento model AI používa iného poskytovateľa.",
+    "connectionKeySourceMissing": "Model AI, z ktorého kopírujete, nemá API kľúč. Zadajte ho.",
+    "connectionStoredKeyUnreadable": "Uložený API kľúč pre tento model AI sa už nedá prečítať. Zadajte ho znova.",
+    "connectionKeyRejected": "Poskytovateľ tento API kľúč odmietol. Skontrolujte, či je správny, aktívny a má dostatok kreditu.",
+    "connectionModelNotAvailable": "Tento API kľúč nemôže použiť model „{{model}}\". Skontrolujte názov modelu.",
+    "connectionProviderUnreachable": "Poskytovateľa sa nepodarilo osloviť. Skúste to znova o chvíľu.",
+    "connectionValidationFailed": "Poskytovateľ odmietol testovaciu požiadavku: {{reason}}",
+    "serverModelUnavailable": "Zahrnutý model MoneyMatter AI nie je vo vašom pláne dostupný.",
+    "connectionKeyNotInBackup": "API kľúč nie je súčasťou záloh. Upravte tento model a zadajte kľúč znova.",
+    "customEndpointUnreachable": "Rozhranie sa nepodarilo osloviť. Skontrolujte základnú URL adresu a uistite sa, že server beží a je dostupný z internetu.",
+    "customEndpointAuthFailed": "Rozhranie odmietlo API kľúč. Skontrolujte, či je kľúč správny a má potrebné oprávnenia.",
+    "customEndpointModelNotFound": "Rozhranie neposkytuje model s názvom „{{model}}\".",
+    "customEndpointModelNotListed": "Rozhranie neposkytuje „{{model}}\". Ponúkané modely: {{available}}.",
+    "customEndpointMoreModels": "a {{count}} ďalších",
+    "customEndpointNotApiResponse": "Server na tejto URL adrese odpovedal HTTP {{status}} namiesto odpovede kompatibilnej s OpenAI. Skontrolujte, či server beží a či je základná URL adresa správna — zvyčajne končí na /v1.",
+    "customEndpointValidationFailed": "Rozhranie nevrátilo použiteľnú odpoveď. Skontrolujte základnú URL adresu, názov modelu a API kľúč.",
+    "categorizationAlreadyRunning": "Kategorizácia AI už prebieha. Pred spustením ďalšej počkajte, kým sa dokončí.",
+    "categorizationRateLimited": "Kategorizáciu AI ste nedávno spustili príliš veľakrát. Skúste to znova neskôr, prosím.",
+    "customInstructionsNeedConnection": "Ak chcete používať vlastné pokyny, pridajte model AI v Nastavenia → AI."
+  },
+  "middleware": {
+    "tooManyRequests": "Príliš veľa požiadaviek. Skúste to znova neskôr, prosím."
+  },
+  "defaultCategories": {
+    "main": {
+      "food": "Jedlo a nápoje",
+      "shopping": "Nákupy",
+      "housing": "Bývanie",
+      "transportation": "Doprava",
+      "vehicle": "Vozidlo",
+      "life": "Život a zábava",
+      "communication": "Komunikácia, PC",
+      "financial-expenses": "Finančné výdavky",
+      "investments": "Investície",
+      "income": "Príjmy",
+      "other": "Ostatné"
+    },
+    "subcategories": {
+      "food": {
+        "groceries": "Potraviny",
+        "restaurant": "Reštaurácia, rýchle občerstvenie",
+        "bar-cafe": "Bar, kaviareň"
+      },
+      "shopping": {
+        "clothes-shoes": "Oblečenie a obuv",
+        "jewels-accessories": "Klenoty, módne doplnky",
+        "health-beauty": "Zdravie a krása",
+        "kids": "Deti",
+        "home-garden": "Domácnosť, záhrada",
+        "pets-animals": "Domáce zvieratá",
+        "electronics-accessories": "Elektronika, príslušenstvo",
+        "gifts-joy": "Darčeky, radosti",
+        "stationery-tools": "Kancelária, náradie",
+        "free-time": "Voľný čas",
+        "drugstore-chemist": "Drogéria, lekáreň"
+      },
+      "housing": {
+        "rent": "Nájom",
+        "mortgage": "Hypotéka",
+        "energy-utilities": "Energie, komunál",
+        "services": "Služby",
+        "maintenance-repairs": "Údržba, opravy",
+        "property-insurance": "Poistenie majetku"
+      },
+      "transportation": {
+        "public-transport": "Verejná doprava",
+        "taxi": "Taxi",
+        "long-distance": "Diaľková doprava",
+        "business-trips": "Služobné cesty"
+      },
+      "vehicle": {
+        "fuel": "Palivo",
+        "parking": "Parkovanie",
+        "vehicle-maintenance": "Údržba vozidla",
+        "rentals": "Prenájom",
+        "vehicle-insurance": "Poistenie vozidla",
+        "leasing": "Lízing"
+      },
+      "life": {
+        "health-care-doctor": "Zdravotná starostlivosť, lekár",
+        "wellness-beauty": "Wellness, krása",
+        "active-sport-fitness": "Aktívny šport, fitness",
+        "culture-sport-events": "Kultúra, športové podujatia",
+        "hobbies": "Koníčky",
+        "education-development": "Vzdelávanie, rozvoj",
+        "books-audio-subscriptions": "Knihy, audio, predplatné",
+        "tv-streaming": "TV, streamovanie",
+        "holiday-trips-hotels": "Dovolenka, výlety, hotely",
+        "charity-gifts": "Charita, dary",
+        "alcohol-tobacco": "Alkohol, tabak",
+        "lottery-gambling": "Lotéria, hazardné hry"
+      },
+      "communication": {
+        "phone-cell-phone": "Telefón, mobilný telefón",
+        "internet": "Internet",
+        "software-apps-games": "Softvér, aplikácie, hry",
+        "postal-services": "Poštové služby"
+      },
+      "financial-expenses": {
+        "taxes": "Dane",
+        "insurances": "Poistenia",
+        "loan-interests": "Úver, úroky",
+        "fines": "Pokuty",
+        "advisory": "Poradenstvo",
+        "charges-fees": "Výdavky, Poplatky",
+        "child-support": "Výživné"
+      },
+      "investments": {
+        "realty": "Nehnuteľnosti",
+        "vehicles-chattels": "Vozidlá, hnuteľný majetok",
+        "financial-investments": "Finančné investície",
+        "savings": "Úspory",
+        "collections": "Zbierky"
+      },
+      "income": {
+        "wage-invoices": "Mzda, faktúry",
+        "interests-dividends": "Úroky, dividendy",
+        "sale": "Predaj",
+        "rental-income": "Príjem z prenájmu",
+        "dues-grants": "Poplatky a granty",
+        "lending-renting": "Požičiavanie, prenajímanie",
+        "checks-coupons": "Šeky, kupóny",
+        "lottery-gambling": "Lotéria, hazardné hry",
+        "refunds": "Vrátenia platby (daň, nákup)",
+        "freelance": "Práca na voľnej nohe",
+        "gifts": "Dary"
+      }
+    }
+  },
+  "subscriptions": {
+    "transactionsNotFoundOrNotBelongToUser": "Jedna alebo viac transakcií sa nenašlo, alebo nepatria používateľovi.",
+    "cannotLinkDifferentTransactionType": "Nemožno prepojiť transakcie s iným typom, než má pravidelná platba",
+    "summaryCurrencyNotConnected": "Súhrn predplatných sa nedá vypočítať: mena {{currencyCodes}} nie je pripojená k vášmu účtu. Pripojte ju v Nastavenia → Meny.",
+    "summaryBaseCurrencyNotSet": "Základná mena nie je nastavená. Ak chcete zobraziť súhrn predplatných, nastavte si predvolenú menu.",
+    "payeeNotFoundOrNotBelongToUser": "Protistrana sa nenašla, alebo nepatrí používateľovi.",
+    "tagsNotFoundOrNotBelongToUser": "Jedna alebo viac značiek sa nenašli, alebo nepatria používateľovi.",
+    "validation": {
+      "autoRecord": {
+        "requiresAccount": "Automatické zaznamenávanie vyžaduje účet, na ktorý sa zaúčtovaná transakcia zapíše.",
+        "requiresAmount": "Automatické zaznamenávanie vyžaduje expectedAmount a expectedCurrencyCode, aby mala zaúčtovaná transakcia hodnotu.",
+        "excludesMatching": "Automatické zaznamenávanie a priraďovacie pravidlá nemožno použiť spolu — obe by vybavovali to isté obdobie.",
+        "requiresAccountField": "Automatické zaznamenávanie vyžaduje účet, na ktorý sa transakcia zaúčtuje.",
+        "requiresAmountField": "Automatické zaznamenávanie vyžaduje expectedAmount a expectedCurrencyCode.",
+        "excludesMatchingField": "Automatické zaznamenávanie a priraďovacie pravidlá sa navzájom vylučujú."
+      }
+    }
+  },
+  "transactionTemplates": {
+    "notFound": "Šablóna transakcie nebola nájdená.",
+    "nameAlreadyExists": "Šablóna transakcie s týmto názvom už existuje.",
+    "amountRequiresAccount": "Sumu možno uložiť len spolu s účtom.",
+    "accountNotFound": "Účet sa nenašiel, alebo nepatrí používateľovi.",
+    "accountMustBeSystem": "V šablóne transakcie možno použiť len ručne spravované účty.",
+    "accountArchived": "Archivované účty nemožno v šablóne použiť.",
+    "categoryNotFound": "Kategória sa nenašla, alebo nepatrí používateľovi.",
+    "payeeNotFound": "Protistrana sa nenašla, alebo nepatrí používateľovi.",
+    "tagsNotFound": "Jedna alebo viac značiek sa nenašli, alebo nepatria používateľovi."
+  },
+  "payees": {
+    "aliasNameRequired": "Názov aliasu je povinný",
+    "aliasNotFound": "Alias sa nenašiel",
+    "aliasUsedByOtherPayee": "Tento alias už používa „{{name}}\"",
+    "nameUsedByAliasOfOtherPayee": "Tento názov sa už používa ako alias pre „{{name}}\"",
+    "cannotDeleteCanonicalAlias": "Alias zhodujúci sa s hlavným názvom protistrany nemožno zmazať. Ak chcete zmeniť jej hlavný názov, premenujte protistranu.",
+    "defaultCategoryNotOwned": "Vybraná predvolená kategória nepatrí vášmu účtu",
+    "defaultTagsNotOwned": "Jedna alebo viac značiek nepatria používateľovi",
+    "duplicateAlias": "Tento alias je už priradený k tejto protistrane",
+    "duplicateName": "Protistrana s týmto názvom už existuje",
+    "ignoredNameCollidesWithPayee": "Tomuto názvu zodpovedá existujúca protistrana. Najprv ju zmažte, alebo pridajte force: true a zmažte ju ako súčasť tejto operácie.",
+    "ignoredNameNotFound": "Ignorovaný názov sa nenašiel.",
+    "mergeSelf": "Protistranu nemožno zlúčiť samu so sebou",
+    "nameRequired": "Názov protistrany je povinný",
+    "notFound": "Protistrana sa nenašla",
+    "renameCollision": "Tento názov už používa iná protistrana – namiesto premenovania ich zlúčte"
+  },
+  "brandLogos": {
+    "colorRequiresInitials": "Farba pozadia vyžaduje písmená alebo ikonu.",
+    "slotsExclusive": "Vyberte jeden typ loga: značku, písmená, ikonu alebo obrázok."
+  },
+  "logoImages": {
+    "invalidImage": "Súbor nie je obrázok vo formáte PNG, JPEG ani WebP.",
+    "tooLarge": "Obrázky loga musia mať najviac 50 KB.",
+    "notFound": "Obrázok loga sa nenašiel."
+  },
+  "venture": {
+    "dealNotFound": "Obchod v rizikovom kapitáli sa nenašiel",
+    "eventNotFound": "Udalosť v rizikovom kapitáli sa nenašla"
+  },
+  "vehicles": {
+    "notFound": "Vozidlo nebolo nájdené"
+  },
+  "stats": {
+    "netWorthHistoryTooManyPoints": "Tento rozsah dátumov a úroveň podrobnosti vytvárajú príliš veľa dátových bodov. Zvoľte hrubšiu úroveň podrobnosti alebo kratší rozsah."
+  },
+  "automations": {
+    "automationNotFound": "Automatizácia nebola nájdená.",
+    "previewRequiresConditions": "Pre náhľad zadajte buď podmienky, alebo uloženú automatizáciu.",
+    "reorderStale": "Zoznam automatizácií sa zmenil. Obnovte ho a skúste to znova.",
+    "ruleLimitReached": "Dosiahli ste maximálny počet automatizácií.",
+    "staleReference": "Táto automatizácia odkazuje na položku, ktorá už neexistuje."
+  },
+  "attachments": {
+    "transactionNotFound": "Transakcia nebola nájdená.",
+    "attachmentNotFound": "Príloha nebola nenájdená.",
+    "fileNotFound": "Súbor prílohy sa nenašiel.",
+    "unsupportedFileType": "Nepodporovaný typ súboru. Nahrajte súbor JPEG, PNG, WebP alebo PDF.",
+    "tooManyAttachments": "Transakcia môže mať najviac {{max}} príloh.",
+    "quotaExceeded": "Prekročená kvóta úložiska pre prílohy.",
+    "noFileUploaded": "Nebol nahraný žiadny súbor."
+  },
+  "invoiceMatching": {
+    "unsupportedFileType": "Nepodporovaný typ súboru. Nahrajte faktúru vo formáte JPEG, PNG, WebP alebo PDF.",
+    "notAnInvoice": "Tento dokument nevyzerá ako faktúra ani účtenka.",
+    "incompleteInvoice": "Z tejto faktúry sa nepodarilo prečítať dodávateľa, celkovú sumu a dátum.",
+    "pdfWithoutText": "Vlastné pripojenia AI nedokážu prijímať súbory PDF priamo a tento sa nepodarilo otvoriť ani na prevod (napríklad je chránený heslom). Prevedte ho na obrázok (PNG alebo JPEG), napríklad snímku obrazovky faktúry a nahrajte namiesto neho ten.",
+    "noFileUploaded": "Nebol nahraný žiadny súbor."
+  },
+  "auth": {
+    "errors": {
+      "passwordAlreadySet": "Váš účet už má heslo.",
+      "passwordTooShort": "Heslo je príliš krátke.",
+      "passwordTooLong": "Heslo je príliš dlhé.",
+      "reauthenticationRequired": "Z bezpečnostných dôvodov sa na vykonanie tejto zmeny prihláste znova.",
+      "signupsDisabled": "Registrácie sú vypnuté správcom."
+    }
+  },
+  "backup": {
+    "restore": {
+      "errors": {
+        "noUserRecord": "Záloha neobsahuje záznam používateľa, preto vaše existujúce údaje neboli nahradené.",
+        "emptyManifest": "Manifest zálohy neuvádza žiadne súbory, preto vaše existujúce údaje neboli nahradené.",
+        "missingRequiredColumns_one": "Tabuľke „{{table}}” v zálohe chýba povinný stĺpec {{columns}}. Záloha pochádza spred zmeny štruktúry a nemožno ju obnoviť na tejto verzii.",
+        "missingRequiredColumns_other": "Tabuľke „{{table}}” v zálohe chýbajú povinné stĺpce: {{columns}}. Záloha pochádza spred zmeny štruktúry a nemožno ju obnoviť na tejto verzii.",
+        "archiveTooLarge": "Archív zálohy je na obnovenie príliš veľký: jeho nekomprimovaný obsah presahuje limit veľkosti.",
+        "archiveCorrupt": "Archív zálohy je poškodený, alebo bol neoprávnene upravený.",
+        "invalidJson": "Súbor zálohy {{path}} nie je platný JSON.",
+        "rowsNotArray": "Súbor zálohy {{path}} je poškodený: očakávalo sa pole JSON s riadkami.",
+        "rowNotObject": "Súbor zálohy {{path}} je poškodený: každý riadok musí byť objekt JSON.",
+        "userNotObject": "Súbor zálohy {{path}} je poškodený: záznam používateľa musí byť objekt JSON.",
+        "notZip": "Nahraná záloha nie je čitateľný archív zip.",
+        "missingManifest": "Archívu zálohy chýba manifest.json.",
+        "malformedManifest": "Archív zálohy má poškodený manifest.json (nie je objekt JSON).",
+        "malformedManifestFiles": "Archív zálohy má poškodený manifest.json (jeho zoznam súborov nie je objekt).",
+        "invalidFormatVersion": "Manifest zálohy deklaruje neplatnú verziu formátu ({{version}}).",
+        "formatVersionTooNew": "Verzia formátu zálohy {{version}} je novšia, než táto aplikácia podporuje (max. {{max}}). Ak ju chcete obnoviť, aktualizujte aplikáciu.",
+        "malformedManifestEntry": "Archív zálohy má poškodenú položku manifestu pre {{path}}.",
+        "missingFile": "Archívu zálohy chýba {{path}} uvedený v jeho manifeste.",
+        "checksumMismatch": "Súbor zálohy {{path}} neprešiel kontrolou integrity (nezhoda kontrolného súčtu).",
+        "differentAccount": "Táto záloha bola exportovaná iným účtom a tu ju nemožno obnoviť.",
+        "alreadyInProgress": "Obnova zálohy už prebieha. Pred spustením ďalšej počkajte, kým sa dokončí.",
+        "failed": "Obnova zálohy zlyhala. Vaše existujúce údaje sa nezmenili."
+      }
+    }
+  },
+  "dataExport": {
+    "tooManyRows": "Export by obsahoval {{rowCount, number}} riadkov, čo presahuje limit {{limit, number}}."
+  },
+  "goals": {
+    "goalNotFound": "Cieľ nenájdený.",
+    "accountNotFound": "Jeden z vybraných účtov sa nenašiel.",
+    "accountNotEligible": "{{accountName}} sa nemôže započítavať do cieľa. Vyberte hotovostný, bežný, sporiaci, investičný alebo krypto účet.",
+    "shareCapacityExceeded": "{{accountName}} má voľných {{free}} %: požadovali ste {{requested}} %, a ostatné ciele už využívajú {{usedByOtherGoals}} %.",
+    "fixedAmountsBelowTarget": "Pevné sumy dávajú spolu {{total}} {{currencyCode}}, čo je menej než cieľ {{target}} {{currencyCode}}. Zvýšte niektorú sumu alebo započítajte účet podľa percenta.",
+    "currencyRateUnavailable": "{{currencyCode}} sa momentálne nedá prepočítať na vašu základnú menu. Vyberte inú menu alebo skúste znova neskôr.",
+    "reachedNotification": {
+      "title": "Cieľ dosiahnutý: {{name}}",
+      "message": "Usporili ste {{amount}} {{currencyCode}}."
+    }
+  },
+  "backgroundJobs": {
+    "notFound": "Táto úloha už nebeží – server sa mohol reštartovať. Skúste to znova, prosím."
+  }
+}

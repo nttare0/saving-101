@@ -1,0 +1,15 @@
+/**
+ * Used as a provide/inject key, so better have prefix
+ * */
+export enum SCROLL_AREA_IDS {
+  dashboard = 'scroll-area-dashboard',
+  txRefundInfo = 'scroll-area-tx-refund-info',
+  accountTransactions = 'scroll-area-account-transactions',
+  transactionsPage = 'scroll-area-transactions-page',
+  accountsRelinkWarning = 'scroll-area-accounts-relink-warning',
+  quickStart = 'scroll-area-quick-start',
+  dateSelectorPanel = 'scroll-area-date-selector-panel',
+  calendarJumpMonths = 'scroll-area-calendar-jump-months',
+  calendarJumpYears = 'scroll-area-calendar-jump-years',
+  sidebarAccounts = 'scroll-area-sidebar-accounts',
+}

@@ -1,0 +1,13 @@
+{
+  "settings": {
+    "subscriptions": {
+      "title": "Paiements récurrents",
+      "defaultAutoRecord": {
+        "label": "Enregistrement automatique par défaut des nouveaux paiements récurrents",
+        "help": "Lorsque cette option est activée, l'enregistrement automatique est activé par défaut lors de la création d'un abonnement. Vous pouvez toujours modifier ce choix pour chaque abonnement.",
+        "successNotification": "Paramètre enregistré",
+        "errorNotification": "Échec de l'enregistrement du paramètre"
+      }
+    }
+  }
+}

@@ -1,0 +1,44 @@
+name: Crowdin Download Translations
+
+# Opens a PR with translations done in Crowdin. Runs on its own schedule rather
+# than on push, so merging to dev doesn't open a translation PR every time.
+#
+# This harvests work done by translators in the Crowdin editor. Bulk-translating a
+# release is a separate, manual step the release author runs locally.
+
+on:
+  schedule:
+    - cron: '0 6 * * 1,3,5' # Mon/Wed/Fri 06:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  download:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - uses: crowdin/github-action@9c23991700c0ec5256fd41089b9d9d7d540e424e # v3.3.0
+        with:
+          upload_sources: false
+          upload_translations: false
+          download_translations: true
+          # Ukrainian is maintained in the repo; see crowdin-upload.yml
+          download_translations_args: '--exclude-language uk'
+          # Untranslated strings arrive filled with English source text (Crowdin's
+          # default). Abolished alternative: `skip_untranslated_strings` exports them
+          # as "" rather than omitting them, and vue-i18n renders "" as blank text
+          # instead of falling back to English.
+          localization_branch_name: l10n_crowdin
+          create_pull_request: true
+          pull_request_title: 'chore(i18n): new Crowdin translations'
+          pull_request_base_branch_name: dev
+          pull_request_labels: i18n
+        env:
+          # PAT. Scoped separately for the exact needs of Crowdin
+          GITHUB_TOKEN: ${{ secrets.CROWDIN_GH_TOKEN }}
+          CROWDIN_PROJECT_ID: ${{ secrets.CROWDIN_PROJECT_ID }}
+          CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}

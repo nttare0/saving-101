@@ -1,0 +1,63 @@
+{
+  "oauth": {
+    "authorize": {
+      "title": "{name} запрашивает доступ к вашим данным MoneyMatter",
+      "redirect_notice": "After approval you will be redirected to {host}. Only continue if you recognize this address.",
+      "description": "Это приложение запрашивает следующие разрешения:",
+      "approve": "Разрешить",
+      "deny": "Отклонить",
+      "footer": "Вы можете отозвать доступ в любое время в разделе «Настройки» > «AI-интеграции».",
+      "error": "Не удалось обработать запрос. Попробуйте снова.",
+      "unexpected_response": "Получен неожиданный ответ от сервера. Попробуйте снова.",
+      "always_granted": "Предоставляется всегда",
+      "optional": "Необязательно",
+      "delete_warning": "Предоставляйте доступ только приложениям, которым полностью доверяете",
+      "unknown_app": "Приложение",
+      "steps": {
+        "permissions": "Permissions",
+        "tools": "Tools"
+      },
+      "continue": "Продолжить",
+      "back": "Назад",
+      "toolsets": {
+        "intro": "Pick what {name} can work with. Each extra set adds tools that {name} loads into every chat.",
+        "add_all": "Add all",
+        "core_only": "Core only",
+        "always_on": "{count} tool, always on | {count} tools, always on",
+        "tool_count": "{count} tool | {count} tools",
+        "selected": "{count} tool selected | {count} tools selected",
+        "of_total": "of {total}",
+        "counter_label": "Selected tools",
+        "fits_cap": "Fits every app, including ChatGPT and VS Code Copilot ({cap} tools max).",
+        "over_cap": "Over {cap} tools. ChatGPT and VS Code Copilot won't load this many.",
+        "load_error": "Couldn't load the toolsets. Allow access to use the core tools, and reconnect later to add more."
+      }
+    },
+    "scopes": {
+      "finance_read": {
+        "label": "Просмотр финансовых данных",
+        "desc": "Чтение счетов, транзакций, бюджетов, категорий, тегов, портфелей и статистики расходов."
+      },
+      "finance_write": {
+        "label": "Создание и изменение финансовых данных",
+        "desc": "Добавление и изменение транзакций, бюджетов, подписок, инвестиционных позиций и других данных."
+      },
+      "finance_delete": {
+        "label": "Удаление финансовых данных",
+        "desc": "Безвозвратное удаление транзакций, счетов, бюджетов и других записей."
+      },
+      "profile_read": {
+        "label": "Просмотр профиля",
+        "desc": "Просмотр имени, электронной почты и валюты по умолчанию."
+      },
+      "offline_access": {
+        "label": "Фоновый доступ",
+        "desc": "Сохранять доступ без повторного запроса разрешения в каждом сеансе."
+      },
+      "unknown": {
+        "label": "Дополнительное разрешение",
+        "desc": "Приложение запросило разрешение, которое MoneyMatter не распознаёт."
+      }
+    }
+  }
+}

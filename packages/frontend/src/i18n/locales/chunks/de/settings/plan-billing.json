@@ -1,0 +1,140 @@
+{
+  "settings": {
+    "planBilling": {
+      "title": "Tarif & Abrechnung",
+      "description": "Wähle einen Tarif und verwalte deine Abrechnung.",
+      "checkoutSuccess": "Dein Tarif ist jetzt aktiv.",
+      "checkoutFailed": "Checkout konnte nicht geöffnet werden. Bitte versuche es erneut.",
+      "currentPlanEyebrow": "Aktueller Tarif",
+      "updatePaymentMethod": "Zahlungsmethode aktualisieren",
+      "manageBilling": "Abrechnung verwalten",
+      "manageInAppStore": "Im App Store verwalten",
+      "currentPlan": "Aktueller Tarif",
+      "recommended": "Empfohlen",
+      "previousPlan": "Vorheriger Tarif",
+      "yourPlan": "Dein Tarif",
+      "planned": "Geplant",
+      "voteOnRoadmap": "Über Roadmap abstimmen",
+      "roadmapNote": "Kostenlos. Stimme dafür ab und wir informieren dich, sobald es verfügbar ist.",
+      "saveUpTo": "Spare bis zu {percent}%",
+      "portalFailed": "Abrechnungsportal konnte nicht geöffnet werden. Bitte versuche es erneut.",
+      "pastDueNote": "Deine letzte Zahlung ist fehlgeschlagen. Stripe wird deine Karte in den nächsten Tagen automatisch erneut belasten. Aktualisiere deine Zahlungsmethode über \"Abrechnung verwalten\", um den Zugriff nach dem {date} zu behalten.",
+      "priceNote": "Preise sind in USD, exklusive Steuern. Deine lokale Währung und alle anfallenden Steuern werden beim Checkout angezeigt.",
+      "cycleHint": {
+        "year": "Jährlich entspricht 6 Monate. Jährliche Abrechnung.",
+        "month": "Monatlich kündbar. Jährlich kostet die Hälfte."
+      },
+      "price": {
+        "yearFootnote": "{amount} / Monat · {struck} · {save}",
+        "monthFootnote": "oder {amount}/Jahr · {save}",
+        "save": "{amount} sparen"
+      },
+      "current": {
+        "lifetime": "{plan} · Lebenslang",
+        "lifetimeMeta": "Alles aus Plus. Keine Verlängerung, keine Karte hinterlegt.",
+        "earlyAdopterNote": "Danke, dass du von Anfang an dabei bist. Alles aus Plus im heutigen Umfang gehört dir lebenslang. Funktionen, die wir ab jetzt hinzufügen, und alles, was uns pro Benutzer Kosten verursacht, gehört zu den kostenpflichtigen Tarifen. Möchtest du sie? 50% Rabatt auf jeden Tarif, für immer, automatisch beim Checkout angewendet.",
+        "seats": "1 Haushaltsplatz | {count} Haushaltsplätze",
+        "subscription": "{tier} · {cycle}",
+        "trial": "Noch {count} Tag in deinem Testzeitraum | Noch {count} Tage in deinem Testzeitraum",
+        "trialProgress": "Tag {used} von {total}",
+        "trialEnded": "Testzeitraum abgelaufen",
+        "trialEndedMeta": "Dein {days}-tägiger Testzeitraum ist vorbei. Wähle einen Tarif, um fortzufahren.",
+        "trialEndsOn": "Endet am {date}",
+        "trialExcluded": "Keine Backup-Wiederherstellung in der Testphase",
+        "subscriptionEnded": "Abonnement beendet",
+        "endedMeta": "Deine Daten sind sicher. Wähle einen Tarif, um fortzufahren.",
+        "renewsOn": "Verlängert sich am {date}",
+        "activating": "Dein Tarif wird aktiviert",
+        "activatingNote": "Zahlung erhalten. Stripe bestätigt dies in der Regel innerhalb weniger Sekunden.",
+        "activationTimedOut": "Deine Zahlung war erfolgreich, aber der Tarif wird noch eingerichtet. Lade die Seite in einer Minute neu; falls sich nichts ändert, kontaktiere den Support.",
+        "activationUnreachable": "Der Server konnte nicht erreicht werden, um deine Zahlung zu bestätigen. Lade die Seite neu; falls der Tarif weiterhin fehlt, kontaktiere den Support.",
+        "accessContinuesUntil": "Zugriff bleibt bis zum {date} bestehen",
+        "billedByAppStore": "Über den App Store abgerechnet",
+        "accessUntil": "Zugriff bis zum {date}, danach schreibgeschützt",
+        "resumesOn": "Wird am {date} automatisch fortgesetzt",
+        "pausedNote": "Während der Pause ist das Konto schreibgeschützt.",
+        "noFurtherCharges": "Keine weiteren Gebühren",
+        "cancelNote": "Meinung geändert? Verlängere im Abrechnungsportal und dein Verlängerungsdatum bleibt unverändert.",
+        "monthlyHint": "Wechsle zu jährlich und spare {amount} im Jahr.",
+        "noCard": "Keine Karte hinterlegt",
+        "readOnlyHelp": "Was bedeutet schreibgeschützt?"
+      },
+      "status": {
+        "pastDue": "Zahlung fehlgeschlagen",
+        "active": "Aktiv",
+        "paused": "Pausiert",
+        "readOnly": "Schreibgeschützt",
+        "trial": "Plus-Funktionen",
+        "processing": "In Bearbeitung",
+        "earlyAdopter": "Early Adopter",
+        "endsOn": "Endet am {date}"
+      },
+      "cta": {
+        "activating": "Wird aktiviert…",
+        "switchTo": "Zu {tier} wechseln",
+        "switchToCycle": "Auf {cycle} Abrechnung umstellen",
+        "subscribeAgain": "Erneut abonnieren",
+        "getTier": "{tier} holen"
+      },
+      "ctaNote": {
+        "keepIt": "Aktualisiere deine Zahlungsmethode, um den Tarif zu behalten.",
+        "viaPortal": "Im Abrechnungsportal geändert.",
+        "viaAppStore": "Tarifänderungen erfolgen im App Store",
+        "billedToday": "Heute abgerechnet. Jederzeit kündbar.",
+        "earlyAdopter": "50% Rabatt für immer, wird beim Checkout angewendet"
+      },
+      "plans": {
+        "essential": "Essential",
+        "plus": "Plus",
+        "premium": "Premium",
+        "early_adopter": "Early Adopter"
+      },
+      "cycle": {
+        "month": "Monatlich",
+        "year": "Jährlich"
+      },
+      "perCycle": {
+        "month": "/Monat",
+        "year": "/Jahr"
+      },
+      "tiers": {
+        "essential": {
+          "name": "Essential",
+          "tagline": "Manuelle Erfassung und alles, was lokale Berechnungen betrifft.",
+          "features": {
+            "imports": "CSV-, OFX-, YNAB-, Wallet- und MS Money-Importe",
+            "investments": "Investitionen, Kredite, Fahrzeuge",
+            "ownAiKey": "KI-Funktionen mit deinem eigenen API-Schlüssel",
+            "backup": "Sicherungsexport und -wiederherstellung",
+            "mcp": "Zugriff auf MCP-Server",
+            "seats": "2 Haushaltsplätze"
+          }
+        },
+        "plus": {
+          "name": "Plus",
+          "tagline": "Alles rund um das Einbinden eigener Bankverbindungen.",
+          "features": {
+            "everythingInEssential": "Alles aus Essential",
+            "bankProviders": "Bankverbindungen (Monobank, Enable Banking, SimpleFIN, LunchFlow, Walutomat)",
+            "ourAiKey": "KI-Funktionen mit unserem Schlüssel, begrenzt durch Fair-Use",
+            "firePlanner": "FIRE-Planer",
+            "seats": "5 Haushaltsplätze"
+          }
+        },
+        "premium": {
+          "name": "Premium",
+          "tagline": "Bank-Synchronisierung, die wir für dich ausführen. Geplant – hilf uns bei der Priorisierung.",
+          "priceTba": "Preis wird noch bekannt gegeben",
+          "priceNote": "Preisgestaltung erfolgt, sobald die Kosten für die Bank-Synchronisierung feststehen.",
+          "features": {
+            "everythingInPlus": "Alles aus Plus",
+            "builtInBankSync": "In die App integrierte Bank-Synchronisierung – kein Drittanbieter-Konto erforderlich",
+            "realtimePrices": "Echtzeit-Kurse für Wertpapiere",
+            "higherAiCap": "KI-Funktionen mit unserem Schlüssel, höheres Limit",
+            "seats": "10 Haushaltsplätze"
+          }
+        }
+      }
+    }
+  }
+}

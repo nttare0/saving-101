@@ -1,0 +1,142 @@
+{
+  "pages": {
+    "importExport": {
+      "budgetBakersWalletImport": {
+        "pageTitle": "Importer depuis Wallet (BudgetBakers)",
+        "pageDescription": "Importez vos transactions exportées depuis l'application Wallet de BudgetBakers.",
+        "fileUpload": {
+          "stepTitle": "Téléversez votre fichier CSV Wallet",
+          "description": "Téléversez un ou plusieurs fichiers d'export CSV Wallet pour importer vos transactions. Tous les fichiers doivent comporter les mêmes colonnes.",
+          "maxSize": "Taille maximale par fichier : 10 Mo",
+          "parsing": "Analyse en cours…",
+          "errors": {
+            "invalidFormatNamed": "« {name} » n'est pas un fichier CSV.",
+            "parseFailed": "Échec de l'analyse du fichier. Veuillez vérifier le format et réessayer.",
+            "merge": {
+              "emptySelection": "Sélectionnez au moins un fichier CSV",
+              "fileReadFailed": "Impossible de lire « {file} »",
+              "fileEmpty": "\"{file}\" est vide",
+              "fileNoDataRows": "\"{file}\" ne contient aucune ligne de données",
+              "headerMismatch": "Les colonnes de \"{file}\" ne correspondent pas à celles du premier fichier. Tous les fichiers doivent comporter les mêmes colonnes dans le même ordre.",
+              "forbiddenHeader": "\"{file}\" utilise un nom de colonne réservé",
+              "tooManyRows": "Les fichiers sélectionnés dépassent un total de {max} lignes. Supprimez des fichiers ou des lignes puis réessayez.",
+              "parseError": "Impossible d'analyser « {file} ». Assurez-vous qu'il s'agit d'un fichier CSV valide."
+            }
+          },
+          "continue": "Continuer"
+        },
+        "preview": {
+          "accountsHelper": "Configurez le traitement de chaque compte détecté lors de l'importation.",
+          "accounts": "Comptes",
+          "transactions": "Transactions",
+          "rowPrefix": "Ligne {rowIndex} : "
+        },
+        "accountRow": {
+          "transactionsCount": "{count} opérations | {count} opération | {count} opérations",
+          "modeLabel": "Action",
+          "modePlaceholder": "Sélectionner une action",
+          "modeCreateNew": "Créer un nouveau compte",
+          "modeLinkExisting": "Associer à un compte existant",
+          "currentBalanceLabel": "Solde actuel (facultatif)",
+          "currentBalancePlaceholder": "ex. 1234,56",
+          "currentBalanceHint": "Laisser vide pour démarrer à partir de la somme des opérations importées.",
+          "linkTargetLabel": "Compte existant",
+          "linkTargetPlaceholder": "Sélectionner un compte",
+          "keepBalanceNote": "Le solde actuel du compte existant sera conservé. L'historique sera complété."
+        },
+        "execute": {
+          "starting": "Démarrage de l'import…",
+          "progressCount": "{processed} / {total}",
+          "statusQueued": "En attente",
+          "statusRunning": "Import en cours…",
+          "statusCompleted": "Terminé",
+          "statusFailed": "Échec",
+          "failed": "Échec de l'import.",
+          "partialImportNote": "Certaines lignes ont peut-être déjà été importées avant cette erreur. Relancer l'import pourrait créer des doublons."
+        },
+        "done": {
+          "successTitle": "Import terminé",
+          "successDescription": "Vos données Wallet ont été importées avec succès.",
+          "partialTitle": "Importé avec {count} erreur(s)",
+          "partialDescription": "Certaines lignes ont été importées avec succès, mais d'autres ont rencontré des erreurs.",
+          "allFailedTitle": "Échec de l'import",
+          "allFailedDescription": "Aucune ligne n'a été importée. Vérifiez les erreurs ci-dessous et réessayez.",
+          "accountsCreated": "Comptes créés",
+          "accountsLinked": "Comptes associés",
+          "accountsSkipped": "Comptes ignorés",
+          "categoriesCreated": "Catégories créées",
+          "tagsCreated": "Étiquettes créées",
+          "transactionsImported": "Opérations importées",
+          "transfersImported": "Virements importés",
+          "outOfWalletImported": "Hors portefeuille importés",
+          "mergedIntoPlanned": "Fusionnés dans le prévisionnel",
+          "duplicatesSkipped": "Doublons ignorés",
+          "errorsTitle": "{count} ligne(s) en échec | {count} ligne en échec | {count} lignes en échec",
+          "errorsOverflow": "+{count} de plus",
+          "errors": {
+            "rowImportFailed": "Impossible d'importer cette ligne.",
+            "payeeDefaultTagsFailed": "L'opération a été importée, mais les étiquettes par défaut du tiers n'ont pas pu être appliquées.",
+            "accountBalanceDesync": "Le solde d'un compte n'a pas pu être mis à jour après l'import et pourrait être incorrect."
+          },
+          "balanceWarningTitle": "Certains soldes de comptes peuvent être incorrects",
+          "balanceWarningBody": "Impossible de réinitialiser le solde d'un ou plusieurs comptes existants après l'import. Veuillez vérifier les comptes concernés.",
+          "viewTransactions": "Voir les opérations",
+          "importAnother": "Importer un autre fichier"
+        },
+        "stepper": {
+          "steps": {
+            "upload": "Téléverser",
+            "resolve": "Associer",
+            "review": "Vérifier",
+            "results": "Terminé"
+          }
+        },
+        "resolve": {
+          "resolvedCounterWord": "résolu(s)",
+          "accounts": {
+            "sectionTitle": "Comptes",
+            "currentBalanceLabel": "Solde actuel (facultatif)",
+            "currentBalancePlaceholder": "Laisser vide pour utiliser le total importé",
+            "willCreateHint": "Créera un nouveau compte en {currency}",
+            "skippedNote": "{count} compte(s) seront ignorés. Leurs opérations — ainsi que tout virement vers ou depuis ceux-ci — ne seront pas importés."
+          },
+          "categories": {
+            "sectionTitle": "Catégories"
+          },
+          "quickActions": {
+            "mapExactMatches": "Associer les correspondances exactes",
+            "createNewForUnmatched": "Créer pour les éléments sans correspondance",
+            "reset": "Réinitialiser",
+            "tooltips": {
+              "mapExactMatchesAccounts": "Associer chaque compte dont le nom correspond exactement à un compte existant",
+              "mapExactMatchesCategories": "Associer chaque catégorie dont le nom correspond exactement à une catégorie existante",
+              "createNewForUnmatched": "Définir toutes les lignes non résolues pour créer une nouvelle entrée",
+              "reset": "Effacer tous les choix et réassocier automatiquement par nom"
+            }
+          },
+          "footer": {
+            "back": "Retour",
+            "continue": "Continuer"
+          }
+        },
+        "review": {
+          "transactions": "Opérations",
+          "transfersDetected": "Virements détectés",
+          "outOfWallet": "Hors portefeuille",
+          "duplicatesSkipped": "Doublons ignorés",
+          "willImport": "À importer",
+          "warningsTitle": "{count} avertissement(s)",
+          "rowPrefix": "Ligne {rowIndex} :",
+          "duplicatesTitle": "{count} doublon(s) potentiel(s)",
+          "duplicatesHint": "Les lignes cochées seront tout de même importées ; les doublons décochés seront ignorés.",
+          "back": "Retour",
+          "importButton": "Importer {count} opérations",
+          "importing": "Importation en cours…"
+        },
+        "errors": {
+          "fileMissing": "Aucun fichier chargé. Veuillez importer à nouveau votre export Wallet."
+        }
+      }
+    }
+  }
+}

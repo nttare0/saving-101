@@ -1,0 +1,354 @@
+import { QueryClient, VueQueryPlugin } from '@tanstack/vue-query';
+import { mount } from '@vue/test-utils';
+import { createPinia, setActivePinia } from 'pinia';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { type Ref, defineComponent, ref } from 'vue';
+
+import { useImportBudgetBakersWalletStore } from './import-budget-bakers-wallet';
+
+// ----- module mocks -----
+
+// The store calls these inside its async actions; mocked so the parse + resolve
+// flow runs without touching the network.
+vi.mock('@/api/import-budget-bakers-wallet', () => ({
+  parseBudgetBakersWallet: vi.fn(),
+  detectBudgetBakersWalletDuplicates: vi.fn(),
+  executeBudgetBakersWalletImport: vi.fn(),
+  getBudgetBakersWalletImportStatus: vi.fn(),
+}));
+
+// `parseFiles` merges the selected files client-side via a dynamic import before
+// parsing. Mock the merge so the test feeds a fixed `combinedContent` and the
+// flow reaches the parse + seed step deterministically (the store reads only
+// `combinedContent` off the result).
+vi.mock('@/pages/import-export/utils/merge-csv-files', () => ({
+  mergeCsvFiles: vi.fn(() => Promise.resolve({ combinedContent: 'csv' })),
+}));
+
+// The execute action arms a `useImportJobProgress` watchdog at construction time.
+// Mock it so the store builds without real SSE/timers — only the parse/resolve
+// path is under test here.
+let mockJobProgress: Ref<unknown>;
+let mockJobExecuteError: Ref<string | null>;
+
+vi.mock('@/composable/use-import-job-progress', () => ({
+  useImportJobProgress: vi.fn(() => ({
+    progress: mockJobProgress,
+    executeError: mockJobExecuteError,
+    setExecuteError: vi.fn(),
+    start: vi.fn(),
+    stop: vi.fn(),
+  })),
+}));
+
+// useQueryClient is called at store construction time; hand back a shared client.
+let sharedQueryClient: QueryClient;
+vi.mock('@tanstack/vue-query', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('@tanstack/vue-query')>();
+  return { ...actual, useQueryClient: vi.fn(() => sharedQueryClient) };
+});
+
+// Existing app accounts + categories are the auto-match link targets. `categories`
+// is non-empty and accounts report as already fetched, so `prepareResolveStep`
+// runs the auto-match immediately without firing a load. The fixture holds no
+// vehicle/loan accounts, so `importLinkableAccounts` (the getter the resolve
+// engine reads its link targets from) exposes the same list as `accounts`.
+vi.mock('@/stores/accounts', () => {
+  const mockAccounts = [{ id: 1, name: 'Cash', currencyCode: 'USD' }];
+  return {
+    useAccountsStore: vi.fn(() => ({
+      accounts: mockAccounts,
+      importLinkableAccounts: mockAccounts,
+      isAccountsFetched: true,
+      refetchAccounts: vi.fn(),
+    })),
+  };
+});
+
+vi.mock('@/stores/categories/categories', () => ({
+  useCategoriesStore: vi.fn(() => ({
+    categories: [{ id: 'cat-groceries', name: 'Groceries', subCategories: [] }],
+    formattedCategories: [{ id: 'cat-groceries', name: 'Groceries', subCategories: [] }],
+    categoriesMap: { 'cat-groceries': { id: 'cat-groceries', name: 'Groceries' } },
+    loadCategories: vi.fn(),
+  })),
+}));
+
+// Only referenced inside the (never-fired) onComplete callback; stubbed so the
+// real modules aren't pulled in.
+vi.mock('@/stores/currencies', () => ({ useCurrenciesStore: vi.fn(() => ({ loadCurrencies: vi.fn() })) }));
+vi.mock('@/stores/tags', () => ({ useTagsStore: vi.fn(() => ({ loadTags: vi.fn() })) }));
+
+// The store reads the persisted recalculate-balance default from user settings at
+// construction and PATCHes the chosen value back after a successful execute. Mocked
+// so no real settings query fires; tests drive `data` and assert on `patchAsync`.
+let mockUserSettingsData: Ref<
+  { import?: { recalculateAccountBalance?: boolean; categoryMappingPresets?: CategoryMappingPreset[] } } | undefined
+>;
+let mockPatchUserSettingsAsync: ReturnType<typeof vi.fn>;
+
+vi.mock('@/composable/data-queries/user-settings', () => ({
+  useUserSettings: vi.fn(() => ({
+    data: mockUserSettingsData,
+    patchAsync: mockPatchUserSettingsAsync,
+  })),
+}));
+
+// ----- helpers -----
+
+import * as walletApi from '@/api/import-budget-bakers-wallet';
+import {
+  TRANSACTION_TYPES,
+  type BudgetBakersWalletParseResult,
+  type BudgetBakersWalletParseTransaction,
+  type CategoryMappingPreset,
+} from '@bt/shared/types';
+
+const mockParse = vi.mocked(walletApi.parseBudgetBakersWallet);
+
+/**
+ * A parse result with one account and one category that exactly match an
+ * existing app entity, plus a category that matches nothing.
+ */
+const PARSE_RESULT: BudgetBakersWalletParseResult = {
+  accounts: [{ originalName: 'Cash', currency: 'USD', transactionCount: 3, netImportedAmount: -10 }],
+  categories: [
+    { name: 'Groceries', transactionCount: 2 },
+    { name: 'Brand New Category', transactionCount: 1 },
+  ],
+  tags: [],
+  transactions: [],
+  transfers: [],
+  warnings: [],
+  dateRange: null,
+  detectedBaseCurrency: null,
+};
+
+const aTransaction = ({
+  rowIndex,
+  accountName,
+  categoryName,
+}: {
+  rowIndex: number;
+  accountName: string;
+  categoryName: string | null;
+}): BudgetBakersWalletParseTransaction => ({
+  rowIndex,
+  date: `2026-01-0${rowIndex}T10:00:00.000Z`,
+  accountName,
+  categoryName,
+  payeeName: null,
+  note: '',
+  amount: -10,
+  type: TRANSACTION_TYPES.expense,
+  paymentType: 'Cash',
+  tags: [],
+  outOfWallet: false,
+});
+
+/**
+ * Two accounts, three rows: `Groceries` is used by both, `Brand New Category`
+ * only by `Savings`, so skipping `Savings` hides exactly one category.
+ */
+const TWO_ACCOUNT_PARSE_RESULT: BudgetBakersWalletParseResult = {
+  ...PARSE_RESULT,
+  accounts: [
+    { originalName: 'Cash', currency: 'USD', transactionCount: 2, netImportedAmount: -20 },
+    { originalName: 'Savings', currency: 'USD', transactionCount: 1, netImportedAmount: -10 },
+  ],
+  transactions: [
+    aTransaction({ rowIndex: 1, accountName: 'Cash', categoryName: 'Groceries' }),
+    aTransaction({ rowIndex: 2, accountName: 'Savings', categoryName: 'Groceries' }),
+    aTransaction({ rowIndex: 3, accountName: 'Savings', categoryName: 'Brand New Category' }),
+  ],
+};
+
+const mountWithPlugins = () => {
+  sharedQueryClient = new QueryClient({ defaultOptions: { queries: { retry: false } } });
+  mockJobProgress = ref(null);
+  mockJobExecuteError = ref<string | null>(null);
+  mockUserSettingsData = ref(undefined);
+  mockPatchUserSettingsAsync = vi.fn(() => Promise.resolve({}));
+
+  const pinia = createPinia();
+  setActivePinia(pinia);
+  const Wrapper = defineComponent({ setup() {}, template: '<div />' });
+  mount(Wrapper, { global: { plugins: [pinia, [VueQueryPlugin, { queryClient: sharedQueryClient }]] } });
+};
+
+const aFile = () => new File(['csv'], 'wallet.csv', { type: 'text/csv' });
+
+// ----- tests -----
+
+describe('useImportBudgetBakersWalletStore – resolve seeding', () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+    mountWithPlugins();
+  });
+
+  it('auto-links exact-name matches on parse instead of defaulting them to create-new', async () => {
+    mockParse.mockResolvedValue({ result: PARSE_RESULT });
+
+    const store = useImportBudgetBakersWalletStore();
+    await store.parseFiles({ files: [aFile()] });
+
+    // Regression guard: an exact-name category match must auto-link, not sit at
+    // create-new (which forced the user to manually click "Map exact matches").
+    expect(store.categoryMapping['Groceries']).toEqual({ action: 'link-existing', categoryId: 'cat-groceries' });
+    // The exact-name account match auto-links too (currency-aware).
+    expect(store.accountMapping['Cash']).toEqual({ action: 'link-existing', accountId: '1' });
+  });
+
+  it('falls back to create-new for sources with no existing match', async () => {
+    mockParse.mockResolvedValue({ result: PARSE_RESULT });
+
+    const store = useImportBudgetBakersWalletStore();
+    await store.parseFiles({ files: [aFile()] });
+
+    expect(store.categoryMapping['Brand New Category']).toEqual({ action: 'create-new' });
+  });
+});
+
+// Integration wiring only — the toggle's behavior matrix (persisted default,
+// override precedence, only-when-changed persistence) is covered by the
+// composable's own tests in use-recalculate-balance-toggle.test.ts.
+describe('useImportBudgetBakersWalletStore – recalculate-balance toggle wiring', () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+    mountWithPlugins();
+  });
+
+  const mockExecute = vi.mocked(walletApi.executeBudgetBakersWalletImport);
+
+  it('sends the toggle value in the execute payload and persists it once the job is accepted', async () => {
+    mockParse.mockResolvedValue({ result: PARSE_RESULT });
+    mockExecute.mockResolvedValue({ jobId: 'job-1' });
+    const store = useImportBudgetBakersWalletStore();
+    await store.parseFiles({ files: [aFile()] });
+
+    store.recalculateBalance = true;
+    await store.execute();
+
+    expect(mockExecute).toHaveBeenCalledWith(expect.objectContaining({ recalculateBalance: true }));
+    expect(mockPatchUserSettingsAsync).toHaveBeenCalledWith({ import: { recalculateAccountBalance: true } });
+  });
+
+  it('reset() clears the override back to the persisted value', () => {
+    mockUserSettingsData.value = { import: { recalculateAccountBalance: true } };
+    const store = useImportBudgetBakersWalletStore();
+
+    store.recalculateBalance = false;
+    store.reset();
+
+    expect(store.recalculateBalance).toBe(true);
+  });
+});
+
+describe('useImportBudgetBakersWalletStore – skipped accounts', () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+    mountWithPlugins();
+  });
+
+  const mockExecute = vi.mocked(walletApi.executeBudgetBakersWalletImport);
+
+  it('counts a skipped account as resolved and lists it in skippedAccountNames', async () => {
+    mockParse.mockResolvedValue({ result: TWO_ACCOUNT_PARSE_RESULT });
+
+    const store = useImportBudgetBakersWalletStore();
+    await store.parseFiles({ files: [aFile()] });
+
+    // An unselected link target leaves the step invalid; skipping decides the row.
+    store.setAccountTarget({ name: 'Savings', accountId: '' });
+    expect(store.isResolveStepValid).toBe(false);
+
+    store.setAccountAction({ name: 'Savings', action: 'skip' });
+
+    expect(store.accountMapping['Savings']).toEqual({ action: 'skip' });
+    expect(store.skippedAccountNames).toEqual(['Savings']);
+    expect(store.isResolveStepValid).toBe(true);
+  });
+
+  it('hides categories used only by skipped accounts and restores them on unskip', async () => {
+    mockParse.mockResolvedValue({ result: TWO_ACCOUNT_PARSE_RESULT });
+
+    const store = useImportBudgetBakersWalletStore();
+    await store.parseFiles({ files: [aFile()] });
+
+    expect(store.resolvableCategoryNames).toEqual(['Groceries', 'Brand New Category']);
+
+    store.setAccountAction({ name: 'Savings', action: 'skip' });
+
+    // 'Groceries' survives on the Cash row; 'Brand New Category' is Savings-only.
+    expect(store.resolvableCategoryNames).toEqual(['Groceries']);
+
+    store.setAccountAction({ name: 'Savings', action: 'create-new' });
+
+    expect(store.resolvableCategoryNames).toEqual(['Groceries', 'Brand New Category']);
+  });
+
+  it('prunes hidden category mappings from the execute payload but keeps the skipped account', async () => {
+    mockParse.mockResolvedValue({ result: TWO_ACCOUNT_PARSE_RESULT });
+    mockExecute.mockResolvedValue({ jobId: 'job-skip' });
+
+    const store = useImportBudgetBakersWalletStore();
+    await store.parseFiles({ files: [aFile()] });
+    store.setAccountAction({ name: 'Savings', action: 'skip' });
+
+    await store.execute();
+
+    const payload = mockExecute.mock.calls[0]![0];
+    expect(Object.keys(payload.categoryMapping)).toEqual(['Groceries']);
+    expect(payload.accountMapping['Savings']).toEqual({ action: 'skip' });
+  });
+});
+
+describe('useImportBudgetBakersWalletStore – remembered category mappings', () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+    mountWithPlugins();
+  });
+
+  const mockExecute = vi.mocked(walletApi.executeBudgetBakersWalletImport);
+
+  it('applies the wallet preset and re-persists it under the flow fingerprint on execute', async () => {
+    mockUserSettingsData.value = {
+      import: {
+        categoryMappingPresets: [
+          {
+            fingerprint: 'budget-bakers-wallet',
+            categoryMapping: { 'Brand New Category': { action: 'link-existing', categoryId: 'cat-groceries' } },
+            updatedAt: '2026-01-01T00:00:00.000Z',
+          },
+        ],
+      },
+    };
+    mockParse.mockResolvedValue({ result: PARSE_RESULT });
+    mockExecute.mockResolvedValue({ jobId: 'job-preset' });
+
+    const store = useImportBudgetBakersWalletStore();
+    await store.parseFiles({ files: [aFile()] });
+
+    expect(store.matchingCategoryPreset?.fingerprint).toBe('budget-bakers-wallet');
+
+    store.applyCategoryPreset({ preset: store.matchingCategoryPreset! });
+    expect(store.categoryMapping['Brand New Category']).toEqual({
+      action: 'link-existing',
+      categoryId: 'cat-groceries',
+    });
+
+    await store.execute();
+
+    const presets = mockPatchUserSettingsAsync.mock.calls.at(-1)![0].import.categoryMappingPresets;
+    expect(presets).toHaveLength(1);
+    expect(presets[0]).toEqual(
+      expect.objectContaining({
+        fingerprint: 'budget-bakers-wallet',
+        categoryMapping: {
+          Groceries: { action: 'link-existing', categoryId: 'cat-groceries' },
+          'Brand New Category': { action: 'link-existing', categoryId: 'cat-groceries' },
+        },
+      }),
+    );
+  });
+});

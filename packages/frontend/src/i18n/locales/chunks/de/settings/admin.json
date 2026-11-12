@@ -1,0 +1,158 @@
+{
+  "settings": {
+    "admin": {
+      "title": "Admin-Panel",
+      "description": "Administrative Werkzeuge und Systemverwaltung",
+      "priceSync": {
+        "title": "Wertpapier-Preissynchronisierung",
+        "description": "Manuell die Preissynchronisierung für alle Wertpapiere mit Beständen auslösen",
+        "button": "Preissynchronisierung auslösen",
+        "buttonLoading": "Wird synchronisiert...",
+        "notifications": {
+          "success": "Wertpapier-Preissynchronisierung erfolgreich abgeschlossen",
+          "failed": "Preissynchronisierung konnte nicht ausgelöst werden",
+          "rateLimited": "Nicht erlaubt. Versuche es in {time} erneut.",
+          "adminRequired": "Administratorrechte für diese Aktion erforderlich"
+        }
+      },
+      "priceUpload": {
+        "title": "Manueller Wertpapierpreis-Upload",
+        "description": "Lade historische Kursdaten für Wertpapiere über CSV- oder JSON-Dateien hoch",
+        "button": "Wertpapierpreise hochladen",
+        "dialogTitle": "Wertpapierpreise hochladen",
+        "selectSecurity": {
+          "searchLabel": "Symbol oder Name suchen",
+          "searchPlaceholder": "AAPL",
+          "searching": "Wird gesucht…",
+          "failed": "Suche nach Wertpapieren fehlgeschlagen.",
+          "noResults": "Keine Ergebnisse.",
+          "changeButton": "Ändern"
+        },
+        "dateRangeInfo": {
+          "loading": "Datumsbereichsinformationen werden geladen...",
+          "title": "Verfügbarer Zeitraum für Wechselkurse ({currency}):",
+          "tooltipText": "Du kannst Wertpapierpreise nur für Daten hochladen, für die uns Wechselkurse vorliegen. Andernfalls ist es nicht möglich, den Wertpapierpreis in andere Währungen umzurechnen. Wenn du ältere Daten benötigst, lade zuerst Wechselkurse hoch. Andernfalls werden Datensätze je nach der in den nächsten Schritten gewählten Option automatisch gefiltert (ausgelassen) oder die Upload-Anfrage schlägt fehl."
+        },
+        "fileUpload": {
+          "title": "Datei hochladen",
+          "supportedFormats": "CSV- oder JSON-Dateien unterstützt",
+          "errors": {
+            "unsupportedFormat": "Nicht unterstütztes Dateiformat. Bitte lade eine CSV- oder JSON-Datei hoch.",
+            "parseFailed": "{fileType}-Datei konnte nicht verarbeitet werden: {error}"
+          }
+        },
+        "fieldMapper": {
+          "title": "Felder zuordnen",
+          "description": "Ordne die Felder deiner Datei den unten stehenden erforderlichen Feldern zu.",
+          "selectField": "Feld auswählen...",
+          "dateFormatLabel": "Datumsformat",
+          "dateFormatDescription": "Wähle das in deiner Datei verwendete Datumsformat",
+          "dateFormats": {
+            "ddMMyyyySlash": "TT/MM/JJJJ (z.B. 31/12/2024)",
+            "MMddyyyySlash": "MM/TT/JJJJ (z.B. 12/31/2024)",
+            "yyyyMMddDash": "JJJJ-MM-TT (z.B. 2024-12-31)",
+            "ddMMyyyyDash": "TT-MM-JJJJ (z.B. 31-12-2024)",
+            "MMddyyyyDash": "MM-TT-JJJJ (z.B. 12-31-2024)"
+          },
+          "mappingComplete": "Alle erforderlichen Felder zugeordnet",
+          "mappingIncomplete": "Bitte ordne alle erforderlichen Felder zu, um fortzufahren",
+          "fileInfo": "Datei:",
+          "records": "{count} Datensätze",
+          "changeFileButton": "Datei ändern",
+          "continueButton": "Weiter zur Vorschau"
+        },
+        "preview": {
+          "title": "Datenvorschau",
+          "recordsCount": "{count} Datensatz wird hochgeladen | {count} Datensätze werden hochgeladen",
+          "recordsPeriod": "für den Zeitraum zwischen {oldest} und {newest}",
+          "loadingExisting": "Bestehende Preise werden zum Vergleich geladen...",
+          "warnings": {
+            "significantDifferences": "Erhebliche Preisunterschiede erkannt",
+            "differencesDetails": "{count} Datensatz weist einen Preisunterschied von mehr als 4% im Vergleich zu bestehenden Daten auf. Bitte sorgfältig prüfen. | {count} Datensätze weisen einen Preisunterschied von mehr als 4% im Vergleich zu bestehenden Daten auf. Bitte sorgfältig prüfen."
+          },
+          "filterCheckbox": "Nur Datensätze mit erheblichen Unterschieden (>4%) anzeigen",
+          "tableHeaders": {
+            "date": "Datum",
+            "newPrice": "Neuer Preis",
+            "existingPrice": "Bestehender Preis",
+            "difference": "Unterschied (%)"
+          },
+          "noExistingPrice": "N/A",
+          "scrollForMore": "Scrollen für mehr...",
+          "noDifferences": "Keine Datensätze mit erheblichen Unterschieden gefunden.",
+          "backButton": "Zurück zur Zuordnung",
+          "continueButton": "Weiter zu den Optionen"
+        },
+        "options": {
+          "title": "Upload-Optionen",
+          "autoFilter": {
+            "title": "Daten außerhalb des verfügbaren Bereichs automatisch filtern",
+            "description": "Entfernt automatisch Daten, die außerhalb des verfügbaren Wechselkursbereichs liegen"
+          },
+          "override": {
+            "title": "Bestehende Datensätze überschreiben",
+            "description": "Aktualisiert bestehende Preisdatensätze, anstatt Duplikate zu überspringen"
+          },
+          "backButton": "Zurück",
+          "uploadButton": "Preise hochladen",
+          "uploadingButton": "Wird hochgeladen..."
+        },
+        "result": {
+          "title": "Upload abgeschlossen!",
+          "inserted": "✓ {count} neuer Datensatz eingefügt | ✓ {count} neue Datensätze eingefügt",
+          "duplicates": "• {count} Duplikat {action} | • {count} Duplikate {action}",
+          "duplicatesUpdated": "aktualisiert",
+          "duplicatesSkipped": "übersprungen",
+          "filtered": "• {count} Datum gefiltert (außerhalb des Bereichs) | • {count} Daten gefiltert (außerhalb des Bereichs)",
+          "closeButton": "Schließen",
+          "uploadMoreButton": "Weitere hochladen"
+        },
+        "notifications": {
+          "dateInfoLoadFailed": "Datums-Informationen konnten nicht geladen werden: {error}",
+          "uploadSuccess": "{count} Preisdatensatz erfolgreich hochgeladen | {count} Preisdatensätze erfolgreich hochgeladen",
+          "uploadFailed": "Upload fehlgeschlagen: {error}"
+        }
+      },
+      "broadcast": {
+        "title": "Benachrichtigung senden",
+        "description": "Sende eine In-App-Benachrichtigung an jeden Benutzer, der in den letzten 30 Tagen aktiv war, oder nur an die von dir aufgelisteten Benutzer-IDs und E-Mail-Adressen. Wenn ein Link angegeben ist, öffnet ein Klick darauf den Link in einem neuen Tab, und das erneute Senden desselben Links überspringt Benutzer, die ihn bereits erhalten haben.",
+        "fields": {
+          "title": "Titel",
+          "titlePlaceholder": "z.B. iOS-App ist in der Public Beta 📱",
+          "message": "Nachricht",
+          "messagePlaceholder": "Optionaler Text, der unter dem Titel angezeigt wird",
+          "url": "Verknüpfen",
+          "urlPlaceholder": "https://... (optional)",
+          "urlError": "Link muss mit https:// beginnen",
+          "icon": "Symbol",
+          "recipients": "Empfänger",
+          "recipientsPlaceholder": "Optionale Benutzer-IDs oder E-Mail-Adressen, durch Kommas getrennt, z.B. 12, jane@example.com. Leer = alle aktiven Benutzer",
+          "recipientsError": "Verwende positive ganzzahlige IDs oder gültige E-Mail-Adressen, getrennt durch Kommas"
+        },
+        "icons": {
+          "info": "Info",
+          "announcement": "Ankündigung",
+          "success": "Erfolg",
+          "warning": "Warnung"
+        },
+        "button": "Benachrichtigung senden",
+        "confirm": {
+          "title": "An alle aktiven Benutzer senden?",
+          "titleSelected": "An {count} Benutzer senden?",
+          "description": "Dadurch wird eine Benachrichtigung für jeden Benutzer erstellt, der in den letzten 30 Tagen aktiv war. Dies kann nicht rückgängig gemacht werden.",
+          "descriptionSelected": "Unbekannte IDs und E-Mail-Adressen werden übersprungen. Dies kann nicht rückgängig gemacht werden.",
+          "button": "Senden"
+        },
+        "notifications": {
+          "success": "Benachrichtigung an {count} Benutzer gesendet",
+          "failed": "Benachrichtigung konnte nicht gesendet werden",
+          "noneCreated": "Es wurden keine Benachrichtigungen gesendet: Keine passenden Benutzer oder sie haben diesen Link bereits erhalten"
+        }
+      },
+      "tabs": {
+        "investments": "Investments",
+        "notifications": "Benachrichtigungen"
+      }
+    }
+  }
+}

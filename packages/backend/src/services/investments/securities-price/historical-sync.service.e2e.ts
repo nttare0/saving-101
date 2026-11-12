@@ -1,0 +1,486 @@
+import { ASSET_CLASS, SECURITY_PROVIDER } from '@bt/shared/types/investments';
+import Coingecko from '@coingecko/coingecko-typescript';
+import { beforeEach, describe, expect, it, jest } from '@jest/globals';
+import Portfolios from '@models/investments/portfolios.model';
+import Securities from '@models/investments/securities.model';
+import SecurityPricing from '@models/investments/security-pricing.model';
+import { restClient } from '@polygon.io/client-js';
+import * as helpers from '@tests/helpers';
+import alpha from 'alphavantage';
+import { subDays } from 'date-fns';
+
+import { FmpClient } from '../data-providers/clients/fmp-client';
+
+// Mock data provider clients
+const mockedRestClient = jest.mocked(restClient);
+const mockPolygonApi = mockedRestClient.getMockImplementation()!('test');
+const mockedPolygonAggregates = jest.mocked(mockPolygonApi.stocks.aggregates);
+
+const mockedAlpha = jest.mocked(alpha);
+const mockAlphaVantage = mockedAlpha.getMockImplementation()!({ key: 'test' });
+const mockedAlphaDaily = jest.mocked(mockAlphaVantage.data.daily);
+
+const mockedFmpClient = jest.mocked(FmpClient);
+const mockedFmpHistoricalPrices = jest.fn();
+
+mockedFmpClient.mockImplementation(
+  () =>
+    ({
+      getHistoricalPrices: mockedFmpHistoricalPrices,
+      search: jest.fn(),
+      getQuote: jest.fn(),
+      getHistoricalPricesFull: jest.fn(),
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    }) as any,
+);
+
+const mockedCoingecko = jest.mocked(Coingecko);
+const mockedCoingeckoMarketChartGetRange = jest.fn<any>();
+mockedCoingecko.mockImplementation(
+  () =>
+    ({
+      search: { get: jest.fn<any>().mockResolvedValue({ coins: [] }) },
+      simple: { price: { get: jest.fn<any>().mockResolvedValue({}) } },
+      coins: {
+        marketChart: {
+          get: jest.fn<any>().mockResolvedValue({ prices: [] }),
+          getRange: mockedCoingeckoMarketChartGetRange,
+        },
+      },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    }) as any,
+);
+
+describe('Historical Price Sync Service (via Holdings Creation)', () => {
+  let investmentPortfolio: Portfolios;
+  let usSecurity: Securities;
+  let nonUsSecurity: Securities;
+  let existingSecurity: Securities;
+
+  beforeEach(async () => {
+    jest.clearAllMocks();
+
+    // Create investment portfolio
+    investmentPortfolio = await helpers.createPortfolio({
+      payload: helpers.buildPortfolioPayload({
+        name: 'Test Investment Portfolio',
+      }),
+      raw: true,
+    });
+
+    // Create test securities
+    const securities = await helpers.seedSecurities([
+      {
+        symbol: 'AAPL',
+        name: 'Apple Inc.',
+        currencyCode: 'USD',
+      },
+      {
+        symbol: 'ASML.AS',
+        name: 'ASML Holding N.V.',
+        currencyCode: 'EUR',
+      },
+      {
+        symbol: 'MSFT',
+        name: 'Microsoft Corporation',
+        currencyCode: 'USD',
+      },
+    ]);
+
+    usSecurity = securities[0]!;
+    nonUsSecurity = securities[1]!;
+    existingSecurity = securities[2]!;
+
+    // Pre-populate existing security with some price data
+    await SecurityPricing.create({
+      securityId: existingSecurity.id,
+      date: subDays(new Date(), 1),
+      priceClose: '100.00',
+      source: SECURITY_PROVIDER.polygon,
+    });
+  });
+
+  describe('US Stock Routing (Polygon Provider)', () => {
+    it('should use Polygon provider for US stocks when creating holding', async () => {
+      // Mock Polygon response for US stock (AAPL)
+      const mockPrices = [
+        {
+          t: new Date('2024-01-15').getTime(),
+          c: 185.92,
+        },
+        {
+          t: new Date('2024-01-16').getTime(),
+          c: 188.63,
+        },
+        {
+          t: new Date('2024-01-17').getTime(),
+          c: 191.56,
+        },
+      ];
+
+      mockedPolygonAggregates.mockResolvedValue({
+        results: mockPrices,
+      });
+
+      // Create holding via API endpoint - this triggers historical price sync internally
+      const response = await helpers.createHolding({
+        payload: {
+          portfolioId: investmentPortfolio.id,
+          securityId: usSecurity.id,
+        },
+      });
+
+      expect(response.statusCode).toBe(201);
+
+      // Give some time for background sync to complete
+      await new Promise((resolve) => setTimeout(resolve, 100));
+
+      // Verify Polygon was called with correct parameters
+      expect(mockedPolygonAggregates).toHaveBeenCalledTimes(1);
+      const callArgs = mockedPolygonAggregates.mock.calls[0];
+      expect(callArgs?.[0]).toBe('AAPL');
+      expect(callArgs?.[1]).toBe(1); // multiplier
+      expect(callArgs?.[2]).toBe('day'); // timespan
+
+      // Verify data was stored correctly in database
+      const storedPrices = await SecurityPricing.findAll({
+        where: { securityId: usSecurity.id },
+        order: [['date', 'ASC']],
+      });
+
+      expect(storedPrices).toHaveLength(3);
+
+      mockPrices.forEach((item, index) => {
+        expect(storedPrices[index]?.priceClose).toBeNumericEqual(item.c);
+        expect(storedPrices[index]?.source).toBe(SECURITY_PROVIDER.polygon);
+      });
+
+      const updatedSecurity = await Securities.findByPk(usSecurity.id);
+      expect(updatedSecurity?.pricingLastSyncedAt).toBeTruthy();
+
+      // Verify other providers were NOT called
+      expect(mockedAlphaDaily).not.toHaveBeenCalled();
+      expect(mockedFmpHistoricalPrices).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('Non-US Stock Routing (Alpha Vantage Provider)', () => {
+    it('should use Alpha Vantage provider for non-US stocks when creating holding', async () => {
+      // Mock Alpha Vantage response for non-US stock (ASML.AS)
+      const mockTimeSeriesData = {
+        'Time Series (Daily)': {
+          '2024-01-17': {
+            '1. open': '720.00',
+            '2. high': '735.50',
+            '3. low': '718.25',
+            '4. close': '728.90',
+            '5. volume': '1234567',
+          },
+          '2024-01-16': {
+            '1. open': '715.50',
+            '2. high': '722.75',
+            '3. low': '710.00',
+            '4. close': '719.25',
+            '5. volume': '987654',
+          },
+          '2024-01-15': {
+            '1. open': '708.25',
+            '2. high': '718.50',
+            '3. low': '705.00',
+            '4. close': '714.80',
+            '5. volume': '1876543',
+          },
+        },
+      };
+
+      mockedAlphaDaily.mockResolvedValue(mockTimeSeriesData);
+
+      // Create holding via API endpoint - this triggers historical price sync internally
+      const response = await helpers.createHolding({
+        payload: {
+          portfolioId: investmentPortfolio.id,
+          securityId: nonUsSecurity.id,
+        },
+      });
+
+      expect(response.statusCode).toBe(201);
+
+      // Give some time for background sync to complete
+      await new Promise((resolve) => setTimeout(resolve, 100));
+
+      // Verify Alpha Vantage was called correctly
+      expect(mockedAlphaDaily).toHaveBeenCalledTimes(1);
+      expect(mockedAlphaDaily).toHaveBeenCalledWith('ASML.AS', 'full');
+
+      // Verify data was stored correctly in database with Alpha Vantage as source
+      const storedPrices = await SecurityPricing.findAll({
+        where: { securityId: nonUsSecurity.id },
+        order: [['date', 'ASC']],
+      });
+
+      expect(storedPrices).toHaveLength(3);
+      expect(storedPrices[0]?.priceClose).toBeNumericEqual('714.80'); // 2024-01-15
+      expect(storedPrices[0]?.source).toBe(SECURITY_PROVIDER.alphavantage);
+      expect(storedPrices[1]?.priceClose).toBeNumericEqual('719.25'); // 2024-01-16
+      expect(storedPrices[1]?.source).toBe(SECURITY_PROVIDER.alphavantage);
+      expect(storedPrices[2]?.priceClose).toBeNumericEqual('728.90'); // 2024-01-17
+      expect(storedPrices[2]?.source).toBe(SECURITY_PROVIDER.alphavantage);
+
+      // Verify other providers were NOT called
+      expect(mockedPolygonAggregates).not.toHaveBeenCalled();
+      expect(mockedFmpHistoricalPrices).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('Edge Cases and Error Handling', () => {
+    it('should sync even when security already has price data (fills gaps)', async () => {
+      // First, verify the existing price data is there before the test
+      const pricesBeforeSync = await SecurityPricing.findAll({
+        where: { securityId: existingSecurity.id },
+      });
+      expect(pricesBeforeSync.length).toBeGreaterThanOrEqual(1); // Should have the setup price
+
+      // Mock Polygon to return new price data with different dates to avoid conflicts
+      const mockPrices = [
+        {
+          t: new Date('2024-03-15').getTime(), // Use different dates to avoid duplicate conflicts
+          c: 150.0,
+        },
+        {
+          t: new Date('2024-03-16').getTime(),
+          c: 155.0,
+        },
+      ];
+
+      mockedPolygonAggregates.mockResolvedValue({
+        results: mockPrices,
+      });
+
+      // Try to create holding for security that already has price data
+      const response = await helpers.createHolding({
+        payload: {
+          portfolioId: investmentPortfolio.id,
+          securityId: existingSecurity.id,
+        },
+      });
+
+      expect(response.statusCode).toBe(201);
+
+      // Give some time for sync to complete
+      await new Promise((resolve) => setTimeout(resolve, 100));
+
+      // Verify provider WAS called (should NOT skip sync)
+      expect(mockedPolygonAggregates).toHaveBeenCalledTimes(1);
+      expect(mockedPolygonAggregates).toHaveBeenCalledWith(
+        'MSFT',
+        1,
+        'day',
+        expect.any(String), // startDate
+        expect.any(String), // endDate
+      );
+
+      const storedPrices = await SecurityPricing.findAll({
+        where: { securityId: existingSecurity.id },
+        order: [['date', 'ASC']],
+      });
+
+      expect(storedPrices.length).toBeGreaterThanOrEqual(pricesBeforeSync.length);
+
+      const updatedSecurity = await Securities.findByPk(existingSecurity.id);
+      expect(updatedSecurity?.pricingLastSyncedAt).toBeTruthy();
+    });
+
+    it('should handle provider failure gracefully during holding creation', async () => {
+      // Mock Polygon failure
+      mockedPolygonAggregates.mockRejectedValue(new Error('Polygon API rate limit exceeded'));
+
+      // Mock Alpha Vantage success as fallback
+      const mockTimeSeriesData = {
+        'Time Series (Daily)': {
+          '2024-01-15': {
+            '4. close': '185.20',
+          },
+        },
+      };
+      mockedAlphaDaily.mockResolvedValue(mockTimeSeriesData);
+
+      // Create holding - should succeed even if primary provider fails
+      const response = await helpers.createHolding({
+        payload: {
+          portfolioId: investmentPortfolio.id,
+          securityId: usSecurity.id,
+        },
+      });
+
+      expect(response.statusCode).toBe(201);
+
+      // Give time for background sync with fallback
+      await new Promise((resolve) => setTimeout(resolve, 200));
+
+      // Verify Polygon was tried first and failed
+      expect(mockedPolygonAggregates).toHaveBeenCalledTimes(1);
+
+      // Verify Alpha Vantage was used as fallback
+      expect(mockedAlphaDaily).toHaveBeenCalledTimes(1);
+      expect(mockedAlphaDaily).toHaveBeenCalledWith('AAPL', 'full');
+
+      // Verify data was stored with Alpha Vantage as source (fallback provider)
+      const storedPrices = await SecurityPricing.findAll({
+        where: { securityId: usSecurity.id },
+      });
+
+      expect(storedPrices).toHaveLength(1);
+      expect(storedPrices[0]?.source).toBe(SECURITY_PROVIDER.alphavantage);
+      expect(storedPrices[0]?.priceClose).toBeNumericEqual('185.20');
+    });
+  });
+
+  describe('priceSourceSymbol routing (Yahoo ISIN fallback path)', () => {
+    it('queries provider with priceSourceSymbol instead of providerSymbol when set', async () => {
+      // Simulates a security added via the Yahoo ISIN-fallback path: the row's
+      // identity is the sparse ISIN-suffix listing, but its priceSourceSymbol
+      // points at a dense local-ticker venue. The historical-sync pipeline
+      // must query the provider with the source symbol, not the canonical one.
+      const isinSecurity = await Securities.create({
+        symbol: 'IE00B53L3W79.IR',
+        providerSymbol: 'IE00B53L3W79.IR',
+        priceSourceSymbol: 'MEUD.PA',
+        name: 'iShares Core EURO STOXX 50',
+        currencyCode: 'EUR',
+        providerName: SECURITY_PROVIDER.yahoo,
+        assetClass: ASSET_CLASS.stocks,
+      });
+
+      // Non-US symbol → composite tries Yahoo (rejects globally by default),
+      // then falls back to Alpha Vantage. Alpha Vantage must receive the
+      // local-ticker symbol, not the ISIN-suffix one.
+      mockedAlphaDaily.mockResolvedValue({
+        'Time Series (Daily)': {
+          '2024-01-15': { '4. close': '92.50' },
+          '2024-01-16': { '4. close': '93.10' },
+        },
+      });
+
+      const response = await helpers.createHolding({
+        payload: {
+          portfolioId: investmentPortfolio.id,
+          securityId: isinSecurity.id,
+        },
+      });
+      expect(response.statusCode).toBe(201);
+      await new Promise((resolve) => setTimeout(resolve, 200));
+
+      expect(mockedAlphaDaily).toHaveBeenCalled();
+      expect(mockedAlphaDaily).toHaveBeenCalledWith('MEUD.PA', 'full');
+      // Crucially, the ISIN-suffix symbol must NEVER be passed to the provider.
+      const calledSymbols = mockedAlphaDaily.mock.calls.map((call) => call[0]);
+      expect(calledSymbols).not.toContain('IE00B53L3W79.IR');
+
+      const storedPrices = await SecurityPricing.findAll({
+        where: { securityId: isinSecurity.id },
+        order: [['date', 'ASC']],
+      });
+      expect(storedPrices).toHaveLength(2);
+      expect(storedPrices[0]?.source).toBe(SECURITY_PROVIDER.alphavantage);
+
+      // The row's identity stays honest – providerSymbol is NOT mutated by the
+      // sync path even though prices were sourced from a different symbol.
+      const reloaded = await Securities.findByPk(isinSecurity.id);
+      expect(reloaded?.providerSymbol).toBe('IE00B53L3W79.IR');
+      expect(reloaded?.symbol).toBe('IE00B53L3W79.IR');
+      expect(reloaded?.priceSourceSymbol).toBe('MEUD.PA');
+    });
+  });
+
+  describe('Crypto historical bucketing (bucketByUtcDay)', () => {
+    it('collapses multiple intraday provider points onto one UTC-midnight row per day, latest timestamp wins', async () => {
+      const cryptoSecurity = await Securities.create({
+        symbol: 'BTC',
+        providerSymbol: 'bitcoin',
+        currencyCode: 'USD',
+        cryptoCurrencyCode: 'BTC',
+        providerName: SECURITY_PROVIDER.coingecko,
+        assetClass: ASSET_CLASS.crypto,
+        name: 'Bitcoin',
+      });
+
+      // Three CoinGecko points on the same UTC calendar day (2024-06-15) with
+      // increasing timestamps. The latest must win and the stored row's `date`
+      // must be midnight UTC of that day.
+      const dayMidnightUtc = Date.UTC(2024, 5, 15);
+      mockedCoingeckoMarketChartGetRange.mockResolvedValue({
+        prices: [
+          [dayMidnightUtc + 6 * 60 * 60 * 1000, 60000], // 06:00 UTC
+          [dayMidnightUtc + 14 * 60 * 60 * 1000, 61500], // 14:00 UTC
+          [dayMidnightUtc + 22 * 60 * 60 * 1000, 67000], // 22:00 UTC – latest
+        ],
+      });
+
+      const response = await helpers.createHolding({
+        payload: {
+          portfolioId: investmentPortfolio.id,
+          securityId: cryptoSecurity.id,
+        },
+      });
+      expect(response.statusCode).toBe(201);
+
+      // Wait for background historical sync to finish.
+      await new Promise((resolve) => setTimeout(resolve, 300));
+
+      expect(mockedCoingeckoMarketChartGetRange).toHaveBeenCalled();
+
+      const storedPrices = await SecurityPricing.findAll({
+        where: { securityId: cryptoSecurity.id },
+        order: [['date', 'ASC']],
+      });
+
+      expect(storedPrices).toHaveLength(1);
+      const [row] = storedPrices;
+      expect(new Date(row!.date).getTime()).toBe(dayMidnightUtc);
+      expect(row!.priceClose.toNumber()).toBeCloseTo(67000, 5);
+      expect(row!.source).toBe(SECURITY_PROVIDER.coingecko);
+    });
+
+    it('keeps separate rows when provider points span multiple UTC days', async () => {
+      const cryptoSecurity = await Securities.create({
+        symbol: 'ETH',
+        providerSymbol: 'ethereum',
+        currencyCode: 'USD',
+        cryptoCurrencyCode: 'ETH',
+        providerName: SECURITY_PROVIDER.coingecko,
+        assetClass: ASSET_CLASS.crypto,
+        name: 'Ethereum',
+      });
+
+      const day1Utc = Date.UTC(2024, 5, 15);
+      const day2Utc = Date.UTC(2024, 5, 16);
+      mockedCoingeckoMarketChartGetRange.mockResolvedValue({
+        prices: [
+          [day1Utc + 6 * 60 * 60 * 1000, 3500],
+          [day1Utc + 22 * 60 * 60 * 1000, 3600], // latest for day 1
+          [day2Utc + 4 * 60 * 60 * 1000, 3700],
+          [day2Utc + 20 * 60 * 60 * 1000, 3800], // latest for day 2
+        ],
+      });
+
+      await helpers.createHolding({
+        payload: {
+          portfolioId: investmentPortfolio.id,
+          securityId: cryptoSecurity.id,
+        },
+      });
+      await new Promise((resolve) => setTimeout(resolve, 300));
+
+      const storedPrices = await SecurityPricing.findAll({
+        where: { securityId: cryptoSecurity.id },
+        order: [['date', 'ASC']],
+      });
+
+      expect(storedPrices).toHaveLength(2);
+      expect(new Date(storedPrices[0]!.date).getTime()).toBe(day1Utc);
+      expect(storedPrices[0]!.priceClose.toNumber()).toBeCloseTo(3600, 5);
+      expect(new Date(storedPrices[1]!.date).getTime()).toBe(day2Utc);
+      expect(storedPrices[1]!.priceClose.toNumber()).toBeCloseTo(3800, 5);
+    });
+  });
+});

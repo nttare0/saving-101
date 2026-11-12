@@ -1,0 +1,18 @@
+import { recordId } from '@common/lib/zod/custom-types';
+import { createController } from '@controllers/helpers/controller-factory';
+import * as accountGroupService from '@services/account-groups';
+import { z } from 'zod';
+
+export default createController(
+  z.object({
+    params: z.object({ groupId: recordId() }),
+  }),
+  async ({ user, params }) => {
+    const data = await accountGroupService.getAccountsInGroup({
+      groupId: params.groupId,
+      userId: user.id,
+    });
+
+    return { data };
+  },
+);

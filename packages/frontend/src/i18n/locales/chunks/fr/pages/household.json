@@ -1,0 +1,76 @@
+{
+  "pages": {
+    "household": {
+      "title": "Foyer",
+      "description": "Invitez des proches de confiance pour partager l'accès à tous vos comptes. Les membres voient vos comptes et (avec les droits d'écriture) peuvent y enregistrer des opérations.",
+      "myHousehold": {
+        "title": "Mon foyer",
+        "description": "Les membres ici ont accès à tous vos comptes. Les accès partagés par compte prévalent toujours sur l'accès du foyer."
+      },
+      "youOwner": "Vous — propriétaire",
+      "noMembers": "Personne n'a encore rejoint votre foyer.",
+      "loadMembersError": "Impossible de charger les membres du foyer. Essayez d'actualiser.",
+      "permissions": {
+        "read": "Lecture",
+        "write": "Écriture",
+        "manage": "Gestion"
+      },
+      "writeScope": {
+        "all": "Peut modifier toutes les opérations",
+        "own": "Peut modifier uniquement ses propres opérations"
+      },
+      "invite": {
+        "emailLabel": "E-mail",
+        "emailPlaceholder": "personne{'@'}exemple.com",
+        "permissionLabel": "Autorisation",
+        "writeScopeLabel": "Périmètre d'écriture",
+        "submit": "Envoyer l'invitation au foyer",
+        "sent": "Invitation envoyée.",
+        "error": "Impossible d'envoyer l'invitation.",
+        "emailDeliveryFailed": "Invitation créée, mais l'e-mail n'a pas pu être envoyé. Vous pouvez le renvoyer depuis le volet des invitations."
+      },
+      "revoke": {
+        "action": "Supprimer",
+        "title": "Supprimer le membre du foyer ?",
+        "description": "{handle} perdra l'accès à tous les comptes de votre foyer. Les accès partagés par compte (le cas échéant) ne sont pas affectés.",
+        "confirm": "Supprimer",
+        "success": "Membre supprimé.",
+        "error": "Impossible de supprimer ce membre."
+      },
+      "permissionChange": {
+        "setRead": "Passer en lecture seule",
+        "setWrite": "Autoriser l'écriture",
+        "success": "Autorisation mise à jour.",
+        "error": "Impossible de mettre à jour l'autorisation."
+      },
+      "imIn": {
+        "title": "Foyers dont je fais partie",
+        "description": "Les foyers d'autres personnes que vous avez rejoints. Quitter un foyer supprime votre accès à tous les comptes partagés de cette manière.",
+        "empty": "Vous n'avez rejoint le foyer de personne d'autre.",
+        "unnamedHousehold": "Foyer de {'@'}{handle}",
+        "loadError": "Impossible de charger les foyers dont vous faites partie. Réessayez plus tard."
+      },
+      "leave": {
+        "action": "Quitter",
+        "title": "Quitter ce foyer ?",
+        "description": "Vous perdrez l'accès à tous les comptes que {owner} partage via son foyer. Les accès partagés par compte (le cas échéant) ne sont pas affectés.",
+        "confirm": "Quitter",
+        "success": "Vous avez quitté le foyer.",
+        "error": "Impossible de quitter le foyer."
+      },
+      "pending": {
+        "badge": "En attente",
+        "resend": "Renvoyer",
+        "cancel": "Annuler",
+        "cancelTitle": "Annuler l'invitation ?",
+        "cancelDescription": "Annuler l'invitation en attente envoyée à {email} ? Cette personne ne pourra plus l'accepter.",
+        "cancelConfirm": "Annuler l'invitation",
+        "cancelSuccess": "Invitation annulée.",
+        "cancelError": "Échec de l'annulation de l'invitation.",
+        "resendSuccess": "Invitation renvoyée.",
+        "resendError": "Échec du renvoi de l'invitation.",
+        "resendDeliveryFailed": "Invitation mise à jour, mais l'e-mail n'a pas pu être envoyé. Réessayez plus tard."
+      }
+    }
+  }
+}

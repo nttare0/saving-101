@@ -1,0 +1,31 @@
+{
+  "settings": {
+    "appearance": {
+      "title": "Erscheinungsbild",
+      "description": "Passe das Aussehen der App an und wähle, welche Abschnitte in der Seitenleiste angezeigt werden.",
+      "theme": {
+        "title": "Design",
+        "description": "Wähle, wie die App aussieht. System passt sich deinen Geräteeinstellungen an."
+      },
+      "sidebar": {
+        "title": "Abschnitte der Seitenleiste",
+        "description": "Wähle aus, welche Abschnitte in der Seitenleiste angezeigt werden.",
+        "alwaysVisibleTooltip": "Dieser Abschnitt ist immer sichtbar."
+      },
+      "sidebarNav": {
+        "title": "Seitenleisten-Navigation",
+        "description": "Wähle, welche Seiten unter \"Konten\" in der Seitenleisten-Navigation angezeigt werden."
+      },
+      "header": {
+        "title": "Kopfzeile",
+        "description": "Wähle aus, welche Aktionen in der Kopfzeile sichtbar sind.",
+        "supportButton": "Support-Schaltfläche"
+      },
+      "currency": {
+        "title": "Währungssymbole",
+        "description": "Wie Beträge ihre Währung anzeigen. Kurze Symbole sehen wie Rp, ₴ oder zł anstelle von IDR, UAH oder PLN aus, aber Währungen, die sich ein Symbol teilen (USD, CAD, AUD, SGD), werden alle zu $.",
+        "narrowSymbol": "Kurze Währungssymbole verwenden"
+      }
+    }
+  }
+}

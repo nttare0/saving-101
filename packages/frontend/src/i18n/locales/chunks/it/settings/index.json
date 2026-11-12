@@ -1,0 +1,25 @@
+{
+  "settings": {
+    "navigation": {
+      "currencies": "Valute",
+      "categories": "Categorie",
+      "tags": "Etichette",
+      "accountsGroups": "Gruppi di conti",
+      "importData": "Importa/Esporta",
+      "ai": "IA",
+      "security": "Sicurezza",
+      "admin": "Amministratore",
+      "sharedWithMe": "Condivisi con me",
+      "household": "Nucleo Familiare",
+      "personalGroup": "Personale",
+      "workspaceGroup": "Area di lavoro",
+      "appearance": "Aspetto",
+      "language": "Lingua",
+      "general": "Generale",
+      "payees": "Beneficiari",
+      "planBilling": "Piani e fatturazione",
+      "collapse": "Comprimi"
+    },
+    "backToSettings": "Torna a Impostazioni"
+  }
+}

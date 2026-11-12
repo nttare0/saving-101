@@ -1,0 +1,65 @@
+{
+  "settings": {
+    "aiIntegrations": {
+      "mcpServer": {
+        "title": "Serveur MCP",
+        "description": "Utilisez cette URL pour connecter des assistants IA à votre compte MoneyMatter. Vos données sont partagées en lecture seule.",
+        "copyTooltip": "Copier l'URL",
+        "copiedNotification": "URL du serveur MCP copiée dans le presse-papiers"
+      },
+      "quickConnect": {
+        "title": "Connexion rapide",
+        "description": "Choisissez un assistant IA ci-dessous. Cliquez sur le bouton pour ouvrir ses paramètres, puis suivez les étapes.",
+        "openSettings": "Ouvrir les paramètres",
+        "claude": {
+          "steps": {
+            "createConnector": "Cliquez sur l'icône {icon} à côté de « Connecteurs » pour créer un nouveau connecteur",
+            "selectCustom": "Sélectionnez {action}",
+            "enterName": "Pour « Nom », saisissez {value}",
+            "pasteUrl": "Pour « URL du serveur MCP distant », collez {value}",
+            "finish": "Laissez les paramètres avancés vides et cliquez sur {action}",
+            "authorize": "Vous serez redirigé vers MoneyMatter pour autoriser l'accès"
+          }
+        },
+        "chatgpt": {
+          "steps": {
+            "addConnector": "Cliquez sur {action}",
+            "pasteUrl": "Pour « URL », collez {value}",
+            "clickAdd": "Cliquez sur {action}",
+            "authorize": "Vous serez redirigé vers MoneyMatter pour autoriser l'accès"
+          }
+        }
+      },
+      "actions": {
+        "addCustomConnector": "Ajouter un connecteur personnalisé",
+        "addConnector": "Ajouter un connecteur",
+        "add": "Ajouter"
+      },
+      "connectedApps": {
+        "title": "Connecteurs actifs",
+        "description": "Applications ayant accès à vos données financières. Vous pouvez révoquer l'accès à tout moment.",
+        "emptyTitle": "Aucune application connectée pour le moment.",
+        "emptyDescription": "Utilisez les boutons ci-dessus pour connecter un assistant IA.",
+        "connectedAt": "Connecté le : {date}",
+        "lastUsed": "Dernière utilisation : {time}",
+        "scope": "Périmètre : {scopes}",
+        "revoke": "Révoquer"
+      },
+      "revokeDialog": {
+        "title": "Révoquer l'accès ?",
+        "description": "Cette action déconnectera immédiatement l'application et invalidera tous ses jetons. Vous pourrez la reconnecter ultérieurement.",
+        "confirm": "Révoquer l'accès",
+        "successNotification": "Accès de l'application révoqué avec succès",
+        "errorNotification": "Échec de la révocation de l'accès à l'application"
+      },
+      "scopes": {
+        "financeRead": "Lire les données financières",
+        "financeWrite": "Modifier les données financières",
+        "financeDelete": "Supprimer les données financières",
+        "profileRead": "Lire le profil",
+        "offlineAccess": "Accès hors ligne",
+        "toolset": "Tools: {name}"
+      }
+    }
+  }
+}

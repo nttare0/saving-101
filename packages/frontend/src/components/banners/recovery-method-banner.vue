@@ -1,0 +1,103 @@
+<template>
+  <div
+    v-if="shouldShow"
+    class="bg-primary/10 text-foreground border-primary/20 relative mb-4 rounded-lg border px-4 py-3"
+  >
+    <div class="flex items-start gap-3">
+      <ShieldAlertIcon class="text-primary-text mt-0.5 size-5 shrink-0" />
+      <div class="flex-1">
+        <p class="font-medium">{{ $t('banners.recoveryMethod.title') }}</p>
+        <p class="text-muted-foreground mt-1 text-sm">
+          {{ $t('banners.recoveryMethod.description') }}
+        </p>
+        <router-link :to="{ name: ROUTES_NAMES.settingsSecurity }" class="mt-2 inline-block">
+          <Button variant="outline" size="sm">{{ $t('banners.recoveryMethod.actionButton') }}</Button>
+        </router-link>
+      </div>
+      <Button
+        variant="ghost"
+        size="icon"
+        class="text-muted-foreground hover:text-foreground -mt-1 -mr-2 shrink-0"
+        @click="dismiss"
+      >
+        <XIcon class="size-4" />
+      </Button>
+    </div>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { Button } from '@/components/lib/ui/button';
+import { useIdleEnabled } from '@/composable/use-idle-enabled';
+import { authClient } from '@/lib/auth-client';
+import { ROUTES_NAMES } from '@/routes';
+import { useUserStore } from '@/stores/user';
+import { ShieldAlertIcon, XIcon } from '@lucide/vue';
+import { storeToRefs } from 'pinia';
+import { computed, ref, watch } from 'vue';
+
+const DISMISSED_KEY = 'recovery-method-banner-dismissed';
+
+interface Account {
+  providerId: string;
+}
+
+const { isDemo } = storeToRefs(useUserStore());
+
+const isDismissed = ref(localStorage.getItem(DISMISSED_KEY) === 'true');
+const hasOnlyPassword = ref(false);
+const isLoaded = ref(false);
+
+const shouldShow = computed(() => isLoaded.value && hasOnlyPassword.value && !isDismissed.value && !isDemo.value);
+
+const dismiss = () => {
+  isDismissed.value = true;
+  localStorage.setItem(DISMISSED_KEY, 'true');
+};
+
+const checkLoginMethods = async () => {
+  try {
+    const [accountsResult, passkeysResult] = await Promise.all([
+      authClient.listAccounts(),
+      authClient.passkey.listUserPasskeys(),
+    ]);
+
+    const accounts: Account[] = accountsResult.data || [];
+    const passkeys = passkeysResult.data || [];
+
+    // Check if user only has credential (password) login
+    const hasOAuth = accounts.some((a) => a.providerId === 'google');
+    const hasPasskeys = passkeys.length > 0;
+    const hasPassword = accounts.some((a) => a.providerId === 'credential');
+
+    // Show banner if user has password but no other methods
+    hasOnlyPassword.value = hasPassword && !hasOAuth && !hasPasskeys;
+  } catch (e) {
+    console.error('Failed to check login methods:', e);
+  } finally {
+    isLoaded.value = true;
+  }
+};
+
+// Defer the accounts + passkeys lookup until the browser is idle — this banner is
+// a dismissible security nudge, never above-the-fold, so it must not compete with
+// the dashboard's critical requests.
+const idleEnabled = useIdleEnabled();
+watch(
+  idleEnabled,
+  (idle) => {
+    if (!idle) return;
+
+    // Skip entirely for demo users -- no need to check login methods
+    if (isDemo.value) return;
+
+    // Only check if not already dismissed
+    if (!isDismissed.value) {
+      checkLoginMethods();
+    } else {
+      isLoaded.value = true;
+    }
+  },
+  { immediate: true },
+);
+</script>

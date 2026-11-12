@@ -1,0 +1,108 @@
+{
+  "settings": {
+    "currencies": {
+      "page": {
+        "title": "Devises",
+        "description": "Gérez les devises suivies et les taux de change appliqués à vos comptes."
+      },
+      "addNew": {
+        "loading": "Chargement...",
+        "selectCurrency": "Sélectionner une devise",
+        "addButton": "Ajouter",
+        "sectionLabel": "Ajouter une devise",
+        "successfullyAdded": "Devise ajoutée",
+        "errors": {
+          "addFailed": "Erreur inattendue. La devise n'a pas été ajoutée."
+        }
+      },
+      "howItWorks": {
+        "trigger": "Comment ça marche ?",
+        "body": "Votre devise principale sert de référence pour convertir tous les soldes des totaux et des rapports. Chaque devise ajoutée est automatiquement actualisée selon les cours du marché en temps réel, ou vous pouvez définir un taux personnalisé."
+      },
+      "row": {
+        "baseBadge": "Principale",
+        "custom": "Personnalisé",
+        "live": "En direct",
+        "unused": "Inutilisée",
+        "accountsCount": "{count} compte | {count} comptes"
+      },
+      "empty": {
+        "title": "Aucune autre devise pour l'instant",
+        "description": "Ajoutez une devise ci-dessus pour suivre les soldes et les taux de change en plus de votre devise principale."
+      },
+      "exchangeRate": {
+        "disableLiveUpdate": "Désactivez l'actualisation automatique pour saisir un taux de change personnalisé.",
+        "liveUpdateInfo": "Lorsqu'elle est activée, le taux personnalisé est ignoré.",
+        "liveUpdateLabel": "Actualisation en direct",
+        "ratePlaceholder": "0.00",
+        "saveButton": "Enregistrer",
+        "successfullyUpdated": "Mis à jour avec succès.",
+        "balancesNotRefreshed": "{count} solde(s) de compte n'a pas pu être actualisé avec le nouveau taux pour le moment — la mise à jour s'effectuera automatiquement dès qu'un taux sera disponible.",
+        "errors": {
+          "unexpectedError": "Erreur inattendue",
+          "updateFailed": "Erreur inattendue. La devise n'a pas été mise à jour."
+        }
+      },
+      "delete": {
+        "confirmTitle": "Supprimer la devise ?",
+        "description": "Une devise ne peut être supprimée ou dissociée que si aucun compte et/ou aucune opération n'y est associé.",
+        "button": "Supprimer la devise",
+        "buttonShort": "Supprimer",
+        "disabledTooltip": "Impossible de supprimer cette devise car elle est toujours associée à un ou plusieurs comptes.",
+        "successfullyDeleted": "Supprimée avec succès.",
+        "foreignAmountsWarning": "Foreign amounts recorded in this currency will be removed from your transactions. Amounts in the account currency stay unchanged.",
+        "inUse": {
+          "title": "This currency is still in use. Remove or change these first:",
+          "trashed": "(in trash)",
+          "types": {
+            "account": "Comptes",
+            "portfolio": "Portfolio display currency",
+            "holding": "Lignes de portefeuille",
+            "portfolioCash": "Portfolio cash",
+            "portfolioTransfer": "Portfolio transfers",
+            "investmentTransaction": "Investment transactions",
+            "subscription": "Paiements récurrents",
+            "transactionTemplate": "Transaction templates",
+            "budget": "Budgets",
+            "goal": "Objectifs",
+            "ventureDeal": "Venture deals"
+          }
+        },
+        "errors": {
+          "deleteFailed": "Erreur inattendue. La devise n'a pas été supprimée."
+        }
+      },
+      "setBase": {
+        "button": "Définir comme devise principale",
+        "buttonShort": "Définir comme principale",
+        "processing": "Traitement en cours...",
+        "tooltip": "Définir comme devise principale. Toutes les statistiques et informations du tableau de bord seront affichées dans cette devise.\n\nLes opérations seront recalculées selon le taux de change à la date d'enregistrement de l'opération.",
+        "dialog": {
+          "title": "Changer de devise principale ?",
+          "warningTitle": "Attention :",
+          "warningText": "Modifier la devise principale doit être une décision mûrement réfléchie. Idéalement, cette action ne devrait être effectuée qu'une seule fois, même si aucune restriction ne vous en empêche.",
+          "descriptionText": "Chaque fois que vous modifiez la devise principale, toutes les opérations sont recalculées à l'aide des taux de change historiques. En raison des calculs en virgule flottante et des variations normales de taux entre les devises, des recalculs répétés peuvent entraîner de légers écarts dans vos montants de référence au fil du temps. Les montants de référence servent à afficher vos statistiques et à définir vos plafonds de budget.",
+          "roundingTitle": "Comment l'arrondi est-il calculé exactement ?",
+          "roundingIntro": "Les conversions de devises utilisent l'arrondi bancaire (norme IEEE 754), également appelé « arrondi au chiffre pair le plus proche ». Cela limite les erreurs d'arrondi cumulatives lors de calculs successifs.",
+          "roundingHow": "Comment ça fonctionne :",
+          "roundingRule1": "Lorsqu'une valeur se situe exactement à mi-chemin (ex. 0,5), elle est arrondie au nombre pair le plus proche",
+          "roundingRule2": "Exemple : 0,5 → 0, 1,5 → 2, 2,5 → 2, 3,5 → 4",
+          "roundingStandard": "Cette méthode est recommandée par les normes comptables IFRS/GAAP et utilisée par les grands systèmes financiers pour éviter tout biais systématique dans les conversions de devises.",
+          "untouchedWarning": "Le montant d'origine des opérations ne sera jamais modifié !",
+          "processingTimeInfo": "Cela peut prendre un moment si votre devise est peu courante.",
+          "restrictionWarning": "Vous ne pourrez pas créer de nouveaux comptes, opérations ou tout élément lié aux montants pendant toute la durée du traitement.",
+          "confirmation": "Voulez-vous vraiment continuer ?",
+          "changeButton": "Changer la devise principale",
+          "cancelButton": "Annuler"
+        },
+        "successMessage": "Devise principale modifiée avec succès.",
+        "errors": {
+          "changeFailed": "Erreur inattendue. Impossible de modifier la devise principale.",
+          "lockedHousehold": "Vous êtes membre de {count} foyer actif. Quittez-le d'abord depuis Paramètres → Foyer. | Vous êtes membre de {count} foyers actifs. Quittez-les d'abord depuis Paramètres → Foyer.",
+          "lockedShares": "Vous avez {count} accès partagé actif. Révoquez-le d'abord depuis le compte. | Vous avez {count} accès partagés actifs. Révoquez-les d'abord depuis chaque compte.",
+          "lockedBudgetPlan": "Un budget prévisionnel actif bloque la modification. Supprimez-le d'abord. | {count} budgets prévisionnels actifs bloquent la modification. Supprimez-les d'abord."
+        }
+      }
+    }
+  }
+}

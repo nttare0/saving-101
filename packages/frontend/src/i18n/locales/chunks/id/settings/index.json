@@ -1,0 +1,25 @@
+{
+  "settings": {
+    "navigation": {
+      "currencies": "Mata Uang",
+      "categories": "Kategori",
+      "tags": "Tag",
+      "accountsGroups": "Grup akun",
+      "importData": "Impor/Ekspor",
+      "ai": "AI",
+      "security": "Keamanan",
+      "admin": "Admin",
+      "sharedWithMe": "Dibagikan dengan saya",
+      "household": "Rumah Tangga",
+      "personalGroup": "Pribadi",
+      "workspaceGroup": "Ruang Kerja",
+      "appearance": "Tampilan",
+      "language": "Bahasa",
+      "general": "Statistik",
+      "payees": "Penerima",
+      "planBilling": "Plan & billing",
+      "collapse": "Ciutkan"
+    },
+    "backToSettings": "Kembali ke Pengaturan"
+  }
+}

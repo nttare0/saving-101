@@ -1,0 +1,100 @@
+---
+import { ALTERNATIVE_PAGES } from '@/lib/alternatives';
+import { FEATURE_PAGES } from '@/lib/features';
+import { GITHUB_URL } from '@/lib/github-api';
+import BrandMark from '@/components/brand-mark.astro';
+
+const currentYear = new Date().getFullYear();
+
+const columns = [
+  {
+    title: 'Features',
+    links: [
+      ...FEATURE_PAGES.filter((page) =>
+        ['Bank Sync', 'Import Transactions', 'Budgeting', 'Multi-Currency', 'Investment Tracking', 'Net Worth Tracker', 'Self-Hosting'].includes(
+          page.label,
+        ),
+      ),
+      { label: 'All features', href: '/features' },
+    ],
+  },
+  {
+    title: 'Product',
+    links: [
+      { label: 'Pricing', href: '/#pricing' },
+      { label: 'FAQ', href: '/#faq' },
+      { label: 'Sign In', href: '/sign-in' },
+      { label: 'Sign Up', href: '/sign-up' },
+    ],
+  },
+  {
+    title: 'Compare',
+    links: [...ALTERNATIVE_PAGES, { label: 'All comparisons', href: '/alternatives' }],
+  },
+  {
+    title: 'Resources',
+    links: [
+      { label: 'Guides', href: '/guides' },
+      { label: 'Docs', href: 'https://docs.moneymatter.app' },
+      { label: 'GitHub', href: GITHUB_URL, track: 'landing_github_clicked' },
+      { label: 'Reddit', href: 'https://www.reddit.com/r/moneymatterapp/', track: 'landing_reddit_clicked' },
+      { label: 'Self-Host Guide', href: `${GITHUB_URL}/tree/main/self-hosting` },
+      { label: 'Roadmap', href: 'https://moneymatter.featurebase.app/dashboard/roadmap' },
+      { label: 'Changelog', href: `${GITHUB_URL}/releases` },
+      { label: 'Support', href: '/support' },
+    ],
+  },
+  {
+    title: 'Legal',
+    links: [
+      { label: 'Privacy Policy', href: '/privacy-policy' },
+      { label: 'Terms of Use', href: '/terms-of-use' },
+    ],
+  },
+];
+---
+
+<footer class="border-border relative z-10 border-t py-12">
+  <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col gap-10 lg:flex-row lg:justify-between">
+      <div class="max-w-xs">
+        <!-- Logo -->
+        <div class="flex items-center gap-2">
+          <BrandMark class="size-7" />
+          <span class="font-semibold tracking-tight">MoneyMatter</span>
+        </div>
+        <p class="text-muted-foreground mt-4 text-sm">Your finances. Your server. Your rules.</p>
+      </div>
+
+      <!-- Links -->
+      <div class="grid grid-cols-2 gap-x-12 gap-y-8 sm:grid-cols-3 md:grid-cols-5">
+        {
+          columns.map((column) => (
+            <div>
+              <p class="text-sm font-medium">{column.title}</p>
+              <ul class="text-muted-foreground mt-3 space-y-2.5 text-sm">
+                {column.links.map((link) => (
+                  <li>
+                    <a
+                      href={link.href}
+                      class="hover:text-foreground transition-colors"
+                      {...(link.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                      {...('track' in link ? { 'data-track': link.track, 'data-track-location': 'footer' } : {})}
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <p class="text-muted-foreground border-border mt-10 border-t pt-8 text-sm">
+      &copy; {currentYear} MoneyMatter. Open source under AGPL-3.0.
+    </p>
+  </div>
+</footer>

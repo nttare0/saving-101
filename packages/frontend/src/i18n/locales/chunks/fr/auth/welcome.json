@@ -1,0 +1,51 @@
+{
+  "auth": {
+    "welcome": {
+      "title": "Sélectionner la devise principale",
+      "description": "Votre devise principale doit idéalement être celle que vous utilisez le plus souvent. Toutes les opérations dans d'autres devises seront calculées à partir de celle-ci.",
+      "submitButton": "Confirmer la devise",
+      "trialStarted": "Votre essai gratuit a commencé, tout est débloqué pendant {count} jour. {link} | Votre essai gratuit a commencé, tout est débloqué pendant {count} jours. {link}",
+      "logout": "Déconnexion",
+      "labels": {
+        "baseCurrency": "Devise principale"
+      },
+      "placeholders": {
+        "loading": "Chargement..."
+      },
+      "errors": {
+        "unableToLoadCurrencies": "Impossible de charger la liste des devises. Réessayez plus tard",
+        "unableToSetCurrency": "Erreur inattendue. Impossible de définir la devise principale. Veuillez réessayer plus tard ou contacter l'assistance."
+      }
+    },
+    "oauthCallback": {
+      "completingSignIn": "Connexion en cours...",
+      "errors": {
+        "accessDenied": {
+          "signIn": "La connexion a été annulée ou l'accès a été refusé",
+          "signUp": "L'inscription a été annulée ou l'accès a été refusé",
+          "link": "L'association a été annulée ou l'accès a été refusé"
+        },
+        "userAlreadyExists": {
+          "signIn": "Un compte existe déjà avec cette adresse e-mail",
+          "signUp": "Un compte existe déjà avec cette adresse e-mail",
+          "link": "Ce compte est déjà associé à un autre utilisateur"
+        },
+        "accountNotLinked": {
+          "signIn": "Aucun compte trouvé avec cette adresse e-mail. Veuillez d'abord vous inscrire.",
+          "signUp": "Échec de la création du compte. Veuillez réessayer.",
+          "link": "Échec de l'association du compte. Veuillez réessayer."
+        },
+        "genericError": {
+          "signIn": "Échec de la connexion. Veuillez réessayer.",
+          "signUp": "Échec de l'inscription. Veuillez réessayer.",
+          "link": "Échec de l'association du compte. Veuillez réessayer."
+        },
+        "unauthorizedClient": "Cette application n'est pas autorisée à utiliser cette méthode d'authentification",
+        "temporarilyUnavailable": "Le service d'authentification est temporairement indisponible. Veuillez réessayer plus tard.",
+        "unableToLinkAccount": "We couldn't link this account because this server doesn't treat the provider's email as verified. Contact your administrator.",
+        "emailDoesNotMatch": "The email on this provider account doesn't match your account email. Use a provider account with the same email.",
+        "emailNotVerified": "Check your email to verify your address, then sign in again."
+      }
+    }
+  }
+}

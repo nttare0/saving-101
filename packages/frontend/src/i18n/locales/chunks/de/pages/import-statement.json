@@ -1,0 +1,199 @@
+{
+  "pages": {
+    "statementParser": {
+      "pageTitle": "Kontoauszug-Parser",
+      "pageDescription": "Lade einen Kontoauszug (PDF, CSV oder TXT), ein Foto eines Belegs oder einen Screenshot einer Banking-App hoch, um Transaktionen mithilfe von KI zu extrahieren. Füge dein eigenes KI-Modell in den Einstellungen hinzu, um unbegrenzten Zugriff zu erhalten.",
+      "stepper": {
+        "steps": {
+          "upload": "Hochladen",
+          "account": "Konto",
+          "review": "Überprüfen",
+          "results": "Importieren"
+        }
+      },
+      "steps": {
+        "accountTitle": "Konto auswählen",
+        "accountDescription": "Wähle oder erstelle ein Konto für die Transaktionen"
+      },
+      "selectCurrency": "Währung auswählen",
+      "selectExistingAccount": "Bestehendes Konto auswählen",
+      "accountNamePlaceholder": "z.B. Hauptgirokonto",
+      "selectAccount": "Wähle ein Konto aus",
+      "searchAccounts": "Konten suchen...",
+      "uploadExtract": {
+        "supportedFormats": "Unterstützte Formate: PDF, CSV, TXT, JPG, PNG, WebP (max. 10 MB)",
+        "clickOrDragStatements": "Klicke hier oder ziehe Kontoauszugsdateien hierher",
+        "filesLabel": "Dateien",
+        "analyzingFiles": "Analysiere Dateien...",
+        "totalForFiles": "insgesamt für {count} Dateien",
+        "estimateFailedSome": "{count} von {total} Dateien konnten nicht analysiert werden:",
+        "extractionFailedSome": "{count} von {total} Dateien konnten nicht verarbeitet werden. Der Rest ist bereit zum Importieren.",
+        "retryFailed": "Fehlgeschlagene Dateien erneut versuchen",
+        "progressFile": "Verarbeite {name} ({current} von {total})",
+        "acrossFiles": "über {count} Dateien",
+        "currencyConflict": "Die ausgewählten Kontoauszüge weisen unterschiedliche Währungen aus ({currencies}). Sie werden alle in ein Konto mit der Währung dieses Kontos importiert.",
+        "unsupportedFileNamed": "{name} ist keine PDF-, CSV-, TXT-, JPG-, PNG- oder WebP-Datei",
+        "unreadableImageNamed": "{name} konnte nicht als Bild gelesen werden",
+        "invalidPdfNamed": "{name} scheint keine gültige PDF-Datei zu sein. Die Datei ist möglicherweise beschädigt oder umbenannt.",
+        "invalidImageNamed": "{name} scheint kein gültiges JPG-, PNG- oder WebP-Bild zu sein. Die Datei ist möglicherweise beschädigt oder umbenannt.",
+        "invalidTextNamed": "{name} scheint keine gültige {ext}-Datei zu sein. Die Datei ist möglicherweise eine Binärdatei oder umbenannt.",
+        "unreadableFiles": "Konnte nicht gelesen werden: {files}",
+        "fileStatus": {
+          "pending": "Nicht analysiert",
+          "estimating": "Analysiere...",
+          "estimated": "Bereit",
+          "estimateFailed": "Konnte nicht analysiert werden",
+          "extracting": "Verarbeite...",
+          "extracted": "{count} Transaktion | {count} Transaktionen",
+          "failed": "Fehlgeschlagen"
+        },
+        "analyzeButton": "Datei analysieren | {count} Dateien analysieren",
+        "tryAgain": "Erneut versuchen",
+        "modelLabel": "Modell",
+        "estimatedCostLabel": "Geschätzte Kosten",
+        "estimatedTokensLabel": "Geschätzte Tokens",
+        "extractButton": "Transaktionen extrahieren",
+        "progressMessage": "Dies kann je nach Dokumentengröße 30–60 Sekunden dauern",
+        "foundLabel": "Gefunden:",
+        "transactions": "Transaktionen",
+        "fromLabel": "von",
+        "inLabel": "in",
+        "continueMessage": "Fahre fort, um ein Konto für diese Transaktionen auszuwählen.",
+        "continueButton": "Weiter zur Kontoauswahl",
+        "tokenWarning": {
+          "medium": {
+            "title": "Große Datei erkannt",
+            "description": "Die Verarbeitung kann 1–2 Minuten dauern. Bitte habe etwas Geduld."
+          },
+          "high": {
+            "title": "Sehr große Datei erkannt",
+            "description": "Die Verarbeitung kann aufgrund der Dateigröße mehrere Minuten dauern."
+          },
+          "extreme": {
+            "title": "Extrem große Datei",
+            "description": "Die Verarbeitung kann 5+ Minuten dauern. Erwäge, die Datei in kleinere Teile aufzuteilen, um die Verarbeitung zu beschleunigen."
+          }
+        },
+        "status": {
+          "sendingFile": "Sende Datei an KI...",
+          "readingDocument": "KI liest das Dokument...",
+          "analyzingStructure": "Analysiere Struktur des Kontoauszugs...",
+          "extractingData": "Extrahiere Transaktionsdaten...",
+          "processingTransactions": "Verarbeite Transaktionen...",
+          "finalizing": "Schließe Extraktion ab...",
+          "almostDone": "Fast fertig..."
+        },
+        "tokenFormat": "{inputTokens}K Eingabe, ~{outputTokens}K Ausgabe",
+        "pdfPasswordLabel": "PDF-Passwort",
+        "pdfPasswordPlaceholder": "Dokumentenpasswort eingeben",
+        "pdfPasswordSubmit": "Entsperren und analysieren"
+      },
+      "accountSelect": {
+        "newlyCreated": "(neu erstellt)",
+        "differentCurrency": "Andere Währung",
+        "linkedToBanks": "Mit Banken verknüpft",
+        "linkedToBanksTooltip": "Vorerst ist der Import von Kontoauszügen auf Systemkonten beschränkt.",
+        "noAccountsFound": "Keine Konten gefunden",
+        "currencyAccounts": "{currency}-Konten"
+      },
+      "accountSelection": {
+        "transactions": "Transaktionen:",
+        "files": "Kontoauszüge:",
+        "filesList": "Aus: {files}",
+        "currencyConflict": "Die Kontoauszüge weisen unterschiedliche Währungen aus ({currencies}). Wähle die Währung aus, die das Konto verwenden soll:",
+        "bank": "Bank:",
+        "currency": "Währung:",
+        "currencyNotDetected": "Währung des Kontoauszugs konnte nicht erkannt werden. Bitte wähle die Währung manuell aus:",
+        "currencyMismatch": "Die Währung des Kontoauszugs ({statementCurrency}) weicht von der Kontowährung ({accountCurrency}) ab. Transaktionen werden in der Kontowährung importiert.",
+        "yourCurrenciesGroup": "Deine Währungen",
+        "allCurrenciesGroup": "Alle Währungen",
+        "createNew": "Neu erstellen",
+        "back": "Zurück",
+        "importTransactions": "Transaktionen importieren",
+        "checkForDuplicates": "Auf Duplikate prüfen"
+      },
+      "createAccountDialog": {
+        "title": "Konto für Import erstellen",
+        "description": "Erstelle ein neues Konto, um die Transaktionen aus deinem Kontoauszug zu importieren.",
+        "accountNameLabel": "Kontoname",
+        "currencyLabel": "Währung",
+        "fromStatement": "(aus Kontoauszug)",
+        "currencyLocked": "Währung ist entsprechend dem Kontoauszug fixiert ({currency}).",
+        "currencyWillBeAdded": "Hinweis: {currency} wird zu deinen Währungen hinzugefügt.",
+        "cancel": "Abbrechen",
+        "creating": "Erstelle...",
+        "createAccount": "Konto erstellen",
+        "validation": {
+          "nameRequired": "Kontoname ist erforderlich",
+          "currencyRequired": "Bitte wähle eine Währung aus"
+        },
+        "success": "Konto erfolgreich erstellt",
+        "error": "Konto konnte nicht erstellt werden"
+      },
+      "transactionReview": {
+        "checkingDuplicates": "Prüfe auf Duplikate...",
+        "extractedLabel": "Extrahiert:",
+        "fromFiles": "aus {count} Kontoauszügen",
+        "duplicatesLabel": "Mögliche Duplikate:",
+        "willImportLabel": "Wird importiert:",
+        "alreadyInAccountLabel": "Bereits im Konto:",
+        "timelineTitle": "Transaktionsverlauf",
+        "legendNew": "Neu",
+        "legendDuplicate": "Duplikat",
+        "legendExisting": "Bereits im Konto",
+        "statusDup": "Duplikat",
+        "statusImport": "Importieren",
+        "statusExists": "Im Konto",
+        "duplicateInfoSkipped": "{count} Transaktionen werden als Duplikate übersprungen.",
+        "duplicateInfoOverridden": "{count} Duplikate wurden überschrieben und werden importiert.",
+        "toggleInfo": "Ausgewählte Zeilen werden importiert. Duplikate sind anfangs nicht ausgewählt – wähle eine aus, um sie trotzdem zu importieren.",
+        "backButton": "Zurück",
+        "continueButton": "Weiter zum Import",
+        "transactionCount": "({count} Transaktionen)",
+        "duplicateCheckFailed": "Wir konnten diesen Kontoauszug nicht mit deinen bestehenden Transaktionen abgleichen, daher ist die Anzahl der Duplikate unten nicht verfügbar. Überprüfe die Liste vor dem Import.",
+        "noDescription": "Keine Beschreibung"
+      },
+      "droppedRowsWarning": "{count} Zeile aus der KI-Antwort konnte nicht gelesen werden und wurde übersprungen. Die unten angezeigte Anzahl der importierten Zeilen ist möglicherweise niedriger als in deiner Datei. | {count} Zeilen aus der KI-Antwort konnten nicht gelesen werden und wurden übersprungen. Die unten angezeigte Anzahl der importierten Zeilen ist möglicherweise niedriger als in deiner Datei.",
+      "errors": {
+        "estimateFailed": "Analyse der Datei fehlgeschlagen",
+        "extractFailed": "Extrahieren der Transaktionen fehlgeschlagen",
+        "importFailed": "Starten des Imports fehlgeschlagen"
+      },
+      "importResults": {
+        "readyTitle": "Bereit zum Importieren",
+        "readyDescription": "Überprüfe die Zusammenfassung unten und klicke auf \"Transaktionen importieren\", um fortzufahren.",
+        "accountLabel": "Konto:",
+        "statementsLabel": "Kontoauszüge:",
+        "toImportLabel": "Zu importierende Transaktionen:",
+        "toSkipLabel": "Zu überspringende Transaktionen:",
+        "backButton": "Zurück",
+        "importButton": "{count} Transaktionen importieren",
+        "importingTitle": "Importiere Transaktionen",
+        "importingDescription": "Bitte warte, während wir deine Transaktionen importieren...",
+        "failedTitle": "Import fehlgeschlagen",
+        "failedDescription": "Es wurde nichts importiert. Die Details unten stammen vom Server.",
+        "jobFailedDescription": "Der Import wurde abgebrochen, bevor er abgeschlossen war. Einige Transaktionen wurden möglicherweise bereits erstellt. Überprüfe deine Transaktionen, bevor du diesen Kontoauszug erneut importierst.",
+        "tryAgainButton": "Erneut versuchen",
+        "completeTitle": "Import abgeschlossen!",
+        "completeWithIssuesTitle": "Import mit Problemen abgeschlossen",
+        "successDescription": "Deine Transaktionen wurden erfolgreich importiert.",
+        "partialDescription": "Einige Transaktionen konnten nicht importiert werden.",
+        "importedLabel": "Importiert:",
+        "skippedLabel": "Übersprungen:",
+        "errorsTitle": "Importfehler",
+        "transactionNumberHeader": "Transaktion Nr.",
+        "errorHeader": "Fehler",
+        "batchIdNote": "Import-Stapel-ID: {batchId}. Du kannst diese ID verwenden, um alle importierten Transaktionen zu finden und zu verwalten.",
+        "viewTransactionsButton": "Transaktionen anzeigen",
+        "startNewImportButton": "Neuen Import starten",
+        "rowErrors": {
+          "invalidDate": "Nicht erkanntes Datum \"{date}\"",
+          "futureDate": "Datum {date} liegt in der Zukunft",
+          "amountNotPositive": "Betrag muss größer als Null sein (erhalten: {amount})",
+          "amountTooLarge": "Betrag {amount} überschreitet das Maximum von {max}",
+          "rowFailed": "Diese Transaktion konnte nicht importiert werden"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,158 @@
+{
+  "settings": {
+    "admin": {
+      "title": "Panel Admin",
+      "description": "Alat administratif dan manajemen sistem",
+      "priceSync": {
+        "title": "Sinkronisasi Harga Sekuritas",
+        "description": "Picu sinkronisasi harga secara manual untuk semua sekuritas yang dimiliki",
+        "button": "Mulai Sinkronisasi Harga",
+        "buttonLoading": "Menyinkronkan...",
+        "notifications": {
+          "success": "Sinkronisasi harga sekuritas berhasil",
+          "failed": "Gagal memicu sinkronisasi harga",
+          "rateLimited": "Tidak diizinkan. Coba lagi dalam {time}.",
+          "adminRequired": "Hak akses admin diperlukan untuk tindakan ini"
+        }
+      },
+      "priceUpload": {
+        "title": "Upload Harga Sekuritas Manual",
+        "description": "Upload data harga historis sekuritas melalui file CSV atau JSON",
+        "button": "Upload Harga Sekuritas",
+        "dialogTitle": "Upload Harga Sekuritas",
+        "selectSecurity": {
+          "searchLabel": "Cari simbol atau nama",
+          "searchPlaceholder": "AAPL",
+          "searching": "Mencari…",
+          "failed": "Gagal mencari sekuritas.",
+          "noResults": "Tidak ada hasil.",
+          "changeButton": "Ganti"
+        },
+        "dateRangeInfo": {
+          "loading": "Memuat informasi rentang tanggal...",
+          "title": "Rentang Tanggal Nilai Tukar Tersedia ({currency}):",
+          "tooltipText": "Anda hanya dapat mengupload harga sekuritas untuk tanggal yang memiliki nilai tukar tersedia. Jika tidak, harga sekuritas tidak dapat dikonversi ke mata uang lain. Jika membutuhkan data lama, upload nilai tukar terlebih dahulu. Tergantung opsi yang dipilih, data akan difilter otomatis (dilewati) atau upload akan gagal."
+        },
+        "fileUpload": {
+          "title": "Unggah File",
+          "supportedFormats": "File CSV atau JSON didukung",
+          "errors": {
+            "unsupportedFormat": "Format file tidak didukung. Upload file CSV atau JSON.",
+            "parseFailed": "Gagal memproses file {fileType}: {error}"
+          }
+        },
+        "fieldMapper": {
+          "title": "Petakan Field",
+          "description": "Cocokkan field dari file Anda ke field yang diperlukan di bawah.",
+          "selectField": "Pilih field...",
+          "dateFormatLabel": "Format Tanggal",
+          "dateFormatDescription": "Pilih format tanggal yang digunakan di file Anda",
+          "dateFormats": {
+            "ddMMyyyySlash": "DD/MM/YYYY (contoh: 31/12/2024)",
+            "MMddyyyySlash": "MM/DD/YYYY (contoh: 12/31/2024)",
+            "yyyyMMddDash": "YYYY-MM-DD (contoh: 2024-12-31)",
+            "ddMMyyyyDash": "DD-MM-YYYY (contoh: 31-12-2024)",
+            "MMddyyyyDash": "MM-DD-YYYY (contoh: 12-31-2024)"
+          },
+          "mappingComplete": "Semua field wajib sudah dipetakan",
+          "mappingIncomplete": "Petakan semua field wajib untuk melanjutkan",
+          "fileInfo": "File:",
+          "records": "{count} catatan",
+          "changeFileButton": "Ganti File",
+          "continueButton": "Lanjut ke Pratinjau"
+        },
+        "preview": {
+          "title": "Pratinjau Data",
+          "recordsCount": "{count} catatan akan diupload | {count} catatan akan diupload",
+          "recordsPeriod": "untuk periode antara {oldest} dan {newest}",
+          "loadingExisting": "Memuat harga yang sudah ada untuk perbandingan...",
+          "warnings": {
+            "significantDifferences": "Perbedaan harga signifikan terdeteksi",
+            "differencesDetails": "{count} catatan memiliki perbedaan harga lebih dari 4% dibanding data yang ada. Tinjau dengan hati-hati. | {count} catatan memiliki perbedaan harga lebih dari 4% dibanding data yang ada. Tinjau dengan hati-hati."
+          },
+          "filterCheckbox": "Tampilkan hanya catatan dengan perbedaan signifikan (>4%)",
+          "tableHeaders": {
+            "date": "Tanggal",
+            "newPrice": "Harga Baru",
+            "existingPrice": "Harga Lama",
+            "difference": "Selisih (%)"
+          },
+          "noExistingPrice": "N/A",
+          "scrollForMore": "Gulir untuk lainnya...",
+          "noDifferences": "Tidak ditemukan catatan dengan perbedaan signifikan.",
+          "backButton": "Kembali ke Pemetaan",
+          "continueButton": "Lanjut ke Opsi"
+        },
+        "options": {
+          "title": "Opsi Upload",
+          "autoFilter": {
+            "title": "Filter otomatis tanggal di luar rentang yang tersedia",
+            "description": "Hapus otomatis tanggal yang berada di luar rentang nilai tukar yang tersedia"
+          },
+          "override": {
+            "title": "Timpa catatan yang sudah ada",
+            "description": "Perbarui catatan harga yang sudah ada alih-alih melewati duplikat"
+          },
+          "backButton": "Kembali",
+          "uploadButton": "Upload Harga",
+          "uploadingButton": "Mengupload..."
+        },
+        "result": {
+          "title": "Upload Selesai!",
+          "inserted": "✓ {count} catatan baru ditambahkan | ✓ {count} catatan baru ditambahkan",
+          "duplicates": "• {count} duplikat {action}",
+          "duplicatesUpdated": "diperbarui",
+          "duplicatesSkipped": "dilewati",
+          "filtered": "• {count} tanggal difilter (di luar rentang) | • {count} tanggal difilter (di luar rentang)",
+          "closeButton": "Tutup",
+          "uploadMoreButton": "Upload Lagi"
+        },
+        "notifications": {
+          "dateInfoLoadFailed": "Gagal memuat info tanggal: {error}",
+          "uploadSuccess": "Berhasil mengupload {count} catatan harga | Berhasil mengupload {count} catatan harga",
+          "uploadFailed": "Upload gagal: {error}"
+        }
+      },
+      "broadcast": {
+        "title": "Broadcast notification",
+        "description": "Send an in-app notification to every user active in the last 30 days, or only to the user IDs and emails you list. With a link, clicking it opens the link in a new tab, and re-sending the same link skips users who already got it.",
+        "fields": {
+          "title": "Title",
+          "titlePlaceholder": "e.g. iOS app is in public beta 📱",
+          "message": "Message",
+          "messagePlaceholder": "Optional text shown under the title",
+          "url": "Tautkan",
+          "urlPlaceholder": "https://…  (optional)",
+          "urlError": "Link must start with https://",
+          "icon": "Ikon",
+          "recipients": "Recipients",
+          "recipientsPlaceholder": "Optional user IDs or emails, comma-separated, e.g. 12, jane@example.com. Empty = all active users",
+          "recipientsError": "Use positive whole-number IDs or valid emails, separated by commas"
+        },
+        "icons": {
+          "info": "Info",
+          "announcement": "Announcement",
+          "success": "Success",
+          "warning": "Warning"
+        },
+        "button": "Send notification",
+        "confirm": {
+          "title": "Send to all active users?",
+          "titleSelected": "Send to {count} users?",
+          "description": "This creates a notification for every user active in the last 30 days. It can't be undone.",
+          "descriptionSelected": "Unknown IDs and emails are skipped. It can't be undone.",
+          "button": "Kirim"
+        },
+        "notifications": {
+          "success": "Notification sent to {count} users",
+          "failed": "Failed to send the notification",
+          "noneCreated": "No notifications were sent: no matching users, or they already got this link"
+        }
+      },
+      "tabs": {
+        "investments": "Investasi",
+        "notifications": "Notifikasi"
+      }
+    }
+  }
+}

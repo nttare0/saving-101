@@ -1,0 +1,878 @@
+{
+  "dialogs": {
+    "linkAccountGroup": {
+      "title": "Tautkan grup akun",
+      "createNewGroup": "Buat grup baru",
+      "noGroup": "Tanpa grup",
+      "noGroupDescription": "Biarkan akun ini tanpa grup",
+      "current": "Saat ini",
+      "syncHint": "Grup hanya mengatur akun Anda — memindahkan akun tidak pernah memengaruhi sinkronisasi bank.",
+      "accountsCount": "{count} akun | {count} akun"
+    },
+    "reassignCategory": {
+      "title": "Alihkan Transaksi",
+      "description": "Kategori ini memiliki {count} transaksi. Pilih kategori baru untuk transaksi \"{categoryName}\" sebelum menghapus.",
+      "newCategoryLabel": "Kategori baru",
+      "newCategoryPlaceholder": "Pilih kategori",
+      "cancelButton": "Batal",
+      "reassignButton": "Alihkan & Hapus",
+      "reassignButtonLoading": "Mengalihkan...",
+      "notifications": {
+        "success": "{count} transaksi dialihkan ke {newCategoryName}",
+        "error": "Gagal mengalihkan transaksi"
+      }
+    },
+    "syncConfirmation": {
+      "title": "Sinkronisasi Baru Saja Selesai",
+      "description": "Anda menyinkronkan akun {time} yang lalu. Apakah Anda yakin ingin menyinkronkan lagi?",
+      "syncAnyway": "Tetap Sinkronkan",
+      "cancel": "Batal",
+      "timeUnits": {
+        "someTime": "beberapa waktu",
+        "hours": "{count} jam | {count} jam",
+        "minutes": "{count} menit | {count} menit"
+      }
+    },
+    "createPortfolio": {
+      "title": "Buat Portofolio",
+      "description": "Buat portofolio investasi baru untuk melacak kepemilikan dan transaksi Anda.",
+      "assetSupportNotice": "Saat ini mendukung saham, ETF, dan kripto. Obligasi, opsi & sekuritas lainnya ada di {roadmapLink} – bagikan apa yang Anda butuhkan melalui {feedbackLink}.",
+      "assetSupportRoadmapLink": "pilih yang akan datang",
+      "assetSupportFeedbackLink": "minta fitur",
+      "form": {
+        "nameLabel": "Nama portofolio",
+        "namePlaceholder": "Portofolio Investasi Saya",
+        "typeLabel": "Jenis Portofolio",
+        "typePlaceholder": "Pilih jenis portofolio",
+        "portfolioTypes": {
+          "investment": "Investasi",
+          "retirement": "Pensiun",
+          "savings": "Tabungan",
+          "other": "Lainnya"
+        },
+        "descriptionLabel": "Deskripsi (opsional)",
+        "descriptionPlaceholder": "Deskripsi singkat tentang portofolio ini...",
+        "submitButton": "Buat Portofolio",
+        "submitButtonLoading": "Membuat..."
+      },
+      "notifications": {
+        "success": "Portofolio berhasil dibuat.",
+        "error": "Gagal membuat portofolio. Silakan coba lagi."
+      }
+    },
+    "editPortfolio": {
+      "title": "Sunting Portofolio",
+      "description": "Perbarui nama, jenis, atau deskripsi portofolio Anda."
+    },
+    "deletePortfolio": {
+      "title": "Hapus Portofolio",
+      "description": "Portofolio ini akan dipindahkan ke tempat sampah dan dapat dipulihkan dalam 30 hari. Setelah itu, portofolio akan dihapus secara permanen beserta semua kepemilikan dan transaksi.",
+      "cancelButton": "Batal",
+      "deleteButton": "Pindahkan ke Tempat Sampah",
+      "deleteButtonLoading": "Memindahkan...",
+      "notifications": {
+        "success": "Portofolio dipindahkan ke tempat sampah. Anda dapat memulihkannya dalam 30 hari dari halaman Investasi.",
+        "error": "Gagal menghapus portofolio."
+      }
+    },
+    "manageTransaction": {
+      "addTitle": "Tambah Transaksi",
+      "editTitle": "Sunting Transaksi",
+      "detailsTitle": "Detail Transaksi",
+      "title": "Kelola transaksi",
+      "description": "Buat atau sunting transaksi",
+      "linkSection": {
+        "linkButton": "Tautkan transaksi yang ada",
+        "title": "Tautkan transaksi yang ada",
+        "description": "Pilih transaksi untuk ditautkan",
+        "orDivider": "atau",
+        "linkHint": "Sudah tercatat di akun lain? Gabungkan kedua catatan tersebut.",
+        "unlinkButton": "Lepas tautan transaksi",
+        "cancelLinkingAriaLabel": "Batalkan penautan",
+        "linkedTransactionLabel": "Transaksi tertaut"
+      },
+      "typeSelector": {
+        "expense": "Pengeluaran",
+        "income": "Pemasukan",
+        "transfer": "Transfer",
+        "selectExpense": "Pilih pengeluaran",
+        "selectIncome": "Pilih pemasukan",
+        "selectTransfer": "Pilih transfer"
+      },
+      "recordList": {},
+      "form": {
+        "payeeLabel": "Penerima",
+        "outOfWalletDocsLink": "What is out of wallet?",
+        "destinationGroupLabel": "Tujuan uang",
+        "paymentTypeLabel": "Jenis Pembayaran",
+        "noteLabel": "Catatan (opsional)",
+        "notePlaceholder": "Catatan",
+        "addFieldsLabel": "Tambah",
+        "externalUrlLabel": "External URL",
+        "externalUrlPlaceholder": "Link to the order, booking or receipt page",
+        "externalReferenceLabel": "External reference",
+        "externalReferencePlaceholder": "Order number, invoice number, booking reference",
+        "location": {
+          "label": "Location",
+          "useCurrent": "Use my location",
+          "clear": "Clear location",
+          "latitudePlaceholder": "Latitude, e.g. 50.4501",
+          "longitudePlaceholder": "Longitude, e.g. 30.5234",
+          "unsupported": "Your browser does not support geolocation",
+          "denied": "Location access was denied. Allow it in your browser settings or enter coordinates manually",
+          "unavailable": "Could not determine your location. Try again or enter coordinates manually",
+          "pickOnMap": "Pick on map",
+          "picker": {
+            "title": "Pick a location",
+            "searchPlaceholder": "Search address or place",
+            "noResults": "No places found",
+            "searchFailed": "Search is unavailable right now. Try again in a moment",
+            "confirm": "Use this location",
+            "loadFailed": "Could not load the map. Check your connection and try again",
+            "retry": "Coba lagi",
+            "consent": {
+              "title": "Map tiles come from OpenStreetMap",
+              "description": "Opening the map and searching addresses sends requests to openstreetmap.org, which sees your IP address. You can turn this off later in Settings.",
+              "enable": "Enable map",
+              "failed": "Could not save the setting. Try again"
+            }
+          }
+        },
+        "tagsLabel": "Tag (opsional)",
+        "originalAmountLabel": "Jumlah asli",
+        "originalAmountPlaceholder": "Jumlah dalam mata uang asing",
+        "originalAmountTooltip": "Saat transaksi dilakukan dalam mata uang yang berbeda dari akun, ini adalah jumlah sebenarnya yang dibayarkan dalam mata uang tersebut. Jumlah utama tetap dalam mata uang akun. Tidak memengaruhi statistik.",
+        "originalCurrencyLabel": "Mata uang asli",
+        "originalCurrencyTriggerEmpty": "Mata uang",
+        "originalCurrencyNone": "Tanpa mata uang",
+        "originalAmountSuggestHint": "{amount} — kurs untuk {date}",
+        "originalAmountSuggestApply": "Terapkan",
+        "amountLabel": "Jumlah",
+        "amountPlaceholder": "Jumlah",
+        "categoryLabel": "Kategori",
+        "selectCategoryPlaceholder": "Pilih kategori",
+        "targetAmountLabel": "Jumlah target",
+        "targetAmountPlaceholder": "Jumlah target",
+        "plannedLabel": "Transaksi terencana",
+        "plannedUnavailableNotification": "Transaksi terencana tidak tersedia di sini, jadi opsinya dinonaktifkan.",
+        "plannedTooltip": "Catat sebelum transaksinya terjadi. Saldo Anda tetap seperti semula sampai transaksi tersebut benar-benar masuk.",
+        "plannedConnectedAccountTooltip": "Hanya transaksi terencana yang dapat berada di akun yang terhubung ke bank. Menonaktifkan ini akan mengosongkan akun dan tanggalnya.",
+        "plannedConfirmTooltip": "Nonaktifkan setelah uang berpindah — menyimpan akan mencatatnya ke saldo Anda.",
+        "plannedAccountsUnlockedHint": "Akun yang terhubung ke bank kini dapat dipilih",
+        "plannedDatesUnlockedHint": "Tanggal mendatang telah dibuka",
+        "datetimeLabel": "Tanggal Waktu",
+        "splitInfo": "Bagi ke dalam {count} kategori",
+        "editSplit": "Sunting",
+        "splitPillLabel": "Terbagi",
+        "moreOptionsButton": "Opsi lainnya",
+        "closeButton": "Tutup",
+        "deleteButton": "Hapus",
+        "deleteAriaLabel": "Hapus transaksi",
+        "deleteConfirmTitle": "Hapus transaksi ini?",
+        "deleteConfirmDescription": "Tindakan ini tidak dapat dibatalkan. Pembagian dan tautan pengembalian dana yang melekat padanya juga akan dihapus.",
+        "deleteBlockedByPayment": "Remove it from the payment first to delete it",
+        "createAriaLabel": "Buat transaksi",
+        "editAriaLabel": "Sunting transaksi",
+        "loadingButton": "Memuat...",
+        "createButton": "Buat",
+        "editButton": "Sunting",
+        "duplicateButton": "Duplikat",
+        "createMore": {
+          "label": "Create more",
+          "createdToast": "Transaction created"
+        },
+        "fromAccountLabel": "Dari akun",
+        "toAccountLabel": "Ke akun",
+        "accountLabel": "Akun",
+        "selectAccountPlaceholder": "Pilih akun",
+        "noAccountExists": "Tidak ada akun",
+        "addNewAccountButton": "Tambah akun baru",
+        "createAccountLink": "Buat akun",
+        "destinationTypeAccount": "Akun",
+        "destinationTypePortfolio": "Portofolio",
+        "toPortfolioLabel": "Ke portofolio",
+        "portfolioCashAlreadyReflectedLabel": "Saldo portofolio sudah mencakup uang ini",
+        "portfolioCashAlreadyReflectedHint": "Mencatat transfer untuk riwayat kontribusi tanpa menambahkan kas ke portofolio. Gunakan ini untuk transaksi lama saat portofolio disiapkan dengan saldo yang berlaku saat ini.",
+        "selectPortfolioPlaceholder": "Pilih portofolio",
+        "noPortfoliosExist": "Tidak ada portofolio",
+        "destinationTypeLoan": "Pinjaman",
+        "toLoanLabel": "Ke pinjaman",
+        "selectLoanPlaceholder": "Pilih pinjaman",
+        "noLoansExist": "Tidak ada pinjaman",
+        "validation": {
+          "required": "Bidang ini wajib diisi",
+          "minValue": "Jumlah harus lebih besar dari nol",
+          "futureDate": "Tanggal harus hari ini atau sebelumnya.",
+          "latitudeRange": "Latitude must be between -90 and 90",
+          "longitudeRange": "Longitude must be between -180 and 180",
+          "locationPair": "Enter both latitude and longitude",
+          "maxLength": "Must not exceed {max} characters",
+          "httpUrl": "Enter a valid http(s) URL"
+        },
+        "attachments": {
+          "label": "Attachments",
+          "loading": "Loading attachments…",
+          "listLoadFailed": "Couldn't load attachments. Close and reopen this dialog to try again.",
+          "hint": "Up to {max} files, {size} each. JPEG, PNG, WebP or PDF.",
+          "trigger": {
+            "empty": "Add attachments",
+            "count": "{count} attachment | {count} attachments",
+            "uploading": "Uploading…"
+          },
+          "dropzone": {
+            "idle": "Drop files here or click to browse",
+            "drag": "Drop to attach"
+          },
+          "errors": {
+            "unsupportedType": "Some files were skipped: only JPEG, PNG, WebP and PDF files can be attached.",
+            "tooMany": "A transaction can have at most {max} attachments.",
+            "tooLarge": "\"{filename}\" is larger than {max} and was not uploaded.",
+            "upload": "Failed to upload the attachment.",
+            "delete": "Failed to delete the attachment."
+          },
+          "deleteConfirm": {
+            "title": "Delete attachment?",
+            "description": "\"{filename}\" will be permanently deleted. This action cannot be undone."
+          },
+          "deleteAll": "Delete all",
+          "deleteAllConfirm": {
+            "title": "Delete all attachments?",
+            "description": "All {count} files will be permanently deleted. This action cannot be undone."
+          },
+          "viewer": {
+            "loadFailed": "Could not load this file.",
+            "openInNewTab": "Open in new tab",
+            "download": "Unduh"
+          }
+        },
+        "paymentLegs": {
+          "severalAccountsPill": "Several accounts",
+          "paidFromLabel": "Paid from",
+          "receivedIntoLabel": "Received into",
+          "addAccount": "Add account",
+          "removeRow": "Remove account",
+          "syncedLock": "Synced from your bank – this amount can't be changed",
+          "editHint": "Removing an account deletes only its part. With one account left, this becomes a regular transaction.",
+          "syncedHint": "Only accounts you manage by hand can be added here.",
+          "splitUnavailableHint": "Splitting by category isn't available when paying from several accounts.",
+          "linkExisting": "Link existing",
+          "linkedChangesTitle": "Changes on save",
+          "linkedChangesTakes": "Takes this transaction's category, payee, note and tags.",
+          "linkedChangesKeeps": "Its account, amount and date stay the same.",
+          "linkedChangesUnlink": "Unlinking restores its original details.",
+          "unlink": "Lepaskan",
+          "convertedAmountLabel": "Amount in {currency}",
+          "rateInfo": "Exchange rate details",
+          "rateFromAmounts": "Rate from your amounts",
+          "marketRate": "Market rate",
+          "rateValue": "1 {from} = {rate} {to}",
+          "convertedHint": "Prefilled from the market rate. Change the {currency} amount to match what you actually paid.",
+          "noMarketRate": "No market rate for {currency} – enter the amount manually.",
+          "linkPicker": {
+            "title": "Tautkan transaksi yang ada",
+            "windowHint": "Within {days} days of {date}",
+            "loadError": "Couldn't load transactions",
+            "emptyTitle": "No transactions to link",
+            "emptyDescription": "There are no transactions of this type to link yet.",
+            "emptyFilteredDescription": "No transactions match these filters.",
+            "limitReached": "Selection limit reached",
+            "inOtherPayment": "Already part of another payment",
+            "hasSplits": "Split by category",
+            "refundLinked": "Linked to a refund",
+            "pending": "Not booked by the bank yet",
+            "transfer": "Transfers can't be linked",
+            "planned": "Planned transactions can't be linked",
+            "differentType": "Different type from this transaction",
+            "submit": "Link {count} transaction | Link {count} transactions"
+          }
+        }
+      },
+      "refundRecordsList": {
+        "filtersDialogTitle": "Pilih filter",
+        "fromDateLabel": "Dari tanggal",
+        "toDateLabel": "Ke tanggal",
+        "amountFromLabel": "Jumlah dari (gte)",
+        "amountFromPlaceholder": ">= dari",
+        "amountToLabel": "Ke (lte)",
+        "amountToPlaceholder": "<= dari",
+        "resetButton": "Setel ulang",
+        "applyButton": "Terapkan",
+        "noMoreTransactions": "Tidak ada lagi transaksi untuk dimuat",
+        "noIncomeTransactions": "Tidak ada transaksi pemasukan dalam sistem yang belum ditandai sebagai pengembalian dana. Buat beberapa untuk melanjutkan",
+        "noExpenseTransactions": "Tidak ada transaksi pengeluaran dalam sistem yang belum ditandai sebagai pengembalian dana. Buat beberapa untuk melanjutkan",
+        "noTransactions": "Tidak ada transaksi untuk dipilih. Buat beberapa untuk melanjutkan",
+        "resetFiltersButton": "Setel ulang filter",
+        "recommendedLabel": "Direkomendasikan",
+        "allTransactionsLabel": "Semua transaksi",
+        "searchPlaceholder": "Cari catatan…",
+        "filtersLabel": "Filter",
+        "noSearchResults": "Tidak ada yang cocok dengan “{query}”",
+        "clearSearchButton": "Hapus pencarian"
+      },
+      "splitDialog": {
+        "title": "Bagi ke dalam kategori",
+        "description": "Bagikan transaksi ini ke beberapa kategori. Kategori utama menyimpan sisa jumlah yang tidak dialokasikan.",
+        "mainCategoryLabel": "Kategori Utama",
+        "selectCategoryPlaceholder": "Pilih kategori",
+        "amountPlaceholder": "0",
+        "addCategoryButton": "Tambah kategori",
+        "removeRowLabel": "Hapus kategori",
+        "totalAmountLabel": "Jumlah total",
+        "splitTotalLabel": "Total pembagian",
+        "mainCategoryKeepsLabel": "Kategori utama menyimpan",
+        "exceedsTransactionTotal": "Jumlah pembagian melebihi total transaksi",
+        "cancelButton": "Batal",
+        "removeSplitsButton": "Hapus pembagian",
+        "saveSplitsButton": "Simpan pembagian",
+        "errors": {
+          "amountMustBePositive": "Jumlah harus positif",
+          "duplicateCategory": "Kategori duplikat",
+          "cannotUseMainCategory": "Tidak dapat menggunakan kategori utama dalam pembagian"
+        }
+      },
+      "markAsRefund": {
+        "linkRefund": "Tautkan pengembalian dana",
+        "refundedByCreationHint": "\"Direfund oleh\" akan tersedia setelah transaksi dibuat.",
+        "saveButton": "Simpan",
+        "confirmButton": "Konfirmasi",
+        "linkedRefunds": "Pengembalian dana tertaut",
+        "unlinkRefund": "Lepas tautan pengembalian dana",
+        "refundsPortion": "Merefund bagian {name}",
+        "selectWhichPartToRefund": "Pilih bagian mana yang akan direfund",
+        "transactionSplitInfo": "Transaksi ini dibagi ke beberapa kategori. Pilih bagian mana yang ingin Anda refund.",
+        "mainCategoryLabel": "(utama)",
+        "linkRemovedOnTypeChange": "Tautan refund dihapus karena jenis transaksi berubah.",
+        "summaryEmpty": "Belum ada yang dipilih",
+        "sharePlaceholder": "Jumlah",
+        "shareInputLabel": "Refund share for {name}",
+        "shareErrorNonPositive": "Enter an amount above zero",
+        "shareErrorExceedsPurchase": "More than what is left of this purchase ({amount})",
+        "loadFailed": "Refund links couldn't be loaded, so refund editing is disabled.",
+        "externalLink": "Refund of a transaction outside the app",
+        "adjustAmountsLink": "Adjust amounts",
+        "adjustTitle": "Adjust how the refund is split",
+        "adjustDescription": "This {amount} refund is linked to {count} purchase. By default it counts as refunding the purchase in full, up to what the refund covers. Lower the number if the shop gave back only part of it. Reports then subtract exactly that amount from the purchase's category. | This {amount} refund is linked to {count} purchases. By default each purchase counts as refunded in full, up to what the refund covers. Lower a number if the shop gave back only part of that purchase. Reports then subtract exactly that amount from the purchase's category.",
+        "adjustYouPaid": "you paid {amount}",
+        "adjustRefundedLabel": "Refunded",
+        "adjustWholeButton": "Whole",
+        "adjustResetButton": "Reset to whole purchases",
+        "adjustHintWhole": "Whole purchase.",
+        "adjustHintRest": "Covers what is left of this purchase after other refunds.",
+        "adjustHintPartial": "Partial. {amount} of this purchase stays as spent.",
+        "adjustHintCross": "{share} ≈ {amount}, since the purchase is in another currency.",
+        "adjustWarningCross": "More than the purchase is worth at current rates (≈ {amount}). Check the amount.",
+        "nothingLeftHint": "Nothing of this refund is left. Untick a purchase or adjust amounts.",
+        "purchaseFullyRefundedHint": "This purchase is already fully refunded by other refunds.",
+        "purchasePaidBackHint": "This purchase is already fully paid back. Untick a refund first.",
+        "externalLinkReplaceNotice": "This refund is marked as paying back a purchase outside the app. Linking a purchase replaces that.",
+        "footerPurchasesTicked": "{count} purchase ticked | {count} purchases ticked",
+        "footerRefundsTicked": "{count} refund ticked | {count} refunds ticked",
+        "sharesInvalid": "Some amounts need fixing. Open “Adjust amounts”.",
+        "refundsOverPurchase": "These refunds add up to more than the purchase. Untick one.",
+        "sharesOverRefund": "The linked shares add up to more than this refund. Open the link to adjust them.",
+        "notCoveredWillUnlink": "Not covered by this refund, it will be unlinked on save",
+        "directionEmpty": "Tick earlier records this one refunds, or later records that refund it"
+      },
+      "refundInfo": {
+        "trigger": "Bagaimana caranya?",
+        "title": "Tentang Transaksi Pengembalian Dana",
+        "description": "Tindakan ini menautkan transaksi saat ini [pengeluaran/pemasukan] sebagai pengembalian dana ke transaksi sebelumnya yang ada.",
+        "howItWorks": {
+          "title": "Bagaimana caranya:",
+          "expenseRefund": "Untuk refund pengeluaran: Pilih transaksi pemasukan asli.",
+          "incomeRefund": "Untuk refund pemasukan: Pilih transaksi pengeluaran asli.",
+          "noOriginal": "Anda dapat menandai transaksi apa pun sebagai refund meskipun tidak ada transaksi \"asli\" dalam sistem. Berguna jika Anda tidak memiliki akun dengan transaksi asli dalam sistem."
+        },
+        "benefits": {
+          "title": "Manfaat:",
+          "accuracy": "Meningkatkan akurasi keuangan dengan menyesuaikan statistik pengeluaran atau pemasukan untuk mengecualikan jumlah yang direfund.",
+          "tracking": "Membantu melacak transaksi terkait untuk meningkatkan umpan Anda."
+        },
+        "notes": {
+          "title": "Catatan Penting:",
+          "recordKeeping": "Tautan ini hanya untuk tujuan pencatatan.",
+          "noBalanceAdjust": "Ini tidak menyesuaikan saldo transaksi asli dengan cara apa pun.",
+          "canUnlink": "Anda selalu dapat melepas tautan transaksi kembali."
+        },
+        "examples": {
+          "title": "Contoh:",
+          "customerPayment": "Merefund pembayaran pelanggan: Buat pengeluaran dan tautkan ke pemasukan asli.",
+          "vendorRefund": "Menerima refund dari vendor: Buat pemasukan dan tautkan ke pengeluaran asli.",
+          "noOriginalTx": "Mencatat refund tanpa transaksi asli: Terkadang Anda mungkin perlu mencatat refund untuk transaksi yang tidak ada dalam sistem. Misalnya, jika Anda mencatat refund untuk pembayaran tunai yang tidak dicatat sebelumnya, Anda tetap dapat membuat entri refund. Ini membantu menjaga catatan yang akurat meskipun transaksi asli tidak dilacak secara digital."
+        }
+      },
+      "transferRecordsList": {
+        "filtersDialogTitle": "Filter",
+        "fromDateLabel": "Dari tanggal",
+        "toDateLabel": "Ke tanggal",
+        "amountFromLabel": "Jumlah dari",
+        "amountFromPlaceholder": "Min",
+        "amountToLabel": "Jumlah ke",
+        "amountToPlaceholder": "Maks",
+        "resetButton": "Setel ulang",
+        "applyButton": "Terapkan",
+        "recommendedLabel": "Direkomendasikan",
+        "allTransactionsLabel": "Semua transaksi",
+        "noMoreTransactions": "Tidak ada lagi transaksi",
+        "noIncomeTransactions": "Tidak ada transaksi pemasukan ditemukan. Coba sesuaikan filter.",
+        "noExpenseTransactions": "Tidak ada transaksi pengeluaran ditemukan. Coba sesuaikan filter.",
+        "noTransactions": "Tidak ada transaksi ditemukan. Coba sesuaikan filter.",
+        "resetFiltersButton": "Setel ulang filter"
+      },
+      "portfolioLinked": {
+        "title": "Transaksi Tertaut Portofolio",
+        "linkedAs": "Transaksi ini ditautkan sebagai {type} ke",
+        "deposit": "setoran",
+        "withdrawal": "penarikan",
+        "unlinkButton": "Lepas dari Portofolio",
+        "unlinkWarning": "Melepas tautan akan mengurangi saldo kas portofolio {portfolio}.",
+        "unlinkWarningNoCash": "Transfer ini tidak pernah mengubah saldo kas {portfolio}, jadi melepas tautan tidak akan memengaruhi saldo tersebut.",
+        "noCashBadge": "Tidak ada dampak kas",
+        "unlinkDescription": "Detail transaksi asli akan dipulihkan.",
+        "cancelButton": "Batal",
+        "confirmUnlink": "Konfirmasi Lepas Tautan"
+      },
+      "ventureLinked": {
+        "title": "Transaksi tertaut venture",
+        "description": "Transaksi ini ditautkan ke acara venture.",
+        "editHint": "Sunting atau lepas tautan dari linimasa acara deal venture terkait.",
+        "openVenture": "Buka Venture"
+      },
+      "vehicleLinked": {
+        "title": "Penyesuaian kendaraan",
+        "description": "Transaksi ini adalah jejak audit dari pengesampingan nilai manual untuk {name}.",
+        "editHint": "Untuk mengubah nilai, tanggal, atau menghapus pengesampingan ini, kelola dari halaman detail kendaraan.",
+        "openVehicle": "Buka {name}"
+      },
+      "templates": {
+        "trigger": "Templat",
+        "filterPlaceholder": "Cari templat…",
+        "emptyState": "Templat mengisi formulir ini dengan detail yang sering Anda masukkan — jumlah, akun, kategori, penerima, tag, catatan. Templat tidak pernah menambahkan apa pun dengan sendirinya; untuk sesuatu yang berulang sesuai jadwal, gunakan Biaya Berulang.",
+        "noMatches": "Tidak ada templat yang cocok.",
+        "loadError": "Tidak dapat memuat templat Anda.",
+        "saveCurrent": "Simpan yang sekarang sebagai templat",
+        "updateApplied": "Perbarui ‘{name}’",
+        "saveAsNew": "Simpan sebagai baru",
+        "newTemplate": "Templat baru",
+        "use": "Gunakan templat",
+        "edit": "Sunting",
+        "tapHint": "Ketuk templat untuk mengisi formulir",
+        "toggleDetails": "Tampilkan detail",
+        "noAmount": "tanpa jumlah tersimpan",
+        "keepsAccount": "mempertahankan akun yang dipilih",
+        "stale": {
+          "categoryDeleted": "kategori dihapus",
+          "accountUnavailable": "akun tidak tersedia"
+        },
+        "removeAriaLabel": "Hapus templat, pulihkan formulir",
+        "announceApplied": "{name} diterapkan — {count} kolom terisi. Jumlah masih kosong. | {name} diterapkan — {count} kolom terisi. Jumlah masih kosong.",
+        "announceAppliedWithAmount": "{name} diterapkan — {count} kolom terisi. Jumlah diatur ke {amount}. | {name} diterapkan — {count} kolom terisi. Jumlah diatur ke {amount}.",
+        "categoryDeletedHint": "Kategori templat ini telah dihapus — pilih kategori lain.",
+        "applyConfirmTitle": "Terapkan templat?",
+        "applyConfirmDescription": "Menerapkan templat akan mengganti pembagian dan tautan pengembalian dana Anda.",
+        "toasts": {
+          "savedFromForm": "‘{name}’ disimpan — sekarang menjadi templat aktif.",
+          "saved": "Templat disimpan.",
+          "deleted": "Templat dihapus."
+        },
+        "form": {
+          "titleNew": "Templat baru",
+          "titleEdit": "Sunting templat",
+          "titleSaveCurrent": "Simpan sebagai templat",
+          "nameLabel": "Nama",
+          "namePlaceholder": "mis. Kopi pagi",
+          "typeLabel": "Jenis",
+          "keepAccount": "Pertahankan akun mana pun yang dipilih saat saya menggunakannya",
+          "noAmount": "Jangan simpan jumlah — saya akan mengetiknya setiap kali",
+          "delete": "Hapus templat",
+          "save": "Simpan templat",
+          "deleteConfirmTitle": "Hapus ‘{name}’?",
+          "deleteConfirmDescription": "Templat ini akan dihapus. Transaksi yang sudah Anda buat darinya tidak terpengaruh.",
+          "duplicateName": "Anda sudah memiliki templat bernama “{name}”.",
+          "originalCurrencyLabel": "Original amount currency",
+          "originalCurrencyPlaceholder": "Pilih mata uang"
+        },
+        "errors": {
+          "create": "Tidak dapat menyimpan templat. Silakan coba lagi.",
+          "update": "Tidak dapat memperbarui templat. Silakan coba lagi.",
+          "delete": "Tidak dapat menghapus templat. Silakan coba lagi."
+        }
+      }
+    },
+    "portfolioTransfer": {
+      "portfolio": {
+        "title": "Transfer dari Portofolio",
+        "description": "Transfer dana dari portofolio ini ke portofolio atau akun lain."
+      },
+      "account": {
+        "title": "Transfer dari Akun",
+        "description": "Transfer dana dari akun ini ke portofolio."
+      }
+    },
+    "addSymbols": {
+      "title": "Tambah Simbol",
+      "searchLabel": "Cari simbol atau nama",
+      "searchPlaceholder": "AAPL",
+      "searchError": "Gagal mencari sekuritas.",
+      "addedIndicator": "(Ditambahkan)",
+      "noResults": "Tidak ada hasil.",
+      "emptyState": {
+        "title": "Cari simbol",
+        "description": "Ketik ticker atau nama untuk menemukan saham atau kripto yang dapat Anda tambahkan ke portofolio ini."
+      },
+      "noResultsHint": "Coba ticker yang berbeda, nama lengkap, atau ganti filter di atas.",
+      "clearSearch": "Bersihkan pencarian",
+      "endOfList": "Itu saja",
+      "assetClass": {
+        "crypto": "Kripto"
+      },
+      "filters": {
+        "all": "Semua",
+        "stocks": "Saham",
+        "crypto": "Kripto"
+      },
+      "marketCapRank": "#{rank}",
+      "notifications": {
+        "success": "Kepemilikan ditambahkan.",
+        "error": "Gagal menambahkan kepemilikan."
+      },
+      "cryptoProviderNotConfigured": "Pencarian kripto tidak tersedia. Atur COINGECKO_API_KEY di lingkungan Anda untuk mengaktifkannya."
+    },
+    "deleteInvestmentTransaction": {
+      "title": "Hapus Transaksi",
+      "description": "Apakah Anda yakin ingin menghapus transaksi ini? Tindakan ini tidak dapat dibatalkan.",
+      "cancelButton": "Batal",
+      "deleteButton": "Hapus",
+      "deleteButtonLoading": "Menghapus...",
+      "notifications": {
+        "success": "Transaksi berhasil dihapus.",
+        "error": "Gagal menghapus transaksi."
+      }
+    },
+    "categoryForm": {
+      "title": {
+        "edit": "Sunting Kategori",
+        "add": "Tambah Kategori"
+      },
+      "description": {
+        "addSubcategory": "Menambahkan subkategori ke {parentName}",
+        "edit": "Perbarui nama kategori atau pengaturan",
+        "add": "Buat kategori baru"
+      },
+      "nameLabel": "Nama kategori",
+      "namePlaceholder": "Masukkan nama kategori",
+      "colorLabel": "Warna",
+      "inheritParentColor": "Gunakan warna induk",
+      "iconLabel": "Ikon",
+      "iconPlaceholder": "Pilih ikon",
+      "defaultTagsLabel": "Default tags",
+      "defaultTagsPlaceholder": "Pilih tag",
+      "defaultTagsHint": "Added to a transaction when you pick this category.",
+      "applyTagsOnAiLabel": "Also apply when AI categorizes a transaction",
+      "applyTagsOnAiHint": "Tags stay on the transaction if you change its category later.",
+      "settingsDivider": "Pengaturan",
+      "saveButton": "Simpan",
+      "createButton": "Buat",
+      "notifications": {
+        "updated": "Kategori diperbarui",
+        "created": "Kategori dibuat",
+        "saveFailed": "Gagal menyimpan kategori",
+        "unexpectedError": "Kesalahan tak terduga"
+      }
+    },
+    "addCurrency": {
+      "title": "Tambah mata uang baru",
+      "description": "Pilih satu mata uang untuk ditambahkan",
+      "selectPlaceholder": "Pilih mata uang",
+      "addButton": "Tambah",
+      "notifications": {
+        "success": "Mata uang berhasil ditambahkan!",
+        "error": "Kesalahan tak terduga. Mata uang tidak ditambahkan."
+      }
+    },
+    "accountGroups": {
+      "createDialog": {
+        "title": "Buat grup",
+        "nameLabel": "Nama grup",
+        "namePlaceholder": "Investasi",
+        "createButton": "Buat",
+        "subgroupTitle": "New subgroup",
+        "insideLabel": "Inside",
+        "subgroupNamePlaceholder": "e.g. Savings",
+        "createSubgroupButton": "Create subgroup"
+      }
+    },
+    "directCashTransaction": {
+      "title": "Transaksi Tunai",
+      "description": "Tambahkan deposit atau penarikan ke portofolio"
+    },
+    "pickTransaction": {
+      "title": "Pilih transaksi"
+    },
+    "attachInvoice": {
+      "title": "Attach invoice",
+      "description": "Drop an invoice or receipt. We read the total, date and merchant, then find the transaction it belongs to.",
+      "resultsTitle": "Pick the transaction",
+      "resultsDescription": "No transactions match this invoice. | {count} transaction could belong to this invoice. | {count} transactions could belong to this invoice.",
+      "analyzing": "Reading the invoice and searching your transactions…",
+      "attaching": "Attaching the invoice to the transaction…",
+      "privacyNote": "The file goes to the AI provider for reading only. Nothing is saved until you link it to a transaction.",
+      "aiPausedHint": "Invoice reading is paused. Open the AI badge above to see your options.",
+      "direction": {
+        "paid": "I paid this",
+        "gotPaid": "I got paid",
+        "paidHint": "We search your expenses for the payment.",
+        "gotPaidHint": "We search your income for the payment."
+      },
+      "invoice": {
+        "number": "Invoice №",
+        "issued": "Issued",
+        "total": "Total"
+      },
+      "fixDetails": "Fix details",
+      "form": {
+        "vendor": "Pedagang",
+        "vendorPlaceholder": "Enter the merchant name",
+        "customer": "Customer",
+        "customerPlaceholder": "Who the invoice is billed to",
+        "total": "Total",
+        "totalPlaceholder": "0.00",
+        "currency": "Mata Uang",
+        "currencyPlaceholder": "EUR",
+        "issued": "Invoice date",
+        "submit": "Search again"
+      },
+      "signals": {
+        "amountExact": "Amount exact",
+        "amountClose": "{diff} off",
+        "amountConverted": "Matches after conversion",
+        "amountUnknown": "Amount not compared",
+        "sameDay": "Same day as invoice",
+        "daysAfter": "{count} day after invoice | {count} days after invoice",
+        "daysBefore": "{count} day before invoice | {count} days before invoice",
+        "merchant": {
+          "match": "Merchant matches",
+          "partial": "Merchant looks similar",
+          "none": "Different merchant",
+          "unknown": "No payee set"
+        },
+        "customer": {
+          "match": "Customer matches",
+          "partial": "Customer looks similar",
+          "none": "Different customer",
+          "unknown": "No payee set"
+        }
+      },
+      "alreadyHasFile": "Already has a file",
+      "bestMatch": "Best match · {score}%",
+      "empty": {
+        "title": "No matching transaction",
+        "description": "We looked for about {total} from 14 days before to 30 days after the invoice date, in all accounts. The payment may not be imported yet, or the invoice was read wrong."
+      },
+      "searchManually": "Search manually",
+      "createTransaction": "Buat transaksi",
+      "link": "Link invoice",
+      "linked": "Invoice linked to the transaction",
+      "created": "Transaction created and invoice attached",
+      "openTransaction": "Open transaction",
+      "confirm": {
+        "title": "Link invoice to this transaction?",
+        "description": "{filename} will be attached to the {amount} transaction from {date}. You can remove it from the transaction later."
+      },
+      "errors": {
+        "match": "Could not read the invoice. Try again or use a clearer file.",
+        "link": "Could not link the invoice. Try again.",
+        "detailsNotFilled": "Invoice attached, but its details couldn't be copied to the transaction. Add them manually if you need them.",
+        "createdNotAttached": "Transaction created, but the invoice wasn't attached. Pick it from the list to attach it.",
+        "rematch": "Could not search again. Check the details and retry.",
+        "openTransaction": "Couldn't open the transaction. Find it in your transactions list."
+      },
+      "trial": {
+        "left": "1 free try left of {limit} | {count} free tries left of {limit}",
+        "spent": "You've used all your free tries. Upgrade to Plus to keep attaching invoices with AI."
+      }
+    },
+    "exchangeCurrency": {
+      "title": "Tukar Mata Uang",
+      "description": "Tukar uang tunai antar mata uang yang berbeda dalam portofolio Anda"
+    },
+    "shareAccountDialog": {
+      "title": "Bagikan akun",
+      "description": "Undang seseorang untuk mengakses {name}.",
+      "emailLabel": "Email penerima",
+      "emailPlaceholder": "nama{'@'}contoh.com",
+      "permissionLabel": "Izin",
+      "permissions": {
+        "read": "Hanya baca",
+        "write": "Baca & tambah transaksi",
+        "manage": "Akses penuh"
+      },
+      "writeScopeLabel": "Lingkup suntingan transaksi",
+      "writeScope": {
+        "all": "Semua transaksi di akun",
+        "own": "Hanya transaksi yang mereka buat"
+      },
+      "householdOverrideHint": "{invitee} sudah dalam rumah tangga Anda dengan akses {permission}. Pembagian ini akan menggantikan izin rumah tangga untuk akun khusus ini.",
+      "householdLookupFailed": "Tidak dapat memeriksa keanggotaan rumah tangga – melanjutkan tanpa petunjuk penggantian.",
+      "cancel": "Batal",
+      "send": "Kirim undangan",
+      "success": "Permintaan undangan dikirim. Jika pengguna dengan alamat itu terdaftar, mereka akan menerima undangan.",
+      "error": "Tidak dapat mengirim undangan. Silakan coba lagi.",
+      "emailSendFailedWarning": "Undangan disimpan, tetapi email tidak dapat dikirim. Penerima mungkin tidak menerima notifikasi – coba lagi nanti."
+    },
+    "shareBudgetDialog": {
+      "title": "Bagikan anggaran",
+      "description": "Undang seseorang untuk melihat anggaran ini dan menyumbangkan transaksi mereka sendiri ke dalamnya. {name}.",
+      "emailLabel": "Email",
+      "emailPlaceholder": "Email penerima",
+      "permissionLabel": "Izin",
+      "permissions": {
+        "read": "Hanya lihat",
+        "write": "Lampirkan transaksi sendiri",
+        "manage": "Kelola"
+      },
+      "cancel": "Batal",
+      "send": "Kirim undangan",
+      "success": "Undangan terkirim.",
+      "error": "Tidak dapat mengirim undangan.",
+      "emailSendFailedWarning": "Undangan dibuat, tetapi email tidak dapat dikirim."
+    },
+    "shareInvitationDialog": {
+      "titlePending": "{owner} ingin berbagi dengan Anda",
+      "titleAccepted": "Undangan diterima",
+      "titleDeclined": "Undangan ditolak",
+      "titleCurrencyMismatch": "Mata uang dasar tidak cocok",
+      "titleLoading": "Memuat undangan…",
+      "titleLoadError": "Tidak dapat memuat undangan",
+      "titleNotFound": "Undangan tidak tersedia",
+      "loadErrorBody": "Terjadi kesalahan saat mengambil undangan ini. Periksa koneksi Anda dan coba lagi.",
+      "retry": "Coba lagi",
+      "pendingMessage": "Anda telah diundang untuk mengakses {resource}. Tinjau detail di bawah dan pilih bagaimana Anda akan merespons.",
+      "acceptedBody": "Anda sekarang memiliki akses ke sumber daya bersama ini. Buka untuk mulai bekerja bersama.",
+      "declinedBody": "Kami telah memberi tahu pengirim.",
+      "currencyMismatch": "Mata uang dasar Anda harus {currency} untuk menerima undangan ini. Perbarui mata uang dasar Anda, lalu coba lagi.",
+      "currencyMismatchUnknown": "Mata uang dasar Anda harus cocok dengan pengirim untuk menerima undangan ini.",
+      "acceptDataRefreshFailed": "Undangan diterima, tetapi penyegaran akun gagal. Muat ulang halaman jika ada yang tampak usang.",
+      "notFoundBody": "Undangan ini mungkin telah kedaluwarsa, dicabut, atau sudah ditindaklanjuti. Minta yang baru dari pengirim jika Anda masih membutuhkan akses.",
+      "unexpectedError": "Terjadi kesalahan. Coba lagi sebentar lagi.",
+      "loading": "Mengambil undangan…",
+      "householdResourceLabel": "semua akun dan transaksi bersama Anda",
+      "permissionLabel": "Tingkat akses",
+      "expiresLabel": "Berakhir",
+      "permissions": {
+        "read": "Hanya baca",
+        "write": "Baca + tulis",
+        "manage": "Kelola"
+      },
+      "unknownOwner": "Pengguna MoneyMatter",
+      "unknownResource": "sumber daya bersama",
+      "accept": "Terima",
+      "decline": "Tolak",
+      "close": "Tutup",
+      "goToAccount": "Buka akun",
+      "goToBudget": "Buka anggaran",
+      "updateBaseCurrency": "Perbarui mata uang dasar",
+      "acceptSuccess": "Anda sekarang bagian dari sumber daya bersama ini.",
+      "acceptError": "Tidak dapat menerima undangan. Coba lagi.",
+      "declineSuccess": "Undangan ditolak.",
+      "declineError": "Tidak dapat menolak undangan. Coba lagi.",
+      "backInvite": {
+        "prompt": "Ingin berbagi rumah tangga Anda dengan {owner} juga? Mereka akan dapat melihat dan bertindak atas akun Anda.",
+        "permissionLabel": "Izin mereka",
+        "writeScopeLabel": "Lingkup tulis",
+        "permissions": {
+          "read": "Hanya baca",
+          "write": "Tulis"
+        },
+        "writeScope": {
+          "all": "Akun apa pun",
+          "own": "Hanya transaksi yang mereka buat"
+        },
+        "send": "Bagikan balik",
+        "notNow": "Nanti saja",
+        "done": "Selesai",
+        "sentTitle": "Undangan terkirim",
+        "sentBody": "Kami mengirim undangan ke {owner}. Mereka akan mendapatkan akses setelah menerima.",
+        "success": "Undangan terkirim.",
+        "deliveryFailed": "Undangan dibuat, tetapi email tidak dapat dikirim. Coba lagi nanti.",
+        "emailNotConfigured": "Undangan dibuat, tetapi server ini tidak memiliki pengiriman email yang dikonfigurasi. Minta mereka memeriksa undangan mereka di aplikasi.",
+        "error": "Gagal mengirim undangan."
+      }
+    },
+    "categoryExclusions": {
+      "title": "Kecualikan kategori",
+      "description": "Disembunyikan dari grafik dan total widget ini",
+      "menuItem": "Kecualikan kategori",
+      "nothingExcluded": "Tidak ada yang dikecualikan. Semua kategori dihitung dalam widget ini.",
+      "excludedTag": "Dikecualikan",
+      "stopExcluding": "Berhenti mengecualikan {name}",
+      "badgeTooltip": "1 kategori dikecualikan dari widget ini | {count} kategori dikecualikan dari widget ini",
+      "andMore": "dan {count} lainnya",
+      "clearAll": "Bersihkan semua",
+      "countExcluded": "1 kategori dikecualikan | {count} kategori dikecualikan"
+    },
+    "subscriptionMarkPaid": {
+      "title": "Tandai Pembayaran",
+      "description": "Catat pembayaran untuk {name}",
+      "chooseDescription": "Bagaimana Anda ingin mencatat pembayaran ini untuk {name}?",
+      "amountLabel": "Jumlah",
+      "amountPlaceholder": "0.00",
+      "crossCurrencyEstimate": "~{sourceAmount} {sourceCurrency} → {accountCurrency} (perkiraan)",
+      "dateLabel": "Tanggal pembayaran",
+      "accountLabel": "Akun",
+      "accountPlaceholder": "Pilih akun",
+      "confirm": "Konfirmasi",
+      "confirmMarkOnly": "Tandai sudah dibayar",
+      "recordModeMarkTitle": "Tandai saja sudah dibayar",
+      "recordModeMarkDescription": "Memperbarui jadwal saja — tidak ada transaksi yang dibuat.",
+      "recordModeTransactionTitle": "Buat transaksi",
+      "recordModeTransactionDescription": "Catat pengeluaran nyata di akun. Ini akan ditautkan untuk pembayaran mendatang juga.",
+      "useExistingTitle": "Use the existing payment",
+      "useExistingDescription": "A transaction linked to this subscription is already recorded in this period. Nothing new is added to your account.",
+      "recordNewTitle": "Record a new payment",
+      "recordNewDescription": "Adds another transaction for this period. The existing payment stays as it is.",
+      "linkedPaymentDescription": "{name} already has a payment in this period. Choose how to mark it paid.",
+      "confirmUseExisting": "Use this payment",
+      "previewUnavailable": "Couldn't check for payments already recorded in this period. Review the details before recording a new one.",
+      "notifications": {
+        "markedAsPaid": "Pembayaran tercatat",
+        "markAsPaidFailed": "Gagal mencatat pembayaran"
+      }
+    },
+    "loanPayment": {
+      "title": "Pembayaran pinjaman",
+      "description": "Catat atau sunting pembayaran untuk pinjaman ini.",
+      "createTitle": "Catat Pembayaran",
+      "editTitle": "Sunting Pembayaran Pinjaman",
+      "payingTo": "Membayar ke",
+      "fromAccountLabel": "Dari akun",
+      "fromAccountPlaceholder": "Pilih akun",
+      "amountLabel": "Jumlah",
+      "amountPlaceholder": "0.00",
+      "targetAmountLabel": "Jumlah yang diterapkan ke pinjaman",
+      "targetAmountPlaceholder": "0.00",
+      "targetAmountTooltip": "Akun sumber dalam {source}, pinjaman dalam {loan}. Kami mengisi jumlah yang telah dikonversi menggunakan kurs saat ini — sesuaikan jika bank Anda menerapkan kurs yang berbeda.",
+      "saveButton": "Simpan",
+      "recordButton": "Catat",
+      "overdrawWarning": "Ini lebih besar dari saldo {account} dan akan membuat akun menjadi minus.",
+      "preAnchorWarning": "Pembayaran ini bertanggal sebelum titik acuan saldo pinjaman ({date}), sehingga akan disimpan sebagai riwayat dan tidak mengurangi saldo terutang.",
+      "overpayError": "Pembayaran melebihi sisa saldo pinjaman ({max}).",
+      "deleteConfirmTitle": "Hapus pembayaran ini?",
+      "deleteConfirmDescription": "Kedua sisi transfer akan dihapus dan saldo pinjaman akan dipulihkan. Tindakan ini tidak dapat dibatalkan.",
+      "preAnchorHint": "Tanggal ini sebelum snapshot saldo pinjaman, sehingga pembayaran ini tidak akan mengubah saldo terutang — sudah termasuk dalam saldo awal.",
+      "unlinkButton": "Lepas tautan",
+      "unlinkConfirmTitle": "Lepas tautan pembayaran ini?",
+      "unlinkConfirmDescription": "Transaksi akan tetap ada sebagai pengeluaran biasa tetapi dihapus dari pinjaman ini. Saldo pinjaman akan dihitung ulang.",
+      "unlinkSuccess": "Tautan pembayaran dilepas",
+      "unlinkError": "Tidak dapat melepas tautan pembayaran. Silakan coba lagi.",
+      "syncedAccountHint": "Membayar dari akun yang tersinkronisasi? Gunakan Tautkan pembayaran untuk melampirkan pengeluaran yang diimpor.",
+      "sourceInfo": {
+        "trigger": "Detail lainnya",
+        "title": "Mengapa hanya akun ini?",
+        "manualOnly": "Pemilih ini hanya menampilkan akun yang Anda kelola secara manual.",
+        "whySynced": "Transaksi pada akun yang tersinkronisasi dengan bank diimpor langsung dari bank Anda. Mencatat pembayaran pinjaman dari akun ini akan membuat duplikat transaksi yang akan dikirim oleh bank Anda.",
+        "howToLink": "Sebagai gantinya, setelah transaksi bank muncul, buka dan pilih Tautkan pembayaran untuk melampirkannya ke pinjaman ini. Ini menjaga satu sumber kebenaran dan memperbarui saldo pinjaman dengan benar."
+      }
+    }
+  }
+}

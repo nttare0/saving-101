@@ -1,0 +1,222 @@
+{
+  "loans": {
+    "title": "Kredite",
+    "loadError": "Kredite konnten nicht geladen werden.",
+    "tryAgain": "Erneut versuchen",
+    "addButton": {
+      "label": "Kredit hinzufügen"
+    },
+    "actions": {
+      "more": "Mehr",
+      "moreAriaLabel": "Weitere Aktionen",
+      "excludeFromStats": "Aus Statistiken ausschließen",
+      "linkPayments": "Bisherige Zahlungen verknüpfen"
+    },
+    "linkPayments": {
+      "title": "Bisherige Zahlungen verknüpfen",
+      "description": "Wähle Transaktionen aus, die du bereits für diesen Kredit gezahlt hast, um sie als Kreditrückzahlung zu erfassen.",
+      "emptyTitle": "Keine passenden Transaktionen",
+      "emptyDescription": "Keine Transaktionen entsprechen diesen Filtern. Versuche, den Datumsbereich zu erweitern oder Filter zu löschen.",
+      "selectedCount": "{count} ausgewählt",
+      "clearSelection": "Zurücksetzen",
+      "linkSelected": "{count} verknüpfen",
+      "success": "{count} Zahlung mit dem Kredit verknüpft. | {count} Zahlungen mit dem Kredit verknüpft.",
+      "preAnchorWarning": "{count} ausgewählte Zahlung liegt vor dem Saldo-Stichtag des Kredits ({date}) – sie wird nur als Verlauf verknüpft und verringert nicht den offenen Saldo. | {count} ausgewählte Zahlungen liegen vor dem Saldo-Stichtag des Kredits ({date}) – sie werden nur als Verlauf verknüpft und verringern nicht den offenen Saldo.",
+      "error": "Die ausgewählten Zahlungen konnten nicht verknüpft werden. Bitte versuche es erneut.",
+      "overpayTitle": "Zahlungen übersteigen den Saldo",
+      "overpayDescription": "Die ausgewählten Zahlungen ergeben {amount} mehr als den verbleibenden Kreditsaldo. Trotzdem verknüpfen?",
+      "overpayConfirmButton": "Trotzdem verknüpfen"
+    },
+    "dialog": {
+      "createTitle": "Kredit hinzufügen",
+      "createDescription": "Verfolge einen Immobilienkredit, einen Autokredit, ein Studiendarlehen oder andere Verbindlichkeiten. Du kannst später alles bearbeiten.",
+      "editTitle": "Kredit bearbeiten",
+      "editDescription": "Aktualisiere die Kreditbedingungen. Änderungen an Zinssatz, Laufzeit oder geplanter Zahlung werden im Verlauf aufgezeichnet."
+    },
+    "settings": {
+      "title": "Einstellungen",
+      "editTitle": "Kreditdetails bearbeiten",
+      "editDescription": "Aktualisiere Name, Saldo, Zinssatz, Laufzeit, Zahlungsfelder oder Kreditgeber-Infos.",
+      "editButton": "Bearbeiten",
+      "excludeFromStatsTitle": "Aus Statistiken ausschließen",
+      "excludeFromStatsDescription": "Blende diesen Kredit im Nettovermögen, in Diagrammen und Berichten aus, ohne ihn zu archivieren.",
+      "archiveTitle": "Kredit archivieren",
+      "archiveDescription": "Blendet den Kredit aus der Seitenleiste und den Kontenlisten aus. Du kannst ihn jederzeit wiederherstellen.",
+      "archiveButton": "Archivieren",
+      "archivedTitle": "Dieser Kredit ist archiviert",
+      "archivedDescription": "Er ist in der Seitenleiste und den Kontenauswahlen ausgeblendet und unter \"Archiviert\" auf der Kreditseite aufgeführt. Stelle ihn wieder her, um die Verfolgung fortzusetzen.",
+      "unarchiveButton": "Wiederherstellen",
+      "archiveConfirmTitle": "Diesen Kredit archivieren?",
+      "archiveConfirmDescription": "{name} wird in den Bereich \"Archiviert\" auf dieser Seite verschoben und in der Seitenleiste sowie den Kontenauswahlen ausgeblendet.",
+      "archiveAlsoExclude": "Auch aus der Statistik ausschließen",
+      "deleteTitle": "Kredit löschen",
+      "deleteDescription": "Entfernt den Kredit und seinen Verlauf dauerhaft. Dies kann nicht rückgängig gemacht werden.",
+      "deleteButton": "Löschen",
+      "deleteConfirmTitle": "Diesen Kredit dauerhaft löschen?",
+      "deleteConfirmDescription": "{name} und alle zugehörigen Ereignisse werden dauerhaft entfernt. Dies kann nicht rückgängig gemacht werden.",
+      "toggleSuccess": "Einstellung aktualisiert",
+      "toggleError": "Einstellung konnte nicht aktualisiert werden",
+      "archiveSuccess": "Kredit archiviert",
+      "archiveError": "Kredit konnte nicht archiviert werden",
+      "unarchiveSuccess": "Kredit wiederhergestellt",
+      "deleteSuccess": "Kredit gelöscht",
+      "deleteError": "Kredit konnte nicht gelöscht werden",
+      "deleteBlockedByPayments": "Für diesen Kredit sind Kreditrückzahlungen erfasst. Lösche diese zuerst, um den Kredit löschen zu können."
+    },
+    "empty": {
+      "title": "Noch keine Kredite",
+      "description": "Verfolge Immobilienkredite, Autokredite, Studiendarlehen und andere Verbindlichkeiten hier.",
+      "createFirstButton": "Ersten Kredit hinzufügen"
+    },
+    "paidOff": {
+      "sectionTitle": "Abbezahlt",
+      "repaid": "Zurückgezahlt",
+      "opened": "Eröffnet",
+      "closed": "Geschlossen",
+      "interestPaid": "Gezahlte Zinsen (geschätzt)"
+    },
+    "archivedList": {
+      "sectionTitle": "Archiviert",
+      "badge": "Archiviert",
+      "outstanding": "Offener Saldo"
+    },
+    "aggregate": {
+      "avgApr": "Ø Sollzinssatz",
+      "monthlyObligation": "Monatliche Verpflichtung",
+      "interestProjected": "Hochgerechnete Zinsen",
+      "totalOutstanding": "Offener Gesamtsaldo",
+      "principalRepaid": "{percent}% von {amount} Tilgung zurückgezahlt",
+      "debtFree": "Schuldenfrei"
+    },
+    "list": {
+      "columns": {
+        "loan": "Kredit",
+        "progress": "Fortschritt",
+        "balance": "Saldo",
+        "apr": "Sollzinssatz",
+        "monthly": "Monatlich",
+        "payoff": "Abbezahlt am",
+        "interestLeft": "Verbleibende Zinsen"
+      },
+      "paidPercent": "{value}% abbezahlt",
+      "monthsLeft": "Noch {count} Mon.",
+      "ofPrincipal": "von {amount}"
+    },
+    "types": {
+      "mortgage": "Immobilienkredit",
+      "auto": "Fahrzeugkredit",
+      "student": "Studienkredit",
+      "personal": "Personalkredit",
+      "heloc": "Eigentumskredit (HELOC)",
+      "business": "Geschäftskredit",
+      "medical": "Medizinkredit",
+      "other": "Sonstiges"
+    },
+    "warnings": {
+      "no_planned_payment": "Keine geplante Zahlung festgelegt – hochgerechnete Rückzahlung nicht verfügbar.",
+      "payment_below_interest": "Geplante Zahlung deckt die monatlichen Zinsen nicht – Kredit würde wachsen."
+    },
+    "detail": {
+      "backToList": "Zurück zu Kredite",
+      "loadError": "Dieser Kredit konnte nicht geladen werden.",
+      "paidOffBadge": "Abbezahlt",
+      "summary": {
+        "outstanding": "Offener Saldo",
+        "principalOnlyTooltip": "Der angezeigte Saldo berücksichtigt nur erfasste Tilgungen. Zinsen werden nicht automatisch hinzugerechnet; maßgeblich ist die Abrechnung deines Kreditgebers.",
+        "apr": "Sollzinssatz",
+        "originalPrincipal": "Ursprünglicher Kreditbetrag",
+        "term": "Laufzeit",
+        "termMonths": "{count} Monat | {count} Monate",
+        "startDate": "Startdatum",
+        "paymentDay": "Zahlungstag",
+        "dayOfMonth": "Am {day}. jedes Monats",
+        "accountNumber": "Kontonummer",
+        "balanceAnchor": "Saldo vom",
+        "balanceAnchorTooltip": "Der offene Saldo ist zu diesem Datum festgelegt. Frühere Zahlungen werden im Verlauf aufbewahrt, ändern aber nicht den Fortschritt.",
+        "actualDuration": "Tatsächliche Dauer"
+      },
+      "paidOff": {
+        "bannerTitle": "{name} – vollständig abbezahlt",
+        "bannerSubline": "{type} · Eröffnet {opened} · Geschlossen {closed}",
+        "took": "Dauer",
+        "monthsEarly": "{count} Mon. früher",
+        "duration": {
+          "full": "{years} J. {months} Mon.",
+          "years": "{years} J.",
+          "months": "{months} Mon."
+        },
+        "cost": {
+          "title": "Was dieser Kredit gekostet hat",
+          "totalLabel": "Gesamtkosten",
+          "principal": "Tilgung",
+          "interest": "Zinsen (geschätzt)",
+          "estimateFootnote": "Zinsen sind eine Schätzung anhand des Tilgungsplans – Zahlungen werden als Tilgung erfasst, daher wird keine genaue Zinsaufteilung gespeichert.",
+          "effectiveCost": "Effektive Kosten: {percent} Zinsen auf den geliehenen Betrag"
+        },
+        "chart": {
+          "title": "Saldoverlauf",
+          "titleHint": "Der tatsächlich erfasste Saldo deines Kredits im Zeitverlauf im Vergleich zum ursprünglichen Tilgungsplan.",
+          "noData": "Nicht genügend Verlauf vorhanden, um den Saldoverlauf dieses Kredits darzustellen."
+        }
+      },
+      "projection": {
+        "title": "Hochrechnung",
+        "paidLabel": "Abbezahlt",
+        "paidOfOriginal": "{paid} von {original} abbezahlt",
+        "payoffDate": "Rückzahlungsdatum",
+        "monthsRemaining": "Verbleibende Monate",
+        "totalInterestRemaining": "Verbleibende Gesamtzinsen",
+        "nextMonthInterest": "Zinsen für nächsten Monat",
+        "nextMonthPrincipal": "Tilgung für nächsten Monat",
+        "plannedPayment": "Geplante Zahlung"
+      },
+      "events": {
+        "title": "Änderungsverlauf",
+        "empty": "Noch kein Verlauf – Zinsänderungen, Saldokorrekturen und Notizen werden hier angezeigt.",
+        "rateChange": "Zinssatz geändert von {from}% auf {to}%",
+        "termChange": "Laufzeit geändert von {from} auf {to} Monate",
+        "plannedPaymentChange": "Geplante Zahlung geändert von {from} auf {to}",
+        "paidOff": "Kredit abbezahlt",
+        "balanceCorrection": "Offener Saldo korrigiert von {from} auf {to}"
+      },
+      "payments": {
+        "title": "Letzte Zahlungen",
+        "empty": "Für diesen Kredit wurden noch keine Zahlungen erfasst.",
+        "loadError": "Letzte Zahlungen konnten nicht geladen werden.",
+        "seeAll": "Alle anzeigen",
+        "allTitle": "Alle Zahlungen"
+      },
+      "recordPayment": "Kreditrückzahlung erfassen",
+      "payoffChart": {
+        "title": "Rückzahlungsprojektion",
+        "titleHint": "Projiziert, wann dein Kredit bei einer Mindestzahlung, der geplanten Zahlung und einer benutzerdefinierten monatlichen Zahlung vollständig abbezahlt sein wird, inklusive Rückzahlungsdatum und Gesamtzinsen für jedes Szenario. Gib einen beliebigen Betrag in das benutzerdefinierte Zahlungsfeld ein, um mit den Zahlen zu spielen und sofort zu sehen, wie sich dein Rückzahlungsdatum und die Gesamtzinsen verändern.",
+        "customPaymentLabel": "Benutzerdefinierte Zahlung",
+        "applyAsPlanned": "Als geplante Zahlung übernehmen",
+        "applyConfirmTitle": "Als geplante Zahlung übernehmen?",
+        "applyConfirmDescription": "Dies setzt die geplante monatliche Zahlung des Kredits auf {amount}.",
+        "applySuccess": "Geplante Zahlung aktualisiert.",
+        "applyError": "Die geplante Zahlung konnte nicht aktualisiert werden. Bitte versuche es erneut.",
+        "belowInterest": "Diese Zahlung deckt die monatlichen Zinsen nicht ab, sodass der Saldo nie sinkt.",
+        "paidOff": "Dieser Kredit ist abbezahlt – es gibt nichts mehr zu projizieren.",
+        "enterPaymentPrompt": "Gib oben einen Zahlungsbetrag ein, um die Rückzahlung zu projizieren.",
+        "paidOffShort": "Abbezahlt",
+        "neverPaysOff": "Nie",
+        "interestVsPlanned": "Zinsen vs. geplant",
+        "payoffVsPlanned": "Rückzahlung vs. geplant",
+        "sameAsPlanned": "Gleich wie geplant",
+        "earlierBy": "{time} früher",
+        "laterBy": "{time} später",
+        "monthsLabel": "{n} Mon.",
+        "yearsLabel": "{n} J.",
+        "yearsMonthsLabel": "{y} J. {m} Mon.",
+        "legend": {
+          "minimum": "Mindestzahlung",
+          "planned": "Geplante Zahlung",
+          "custom": "Benutzerdefinierte Zahlung",
+          "actual": "Tatsächlicher Saldo",
+          "schedule": "Ursprünglicher Tilgungsplan"
+        }
+      }
+    }
+  }
+}

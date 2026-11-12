@@ -1,0 +1,108 @@
+{
+  "settings": {
+    "dataManagement": {
+      "title": "Importa dati",
+      "description": "Importare i dati finanziari da varie fonti",
+      "tabs": {
+        "import": "Importazione",
+        "export": "Esportazione"
+      },
+      "textSource": {
+        "title": "Importa da qualsiasi fonte di testo",
+        "aiBadge": "Con IA",
+        "listDescription": "Estratti conto, ricevute, screenshot o qualsiasi testo"
+      },
+      "csv": {
+        "title": "Importa CSV",
+        "description": "Importare transazioni da un file CSV. È possibile mappare le colonne, gestire i duplicati e creare nuovi conti o categorie se necessario.",
+        "button": "Importa file CSV",
+        "cta": "Importa file CSV",
+        "listDescription": "Mappare le colonne e gestire i duplicati"
+      },
+      "ofx": {
+        "title": "Estratto conto OFX o QFX",
+        "listDescription": "Importare transazioni bancarie e della carta di credito"
+      },
+      "ynab": {
+        "title": "Importa da YNAB",
+        "listDescription": "Conti, transazioni, categorie e beneficiari"
+      },
+      "budget-bakers-wallet": {
+        "title": "Wallet (BudgetBakers)",
+        "listDescription": "Multivaluta con abbinamento automatico dei trasferimenti"
+      },
+      "ms-money": {
+        "title": "Microsoft Money",
+        "listDescription": "Importare un file .mny da Microsoft Money"
+      },
+      "messageImport": {
+        "title": "iOS message sync"
+      },
+      "importHistory": {
+        "title": "Cronologia delle importazioni",
+        "listDescription": "Visualizzare le importazioni passate e cosa hanno creato"
+      },
+      "import": {
+        "back": "Torna all'importazione",
+        "whichImporterHint": "Non si sa quale usare?",
+        "groups": {
+          "filesAndText": "File e testo",
+          "fromOtherApps": "Da altre app",
+          "history": "Cronologia"
+        },
+        "requestMore": {
+          "title": "Servono altre opzioni? Richiederle qui"
+        }
+      },
+      "export": {
+        "cardTitle": "Esporta i dati",
+        "backupOrExportHint": "Non si sa se serve l'esportazione o il backup?",
+        "form": {
+          "title": "Esporta i dati",
+          "description": "Scegliere un formato e le parti dei dati desiderate. Il download parte non appena si conferma.",
+          "confirmLabel": "Scarica",
+          "confirmLoading": "Preparazione…",
+          "back": "Torna all'esportazione"
+        },
+        "format": {
+          "label": "Formato",
+          "json": "JSON",
+          "csv": "CSV",
+          "xlsx": "Excel"
+        },
+        "groups": {
+          "label": "Cosa includere",
+          "selectAll": "Seleziona tutto",
+          "deselectAll": "Deseleziona tutto",
+          "transactions": "Transazioni e conti",
+          "transactionsDescription": "Transazioni, conti, storico dei saldi, categorie, etichette, veicoli",
+          "budgets": "Tracker",
+          "budgetsDescription": "Tracker personalizzati con categorie collegate e totali di spesa",
+          "subscriptions": "Abbonamenti e promemoria",
+          "subscriptionsDescription": "Abbonamenti ricorrenti e promemoria delle bollette",
+          "investments": "Investimenti",
+          "investmentsDescription": "Portafogli, posizioni, transazioni di investimento, trasferimenti"
+        },
+        "notifications": {
+          "success": "Esportazione pronta: il download dovrebbe partire a breve.",
+          "successWithCount": "Esportazione pronta: {count} righe esportate.",
+          "failed": "Impossibile esportare i dati. Riprovare.",
+          "downloadBlocked": "Esportazione pronta, ma il browser ha bloccato il download. Controllare la barra degli indirizzi per la richiesta di download.",
+          "tooLarge": "I dati sono troppo grandi per un'unica esportazione. Contattare l'assistenza."
+        },
+        "dateRange": {
+          "label": "Intervallo di date (facoltativo)",
+          "helper": "Vengono filtrate solo le tabelle di eventi (transazioni, storico dei saldi, attività di investimento). Conti, categorie e altre tabelle di riferimento restano complete.",
+          "placeholder": "Sempre",
+          "clear": "Cancella intervallo di date"
+        },
+        "accounts": {
+          "label": "Conti",
+          "helper": "Esporta solo gli account selezionati con le loro transazioni e la cronologia. Lasciare vuoto per esportare tutti i conti.",
+          "placeholder": "Tutti i conti"
+        },
+        "listDescription": "Scaricare uno zip per fogli di calcolo, dichiarazioni dei redditi o migrazioni"
+      }
+    }
+  }
+}

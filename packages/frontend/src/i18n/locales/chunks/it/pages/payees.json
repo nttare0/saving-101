@@ -1,0 +1,182 @@
+{
+  "payees": {
+    "title": "Beneficiari",
+    "subtitle": "Elenco principale degli esercenti con cui si effettuano transazioni",
+    "newPayeeButton": "Nuovo beneficiario",
+    "searchPlaceholder": "Cerca beneficiari…",
+    "columns": {
+      "name": "Nome",
+      "transactionCount": "N. trans.",
+      "netFlow": "Flusso netto",
+      "category": "Categoria",
+      "categoryHint": "Categoria effettiva per questo beneficiario. Mostra quella predefinita se impostata, altrimenti la categoria più usata nelle transazioni passate. Viene compilata automaticamente alla creazione di una nuova transazione.",
+      "topCategory": "Categoria principale",
+      "defaultCategory": "Categoria predefinita",
+      "defaultTags": "Etichette predefinite"
+    },
+    "sort": {
+      "label": "Ordina per",
+      "transactionCount": "Numero transazioni",
+      "netFlow": "Flusso netto",
+      "name": "Nome",
+      "lastSeen": "Attività recente",
+      "defaultTags": "Etichette predefinite"
+    },
+    "actions": {
+      "menu": "Azioni",
+      "rename": "Rinomina",
+      "merge": "Unisci a…",
+      "delete": "Elimina",
+      "deleteAndIgnore": "Elimina e ignora"
+    },
+    "bulk": {
+      "select": "Seleziona",
+      "selectedCount": "{count} selezionati",
+      "clearSelection": "Pulisci la selezione",
+      "selectAll": "Seleziona tutti i beneficiari caricati",
+      "selectRow": "Seleziona {name}",
+      "deleteTitle": "Eliminare {count} beneficiario? | Eliminare {count} beneficiari?",
+      "deleteDescription": "Le relative transazioni restano, ma perdono il collegamento al beneficiario. L'operazione non può essere annullata.",
+      "deleteAndIgnoreTitle": "Eliminare e ignorare {count} beneficiario? | Eliminare e ignorare {count} beneficiari?",
+      "deleteAndIgnoreDescription": "I loro nomi vengono aggiunti all'elenco degli ignorati, così importazioni e sincronizzazioni bancarie non li ricreeranno. Le relative transazioni restano, ma perdono il collegamento al beneficiario."
+    },
+    "emptyState": {
+      "title": "Ancora nessun beneficiario",
+      "description": "Collegare una banca per rilevare automaticamente i beneficiari, oppure crearne uno manualmente."
+    },
+    "form": {
+      "namePlaceholder": "Inserire il nome del beneficiario",
+      "categoryPlaceholder": "Selezionare una categoria",
+      "categorizationMode": {
+        "label": "Classificazione IA",
+        "enforce": {
+          "label": "Usa sempre la categoria del beneficiario",
+          "hint": "Viene sempre usata la categoria predefinita del beneficiario. La classificazione IA viene saltata per questo beneficiario."
+        },
+        "hint": {
+          "label": "Usa come suggerimento",
+          "hint": "Imposta la categoria predefinita del beneficiario, ma l'IA può comunque sostituirla in base ai dettagli della transazione."
+        },
+        "off": {
+          "label": "Disattivata",
+          "hint": "La categoria predefinita del beneficiario viene ignorata. La classificazione è gestita dall'IA o dalle altre regole."
+        }
+      }
+    },
+    "detail": {
+      "categorizationSection": "Classificazione",
+      "aliasesHeading": "Alias",
+      "aliasesEmpty": "Ancora nessun alias. Le nuove varianti compariranno qui quando questo beneficiario corrisponde a un altro nome di esercente.",
+      "cannotDeleteCanonicalAlias": "Impossibile eliminare l'alias che corrisponde al nome del beneficiario. Rinominare invece il beneficiario.",
+      "deleteAliasConfirm": "Rimuovere questo alias?",
+      "addAlias": "Aggiungi",
+      "addAliasTitle": "Aggiungi alias",
+      "addAliasDescription": "Le transazioni future il cui testo dell'esercente si normalizza in questo alias verranno collegate automaticamente a questo beneficiario. Le transazioni passate restano invariate.",
+      "addAliasInputLabel": "Nome dell'esercente",
+      "addAliasPlaceholder": "es. ACME STORE #1234",
+      "aliasDuplicate": "Questo alias è già associato a questo beneficiario.",
+      "aliasUsedByOtherPayee": "Questo alias è già usato da \"{name}\".",
+      "deletePayeeTitle": "Eliminare il beneficiario?",
+      "deletePayeeDescription": "Le transazioni collegate mantengono la categoria ma perdono il collegamento al beneficiario. L'operazione non può essere annullata.",
+      "deleteAndIgnoreTitle": "Eliminare questo beneficiario e ignorare le corrispondenze future?",
+      "deleteAndIgnoreDescription": "Elimina questo beneficiario E aggiunge i suoi nomi (principale + tutti gli alias) all'elenco dei nomi ignorati. Le sincronizzazioni future non lo ricreeranno dal testo grezzo dell'esercente. Le transazioni collegate restano ma perdono il collegamento al beneficiario.",
+      "mergeTitle": "Unisci a un altro beneficiario",
+      "mergeDescription": "Scegliere il beneficiario di destinazione. Tutte le transazioni e gli alias vengono spostati sulla destinazione; questo beneficiario viene eliminato.",
+      "confirmMerge": "Unisci",
+      "topCategoryHint": "La categoria più usata nelle transazioni collegate a questo beneficiario. Usata come riserva quando non è impostata una categoria predefinita.",
+      "defaultCategoryPlaceholder": "Selezionare una categoria",
+      "defaultTagsLabel": "Applica automaticamente etichette",
+      "defaultTagsPlaceholder": "Selezionare le etichette da applicare automaticamente",
+      "defaultTagsHint": "Queste etichette vengono aggiunte automaticamente alle nuove transazioni collegate a questo beneficiario (sincronizzazioni bancarie e importazioni).",
+      "defaultLocationLabel": "Posizione predefinita",
+      "defaultLocationEmpty": "Nessuna posizione impostata",
+      "defaultLocationHint": "Le transazioni collegate a questo beneficiario senza una posizione propria ricevono questa, sia alla creazione sia durante la sincronizzazione bancaria.",
+      "clearDefaultLocationTitle": "Rimuovere la posizione predefinita?",
+      "clearDefaultLocationDescription": "Le nuove transazioni collegate a questo beneficiario non riceveranno più questa posizione. Le transazioni esistenti mantengono la propria.",
+      "applyTagsToExisting": "Applica alle transazioni esistenti"
+    },
+    "logo": {
+      "change": "Cambia logo",
+      "dialogTitle": "Cambia logo",
+      "dialogDescription": "Cercare il logo di un marchio per rappresentare questo beneficiario.",
+      "resetToAuto": "Ripristina automatico",
+      "updatedToast": "Logo aggiornato.",
+      "resetToast": "Logo riportato su automatico.",
+      "fieldLabel": "Logo",
+      "domainHint": "Per trovare il marchio esatto, digitare il dominio del sito web dell'azienda (es. amazon.com): corrisponde sempre al logo giusto."
+    },
+    "transactionsDialog": {
+      "title": "{name}: transazioni",
+      "empty": "Nessuna transazione collegata a questo beneficiario.",
+      "unlink": "Scollega dal beneficiario",
+      "unlinked": "Transazione scollegata dal beneficiario",
+      "unlinkConfirmTitle": "Scollegare la transazione?",
+      "unlinkConfirmDescription": "Questa transazione non sarà più collegata a {name}. Le sincronizzazioni bancarie future non la ricollegheranno automaticamente.",
+      "unlinkConfirmLabel": "Scollega"
+    },
+    "toasts": {
+      "created": "Beneficiario creato",
+      "updated": "Beneficiario aggiornato",
+      "deleted": "Beneficiario eliminato",
+      "merged": "Beneficiari uniti",
+      "aliasDeleted": "Alias rimosso",
+      "aliasAdded": "Alias aggiunto",
+      "deletedAndIgnored": "Beneficiario eliminato e aggiunto all'elenco dei nomi ignorati",
+      "tagsAppliedToExisting": "Etichette applicate a {count} transazioni",
+      "bulkDeleted": "{count} beneficiario eliminato | {count} beneficiari eliminati",
+      "bulkDeletedAndIgnored": "{count} beneficiario eliminato e ignorato | {count} beneficiari eliminati e ignorati"
+    },
+    "errors": {
+      "collision": "Esiste già un beneficiario con questo nome. Unirli invece.",
+      "generic": "Si è verificato un problema. Riprovare."
+    },
+    "tabs": {
+      "manage": "Gestione",
+      "settings": "Impostazioni"
+    },
+    "settings": {
+      "title": "Impostazioni di rilevamento dei beneficiari",
+      "description": "Controllare come l'app rileva automaticamente i beneficiari dalle transazioni sincronizzate.",
+      "howDetectionWorks": "Come funziona il rilevamento",
+      "payeeFromDescription": {
+        "label": "Rileva i beneficiari dalle descrizioni delle transazioni",
+        "description": "Quando la banca non fornisce un campo esercente dedicato, si ricorre alla descrizione (nota) della transazione per rilevare automaticamente i beneficiari. Utile per connessioni bancarie con campi esercente vuoti o assenti. Può produrre nomi di beneficiari meno puliti (es. prefissi di pagamenti rateali), che è possibile rinominare o unire in seguito.",
+        "successNotification": "Preferenza aggiornata",
+        "errorNotification": "Aggiornamento della preferenza non riuscito"
+      },
+      "promotionThreshold": {
+        "label": "Crea un beneficiario dopo N occorrenze",
+        "description": "Quante transazioni devono avere lo stesso nome di esercente prima che venga creato automaticamente un beneficiario. Impostare 1 per crearlo dalla prima transazione.",
+        "successNotification": "Soglia di creazione dei beneficiari aggiornata",
+        "errorNotification": "Aggiornamento della soglia di creazione dei beneficiari non riuscito"
+      },
+      "bulkCategorizationMode": {
+        "label": "Applica la modalità di classificazione a tutti i beneficiari",
+        "description": "Scegliere il comportamento della classificazione per ogni beneficiario esistente. Sostituisce l'impostazione individuale di ciascun beneficiario.",
+        "applyButton": "Applica a tutti",
+        "confirmTitle": "Applicare a tutti i beneficiari?",
+        "confirmDescription": "Tutti i beneficiari passeranno a {mode}. Sarà comunque possibile modificare ciascun beneficiario singolarmente in seguito.",
+        "successNotification": "{count} beneficiari aggiornati.",
+        "errorNotification": "Aggiornamento dei beneficiari non riuscito. Riprovare."
+      }
+    },
+    "ignoredNames": {
+      "title": "Nomi di esercenti ignorati",
+      "description": "Stringhe grezze di esercenti che non devono mai creare automaticamente un beneficiario. Utile per elementi di disturbo come 'Card transfer', 'From: <nome>' o prefissi di rimborso. È comunque possibile collegare manualmente questi nomi a un beneficiario: viene bloccato solo l'abbinamento automatico.",
+      "addPlaceholder": "es. Spotify",
+      "addButton": "Aggiungi",
+      "addedToast": "Aggiunto ai nomi ignorati",
+      "addError": "Aggiunta ai nomi ignorati non riuscita",
+      "removeTooltip": "Rimuovi dall'elenco degli ignorati",
+      "removedToast": "Rimosso dai nomi ignorati",
+      "removeError": "Rimozione non riuscita",
+      "empty": "Ancora nessun nome ignorato.",
+      "normalizedLabel": "Normalizzato",
+      "conflictTitle": "Corrisponde a un beneficiario esistente",
+      "conflictDescription": "Esiste già un beneficiario con lo stesso nome normalizzato di \"{name}\". Continuando, quel beneficiario verrà eliminato (le transazioni restano, ma perdono il collegamento).",
+      "forceConfirm": "Elimina beneficiario e ignora"
+    },
+    "loadingMore": "Caricamento…",
+    "txCount": "{count} trans."
+  }
+}

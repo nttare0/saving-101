@@ -1,0 +1,542 @@
+{
+  "dashboard": {
+    "editMode": {
+      "customize": "Prispôsobiť",
+      "addWidgets": "Pridať widgety",
+      "emptyState": "Widgety pridáte kliknutím na Prispôsobiť",
+      "removeWidget": "Odstrániť widget"
+    },
+    "widgets": {
+      "common": {
+        "includePlanned": "Zahrnúť plánované transakcie",
+        "includePlannedTooltip": "Do čísel v tomto widgete započítať aj čakajúce plánované transakcie.",
+        "includePlannedSaveError": "Nastavenie plánovaných transakcií sa nepodarilo uložiť. Skúste to znova, prosím."
+      },
+      "balanceTrend": {
+        "title": "Vývoj zostatku",
+        "balanceTypes": {
+          "total": "Spolu",
+          "accounts": "Účty",
+          "portfolios": "Portfóliá",
+          "ventures": "Rizikové kapitály",
+          "vehicles": "Vozidlá",
+          "loans": "Pôžičky"
+        },
+        "tooltip": {
+          "accounts": "Účty:",
+          "portfolios": "Portfóliá:",
+          "total": "Spolu:",
+          "ventures": "Rizikové kapitály:",
+          "vehicles": "Vozidlá:",
+          "loans": "Pôžičky:"
+        },
+        "today": "Dnes",
+        "vsPreviousPeriod": "vs. predchádzajúce obdobie",
+        "spikePanel": {
+          "accounts": "Účty",
+          "portfolios": "Portfóliá",
+          "priceDrivenChange": "Zmena spôsobená pohybom ceny — podrobnosti o transakcii budú čoskoro k dispozícii",
+          "noSignificantTransactions": "Pre tento dátum nie sú žiadne významné transakcie.",
+          "seeAllTransactions": "Zobraziť všetky transakcie"
+        },
+        "spikeSettings": {
+          "showMarkers": "Zobraziť značky výkyvov",
+          "showMarkersTooltip": "Zapnutie alebo vypnutie farebných značiek v grafe, ktoré zvýrazňujú výrazné zmeny zostatku.",
+          "percentThreshold": "Min. zmena v %",
+          "percentThresholdTooltip": "Minimálna percentuálna zmena zostatku medzi dvoma po sebe nasledujúcimi dňami na označenie výkyvu. Musí byť prekročená táto alebo absolútna hranica. Nízke hodnoty zobrazia viac značiek.",
+          "absoluteThreshold": "Min. zmena {symbol}",
+          "absoluteThresholdTooltip": "Minimálna absolútna zmena zostatku (vo vašej základnej mene) na označenie výkyvu. Musí byť prekročená táto alebo percentuálna hranica.",
+          "maxMarkers": "Max. počet značiek",
+          "maxMarkersTooltip": "Maximálny počet značiek výkyvov zobrazených v grafe. Ak je výkyvov viac než tento limit, zobrazia sa len najvýznamnejšie.",
+          "resetDefaults": "Obnoviť predvolené",
+          "accept": "Potvrdiť",
+          "validation": {
+            "outOfRange": "Hodnota je mimo povoleného rozsahu",
+            "integer": "Musí ísť o celé číslo"
+          }
+        },
+        "settings": {
+          "title": "Nastavenia",
+          "spikeMarkers": "Značky výkyvov",
+          "fitToLatestData": "Prispôsobiť najnovším údajom",
+          "fitToLatestDataTooltip": "Keď je zapnuté, graf siaha len po najnovší dátový bod. Keď je vypnuté, os x pokrýva celé vybrané obdobie a pre budúce dátumy necháva prázdny priestor.",
+          "fitToLatestDataLockedTooltip": "Túto možnosť zmeníte po vypnutí plánovaných transakcií — ich projekcia vždy predĺži graf až do konca obdobia.",
+          "on": "Zap.",
+          "off": "Vyp.",
+          "includeInTotal": "Zahrnúť do celkového zostatku",
+          "includePlannedTooltip": "Zobraziť čiarkovanú projekciu čakajúcich plánovaných transakcií nad krivkou vývoja."
+        },
+        "componentsSettings": {
+          "description": "Vyberte, ktoré zložky sa počítajú do súčtovej krivky zostatku.",
+          "vehicles": "Vozidlá",
+          "ventures": "Rizikové kapitály",
+          "loans": "Pôžičky",
+          "loansTooltip": "Keď je zapnuté, nesplatené zostatky pôžičiek sa od súčtu odpočítajú (skutočná čistá hodnota majetku). Keď je vypnuté, pôžičky sa ignorujú a súčet ukazuje len aktíva.",
+          "allIncluded": "Všetky zložky",
+          "excluding": "Bez: {items}"
+        },
+        "projection": {
+          "summary": "Výhľad: {amount} · {count} plánovaný záznam do {date} | Výhľad: {amount} · {count} plánované záznamy do {date} | Výhľad: {amount} · {count} plánovaných záznamov do {date}"
+        }
+      },
+      "expensesStructure": {
+        "title": "Štruktúra výdavkov",
+        "incomeTitle": "Štruktúra príjmov",
+        "today": "Dnes",
+        "vsPreviousPeriod": "vs. predchádzajúce obdobie",
+        "viewButton": "Zobraziť",
+        "back": "Späť",
+        "openInAnalytics": "Otvoriť v Analytike",
+        "metric": {
+          "expenses": "Výdavky",
+          "income": "Príjem"
+        },
+        "seeTransactions": "Zobraziť transakcie"
+      },
+      "latestTransactions": {
+        "title": "Posledné transakcie",
+        "showAll": "Zobraziť všetko"
+      },
+      "subscriptions": {
+        "title": "Predplatné a účty",
+        "titleSubscriptions": "Predplatné",
+        "titleBills": "Účty",
+        "titleAll": "Opakujúce sa platby",
+        "titleInstallments": "Splátky",
+        "configTypeAll": "Všetky",
+        "configTypeSubscriptions": "Predplatné",
+        "configTypeBills": "Účty",
+        "configTypeInstallments": "Splátky",
+        "activeSummary": "Aktívne: {count}",
+        "perYear": " ročne",
+        "incomeSummary": "Aktívne: {count} · príjem: {amount}/mes.",
+        "percentOfIncome": "{percent}% z priem. príjmu",
+        "settings": {
+          "title": "Nastavenia",
+          "show": "Zobraziť",
+          "incomeWindow": "Obdobie na výpočet príjmu",
+          "incomeWindowTooltip": "Príjmové transakcie za toto obdobie sa spriemerujú a použijú na výpočet percenta príjmu minutého na pravidelné platby.",
+          "lookbackOption": {
+            "1": "Posledný mesiac",
+            "3": "Posledné 3 mesiace",
+            "6": "Posledných 6 mesiacov",
+            "12": "Posledných 12 mesiacov"
+          },
+          "showStrip": "Zobraziť 30-dňový graf"
+        }
+      },
+      "categoryTracker": {
+        "title": "Sledované kategórie",
+        "addCategory": "Pridať kategóriu",
+        "selectCategories": "Vybrať kategórie",
+        "showTrend": "Zobraziť 6-mesačný trend",
+        "sort": {
+          "title": "Zoradiť podľa",
+          "custom": "Vlastné poradie",
+          "spendDesc": "Najvyššie výdavky prvé",
+          "spendAsc": "Najnižšie výdavky prvé"
+        }
+      },
+      "cashFlow": {
+        "title": "Peňažný tok",
+        "description": "Zobrazuje čisté úspory: príjmy mínus výdavky za vybrané obdobie, vrátane trendu predchádzajúcich období",
+        "vsPrevious": "vs. predchádzajúce obdobie",
+        "notAvailable": "Nedostupné",
+        "income": "Príjmy",
+        "expenses": "Výdavky",
+        "saved": "Ušetrené",
+        "previousPeriodsTrend": "Trend predchádzajúcich období",
+        "viewDetails": "Zobraziť podrobnosti",
+        "savingsRateLine": "Zobraziť krivku miery úspor",
+        "savingsRate": "Miera úspor",
+        "noIncome": "žiadny príjem"
+      },
+      "netWorth": {
+        "title": "Čistá hodnota majetku",
+        "description": "Ako sa čistá hodnota majetku zmenila za vybrané obdobie. Zohľadňuje každú zmenu zostatku: účty, investície, pôžičky a hodnoty aktív.",
+        "vsPrevious": "vs. predchádzajúce obdobie",
+        "start": "Začiatok",
+        "end": "Koniec",
+        "growth": "Nárast",
+        "changeInPeriod": "Zmena za {period}",
+        "previousPeriodsTrend": "Trend predchádzajúcich období",
+        "excludedTooltip": "Vylúčené z čistej hodnoty majetku: {components}",
+        "viewHistory": "Zobraziť históriu",
+        "loadFailed": "Údaje o čistej hodnote majetku sa nepodarilo načítať.",
+        "components": {
+          "ventures": "Rizikové kapitály",
+          "vehicles": "Vozidlá",
+          "loans": "Pôžičky"
+        },
+        "settings": {
+          "title": "Zahrnúť do čistej hodnoty majetku",
+          "loans": "Pôžičky",
+          "vehicles": "Vozidlá",
+          "ventures": "Rizikové kapitály"
+        },
+        "trendTooltip": {
+          "change": "Zmena",
+          "netWorth": "Čistá hodnota majetku",
+          "noData": "Za toto obdobie nie sú žiadne údaje"
+        }
+      },
+      "creditUtilization": {
+        "title": "Využitie úverového limitu",
+        "description": "Zobrazuje, koľko z vašich úverových limitov je aktuálne využitých na všetkých účtoch",
+        "utilized": "využité",
+        "noAccounts": "Žiadne účty s úverovým limitom"
+      },
+      "cashAccounts": {
+        "vsLastMonth": "oproti minulému mesiacu",
+        "runwayUnit": "mes.",
+        "runwayLabel": "výdavkov",
+        "loadFailed": "Vaše účty sa nepodarilo načítať",
+        "runwayHint": {
+          "description": "Všeobecne sa odporúča mať rezervný fond, ktorý pokryje 3 – 6 mesiacov vašich výdavkov.",
+          "critical": "Menej než 1 mesiac: veľmi malá rezerva",
+          "low": "1 – 3 mesiace: pod odporúčanou hranicou",
+          "good": "3+ mesiace: odporúčaný rozsah"
+        }
+      },
+      "assetsLiabilities": {
+        "netWorth": "Čistá hodnota majetku",
+        "owesShare": "Dlžíte {percent} z toho, čo vlastníte",
+        "noDebt": "Žiadny dlh",
+        "assets": "Aktíva",
+        "liabilities": "Záväzky",
+        "loadFailed": "Vaše aktíva a záväzky sa nepodarilo načítať",
+        "buckets": {
+          "cash": "Hotovosť",
+          "investments": "Investície",
+          "ventures": "Rizikové kapitály",
+          "vehicles": "Vozidlá",
+          "loans": "Pôžičky",
+          "creditAndOverdrafts": "Úvery a prečerpania"
+        }
+      },
+      "spendingPace": {
+        "tabs": {
+          "lastMonth": "oproti minulému mesiacu",
+          "average": "oproti 3-mes. priemeru"
+        },
+        "spentIn": "Minuté v {month}",
+        "onTrackFor": "Smeruje k sume {amount}",
+        "vsComparison": "{percent} oproti {name}",
+        "comparison": {
+          "average": "{n}-mes. priem."
+        },
+        "stats": {
+          "byToday": "{name} do dnešného dňa",
+          "total": "{name} spolu",
+          "daysLeft": "Zostáva dní"
+        },
+        "chart": {
+          "today": "Dnes",
+          "ariaLabel": "Výdavky tento mesiac"
+        },
+        "tooltip": {
+          "spent": "Minuté",
+          "forecast": "Predpoveď",
+          "spikeFrom": "Minuté {date}"
+        },
+        "legend": {
+          "thisMonth": "Tento mesiac",
+          "forecast": "Predpoveď",
+          "averageMonth": "Priemerný mesiac"
+        },
+        "hints": {
+          "noHistory": "Porovnanie sa zobrazí po vašom prvom celom mesiaci.",
+          "plannedFailed": "Plánované transakcie sa nepodarilo načítať. Predpoveď ich nemusí zahŕňať.",
+          "fewMonths": "Priemer za {n} celý mesiac, ktorý zatiaľ máte. | Priemer za {n} celé mesiace, ktoré zatiaľ máte. | Priemer za {n} celých mesiacov, ktoré zatiaľ máte."
+        },
+        "loadFailed": "Vaše výdavky sa nepodarilo načítať.",
+        "settings": {
+          "spikes": {
+            "title": "Značky výkyvov",
+            "summary": "Dni s ≥{percent} % mesačných výdavkov",
+            "inputLabel": "Označiť deň, keď dosiahne",
+            "hint": "Podiel na celkových výdavkoch minulého mesiaca, 1 – 100 %. Značky sa zobrazujú v režime „oproti minulému mesiacu”."
+          },
+          "saved": "Nastavenie aktualizované"
+        }
+      },
+      "plannedOverview": {
+        "title": "Plánované",
+        "projectedBy": "Predpokladané do {date}",
+        "upcoming": "Nadchádzajúce · {count}",
+        "loadFailed": "Plánované transakcie sa nepodarilo načítať"
+      },
+      "taxes": {
+        "title": "Priemerná daňová sadzba",
+        "description": "Výdavky vo vašich daňových kategóriách ako podiel z príjmu, spriemerovaný za obdobie zvolené v nastaveniach widgetu. Stĺpce zobrazujú posledných 12 mesiacov.",
+        "ofIncome": "z príjmu",
+        "vsTrailingRate": "{delta} p. b. oproti 12-mesačnej sadzbe {rate}",
+        "average": "priem. {amount}",
+        "amount": "Dane",
+        "shareOfIncome": "Podiel na príjmoch",
+        "shareOfTaxes": "Podiel daní",
+        "other": "Ostatné",
+        "moreCategories": "{count} ďalších",
+        "viewDetails": "Zobraziť peňažný tok",
+        "loadFailed": "Daňové údaje sa nepodarilo načítať.",
+        "noCategories": {
+          "title": "Zatiaľ žiadne daňové kategórie",
+          "description": "Vyberte, ktoré kategórie sa počítajú ako dane, a zobrazí sa vám daňová sadzba.",
+          "action": "Vyberte kategórie"
+        },
+        "config": {
+          "months": {
+            "label": "Obdobie na spriemerovanie",
+            "saveError": "Obdobie na spriemerovanie sa nepodarilo uložiť. Skúste to znova.",
+            "m3": "3 mes.",
+            "m6": "6 mes.",
+            "m12": "12 mes."
+          }
+        },
+        "lastMonths": {
+          "m3": "Posledné 3 mesiace",
+          "m6": "Posledných 6 mesiacov",
+          "m12": "Posledných 12 mesiacov"
+        }
+      },
+      "budget": {
+        "spent": "minuté",
+        "ringLabel": "Minutých {percent} % rozpočtu",
+        "leftOf": "zostáva z {total}",
+        "overOf": "prečerpané z {total}",
+        "headerLeft": "zostáva {amount}",
+        "headerOver": "prečerpané o {amount}",
+        "daysLeft": "zostáva {count} deň | zostávajú {count} dni | zostáva {count} dní",
+        "lastDay": "Posledný deň obdobia",
+        "empty": "Zatiaľ žiadny rozpočet",
+        "create": "Nastavte si rozpočet",
+        "sort": {
+          "overspent": "Najviac prečerpané ako prvé"
+        }
+      },
+      "trackers": {
+        "spentOfLimit": "{spent} z {limit}",
+        "inOut": "{income} príjem, {expense} výdavok",
+        "net": "Čistý zostatok",
+        "noLimit": "Bez limitu",
+        "empty": "Zatiaľ žiadne sledovače",
+        "ended": "Ukončené",
+        "create": "Vytvoriť sledovač"
+      },
+      "tagAnalysis": {
+        "title": "Analýza značiek",
+        "noTagsTitle": "Nie sú vybrané žiadne značky",
+        "noTagsDescription": "Značky na porovnanie vyberte v nastaveniach widgetu.",
+        "ofIncome": "z príjmu",
+        "remaining": "Nepridelené",
+        "targetTooltip": "Cieľ: {value} %",
+        "settings": {
+          "tagsLabel": "Značky",
+          "tagsPlaceholder": "Vyberte značky",
+          "targetsLabel": "Ciele, %",
+          "targetsNoneSet": "Nenastavené",
+          "targetsSetCount": "Nastavené: {set} z {total}",
+          "targetsEmpty": "Najprv pridajte značky, aby ste mohli nastaviť ich ciele",
+          "targetPlaceholder": "Žiadne",
+          "percentBaseLabel": "Percento z",
+          "percentBaseTags": "Vybrané značky",
+          "percentBaseIncome": "Príjem",
+          "includeTransfersLabel": "Zahrnúť prevody",
+          "includeTransfersDescription": "Počítať prevody na vaše vlastné účty a portfóliá ako výdavky"
+        }
+      },
+      "emptyState": "Za vybraný časový interval nie sú žiadne údaje.",
+      "registry": {
+        "balanceTrend": {
+          "name": "Vývoj zostatku",
+          "description": "Sledujte vývoj zostatku v čase"
+        },
+        "categoryTracker": {
+          "name": "Sledované kategórie",
+          "description": "Sledujte výdavky a príjmy vo vybraných kategóriách"
+        },
+        "spendingCategories": {
+          "name": "Výdavky podľa kategórií",
+          "description": "Zistite, kam smerujú vaše peniaze"
+        },
+        "latestRecords": {
+          "name": "Posledné záznamy",
+          "description": "Vaše najnovšie transakcie"
+        },
+        "subscriptions": {
+          "name": "Predplatné a účty",
+          "description": "Prehľad pravidelných platieb"
+        },
+        "cashFlow": {
+          "name": "Peňažný tok",
+          "description": "Príjmy vs. výdavky s mierou úspor"
+        },
+        "netWorth": {
+          "name": "Čistá hodnota majetku",
+          "description": "Ako sa vaša celková čistá hodnota majetku mení v čase, vrátane investícií, pôžičiek a aktív."
+        },
+        "creditUtilization": {
+          "name": "Využitie úverového limitu",
+          "description": "Využitie úverového limitu na vašich účtoch"
+        },
+        "cashAccounts": {
+          "name": "Hotovosť a účty",
+          "description": "Celková hotovosť naprieč vašimi účtami, jej zmena od minulého mesiaca a koľko mesiacov výdavkov pokrýva"
+        },
+        "assetsLiabilities": {
+          "name": "Aktíva a záväzky",
+          "description": "Čo vlastníte, čo dlžíte, a čistá hodnota majetku medzi nimi"
+        },
+        "spendingPace": {
+          "name": "Tempo čerpania",
+          "description": "Výdavky od začiatku mesiaca doteraz s predpoveďou na zvyšok mesiaca, porovnané s minulým mesiacom alebo vaším 3-mesačným priemerom."
+        },
+        "plannedOverview": {
+          "name": "Prehľad plánovaných platieb",
+          "description": "Čakajúce plánované transakcie a predpokladaný zostatok"
+        },
+        "fireProgress": {
+          "name": "Priebeh FIRE",
+          "description": "Ako blízko ste k finančnej nezávislosti"
+        },
+        "taxes": {
+          "name": "Priemerná daňová sadzba",
+          "description": "Podiel príjmu zaplatený na daniach, s 12-mesačným trendom"
+        },
+        "budget": {
+          "name": "Rozpočet",
+          "description": "Čo zostáva v aktuálnom období rozpočtu, po jednotlivých položkách"
+        },
+        "trackers": {
+          "name": "Sledovače",
+          "description": "Každý aktívny sledovač s tým, koľko z jeho limitu je vyčerpané, a jeho bilancia"
+        },
+        "goals": {
+          "name": "Ciele",
+          "description": "Postup k vašim sporiacim cieľom",
+          "savedOfTarget": "{saved} z {target}",
+          "empty": {
+            "title": "Žiadne aktívne ciele",
+            "description": "Nastavte si cieľ a sledujte, ako blízko k nemu ste.",
+            "action": "Vytvoriť cieľ"
+          },
+          "locked": {
+            "title": "Ciele sú uzamknuté",
+            "description": "Šetrite na to, na čom záleží, a sledujte, či ste na dobrej ceste. Dostupné v platených plánoch.",
+            "action": "Zistiť viac"
+          },
+          "settings": {
+            "showReached": "Zobraziť dosiahnuté ciele"
+          },
+          "reachedSection": "Dosiahnuté"
+        },
+        "tagAnalysis": {
+          "name": "Analýza značiek",
+          "description": "Pozrite si, ako sa vaše výdavky rozdeľujú medzi vybrané značky, napríklad potreby, priania a úspory"
+        }
+      }
+    },
+    "periodSelector": {
+      "presets": {
+        "currentMonth": "Aktuálny mesiac",
+        "last3Months": "Posledné 3 mesiace",
+        "last6Months": "Posledných 6 mesiacov",
+        "lastYear": "Posledných 12 mesiacov",
+        "thisYear": "Tento rok",
+        "previousYear": "Predchádzajúci rok"
+      }
+    }
+  },
+  "widgets": {
+    "subscriptionsOverview": {
+      "payAction": "Označiť ako zaplatené",
+      "listTitle": "Nadchádzajúce",
+      "dueCount": "Splatné: {count}",
+      "nothingDue": "V najbližších 3 dňoch nič nie je splatné",
+      "overdueHint": "Po splatnosti od {date}",
+      "dueSoonHint": "Splatné v nasledujúcich 3 dňoch",
+      "strip": {
+        "title": "Nasledujúcich 30 dní",
+        "goingOut": "Odchádza {amount}",
+        "today": "Dnes"
+      },
+      "loadFailed": "Pravidelné platby sa nepodarilo načítať"
+    },
+    "latestRecords": {
+      "settings": {
+        "excludeTitle": "Vylúčiť transakcie",
+        "excludeTransfersDescription": "Skryť prevody medzi vlastnými účtami",
+        "excludeOutOfWalletDescription": "Skryť prevody z a do účtov, ktoré nesledujete",
+        "balanceAdjustmentsTitle": "Úpravy zostatku",
+        "excludeBalanceAdjustmentsDescription": "Skryť transakcie na úpravu zostatku",
+        "plannedTitle": "Plánované transakcie",
+        "excludePlannedDescription": "Skryť čakajúce plánované transakcie zo zoznamu",
+        "scheduledTitle": "Pravidelné platby",
+        "excludeScheduledDescription": "Skryť zo zoznamu nadchádzajúce a po termíne splatnosti platby predplatného",
+        "scheduledSaveError": "Nastavenie plánovaných platieb sa nepodarilo aktualizovať",
+        "nothingExcluded": "Nič nie je vylúčené",
+        "tagsStyleTitle": "Značky",
+        "tagsStyleNames": "Názvy",
+        "tagsStyleBars": "Pruhy",
+        "tagsStyleSaveError": "Štýl značiek sa nepodarilo uložiť. Skúste to znova, prosím.",
+        "showAccountTitle": "Účet",
+        "showAccountDescription": "Zobraziť logo účtu pri každej transakcii",
+        "showAccountSaveError": "Nastavenie účtu sa nepodarilo uložiť. Skúste to znova, prosím."
+      },
+      "overdueBadge": "Po splatnosti",
+      "scheduledBadge": "Naplánované",
+      "payAction": "Označiť ako zaplatené"
+    },
+    "fireProgress": {
+      "title": "Priebeh FIRE",
+      "config": {
+        "style": {
+          "label": "Štýl",
+          "ring": "Kruh",
+          "numbers": "Čísla"
+        }
+      },
+      "openPlan": "Otvoriť plán FIRE",
+      "loadFailed": "Priebeh FIRE sa nepodarilo načítať.",
+      "toType": "k {type}",
+      "ringLabelFor": "Dosiahnutých {pct} % cieľa {type}, zostáva {duration}",
+      "ringLabelReachedFor": "Cieľ {type} dosiahnutý",
+      "ringLabelUnreachableFor": "Dosiahnutých {pct} % cieľa {type}, pri súčasnom tempe nedosiahnuteľné",
+      "timeTo": "Čas do {type}",
+      "unitYears": "{n} r. | {n} r. | {n} r.",
+      "unitMonths": "{n} mes. | {n} mes. | {n} mes.",
+      "atAge": "vo veku {age}",
+      "nextMilestone": "Ďalší medzník",
+      "saved": "Ušetrené",
+      "progress": "Priebeh",
+      "coastFire": "Coast FIRE",
+      "reached": "Dosiahnuté",
+      "milestoneIn": "{pct} % za {duration}",
+      "typeNumber": "Cieľové číslo {type}",
+      "atRate": "pri {rate}%",
+      "milestonesReached": "Medzník {n} z {total}",
+      "balanceOfTarget": "{balance} z {target}",
+      "reachedType": "{type} dosiahnuté",
+      "supports": "Pokryje {amount}/mes.",
+      "pctOfSpending": "{pct} % výdavkov",
+      "unreachable": "Pri súčasných úsporách nedosiahnuteľné",
+      "needs": "Na dosiahnutie za {duration} potrebujete približne {amount}/mes.",
+      "chart": {
+        "today": "Dnes",
+        "typeTarget": "{type} · {amount}",
+        "ariaLabel": "Cesta čistej hodnoty majetku: skutočná história po dnešok, projekcia smerom k vášmu cieľovému číslu FIRE"
+      },
+      "setup": {
+        "title": "Naplánujte si cestu k FIRE",
+        "description": "Vychádza z vašich účtov a výdavkov. Ak zatiaľ nemáte žiadne údaje, zobrazia sa dve čísla.",
+        "action": "Nastaviť"
+      },
+      "locked": {
+        "title": "Naplánujte si cestu k FIRE",
+        "description": "Funkcia Plus",
+        "action": "Odomknúť"
+      },
+      "paceVs": "oproti {month}"
+    }
+  }
+}

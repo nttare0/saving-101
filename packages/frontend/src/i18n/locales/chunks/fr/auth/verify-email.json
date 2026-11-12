@@ -1,0 +1,17 @@
+{
+  "auth": {
+    "verifyEmail": {
+      "title": "Vérifiez vos e-mails",
+      "description": "Nous avons envoyé un lien de confirmation à",
+      "descriptionYourEmail": "votre adresse e-mail",
+      "descriptionContinued": ". Veuillez cliquer sur le lien pour valider votre compte.",
+      "didntReceive": "Vous n'avez rien reçu ? Vérifiez vos spams ou",
+      "resend": "cliquez ici pour renvoyer",
+      "sending": "Envoi en cours...",
+      "resendIn": "Renvoyer dans {count} s",
+      "backToSignIn": "Retour à la connexion",
+      "resendSuccess": "E-mail de confirmation envoyé ! Veuillez vérifier votre boîte de réception.",
+      "resendError": "Échec du renvoi de l'e-mail de confirmation. Veuillez réessayer."
+    }
+  }
+}

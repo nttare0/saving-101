@@ -1,0 +1,712 @@
+/* Geist and Geist Mono (the shadcn/ui typefaces) as variable fonts via fontsource - weights 100-900 */
+@import '@fontsource-variable/geist';
+@import '@fontsource-variable/geist-mono';
+
+@import 'tailwindcss';
+@import './calendar.css';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:where(.dark, .dark *));
+/* Devices without hover (phones, tablets) */
+@custom-variant touch {
+  @media (hover: none) {
+    @slot;
+  }
+}
+/* Transactions table: locked-cell shading shown without hover (touch, or the "always show" table setting) */
+@custom-variant locks-visible {
+  @media (hover: none) {
+    @slot;
+  }
+  &:where([data-always-show-locked-cells] *) {
+    @slot;
+  }
+}
+@reference;
+
+@theme {
+  /* Dark mode configuration */
+  --default-dark-mode: class;
+
+  /* Container configuration */
+  --container-center: true;
+  --container-padding: 2rem;
+  --container-screens-2xl: 1400px;
+
+  /* Extended breakpoints */
+  --breakpoint-xxs: 390px;
+  --breakpoint-xs: 550px;
+
+  /* Colors using CSS custom properties */
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-base-text: var(--base-text);
+  --color-error-message: var(--error-message);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-text: var(--primary-text);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary-hover: var(--secondary-hover);
+  --color-secondary-border: var(--secondary-border);
+
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-destructive-text: var(--destructive-text);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-dialog: var(--dialog);
+
+  /* App shell (shadcn/ui sidebar tokens) */
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Data visualisation (Bklit UI chart tokens) */
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-chart-positive: var(--chart-positive);
+  --color-chart-negative: var(--chart-negative);
+  --color-chart-grid: var(--chart-grid);
+  --color-chart-label: var(--chart-label);
+  --color-chart-crosshair: var(--chart-crosshair);
+  --color-chart-tooltip-background: var(--chart-tooltip-background);
+  --color-chart-tooltip-foreground: var(--chart-tooltip-foreground);
+  --color-chart-tooltip-muted: var(--chart-tooltip-muted);
+
+  --color-card-tooltip: var(--card-tooltip);
+  --color-card-tooltip-foreground: var(--card-tooltip-foreground);
+  --color-card-tooltip-glass: var(--card-tooltip-glass);
+  --color-card-tooltip-muted: var(--card-tooltip-muted);
+  --color-card-tooltip-border: var(--card-tooltip-border);
+  --shadow-card-tooltip: var(--card-tooltip-shadow);
+  --shadow-card: var(--card-shadow);
+
+  --color-input-background: var(--input-background);
+
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-success-text: var(--success-text);
+
+  --color-warning: rgb(230 126 34);
+  --color-warning-text: var(--warning-text);
+  --color-app-income-color: var(--app-income-color);
+  --color-app-expense-color: var(--app-expense-color);
+  --color-app-transfer-color: var(--app-transfer-color);
+  --color-app-savings-color: var(--app-savings-color);
+  --color-automation-when: var(--automation-when);
+
+  --color-heart: var(--heart);
+
+  --color-loan-mortgage: var(--loan-mortgage);
+  --color-loan-auto: var(--loan-auto);
+  --color-loan-student: var(--loan-student);
+  --color-loan-personal: var(--loan-personal);
+  --color-loan-heloc: var(--loan-heloc);
+  --color-loan-business: var(--loan-business);
+  --color-loan-medical: var(--loan-medical);
+  --color-loan-other: var(--loan-other);
+  --color-loan-principal: var(--loan-principal);
+  --color-loan-interest: var(--loan-interest);
+
+  --color-account-checking: var(--account-checking);
+  --color-account-saving: var(--account-saving);
+  --color-account-credit: var(--account-credit);
+  --color-account-cash: var(--account-cash);
+  --color-account-investment: var(--account-investment);
+  --color-account-crypto: var(--account-crypto);
+  --color-account-vehicle: var(--account-vehicle);
+
+  --color-subscription-type-subscription: var(--subscription-type-subscription);
+  --color-subscription-type-bill: var(--subscription-type-bill);
+  --color-subscription-type-installment: var(--subscription-type-installment);
+
+  /* Border radius (the shadcn/ui scale around --radius) */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  /* Box shadows */
+  --shadow-header: 0 0 #0000;
+
+  /* Z-index */
+  --z-over-default: 1;
+  --z-scrollbar: 2;
+  --z-navbar: 10;
+  --z-dialog: 50;
+  --z-over-dialog: 51;
+  --z-notifications: 51;
+  /* App-lock overlay must sit above dialogs and notifications — nothing may render over it. */
+  --z-app-lock: 100;
+
+  /* Keyframes and animations */
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-collapsible-down: collapsible-down 0.2s ease-in-out;
+  --animate-collapsible-up: collapsible-up 0.2s ease-in-out;
+  --animate-archive-check: archive-check 0.4s ease-out;
+}
+
+/* Define keyframes */
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--reka-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--reka-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+@keyframes collapsible-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--reka-collapsible-content-height);
+  }
+}
+
+@keyframes collapsible-up {
+  from {
+    height: var(--reka-collapsible-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+@keyframes archive-check {
+  0% {
+    transform: scale(0) rotate(-45deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes feedback-pulse {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--primary) 45%, transparent);
+  }
+  70% {
+    box-shadow: 0 0 0 10px color-mix(in srgb, var(--primary) 0%, transparent);
+  }
+  100% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--primary) 0%, transparent);
+  }
+}
+
+.feedback-pulse {
+  animation: feedback-pulse 1.5s ease-out 3;
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+/*
+  Buttons in tailwind v4 use `cursor: default` instead of `cursor: pointer` to
+  match the default browser behavior. We revert it back.
+*/
+@layer base {
+  button:not(:disabled),
+  [role='button']:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+/*
+  Prevent document-level scrolling. All scrolling should happen inside ScrollArea components.
+  This fixes the "double scroll" issue where html/body can scroll independently.
+*/
+@layer base {
+  html,
+  body {
+    height: 100%;
+    overflow: hidden;
+  }
+}
+
+@layer base {
+  /*
+    Theme: shadcn/ui "neutral" (https://ui.shadcn.com/themes), light and dark, in OKLCH, plus the
+    Bklit UI chart tokens (https://bklit.com/docs/theming). App-specific tokens further down keep
+    their names and roles; only their values were re-tuned to sit on the neutral surfaces.
+  */
+  :root {
+    --font-sans:
+      'Geist Variable', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+      'Noto Color Emoji';
+    --font-mono:
+      'Geist Mono Variable', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+      monospace;
+    --header-height: 49px;
+
+    --radius: 0.625rem;
+
+    --background: oklch(1 0 0);
+    --foreground: oklch(0.145 0 0);
+
+    --base-text: oklch(0.145 0 0);
+
+    --card: oklch(1 0 0);
+    --card-foreground: oklch(0.145 0 0);
+    /* = Tailwind's shadow-xs, the shadcn/ui card shadow */
+    --card-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+
+    --dialog: oklch(1 0 0);
+
+    /* Chart tooltips follow the popover surface (Bklit maps its tooltip tokens the same way);
+       -glass applies only where backdrop-filter is supported. */
+    --card-tooltip: var(--popover);
+    --card-tooltip-foreground: var(--popover-foreground);
+    --card-tooltip-glass: oklch(1 0 0 / 0.86);
+    --card-tooltip-muted: var(--muted-foreground);
+    --card-tooltip-border: oklch(0.922 0 0);
+    /* = Tailwind's shadow-lg at 5% */
+    --card-tooltip-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(0.145 0 0);
+
+    --input-background: oklch(1 0 0);
+
+    --primary: oklch(0.205 0 0);
+    --primary-foreground: oklch(0.985 0 0);
+    --primary-text: oklch(0.205 0 0);
+
+    --secondary: oklch(0.97 0 0);
+    --secondary-foreground: oklch(0.205 0 0);
+    --secondary-hover: oklch(0.94 0 0);
+    --secondary-border: transparent;
+
+    --muted: oklch(0.97 0 0);
+    --muted-foreground: oklch(0.556 0 0);
+
+    --accent: oklch(0.97 0 0);
+    --accent-foreground: oklch(0.205 0 0);
+
+    --destructive: oklch(0.577 0.245 27.325);
+    --destructive-foreground: oklch(0.985 0 0);
+    --destructive-text: oklch(0.505 0.213 27.518);
+
+    --border: oklch(0.922 0 0);
+    --input: oklch(0.922 0 0);
+    --ring: oklch(0.708 0 0);
+
+    --sidebar: oklch(0.985 0 0);
+    --sidebar-foreground: oklch(0.145 0 0);
+    --sidebar-primary: oklch(0.205 0 0);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.97 0 0);
+    --sidebar-accent-foreground: oklch(0.205 0 0);
+    --sidebar-border: oklch(0.922 0 0);
+    --sidebar-ring: oklch(0.708 0 0);
+
+    /* Bklit UI "Primary" palette: indigo, yellow, purple, mist, black */
+    --chart-1: oklch(0.585 0.233 277.117);
+    --chart-2: oklch(0.852 0.199 91.936);
+    --chart-3: oklch(0.459 0.156 302.679);
+    --chart-4: oklch(0.56 0.021 213.5);
+    --chart-5: oklch(0 0 0);
+    --chart-positive: oklch(0.696 0.17 162.48);
+    --chart-negative: oklch(0.637 0.237 25.331);
+    --chart-line-primary: var(--chart-1);
+    --chart-line-secondary: var(--chart-2);
+    --chart-grid: oklch(0.9 0 0);
+    --chart-label: oklch(0.45 0.01 260);
+    --chart-crosshair: oklch(0.4 0.1828 274.34);
+    --chart-tooltip-background: var(--popover);
+    --chart-tooltip-foreground: var(--popover-foreground);
+    --chart-tooltip-muted: var(--muted-foreground);
+
+    --success: oklch(0.627 0.194 149.214);
+    --success-foreground: oklch(0.985 0 0);
+    --success-text: oklch(0.527 0.154 150.069);
+
+    --warning-text: oklch(0.555 0.163 48.998);
+
+    /* Darkens whatever transaction-type color bar sits under the planned stripe overlay. */
+    --planned-stripe: rgba(0, 0, 0, 0.35);
+
+    /* Custom colors */
+    --error-message: oklch(0.577 0.245 27.325);
+
+    /* Amount colors */
+    --app-income-color: oklch(0.527 0.154 150.069);
+    --app-expense-color: oklch(0.577 0.245 27.325);
+    --app-transfer-color: oklch(0.556 0 0);
+    --app-savings-color: oklch(0.546 0.245 262.881);
+
+    /* Accent for the "When" half of automation rules; "Then" uses --primary. */
+    --automation-when: rgb(2, 132, 199);
+
+    /* Donation/support heart — a true red, distinct from the expense/error red */
+    --heart: rgb(220, 38, 38);
+
+    /*
+      Per-loan-type category identity colors: one hue per loan type, shared as the single source
+      behind the solid badge, the composition-bar/legend dots, and the soft tinted list-row chip so
+      a given loan type reads as the same color everywhere. `principal`/`interest` are the two fixed
+      roles of the cost-split bar (not loan types).
+    */
+    --loan-mortgage: rgb(59, 130, 246);
+    --loan-auto: rgb(245, 158, 11);
+    --loan-student: rgb(139, 92, 246);
+    --loan-personal: rgb(16, 185, 129);
+    --loan-heloc: rgb(6, 182, 212);
+    --loan-business: rgb(244, 63, 94);
+    --loan-medical: rgb(236, 72, 153);
+    --loan-other: rgb(100, 116, 139);
+    --loan-principal: rgb(59, 130, 246);
+    --loan-interest: rgb(245, 158, 11);
+
+    /*
+      Per-account-category identity colors: one hue per account category, sitting behind the
+      soft tinted icon chip on account list rows so a category reads as the same color everywhere.
+    */
+    --account-checking: rgb(37, 99, 235);
+    --account-saving: rgb(16, 141, 90);
+    --account-credit: rgb(202, 138, 4);
+    --account-cash: rgb(13, 148, 136);
+    --account-investment: rgb(124, 92, 200);
+    --account-crypto: rgb(234, 88, 12);
+    --account-vehicle: rgb(79, 70, 229);
+
+    /*
+      Per-recurring-payment-type identity colors: one hue per type, shared by the type badge and
+      the summary card's composition bar and legend dots.
+    */
+    --subscription-type-subscription: rgb(37, 99, 235);
+    --subscription-type-bill: rgb(234, 88, 12);
+    --subscription-type-installment: rgb(147, 51, 234);
+  }
+
+  :root.dark {
+    --background: oklch(0.145 0 0);
+    --foreground: oklch(0.985 0 0);
+
+    --base-text: oklch(0.985 0 0);
+
+    --card: oklch(0.205 0 0);
+    --card-foreground: oklch(0.985 0 0);
+    --card-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+
+    /* A step above --background; input fields inside dialogs read through their border, not surface contrast. */
+    --dialog: oklch(0.205 0 0);
+
+    --card-tooltip-glass: oklch(0.205 0 0 / 0.8);
+    --card-tooltip-border: oklch(1 0 0 / 10%);
+    --card-tooltip-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.25), 0 4px 6px -4px rgb(0 0 0 / 0.25);
+
+    --popover: oklch(0.205 0 0);
+    --popover-foreground: oklch(0.985 0 0);
+
+    /* = shadcn/ui's dark field surface (input at 30%) */
+    --input-background: oklch(1 0 0 / 4.5%);
+
+    --primary: oklch(0.922 0 0);
+    --primary-foreground: oklch(0.205 0 0);
+    --primary-text: oklch(0.922 0 0);
+
+    --secondary: oklch(0.269 0 0);
+    --secondary-foreground: oklch(0.985 0 0);
+    --secondary-hover: oklch(0.32 0 0);
+    --secondary-border: transparent;
+
+    --muted: oklch(0.269 0 0);
+    --muted-foreground: oklch(0.708 0 0);
+
+    --accent: oklch(0.269 0 0);
+    --accent-foreground: oklch(0.985 0 0);
+
+    /* --destructive stays dark enough for light labels on filled buttons; --destructive-text is the
+       brighter red (shadcn/ui's dark destructive) that text and icons need on dark surfaces. */
+    --destructive: oklch(0.505 0.213 27.518);
+    --destructive-foreground: oklch(0.985 0 0);
+    --destructive-text: oklch(0.704 0.191 22.216);
+
+    --border: oklch(1 0 0 / 10%);
+    --input: oklch(1 0 0 / 15%);
+    --ring: oklch(0.556 0 0);
+
+    --sidebar: oklch(0.205 0 0);
+    --sidebar-foreground: oklch(0.985 0 0);
+    --sidebar-primary: oklch(0.488 0.243 264.376);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.269 0 0);
+    --sidebar-accent-foreground: oklch(0.985 0 0);
+    --sidebar-border: oklch(1 0 0 / 10%);
+    --sidebar-ring: oklch(0.556 0 0);
+
+    /* Bklit UI "Primary" palette, dark: --chart-5 flips to white */
+    --chart-1: oklch(0.585 0.233 277.117);
+    --chart-2: oklch(0.852 0.199 91.936);
+    --chart-3: oklch(0.459 0.156 302.679);
+    --chart-4: oklch(0.56 0.021 213.5);
+    --chart-5: oklch(1 0 0);
+    --chart-positive: oklch(0.765 0.177 163.223);
+    --chart-negative: oklch(0.704 0.191 22.216);
+    --chart-grid: oklch(0.25 0 0);
+    --chart-label: oklch(0.75 0.01 260);
+    --chart-crosshair: oklch(0.45 0 0);
+
+    --success: oklch(0.448 0.119 151.328);
+    --success-foreground: oklch(0.985 0 0);
+    --success-text: oklch(0.792 0.209 151.711);
+
+    --warning-text: oklch(0.828 0.189 84.429);
+
+    /* Darkens whatever transaction-type color bar sits under the planned stripe overlay. */
+    --planned-stripe: rgba(0, 0, 0, 0.35);
+
+    /* Custom colors */
+    --error-message: oklch(0.704 0.191 22.216);
+
+    /* Amount colors — brighter tones for dark theme contrast */
+    --app-income-color: oklch(0.792 0.209 151.711);
+    --app-expense-color: oklch(0.704 0.191 22.216);
+    --app-transfer-color: oklch(0.708 0 0);
+    --app-savings-color: oklch(0.707 0.165 254.624);
+
+    /* Accent for the "When" half of automation rules; "Then" uses --primary. */
+    --automation-when: rgb(56, 189, 248);
+
+    /* Donation/support heart — a true red, distinct from the expense/error red */
+    --heart: #ef4444;
+
+    /*
+      Loan category colors, brighter variants for contrast on the near-black dark background. Darker
+      hues step up to their lighter shade; already-light hues (amber, cyan, pink) stay put so white
+      badge text keeps adequate contrast.
+    */
+    --loan-mortgage: rgb(96, 165, 250);
+    --loan-auto: rgb(245, 158, 11);
+    --loan-student: rgb(167, 139, 250);
+    --loan-personal: rgb(52, 211, 153);
+    --loan-heloc: rgb(6, 182, 212);
+    --loan-business: rgb(251, 113, 133);
+    --loan-medical: rgb(236, 72, 153);
+    --loan-other: rgb(148, 163, 184);
+    --loan-principal: rgb(96, 165, 250);
+    --loan-interest: rgb(245, 158, 11);
+
+    /*
+      Per-account-category identity colors, brighter variants for contrast on the near-black dark
+      background, behind the soft tinted icon chip on account list rows.
+    */
+    --account-checking: rgb(96, 165, 250);
+    --account-saving: rgb(52, 211, 153);
+    --account-credit: rgb(245, 158, 11);
+    --account-cash: rgb(45, 212, 191);
+    --account-investment: rgb(167, 139, 250);
+    --account-crypto: rgb(251, 146, 60);
+    --account-vehicle: rgb(129, 140, 248);
+
+    /*
+      Per-recurring-payment-type identity colors, brighter variants for contrast on the near-black
+      dark background.
+    */
+    --subscription-type-subscription: rgb(96, 165, 250);
+    --subscription-type-bill: rgb(251, 146, 60);
+    --subscription-type-installment: rgb(192, 132, 252);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+}
+
+/* Hand-rolled top-level card containers; inner tiles use smaller radii and stay flat. */
+@layer components {
+  :root:not(.dark) .bg-card.border:is(.rounded-xl, .rounded-2xl) {
+    box-shadow: var(--card-shadow);
+  }
+
+  /* Field surfaces (inputs, select / combobox / multi-select triggers) carry the shadcn/ui
+     hairline shadow. A utility shadow or focus ring on the element replaces it. */
+  .bg-input-background.border {
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  }
+}
+
+/* Utility for inline monetary amounts — consistent weight and alignment */
+@utility text-amount {
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Diagonal pinstripe fill marking a card as not-yet-available */
+@utility bg-hatched {
+  background: repeating-linear-gradient(
+    135deg,
+    transparent 0 10px,
+    color-mix(in srgb, var(--muted-foreground) 6%, transparent) 10px 11px
+  );
+}
+
+/* Denser pinstripe for small cells (table rows) whose value the user can't change */
+@utility bg-hatched-dense {
+  background-image: repeating-linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--muted-foreground) 20%, transparent) 0 1px,
+    transparent 1px 6px
+  );
+}
+
+/* Hide scrollbar while keeping scroll functionality */
+@utility no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@keyframes overscroll-contain {
+  from,
+  to {
+    overscroll-behavior: contain;
+  }
+}
+
+/* A scroll timeline is inactive while the element has nothing to scroll, so a
+   list that fits passes the gesture to the page instead of rubber-banding. */
+@utility overscroll-contain-if-scrollable {
+  animation: overscroll-contain linear both;
+  animation-timeline: scroll(self);
+}
+
+.datetime-raw-input::-webkit-inner-spin-button,
+.datetime-raw-input::-webkit-calendar-picker-indicator,
+.date-raw-input::-webkit-inner-spin-button,
+.date-raw-input::-webkit-calendar-picker-indicator,
+.datetime-local-raw-input::-webkit-inner-spin-button,
+.datetime-local-raw-input::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+}
+
+/*
+  Paint focus rings inset (inside the border box) instead of outside it.
+  Tailwind's ring/ring-offset draws the glow beyond the element, so a focused
+  control near a ScrollArea edge gets its ring clipped ("sliced" look). Inset
+  keeps the whole ring within the element's box, so it's never clipped.
+  Checkbox/radio/switch stay outward — an inset ring crowds their ~16px glyph.
+*/
+:focus-visible:not([role='checkbox']):not([role='radio']):not([role='switch']),
+:focus:not([role='checkbox']):not([role='radio']):not([role='switch']) {
+  --tw-ring-inset: inset;
+}
+
+/*
+  Form fields highlight their border on focus rather than showing a separate
+  inner outline. The ring sits flush against the border (no offset gap) and the
+  border takes the ring color, so the two merge into one solid highlighted edge.
+  `bg-input-background` is the shared marker for every field surface — native
+  inputs plus the custom select / combobox / multi-select triggers (reka
+  buttons) — so this covers them all without per-component edits.
+*/
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+.bg-input-background:focus-visible,
+.bg-input-background:focus {
+  border-color: var(--ring);
+  --tw-ring-inset: inset;
+  --tw-ring-offset-width: 0px;
+}
+
+/*
+  reka's ScrollArea viewport is a keyboard-focusable scroll region (it hardcodes
+  tabindex=0), so tabbing lands on it and the browser paints a full-box outline
+  around whatever it wraps. It carries no interactive content of its own, so the
+  outline is just noise — drop it while keeping the region keyboard-scrollable.
+*/
+[data-reka-scroll-area-viewport]:focus-visible,
+[data-reka-scroll-area-viewport]:focus {
+  outline: none;
+}
+
+/*
+  PostHog surveys render in a shadow root and style it from custom properties set inline
+  on the host div, using one fixed color set from the PostHog dashboard. Custom properties
+  inherit into the shadow root, so `!important` here lets the popup follow the app theme.
+*/
+[class^='PostHogSurvey-'] {
+  --ph-survey-background-color: var(--card) !important;
+  --ph-survey-text-primary-color: var(--card-foreground) !important;
+  --ph-survey-text-subtle-color: var(--muted-foreground) !important;
+  --ph-survey-border-color: var(--border) !important;
+  --ph-survey-submit-button-color: var(--primary) !important;
+  --ph-survey-submit-button-text-color: var(--primary-foreground) !important;
+  --ph-survey-input-background: var(--input-background) !important;
+  --ph-survey-input-text-color: var(--foreground) !important;
+  --ph-survey-outline-color: var(--ring) !important;
+  --ph-survey-rating-bg-color: var(--accent) !important;
+  --ph-survey-rating-text-color: var(--accent-foreground) !important;
+  --ph-survey-rating-active-bg-color: var(--primary) !important;
+  --ph-survey-rating-active-text-color: var(--primary-foreground) !important;
+}

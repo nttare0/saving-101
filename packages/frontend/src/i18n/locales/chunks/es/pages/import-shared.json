@@ -1,0 +1,113 @@
+{
+  "pages": {
+    "importExport": {
+      "progress": {
+        "jobExpired": "El trabajo de importación caducó o no se pudo encontrar.",
+        "lostContact": "Se perdió el contacto con el trabajo de importación."
+      },
+      "balanceDesync": {
+        "createdAccount": "{account}: el saldo introducido no pudo aplicarse tras la importación, por lo que es posible que el saldo de esta cuenta sea incorrecto. ",
+        "linkedAccount": "{account}: no se pudo actualizar el saldo tras la importación, por lo que es posible que el saldo de esta cuenta sea incorrecto.",
+        "unnamedAccount": "El saldo de una cuenta no se pudo actualizar después de la importación y puede ser incorrecto."
+      },
+      "jobFailure": {
+        "interrupted": "La importación fue interrumpida por un reinicio del servidor. Algunas filas pueden haber sido importadas; deshacer esta importación del historial de importación antes de reintentar.",
+        "baseCurrencyChangeInProgress": "Un cambio de moneda base está en progreso. Espere a que termine, luego vuelva a intentar la importación.",
+        "accountCurrencyMismatch": "Las monedas deben coincidir para vincular una cuenta existente: {mismatches}. Enlaza una cuenta con la misma moneda o crea una nueva.",
+        "categoryNameTooLong": "El nombre de categoría \"{name}\" es demasiado largo ({length} caracteres); el máximo es {max}.",
+        "payeeNameTooLong": "El nombre del beneficiario \"{name}\" es demasiado largo ({length} caracteres); el máximo es {max}.",
+        "accountMappingMissing": "Estas cuentas del archivo no tienen mapeo: {accounts}. Vuelve y mapea cada una de ellas.",
+        "linkedAccountNotFound": "La cuenta vinculada a \"{account}\" ya no existe. Vuelve y elige otra cuenta o crea una nueva."
+      },
+      "importResults": {
+        "findTransfers": "Encontrar transferencias"
+      }
+    }
+  },
+  "importShared": {
+    "action": {
+      "createNew": "Crear nuevo",
+      "linkExisting": "Vincular a existente",
+      "skip": "Omitir"
+    },
+    "selectAction": "Seleccionar acción",
+    "resolvedCounterWord": "resuelto",
+    "quickActionsMenuLabel": "Acciones masivas",
+    "quickActions": {
+      "menu": "Acciones"
+    },
+    "columns": {
+      "sourceName": "Nombre de fuente",
+      "currency": "Moneda",
+      "action": "Acción",
+      "target": "Objetivo"
+    },
+    "account": {
+      "selectTarget": "Seleccionar cuenta",
+      "noMatchingCurrency": "Sin cuenta con moneda {currency}",
+      "willCreate": "Se creará {name} ({currency})",
+      "empty": "Sin cuentas para asignar",
+      "willSkip": "No se importará"
+    },
+    "category": {
+      "selectTarget": "Seleccionar categoría",
+      "willCreate": "Se creará {name}",
+      "empty": "Sin categorías para asignar"
+    },
+    "recalculateBalance": {
+      "label": "Actualizar los saldos de las cuentas a partir de las transacciones importadas",
+      "hint": "Las transacciones anteriores a la última transacción existente de una cuenta se consideran carga retroactiva y no modifican su saldo actual.",
+      "loadFailedHint": "No se pudo cargar tu preferencia guardada — se desactiva de forma predeterminada."
+    },
+    "balanceChanges": {
+      "title": "Cambios en los saldos de cuentas",
+      "columns": {
+        "account": "Cuenta",
+        "before": "Antes",
+        "after": "Después",
+        "delta": "Cambio",
+        "newRows": "Filas nuevas",
+        "backfillRows": "Filas retroactivas"
+      },
+      "newAccount": "Cuenta nueva"
+    },
+    "duplicatesTable": {
+      "columnHeaders": {
+        "row": "Fila",
+        "match": "Coincidencia",
+        "csvTransaction": "Transacción CSV",
+        "existingTransaction": "Transacción existente",
+        "csvShort": "CSV",
+        "existingShort": "Existente"
+      },
+      "matchTypeLabels": {
+        "exact": "Exacta",
+        "idMatch": "Por ID",
+        "fuzzy": "Aproximada"
+      },
+      "fieldLabels": {
+        "amount": "Importe",
+        "date": "Fecha",
+        "note": "Nota",
+        "category": "Categoría"
+      },
+      "importAnywayAriaLabel": "Importar fila {row} de todas formas"
+    },
+    "aiMapping": {
+      "action": "Coincidir con IA",
+      "tooltipCategories": "Deja que la IA vincule cada categoría de origen con la categoría existente más parecida. Las filas que ya vinculaste a una categoría no se modifican.",
+      "failed": "La coincidencia con IA falló. Inténtalo de nuevo.",
+      "inProgress": "Coincidencia con IA en curso…"
+    },
+    "categoryPreset": {
+      "menuTrigger": "Aplicar mapeo",
+      "currentLayout": "El diseño de este archivo",
+      "savedTemplates": "Plantillas guardadas",
+      "lastUsed": "Último mapeo usado",
+      "namePlaceholder": "Nombra este mapeo",
+      "renameAria": "Renombrar mapeo",
+      "deleteAria": "Eliminar mapeo",
+      "confirmRenameAria": "Guardar nombre"
+    }
+  }
+}

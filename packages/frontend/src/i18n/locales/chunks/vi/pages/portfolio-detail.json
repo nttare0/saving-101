@@ -1,0 +1,156 @@
+{
+  "portfolioDetail": {
+    "loading": "Đang tải...",
+    "loadingDetails": "Đang tải thông tin danh mục đầu tư…",
+    "loadError": "Không thể tải thông tin danh mục đầu tư.",
+    "tryAgain": "Thử lại",
+    "notFoundTitle": "Không tìm thấy danh mục đầu tư",
+    "notFoundDescription": "Không tìm thấy danh mục đầu tư này. Có thể danh mục đã bị xóa hoặc bạn không có quyền truy cập.",
+    "backToInvestments": "Quay lại mục Đầu tư",
+    "subtitle": "Tổng quan danh mục đầu tư",
+    "actions": {
+      "transfer": "Chuyển tiền",
+      "edit": "Chỉnh sửa",
+      "delete": "Xóa",
+      "exchangeCurrency": "Đổi đơn vị tiền tệ"
+    },
+    "balance": {
+      "totalValue": "Tổng giá trị",
+      "baseCurrencyEquivalent": "≈ {value} theo {code}",
+      "loadError": "Không thể tải thông tin tổng quan danh mục đầu tư.",
+      "metrics": {
+        "costBasis": "Giá vốn",
+        "unrealized": "Lãi/lỗ chưa thực hiện",
+        "realized": "Lãi/lỗ đã thực hiện",
+        "totalReturn": "Tổng lợi nhuận"
+      }
+    },
+    "cashBalances": {
+      "title": "Số dư tiền mặt",
+      "emptyState": "Chưa có số dư tiền mặt",
+      "tabs": {
+        "balances": "Số dư",
+        "cashTransactions": "Giao dịch",
+        "buysSells": "Mua và bán"
+      },
+      "cashTransactions": {
+        "addButton": "Thêm giao dịch tiền mặt",
+        "emptyState": "Chưa có giao dịch tiền mặt",
+        "deposit": "Nạp tiền",
+        "withdrawal": "Rút tiền",
+        "transferIn": "Chuyển vào",
+        "transferOut": "Chuyển ra",
+        "exchange": "Đổi tiền tệ",
+        "deleteConfirm": "Xóa giao dịch tiền mặt này?",
+        "linkedTransactionNote": "Giao dịch chuyển tiền này được liên kết với một giao dịch tài khoản. Bạn muốn xử lý giao dịch đó thế nào?",
+        "keepLinkedTransaction": "Giữ giao dịch tài khoản. Thông tin ban đầu của giao dịch sẽ được khôi phục.",
+        "deleteLinkedTransaction": "Xóa cả giao dịch tài khoản được liên kết",
+        "adjustmentBadge": "Điều chỉnh",
+        "noCashBadge": "Không ảnh hưởng đến tiền mặt",
+        "markedAsAdjustment": "Được đánh dấu là khoản điều chỉnh số dư",
+        "markedAsContribution": "Được đánh dấu là khoản góp vốn thực tế",
+        "adjustmentError": "Không thể cập nhật giao dịch chuyển tiền này",
+        "rowActions": "Thao tác giao dịch",
+        "emptyStateDescription": "Các khoản nạp, rút và chuyển tiền của danh mục đầu tư sẽ hiển thị ở đây.",
+        "edit": "Chỉnh sửa",
+        "editDialog": {
+          "title": "Chỉnh sửa giao dịch tiền mặt",
+          "description": "Thay đổi cách tính giao dịch này trong báo cáo.",
+          "save": "Lưu thay đổi"
+        }
+      },
+      "buysSells": {
+        "emptyState": "Chưa có giao dịch mua/bán",
+        "shares": "cổ phiếu"
+      }
+    },
+    "holdings": {
+      "title": "Vị thế",
+      "subtitle": "{count} mã chứng khoán",
+      "filterPlaceholder": "Lọc theo mã hoặc tên...",
+      "addButton": "Thêm mã chứng khoán",
+      "importButton": "Nhập giao dịch",
+      "importButtonShort": "Nhập"
+    },
+    "holdingsTable": {
+      "loadError": "Không thể tải các vị thế",
+      "empty": "Chưa có vị thế nào",
+      "noFilterResults": "Không có vị thế phù hợp",
+      "noFilterResultsDescription": "Không có vị thế nào khớp với nội dung tìm kiếm. Hãy thử mã hoặc tên khác.",
+      "clearFilterButton": "Xóa tìm kiếm",
+      "headers": {
+        "symbol": "Mã chứng khoán",
+        "name": "Tên",
+        "shares": "Cổ phiếu",
+        "price": "Giá",
+        "avgCostPerShare": "Giá vốn TB/cổ phiếu",
+        "totalCost": "Tổng giá vốn",
+        "marketValue": "Giá trị thị trường",
+        "unrealizedGain": "Lãi/lỗ chưa thực hiện",
+        "realizedGain": "Lãi/lỗ đã thực hiện"
+      },
+      "transactions": {
+        "loading": "Đang tải giao dịch…",
+        "empty": "Không tìm thấy giao dịch nào.",
+        "addFirstButton": "Thêm giao dịch đầu tiên"
+      },
+      "closedPositions": "Vị thế đã đóng ({count})",
+      "stalePrice": "Giá gần nhất hiện có. Giá trị thị trường và lãi/lỗ có thể đã lỗi thời.",
+      "deleteHolding": {
+        "ariaLabel": "Xóa vị thế",
+        "title": "Xóa vị thế",
+        "description": "Vị thế {symbol} cùng toàn bộ giao dịch của vị thế đó sẽ bị xóa vĩnh viễn. Bạn không thể hoàn tác thao tác này.",
+        "confirmLabel": "Xóa vị thế",
+        "success": "Đã xóa vị thế.",
+        "error": "Không thể xóa vị thế."
+      },
+      "addTransactionDialog": {
+        "title": "Thêm giao dịch",
+        "description": "Thêm giao dịch mới vào danh mục đầu tư của bạn."
+      },
+      "tryAgainLater": "Vui lòng thử lại sau",
+      "emptyDescription": "Thêm giao dịch đầu tiên để bắt đầu theo dõi khoản đầu tư của bạn",
+      "addFirstHolding": "Thêm vị thế đầu tiên",
+      "importTransactions": "Hoặc nhập từ tệp"
+    },
+    "transactionsList": {
+      "title": "Giao dịch",
+      "addButton": "Thêm giao dịch",
+      "loadingMore": "Đang tải thêm giao dịch…",
+      "headers": {
+        "date": "Ngày",
+        "type": "Loại",
+        "note": "Ghi chú",
+        "quantity": "Số lượng",
+        "price": "Giá",
+        "fees": "Phí",
+        "amount": "Số tiền",
+        "refAmount": "Số tiền quy đổi",
+        "refFees": "Phí quy đổi",
+        "settlementAmount": "Tiền mặt",
+        "settlementCurrency": "ĐVTT tiền mặt",
+        "settlementFees": "Phí tiền mặt",
+        "settlementRate": "Tỷ giá",
+        "createdAt": "Ngày thêm"
+      },
+      "categories": {
+        "buy": "Mua",
+        "sell": "Bán",
+        "dividend": "Cổ tức",
+        "transfer": "Chuyển tiền",
+        "tax": "Thuế",
+        "fee": "Phí",
+        "cancel": "Hủy",
+        "other": "Khác"
+      },
+      "headerTooltips": {
+        "amount": "Tổng giao dịch theo đơn vị tiền tệ giao dịch của chứng khoán.",
+        "refAmount": "Tổng giao dịch đã quy đổi sang đơn vị tiền tệ cơ sở của bạn.",
+        "settlementAmount": "Số tiền mặt thực tế đã trả hoặc nhận vào tài khoản, theo đơn vị tiền tệ dùng để thanh toán."
+      },
+      "deleteTransaction": {
+        "tooltip": "Xóa giao dịch"
+      }
+    }
+  }
+}

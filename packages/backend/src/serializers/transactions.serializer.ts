@@ -1,0 +1,427 @@
+/**
+ * Transaction Serializers
+ *
+ * Serializes transaction model instances for API responses.
+ * Money fields auto-convert via .toNumber().
+ * Deserializers convert API decimal inputs to Money.
+ */
+import { PAYMENT_TYPES, TRANSACTION_TRANSFER_NATURE, TRANSACTION_TYPES } from '@bt/shared/types';
+import type {
+  CategorizationMeta,
+  ImportSource,
+  PaymentLegInput,
+  RecordId,
+  TransactionLocation,
+  TransactionPaymentPart,
+} from '@bt/shared/types';
+import { Money, centsToApiDecimal, centsToApiDecimalOrNull } from '@common/types/money';
+import type Tags from '@models/tags.model';
+import type TransactionGroups from '@models/transaction-groups.model';
+import type TransactionSplits from '@models/transaction-splits.model';
+import type Transactions from '@models/transactions.model';
+import {
+  getRawTransactionStatus,
+  isPreBookingStatus,
+} from '@services/bank-data-providers/enablebanking/utils/transaction-metadata';
+import type { PaymentLegParam, PaymentPart } from '@services/transactions/payment-legs';
+
+// ============================================================================
+// Response Types
+// ============================================================================
+
+interface TransactionSplitApiResponse {
+  id: string;
+  categoryId: string;
+  amount: number;
+  refAmount: number;
+  note: string | null;
+  category?: {
+    id: string;
+    name: string;
+    color: string;
+    icon: string;
+  };
+  refundedAmount?: number;
+}
+
+export interface TransactionApiResponse {
+  id: string;
+  amount: number;
+  refAmount: number;
+  commissionRate: number;
+  refCommissionRate: number;
+  cashbackAmount: number;
+  originalAmount: number | null;
+  originalCurrencyCode: string | null;
+  note: string | null;
+  externalUrl: string | null;
+  externalReference: string | null;
+  location: TransactionLocation | null;
+  time: Date;
+  userId: number;
+  transactionType: string;
+  paymentType: string;
+  accountId: string;
+  categoryId: string | null;
+  currencyCode: string;
+  accountType: string;
+  refCurrencyCode: string | null;
+  transferNature: string;
+  transferId: string | null;
+  originalId: string | null;
+  refundLinked: boolean;
+  /** Set on list reads with `includeRefundedAmount` and on each refund link's `originalTransaction`. */
+  refundedAmount?: number;
+  /** Present on list reads only. */
+  hasAttachments?: boolean;
+  isPlanned: boolean;
+  /** Set when a bank transaction merged into this row while it was planned. */
+  plannedMerge: { mergedAt: string } | null;
+  /** Bank reported the row as PDNG/HOLD and has not booked it yet. */
+  isPending: boolean;
+  payeeId: string | null;
+  payeeLocked: boolean;
+  /** How this tx's category was assigned (manual / ai / payee_rule / etc.). `null`
+   *  means "no rule has stamped this row yet" — the AI categorization listener
+   *  uses that as its filter, so the field doubles as a precedence stamp. */
+  categorizationMeta: CategorizationMeta | null;
+  createdAt: Date;
+  updatedAt: Date;
+  splits?: TransactionSplitApiResponse[];
+  tags?: Array<{
+    id: string;
+    name: string;
+    color: string;
+    icon: string | null;
+  }>;
+  transactionGroups?: Array<{
+    id: string;
+    name: string;
+    /** Full group membership size, independent of how many members are in this fetch
+     *  window. Populated when the group include computes the correlated count. */
+    transactionCount: number;
+  }>;
+  /** Recipient who attached this tx to a shared tracker. Present (and possibly `null`)
+   *  only on tracker-scoped fetches; absent on the global tx list and on detail lookups
+   *  outside a tracker context. `null` means owner-attached (no chip needed in the UI). */
+  addedBy?: { id: number; username: string; avatar: string | null } | null;
+  /** Tracker-scoped fetches only: the tracker's rules linked this row. */
+  addedByRule?: boolean;
+  /** Whether the caller has write access to this row. The frontend uses this to render
+   *  an inert "Transaction Details" dialog (disabled fields, hidden submit/delete) when
+   *  the caller can see the tx — typically via a tracker share — but has no write claim
+   *  on the parent account. Absent on paths that don't compute it (single-tx writes,
+   *  internal fetches). */
+  canEdit?: boolean;
+  paymentParentId: string | null;
+  /** List and detail reads: every row of the multi-account payment, main first. */
+  paymentParts?: TransactionPaymentPart[];
+  /** Lists that hide the legs: the whole payment's sum, on its main row. */
+  paymentTotal?: number;
+}
+
+// ============================================================================
+// Request Types (API format with decimal input)
+// ============================================================================
+
+interface CreateTransactionRequest {
+  amount: number; // decimal from API
+  commissionRate?: number;
+  destinationAmount?: number;
+  note?: string | null;
+  externalUrl?: string | null;
+  externalReference?: string | null;
+  location?: TransactionLocation | null;
+  time?: string;
+  transactionType: TRANSACTION_TYPES;
+  paymentType?: PAYMENT_TYPES;
+  accountId: RecordId;
+  destinationAccountId?: string;
+  destinationTransactionId?: string;
+  categoryId?: RecordId;
+  transferNature: TRANSACTION_TRANSFER_NATURE;
+  refundForTxId?: string;
+  refundForSplitId?: string;
+  refundForAmount?: number;
+  splits?: Array<{
+    categoryId: RecordId;
+    amount: number; // decimal from API
+    note?: string | null;
+  }>;
+  tagIds?: string[];
+  payeeId?: RecordId | null;
+  payeeLocked?: boolean;
+  isPlanned?: boolean;
+  applyAutomations?: boolean;
+  importSource?: ImportSource.messageImport;
+  originalAmount?: number; // decimal from API
+  originalCurrencyCode?: string;
+  paymentLegs?: PaymentLegInput[];
+}
+
+// ============================================================================
+// Internal Types (DB format with Money)
+// ============================================================================
+
+interface CreateTransactionInternal {
+  amount: Money;
+  commissionRate?: Money;
+  destinationAmount?: Money;
+  note?: string;
+  externalUrl?: string;
+  externalReference?: string;
+  /** `null` is the caller's explicit "no location" and blocks the payee default; absent means "not mentioned". */
+  location?: TransactionLocation | null;
+  time?: Date;
+  transactionType: TRANSACTION_TYPES;
+  paymentType?: PAYMENT_TYPES;
+  accountId: RecordId;
+  destinationAccountId?: string;
+  destinationTransactionId?: string;
+  categoryId?: RecordId;
+  transferNature: TRANSACTION_TRANSFER_NATURE;
+  refundsTxId?: string;
+  refundsSplitId?: string;
+  refundsAmount?: Money;
+  splits?: Array<{
+    categoryId: RecordId;
+    amount: Money;
+    note?: string | null;
+  }>;
+  tagIds?: string[];
+  userId: number;
+  payeeId?: RecordId | null;
+  payeeLocked?: boolean;
+  isPlanned?: boolean;
+  applyAutomations?: boolean;
+  importSource?: ImportSource.messageImport;
+  originalAmount?: Money;
+  originalCurrencyCode?: string;
+  paymentLegs?: PaymentLegParam[];
+}
+
+// ============================================================================
+// Serializers (DB → API)
+// ============================================================================
+
+/**
+ * Serialize a transaction split from DB format to API response
+ */
+type SerializableSplit = TransactionSplits & {
+  category?: { id: string; name: string; color: string; icon: string };
+  refundedAmount?: Money;
+};
+
+function serializeTransactionSplit(split: SerializableSplit): TransactionSplitApiResponse {
+  return {
+    id: split.id,
+    categoryId: split.categoryId,
+    amount: centsToApiDecimal(split.amount),
+    refAmount: centsToApiDecimal(split.refAmount),
+    note: split.note,
+    ...(split.category && {
+      category: {
+        id: split.category.id,
+        name: split.category.name,
+        color: split.category.color,
+        icon: split.category.icon,
+      },
+    }),
+    ...(split.refundedAmount && { refundedAmount: centsToApiDecimal(split.refundedAmount) }),
+  };
+}
+
+function extractPlannedMerge({ externalData }: { externalData: unknown }): { mergedAt: string } | null {
+  const mergedAt = (externalData as { plannedMerge?: { mergedAt?: unknown } } | null)?.plannedMerge?.mergedAt;
+  return typeof mergedAt === 'string' ? { mergedAt } : null;
+}
+
+/**
+ * Serialize a transaction from DB format to API response
+ */
+export function serializeTransaction(
+  tx: Transactions & {
+    splits?: TransactionSplits[];
+    tags?: Tags[];
+    transactionGroups?: TransactionGroups[];
+    addedBy?: { id: number; username: string; avatar: string | null } | null;
+    addedByRule?: boolean;
+    canEdit?: boolean;
+    paymentParts?: PaymentPart[];
+    paymentTotal?: Money;
+    refundedAmount?: Money;
+  },
+): TransactionApiResponse {
+  // Aliased literal: a plain property on raw rows, dataValues-only on model instances.
+  const hasAttachments = (tx.getDataValue?.('hasAttachments' as keyof Transactions) ??
+    (tx as { hasAttachments?: boolean }).hasAttachments) as boolean | undefined;
+
+  return {
+    id: tx.id,
+    amount: centsToApiDecimal(tx.amount),
+    refAmount: centsToApiDecimal(tx.refAmount),
+    commissionRate: centsToApiDecimal(tx.commissionRate),
+    refCommissionRate: centsToApiDecimal(tx.refCommissionRate),
+    cashbackAmount: centsToApiDecimal(tx.cashbackAmount),
+    originalAmount: centsToApiDecimalOrNull(tx.originalAmount),
+    originalCurrencyCode: tx.originalCurrencyCode ?? null,
+    note: tx.note,
+    externalUrl: tx.externalUrl ?? null,
+    externalReference: tx.externalReference ?? null,
+    location: tx.location ?? null,
+    time: tx.time,
+    userId: tx.userId,
+    transactionType: tx.transactionType,
+    paymentType: tx.paymentType,
+    accountId: tx.accountId,
+    categoryId: tx.categoryId,
+    currencyCode: tx.currencyCode,
+    accountType: tx.accountType,
+    refCurrencyCode: tx.refCurrencyCode,
+    transferNature: tx.transferNature,
+    transferId: tx.transferId,
+    originalId: tx.originalId,
+    refundLinked: tx.refundLinked,
+    ...(tx.refundedAmount && { refundedAmount: centsToApiDecimal(tx.refundedAmount) }),
+    isPlanned: tx.isPlanned ?? false,
+    plannedMerge: extractPlannedMerge({ externalData: tx.externalData }),
+    isPending: isPreBookingStatus({ status: getRawTransactionStatus({ externalData: tx.externalData }) }),
+    payeeId: tx.payeeId ?? null,
+    payeeLocked: tx.payeeLocked ?? false,
+    categorizationMeta: tx.categorizationMeta ?? null,
+    paymentParentId: tx.paymentParentId ?? null,
+    createdAt: tx.createdAt,
+    updatedAt: tx.updatedAt,
+    ...(tx.splits && {
+      splits: tx.splits.map((split) => serializeTransactionSplit(split as SerializableSplit)),
+    }),
+    ...(tx.tags && {
+      tags: tx.tags.map((tag) => ({
+        id: tag.id,
+        name: tag.name,
+        color: tag.color,
+        icon: tag.icon,
+      })),
+    }),
+    ...(tx.transactionGroups && {
+      transactionGroups: tx.transactionGroups.map((group) => ({
+        id: group.id,
+        name: group.name,
+        // Attached via a correlated subquery on the include, so it lives in dataValues
+        // (no model getter for aliased literals) and must be read with getDataValue.
+        // Falls back to the loaded-member count on paths that don't compute the aggregate.
+        transactionCount:
+          (group.getDataValue('transactionCount' as keyof TransactionGroups) as number | undefined) ??
+          group.transactions?.length ??
+          0,
+      })),
+    }),
+    // `addedBy` is included whenever the upstream service attached it (tracker-scoped
+    // fetches). `null` is a meaningful value — "owner-attached" — and must be sent so
+    // the frontend can distinguish "no metadata yet" from "tx is owned by the tracker
+    // owner". Use a property-existence check rather than truthiness to preserve null.
+    ...('addedBy' in tx ? { addedBy: tx.addedBy ?? null } : {}),
+    ...(tx.addedByRule && { addedByRule: true }),
+    // `canEdit` is omitted on paths that don't compute it (write returns, internal
+    // fetches). Property-existence check so an explicit `false` survives serialization.
+    ...('canEdit' in tx ? { canEdit: tx.canEdit ?? false } : {}),
+    ...(hasAttachments !== undefined && { hasAttachments }),
+    ...(tx.paymentParts && {
+      paymentParts: tx.paymentParts.map((part) => ({
+        ...part,
+        amount: centsToApiDecimal(part.amount),
+        paymentAmount: centsToApiDecimal(part.paymentAmount),
+      })),
+    }),
+    ...(tx.paymentTotal && { paymentTotal: centsToApiDecimal(tx.paymentTotal) }),
+  };
+}
+
+/**
+ * Serialize multiple transactions
+ */
+export function serializeTransactions(
+  txs: Array<
+    Transactions & {
+      splits?: TransactionSplits[];
+      tags?: Tags[];
+      transactionGroups?: TransactionGroups[];
+      addedBy?: { id: number; username: string; avatar: string | null } | null;
+      addedByRule?: boolean;
+      canEdit?: boolean;
+      paymentParts?: PaymentPart[];
+      paymentTotal?: Money;
+      refundedAmount?: Money;
+    }
+  >,
+): TransactionApiResponse[] {
+  return txs.map(serializeTransaction);
+}
+
+/**
+ * Serialize a transaction tuple result from create/update operations.
+ * These operations return [baseTx, oppositeTx?] for transfer transactions.
+ */
+export function serializeTransactionTuple(
+  result: [baseTx: Transactions, oppositeTx?: Transactions],
+): [TransactionApiResponse, TransactionApiResponse?] {
+  const [baseTx, oppositeTx] = result;
+  return oppositeTx ? [serializeTransaction(baseTx), serializeTransaction(oppositeTx)] : [serializeTransaction(baseTx)];
+}
+
+// ============================================================================
+// Deserializers (API → DB)
+// ============================================================================
+
+/**
+ * Deserialize a create transaction request from API decimal format to internal cents format
+ */
+export function deserializeCreateTransaction(req: CreateTransactionRequest, userId: number): CreateTransactionInternal {
+  return {
+    amount: Money.fromDecimal(req.amount),
+    commissionRate: req.commissionRate !== undefined ? Money.fromDecimal(req.commissionRate) : undefined,
+    destinationAmount: req.destinationAmount !== undefined ? Money.fromDecimal(req.destinationAmount) : undefined,
+    note: req.note || undefined,
+    externalUrl: req.externalUrl || undefined,
+    externalReference: req.externalReference || undefined,
+    location: req.location,
+    time: req.time ? new Date(req.time) : undefined,
+    transactionType: req.transactionType,
+    paymentType: req.paymentType,
+    accountId: req.accountId,
+    destinationAccountId: req.destinationAccountId,
+    destinationTransactionId: req.destinationTransactionId,
+    categoryId: req.categoryId,
+    transferNature: req.transferNature,
+    refundsTxId: req.refundForTxId,
+    refundsSplitId: req.refundForSplitId,
+    refundsAmount: req.refundForAmount !== undefined ? Money.fromDecimal(req.refundForAmount) : undefined,
+    splits: req.splits?.map((split) => ({
+      categoryId: split.categoryId,
+      amount: Money.fromDecimal(split.amount),
+      note: split.note,
+    })),
+    tagIds: req.tagIds,
+    userId,
+    payeeId: req.payeeId,
+    payeeLocked: req.payeeLocked,
+    isPlanned: req.isPlanned,
+    applyAutomations: req.applyAutomations,
+    importSource: req.importSource,
+    originalAmount: req.originalAmount !== undefined ? Money.fromDecimal(req.originalAmount) : undefined,
+    originalCurrencyCode: req.originalCurrencyCode,
+    paymentLegs: req.paymentLegs && deserializePaymentLegs({ legs: req.paymentLegs }),
+  };
+}
+
+export const deserializePaymentLegs = ({ legs }: { legs: PaymentLegInput[] }): PaymentLegParam[] =>
+  legs.map((leg) => {
+    const paymentAmount = leg.paymentAmount !== undefined ? Money.fromDecimal(leg.paymentAmount) : undefined;
+    return leg.accountId === undefined
+      ? {
+          transactionId: leg.transactionId,
+          amount: leg.amount !== undefined ? Money.fromDecimal(leg.amount) : undefined,
+          paymentAmount,
+        }
+      : { accountId: leg.accountId, amount: Money.fromDecimal(leg.amount), paymentAmount };
+  });

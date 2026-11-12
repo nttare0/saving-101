@@ -1,0 +1,131 @@
+{
+  "settings": {
+    "general": {
+      "title": "Général",
+      "description": "Gérez le calcul et l'affichage de vos données financières dans l'application.",
+      "creditLimit": {
+        "label": "Inclure les plafonds de crédit dans le solde",
+        "description": "Lorsque cette option est activée, les plafonds de crédit sont déduits des soldes de compte dans les statistiques et le graphique d'évolution du solde. Cela affiche votre situation financière réelle plutôt que le crédit disponible.",
+        "successNotification": "Paramètre mis à jour",
+        "errorNotification": "Échec de la mise à jour du paramètre"
+      },
+      "payday": {
+        "label": "Pay cycle starts on",
+        "description": "Day of the month your pay cycle starts. The dashboard's default period runs from this day to the day before it next month.",
+        "placeholder": "Sélectionner le jour",
+        "successNotification": "Pay cycle start updated"
+      },
+      "unrealizedLossAlert": {
+        "label": "Unrealized loss alerts",
+        "description": "Get one notification when a holding's loss crosses either threshold. Checked daily after market prices update; it won't repeat until the holding recovers.",
+        "percentLabel": "Loss percentage",
+        "percentDescription": "Alert when a holding is down at least this much from its cost.",
+        "amountLabel": "Loss amount",
+        "amountDescription": "Or when the loss reaches this amount in your base currency, whatever the percentage.",
+        "successNotification": "Loss alert settings saved"
+      },
+      "manualTransferMatching": {
+        "label": "Associer les virements aux comptes manuels",
+        "description": "Permettre aux virements détectés automatiquement de relier une opération bancaire synchronisée à une opération créée manuellement.",
+        "successNotification": "Paramètre d'association des virements mis à jour",
+        "errorNotification": "Échec de la mise à jour du paramètre d'association des virements"
+      },
+      "pendingBankTransactions": {
+        "label": "Importer les opérations bancaires en attente",
+        "description": "Importez les opérations signalées par votre banque avant leur comptabilisation définitive. Elles sont marquées comme en attente, ne modifient pas le solde du compte et peuvent ne pas comporter le nom du commerçant ni les détails finaux. Dès que la banque les comptabilise ou les annule, elles sont mises à jour ou supprimées.",
+        "descriptionSelfHost": "Enregistrez les opérations Enable Banking avant leur comptabilisation par la banque. Elles sont marquées comme en attente, ne modifient jamais le solde du compte et manquent souvent de détails sur le commerçant jusqu'à leur comptabilisation. Les autres fournisseurs ne sont pas affectés : SimpleFIN et LunchFlow importent toujours uniquement les opérations comptabilisées, et Monobank importe chaque opération comme une opération standard.",
+        "successNotification": "Paramètre des opérations en attente mis à jour",
+        "errorNotification": "Échec de la mise à jour du paramètre des opérations en attente"
+      },
+      "bankSyncSchedule": {
+        "label": "Planification de la synchronisation bancaire",
+        "description": "Les comptes bancaires connectés se synchronisent automatiquement à ces horaires, affichés selon votre heure locale. Choisissez deux fois la même heure pour ne synchroniser qu'une fois par jour.",
+        "placeholder": "Sélectionner l'heure",
+        "successNotification": "Planification de la synchronisation bancaire mise à jour",
+        "errorNotification": "Échec de la mise à jour de la planification de la synchronisation bancaire"
+      },
+      "quickStart": {
+        "label": "Guide de démarrage rapide",
+        "description": "Affichez la liste des étapes initiales sur le tableau de bord. Désactivez-la pour masquer le guide ; réactivez-la pour le faire réapparaître à tout moment."
+      },
+      "savingsCategories": {
+        "label": "Considérer les catégories comme de l'épargne",
+        "description": "Les dépenses effectuées dans ces catégories (et leurs sous-catégories) sont exclues des dépenses dans l'analyse des flux de trésorerie, de sorte qu'elles sont comptabilisées dans l'épargne mensuelle et le taux d'épargne.",
+        "successNotification": "Catégories d'épargne mises à jour",
+        "errorNotification": "Échec de la mise à jour des catégories d'épargne"
+      },
+      "taxCategories": {
+        "label": "Catégories fiscales",
+        "description": "Les dépenses de ces catégories apparaissent comme des impôts et taxes dans le graphique des flux de trésorerie au lieu d'une dépense classique. Les sous-catégories sont incluses.",
+        "successNotification": "Catégories fiscales mises à jour",
+        "errorNotification": "Échec de la mise à jour des catégories fiscales"
+      },
+      "filterCategoriesByType": {
+        "label": "Adapter les catégories au type d'opération",
+        "description": "Le formulaire d'opération n'affiche que les catégories de revenus pour un revenu et toutes les autres pour une dépense. La recherche permet toujours de trouver chaque catégorie.",
+        "successNotification": "Paramètre de la liste des catégories mis à jour",
+        "errorNotification": "Échec de la mise à jour du paramètre de la liste des catégories"
+      },
+      "incomeCategories": {
+        "label": "Catégories de revenus",
+        "description": "Catégories comptabilisées comme des revenus. Les sous-catégories sont incluses.",
+        "successNotification": "Catégories de revenus mises à jour",
+        "errorNotification": "Échec de la mise à jour des catégories de revenus"
+      },
+      "accountDropdowns": {
+        "defaultAccount": {
+          "label": "Compte par défaut",
+          "description": "Présélectionné lors de la création d'une opération.",
+          "placeholder": "Aucun compte par défaut — premier compte"
+        },
+        "showArchived": {
+          "label": "Afficher les comptes archivés",
+          "description": "Lorsque cette option est désactivée, les comptes archivés sont masqués dans les sélecteurs de compte."
+        },
+        "successNotification": "Paramètres des listes déroulantes de comptes mis à jour",
+        "errorNotification": "Échec de la mise à jour des paramètres des listes déroulantes de comptes"
+      },
+      "showUpcomingTransactions": {
+        "label": "Afficher les opérations à venir",
+        "description": "Épingler en haut de la liste des opérations une section avec les paiements récurrents en retard et ceux prévus dans les 3 prochains jours.",
+        "successNotification": "Paramètre des opérations à venir mis à jour",
+        "errorNotification": "Échec de la mise à jour du paramètre des opérations à venir"
+      },
+      "transactionFields": {
+        "label": "Champs facultatifs de l'opération",
+        "description": "Champs supplémentaires affichés dans le formulaire d'opération. Un champ contenant déjà une valeur reste toujours visible.",
+        "successNotification": "Champs d'opération mis à jour",
+        "errorNotification": "Une erreur inattendue est survenue. Paramètre non enregistré",
+        "fields": {
+          "externalUrl": {
+            "label": "URL externe",
+            "description": "Lier l'opération à une page de commande, une confirmation de réservation ou un reçu."
+          },
+          "externalReference": {
+            "label": "Référence externe",
+            "description": "Associez un numéro de commande, de facture ou de réservation à l'opération."
+          },
+          "originalAmount": {
+            "label": "Montant d'origine",
+            "description": "Le montant réellement débité dans une autre devise, lorsqu'elle diffère de celle du compte."
+          },
+          "location": {
+            "label": "Lieu",
+            "description": "Coordonnées GPS du lieu de l'achat. Renseignez-les via la position de votre appareil ou saisissez-les manuellement."
+          }
+        },
+        "mapPicker": {
+          "label": "Sélecteur de carte",
+          "description": "Sélectionnez le lieu des opérations sur une carte et recherchez des adresses. Les fonds de carte et la recherche proviennent d'OpenStreetMap, qui reçoit votre adresse IP à l'ouverture de la carte."
+        }
+      },
+      "defaultPaymentType": {
+        "label": "Moyen de paiement par défaut",
+        "description": "Présélectionné lorsque vous ajoutez une nouvelle opération.",
+        "placeholder": "Sélectionner un moyen de paiement",
+        "successNotification": "Moyen de paiement par défaut mis à jour",
+        "errorNotification": "Échec de la mise à jour du moyen de paiement par défaut"
+      }
+    }
+  }
+}

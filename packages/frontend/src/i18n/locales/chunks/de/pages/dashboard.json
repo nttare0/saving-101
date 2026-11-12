@@ -1,0 +1,542 @@
+{
+  "dashboard": {
+    "editMode": {
+      "customize": "Anpassen",
+      "addWidgets": "Widgets hinzufügen",
+      "emptyState": "Klicke auf Anpassen, um Widgets hinzuzufügen",
+      "removeWidget": "Widget entfernen"
+    },
+    "widgets": {
+      "common": {
+        "includePlanned": "Geplante Transaktionen einbeziehen",
+        "includePlannedTooltip": "Berücksichtigt ausstehende geplante Transaktionen in den Zahlen dieses Widgets.",
+        "includePlannedSaveError": "Einstellung für geplante Transaktionen konnte nicht gespeichert werden. Bitte versuche es erneut."
+      },
+      "balanceTrend": {
+        "title": "Saldoverlauf",
+        "balanceTypes": {
+          "total": "Gesamt",
+          "accounts": "Konten",
+          "portfolios": "Portfolios",
+          "ventures": "Beteiligungen",
+          "vehicles": "Fahrzeuge",
+          "loans": "Kredite"
+        },
+        "tooltip": {
+          "accounts": "Konten:",
+          "portfolios": "Portfolios:",
+          "total": "Gesamt:",
+          "ventures": "Beteiligungen:",
+          "vehicles": "Fahrzeuge:",
+          "loans": "Kredite:"
+        },
+        "today": "Heute",
+        "vsPreviousPeriod": "gegenüber vorherigem Zeitraum",
+        "spikePanel": {
+          "accounts": "Konten",
+          "portfolios": "Portfolios",
+          "priceDrivenChange": "Preisbedingte Änderung – Transaktionsdetails demnächst verfügbar",
+          "noSignificantTransactions": "Keine wesentlichen Transaktionen für dieses Datum.",
+          "seeAllTransactions": "Alle Transaktionen anzeigen"
+        },
+        "spikeSettings": {
+          "showMarkers": "Marker anzeigen",
+          "showMarkersTooltip": "Farbige Markierungen im Diagramm ein-/ausschalten, die deutliche Saldoänderungen hervorheben.",
+          "percentThreshold": "Min. Änderung %",
+          "percentThresholdTooltip": "Mindestprozentsatz der Saldoänderung zwischen zwei aufeinanderfolgenden Tagen für eine Markierung. Entweder dieser oder der absolute Schwellenwert muss überschritten werden. Niedrige Werte zeigen mehr Markierungen an.",
+          "absoluteThreshold": "Min. Änderung {symbol}",
+          "absoluteThresholdTooltip": "Mindeständerung des absoluten Saldos (in deiner Basiswährung), damit ein Ausschlag vorliegt. Entweder dieser Wert oder der prozentuale Schwellwert muss überschritten werden.",
+          "maxMarkers": "Max. Markierungen",
+          "maxMarkersTooltip": "Maximale Anzahl der angezeigten Markierungen im Diagramm. Gibt es mehr Ausschläge als dieses Limit, werden nur die bedeutendsten angezeigt.",
+          "resetDefaults": "Standardwerte",
+          "accept": "Anwenden",
+          "validation": {
+            "outOfRange": "Wert liegt außerhalb des zulässigen Bereichs",
+            "integer": "Muss eine ganze Zahl sein"
+          }
+        },
+        "settings": {
+          "title": "Einstellungen",
+          "spikeMarkers": "Ausschlag-Marker",
+          "fitToLatestData": "An neueste Daten anpassen",
+          "fitToLatestDataTooltip": "Wenn aktiviert, reicht das Diagramm nur bis zum neuesten Datenpunkt. Wenn deaktiviert, deckt die X-Achse den gesamten gewählten Zeitraum ab und lässt Platz für zukünftige Daten.",
+          "fitToLatestDataLockedTooltip": "Deaktiviere geplante Transaktionen, um dies zu ändern – deren Prognose erweitert das Diagramm immer bis zum Ende des Zeitraums.",
+          "on": "Ein",
+          "off": "Aus",
+          "includeInTotal": "In Gesamtsumme einbeziehen",
+          "includePlannedTooltip": "Zeige eine gestrichelte Prognose ausstehender geplanter Transaktionen über dem Trend an."
+        },
+        "componentsSettings": {
+          "description": "Wähle, welche Komponenten zur Gesamtsaldo-Linie zählen.",
+          "vehicles": "Fahrzeuge",
+          "ventures": "Beteiligungen",
+          "loans": "Kredite",
+          "loansTooltip": "Wenn aktiviert, werden offene Kreditsalden vom Gesamtwert abgezogen (echtes Nettovermögen). Wenn deaktiviert, werden Kredite ignoriert, sodass nur Vermögenswerte angezeigt werden.",
+          "allIncluded": "Alle Komponenten",
+          "excluding": "Ohne {items}"
+        },
+        "projection": {
+          "summary": "{amount} prognostiziert · {count} geplanter Eintrag bis {date} | {amount} prognostiziert · {count} geplante Einträge bis {date}"
+        }
+      },
+      "expensesStructure": {
+        "title": "Ausgabenstruktur",
+        "incomeTitle": "Income structure",
+        "today": "Heute",
+        "vsPreviousPeriod": "gegenüber vorherigem Zeitraum",
+        "viewButton": "Anzeigen",
+        "back": "Zurück",
+        "openInAnalytics": "Open in Analytics",
+        "metric": {
+          "expenses": "Ausgaben",
+          "income": "Einnahmen"
+        },
+        "seeTransactions": "See transactions"
+      },
+      "latestTransactions": {
+        "title": "Neueste Transaktionen",
+        "showAll": "Alle anzeigen"
+      },
+      "subscriptions": {
+        "title": "Abos & Rechnungen",
+        "titleSubscriptions": "Abonnements",
+        "titleBills": "Rechnungen",
+        "titleAll": "Wiederkehrende Zahlungen",
+        "titleInstallments": "Raten",
+        "configTypeAll": "Alle",
+        "configTypeSubscriptions": "Abonnements",
+        "configTypeBills": "Rechnungen",
+        "configTypeInstallments": "Ratenzahlungen",
+        "activeSummary": "{count} aktiv",
+        "perYear": " pro Jahr",
+        "incomeSummary": "{count} aktiv · {amount}/Monat Einnahmen",
+        "percentOfIncome": "{percent}% des ø Einkommens",
+        "settings": {
+          "title": "Einstellungen",
+          "show": "Anzeigen",
+          "incomeWindow": "Einkommenszeitraum",
+          "incomeWindowTooltip": "Wir berechnen den Durchschnitt deiner Einnahmen über diesen Zeitraum, um den Prozentanteil für wiederkehrende Zahlungen zu ermitteln.",
+          "lookbackOption": {
+            "1": "Letzter Monat",
+            "3": "Letzte 3 Monate",
+            "6": "Letzte 6 Monate",
+            "12": "Letzte 12 Monate"
+          },
+          "showStrip": "30-Tage-Diagramm anzeigen"
+        }
+      },
+      "categoryTracker": {
+        "title": "Kategorien-Beobachtungsliste",
+        "addCategory": "Kategorie hinzufügen",
+        "selectCategories": "Kategorien auswählen",
+        "showTrend": "6-Monats-Trend anzeigen",
+        "sort": {
+          "title": "Sortieren nach",
+          "custom": "Benutzerdefinierte Reihenfolge",
+          "spendDesc": "Höchste Ausgaben zuerst",
+          "spendAsc": "Niedrigste Ausgaben zuerst"
+        }
+      },
+      "cashFlow": {
+        "title": "Cashflow",
+        "description": "Zeigt deine Nettoersparnis: Einnahmen abzüglich Ausgaben für den gewählten Zeitraum, mit Trend aus vorherigen Zeiträumen",
+        "vsPrevious": "gegenüber Vorperiode",
+        "notAvailable": "N/A",
+        "income": "Einnahmen",
+        "expenses": "Ausgaben",
+        "saved": "Gespart",
+        "previousPeriodsTrend": "Trend vorheriger Zeiträume",
+        "viewDetails": "Details anzeigen",
+        "savingsRateLine": "Sparquoten-Linie anzeigen",
+        "savingsRate": "Sparquote",
+        "noIncome": "kein Einkommen"
+      },
+      "netWorth": {
+        "title": "Nettovermögen",
+        "description": "Wie sich dein Nettovermögen im gewählten Zeitraum verändert hat. Berücksichtigt jede Saldoänderung: Konten, Investments, Kredite und Vermögenswerte.",
+        "vsPrevious": "gegenüber Vorperiode",
+        "start": "Beginn",
+        "end": "Ende",
+        "growth": "Wachstum",
+        "changeInPeriod": "Änderung in {period}",
+        "previousPeriodsTrend": "Trend vorheriger Zeiträume",
+        "excludedTooltip": "Vom Nettovermögen ausgeschlossen: {components}",
+        "viewHistory": "Verlauf anzeigen",
+        "loadFailed": "Daten zum Nettovermögen konnten nicht geladen werden.",
+        "components": {
+          "ventures": "Beteiligungen",
+          "vehicles": "Fahrzeuge",
+          "loans": "Kredite"
+        },
+        "settings": {
+          "title": "In Nettovermögen einbeziehen",
+          "loans": "Kredite",
+          "vehicles": "Fahrzeuge",
+          "ventures": "Beteiligungen"
+        },
+        "trendTooltip": {
+          "change": "Änderung",
+          "netWorth": "Nettovermögen",
+          "noData": "Keine Daten für diesen Zeitraum"
+        }
+      },
+      "creditUtilization": {
+        "title": "Kreditnutzung",
+        "description": "Zeigt, wie viel deines Kreditrahmens über alle Konten hinweg derzeit genutzt wird",
+        "utilized": "genutzt",
+        "noAccounts": "Keine Konten mit Kreditrahmen"
+      },
+      "cashAccounts": {
+        "vsLastMonth": "vs. Vormonat",
+        "runwayUnit": "Mon.",
+        "runwayLabel": "an Ausgaben",
+        "loadFailed": "Deine Konten konnten nicht geladen werden",
+        "runwayHint": {
+          "description": "Es wird generell empfohlen, einen Notgroschen für 3–6 Monate deiner Ausgaben bereitzuhalten.",
+          "critical": "Unter 1 Monat: sehr wenig Puffer",
+          "low": "1–3 Monate: unter der Empfehlung",
+          "good": "3+ Monate: empfohlener Bereich"
+        }
+      },
+      "assetsLiabilities": {
+        "netWorth": "Nettovermögen",
+        "owesShare": "Du schuldest {percent} deines Vermögens",
+        "noDebt": "Keine Schulden",
+        "assets": "Vermögenswerte",
+        "liabilities": "Verbindlichkeiten",
+        "loadFailed": "Deine Vermögenswerte und Verbindlichkeiten konnten nicht geladen werden",
+        "buckets": {
+          "cash": "Bargeld",
+          "investments": "Investments",
+          "ventures": "Beteiligungen",
+          "vehicles": "Fahrzeuge",
+          "loans": "Kredite",
+          "creditAndOverdrafts": "Kredite & Dispos"
+        }
+      },
+      "spendingPace": {
+        "tabs": {
+          "lastMonth": "vs. Vormonat",
+          "average": "vs. 3-Monats-Ø"
+        },
+        "spentIn": "Ausgegeben im {month}",
+        "onTrackFor": "Auf Kurs für {amount}",
+        "vsComparison": "{percent} vs. {name}",
+        "comparison": {
+          "average": "{n}-Monats-Ø"
+        },
+        "stats": {
+          "byToday": "{name} bis heute",
+          "total": "{name} gesamt",
+          "daysLeft": "Verbleibende Tage"
+        },
+        "chart": {
+          "today": "Heute",
+          "ariaLabel": "Ausgaben diesen Monat"
+        },
+        "tooltip": {
+          "spent": "Ausgegeben",
+          "forecast": "Prognose",
+          "spikeFrom": "Ausgegeben am {date}"
+        },
+        "legend": {
+          "thisMonth": "Diesen Monat",
+          "forecast": "Prognose",
+          "averageMonth": "Durchschnittlicher Monat"
+        },
+        "hints": {
+          "noHistory": "Der Vergleich erscheint nach deinem ersten vollen Monat.",
+          "plannedFailed": "Geplante Transaktionen konnten nicht geladen werden. Die Prognose enthält sie möglicherweise nicht.",
+          "fewMonths": "Durchschnitt des {n} vollen Monats, den du bisher hast. | Durchschnitt der {n} vollen Monate, die du bisher hast."
+        },
+        "loadFailed": "Deine Ausgaben konnten nicht geladen werden.",
+        "settings": {
+          "spikes": {
+            "title": "Ausschlag-Marker",
+            "summary": "Tage mit ≥{percent}% der Monatsausgaben",
+            "inputLabel": "Einen Tag markieren, wenn er folgendes erreicht",
+            "hint": "Anteil an den Gesamtausgaben des Vormonats, 1–100%. Markierungen werden im Modus \"vs. Vormonat\" angezeigt."
+          },
+          "saved": "Einstellung aktualisiert"
+        }
+      },
+      "plannedOverview": {
+        "title": "Geplant",
+        "projectedBy": "Hochgerechnet bis {date}",
+        "upcoming": "Anstehend · {count}",
+        "loadFailed": "Geplante Transaktionen konnten nicht geladen werden"
+      },
+      "taxes": {
+        "title": "Steuerquote",
+        "description": "Ausgaben in deinen Steuerkategorien als Anteil am Einkommen, gemittelt über den in den Widget-Einstellungen gewählten Zeitraum. Die Balken zeigen die letzten 12 Monate.",
+        "ofIncome": "vom Einkommen",
+        "vsTrailingRate": "{delta} Prozentpunkte ggü. 12-Monats-Satz {rate}",
+        "average": "Ø {amount}",
+        "amount": "Steuern",
+        "shareOfIncome": "Anteil an Einnahmen",
+        "shareOfTaxes": "Steueranteil",
+        "other": "Sonstiges",
+        "moreCategories": "{count} weitere",
+        "viewDetails": "Cashflow anzeigen",
+        "loadFailed": "Steuerdaten konnten nicht geladen werden.",
+        "noCategories": {
+          "title": "Noch keine Steuerkategorien",
+          "description": "Wähle aus, welche Kategorien als Steuern zählen, um deine Steuerquote zu sehen.",
+          "action": "Kategorien auswählen"
+        },
+        "config": {
+          "months": {
+            "label": "Durchschnittszeitraum",
+            "saveError": "Der Durchschnittszeitraum konnte nicht gespeichert werden. Versuche es erneut.",
+            "m3": "3 Mon.",
+            "m6": "6 Mon.",
+            "m12": "12 Mon."
+          }
+        },
+        "lastMonths": {
+          "m3": "Letzte 3 Monate",
+          "m6": "Letzte 6 Monate",
+          "m12": "Letzte 12 Monate"
+        }
+      },
+      "budget": {
+        "spent": "ausgegeben",
+        "ringLabel": "{percent}% des Budgets ausgegeben",
+        "leftOf": "übrig von {total}",
+        "overOf": "über dem Budget von {total}",
+        "headerLeft": "{amount} übrig",
+        "headerOver": "{amount} drüber",
+        "daysLeft": "Noch {count} Tag | Noch {count} Tage",
+        "lastDay": "Letzter Tag des Zeitraums",
+        "empty": "Noch kein Budget",
+        "create": "Budget einrichten",
+        "sort": {
+          "overspent": "Größte Überziehung zuerst"
+        }
+      },
+      "trackers": {
+        "spentOfLimit": "{spent} von {limit}",
+        "inOut": "{income} Einnahmen, {expense} Ausgaben",
+        "net": "Netto",
+        "noLimit": "Kein Limit",
+        "empty": "Noch keine Tracker",
+        "ended": "Beendet",
+        "create": "Tracker erstellen"
+      },
+      "tagAnalysis": {
+        "title": "Tag analysis",
+        "noTagsTitle": "No tags selected",
+        "noTagsDescription": "Pick the tags to compare in the widget settings.",
+        "ofIncome": "vom Einkommen",
+        "remaining": "Unallocated",
+        "targetTooltip": "Target: {value}%",
+        "settings": {
+          "tagsLabel": "Tags",
+          "tagsPlaceholder": "Tags auswählen",
+          "targetsLabel": "Targets, %",
+          "targetsNoneSet": "None set",
+          "targetsSetCount": "{set} of {total} set",
+          "targetsEmpty": "Add tags first to set their targets",
+          "targetPlaceholder": "Keine",
+          "percentBaseLabel": "Percent of",
+          "percentBaseTags": "Selected tags",
+          "percentBaseIncome": "Einnahmen",
+          "includeTransfersLabel": "Include transfers",
+          "includeTransfersDescription": "Count transfers to your own accounts and portfolios as spending"
+        }
+      },
+      "emptyState": "Keine Daten im ausgewählten Zeitintervall vorhanden.",
+      "registry": {
+        "balanceTrend": {
+          "name": "Saldoverlauf",
+          "description": "Verfolge die Entwicklung deines Saldos im Zeitverlauf"
+        },
+        "categoryTracker": {
+          "name": "Kategorien-Beobachtungsliste",
+          "description": "Behalte Ausgaben und Einnahmen ausgewählter Kategorien im Blick"
+        },
+        "spendingCategories": {
+          "name": "Ausgaben nach Kategorien",
+          "description": "Sieh, wofür du dein Geld ausgibst"
+        },
+        "latestRecords": {
+          "name": "Neueste Einträge",
+          "description": "Deine letzten Transaktionen"
+        },
+        "subscriptions": {
+          "name": "Abos & Rechnungen",
+          "description": "Übersicht wiederkehrender Zahlungen"
+        },
+        "cashFlow": {
+          "name": "Cashflow",
+          "description": "Einkommen gegenüber Ausgaben mit Sparquote"
+        },
+        "netWorth": {
+          "name": "Nettovermögen",
+          "description": "Wie sich dein Gesamtnettovermögen im Zeitverlauf verändert, einschließlich Investments, Krediten und Vermögenswerten."
+        },
+        "creditUtilization": {
+          "name": "Kreditrahmenauslastung",
+          "description": "Nutzung des Kreditrahmens über deine Konten"
+        },
+        "cashAccounts": {
+          "name": "Cash & Konten",
+          "description": "Gesamte Cash-Bestände auf deinen Konten, deren Veränderung seit dem Vormonat und für wie viele Monate an Ausgaben sie reichen"
+        },
+        "assetsLiabilities": {
+          "name": "Vermögen & Verbindlichkeiten",
+          "description": "Was du besitzt, was du schuldest und das Nettovermögen dazwischen"
+        },
+        "spendingPace": {
+          "name": "Ausgabentempo",
+          "description": "Ausgaben im laufenden Monat mit einer Prognose für den Rest des Monats, verglichen mit dem Vormonat oder deinem 3-Monats-Durchschnitt."
+        },
+        "plannedOverview": {
+          "name": "Übersicht geplanter Zahlungen",
+          "description": "Ausstehende geplante Transaktionen und dein prognostizierter Saldo"
+        },
+        "fireProgress": {
+          "name": "FIRE-Fortschritt",
+          "description": "Wie nah du der finanziellen Unabhängigkeit bist"
+        },
+        "taxes": {
+          "name": "Steuerquote",
+          "description": "Anteil des Einkommens, der für Steuern aufgewendet wird, mit 12-Monats-Trend"
+        },
+        "budget": {
+          "name": "Budget",
+          "description": "Zeile für Zeile, was im aktuellen Budgetzeitraum noch übrig ist"
+        },
+        "trackers": {
+          "name": "Tracker",
+          "description": "Jeder aktive Tracker mit genutztem Limit und Netto-Saldo"
+        },
+        "goals": {
+          "name": "Ziele",
+          "description": "Fortschritt deiner Sparziele",
+          "savedOfTarget": "{saved} von {target}",
+          "empty": {
+            "title": "Keine aktiven Ziele",
+            "description": "Setze ein Ziel und sieh, wie nah du dran bist.",
+            "action": "Ziel erstellen"
+          },
+          "locked": {
+            "title": "Ziele sind gesperrt",
+            "description": "Spare für das, was zählt, und sieh, ob du im Zeitplan bist. Verfügbar in kostenpflichtigen Abos.",
+            "action": "Mehr erfahren"
+          },
+          "settings": {
+            "showReached": "Erreichte Ziele anzeigen"
+          },
+          "reachedSection": "Erreicht"
+        },
+        "tagAnalysis": {
+          "name": "Tag analysis",
+          "description": "See how your spending splits across chosen tags, like needs, wants and savings"
+        }
+      }
+    },
+    "periodSelector": {
+      "presets": {
+        "currentMonth": "Aktueller Monat",
+        "last3Months": "Letzte 3 Monate",
+        "last6Months": "Letzte 6 Monate",
+        "lastYear": "Letzte 12 Monate",
+        "thisYear": "Dieses Jahr",
+        "previousYear": "Vorheriges Jahr"
+      }
+    }
+  },
+  "widgets": {
+    "subscriptionsOverview": {
+      "payAction": "Bezahlt",
+      "listTitle": "Bevorstehend",
+      "dueCount": "{count} fällig",
+      "nothingDue": "Nichts fällig in 3 Tagen",
+      "overdueHint": "Überfällig seit {date}",
+      "dueSoonHint": "Fällig in den nächsten 3 Tagen",
+      "strip": {
+        "title": "Nächste 30 Tage",
+        "goingOut": "{amount} Abgänge",
+        "today": "Heute"
+      },
+      "loadFailed": "Wiederkehrende Zahlungen konnten nicht geladen werden"
+    },
+    "latestRecords": {
+      "settings": {
+        "excludeTitle": "Transaktionen ausschließen",
+        "excludeTransfersDescription": "Umbuchungen zwischen eigenen Konten ausblenden",
+        "excludeOutOfWalletDescription": "Umbuchungen von/zu nicht nachverfolgten Konten ausblenden",
+        "balanceAdjustmentsTitle": "Saldokorrekturen",
+        "excludeBalanceAdjustmentsDescription": "Saldokorrektur-Transaktionen ausblenden",
+        "plannedTitle": "Geplante Transaktionen",
+        "excludePlannedDescription": "Ausstehende geplante Transaktionen aus der Liste ausblenden",
+        "scheduledTitle": "Geplante Zahlungen",
+        "excludeScheduledDescription": "Kommende und überfällige Abo-Zahlungen aus der Liste ausblenden",
+        "scheduledSaveError": "Einstellung für geplante Zahlungen konnte nicht aktualisiert werden",
+        "nothingExcluded": "Nichts ausgeschlossen",
+        "tagsStyleTitle": "Tags",
+        "tagsStyleNames": "Namen",
+        "tagsStyleBars": "Balken",
+        "tagsStyleSaveError": "Tag-Stil konnte nicht gespeichert werden. Bitte versuche es erneut.",
+        "showAccountTitle": "Konto",
+        "showAccountDescription": "Kontologo bei jeder Transaktion anzeigen",
+        "showAccountSaveError": "Die Kontoeinstellung konnte nicht gespeichert werden. Bitte versuche es erneut."
+      },
+      "overdueBadge": "Überfällig",
+      "scheduledBadge": "Geplant",
+      "payAction": "Bezahlt"
+    },
+    "fireProgress": {
+      "title": "FIRE-Fortschritt",
+      "config": {
+        "style": {
+          "label": "Stil",
+          "ring": "Ring",
+          "numbers": "Zahlen"
+        }
+      },
+      "openPlan": "FIRE-Plan öffnen",
+      "loadFailed": "FIRE-Fortschritt konnte nicht geladen werden.",
+      "toType": "bis {type}",
+      "ringLabelFor": "{pct}% des Ziels ({type}) erreicht, noch {duration}",
+      "ringLabelReachedFor": "Ziel ({type}) erreicht",
+      "ringLabelUnreachableFor": "{pct}% des Ziels ({type}) erreicht, bei aktuellem Tempo nicht erreichbar",
+      "timeTo": "Zeit bis {type}",
+      "unitYears": "{n} Jahre | {n} Jahr | {n} Jahre",
+      "unitMonths": "{n} Monate | {n} Monat | {n} Monate",
+      "atAge": "im Alter von {age}",
+      "nextMilestone": "Nächster Meilenstein",
+      "saved": "Gespart",
+      "progress": "Fortschritt",
+      "coastFire": "Coast FIRE",
+      "reached": "Erreicht",
+      "milestoneIn": "{pct}% in {duration}",
+      "typeNumber": "{type}-Ziel",
+      "atRate": "bei {rate}%",
+      "milestonesReached": "{n} von {total} Meilensteinen",
+      "balanceOfTarget": "{balance} von {target}",
+      "reachedType": "{type} erreicht",
+      "supports": "Ermöglicht {amount}/Monat",
+      "pctOfSpending": "{pct}% der Ausgaben",
+      "unreachable": "Bei aktueller Sparrate nicht erreichbar",
+      "needs": "Benötigt ca. {amount}/Monat, um es in {duration} zu erreichen",
+      "chart": {
+        "today": "Heute",
+        "typeTarget": "{type} · {amount}",
+        "ariaLabel": "Nettovermögensverlauf: bisherige Historie bis heute, prognostiziert auf dein FIRE-Ziel"
+      },
+      "setup": {
+        "title": "Plane deinen Weg zu FIRE",
+        "description": "Nutzt deine Konten und Ausgaben. Zwei Zahlen, falls du noch keine Daten hast.",
+        "action": "Einrichten"
+      },
+      "locked": {
+        "title": "Plane deinen Weg zu FIRE",
+        "description": "Plus-Funktion",
+        "action": "Freischalten"
+      },
+      "paceVs": "vs. {month}"
+    }
+  }
+}

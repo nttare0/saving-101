@@ -1,0 +1,280 @@
+{
+  "settings": {
+    "ai": {
+      "title": "Impostazioni IA",
+      "description": "Scegliere quale modello IA alimenta ciascuna funzionalità, aggiungere modelli personalizzati e connettere applicazioni come Claude e ChatGPT.",
+      "tabs": {
+        "features": "Funzionalità IA",
+        "models": "Modelli IA",
+        "connectedApps": "Connettori (MCP)",
+        "invalidConnectionsTooltip": "Uno dei modelli IA richiede attenzione"
+      },
+      "credentialStatus": {
+        "validated": "Validato {timeAgo}",
+        "failed": "Respinto {timeAgo}",
+        "invalidBadge": "Non valido"
+      },
+      "features": {
+        "title": "Funzionalità IA",
+        "description": "Configurare quale modello usare per ogni funzionalità basata sull'IA",
+        "howItWorks": "Come funziona",
+        "loadError": "Impossibile caricare le funzionalità IA."
+      },
+      "categorization": {
+        "howItWorks": {
+          "points": {
+            "autoSync": "Quando le transazioni vengono sincronizzate dalla banca, quelle non classificate vengono inviate automaticamente all'IA per la classificazione.",
+            "analysis": "L'IA analizza la descrizione delle transazioni e i nomi degli esercenti per suggerire categorie appropriate da quelle esistenti.",
+            "override": "È sempre possibile modificare manualmente le categorie suggerite dall'IA."
+          }
+        }
+      },
+      "statementParsing": {
+        "howItWorks": {
+          "points": {
+            "upload": "Caricare un estratto conto (PDF, CSV o TXT), la foto di una ricevuta o uno screenshot di un'app bancaria: l'IA estrarrà automaticamente tutte le transazioni.",
+            "analysis": "L'IA analizza la struttura del documento per identificare date, descrizioni, importi e tipo di transazione.",
+            "review": "È possibile rivedere e correggere tutti i dati estratti prima di importarli nel conto.",
+            "cost": "Il costo della lavorazione è una stima approssimativa."
+          }
+        }
+      },
+      "modelSelector": {
+        "placeholder": "Scegliere un modello",
+        "automaticOption": "Automatico",
+        "automaticOptionWithTarget": "Automatico · {target}",
+        "serverOption": "MoneyMatter AI · incluso",
+        "connectionOption": "{name} · {model}",
+        "connectionOptionNeedsAttention": "{name} · {model} (richiede attenzione)",
+        "badges": {
+          "yourKey": "Chiave personale",
+          "yourKeyTooltip": "Funziona con uno dei modelli di intelligenza artificiale configurati, che si occupa anche della fatturazione. MoneyMatter non limita l'utilizzo.",
+          "server": "Server",
+          "serverTooltip": "Funziona con MoneyMatter AI, incluso nel piano. Si applicano limiti di utilizzo."
+        },
+        "modelLabel": "Modello",
+        "modelInfo": {
+          "estimatedCost": "Costo stimato:",
+          "per100Transactions": "per 100 transazioni",
+          "per100Pairs": "per 100 coppie"
+        },
+        "notifications": {
+          "updateSuccess": "Modello aggiornato con successo",
+          "updateFailed": "Impossibile aggiornare il modello",
+          "resetSuccess": "Ripristina il modello predefinito",
+          "resetFailed": "Impossibile ripristinare il modello"
+        },
+        "empty": {
+          "title": "Ancora nessun modello IA",
+          "description": "Aggiungere un modello IA per usare questa funzionalità."
+        },
+        "allConnectionsDown": "Tutti i modelli IA richiedono attenzione, quindi questa funzionalità è in pausa. Correggerne uno in {link}.",
+        "allConnectionsDownLink": "Modelli IA"
+      },
+      "modelGuide": {
+        "trigger": "Quale modello è adatto?",
+        "tierHeading": "Il modello {tier} è sufficiente",
+        "tiers": {
+          "light": "Leggero",
+          "balanced": "Bilanciato",
+          "smart": "Avanzato"
+        },
+        "needsLabel": "Requisiti",
+        "picksLabel": "Scelte consigliate",
+        "yourModel": "Il modello in uso",
+        "source": "Dettagli dei modelli da models.dev",
+        "needs": {
+          "textOnly": "Solo testo",
+          "runsOften": "Eseguito a ogni sincronizzazione",
+          "longAnswers": "Risposte lunghe",
+          "readsFiles": "Legge immagini e PDF",
+          "structuredAnswers": "Risposte strutturate"
+        },
+        "why": {
+          "categorization": "Un'attività breve e ripetitiva. Un modello piccolo la gestisce bene e contiene i costi.",
+          "statementParsing": "Legge l'intero estratto conto e ne trascrive ogni riga, quindi richiede un modello che resti preciso su testi lunghi.",
+          "investmentTransactionsParsing": "Trasforma le esportazioni del broker in righe di acquisto e vendita. Le esportazioni lunghe richiedono un modello in grado di scrivere risposte lunghe.",
+          "receiptParsing": "Il modello esamina direttamente il file della fattura, quindi deve saper leggere immagini e PDF.",
+          "trackerMatching": "Un'attività breve e ripetitiva eseguita ogni giorno. Un modello piccolo la gestisce bene e contiene i costi.",
+          "transferMatching": "Legge brevi coppie di transazioni e risponde con un verdetto di una parola, quindi basta un modello leggero ed economico."
+        },
+        "picks": {
+          "categorization": "Gemini Flash Lite · Claude Haiku",
+          "statementParsing": "Gemini Flash · Claude Sonnet · GPT Terra",
+          "investmentTransactionsParsing": "Gemini Flash · Claude Sonnet",
+          "receiptParsing": "Gemini Flash · Claude Sonnet",
+          "trackerMatching": "Gemini Flash Lite · Claude Haiku",
+          "transferMatching": "Gemini Flash Lite · Claude Haiku"
+        },
+        "verdict": {
+          "fit": "Adatto",
+          "gaps": "{count} lacuna | {count} lacune",
+          "unknown": "Non verificato"
+        },
+        "warning": {
+          "readsFiles": "Non legge file",
+          "readsText": "Non legge testo",
+          "readsImages": "Non legge immagini",
+          "readsPdfs": "Non legge PDF",
+          "longAnswers": "Solo risposte brevi",
+          "structuredAnswers": "Nessuna risposta strutturata"
+        },
+        "checks": {
+          "readsText": {
+            "label": "Legge testo",
+            "fail": "Questo modello non accetta testo."
+          },
+          "readsImages": {
+            "label": "Legge immagini",
+            "fail": "I file immagine non funzioneranno."
+          },
+          "readsPdfs": {
+            "label": "Legge PDF",
+            "fail": "I file PDF non funzioneranno."
+          },
+          "longAnswers": {
+            "label": "Risposte lunghe",
+            "ok": "Scrive fino a {tokens} token.",
+            "fail": "Scrive fino a {tokens} token, quindi i file lunghi vengono troncati."
+          },
+          "structuredAnswers": {
+            "label": "Risposte strutturate",
+            "fail": "Le risposte potrebbero arrivare in un formato che l'app non riesce a leggere."
+          }
+        },
+        "unknown": {
+          "title": "Impossibile verificare questo modello",
+          "detail": "Al momento models.dev non ha dettagli su questo modello, quindi non è possibile verificarlo. Assicurarsi che soddisfi i requisiti indicati sopra."
+        }
+      },
+      "connections": {
+        "title": "Modelli IA",
+        "description": "Connettere OpenAI, Claude, Gemini, OpenRouter o un modello locale. Ogni voce è un modello selezionabile per qualsiasi funzionalità.",
+        "tip": {
+          "ariaLabel": "Informazioni sui modelli IA",
+          "text": "È possibile aggiungere lo stesso fornitore più volte con modelli diversi. Assegnare nomi in base alle capacità, come 'Claude avanzato' e 'Claude veloce', quindi scegliere quello giusto per ogni funzionalità."
+        },
+        "addButton": "Aggiungi modello",
+        "capReached": "È stato raggiunto il limite di {max} modelli IA. Rimuoverne uno per aggiungerne un altro.",
+        "duplicateName": "{name} copia",
+        "empty": {
+          "title": "Ancora nessun modello IA",
+          "description": "Aggiungere un modello con la propria chiave API o connetterne uno locale come Ollama o LM Studio."
+        },
+        "loadError": {
+          "title": "Impossibile caricare i modelli IA",
+          "description": "I modelli salvati sono ancora presenti. Verificare la connessione e riprovare."
+        },
+        "badges": {
+          "default": "Predefinito",
+          "defaultSkipped": "Predefinito · ignorato finché richiede attenzione"
+        },
+        "status": {
+          "model": "{provider} · {model}"
+        },
+        "actions": {
+          "menuAriaLabel": "Azioni del modello IA",
+          "duplicate": "Duplica",
+          "setDefault": "Imposta come predefinito",
+          "remove": "Rimuovi",
+          "reconnect": "Riconnetti",
+          "enterKey": "Inserisci chiave API"
+        },
+        "removeDialog": {
+          "title": "Rimuovere questo modello IA?",
+          "description": "«{name}» e la relativa chiave API salvata verranno rimossi.",
+          "pinnedFeatures": "Queste funzionalità passeranno alla modalità automatica: {features}.",
+          "confirm": "Rimuovi"
+        },
+        "removeKeyDialog": {
+          "title": "Rimuovere la chiave API?",
+          "description": "Le richieste a questo modello verranno inviate senza chiave. I server che la richiedono smetteranno di rispondere.",
+          "confirm": "Rimuovi chiave"
+        },
+        "test": {
+          "success": "Connesso. Il modello ha risposto.",
+          "failed": "Impossibile raggiungere il modello."
+        },
+        "notifications": {
+          "saveSuccess": "Modello IA salvato",
+          "saveFailed": "Impossibile salvare il modello IA",
+          "removeSuccess": "Modello IA rimosso",
+          "removeFailed": "Impossibile rimuovere il modello IA",
+          "setDefaultSuccess": "«{name}» è ora il modello predefinito",
+          "setDefaultFailed": "Impossibile cambiare il modello predefinito",
+          "removeKeySuccess": "Chiave API rimossa",
+          "removeKeyFailed": "Impossibile rimuovere la chiave API",
+          "removeKeyInvalid": "Chiave API rimossa, ma il modello ha smesso di rispondere: {reason}",
+          "editedConnectionGone": "Questo modello IA è stato rimosso altrove, quindi il modulo è stato chiuso."
+        },
+        "form": {
+          "titleAdd": "Aggiungere modello IA",
+          "titleEdit": "Modificare modello IA",
+          "titleDuplicate": "Duplicare modello IA",
+          "providerLabel": "Fornitore",
+          "providerPlaceholder": "Selezionare un fornitore",
+          "nameLabel": "Nome",
+          "baseUrlLabel": "URL di base",
+          "baseUrlPlaceholder": "https://example.com/v1",
+          "apiKeyLabel": "Chiave API",
+          "apiKeyPlaceholder": "Incollare la chiave API",
+          "apiKeyGetHint": "Ottenere una chiave su {link}.",
+          "apiKeyOptionalHint": "Facoltativa. Lasciare vuoto se il server non richiede una chiave.",
+          "apiKeySavedHint": "Lasciare vuoto per mantenere la chiave salvata.",
+          "apiKeyBorrowedHint": "Usa la chiave di «{name}». Digitare una nuova chiave per usarne una diversa.",
+          "removeApiKeyButton": "Rimuovi chiave API",
+          "modelLabel": "Modello",
+          "modelPlaceholder": "Digitare o scegliere un modello",
+          "modelListEmpty": "Nessun modello da scegliere. Digitare il nome del modello usato dal server.",
+          "modelListNoMatch": "Nessun modello in elenco corrisponde. È comunque possibile usare il nome digitato.",
+          "testButton": "Prova connessione",
+          "saveButton": "Salva modifiche",
+          "localNetworkOnly": "MoneyMatter non può raggiungere un server sul computer locale, come {hostname} o {ip}. Esporlo tramite un tunnel come ngrok o Cloudflare Tunnel, quindi incollare qui l'URL del tunnel.",
+          "dockerHost": "Se l'app viene eseguita in Docker sulla stessa macchina del server del modello, usare {dockerHost} invece di {ip}."
+        },
+        "presets": {
+          "openai": {
+            "label": "OpenAI",
+            "namePlaceholder": "es. GPT veloce"
+          },
+          "anthropic": {
+            "label": "Anthropic (Claude)",
+            "namePlaceholder": "es. Claude avanzato"
+          },
+          "google": {
+            "label": "Google (Gemini)",
+            "namePlaceholder": "es. Gemini veloce"
+          },
+          "openrouter": {
+            "label": "OpenRouter",
+            "namePlaceholder": "es. OpenRouter Llama"
+          },
+          "ollama": {
+            "label": "Ollama",
+            "namePlaceholder": "es. Llama locale"
+          },
+          "lmStudio": {
+            "label": "LM Studio",
+            "namePlaceholder": "es. LM Studio Qwen"
+          },
+          "custom": {
+            "label": "Personalizzato (compatibile con OpenAI)",
+            "namePlaceholder": "es. Il mio server"
+          }
+        }
+      },
+      "customInstructions": {
+        "title": "Istruzioni personalizzate",
+        "description": "Fornire un contesto per aiutare l'IA a classificare le transazioni. Queste istruzioni vengono incluse nella classificazione delle transazioni durante la sincronizzazione bancaria e l'importazione manuale.",
+        "placeholder": "es. Le transazioni di 'Starbucks' vanno in 'Caffè'. Le entrate da libera professione provengono da 'Acme Corp'.",
+        "serverModelHint": "Le istruzioni personalizzate si applicano solo quando la classificazione è gestita da uno dei propri modelli IA. Sceglierne uno sopra.",
+        "requiresOwnCredentials": "Aggiungere un proprio modello IA per usare le istruzioni personalizzate.",
+        "credentialsCheckFailed": "Impossibile verificare i modelli IA, quindi le istruzioni personalizzate non sono al momento disponibili.",
+        "retryCredentialsCheck": "Riprova",
+        "save": "Salva",
+        "saved": "Salvato!",
+        "saveFailed": "Impossibile salvare le istruzioni personalizzate. Riprovare."
+      }
+    }
+  }
+}

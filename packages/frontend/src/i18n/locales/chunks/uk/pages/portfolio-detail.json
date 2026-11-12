@@ -1,0 +1,156 @@
+{
+  "portfolioDetail": {
+    "loading": "Завантаження...",
+    "loadingDetails": "Завантаження деталей портфеля...",
+    "loadError": "Не вдалося завантажити деталі портфеля.",
+    "tryAgain": "Спробувати ще раз",
+    "notFoundTitle": "Портфель не знайдено",
+    "notFoundDescription": "Не вдалося знайти цей портфель. Можливо, його було видалено, або у вас немає до нього доступу.",
+    "backToInvestments": "Назад до інвестицій",
+    "subtitle": "Огляд портфеля",
+    "actions": {
+      "transfer": "Переказ",
+      "edit": "Редагувати",
+      "delete": "Видалити",
+      "exchangeCurrency": "Обміняти валюту"
+    },
+    "balance": {
+      "totalValue": "Загальна вартість",
+      "baseCurrencyEquivalent": "≈ {value} у {code}",
+      "loadError": "Не вдалося завантажити підсумок портфеля.",
+      "metrics": {
+        "costBasis": "Базова вартість",
+        "unrealized": "Нереалізований",
+        "realized": "Реалізований",
+        "totalReturn": "Загальна дохідність"
+      }
+    },
+    "cashBalances": {
+      "title": "Грошові баланси",
+      "emptyState": "Немає грошових балансів",
+      "tabs": {
+        "balances": "Баланси",
+        "cashTransactions": "Транзакції",
+        "buysSells": "Купівлі та продажі"
+      },
+      "cashTransactions": {
+        "addButton": "Додати грошову транзакцію",
+        "emptyState": "Немає грошових транзакцій",
+        "deposit": "Поповнення",
+        "withdrawal": "Зняття",
+        "transferIn": "Переказ на",
+        "transferOut": "Переказ з",
+        "exchange": "Обмін валют",
+        "deleteConfirm": "Видалити цю грошову транзакцію?",
+        "linkedTransactionNote": "Цей переказ має прив'язану транзакцію рахунку. Що ви хочете з нею зробити?",
+        "keepLinkedTransaction": "Залишити транзакцію рахунку. Деталі оригінальної транзакції будуть відновлені.",
+        "deleteLinkedTransaction": "Також видалити прив'язану транзакцію рахунку",
+        "adjustmentBadge": "Коригування",
+        "noCashBadge": "Без впливу на кошти",
+        "markedAsAdjustment": "Позначено як коригування балансу",
+        "markedAsContribution": "Позначено як реальний внесок",
+        "adjustmentError": "Не вдалося оновити цей переказ",
+        "rowActions": "Дії з транзакцією",
+        "emptyStateDescription": "Тут з'являтимуться поповнення, зняття та перекази цього портфеля.",
+        "edit": "Редагувати",
+        "editDialog": {
+          "title": "Редагувати грошову транзакцію",
+          "description": "Змініть, як ця транзакція враховується у звітах.",
+          "save": "Зберегти зміни"
+        }
+      },
+      "buysSells": {
+        "emptyState": "Немає транзакцій купівлі/продажу",
+        "shares": "од."
+      }
+    },
+    "holdings": {
+      "title": "Активи",
+      "subtitle": "Тікерів: {count}",
+      "filterPlaceholder": "Фільтрувати за тікером або назвою...",
+      "addButton": "Додати тікер",
+      "importButton": "Імпортувати транзакції",
+      "importButtonShort": "Імпорт"
+    },
+    "holdingsTable": {
+      "loadError": "Не вдалося завантажити активи",
+      "empty": "Активів ще немає",
+      "noFilterResults": "Нічого не знайдено",
+      "noFilterResultsDescription": "Жоден актив не відповідає пошуку. Спробуйте інший тікер або назву.",
+      "clearFilterButton": "Скинути пошук",
+      "headers": {
+        "symbol": "Тікер",
+        "name": "Назва",
+        "shares": "Кількість",
+        "price": "Ціна",
+        "avgCostPerShare": "Сер. ціна за одиницю",
+        "totalCost": "Базова вартість",
+        "marketValue": "Ринкова вартість",
+        "unrealizedGain": "Нереалізований прибуток",
+        "realizedGain": "Реалізований прибуток"
+      },
+      "transactions": {
+        "loading": "Завантаження транзакцій…",
+        "empty": "Транзакцій не знайдено.",
+        "addFirstButton": "Додати першу транзакцію"
+      },
+      "closedPositions": "Закриті позиції ({count})",
+      "stalePrice": "Остання доступна ціна. Ринкова вартість і прибуток можуть бути застарілими.",
+      "deleteHolding": {
+        "ariaLabel": "Видалити актив",
+        "title": "Видалити актив",
+        "description": "Це назавжди видалить актив {symbol} разом з усіма його транзакціями. Дію неможливо скасувати.",
+        "confirmLabel": "Видалити актив",
+        "success": "Актив видалено.",
+        "error": "Не вдалося видалити актив."
+      },
+      "addTransactionDialog": {
+        "title": "Додати транзакцію",
+        "description": "Додайте нову транзакцію до вашого портфеля."
+      },
+      "tryAgainLater": "Спробуйте пізніше",
+      "emptyDescription": "Додайте першу транзакцію, щоб почати відстежувати інвестиції",
+      "addFirstHolding": "Додати перший актив",
+      "importTransactions": "Або імпортуйте з файлу"
+    },
+    "transactionsList": {
+      "title": "Транзакції",
+      "addButton": "Додати транзакцію",
+      "loadingMore": "Завантаження транзакцій…",
+      "headers": {
+        "date": "Дата",
+        "type": "Тип",
+        "note": "Примітка",
+        "quantity": "Кількість",
+        "price": "Ціна",
+        "fees": "Комісії",
+        "amount": "Сума",
+        "refAmount": "Базова сума",
+        "refFees": "Базові комісії",
+        "settlementAmount": "Сума розрахунку",
+        "settlementCurrency": "Валюта розрахунку",
+        "settlementFees": "Комісії розрахунку",
+        "settlementRate": "Курс обміну",
+        "createdAt": "Додано"
+      },
+      "categories": {
+        "buy": "Купівля",
+        "sell": "Продаж",
+        "dividend": "Дивіденд",
+        "transfer": "Переказ",
+        "tax": "Податок",
+        "fee": "Комісія",
+        "cancel": "Скасування",
+        "other": "Інше"
+      },
+      "headerTooltips": {
+        "amount": "Загальна сума транзакції у валюті торгівлі цінним папером.",
+        "refAmount": "Загальна сума транзакції, конвертована у базову валюту.",
+        "settlementAmount": "Фактично сплачена або отримана сума на рахунку у валюті розрахунку."
+      },
+      "deleteTransaction": {
+        "tooltip": "Видалити транзакцію"
+      }
+    }
+  }
+}

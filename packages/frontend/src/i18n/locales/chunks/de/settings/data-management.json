@@ -1,0 +1,108 @@
+{
+  "settings": {
+    "dataManagement": {
+      "title": "Daten importieren",
+      "description": "Importiere deine Finanzdaten aus verschiedenen Quellen",
+      "tabs": {
+        "import": "Import",
+        "export": "Export"
+      },
+      "textSource": {
+        "title": "Aus beliebiger Textquelle importieren",
+        "aiBadge": "KI-gestützt",
+        "listDescription": "Kontoauszüge, Belege, Screenshots oder beliebiger Text"
+      },
+      "csv": {
+        "title": "CSV importieren",
+        "description": "Importiere Transaktionen aus einer CSV-Datei. Du kannst Spalten zuordnen, Duplikate verarbeiten und nach Bedarf neue Konten oder Kategorien erstellen.",
+        "button": "CSV-Datei importieren",
+        "cta": "CSV-Datei importieren",
+        "listDescription": "Spalten zuordnen und Duplikate verarbeiten"
+      },
+      "ofx": {
+        "title": "OFX- oder QFX-Kontoauszug",
+        "listDescription": "Bank- und Kreditkartentransaktionen importieren"
+      },
+      "ynab": {
+        "title": "Aus YNAB importieren",
+        "listDescription": "Konten, Transaktionen, Kategorien und Zahlungsempfänger"
+      },
+      "budget-bakers-wallet": {
+        "title": "Wallet (BudgetBakers)",
+        "listDescription": "Mehrwährungsfähig mit automatischer Zuordnung von Umbuchungen"
+      },
+      "ms-money": {
+        "title": "Microsoft Money",
+        "listDescription": "Importiere eine .mny-Datei aus Microsoft Money"
+      },
+      "messageImport": {
+        "title": "iOS message sync"
+      },
+      "importHistory": {
+        "title": "Importverlauf",
+        "listDescription": "Sieh vergangene Importe an und was durch sie erstellt wurde"
+      },
+      "import": {
+        "back": "Zurück zum Import",
+        "whichImporterHint": "Nicht sicher, welchen du verwenden sollst?",
+        "groups": {
+          "filesAndText": "Dateien & Text",
+          "fromOtherApps": "Aus anderen Apps",
+          "history": "Verlauf"
+        },
+        "requestMore": {
+          "title": "Möchtest du weitere Optionen? Hier anfragen"
+        }
+      },
+      "export": {
+        "cardTitle": "Deine Daten exportieren",
+        "backupOrExportHint": "Nicht sicher, ob du Export oder Sicherung benötigst?",
+        "form": {
+          "title": "Deine Daten exportieren",
+          "description": "Wähle ein Format und die Teile deiner Daten, die du benötigst. Der Download startet, sobald du bestätigst.",
+          "confirmLabel": "Herunterladen",
+          "confirmLoading": "Wird vorbereitet…",
+          "back": "Zurück zum Export"
+        },
+        "format": {
+          "label": "Format",
+          "json": "JSON",
+          "csv": "CSV",
+          "xlsx": "Excel"
+        },
+        "groups": {
+          "label": "Was enthalten sein soll",
+          "selectAll": "Alles auswählen",
+          "deselectAll": "Alle abwählen",
+          "transactions": "Transaktionen & Konten",
+          "transactionsDescription": "Transaktionen, Konten, Kontostandshistorie, Kategorien, Tags, Fahrzeuge",
+          "budgets": "Tracker",
+          "budgetsDescription": "Benutzerdefinierte Tracker mit verknüpften Kategorien und Ausgabensummen",
+          "subscriptions": "Abos & Erinnerungen",
+          "subscriptionsDescription": "Wiederkehrende Abonnements und Zahlungserinnerungen",
+          "investments": "Investments",
+          "investmentsDescription": "Portfolios, Bestände, Investment-Transaktionen, Umbuchungen"
+        },
+        "notifications": {
+          "success": "Export bereit – dein Download sollte in Kürze starten.",
+          "successWithCount": "Export bereit – {count} Zeilen exportiert.",
+          "failed": "Deine Daten konnten nicht exportiert werden. Bitte versuche es erneut.",
+          "downloadBlocked": "Export bereit, aber dein Browser hat den Download blockiert. Überprüfe die Adressleiste auf einen Download-Hinweis.",
+          "tooLarge": "Deine Daten sind zu groß für einen einzelnen Export. Bitte kontaktiere den Support."
+        },
+        "dateRange": {
+          "label": "Datumsbereich (optional)",
+          "helper": "Nur Ereignistabellen (Transaktionen, Kontostandshistorie, Investmentaktivitäten) werden gefiltert. Konten, Kategorien und andere Referenztabellen bleiben vollständig.",
+          "placeholder": "Gesamter Zeitraum",
+          "clear": "Datumsbereich zurücksetzen"
+        },
+        "accounts": {
+          "label": "Konten",
+          "helper": "Exportiere nur die ausgewählten Konten mit ihren Transaktionen und ihrer Kontostandshistorie. Leer lassen, um alle Konten zu exportieren.",
+          "placeholder": "Alle Konten"
+        },
+        "listDescription": "Lade eine ZIP-Datei für Tabellenkalkulationen, Steuern oder eine Migration herunter"
+      }
+    }
+  }
+}

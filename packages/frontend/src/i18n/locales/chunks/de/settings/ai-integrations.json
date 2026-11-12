@@ -1,0 +1,65 @@
+{
+  "settings": {
+    "aiIntegrations": {
+      "mcpServer": {
+        "title": "MCP-Server",
+        "description": "Verwende diese URL, um KI-Assistenten mit deinem MoneyMatter-Konto zu verbinden. Deine Daten werden schreibgeschützt geteilt.",
+        "copyTooltip": "URL kopieren",
+        "copiedNotification": "MCP-Server-URL in die Zwischenablage kopiert"
+      },
+      "quickConnect": {
+        "title": "Schnellverbindung",
+        "description": "Wähle unten einen KI-Assistenten aus. Klicke auf die Schaltfläche, um dessen Einstellungen zu öffnen, und folge dann den Schritten.",
+        "openSettings": "Einstellungen öffnen",
+        "claude": {
+          "steps": {
+            "createConnector": "Klicke auf das {icon}-Symbol neben \"Connectors\", um einen neuen Connector zu erstellen",
+            "selectCustom": "Wähle {action}",
+            "enterName": "Gib bei \"Name\" {value} ein",
+            "pasteUrl": "Füge bei \"Remote MCP server URL\" {value} ein",
+            "finish": "Lasse die erweiterten Einstellungen leer und klicke auf {action}",
+            "authorize": "Du wirst zu MoneyMatter weitergeleitet, um den Zugriff zu autorisieren"
+          }
+        },
+        "chatgpt": {
+          "steps": {
+            "addConnector": "Klicke auf {action}",
+            "pasteUrl": "Füge bei \"URL\" {value} ein",
+            "clickAdd": "Klicke auf {action}",
+            "authorize": "Du wirst zu MoneyMatter weitergeleitet, um den Zugriff zu autorisieren"
+          }
+        }
+      },
+      "actions": {
+        "addCustomConnector": "Benutzerdefinierten Connector hinzufügen",
+        "addConnector": "Konnektor hinzufügen",
+        "add": "Hinzufügen"
+      },
+      "connectedApps": {
+        "title": "Aktive Konnektoren",
+        "description": "Apps, die Zugriff auf deine Finanzdaten haben. Du kannst den Zugriff jederzeit widerrufen.",
+        "emptyTitle": "Noch keine Apps verbunden.",
+        "emptyDescription": "Nutze die Schaltflächen oben, um einen KI-Assistenten zu verbinden.",
+        "connectedAt": "Verbunden: {date}",
+        "lastUsed": "Zuletzt verwendet: {time}",
+        "scope": "Berechtigung: {scopes}",
+        "revoke": "Widerrufen"
+      },
+      "revokeDialog": {
+        "title": "Zugriff widerrufen?",
+        "description": "Dadurch wird die App sofort getrennt und alle ihre Token werden ungültig. Du kannst sie später erneut verbinden.",
+        "confirm": "Zugriff widerrufen",
+        "successNotification": "App-Zugriff erfolgreich widerrufen",
+        "errorNotification": "App-Zugriff konnte nicht widerrufen werden"
+      },
+      "scopes": {
+        "financeRead": "Finanzdaten lesen",
+        "financeWrite": "Finanzdaten bearbeiten",
+        "financeDelete": "Finanzdaten löschen",
+        "profileRead": "Profil lesen",
+        "offlineAccess": "Offline-Zugriff",
+        "toolset": "Tools: {name}"
+      }
+    }
+  }
+}
